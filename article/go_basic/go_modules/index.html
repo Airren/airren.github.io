@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ByteGopher">
+    <meta name="keyword" content="ByteGopher, Airren">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          「Go」依赖管理 Go Modues/ GOPATH - ByteGopher | Airren
+        
+    </title>
+
+    <link rel="canonical" href="https://www.bytegopher.com/article/go_basic/go_modules/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Go" title="Go">Go</a>
+                            
+                        </div>
+                        <h1>「Go」依赖管理 Go Modues/ GOPATH</h1>
+                        <h2 class="subheading">学会了go的依赖管理才能灵活使用Go</h2>
+                        <span class="meta">
+                            Posted by Airren on
+                            2020-08-04
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ByteGopher</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archive</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>不要吝啬你的批评与感悟，敬请留言，我们一起进步。</p>
+</blockquote>
+<blockquote>
+<p>如果你有过以下问题，欢迎阅读文章，提出意见与建议</p>
+<ol>
+<li>go mod 怎么使用？</li>
+<li>GOPATH是什么？</li>
+<li>GO111MODULE=&quot;&quot;  这个参数决定了什么？</li>
+<li>go get、go download 有什么区别？</li>
+<li>import到底import的什么东西？</li>
+</ol>
+</blockquote>
+<h2><span id="依赖管理工具">依赖管理工具</span></h2>
+<p>用过Java 的同学都知道，对依赖的管理经历了从<strong>原始的手动引入jar</strong>包，到使用<strong>maven等自动化管理工具</strong>去引入第三方依赖的过程，从而可以使用别人已经开发好的优秀工具。如果使用过Python的同学可能会熟练的使用pip install 第三方的工具包。Java 和Python的第三方工具包都是集中式管理的，使用maven 或者是pip 都是从对应的管理中心下载更新依赖。当然还有 npm、yarn、gradle等其他语言的依赖版本工具。</p>
+<p>在go语言中，第三方依赖的管理工具经过了一个漫长的发展过程。在GO1.11 发布之前govendor、dep等工具百花齐放。直到go mod 出现，开始一统天下。go 的依赖非常简单粗暴，只要依赖源码就可以了。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="string">"github.com/jinzhu/gorm"</span></span><br></pre></td></tr></table></figure>
+<p><code>github.com/jinzhu/gorm</code> 就是gorm的GitHub项目路径。</p>
+<h2><span id="gopath时期">GOPATH时期</span></h2>
+<p>Go 在1.11 之前使用<code>GOPATH模式</code>进行依赖的管理。安装部署go环境，使用go 进行开发的时候强制被要求要设置<code>GOPATH</code>（当然安装过程中也会默认指定<code>$GOPATH=~/go</code>）。 要在<code>GOPATH</code>路径下新建 <code>/src /bin /pkg</code>文件夹。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜ ~/go</span><br><span class="line">├── bin  <span class="comment"># 存储go编译生成的二进制可执行文件，一般会把该路径配置到PATH中,PATH=$PATH:$GOPATH/bin</span></span><br><span class="line">├── pkg  <span class="comment"># 存储预编译的目标文件，以加快后续的编译速度 </span></span><br><span class="line">└── src  <span class="comment"># 存储Go的源代码，一般以$GOPATH/src/github.com/foo/bar的路径存放</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ go env |grep GOPATH</span><br><span class="line">GOPATH=<span class="string">"/Users/bytedance/go"</span></span><br></pre></td></tr></table></figure>
+<p>在这种模式下，如果使用<code>go get</code> 拉取外部依赖会自动下载并安装到<code>$GOPATH/src</code> 目录下。</p>
+<p>这种模式下，<code>go get</code>没有版本管理的概念，无法处理依赖不同版本的问题，因为同一个依赖都存在同一个路径下面。</p>
+<p>在Go官方还没有推出Go Modules 的时候，go的依赖管理工具可谓是百花齐放，例如 <code>govendor</code>， <code>dep</code>，但是最终Go Modules发布，平息了诸侯割据的局面。</p>
+<h2><span id="go-modules">GO Modules</span></h2>
+<p>Go1.11 开始推出Go Modules ,Go1.13开始不再推荐使用GOPATH。意思就是说你可以在任何路径下存放你的Go源码文件, 不用再像以前一样非得放到<code>$GOPATH/src</code>中。 每一个go项目 都是一个 Modules。vgo 是Go Modules的前身。</p>
+<p>在Go Modules环境下出现了一个很重要的环境变量<code>GO111MODULE</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ go env</span><br><span class="line">GO111MODULE=<span class="string">"auto"</span>  <span class="comment"># 当为 aotu 模式时候如果当前目录中有go.mod则为GO Module模式</span></span><br><span class="line">GOPROXY=<span class="string">"https://proxy.golang.org,direct"</span></span><br><span class="line">GONOPROXY=<span class="string">""</span></span><br><span class="line">GOSUMDB=<span class="string">"sum.golang.org"</span></span><br><span class="line">GONOSUMDB=<span class="string">""</span></span><br><span class="line">GOPRIVATE=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+<p>如果要对go 的环境变量进行设置，可以使用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on  <span class="comment"># 设置go 环境变量</span></span><br><span class="line">go env -u <span class="comment"># 恢复初始设置</span></span><br></pre></td></tr></table></figure>
+<h3><span id="go111module">GO111MODULE</span></h3>
+<p><code>GO111MODULE</code> 这个环境变量是用来作为使用Go Modules 的开关。可以说这个变量是历史产物，很有肯能会在将来Go的新版本中去除掉。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GO111MODULE=<span class="string">"auto"</span> <span class="comment"># 只要项目包含了go.mod 文件的话就启用Go modules， 在Go1.11-1.14 中是默认值</span></span><br><span class="line">GO111MODULE=<span class="string">"on"</span>   <span class="comment"># 启用Go Modules</span></span><br><span class="line">GO111MODULE=<span class="string">"off"</span>  <span class="comment"># 禁用Go Modules， 对老的项目进行兼容</span></span><br></pre></td></tr></table></figure>
+<h3><span id="goproxy">GOPROXY</span></h3>
+<p>GOPROXY 是Go Modules的代理，可以通过镜像站点快速拉取（很多公司都会设置自己的镜像站点），可以设置多个代理。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOPROXY=<span class="string">"https://proxy.golang.org,direct"</span></span><br></pre></td></tr></table></figure>
+<p><code>direct</code>的意思是如果通过代理获取不到go get 就会通过源地址直接去抓取</p>
+<h3><span id="go-mod">go mod</span></h3>
+<p>创建Go Modules的基本命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ go mod</span><br><span class="line">Go mod provides access to operations on modules.</span><br><span class="line"></span><br><span class="line">Note that support <span class="keyword">for</span> modules is built into all the go commands,</span><br><span class="line">not just <span class="string">'go mod'</span>. For example, day-to-day adding, removing, upgrading,</span><br><span class="line">and downgrading of dependencies should be <span class="keyword">done</span> using <span class="string">'go get'</span>.</span><br><span class="line">See <span class="string">'go help modules'</span> <span class="keyword">for</span> an overview of module functionality.</span><br><span class="line"><span class="comment"># 所有的go commands 都支持 modules。</span></span><br><span class="line">Usage:</span><br><span class="line"></span><br><span class="line">        go mod &lt;<span class="built_in">command</span>&gt; [arguments]</span><br><span class="line"></span><br><span class="line">The commands are:</span><br><span class="line"></span><br><span class="line">        download    download modules to <span class="built_in">local</span> cache</span><br><span class="line">        edit        edit go.mod from tools or scripts</span><br><span class="line">        graph       <span class="built_in">print</span> module requirement graph</span><br><span class="line">        init        initialize new module <span class="keyword">in</span> current directory </span><br><span class="line">        tidy        add missing and remove unused modules</span><br><span class="line">        vendor      make vendored copy of dependencies</span><br><span class="line">        verify      verify dependencies have expected content</span><br><span class="line">        why         explain why packages or modules are needed</span><br><span class="line"></span><br><span class="line">Use <span class="string">"go help mod &lt;command&gt;"</span> <span class="keyword">for</span> more information about a <span class="built_in">command</span>.</span><br></pre></td></tr></table></figure>
+<p><strong>go mod init</strong></p>
+<p>在当前目录初始化一个新的module， 就是说将该目录下的工程文件初始化为一个<code>Go Module.</code></p>
+<p>如果当前目录在GOPATH中，这条命令无需传入参数，参数默认为 <code>GOPATH/src</code> 到该目录的<code>相对路径</code>。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  demo <span class="built_in">pwd</span></span><br><span class="line">/Users/bytedance/go/src/github.com/airren/demo  <span class="comment"># 当前路径</span></span><br><span class="line">➜  demo go mod init</span><br><span class="line">go: creating new go.mod: module github.com/airren/demo</span><br><span class="line">➜  demo ls</span><br><span class="line">go.mod</span><br><span class="line">➜  demo cat go.mod</span><br><span class="line">module github.com/airren/demo</span><br><span class="line"></span><br><span class="line">go 1.14</span><br><span class="line">➜  demo</span><br></pre></td></tr></table></figure>
+<p>如果当前目录不在GOPATH中，要<code>手动指定</code>module的名字</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  gotest <span class="built_in">pwd</span>                                 </span><br><span class="line">/Users/bytedance/Desktop/gotest</span><br><span class="line">➜  gotest go mod init       <span class="comment"># 如果不在GOPATH路径下                  </span></span><br><span class="line">go: cannot determine module path <span class="keyword">for</span> <span class="built_in">source</span> directory /Users/bytedance/Desktop/gotest (outside GOPATH, module path must be specified)</span><br><span class="line"></span><br><span class="line">Example usage:</span><br><span class="line">        <span class="string">'go mod init example.com/m'</span> to initialize a v0 or v1 module</span><br><span class="line">        <span class="string">'go mod init example.com/m/v2'</span> to initialize a v2 module</span><br><span class="line"></span><br><span class="line">Run <span class="string">'go help mod init'</span> <span class="keyword">for</span> more information.</span><br><span class="line">➜  gotest go mod init github.com/airren/gotest </span><br><span class="line">go: creating new go.mod: module github.com/airren/gotest</span><br><span class="line">➜  gotest cat go.mod </span><br><span class="line">module github.com/airren/gotest</span><br><span class="line"></span><br><span class="line">go 1.14</span><br></pre></td></tr></table></figure>
+<p><strong>go mod download</strong></p>
+<p><code>go mod download</code> 命令会把package下载到 <code>GOPATH/pkg/mod</code>路径下，下载时要指定版本可以用<code>@latest</code>。可以任意路径下使用<code>go mod download</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">➜  jinzhu pwd</span><br><span class="line">/Users/bytedance/go/pkg/mod/github.com/jinzhu</span><br><span class="line">➜  jinzhu ls</span><br><span class="line">gorm@v1.9.11-0.20190912141731-0c98e7d712e2    inflection@v1.0.0</span><br><span class="line">gorm@v1.9.12                                  now@v1.0.1</span><br><span class="line">inflection@v0.0.0-20180308033659-04140366298a now@v1.1.1</span><br><span class="line">➜  jinzhu go mod download -x github.com/jinzhu/gorm@v1.9.8  # 要指定版本</span><br><span class="line">➜  jinzhu ls</span><br><span class="line">gorm@v1.9.11-0.20190912141731-0c98e7d712e2    inflection@v1.0.0</span><br><span class="line">gorm@v1.9.12                                  now@v1.0.1</span><br><span class="line">gorm@v1.9.8                                   now@v1.1.1</span><br><span class="line">inflection@v0.0.0-20180308033659-04140366298a</span><br><span class="line">➜  jinzhu cd gorm@v1.9.8</span><br></pre></td></tr></table></figure>
+<h3><span id="import">import</span></h3>
+<blockquote>
+<p>import 导入的是文件存储的<code>相对路径</code>（不能使用绝对路径）或者是<code>Modules Name</code>，并不是package的name，但是在调用Function的时候使用的是<code>package的name</code>。</p>
+</blockquote>
+<p>import 首先会从<code>$GOROOT</code>中寻找，然后从<code>$GOPATH/src</code> 中寻找，如果是以<code>./</code> 或者 <code>../</code> 开头的import 直接去对应的相对路径寻找。</p>
+<p>import 时候是<code>不区分大小写</code>的，所以在go项目中folder的name尽量是小写，可以有下滑线_, 但是packagename一定不能有<code>_</code>，否则golint会有提示。</p>
+<p>举个例子🌰文件结构如图所示</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gotest</span><br><span class="line">├── format_print</span><br><span class="line">│   └── colorprintpath.go  <span class="comment"># 文件名并不影响 import</span></span><br><span class="line">└── sdemo</span><br><span class="line">    ├── demo.go</span><br></pre></td></tr></table></figure>
+<p><strong>colorprintpath.go</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> colorprintfile <span class="comment">// 调用方法时候通过package name 调用</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="comment">// NewPirnt is the new format print  公开方法要有注释</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewPrint</span><span class="params">(content <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"This is the content: %v \n"</span>, content)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>demo.go</strong>  调用上述方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span>  <span class="string">"../format_print"</span>  <span class="comment">// import 使用的是相对路径</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	colorprintfile.NewPrint(<span class="string">"hello"</span>)	 <span class="comment">// 调用package中的公开方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用了<code>go mod</code>， 在项目文件下有了go.mod,  文件中会有</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module github.com/airren/gotest</span><br></pre></td></tr></table></figure>
+<p>此时就不能使用相对路径引用package, 要通过<code>modules的方式</code>引用</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span>  <span class="string">"github.com/airren/gotest/format_print"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	colorprintfile.NewPrint(<span class="string">"hello"</span>)	 <span class="comment">// 调用package中的公开方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="go-get">go get</span></h3>
+<p>可以在任意路径下执行<code>go get</code></p>
+<ul>
+<li>
+<p>用于从远程代码仓库(github, gitlab,gogs)上下载并安装代码包</p>
+</li>
+<li>
+<p>支持的代码版本控制系统有: Git , Mercurial(hg)，SVN, Bazaar</p>
+</li>
+<li>
+<p>指定的代码包会被下载到<code>$GOPATH</code>中包含的第一个工作区的src目录中，然后再安装</p>
+<p>常用参数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-d         <span class="comment"># 只执行下载动作，而不执行安装动作</span></span><br><span class="line">-fix       <span class="comment"># 在下载代码包后先执行修正动作，而后再进行编译和安装</span></span><br><span class="line">-u         <span class="comment"># 利用网络来更新已有的代码包及其依赖包</span></span><br><span class="line">-x         <span class="comment"># 显示过程</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如使用<code>go get</code> 获取 gorm。 通过<code>-x</code> 参数可以展示详细的过程。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ go get -u -x github.com/jinzhu/gorm</span><br><span class="line"><span class="built_in">cd</span> .</span><br><span class="line">git <span class="built_in">clone</span> -- https://github.com/jinzhu/gorm /Users/bytedance/go/src/github.com/jinzhu/gorm</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/gorm</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/gorm</span><br><span class="line">git show-ref</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/gorm</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/inflection</span><br><span class="line">git config remote.origin.url</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/inflection</span><br><span class="line">git pull --ff-only</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/inflection</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/inflection</span><br><span class="line">git show-ref</span><br><span class="line"><span class="built_in">cd</span> /Users/bytedance/go/src/github.com/jinzhu/inflection</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">WORK=/var/folders/pz/w7jm4wm933lcspm82kff26600000gn/T/go-build644292157</span><br></pre></td></tr></table></figure>
+<p>如果在具有<code>go.mod</code> 的项目的文件夹下使用go get , 会将对应的依赖以及版本写入<code>go.mod,</code>  go.sum 是自动生成的，具体介绍可以查看https://studygolang.com/articles/25658</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">➜  gotest cat go.mod </span><br><span class="line">module github.com/airren/gotest</span><br><span class="line"></span><br><span class="line">go 1.14</span><br><span class="line">➜  gotest cat go.sum </span><br><span class="line">cat: go.sum: No such file or directory</span><br><span class="line">➜  gotest go get -u github.com/jinzhu/gorm/  <span class="comment"># 拉取gorm  </span></span><br><span class="line">go: github.com/jinzhu/gorm upgrade =&gt; v1.9.12</span><br><span class="line">➜  gotest cat go.mod </span><br><span class="line">module github.com/airren/gotest</span><br><span class="line"></span><br><span class="line">go 1.14</span><br><span class="line"></span><br><span class="line">require github.com/jinzhu/gorm v1.9.12 // indirect  <span class="comment"># 新增依赖， 未被使用或者间接使用会有 indirect</span></span><br><span class="line">➜  gotest cat go.sum </span><br><span class="line">github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=</span><br><span class="line">github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5/go.mod h1:a2zkGnVExMxdzMo3M0Hi/3sEU+cWnZpSni0O6/Yb/P0=</span><br><span class="line">github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=</span><br><span class="line">github.com/golang-sql/civil v0.0.0-20190719163853-cb61b32ac6fe/go.mod h1:8vg3r2VgvsThLBIFL93Qb5yWzgyZWhEmBwUJWevAkK0=</span><br><span class="line">github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=</span><br><span class="line">github.com/jinzhu/gorm v1.9.12 h1:Drgk1clyWT9t9ERbzHza6Mj/8FY/CqMyVzOiHviMo6Q=</span><br><span class="line">github.com/jinzhu/gorm v1.9.12/go.mod h1:vhTjlKSJUTWNtcbQtrMBFCxy7eXTzeCAzfL5fBZT/Qs=</span><br><span class="line">github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=</span><br><span class="line">github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=</span><br><span class="line">github.com/jinzhu/now v1.0.1/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=</span><br><span class="line">github.com/lib/pq v1.1.1/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=</span><br><span class="line">github.com/mattn/go-sqlite3 v2.0.1+incompatible/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=</span><br><span class="line">golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=</span><br><span class="line">golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=</span><br><span class="line">golang.org/x/crypto v0.0.0-20191205180655-e7c4368fe9dd/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=</span><br><span class="line">golang.org/x/net v0.0.0-20180724234803-3673e40ba225/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=</span><br><span class="line">golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3/go.mod h1:t9HGtf8HONx5eT2rtn7q6eTqICYqUVnKs3thJo3Qplg=</span><br><span class="line">golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=</span><br><span class="line">golang.org/x/sys v0.0.0-20190412213103-97732733099d/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=</span><br><span class="line">golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=</span><br><span class="line">google.golang.org/appengine v1.4.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不要吝啬你的批评与感悟，敬请留言，我们一起进步。</p>
+</blockquote>
+<h2><span id="参考资料">参考资料：</span></h2>
+<blockquote>
+<p><a href="https://github.com/golang/go/wiki/Modules" target="_blank" rel="noopener">https://github.com/golang/go/wiki/Modules</a></p>
+<p><a href="https://blog.golang.org/using-go-modules" target="_blank" rel="noopener">https://blog.golang.org/using-go-modules</a></p>
+<p><a href="https://juejin.im/post/5e57537cf265da57584da62b" target="_blank" rel="noopener">https://juejin.im/post/5e57537cf265da57584da62b</a></p>
+<p><a href="https://learnku.com/go/t/39086" target="_blank" rel="noopener">https://learnku.com/go/t/39086</a></p>
+<p><a href="https://studygolang.com/articles/25658" target="_blank" rel="noopener">https://studygolang.com/articles/25658</a></p>
+</blockquote>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/go_basic/go_concurrency/" data-toggle="tooltip" data-placement="top"
+                               title="「Go」并发">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/tips/image_tools/" data-toggle="tooltip" data-placement="top"
+                               title="「Image」 Tools">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share" data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet"
+                          href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">依赖管理工具</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">GOPATH时期</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">GO Modules</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">GO111MODULE</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">GOPROXY</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">go mod</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">import</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">go get</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">参考资料：</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                    <section>
+                        <!-- no hr -->
+                        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                        <div class="tags">
+                            
+                                <a class="tag" href="/tags/#Go"
+                                   title="Go">Go</a>
+                            
+                        </div>
+                    </section>
+                
+
+                <!-- Friends Blog -->
+                
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+
+                        
+                            <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                        
+                            <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                        
+                            <li><a href="https://www.huweihuang.com/archive/" target="_blank">huweihuang Blog</a></li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    <!-- async load function -->
+    <script>
+        function async(u, c) {
+            var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            o.src = u;
+            if (c) {
+                o.addEventListener('load', function (e) {
+                    c(null, e);
+                }, false);
+            }
+            s.parentNode.insertBefore(o, s);
+        }
+    </script>
+    <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+    <script>
+        async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+            anchors.options = {
+                visible: 'hover',
+                placement: 'left',
+                icon: 'ℬ'
+            };
+            anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+        })
+    </script>
+    <style>
+        /* place left on bigger screen */
+        @media all and (min-width: 800px) {
+            .anchorjs-link {
+                position: absolute;
+                left: -0.75em;
+                font-size: 1.1em;
+                margin-top: -0.1em;
+            }
+        }
+    </style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<!--<script type="text/javascript" src="/js/smoothscroll.js"></script>-->
+<script>
+    $('#toc').on('click', 'a', function (a) {
+        // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+        // console.log(window.navigator.userAgent,isChrome)
+        // if(isChrome) {
+        //     console.log(a.currentTarget.outerHTML);
+        //     console.log($(a.currentTarget).attr("href"));
+        //跳转到指定锚点
+        // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+        document.getElementById(a.target.innerText.replace(" ", "-").toLowerCase()).scrollIntoView(true);
+        // document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+        // }
+    })
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/Airrenz">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/Airrenz">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Airren">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://www.linkedin.com/in/强-任-b8a3b4103">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Airren 2020 
+                    <br>
+                    Theme by <a href="http://www.huweihuang.com">A-Boy</a>
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Rebuild by <a href="http://www.bytegopher.com">Airren</a> |
+<!--                    <iframe-->
+<!--                        style="margin-left: 2px; margin-bottom:-5px;"-->
+<!--                        frameborder="0" scrolling="0" width="91px" height="20px"-->
+<!--                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >-->
+<!--                    </iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://www.bytegopher.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'bytegopher.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://www.bytegopher.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
