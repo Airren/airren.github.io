@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/article/git/git_stage_repo/</loc>
+        <lastmod>2020-08-25T17:46:29.885Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/article/tips/vim_tips/</loc>
         <lastmod>2020-08-25T15:52:30.846Z</lastmod>
         <changefreq>weekly</changefreq>
