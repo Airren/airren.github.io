@@ -8,7 +8,7 @@
 
     <url>
         <loc>https://www.bytegopher.com/article/git/git_stage_repo/</loc>
-        <lastmod>2020-08-25T17:46:29.885Z</lastmod>
+        <lastmod>2020-08-25T17:50:03.092Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -25,14 +25,6 @@
     <url>
         <loc>https://www.bytegopher.com/article/go_basic/go_modules/</loc>
         <lastmod>2020-08-25T15:52:30.844Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/git/git_reset_revert/</loc>
-        <lastmod>2020-08-25T15:52:30.842Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -87,7 +79,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
+        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
         <lastmod>2020-08-24T16:35:08.986Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -95,7 +87,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
+        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
         <lastmod>2020-08-24T16:35:08.986Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -111,7 +103,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/component/mongo/bson/</loc>
+        <loc>https://www.bytegopher.com/article/component/mongo/mongo_go_sdk/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -119,7 +111,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/component/mongo/mongo_go_sdk/</loc>
+        <loc>https://www.bytegopher.com/article/component/mongo/bson/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
