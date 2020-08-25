@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ByteGopher | Airren
+          Git reset &amp; revert - ByteGopher | Airren
         
     </title>
 
-    <link rel="canonical" href="https://www.bytegopher.com/archive/4/">
+    <link rel="canonical" href="https://www.bytegopher.com/article/git/git_reset_revert/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('img/index/index_lake.jpg') 
-            /*config*/
+            background-image: url('/img/header/article.jpg')
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>ByteGopher</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">To Be A Lean Developer!</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Git" title="Git">Git</a>
+                            
+                        </div>
+                        <h1>Git reset &amp; revert</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Airren on
+                            2020-08-25
+                        </span>
                     </div>
                 
 
@@ -191,302 +199,195 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/article/hexo/hello_hexo/">
-        <h2 class="post-title">
-                                 
-            「Hexo」Hello!
-        </h2>
-        <h3 class="post-subtitle">
-            今天终于有了自己的博客
-        </h3>
-        <div class="post-content-preview">
-            开心的一天呀 😊
-h1
-h2
-h3
-h4
-h5
-h6
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-07-26
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Hexo" title="Hexo">Hexo</a>
-            
-        </div>
-    
-
-</div>
-<hr>
+                <h2><span id="reset">reset</span></h2>
 
 
 
-<!-- Pager -->
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/tsdb/opentsdb_introduction/" data-toggle="tooltip" data-placement="top"
+                               title="「TSDB」时序数据&时序数据库简介">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/web/http_request_method/" data-toggle="tooltip" data-placement="top"
+                               title="「HTTP」HTTP 9 种请求方式">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-<ul class="pager">
-    
-        <li class="previous">
-            <a href="/archive/3/">&larr; Newer Posts</a>
-        </li>
-    
-    
-</ul>
+                <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
 
-
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share" data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet"
+                          href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
                 <br>
 
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- disqus comment start -->
                 
+                <!-- disqus comment end -->
+
+                
+
             </div>
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
         
-            
-            <a href="/tags/#Go" title="Go" rel="5">Go</a>
-            
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">reset</span></a></li></ol>
         
-            
-            <a href="/tags/#Git" title="Git" rel="1">Git</a>
-            
-        
-            
-            <a href="/tags/#Alfred" title="Alfred" rel="1">Alfred</a>
-            
-        
-            
-            <a href="/tags/#Hexo" title="Hexo" rel="3">Hexo</a>
-            
-        
-            
-            <a href="/tags/#Http" title="Http" rel="1">Http</a>
-            
-        
-            
-            <a href="/tags/#HTTPS" title="HTTPS" rel="1">HTTPS</a>
-            
-        
-            
-            <a href="/tags/#Life" title="Life" rel="1">Life</a>
-            
-        
-            
-            <a href="/tags/#Hbase" title="Hbase" rel="1">Hbase</a>
-            
-        
-            
-            <a href="/tags/#TSDB" title="TSDB" rel="2">TSDB</a>
-            
-        
-            
-            <a href="/tags/#OpenTSDB" title="OpenTSDB" rel="1">OpenTSDB</a>
-            
-        
-            
-            <a href="/tags/#Tips" title="Tips" rel="3">Tips</a>
-            
-        
-            
-            <a href="/tags/#Nginx" title="Nginx" rel="1">Nginx</a>
-            
-        
-            
-            <a href="/tags/#Vim" title="Vim" rel="1">Vim</a>
-            
-        
-            
-            <a href="/tags/#Mongo" title="Mongo" rel="3">Mongo</a>
-            
-        
-            
-            <a href="/tags/#Bson" title="Bson" rel="1">Bson</a>
-            
-        
-            
-            <a href="/tags/#ElasticSearch" title="ElasticSearch" rel="2">ElasticSearch</a>
-            
-        
-            
-            <a href="/tags/#LogStash" title="LogStash" rel="1">LogStash</a>
-            
-        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                    <section>
+                        <!-- no hr -->
+                        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                        <div class="tags">
+                            
+                                <a class="tag" href="/tags/#Git"
+                                   title="Git">Git</a>
+                            
+                        </div>
+                    </section>
+                
+
+                <!-- Friends Blog -->
+                
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+
+                        
+                            <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                        
+                            <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                        
+                            <li><a href="https://www.huweihuang.com/archive/" target="_blank">huweihuang Blog</a></li>
+                        
+                    </ul>
+                
+            </div>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <!-- id = "avatar_pic" -->
-            <img  src="/img/avatar/avatar.jpg" />
-        
 
-        
-            <p>Hi, welcome!</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-                <li>
-                    <a target="_blank" href="https://twitter.com/Airrenz">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank" href="https://www.facebook.com/Airrenz">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/Airren">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-                <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/强-任-b8a3b4103">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/article/tsdb/opentsdb_introduction/">「TSDB」时序数据&amp;时序数据库简介</a>
-        </li>
-      
-        <li>
-          <a href="/article/web/http_request_method/">「HTTP」HTTP 9 种请求方式</a>
-        </li>
-      
-        <li>
-          <a href="/article/web/gin/gin_overview/">「Gin」Gin概述</a>
-        </li>
-      
-        <li>
-          <a href="/article/component/mongo/bson/">「Mongo」Bson vs Json</a>
-        </li>
-      
-        <li>
-          <a href="/article/go_basic/go_install_and_env/">「Go」Go的安装以及介绍</a>
-        </li>
-      
-    </ul>
-  </div>
+    <!-- async load function -->
+    <script>
+        function async(u, c) {
+            var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            o.src = u;
+            if (c) {
+                o.addEventListener('load', function (e) {
+                    c(null, e);
+                }, false);
+            }
+            s.parentNode.insertBefore(o, s);
+        }
+    </script>
+    <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+    <script>
+        async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function () {
+            anchors.options = {
+                visible: 'hover',
+                placement: 'left',
+                icon: 'ℬ'
+            };
+            anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+        })
+    </script>
+    <style>
+        /* place left on bigger screen */
+        @media all and (min-width: 800px) {
+            .anchorjs-link {
+                position: absolute;
+                left: -0.75em;
+                font-size: 1.1em;
+                margin-top: -0.1em;
+            }
+        }
+    </style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
 
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
-    
-        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
-    
-        <li><a href="https://www.huweihuang.com/archive/" target="_blank">huweihuang Blog</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">7</span></li></ul>
-    </div>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<!--<script type="text/javascript" src="/js/smoothscroll.js"></script>-->
+<script>
+    $('#toc').on('click', 'a', function (a) {
+        // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+        // console.log(window.navigator.userAgent,isChrome)
+        // if(isChrome) {
+        //     console.log(a.currentTarget.outerHTML);
+        //     console.log($(a.currentTarget).attr("href"));
+        //跳转到指定锚点
+        // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+        document.getElementById(a.target.innerText.replace(" ", "-").toLowerCase()).scrollIntoView(true);
+        // document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+        // }
+    })
+</script>
 
 
     <!-- Footer -->
@@ -649,22 +550,22 @@ h6
 
 
 
-<!-- Baidu Tongji -->
+<!--&lt;!&ndash; Baidu Tongji &ndash;&gt;-->
+<!---->
+<!--<script>-->
+<!--    // dynamic User by Hux-->
+<!--    var _baId = 'xxx';-->
 
-<script>
-    // dynamic User by Hux
-    var _baId = 'xxx';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
+<!--    // Originial-->
+<!--    var _hmt = _hmt || [];-->
+<!--    (function() {-->
+<!--      var hm = document.createElement("script");-->
+<!--      hm.src = "//hm.baidu.com/hm.js?" + _baId;-->
+<!--      var s = document.getElementsByTagName("script")[0];-->
+<!--      s.parentNode.insertBefore(hm, s);-->
+<!--    })();-->
+<!--</script>-->
+<!---->
 
 
 

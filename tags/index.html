@@ -200,17 +200,19 @@
                 
                     <a href="#Go" title="Go" rel="5">Go</a>
                 
-                    <a href="#Git" title="Git" rel="1">Git</a>
-                
-                    <a href="#Alfred" title="Alfred" rel="1">Alfred</a>
+                    <a href="#Git" title="Git" rel="2">Git</a>
                 
                     <a href="#Hexo" title="Hexo" rel="3">Hexo</a>
                 
-                    <a href="#Http" title="Http" rel="1">Http</a>
-                
-                    <a href="#HTTPS" title="HTTPS" rel="1">HTTPS</a>
-                
                     <a href="#Life" title="Life" rel="1">Life</a>
+                
+                    <a href="#Tips" title="Tips" rel="3">Tips</a>
+                
+                    <a href="#Vim" title="Vim" rel="1">Vim</a>
+                
+                    <a href="#Alfred" title="Alfred" rel="1">Alfred</a>
+                
+                    <a href="#Nginx" title="Nginx" rel="1">Nginx</a>
                 
                     <a href="#Hbase" title="Hbase" rel="1">Hbase</a>
                 
@@ -218,17 +220,15 @@
                 
                     <a href="#OpenTSDB" title="OpenTSDB" rel="1">OpenTSDB</a>
                 
-                    <a href="#Tips" title="Tips" rel="3">Tips</a>
+                    <a href="#HTTPS" title="HTTPS" rel="1">HTTPS</a>
                 
-                    <a href="#Nginx" title="Nginx" rel="1">Nginx</a>
+                    <a href="#Http" title="Http" rel="1">Http</a>
                 
-                    <a href="#Vim" title="Vim" rel="1">Vim</a>
+                    <a href="#ElasticSearch" title="ElasticSearch" rel="2">ElasticSearch</a>
                 
                     <a href="#Mongo" title="Mongo" rel="3">Mongo</a>
                 
                     <a href="#Bson" title="Bson" rel="1">Bson</a>
-                
-                    <a href="#ElasticSearch" title="ElasticSearch" rel="2">ElasticSearch</a>
                 
                     <a href="#LogStash" title="LogStash" rel="1">LogStash</a>
                 
@@ -247,14 +247,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/go_basic/go_concurrency/">
+                     <a href="/article/go_basic/go_install_and_env/">
                         <h2 class="post-title">
-                            「Go」并发
+                            「Go」Go的安装以及介绍
                         </h2>
-                        
-                            <h3 class="post-subtitle">
-                                使用通信代替共享变量
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -266,10 +262,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/go_basic/go_install_and_env/">
+                     <a href="/article/go_basic/go_context/">
                         <h2 class="post-title">
-                            「Go」Go的安装以及介绍
+                            「Go」context
                         </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Go上下文 context
+                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -296,13 +296,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/go_basic/go_context/">
+                     <a href="/article/go_basic/go_concurrency/">
                         <h2 class="post-title">
-                            「Go」context
+                            「Go」并发
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Go上下文 context
+                                使用通信代替共享变量
                             </h3>
                         
                     </a>
@@ -341,6 +341,21 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
+                     <a href="/article/git/git_reset_revert/">
+                        <h2 class="post-title">
+                            Git reset & revert
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
                      <a href="/article/git/git_gitignore/">
                         <h2 class="post-title">
                             「Git」.gitignore
@@ -354,54 +369,9 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Alfred">
-                    <span class="tag-text">Alfred</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/software/Alfred/">
-                        <h2 class="post-title">
-                            「Alfred」Tips
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Kafka基础知识
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Hexo">
                     <span class="tag-text">Hexo</span>
                 </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/hexo/hello_hexo/">
-                        <h2 class="post-title">
-                            「Hexo」Hello!
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                今天终于有了自己的博客
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
                 
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -441,44 +411,19 @@
                 </div>
                 <hr>
                 
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Http">
-                    <span class="tag-text">Http</span>
-                </span>
-                
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/web/http_request_method/">
+                     <a href="/article/hexo/hello_hexo/">
                         <h2 class="post-title">
-                            「HTTP」HTTP 9 种请求方式
+                            「Hexo」Hello!
                         </h2>
                         
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="HTTPS">
-                    <span class="tag-text">HTTPS</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/web/https_tips/">
-                        <h2 class="post-title">
-                            「HTTPS」 Tips
-                        </h2>
+                            <h3 class="post-subtitle">
+                                今天终于有了自己的博客
+                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -505,6 +450,128 @@
                             <h3 class="post-subtitle">
                                   回首三年三千里，相逢意气不胜欢
                             </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Tips">
+                    <span class="tag-text">Tips</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/tips/image_tools/">
+                        <h2 class="post-title">
+                            「Image」 Tools
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/tips/nginx_tips/">
+                        <h2 class="post-title">
+                            「Nginx」 Tips
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/tips/vim_tips/">
+                        <h2 class="post-title">
+                            「Vim」 Tips
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Vim">
+                    <span class="tag-text">Vim</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/tips/vim_tips/">
+                        <h2 class="post-title">
+                            「Vim」 Tips
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Alfred">
+                    <span class="tag-text">Alfred</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/software/Alfred/">
+                        <h2 class="post-title">
+                            「Alfred」Tips
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Kafka基础知识
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Nginx">
+                    <span class="tag-text">Nginx</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/tips/nginx_tips/">
+                        <h2 class="post-title">
+                            「Nginx」 Tips
+                        </h2>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -607,8 +674,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Tips">
-                    <span class="tag-text">Tips</span>
+                <span class="fa fa-tag listing-seperator" id="HTTPS">
+                    <span class="tag-text">HTTPS</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -616,39 +683,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/tips/image_tools/">
+                     <a href="/article/web/https_tips/">
                         <h2 class="post-title">
-                            「Image」 Tools
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/tips/nginx_tips/">
-                        <h2 class="post-title">
-                            「Nginx」 Tips
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/tips/vim_tips/">
-                        <h2 class="post-title">
-                            「Vim」 Tips
+                            「HTTPS」 Tips
                         </h2>
                         
                     </a>
@@ -659,8 +696,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Nginx">
-                    <span class="tag-text">Nginx</span>
+                <span class="fa fa-tag listing-seperator" id="Http">
+                    <span class="tag-text">Http</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -668,117 +705,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/tips/nginx_tips/">
+                     <a href="/article/web/http_request_method/">
                         <h2 class="post-title">
-                            「Nginx」 Tips
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Vim">
-                    <span class="tag-text">Vim</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/tips/vim_tips/">
-                        <h2 class="post-title">
-                            「Vim」 Tips
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Mongo">
-                    <span class="tag-text">Mongo</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/component/kafka/kafka_basic/">
-                        <h2 class="post-title">
-                            「Kafka」Kafka基础知识
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Kafka基础知识
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/component/mongo/mongo_go_sdk/">
-                        <h2 class="post-title">
-                            「Mongo」Mongo golang sdk
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Mongo golang 使用文档
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/component/kafka/kafka_install/">
-                        <h2 class="post-title">
-                            「Kafka」Kafka安装
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Kafka基础知识
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Bson">
-                    <span class="tag-text">Bson</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/component/mongo/bson/">
-                        <h2 class="post-title">
-                            「Mongo」Bson vs Json
+                            「HTTP」HTTP 9 种请求方式
                         </h2>
                         
                     </a>
@@ -825,6 +754,92 @@
                             <h3 class="post-subtitle">
                                 LogStash同步MySQL数据到ES 
                             </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Mongo">
+                    <span class="tag-text">Mongo</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/component/kafka/kafka_basic/">
+                        <h2 class="post-title">
+                            「Kafka」Kafka基础知识
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Kafka基础知识
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/component/kafka/kafka_install/">
+                        <h2 class="post-title">
+                            「Kafka」Kafka安装
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Kafka基础知识
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/component/mongo/mongo_go_sdk/">
+                        <h2 class="post-title">
+                            「Mongo」Mongo golang sdk
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Mongo golang 使用文档
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Bson">
+                    <span class="tag-text">Bson</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/component/mongo/bson/">
+                        <h2 class="post-title">
+                            「Mongo」Bson vs Json
+                        </h2>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -1026,22 +1041,22 @@
 
 
 
-<!-- Baidu Tongji -->
+<!--&lt;!&ndash; Baidu Tongji &ndash;&gt;-->
+<!---->
+<!--<script>-->
+<!--    // dynamic User by Hux-->
+<!--    var _baId = 'xxx';-->
 
-<script>
-    // dynamic User by Hux
-    var _baId = 'xxx';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
+<!--    // Originial-->
+<!--    var _hmt = _hmt || [];-->
+<!--    (function() {-->
+<!--      var hm = document.createElement("script");-->
+<!--      hm.src = "//hm.baidu.com/hm.js?" + _baId;-->
+<!--      var s = document.getElementsByTagName("script")[0];-->
+<!--      s.parentNode.insertBefore(hm, s);-->
+<!--    })();-->
+<!--</script>-->
+<!---->
 
 
 

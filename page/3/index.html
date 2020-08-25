@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="https://www.bytegopher.com/">
+    <link rel="canonical" href="https://www.bytegopher.com/page/3/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -211,40 +211,33 @@
 
 <div class="post-preview">
 
-    <a href="/article/tsdb/opentsdb_introduction/">
+    <a href="/article/tsdb/hbase_introduction/">
         <h2 class="post-title">
                                  
-            「TSDB」时序数据&时序数据库简介
+            「HBase」 简介
         </h2>
         <h3 class="post-subtitle">
-            时序数据库
+            Hbase简介
         </h3>
         <div class="post-content-preview">
-            
-什么是时序数据？
-时序数据的应用场景和特征？
-时序数据库？
+            HBase 简介
+OpensTSDB支持多种底层存储，例如HBase、Cassandra。
+HBase是分布式列存储系统，其底层依赖HDFS分布式文件系统。HBase是参考Google BigTable模型开发的，本质上是一个典型的KV存储，适用于海量结构化数据的存储。
+HBase的优点：
 
-时序数据
-时序数据，就是与时间强相关度的一系列数据。关注的是某一时刻的数据值，而不是最终的数据。是一个过程而不是一个结果。时序数据描述的是一个数据（指标）在时间维度上的变化。例如： 股票K线、环境监测。
-时序数据的特征：
-
-数据以一定的时间间隔产生，生产速率稳定。
-写入多，查询少
-时序数据不允许更新
-时序数据主要是按时间范围查询......
+集群部署，横向扩展方便
+容错性高，相同的数据会复制多份，放到不同的节点上
+同等硬件，相比传统数据库支......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-25
+            2020-08-07
         </p>
         <div class="tags">
             
-              <a href="/tags/#TSDB" title="TSDB">TSDB</a>
-            
-              <a href="/tags/#OpenTSDB" title="OpenTSDB">OpenTSDB</a>
+              <a href="/tags/#Hbase" title="Hbase">Hbase</a>
             
         </div>
     
@@ -254,156 +247,38 @@
 
 <div class="post-preview">
 
-    <a href="/article/git/git_reset_revert/">
+    <a href="/article/go_basic/go_time/">
         <h2 class="post-title">
                                  
-            Git reset & revert
+            「Go」时间
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            reset
-...
+            UNIX 时间戳
+Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
+
+
+
+类型
+位数
+Timestamp
+Time
+
+
+
+
+秒级
+10
+1596646807
+2020-08-06 01:00:......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-25
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Git" title="Git">Git</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/web/http_request_method/">
-        <h2 class="post-title">
-                                 
-            「HTTP」HTTP 9 种请求方式
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            HTTP简介
-HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
-HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-21
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Http" title="Http">Http</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/web/gin/gin_overview/">
-        <h2 class="post-title">
-                                 
-            「Gin」Gin概述
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
-刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
-以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
-
-GitHub
-Official Document
-1......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-21
-        </p>
-        <div class="tags">
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/component/mongo/bson/">
-        <h2 class="post-title">
-                                 
-            「Mongo」Bson vs Json
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            https://docs.mongodb.com/manual/reference/bson-types/
-http://bsonspec.org/
-https://www.mongodb.com/json-and-bson
-https://www.educba.com/json-vs-/article/component/mongo/bson/\
-https://www.geeksforg......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Bson" title="Bson">Bson</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/go_basic/go_install_and_env/">
-        <h2 class="post-title">
-                                 
-            「Go」Go的安装以及介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. 安装Go
-在Mac环境下的安装
-1brew install go  # 安装go最新版本
-
-1go version # 查看go版本
-
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-20
+            2020-08-06
         </p>
         <div class="tags">
             
@@ -417,33 +292,26 @@ https://www.geeksforg......
 
 <div class="post-preview">
 
-    <a href="/article/git/git_gitignore/">
+    <a href="/article/software/Dash/">
         <h2 class="post-title">
                                  
-            「Git」.gitignore
+            「Dash」Tips
         </h2>
         <h3 class="post-subtitle">
-            
+            Dash is an API Documentation Browser and Code Snippet Manager
         </h3>
         <div class="post-content-preview">
             
-https://www.jianshu.com/p/699ed86028c2
-https://www.liaoxuefeng.com/wiki/896043488029600/900004590234208
 
-如果已经提交过一次，继续使用gitignore 是否会
-Git 知识积累
-https://zhuanlan.zhihu.com/p/147356242
-https://www.cnb......
+Dash is an API Documentation Browser and Code Snippet Manager. Dash instantly searches offline documentation sets for 200+ APIs, 100+ cheat sheets and more. You can even generate your own docsets......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-18
+            2020-08-05
         </p>
         <div class="tags">
-            
-              <a href="/tags/#Git" title="Git">Git</a>
             
         </div>
     
@@ -453,35 +321,105 @@ https://www.cnb......
 
 <div class="post-preview">
 
-    <a href="/article/tsdb/bosun/">
+    <a href="/article/go_basic/go_concurrency/">
         <h2 class="post-title">
                                  
-            「Bosun」开源报警系统
+            「Go」并发
         </h2>
         <h3 class="post-subtitle">
-            Bosun语法以及使用
+            使用通信代替共享变量
         </h3>
         <div class="post-content-preview">
-            Bosun 报警，grafana 查询
-Bosun语法：
-Group：
-tasb的tags，是一个tag kv的字典
-Group SubSet
-Bosun的数据类型：
+            
+如何用go实现一个简单的并行任务
 
-Scalar
-NumberSet：   Group+Scalar
+简单的协程池
+开辟固定数量的协程池处理任务，通过chan 传递Task。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647package mainimport (	"fmt"	"sync"	"sync/atomic"	"time")v......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Go" title="Go">Go</a>
+            
+        </div>
+    
 
-运算的时候会对变量进行宏替换
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/go_basic/go_modules/">
+        <h2 class="post-title">
+                                 
+            「Go」依赖管理 Go Modues/ GOPATH
+        </h2>
+        <h3 class="post-subtitle">
+            学会了go的依赖管理才能灵活使用Go
+        </h3>
+        <div class="post-content-preview">
+            
+不要吝啬你的批评与感悟，敬请留言，我们一起进步。
+
+
+如果你有过以下问题，欢迎阅读文章，提出意见与建议
+
+go mod 怎么使用？
+GOPATH是什么？
+GO111MODULE=&quot;&quot;  这个参数决定了什么？
+go get、go download 有什么区别？
+import到底import的什么东西？
+
+
+依赖管理工具
+用过Java 的同学都知道，对依赖的管理经历了从原始......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Go" title="Go">Go</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/tips/image_tools/">
+        <h2 class="post-title">
+                                 
+            「Image」 Tools
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            ico 在线生成
+https://app.xunjiepdf.com/img2icon/
 ...
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-18
+            2020-07-31
         </p>
         <div class="tags">
+            
+              <a href="/tags/#Tips" title="Tips">Tips</a>
             
         </div>
     
@@ -491,29 +429,32 @@ NumberSet：   Group+Scalar
 
 <div class="post-preview">
 
-    <a href="/article/component/elasticsearch/elasticsearch_install/">
+    <a href="/article/web/https_tips/">
         <h2 class="post-title">
                                  
-            「ElasticSearch」ElasticSearch安装
+            「HTTPS」 Tips
         </h2>
         <h3 class="post-subtitle">
-            ElasticSearch的安装与使用
+            
         </h3>
         <div class="post-content-preview">
-            1. Docker 安装ElasticSearch
-1docker search elasticsearch
+            什么是HTTPS
+申请免费SSL
+七牛云免费SSL申请
 
-123docker pull elasticsearch # 默认会拉取 latest 版本docker pull elasticsearch:6.8.11  # https://hub.docker.com/ 版本查找docker images # 查看本地images
-
-1do......
+Nginx 部署设置https
+vi /etc/nginx/nginx.conf
+1234567891011121314151617181920212223242526server &#123;      listen       443 ssl http2 default_server;      listen       [::]......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-18
+            2020-07-31
         </p>
         <div class="tags">
+            
+              <a href="/tags/#HTTPS" title="HTTPS">HTTPS</a>
             
         </div>
     
@@ -523,31 +464,102 @@ NumberSet：   Group+Scalar
 
 <div class="post-preview">
 
-    <a href="/article/software/Alfred/">
+    <a href="/article/tips/nginx_tips/">
         <h2 class="post-title">
                                  
-            「Alfred」Tips
+            「Nginx」 Tips
         </h2>
         <h3 class="post-subtitle">
-            Kafka基础知识
+            
         </h3>
         <div class="post-content-preview">
+            搭建静态资源服务器
+静态资源文件夹
+1/root/file
+Nginx 配置
+vi /etc/nginx/nginx.conf
+1234location /file &#123;   # 这个file 跟资源路径的名字没有半毛钱关系，可以不同				alias /root/file; # 静态资源的绝对路径				autoindex on;    # 自动创建目录&#125;
+为了提高文件的......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-07-31
+        </p>
+        <div class="tags">
             
-Alfred下载链接
-Download: https://www.macwk.com/soft/alfred-4
-JetBrains工作流配置
-Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow
+              <a href="/tags/#Tips" title="Tips">Tips</a>
+            
+              <a href="/tags/#Nginx" title="Nginx">Nginx</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/tips/vim_tips/">
+        <h2 class="post-title">
+                                 
+            「Vim」 Tips
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            常用配置
+vi ~/vimrc
+123set nusyntax oninoremap jj &lt;ESC&gt;   # ues &lt;jj&gt; instead of &lt;ESC&gt;
+移动
+删除
+阐
 ...
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by Airren on
-            2020-08-17
+            2020-07-31
         </p>
         <div class="tags">
             
-              <a href="/tags/#Alfred" title="Alfred">Alfred</a>
+              <a href="/tags/#Tips" title="Tips">Tips</a>
+            
+              <a href="/tags/#Vim" title="Vim">Vim</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/hexo/hexo_write_tips/">
+        <h2 class="post-title">
+                                 
+            「Hexo」Write Tips
+        </h2>
+        <h3 class="post-subtitle">
+            写hexo的小技巧
+        </h3>
+        <div class="post-content-preview">
+            Config
+md conf
+123456789title: Hello Hexo！  layout:     postsubtitle:   "hello word, welcome"date: 2020-07-26 01:09:53author:     "Airren"catalog:    trueheader-img: "post-bg-js-module.jpg"tags:   ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-07-29
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Hexo" title="Hexo">Hexo</a>
             
         </div>
     
@@ -561,9 +573,13 @@ Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow
 
 <ul class="pager">
     
+        <li class="previous">
+            <a href="/page/2/">&larr; Newer Posts</a>
+        </li>
+    
     
         <li class="next">
-            <a href="/page/2/">Older Posts &rarr;</a>
+            <a href="/page/4/">Older Posts &rarr;</a>
         </li>
     
 </ul>

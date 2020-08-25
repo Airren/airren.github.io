@@ -7,6 +7,30 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/article/tips/vim_tips/</loc>
+        <lastmod>2020-08-25T15:52:30.846Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/go_basic/go_modules/</loc>
+        <lastmod>2020-08-25T15:52:30.844Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/git/git_reset_revert/</loc>
+        <lastmod>2020-08-25T15:52:30.842Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/article/tsdb/opentsdb_introduction/</loc>
         <lastmod>2020-08-25T15:43:39.458Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -231,24 +255,8 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/go_basic/go_modules/</loc>
-        <lastmod>2020-08-04T17:16:46.106Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/article/tips/image_tools/</loc>
         <lastmod>2020-07-30T17:44:35.833Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tips/vim_tips/</loc>
-        <lastmod>2020-07-30T17:20:24.776Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
