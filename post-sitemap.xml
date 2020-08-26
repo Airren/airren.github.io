@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/article/life/graduated-travel/</loc>
+        <lastmod>2020-08-26T17:19:59.396Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/article/git/git_stage_repo/</loc>
         <lastmod>2020-08-25T17:50:03.092Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -95,15 +103,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/life/graduated-travel/</loc>
-        <lastmod>2020-08-24T16:35:08.985Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/component/mongo/mongo_go_sdk/</loc>
+        <loc>https://www.bytegopher.com/article/component/mongo/bson/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -111,7 +111,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/component/mongo/bson/</loc>
+        <loc>https://www.bytegopher.com/article/component/mongo/mongo_go_sdk/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
