@@ -7,8 +7,136 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/article/git/git_reset_revert/</loc>
+        <lastmod>2020-08-26T17:37:08.728Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/life/married/</loc>
+        <lastmod>2020-08-26T17:35:51.902Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/web/https_tips/</loc>
+        <lastmod>2020-08-26T17:25:59.182Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/web/http_request_method/</loc>
+        <lastmod>2020-08-26T17:25:59.177Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/web/gin/gin_overview/</loc>
+        <lastmod>2020-08-26T17:25:59.163Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tsdb/tsdb_argot/</loc>
+        <lastmod>2020-08-26T17:25:59.162Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tsdb/opentsdb_introduction/</loc>
+        <lastmod>2020-08-26T17:25:59.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
+        <lastmod>2020-08-26T17:25:59.158Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
+        <lastmod>2020-08-26T17:25:59.158Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tips/vim_tips/</loc>
+        <lastmod>2020-08-26T17:25:59.157Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tips/nginx_tips/</loc>
+        <lastmod>2020-08-26T17:25:59.154Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tips/image_tools/</loc>
+        <lastmod>2020-08-26T17:25:59.153Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/software/Dash/</loc>
+        <lastmod>2020-08-26T17:25:59.150Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/software/Alfred/</loc>
+        <lastmod>2020-08-26T17:25:59.149Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/linux/user/</loc>
+        <lastmod>2020-08-26T17:25:59.146Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/life/nice_day/</loc>
+        <lastmod>2020-08-26T17:25:59.138Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/article/life/graduated-travel/</loc>
-        <lastmod>2020-08-26T17:19:59.396Z</lastmod>
+        <lastmod>2020-08-26T17:25:59.102Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -23,80 +151,8 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tips/vim_tips/</loc>
-        <lastmod>2020-08-25T15:52:30.846Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/article/go_basic/go_modules/</loc>
         <lastmod>2020-08-25T15:52:30.844Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tsdb/opentsdb_introduction/</loc>
-        <lastmod>2020-08-25T15:43:39.458Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/web/http_request_method/</loc>
-        <lastmod>2020-08-25T15:36:13.054Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/web/gin/gin_overview/</loc>
-        <lastmod>2020-08-25T15:36:13.052Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/software/Alfred/</loc>
-        <lastmod>2020-08-25T15:31:49.398Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/web/https_tips/</loc>
-        <lastmod>2020-08-24T16:35:09.009Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tsdb/tsdb_argot/</loc>
-        <lastmod>2020-08-24T16:35:08.991Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
-        <lastmod>2020-08-24T16:35:08.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
-        <lastmod>2020-08-24T16:35:08.986Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -151,14 +207,6 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/software/Dash/</loc>
-        <lastmod>2020-08-19T16:16:04.128Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/article/git/git_gitignore/</loc>
         <lastmod>2020-08-19T16:16:04.126Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -185,14 +233,6 @@
     <url>
         <loc>https://www.bytegopher.com/article/component/mysql/mysql-sync-to-es/</loc>
         <lastmod>2020-08-17T16:46:50.309Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tips/nginx_tips/</loc>
-        <lastmod>2020-08-17T16:26:40.098Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -231,32 +271,8 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/life/nice_day/</loc>
-        <lastmod>2020-08-08T18:11:02.298Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/linux/user/</loc>
-        <lastmod>2020-08-08T18:00:23.652Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/article/hexo/hello_hexo/</loc>
         <lastmod>2020-08-05T17:41:07.596Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/tips/image_tools/</loc>
-        <lastmod>2020-07-30T17:44:35.833Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -9,22 +9,8 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Nginx/</loc>
-        <lastmod>2020-08-17T16:26:40.098Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/LogStash/</loc>
         <lastmod>2020-08-17T16:46:50.309Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/Git/</loc>
-        <lastmod>2020-08-19T16:16:04.126Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -51,48 +37,6 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Hbase/</loc>
-        <lastmod>2020-08-24T16:35:08.986Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/HTTPS/</loc>
-        <lastmod>2020-08-24T16:35:09.009Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/Alfred/</loc>
-        <lastmod>2020-08-25T15:31:49.398Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/Http/</loc>
-        <lastmod>2020-08-25T15:36:13.054Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/TSDB/</loc>
-        <lastmod>2020-08-25T15:43:39.458Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/OpenTSDB/</loc>
-        <lastmod>2020-08-25T15:43:39.458Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/Go/</loc>
         <lastmod>2020-08-25T15:52:30.844Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -100,22 +44,85 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/tags/Alfred/</loc>
+        <lastmod>2020-08-26T17:25:59.149Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Nginx/</loc>
+        <lastmod>2020-08-26T17:25:59.154Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/tags/Tips/</loc>
-        <lastmod>2020-08-25T15:52:30.846Z</lastmod>
+        <lastmod>2020-08-26T17:25:59.157Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.bytegopher.com/tags/Vim/</loc>
-        <lastmod>2020-08-25T15:52:30.846Z</lastmod>
+        <lastmod>2020-08-26T17:25:59.157Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Hbase/</loc>
+        <lastmod>2020-08-26T17:25:59.158Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/OpenTSDB/</loc>
+        <lastmod>2020-08-26T17:25:59.159Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/TSDB/</loc>
+        <lastmod>2020-08-26T17:25:59.162Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Http/</loc>
+        <lastmod>2020-08-26T17:25:59.177Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/HTTPS/</loc>
+        <lastmod>2020-08-26T17:25:59.182Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.bytegopher.com/tags/Life/</loc>
-        <lastmod>2020-08-26T17:19:59.396Z</lastmod>
+        <lastmod>2020-08-26T17:35:51.902Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Love/</loc>
+        <lastmod>2020-08-26T17:35:51.902Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Git/</loc>
+        <lastmod>2020-08-26T17:37:08.728Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
