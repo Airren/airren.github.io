@@ -107,22 +107,22 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/tags/Git/</loc>
+        <lastmod>2020-08-26T17:37:08.728Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/tags/Life/</loc>
-        <lastmod>2020-08-26T17:35:51.902Z</lastmod>
+        <lastmod>2020-08-26T17:41:09.163Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.bytegopher.com/tags/Love/</loc>
-        <lastmod>2020-08-26T17:35:51.902Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/Git/</loc>
-        <lastmod>2020-08-26T17:37:08.728Z</lastmod>
+        <lastmod>2020-08-26T17:41:09.163Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
