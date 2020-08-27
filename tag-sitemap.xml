@@ -23,14 +23,14 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Mongo/</loc>
+        <loc>https://www.bytegopher.com/tags/Bson/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Bson/</loc>
+        <loc>https://www.bytegopher.com/tags/Mongo/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -129,7 +129,7 @@
 
     <url>
         <loc>https://www.bytegopher.com/tags/SoftWare/</loc>
-        <lastmod>2020-08-27T16:33:47.307Z</lastmod>
+        <lastmod>2020-08-27T16:39:37.119Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
