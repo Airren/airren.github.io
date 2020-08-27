@@ -71,7 +71,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
+        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
         <lastmod>2020-08-26T17:25:59.158Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -79,7 +79,7 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
+        <loc>https://www.bytegopher.com/article/tsdb/hbase_introduction/</loc>
         <lastmod>2020-08-26T17:25:59.158Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
