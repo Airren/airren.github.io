@@ -210,17 +210,29 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>Bosun 报警，grafana 查询</p>
-<p>Bosun语法：</p>
-<p>Group：</p>
-<p>tasb的tags，是一个tag kv的字典</p>
-<p>Group SubSet</p>
-<p>Bosun的数据类型：</p>
+                <blockquote>
+<p>使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询</p>
+</blockquote>
+<h2><span id="时序数据的类型">时序数据的类型</span></h2>
+<p>counter</p>
+<p>guage(store)</p>
+<h2><span id="bosun的数据类型">Bosun的数据类型</span></h2>
 <ul>
 <li>Scalar</li>
 <li>NumberSet：   Group+Scalar</li>
 </ul>
+<h2><span id="bosun-查询语法">Bosun 查询语法</span></h2>
+<h3><span id="简单查询">简单查询</span></h3>
+<p>查询过去10分钟到过去1分钟之间的时序数据</p>
+<p><img src="/article/tsdb/bosun/image-20200828162829110.png" alt="image-20200828162829110"></p>
+<p><code>avg</code>是时序数据库的的运算，对不同的tag set的数据求平均</p>
+<p><img src="/article/tsdb/bosun/image-20200831201920566.png" alt="image-20200831201920566"></p>
+<p>最外面的<code>avg</code> 是对这段时间内的时序数据做一个平均，得到一个数值</p>
+<h3><span id="宏替换">宏替换</span></h3>
+<p><img src="/article/tsdb/bosun/image-20200831202225643.png" alt="image-20200831202225643"></p>
 <p>运算的时候会对变量进行宏替换</p>
+<p>Streak 连续非0 数据的最大长度</p>
+<p><a href="https://blog.csdn.net/lslxdx/article/details/79454916" target="_blank" rel="noopener">https://blog.csdn.net/lslxdx/article/details/79454916</a></p>
 
 
 
@@ -285,7 +297,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">时序数据的类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Bosun的数据类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Bosun 查询语法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">简单查询</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">宏替换</span></a></li></ol></li></ol>
         
         </div>
       </aside>

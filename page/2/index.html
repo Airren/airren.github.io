@@ -211,6 +211,77 @@
 
 <div class="post-preview">
 
+    <a href="/article/go_basic/go_install_and_env/">
+        <h2 class="post-title">
+                                 
+            「Go」Go的安装以及介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 安装Go
+在Mac环境下的安装
+1brew install go  # 安装go最新版本
+
+1go version # 查看go版本
+
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Go" title="Go">Go</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/git/git_gitignore/">
+        <h2 class="post-title">
+                                 
+            「Git」.gitignore
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+https://www.jianshu.com/p/699ed86028c2
+https://www.liaoxuefeng.com/wiki/896043488029600/900004590234208
+
+如果已经提交过一次，继续使用gitignore 是否会
+Git 知识积累
+https://zhuanlan.zhihu.com/p/147356242
+https://www.jia......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Git" title="Git">Git</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/tsdb/bosun/">
         <h2 class="post-title">
                                  
@@ -220,18 +291,24 @@
             Bosun语法以及使用
         </h3>
         <div class="post-content-preview">
-            Bosun 报警，grafana 查询
-Bosun语法：
-Group：
-tasb的tags，是一个tag kv的字典
-Group SubSet
-Bosun的数据类型：
+            
+使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询
+
+时序数据的类型
+counter
+guage(store)
+Bosun的数据类型
 
 Scalar
 NumberSet：   Group+Scalar
 
-运算的时候会对变量进行宏替换
-...
+Bosun 查询语法
+简单查询
+查询过去10分钟到过去1分钟之间的时序数据
+
+avg是时序数据库的的运算，对不同的tag set的数据求平均
+
+最外面的a......
         </div>
     </a>
     
@@ -374,16 +451,19 @@ Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow
 
 <div class="post-preview">
 
-    <a href="/article/component/kafka/kafka_install/">
+    <a href="/article/component/mongo/mongo_go_sdk/">
         <h2 class="post-title">
                                  
-            「Kafka」Kafka安装
+            「Mongo」Mongo golang sdk
         </h2>
         <h3 class="post-subtitle">
-            Kafka基础知识
+            Mongo golang 使用文档
         </h3>
         <div class="post-content-preview">
-            ...
+            12
+filter
+12filter = make(bson.D, 0)filter =
+...
         </div>
     </a>
     
@@ -403,19 +483,16 @@ Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow
 
 <div class="post-preview">
 
-    <a href="/article/component/mongo/mongo_go_sdk/">
+    <a href="/article/component/kafka/kafka_install/">
         <h2 class="post-title">
                                  
-            「Mongo」Mongo golang sdk
+            「Kafka」Kafka安装
         </h2>
         <h3 class="post-subtitle">
-            Mongo golang 使用文档
+            Kafka基础知识
         </h3>
         <div class="post-content-preview">
-            12
-filter
-12filter = make(bson.D, 0)filter =
-...
+            ...
         </div>
     </a>
     
@@ -462,68 +539,6 @@ https://www.cnblogs.com/yulibostu/articles/12530901.html
               <a href="/tags/#ElasticSearch" title="ElasticSearch">ElasticSearch</a>
             
               <a href="/tags/#LogStash" title="LogStash">LogStash</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/go_basic/go_context/">
-        <h2 class="post-title">
-                                 
-            「Go」context
-        </h2>
-        <h3 class="post-subtitle">
-            Go上下文 context
-        </h3>
-        <div class="post-content-preview">
-            context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
-123456type Context interface&#123;  Deadline()(deadline time.Time, ok bool)  Done() &lt;-chan struct&#123;&#125;  Err() error  Value(......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-11
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Go" title="Go">Go</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/tsdb/tsdb_argot/">
-        <h2 class="post-title">
-                                 
-            「TSDB」术语
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            RRD(Round Robin Database)
-RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
-
-A specialized storage system known as a Round Robin Database allows one to store large amount......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-08-10
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#TSDB" title="TSDB">TSDB</a>
             
         </div>
     
@@ -584,11 +599,11 @@ A specialized storage system known as a Round Robin Database allows one to store
             
         
             
-            <a href="/tags/#Life" title="Life" rel="2">Life</a>
+            <a href="/tags/#Hexo" title="Hexo" rel="3">Hexo</a>
             
         
             
-            <a href="/tags/#Hexo" title="Hexo" rel="3">Hexo</a>
+            <a href="/tags/#Life" title="Life" rel="2">Life</a>
             
         
             
@@ -596,7 +611,15 @@ A specialized storage system known as a Round Robin Database allows one to store
             
         
             
+            <a href="/tags/#MicroService" title="MicroService" rel="1">MicroService</a>
+            
+        
+            
             <a href="/tags/#Alfred" title="Alfred" rel="1">Alfred</a>
+            
+        
+            
+            <a href="/tags/#SoftWare" title="SoftWare" rel="1">SoftWare</a>
             
         
             
@@ -604,15 +627,19 @@ A specialized storage system known as a Round Robin Database allows one to store
             
         
             
-            <a href="/tags/#Nginx" title="Nginx" rel="1">Nginx</a>
-            
-        
-            
             <a href="/tags/#Vim" title="Vim" rel="1">Vim</a>
             
         
             
+            <a href="/tags/#Nginx" title="Nginx" rel="1">Nginx</a>
+            
+        
+            
             <a href="/tags/#Hbase" title="Hbase" rel="1">Hbase</a>
+            
+        
+            
+            <a href="/tags/#Http" title="Http" rel="1">Http</a>
             
         
             
@@ -621,14 +648,6 @@ A specialized storage system known as a Round Robin Database allows one to store
         
             
             <a href="/tags/#OpenTSDB" title="OpenTSDB" rel="1">OpenTSDB</a>
-            
-        
-            
-            <a href="/tags/#SoftWare" title="SoftWare" rel="1">SoftWare</a>
-            
-        
-            
-            <a href="/tags/#Http" title="Http" rel="1">Http</a>
             
         
             
@@ -732,6 +751,14 @@ A specialized storage system known as a Round Robin Database allows one to store
     <ul>
       
         <li>
+          <a href="/article/micro_service/stateless_service/">【微服务】有状态服务和无状态服务</a>
+        </li>
+      
+        <li>
+          <a href="/article/go_basic/go_slice/">【Go】slice</a>
+        </li>
+      
+        <li>
           <a href="/article/software/software_production_list/">「Production」提高生产力的常用软件</a>
         </li>
       
@@ -741,14 +768,6 @@ A specialized storage system known as a Round Robin Database allows one to store
       
         <li>
           <a href="/article/tsdb/opentsdb_introduction/">「TSDB」时序数据&amp;时序数据库简介</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/git_stage_repo/">「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/git_reset_revert/">「Git」 Git reset &amp; revert</a>
         </li>
       
     </ul>
@@ -777,7 +796,7 @@ A specialized storage system known as a Round Robin Database allows one to store
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">7</span></li></ul>
     </div>
 
         <hr>

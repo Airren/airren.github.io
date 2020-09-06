@@ -93,20 +93,6 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Http/</loc>
-        <lastmod>2020-08-26T17:25:59.177Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/tags/HTTPS/</loc>
-        <lastmod>2020-08-26T17:25:59.182Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/Life/</loc>
         <lastmod>2020-08-26T17:42:29.622Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -121,15 +107,36 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Git/</loc>
-        <lastmod>2020-08-27T16:05:03.079Z</lastmod>
+        <loc>https://www.bytegopher.com/tags/SoftWare/</loc>
+        <lastmod>2020-08-27T16:57:40.994Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/SoftWare/</loc>
-        <lastmod>2020-08-27T16:57:40.994Z</lastmod>
+        <loc>https://www.bytegopher.com/tags/Git/</loc>
+        <lastmod>2020-09-06T15:12:04.698Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/MicroService/</loc>
+        <lastmod>2020-09-06T15:12:04.699Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/HTTPS/</loc>
+        <lastmod>2020-09-06T15:14:15.468Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Http/</loc>
+        <lastmod>2020-09-06T15:17:32.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

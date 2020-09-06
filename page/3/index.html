@@ -211,6 +211,68 @@
 
 <div class="post-preview">
 
+    <a href="/article/go_basic/go_context/">
+        <h2 class="post-title">
+                                 
+            「Go」context
+        </h2>
+        <h3 class="post-subtitle">
+            Go上下文 context
+        </h3>
+        <div class="post-content-preview">
+            context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
+123456type Context interface&#123;  Deadline()(deadline time.Time, ok bool)  Done() &lt;-chan struct&#123;&#125;  Err() error  Value(......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-11
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Go" title="Go">Go</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/tsdb/tsdb_argot/">
+        <h2 class="post-title">
+                                 
+            「TSDB」术语
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            RRD(Round Robin Database)
+RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
+
+A specialized storage system known as a Round Robin Database allows one to store large amount......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Airren on
+            2020-08-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#TSDB" title="TSDB">TSDB</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/life/nice_day/">
         <h2 class="post-title">
                                  
@@ -502,72 +564,6 @@ import到底import的什么东西？
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/tips/image_tools/">
-        <h2 class="post-title">
-                                 
-            「Image」 Tools
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            ico 在线生成
-https://app.xunjiepdf.com/img2icon/
-...
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-07-31
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Tips" title="Tips">Tips</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/web/https_tips/">
-        <h2 class="post-title">
-                                 
-            「HTTPS」 Tips
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            什么是HTTPS
-申请免费SSL
-七牛云免费SSL申请
-
-Nginx 部署设置https
-vi /etc/nginx/nginx.conf
-1234567891011121314151617181920212223242526server &#123;      listen       443 ssl http2 default_server;      listen       [::]......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Airren on
-            2020-07-31
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#HTTPS" title="HTTPS">HTTPS</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -621,11 +617,11 @@ vi /etc/nginx/nginx.conf
             
         
             
-            <a href="/tags/#Life" title="Life" rel="2">Life</a>
+            <a href="/tags/#Hexo" title="Hexo" rel="3">Hexo</a>
             
         
             
-            <a href="/tags/#Hexo" title="Hexo" rel="3">Hexo</a>
+            <a href="/tags/#Life" title="Life" rel="2">Life</a>
             
         
             
@@ -633,7 +629,15 @@ vi /etc/nginx/nginx.conf
             
         
             
+            <a href="/tags/#MicroService" title="MicroService" rel="1">MicroService</a>
+            
+        
+            
             <a href="/tags/#Alfred" title="Alfred" rel="1">Alfred</a>
+            
+        
+            
+            <a href="/tags/#SoftWare" title="SoftWare" rel="1">SoftWare</a>
             
         
             
@@ -641,15 +645,19 @@ vi /etc/nginx/nginx.conf
             
         
             
-            <a href="/tags/#Nginx" title="Nginx" rel="1">Nginx</a>
-            
-        
-            
             <a href="/tags/#Vim" title="Vim" rel="1">Vim</a>
             
         
             
+            <a href="/tags/#Nginx" title="Nginx" rel="1">Nginx</a>
+            
+        
+            
             <a href="/tags/#Hbase" title="Hbase" rel="1">Hbase</a>
+            
+        
+            
+            <a href="/tags/#Http" title="Http" rel="1">Http</a>
             
         
             
@@ -658,14 +666,6 @@ vi /etc/nginx/nginx.conf
         
             
             <a href="/tags/#OpenTSDB" title="OpenTSDB" rel="1">OpenTSDB</a>
-            
-        
-            
-            <a href="/tags/#SoftWare" title="SoftWare" rel="1">SoftWare</a>
-            
-        
-            
-            <a href="/tags/#Http" title="Http" rel="1">Http</a>
             
         
             
@@ -769,6 +769,14 @@ vi /etc/nginx/nginx.conf
     <ul>
       
         <li>
+          <a href="/article/micro_service/stateless_service/">【微服务】有状态服务和无状态服务</a>
+        </li>
+      
+        <li>
+          <a href="/article/go_basic/go_slice/">【Go】slice</a>
+        </li>
+      
+        <li>
           <a href="/article/software/software_production_list/">「Production」提高生产力的常用软件</a>
         </li>
       
@@ -778,14 +786,6 @@ vi /etc/nginx/nginx.conf
       
         <li>
           <a href="/article/tsdb/opentsdb_introduction/">「TSDB」时序数据&amp;时序数据库简介</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/git_stage_repo/">「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</a>
-        </li>
-      
-        <li>
-          <a href="/article/git/git_reset_revert/">「Git」 Git reset &amp; revert</a>
         </li>
       
     </ul>
@@ -814,7 +814,7 @@ vi /etc/nginx/nginx.conf
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">28</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a><span class="archive-list-count">7</span></li></ul>
     </div>
 
         <hr>
