@@ -16,13 +16,6 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/ElasticSearch/</loc>
-        <lastmod>2020-08-24T16:35:08.979Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/Mongo/</loc>
         <lastmod>2020-08-24T16:35:08.983Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -114,13 +107,6 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Git/</loc>
-        <lastmod>2020-09-06T15:12:04.698Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/MicroService/</loc>
         <lastmod>2020-09-06T15:12:04.699Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -137,6 +123,27 @@
     <url>
         <loc>https://www.bytegopher.com/tags/Http/</loc>
         <lastmod>2020-09-06T15:17:32.050Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Git/</loc>
+        <lastmod>2020-09-06T15:55:42.975Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/Gin/</loc>
+        <lastmod>2020-09-08T16:38:21.883Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/tags/ElasticSearch/</loc>
+        <lastmod>2020-09-09T16:15:28.346Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

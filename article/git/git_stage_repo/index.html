@@ -236,6 +236,9 @@
 <p><img src="/article/git/git_stage_repo/image-20200828011146041.png" alt="image-20200828011146041"></p>
 <p>在一个裸仓库中执行<code>git</code>命令会提示<code>this operation must be run in a work tree</code>。因为裸仓库是没有工作区的，只会记录git提交的历史信息，<code>git log</code>可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</p>
 <p>但是可以通过<code>hooks</code>建立一个单独存放源码的文件夹，将git仓库与项目源码分离存放。远程仓库往这个repo的推送更新会更新源码文件夹的内容。可以看一下这个技巧在<a href="../hexo/hexo_create.md">Hexo部署中的实战</a>.</p>
+<h3><span id="切换branch">切换branch</span></h3>
+<p>切换本地的branch</p>
+<p>切换到远程branch 到本地</p>
 <h3><span id="切换commit">切换commit</span></h3>
 <h3><span id="多次commit合并为一个commit">多次commit合并为一个commit</span></h3>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i &lt;commitId&gt;</span><br></pre></td></tr></table></figure>
@@ -243,7 +246,7 @@
 <h3><span id="修改commit信息">修改commit信息</span></h3>
 <p>修改历史commit信息：同上</p>
 <p>修改最新的一次commit的信息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend <span class="string">"message"</span></span><br></pre></td></tr></table></figure>
 <h3><span id="rebase和merge的区别">rebase和merge的区别</span></h3>
 <h3><span id="git-stash-的使用">git stash 的使用</span></h3>
 <p><code>git stash</code>用于临时保存和恢复修改, 可以跨分支</p>
@@ -337,7 +340,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Git 数据存储的基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Git 常用操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">配置用户名以及邮箱</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">初始化Git仓库 git init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">切换commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">多次commit合并为一个commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">修改commit信息</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">rebase和merge的区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">git stash 的使用</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Git 数据存储的基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Git 常用操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">配置用户名以及邮箱</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">初始化Git仓库 git init</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">切换branch</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">切换commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">多次commit合并为一个commit</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">修改commit信息</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">rebase和merge的区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">git stash 的使用</span></a></li></ol></li></ol>
         
         </div>
       </aside>
