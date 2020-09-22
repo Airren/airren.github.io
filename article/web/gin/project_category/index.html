@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          「LogStash」同步MySQL数据到ES - ByteGopher | Airren
+          「Gin」 项目目录 - ByteGopher | Airren
         
     </title>
 
-    <link rel="canonical" href="https://www.bytegopher.com/article/component/mysql/mysql-sync-to-es/">
+    <link rel="canonical" href="https://www.bytegopher.com/article/web/gin/project_category/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,16 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#ElasticSearch" title="ElasticSearch">ElasticSearch</a>
-                            
-                              <a class="tag" href="/tags/#LogStash" title="LogStash">LogStash</a>
+                              <a class="tag" href="/tags/#Gin" title="Gin">Gin</a>
                             
                         </div>
-                        <h1>「LogStash」同步MySQL数据到ES</h1>
-                        <h2 class="subheading">LogStash同步MySQL数据到ES </h2>
+                        <h1>「Gin」 项目目录</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Airren on
-                            2020-08-17
+                            2020-09-23
                         </span>
                     </div>
                 
@@ -214,11 +212,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>自动同步mysql数据到es</p>
-<blockquote>
-<p><a href="https://www.jianshu.com/p/c3faa26bc221" target="_blank" rel="noopener">https://www.jianshu.com/p/c3faa26bc221</a></p>
-<p><a href="https://www.cnblogs.com/yulibostu/articles/12530901.html" target="_blank" rel="noopener">https://www.cnblogs.com/yulibostu/articles/12530901.html</a></p>
-</blockquote>
+                <p><img src="https://ask.qcloudimg.com/http-save/yehe-2223426/xz7did9n52.png?imageView2/2/w/1620" alt="img"></p>
+<h2><span id="gin-项目目录">Gin 项目目录</span></h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">├─ Project Name</span><br><span class="line">│  ├─ config          <span class="comment">//配置文件</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ controller      <span class="comment">//控制器层，验证提交的数据，将验证完成的数据提交给service</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ service         <span class="comment">//业务层， 只完成业务逻辑得开发，不进行数据库的操作</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ repository      <span class="comment">//数据库操作层  dal/ dao; 数据库操作层，写，多表插入，多表查询，不写业务代码</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ model           <span class="comment">//数据库ORM</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ entity          <span class="comment">//实体 写返回数据的结构体。写controller层方法参数验证的结构体</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ proto           <span class="comment">//proto文件 写 gRPC 的 *.pb.go 文件。</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ router          <span class="comment">//路由</span></span><br><span class="line">│     ├── middleware  <span class="comment">//路由中间件 （鉴权，日志，异常捕获）</span></span><br><span class="line">│         ├── ...</span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ util            <span class="comment">//工具类，项目通用的工具包</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ vendor          <span class="comment">//扩展包 第三方依赖，通常使用go mod 管理</span></span><br><span class="line">│     ├── ...</span><br><span class="line">│  ├─ main.go         <span class="comment">//入口文件</span></span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<p><a href="https://cloud.tencent.com/developer/article/1490384" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1490384</a></p>
 
 
 
@@ -226,15 +224,10 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/component/kafka/kafka_basic/" data-toggle="tooltip" data-placement="top"
-                               title="「Kafka」Kafka基础知识">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/component/mongo/mongo_go_sdk/" data-toggle="tooltip" data-placement="top"
-                               title="「Mongo」Mongo golang sdk">Next Post &rarr;</a>
+                            <a href="/article/data_struct_and_algorithm/dynamic_programming/" data-toggle="tooltip" data-placement="top"
+                               title="数据结构与算法动态规划">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -283,7 +276,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gin 项目目录</span></a></li></ol>
         
         </div>
       </aside>
@@ -303,11 +296,8 @@
                         <h5><a href="/tags/">FEATURED TAGS</a></h5>
                         <div class="tags">
                             
-                                <a class="tag" href="/tags/#ElasticSearch"
-                                   title="ElasticSearch">ElasticSearch</a>
-                            
-                                <a class="tag" href="/tags/#LogStash"
-                                   title="LogStash">LogStash</a>
+                                <a class="tag" href="/tags/#Gin"
+                                   title="Gin">Gin</a>
                             
                         </div>
                     </section>

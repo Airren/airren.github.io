@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://www.bytegopher.com/tags/Hexo/</loc>
-        <lastmod>2020-08-10T16:24:57.743Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.bytegopher.com/tags/LogStash/</loc>
         <lastmod>2020-08-17T16:46:50.309Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -135,15 +128,22 @@
     </url>
 
     <url>
+        <loc>https://www.bytegopher.com/tags/Hexo/</loc>
+        <lastmod>2020-09-16T16:48:59.596Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.bytegopher.com/tags/Gin/</loc>
-        <lastmod>2020-09-08T16:38:21.883Z</lastmod>
+        <lastmod>2020-09-22T17:53:40.872Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.bytegopher.com/tags/ElasticSearch/</loc>
-        <lastmod>2020-09-09T16:15:28.346Z</lastmod>
+        <lastmod>2020-09-22T17:54:18.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

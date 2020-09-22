@@ -7,16 +7,40 @@
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
-        <lastmod>2020-09-15T15:26:58.893Z</lastmod>
+        <loc>https://www.bytegopher.com/article/component/elasticsearch/elasticsearch_query/</loc>
+        <lastmod>2020-09-22T17:54:18.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://www.bytegopher.com/article/component/elasticsearch/elasticsearch_query/</loc>
-        <lastmod>2020-09-09T16:15:28.346Z</lastmod>
+        <loc>https://www.bytegopher.com/article/web/gin/project_category/</loc>
+        <lastmod>2020-09-22T17:53:40.872Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/data_struct_and_algorithm/dynamic_programming/</loc>
+        <lastmod>2020-09-22T17:53:34.646Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/hexo/hexo_create/</loc>
+        <lastmod>2020-09-16T16:48:59.596Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.bytegopher.com/article/tsdb/bosun/</loc>
+        <lastmod>2020-09-15T15:26:58.893Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -321,14 +345,6 @@
     <url>
         <loc>https://www.bytegopher.com/article/go_basic/go_time/</loc>
         <lastmod>2020-08-10T15:07:23.541Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.bytegopher.com/article/hexo/hexo_create/</loc>
-        <lastmod>2020-08-09T15:50:10.682Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
