@@ -1,0 +1,134 @@
+################################# Default configuration ###################
+# provide your domain here
+baseURL = "https://www.bytegopher.com/"
+# theme
+theme = "dot"
+#themesDir = "../.."
+# site title
+title = "ByteGopher"
+
+disablePathToLower = true
+# disable language
+disableLanguages = []
+# google analytics
+googleAnalytics = "" # paste your analytics ID here. (Ex: UA-123-45)
+# unsafe html
+[markup.goldmark.renderer]
+unsafe = true
+
+
+
+
+############################# Default Parameters ##########################
+[params]
+# logo is for all page
+logo = "images/ByteGopher-logo.png"
+# logo white is for homepage logo, you can use colorful logo too...
+logo_white = "images/ByteGopher-logo.png"
+gongan_logo= "images/gongan.png"
+# when logo is empty, it will shown your site title
+
+# customize color
+primary_color = "#1E90FF"
+body_color = "#f9f9f9"
+text_color = "#636363"
+text_color_dark = "#242738"
+white_color = "#ffffff"
+light_color = "#f8f9fa"
+
+# font family
+font_family = "lato" # Choose font family from : https://fonts.google.com/
+
+# contact form action
+contact_form_action = "https://formspree.io/f/mnqoobgo" # contact form works with : https://formspree.io
+
+
+############################## social links ##############################
+[[params.social]]
+icon = "ti-github" # themify icon pack : https://themify.me/themify-icons
+link = "http://www.github.com/airren"
+
+#[[params.social]]
+#icon = "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
+#link = "#"
+
+################################ English Language ######################
+[Languages.en]
+languageName = "En"
+languageCode = "en-us"
+weight = 1
+copyright = "Copyright © 2020 [ByteGopher](http://www.bytegopher.com)"
+
+# banner
+[Languages.en.params.banner]
+title = "Be a Learner"
+subtitle = "攻下多少城，略过多少地 -- 凌风清羽"
+bg_image = "images/banner.jpg"
+placeholder = "Have a question? Just ask here or enter terms"
+
+## call to action
+#[Languages.en.params.cta]
+#enable = true
+#title = "Didn't find an answer to your question?"
+#content = "Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam."
+## call to action button
+#[Languages.en.params.cta.button]
+#enable = true
+#label = "contact us"
+#link = "contact"
+
+
+################## english navigation #################
+[[Languages.en.menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+
+[[Languages.en.menu.main]]
+name = "contact"
+url = "contact"
+weight = 3
+#
+## Dropdown menu
+#[[Languages.en.menu.main]]
+#weight = 4
+#name = "docs"
+#hasChildren = true
+#
+#  [[Languages.en.menu.main]]
+#  parent = "docs"
+#  name = "Installation"
+#  url = "installation"
+#  weight = 1
+#
+#  [[Languages.en.menu.main]]
+#  parent = "docs"
+#  name = "Billing and Pricing"
+#  url = "billing-pricing"
+#  weight = 2
+#
+#  [[Languages.en.menu.main]]
+#  parent = "docs"
+#  name = "Features"
+#  url = "features"
+#  weight = 3
+
+[markup]
+ [markup.highlight]
+   codeFences = true
+   guessSyntax = true
+   hl_Lines = ""
+   lineNoStart = 1
+   lineNos = true
+   lineNumbersInTable = false
+   noClasses = true
+#    style = "github"
+   tabWidth = 4
+
+ [markup.tableOfContents]
+     startLevel = 1
+[author]
+ name = "Airren 凌风清羽"
+
+

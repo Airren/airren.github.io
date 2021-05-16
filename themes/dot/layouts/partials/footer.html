@@ -1,0 +1,49 @@
+{{ "<!-- footer -->" | safeHTML }}
+<footer class="section footer pb-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8 text-md-left text-center">
+
+                <p class="mb-md-4">
+                    <img class="figure-img" src="https://www.bytegopher.com/images/gongan.png">
+                    <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2021008258号-1</a> &nbsp;&nbsp;&nbsp;&nbsp; {{ .Site.Params.copyright | markdownify }}</p>
+            </div>
+            <div class="col-md-4 text-md-right text-center">
+                <ul class="list-inline">
+                    {{ range .Site.Params.social }}
+                    <li class="list-inline-item"><a class="text-color d-inline-block p-2"
+                                                    href="{{ .link | safeURL }}"><i class="{{ .icon }}"></i></a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+{{ "<!-- /footer -->" | safeHTML }}
+
+{{ "<!-- Main Script -->" | safeHTML }}
+{{ $script := resources.Get "js/script.js" | minify}}
+<script src="{{ $script.Permalink }}"></script>
+
+<!--todo 影响搜索-->
+<!--<style type="text/css">-->
+<!--  .footer{}-->
+<!--</style>-->
+<!--<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--  $(function(){-->
+<!--    function footerPosition(){-->
+<!--      $("footer").removeClass("fixed-bottom");-->
+<!--      var contentHeigh%%%%document.body.scrollHeight,//网页正文全文高度-->
+<!--              winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏-->
+<!--      if(!(contentHeight > winHeight)){-->
+<!--        //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom-->
+<!--        $("footer").addClass("fixed-bottom");-->
+<!--      } else {-->
+<!--        $("footer").removeClass("fixed-bottom");-->
+<!--      }-->
+<!--    }-->
+<!--    footerPosition();-->
+<!--    $(window).resize(footerPosition);-->
+<!--  });-->
+<!--</script>-->

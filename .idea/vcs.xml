@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/content/6.824/lab/lab_1_mapreduce/6.824" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/public" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/toha" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/zdoc" vcs="Git" />
+  </component>
+</project>
