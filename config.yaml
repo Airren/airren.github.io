@@ -27,6 +27,16 @@ markup:
     startLevel: 2
     endLevel: 6
     ordered: false
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    hl_Lines: ""
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: false
+    noClasses: true
+    #    style = "github"
+    tabWidth: 4
 
 # At least HTML and JSON are required for the main HTML content and
 # client-side JavaScript search
@@ -70,7 +80,7 @@ params:
       enable: true
     # Enable & configure "Notes" features
     notes:
-      enable: true
+      enable: false
 
 
   # specify whether you want to show Table of Contents in reading page

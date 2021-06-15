@@ -1,6 +1,6 @@
 help:
-	echo "d|debug          debug local"
-	echo "p|post           post to bytegopher"
+	@echo "d|debug          debug local"
+	@echo "p|post           post to bytegopher"
 
 d debug:
 	cd public; rm -rf *; cd ..

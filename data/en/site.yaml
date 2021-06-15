@@ -6,6 +6,6 @@ description: Portfolio and personal blog of Airren.
 
 # specify the list of custom menus that you want to show in the top navbar.
 # they will be separated by a divider from the main menus.
-customMenus:
-- name: Toha Docs
-  url: https://toha-guides.netlify.app/posts/
+#customMenus:
+#- name: Toha Docs
+#  url: https://toha-guides.netlify.app/posts/

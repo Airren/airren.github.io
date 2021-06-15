@@ -124,6 +124,28 @@ git commit --amend "message"
 
 
 
+git rebase 撤销
+
+
+
+git --abort/--continue
+
+
+
+```sh
+git reflog
+
+git reset --hard <commit id>
+```
+
+
+
+
+
+
+
+
+
 ### git stash 的使用
 
 `git stash`用于临时保存和恢复修改, 可以跨分支
@@ -161,6 +183,10 @@ git checkout {$branchName} # 切换分支
 ```
 
 
+
+
+
+git 
 
 
 

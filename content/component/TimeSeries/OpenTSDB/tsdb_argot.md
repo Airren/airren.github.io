@@ -21,3 +21,9 @@ RRD 数据库在创建的时候就已经定义好了大小，当存储空间满�
 **参考资料：**
 
 [https://jawnsy.wordpress.com/2010/01/08/round-robin-databases/#:~:text=A%20specialized%20storage%20system%20known,of%20changing%20needs%20for%20precision.](https://jawnsy.wordpress.com/2010/01/08/round-robin-databases/#:~:text=A specialized storage system known,of changing needs for precision.)
+
+
+
+
+
+https://www.docs4dev.com/docs/zh/opentsdb/2.3/reference/api_http-query-index.html                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

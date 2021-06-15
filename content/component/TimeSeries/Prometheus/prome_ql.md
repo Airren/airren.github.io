@@ -8,6 +8,12 @@ title: 「Prom」PromeQL
 
 
 
+Counter
+
+Guage
+
+Histogram
+
 
 
 查询方式

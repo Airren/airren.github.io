@@ -5,6 +5,5 @@
     <mapping directory="$PROJECT_DIR$/content/6.824/lab/lab_1_mapreduce/6.824" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/toha" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/themes/zdoc" vcs="Git" />
   </component>
 </project>

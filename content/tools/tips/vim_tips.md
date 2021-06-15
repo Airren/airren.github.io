@@ -51,7 +51,7 @@ insert
 
 command
 
-## Vim 快捷键 (normal)
+## 快捷键 (normal)
 
 ### 移动
 
@@ -264,7 +264,21 @@ replace with bar (y/n/a/q/l/^E/^Y)?
 
 
 
+### 翻页
 
+整页翻页 ctrl-f ctrl-b
+f就是forword b就是backward
+
+翻半页
+ctrl-d ctlr-u
+d=down u=up
+
+滚一行
+ctrl-e ctrl-y
+
+zz 让光标所杂的行居屏幕中央
+zt 让光标所杂的行居屏幕最上一行 t=top
+zb 让光标所杂的行居屏幕最下一行 b=bottom
 
 
 
