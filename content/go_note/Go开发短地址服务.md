@@ -16,7 +16,7 @@
 
 gorilla/mux 处理router 和handler
 
-<img src="/Users/bytedance/Documents/JavaNote/GoNote/immoc/img/image-20191226200615163.png" alt="image-20191226200615163" style="zoom:50%;" />
+<img src="./img/image-20191226200615163.png" alt="image-20191226200615163" style="zoom:50%;" />
 
 ```go
 func main(){
@@ -247,7 +247,7 @@ func responseWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 
 ## 3 中间件模块 Middleware
 
-![image-20191227145907981](/Users/bytedance/Documents/JavaNote/GoNote/immoc/img/image-20191227145907981.png) 
+![image-20191227145907981](./img/image-20191227145907981.png) 
 
 ### Log Middleware + Recover Middleware
 
@@ -309,7 +309,7 @@ alice.New(Middlerware1, Middleware2, Middleware3).Then(app)
 
 ### 如何生成短地址
 
-<img src="/Users/bytedance/Documents/JavaNote/GoNote/immoc/img/image-20191227155742062.png" alt="image-20191227155742062" style="zoom:50%;" />
+<img src="./img/image-20191227155742062.png" alt="image-20191227155742062" style="zoom:50%;" />
 
 -  INCR key
 
@@ -332,12 +332,11 @@ alice.New(Middlerware1, Middleware2, Middleware3).Then(app)
 
 ### Storage接口设计
 
-<img src="/Users/bytedance/Documents/JavaNote/GoNote/immoc/img/image-20191227160110874.png" alt="image-20191227160110874" style="zoom:50%;" />
+<img src="./img/image-20191227160110874.png" alt="image-20191227160110874" style="zoom:50%;" />
 
 ### 实现shorten 方法
 
 
 
-![image-20200103164939939](/Users/bytedance/Documents/JavaNote/GoNote/immoc/img/image-20200103164939939.png)
+![image-20200103164939939](./img/image-20200103164939939.png)
 
- 

@@ -2,8 +2,6 @@
 
 # Go并发编程案例解析
 
-![image-20191121190324560](/Users/airren/Library/Application Support/typora-user-images/image-20191121190324560.png)
-
 
 
 nginx 

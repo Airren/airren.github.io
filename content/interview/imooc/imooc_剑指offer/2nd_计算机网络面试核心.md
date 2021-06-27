@@ -15,7 +15,7 @@
 
 #### HTTP 请求结构
 
-![image-20191024142449740](/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024142449740.png)
+![image-20191024142449740](./img/image-20191024142449740.png)
 
 HTTP请求报文结构
 
@@ -29,7 +29,7 @@ Cookie: XXX
 ```
 #### HTTP响应结构
 
-<img src="/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024143052552.png" alt="image-20191024143052552" style="zoom:50%;" />
+<img src="./img/image-20191024143052552.png" alt="image-20191024143052552" style="zoom:50%;" />
 
 ```sh
 HTTP 1.1 200 OK
@@ -103,7 +103,7 @@ https://www.cnblogs.com/gitnull/p/9532129.html
 
 ###### Cookie的设置以及发送过程
 
-<img src="/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024152244843.png" alt="image-20191024152244843" style="zoom:50%;" />
+<img src="./img/image-20191024152244843.png" alt="image-20191024152244843" style="zoom:50%;" />
 
 ###### Session简介
 
@@ -125,7 +125,7 @@ https://www.cnblogs.com/gitnull/p/9532129.html
 
 ## 9. HTTP 和HTTPS 的区别
 
-<img src="/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024131017298.png" alt="image-20191024131017298" style="zoom:33%;" />
+<img src="./img/image-20191024131017298.png" alt="image-20191024131017298" style="zoom:33%;" />
 
 ###### SSL （Security Socket Layer， 安全套接层）
 
@@ -172,13 +172,13 @@ HTTPS真的很安全吗
 
 Socket是对TCP/IP协议的抽象，是操作系统对外开放的接口
 
-<img src="/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024135405676.png" alt="image-20191024135405676" style="zoom:50%;" />
+<img src="./img/image-20191024135405676.png" alt="image-20191024135405676" style="zoom:50%;" />
 
 Socket起源于Unix，一切皆是文件
 
 #### Socket通信流程
 
-![image-20191024135524568](/Users/airren/Dropbox/JavaNote/imooc/imooc_剑指offer/img/image-20191024135524568.png)
+![image-20191024135524568](./img/image-20191024135524568.png)
 
 ## 11. 网络知识总结
 

@@ -70,7 +70,6 @@ func findRepeatNumber(nums []int) int {
 > 0 <= n <= 1000
 >
 > 0 <= m <= 1000
->
 
 
 
@@ -173,7 +172,6 @@ func replaceSpace(s string) string {
 > 限制：
 >
 > 0 <= 链表长度 <= 10000
->
 
 
 
@@ -192,3 +190,166 @@ func reversePrint(head *ListNode) []int {
    return res
 }
 ```
+
+- 链表反转
+
+
+
+## 07. 重建二叉树
+
+>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+>
+>
+>
+>例如，给出
+>
+>```
+>前序遍历 preorder = [3,9,20,15,7]
+>中序遍历 inorder = [9,3,15,20,7]
+>```
+>
+>
+>返回如下的二叉树：
+>
+>```
+>    3
+>   /  \
+>  9    20
+> /      \
+>15       7
+>```
+>
+>
+>
+>
+>限制：
+>
+>0 <= 节点个数 <= 5000
+
+
+
+
+
+
+
+```go
+//* Definition for a binary tree node.
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func buildTree(preorder []int, inorder []int) *TreeNode {
+
+	if len(preorder) == 0 {
+		return nil
+	}
+
+	if len(preorder) == 1 {
+		return &TreeNode{
+			Val:   preorder[0],
+			Left:  nil,
+			Right: nil,
+		}
+	}
+
+	val := preorder[0] // root val
+	index := 0         // inorder root index
+	for i, v := range inorder {
+		if val == v {
+			index = i
+			break
+		}
+	}
+	root := TreeNode{
+		Val:   val,
+		Left:  buildTree(preorder[1:index+1], inorder[0:index]),
+		Right: buildTree(preorder[index+1:], inorder[index+1:]),
+	}
+	return &root
+}
+
+```
+
+
+
+
+
+
+
+## 59. 滑动窗口的最大值
+
+> 
+> 给定一个数组 `nums` 和滑动窗口的大小 `k`，请找出所有滑动窗口里的最大值。
+>
+> **示例:**
+>
+> ```
+> 输入: nums = [1,3,-1,-3,5,3,6,7], 和 k = 3
+> 输出: [3,3,5,5,6,7] 
+> 解释: 
+> 
+>   滑动窗口的位置                最大值
+> ---------------               -----
+> [1  3  -1] -3  5  3  6  7       3
+>  1 [3  -1  -3] 5  3  6  7       3
+>  1  3 [-1  -3  5] 3  6  7       5
+>  1  3  -1 [-3  5  3] 6  7       5
+>  1  3  -1  -3 [5  3  6] 7       6
+>  1  3  -1  -3  5 [3  6  7]      7
+> ```
+>
+>  
+>
+> **提示：**
+>
+> 你可以假设 *k* 总是有效的，在输入数组不为空的情况下，1 ≤ k ≤ 输入数组的大小。
+
+
+
+
+
+````go
+package main
+
+import (
+	"container/heap"
+	"sort"
+)
+
+var a []int
+
+type hp struct{ sort.IntSlice }
+
+func (h hp) Less(i, j int) bool  { return a[h.IntSlice[i]] > a[h.IntSlice[j]] }
+func (h *hp) Push(v interface{}) { h.IntSlice = append(h.IntSlice, v.(int)) }
+func (h *hp) Pop() interface{}   { a := h.IntSlice; v := a[len(a)-1]; h.IntSlice = a[:len(a)-1]; return v }
+
+func maxSlidingWindow(nums []int, k int) []int {
+	a = nums
+	q := &hp{make([]int, k)}
+	for i := 0; i < k; i++ {
+		q.IntSlice[i] = i
+	}
+	heap.Init(q)
+
+	n := len(nums)
+	ans := make([]int, 1, n-k+1)
+	ans[0] = nums[q.IntSlice[0]]
+	for i := k; i < n; i++ {
+		heap.Push(q, i)
+		for q.IntSlice[0] <= i-k {
+			heap.Pop(q)
+		}
+		ans = append(ans, nums[q.IntSlice[0]])
+	}
+	return ans
+}
+
+func main() {
+	maxSlidingWindow([]int{1, 3, 9, -3, 5, 3, 6, 7}, 3)
+}
+
+````
+

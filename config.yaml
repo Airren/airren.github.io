@@ -19,6 +19,7 @@ theme: "toha"
 sectionPagesMenu: "main"
 disablePathToLower: true
 # Allow raw html in markdown file
+
 markup:
   goldmark:
     renderer:
@@ -65,10 +66,10 @@ params:
     inverted: /images/site/inverted-logo.png
     favicon: /images/site/favicon.png
 
-#  # GitHub repo of your site
-#  gitRepo: https://github.com/hugo-toha/hugo-toha.github.io
-#  # Default branch of your Git repo
-#  gitBranch: source
+  #  # GitHub repo of your site
+  #  gitRepo: https://github.com/hugo-toha/hugo-toha.github.io
+  #  # Default branch of your Git repo
+  #  gitBranch: source
 
   # Configure various features of this theme
   features:

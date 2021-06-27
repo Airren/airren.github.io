@@ -23,13 +23,13 @@ wireshark will always be opensource
 
 #### 双刃剑--安全问题
 
-![image-20191127170602832](/Users/airren/Dropbox/JavaNote/img/image-20191127170602832.png)
+![image-20191127170602832](./img/image-20191127170602832.png)
 
-<img src="/Users/airren/Dropbox/JavaNote/img/image-20191127170611690.png" alt="image-20191127170611690" style="zoom:33%;" />
+<img src="./img/image-20191127170611690.png" alt="image-20191127170611690" style="zoom:33%;" />
 
 #### 防止窃听的方法：加密
 
-![image-20191127170724679](/Users/airren/Dropbox/JavaNote/img/image-20191127170724679.png)
+![image-20191127170724679](./img/image-20191127170724679.png)
 
 
 
@@ -74,7 +74,7 @@ Linux： libpacp + Wireshark
 
 示例协议包 
 
-![image-20191128121321927](/Users/airren/Dropbox/JavaNote/img/image-20191128121321927.png)
+![image-20191128121321927](./img/image-20191128121321927.png)
 
 
 
@@ -82,7 +82,7 @@ Linux： libpacp + Wireshark
 
 #### 过滤与过滤表达式
 
-<img src="/Users/airren/Dropbox/JavaNote/img/image-20191128121529271.png" alt="image-20191128121529271" style="zoom: 33%;" />
+<img src="./img/image-20191128121529271.png" alt="image-20191128121529271" style="zoom: 33%;" />
 
 #### 过滤表达式
 
@@ -111,13 +111,13 @@ http模式过滤
 
 #### 包列表与详细信息
 
-![image-20191128122904377](/Users/airren/Dropbox/JavaNote/img/image-20191128122904377.png)
+![image-20191128122904377](./img/image-20191128122904377.png)
 
 ## 实验： 常见协议分析
 
 ### ARP
 
-![image-20191128123034237](/Users/airren/Dropbox/JavaNote/img/image-20191128123034237.png)
+![image-20191128123034237](./img/image-20191128123034237.png)
 
 数据链路层， 以太网层
 
@@ -127,11 +127,11 @@ Ethernet
 
 ### ICMP的echo
 
-<img src="/Users/airren/Dropbox/JavaNote/img/image-20191128174237695.png" alt="image-20191128174237695" style="zoom: 33%;" />
+<img src="./img/image-20191128174237695.png" alt="image-20191128174237695" style="zoom: 33%;" />
 
 ### DNS
 
-![image-20191129134735762](/Users/airren/Dropbox/JavaNote/img/image-20191129134735762.png)
+![image-20191129134735762](./img/image-20191129134735762.png)
 
 ### TCP三次握手
 
@@ -151,7 +151,7 @@ FIN - 发送方完成数据发送
 
 URG
 
-![image-20191129143254241](/Users/airren/Dropbox/JavaNote/img/image-20191129143254241.png)
+![image-20191129143254241](./img/image-20191129143254241.png)
 
 ### HTTP
 

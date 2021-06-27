@@ -43,3 +43,11 @@ mysql sql 8.0 认证问题
 alter user root@% identified with mysql_native_password by "123456"
 ```
 
+
+
+
+
+```sql
+CREATE DATABASE IF NOT EXISTS aiops_observe DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+```
+
