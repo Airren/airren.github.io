@@ -91,9 +91,9 @@ func twoSum(nums []int, target int) []int {
 
 自底向上递推
 
-**状态定义：** 当前位置到叶子节点的最小值 $$DP[i.j] $$ 
+**状态定义：** 当前位置到叶子节点的最小值 DP[i.j] 
 
-**状态转移方程**： $$ DP[i,j] = min(DP[i+1,j], DP[i+1,j+1])+Triangle[i,j] $$
+**状态转移方程**： DP[i,j] = min(DP[i+1,j], DP[i+1,j+1])+Triangle[i,j] ​
 
 
 
@@ -126,5 +126,34 @@ func getMin(a, b int) int {
 	}
 	return a
 }
+
+func TestSolution(t *testing.T) {
+	println(minimumTotal([][]int{
+		{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3},
+	}))
+}
 ```
+
+
+
+上述解法的时间复杂度为O(mn), 空间复杂度为O(mn),nm为行列数
+
+空间复杂度可优化，状态只需保存前一行的状态即可，优化后代码如下
+
+```go
+func minimumTotal(triangle [][]int) int {
+	//  algorithm
+	raw := len(triangle)
+	status := make([]int, raw+1)
+	for i := raw; i > 0; i-- {
+		for j := 0; j < i; j++ {
+			status[j] = getMin(status[j], status[j+1]) + triangle[i-1][j]
+		}
+	}
+	return status[0]
+}
+
+```
+
+
 

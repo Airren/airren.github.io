@@ -114,9 +114,37 @@ https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
 
 
 
-从个人问题角度出发。
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+从个人问题角度出发
+
+
+
+没有时间阅读，很难深度思考
 
 
 
@@ -126,9 +154,29 @@ https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
 
 
 
-- 
+未深度思考的方案就拉会论证X
 
 
+
+
+
+
+
+Hi, Karen.
+
+It's my honor to get this chance to join Intel. But I have a presumptuous request, one that  cloud you help me try to apply for a little more stocks. Life is struggle. Anyway, whatever the result is I will very appreciate it for what you did for me. 
+
+Looking  forward to your replay. Please call me back at any time.
+
+
+
+
+
+
+
+
+
+Im very glad that our company  can give me this opportunity. I am very satisfied with this position and look forward to joining our big family. In terms of salary, if possible, Could you please give me more stock? I will appreciate it  very much. Anyway, I am  looking forward to  your reply. Please call me back at any time. 
 
 
 

@@ -2,10 +2,6 @@
 title: 「K8s」Kubernates 安装
 ---
 
-
-
-
-
 ## 安装 kubelet kubeadm kubectl
 
 [官方文档](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
@@ -27,7 +23,7 @@ sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新
 
 ```sh
 swapoff -a
-kubeadm init --pod-network-cidr=10.244.0.0/16
+kubeadm init ctl 
 # kubeadm config images pull --v=10
  # 国内正常网络不能从k8s.grc.io拉取镜像, 所以从docker.io拉取, 然后重新打上一个符合k8s的tag:
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.20.1 
@@ -91,7 +87,8 @@ kubeadm join 10.227.4.115:6443 --token 3hf7uz.3stfkg430pppne10 \
 
 ```sh
 # sysctl net.bridge.bridge-nf-call-iptables=1
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+# https://kubernetes.io/docs/concepts/cluster-administration/addons/
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
 ![image-20210113003630192](KubernatesInstall/image-20210113003630192.png)
@@ -132,4 +129,20 @@ https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install
 https://www.hangge.com/blog/cache/detail_2414.html
 
 https://zhuanlan.zhihu.com/p/46341911
+
+
+
+
+
+init ubuntu as a k8s node
+
+```shell
+sudo su
+apt update && apt -y upgrade
+apt install -y apt-transport-https curl net-tools
+curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+apt update
+apt install -y kubelet kubeadm kubectl docker.io
+```
 

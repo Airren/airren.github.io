@@ -1,11 +1,8 @@
 ---
 title: 「毕业旅行」青甘自驾
 date: 2020-07-28 01:57:20
-layout:     post
 subtitle:   "  回首三年三千里，相逢意气不胜欢"
-header-img: "graduated_travel.png"
-tags:
-     - Life
+
 ---
 
 
@@ -17,7 +14,7 @@ tags:
 
 夜宿西宁，吃肉去~
 
-![翡翠湖](./graduated-travel/jadeite_lake.png)
+![](./graduated-travel/jadeite_lake.png)
 
 
 
