@@ -2,142 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/archer.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/gccegg-65-20210804000734190.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/gccegg-65.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/image-20210809220418517.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/image-20210809221930068.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/os/base_of_os/lgban.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/tools/tips/home_brew.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/tools/tips/mac_init.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Automic-原子类/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/CAS/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/IO文件读写/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java-异常/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java8新特性/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/JavaIO/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java虚拟机/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java集合类/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/img/image-20191010173632655.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/多线程/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/设计模式/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/Docker基本使用/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/dock_tips/image-20210201140242908.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/dock_tips/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/docker_net/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210112233937027.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113000651400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003350027.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003436339.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003630192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/Redis基本操作/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103152634625.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103153126819.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103153510244.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103154122993.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103160314342.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/bson/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_go_sdk/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_index/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/image-20210126175255081.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/image-20210126180122268.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/install_mysql/image-20210417132924881.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/install_mysql/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/mysql-sync-to-es/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/kafka_install/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414003558997.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414003939615.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414004730031.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210421000707337.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_aggregation/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814112846425.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814135623418.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814141157795.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151424343.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151619819.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817201934797.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202011324.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202308776.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202411452.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_query/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/logstash_install/image-20200816233030446.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/logstash_install/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200828162829110.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200831201920566.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200831202225643.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun_intro/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Grafana/install_grafana/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/image-20210208173408121.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/image-20210208173710328.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/原理/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/hbase_introduction/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/opentsdb_introduction/image-20200806004226361.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/opentsdb_introduction/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/tsdb_argot/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210109012636249.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210109013121175.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210324002238707.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210518175951312.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011143434.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011239384.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011848650.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520012137113.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520012542067.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013324083.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013449254.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013634932.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210523194428037.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210523194755641.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prome_ql/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/TeleGraph/telegraph/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/go_text_template/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/jenkins/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/2/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/3/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/404_huf404c6818e5475c7870a4722b4efea20_110323_1500x0_resize_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_148x148_fit_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_120x120_fit_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_148x148_fit_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_gen/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Automic-原子类/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/CAS/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/IO文件读写/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java-异常/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java8新特性/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/JavaIO/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java虚拟机/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java集合类/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/img/image-20191010173632655.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/多线程/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/设计模式/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-12/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-13/image-20201015005200019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-13/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-14/image-20210316003214320.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-14/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-15/image-20210316005442799.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-15/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-16/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-17/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-21/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-03-xxxx/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-04-20/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-04-21-/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-05-20/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-05-26/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-05-27/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/2021-06-01/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/TaskList/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/page/1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/page/2/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/page/6/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/page/7/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/toha/.github/workflows/codeql-analysis.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/toha/content/notes/search.bn.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/toha/content/notes/search.cn.md" afterDir="false" />
@@ -169,24 +69,39 @@
       <change afterPath="$PROJECT_DIR$/themes/toha/layouts/partials/misc/badge.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/themes/toha/layouts/partials/opengraph.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak_config/_default/config.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak_config/_default/languages.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak_config/_default/menus.en.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bak_config/_default/params.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/6.824/lab/lab_1_mapreduce/6.824" beforeDir="false" afterPath="$PROJECT_DIR$/content/6.824/lab/lab_1_mapreduce/6.824" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/ToDo.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/ToDo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/go_note/source_code_profiling/mem_allocation/mem_allocation.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/go_note/source_code_profiling/mem_allocation/mem_allocation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/lgban.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/os/base_of_os/lgban-20210803234155690.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system/archer.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system/gccegg-65-20210804000734190.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system/gccegg-65.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system/lgban-20210803234155690.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/os/operate_system/lgban.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/author.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/author.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/sections/about.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/sections/about.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/site.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/site.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Automic 原子类.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Automic 原子类.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/CAS.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/CAS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/IO文件读写.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/IO文件读写.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Java 异常.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Java 异常.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Java8新特性.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Java8新特性.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/JavaIO.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/JavaIO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Java虚拟机.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Java虚拟机.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/Java集合类.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/Java集合类.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/img/image-20191010173632655.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/img/image-20191010173632655.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/多线程.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/多线程.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/JavaNote/设计模式.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/JavaNote/设计模式.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-12.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-12.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-13.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-13.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-13/image-20201015005200019.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-13/image-20201015005200019.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-14.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-14.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-14/image-20210316003214320.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-14/image-20210316003214320.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-15.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-15.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-15/image-20210316005442799.png" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-15/image-20210316005442799.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-16.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-16.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-17.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-17.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-21.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-21.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-03-xxxx.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-03-xxxx.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-04-20.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-04-20.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-04-21 .md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-04-21 .md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-05-20.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-05-20.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-05-26.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-05-26.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-05-27.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-05-27.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/2021-06-01.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/2021-06-01.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/TaskList.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/TaskList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/daily/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/interview/daily/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public" beforeDir="false" afterPath="$PROJECT_DIR$/public" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/6.824/CAP定律/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.824/CAP定律/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/6.824/LEC_1_Introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.824/LEC_1_Introduction/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/6.824/MapReduce/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.824/MapReduce/index.html" afterDir="false" />
@@ -201,158 +116,197 @@
       <change beforePath="$PROJECT_DIR$/public/JavaNote/Java虚拟机/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/JavaNote/Java集合类/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/JavaNote/img/image-20191010173632655.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JavaNote/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/JavaNote/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote/index.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/JavaNote/page/1/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/JavaNote/多线程/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/JavaNote/设计模式/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Automic-原子类/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/CAS/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Demo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/IO文件读写/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java-异常/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java8新特性/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/JavaIO/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java虚拟机/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/Java集合类/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/img/image-20191010173632655.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/多线程/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JavaNote_Airrens-Mac_Aug-17-204226-2021_conflict_parent/设计模式/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/ToDo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/ToDo/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/blog/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/blog/raft/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/blog/raft/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/blog/redis_preview/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/blog/redis_preview/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/Docker基本使用/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/dock_tips/image-20210201140242908.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/dock_tips/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/docker_net/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker_Airrens-Mac_Aug-17-195237-2021_conflict_parent/Docker基本使用/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker_Airrens-Mac_Aug-17-195237-2021_conflict_parent/dock_tips/image-20210201140242908.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker_Airrens-Mac_Aug-17-195237-2021_conflict_parent/dock_tips/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker_Airrens-Mac_Aug-17-195237-2021_conflict_parent/docker_net/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/image-20210112233937027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/image-20210113000651400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/image-20210113003350027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/image-20210113003436339.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/image-20210113003630192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/image-20200103152634625.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/image-20200103153126819.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/image-20200103153510244.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/image-20200103154122993.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/image-20200103160314342.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/bson/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_go_sdk/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_index/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_install/image-20210126175255081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_install/image-20210126180122268.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mysql/install_mysql/image-20210417132924881.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mysql/install_mysql/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mysql/mysql-sync-to-es/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/kafka_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue_Airrens-Mac_Aug-17-195235-2021_conflict_parent/kafka_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/image-20210414003558997.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/image-20210414003939615.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/image-20210414004730031.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/image-20210421000707337.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/MicroService/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_aggregation/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200814112846425.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200814135623418.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200814141157795.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151424343.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151619819.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200817201934797.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202011324.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202308776.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202411452.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_query/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/logstash_install/image-20200816233030446.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/logstash_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_aggregation/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200814112846425.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200814135623418.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200814141157795.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200814151424343.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200814151619819.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200817201934797.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200817202011324.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200817202308776.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/image-20200817202411452.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/elasticsearch_query/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/logstash_install/image-20200816233030446.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/logstash_install/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch_Airrens-Mac_Aug-17-195238-2021_conflict_parent/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/image-20200828162829110.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/image-20200831201920566.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/image-20200831202225643.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun_intro/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Grafana/install_grafana/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/install_influxdb/image-20210208173408121.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/install_influxdb/image-20210208173710328.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/install_influxdb/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/原理/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/hbase_introduction/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/opentsdb_introduction/image-20200806004226361.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/opentsdb_introduction/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/tsdb_argot/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210109012636249.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210109013121175.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210324002238707.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210518175951312.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520011143434.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520011239384.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520011848650.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520012137113.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520012542067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520013324083.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520013449254.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210520013634932.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210523194428037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/image-20210523194755641.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prome_ql/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph/telegraph/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/go_text_template/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/Docker基本使用/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/Docker/Docker基本使用/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/dock_tips/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/Docker/dock_tips/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/docker_net/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/Docker/docker_net/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Docker/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/Docker/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/Kubernates/KubernatesInstall/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/CloudNative/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/CloudNative/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/bson/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mongo/bson/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_go_sdk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_go_sdk/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_index/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_install/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mongo/mongo_install/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mysql/install_mysql/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mysql/install_mysql/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/mysql/mysql-sync-to-es/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/DataBase/mysql/mysql-sync-to-es/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/MessageQueue/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/MessageQueue/kafka_install/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/MessageQueue/kafka_install/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/MicroService/Consul/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/MicroService/Consul/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/MicroService/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/MicroService/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_aggregation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_aggregation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_install/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_query/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/elasticsearch_query/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/logstash_install/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/ElasticSearch/logstash_install/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/NoSQL/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/NoSQL/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun_intro/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/Bosun/bosun_intro/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Grafana/install_grafana/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/Grafana/install_grafana/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/install_influxdb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/install_influxdb/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/原理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/InfluxDB/原理/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/hbase_introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/hbase_introduction/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/opentsdb_introduction/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/opentsdb_introduction/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/tsdb_argot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/OpenTSDB/tsdb_argot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prom/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prome_ql/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/Prometheus/prome_ql/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph/telegraph/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph/telegraph/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/go_text_template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/go_text_template/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/TimeSeries/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/component/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/jenkins/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/page/2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/page/3/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-12/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-13/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-13/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-14/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-14/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-15/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-15/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-16/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-16/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-17/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-17/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-21/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-21/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-xxxx/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-03-xxxx/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-04-20/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-04-20/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-04-21-/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-04-21-/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-20/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-05-20/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-26/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-05-26/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-27/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-05-27/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/2021-06-01/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/2021-06-01/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/TaskList/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/TaskList/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/daily/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/daily/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/jenkins/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/jenkins/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/component/page/3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/Docker基本使用/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/dock_tips/image-20210201140242908.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/dock_tips/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/docker_net/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Docker/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210112233937027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113000651400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003350027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003436339.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/image-20210113003630192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/Kubernates/KubernatesInstall/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/CloudNative/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/Redis基本操作/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103152634625.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103153126819.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103153510244.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103154122993.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/Redis/image-20200103160314342.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/bson/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_go_sdk/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_index/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/image-20210126175255081.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/image-20210126180122268.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mongo/mongo_install/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/install_mysql/image-20210417132924881.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/install_mysql/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/mysql/mysql-sync-to-es/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/DataBase/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/kafka_install/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MessageQueue/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414003558997.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414003939615.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210414004730031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/image-20210421000707337.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/Consul/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/MicroService/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_aggregation/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814112846425.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814135623418.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814141157795.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151424343.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200814151619819.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817201934797.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202011324.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202308776.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/image-20200817202411452.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_install/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/elasticsearch_query/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/logstash_install/image-20200816233030446.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/logstash_install/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/ElasticSearch/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/NoSQL/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200828162829110.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200831201920566.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/image-20200831202225643.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Bosun/bosun_intro/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Grafana/install_grafana/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/image-20210208173408121.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/image-20210208173710328.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/install_influxdb/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/InfluxDB/原理/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/hbase_introduction/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/opentsdb_introduction/image-20200806004226361.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/opentsdb_introduction/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/OpenTSDB/tsdb_argot/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210109012636249.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210109013121175.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210324002238707.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210518175951312.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011143434.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011239384.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520011848650.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520012137113.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520012542067.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013324083.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013449254.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210520013634932.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210523194428037.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/image-20210523194755641.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prom/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/Prometheus/prome_ql/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/TeleGraph/telegraph/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/go_text_template/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/TimeSeries/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/jenkins/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component_Airrens-Mac_Aug-17-204225-2021_conflict_parent/page/3/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-12/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-13/image-20201015005200019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-13/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-14/image-20210316003214320.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-14/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-15/image-20210316005442799.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-15/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-16/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-17/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-21/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-03-xxxx/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-04-20/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-04-21-/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-20/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-26/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-05-27/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/2021-06-01/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/TaskList/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/index.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/page/1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/daily/page/2/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/go_note/0_Go语言环境变量以及基本指令/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/0_Go语言环境变量以及基本指令/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/go_note/1_Go基本语法梳理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/1_Go基本语法梳理/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/go_note/1st-/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/1st-/index.html" afterDir="false" />
@@ -382,7 +336,8 @@
       <change beforePath="$PROJECT_DIR$/public/go_note/数据类型/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/数据类型/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/go_note/网络通信/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/网络通信/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/go_note/输入输出/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/go_note/输入输出/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/cs_basic/net_io/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/cs_basic/net_io/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/cs_basic/network_basic/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/cs_basic/network_basic/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16.4及其快速上手/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16.4及其快速上手/index.html" afterDir="false" />
@@ -399,9 +354,7 @@
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/9th_高级知识点/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/9th_高级知识点/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/1st_课程导学/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/1st_课程导学/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/2nd_React介绍/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/2nd_React介绍/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/2nd_React介绍_Airrens-Mac_Aug-17-195244-2021_conflict_current/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/3rd_主页面架构设计/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/3rd_主页面架构设计/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/img_Airrens-Mac_Aug-17-195244-2021_conflict_parent/image-20191107171004190.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/0_Category/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/0_Category/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/10th_Java常用类库与技巧/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/10th_Java常用类库与技巧/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/11th_Java框架Spring/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/11th_Java框架Spring/index.html" afterDir="false" />
@@ -420,16 +373,13 @@
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/1st_md/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/1st_md/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/7th_二叉树和递归/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/7th_二叉树和递归/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/9th_动态规划/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/9th_动态规划/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/img_Airrens-Mac_Aug-17-195243-2021_conflict_parent/2019-10-08-17-45-23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/img_Airrens-Mac_Aug-17-195243-2021_conflict_parent/image-20191017141438148.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/img_Airrens-Mac_Aug-17-195243-2021_conflict_parent/image-20191017141536960.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_玩转算法面试_leetcode版本/img_Airrens-Mac_Aug-17-195243-2021_conflict_parent/image-20191017145410009.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/7th_图的基础/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/7th_图的基础/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/8th_最小生成树/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/8th_最小生成树/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/9th_最短路径/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/9th_最短路径/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/category/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_算法与数据结构综合提升篇/category/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/imooc/牛客网数据结构/1_字符串和二叉树问题/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/imooc/牛客网数据结构/1_字符串和二叉树问题/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/interview/index.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/index.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/page/2/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/page/3/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/interview/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interview/page/4/index.html" afterDir="false" />
@@ -461,12 +411,10 @@
       <change beforePath="$PROJECT_DIR$/public/life/nuc_perfect_hacintosh/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/life/nuc_perfect_hacintosh/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/life/silence/滕王阁序/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/life/silence/滕王阁序/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/life/xiaokr/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/life/xiaokr/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/notes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/notes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/notes/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/notes/page/2/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/os/base_of_os/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/os/base_of_os/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/os/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/os/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/search/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/search/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/Alfred/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Alfred/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/Bson/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Bson/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/ElasticSearch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/ElasticSearch/index.html" afterDir="false" />
@@ -668,11 +616,11 @@
       <recent name="$PROJECT_DIR$/content/blog" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/interview" />
       <recent name="$PROJECT_DIR$/content/go_note/img" />
       <recent name="$PROJECT_DIR$/content/component/DataBase/Redis" />
       <recent name="$PROJECT_DIR$/assets/images/sections/achievements" />
       <recent name="$PROJECT_DIR$/content/tech/DataStruct" />
-      <recent name="$PROJECT_DIR$/content/posts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -758,7 +706,7 @@
       <workItem from="1627272727096" duration="195000" />
       <workItem from="1628005738740" duration="1764000" />
       <workItem from="1628506107133" duration="841000" />
-      <workItem from="1629200426863" duration="2914000" />
+      <workItem from="1629200426863" duration="3732000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
