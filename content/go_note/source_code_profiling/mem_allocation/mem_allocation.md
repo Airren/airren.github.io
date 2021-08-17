@@ -113,6 +113,10 @@ Go ASM 和标准的汇编语法（ NASM 或 YASM ）不太一样，首先你会�
 
 ## Tips:Mac 配置gdb环境
 
+[GDB Installation on Mac OS X](https://www.ics.uci.edu/~pattis/common/handouts/macmingweclipse/allexperimental/mac-gdb-install.html)
+
+
+
 ​	在macOS上，用于debug的工具有lldb和gdb. 其中lldb作为一种可复用的组件，参与了大型llvm项目库的构成；同时，lldb也是Xcode默认的调试工具, 支持Windows, macOS, iOS, Linux和FreeBSD. 而gdb是GNU项目的调试器，支持Windows和大多数UNIX变种，也包括macOS.
 
 ```sh

@@ -86,29 +86,8 @@ https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
 
 
 
-
-
-
-
-
-
-工作目标不清晰
-
-会议繁琐效率不高
-
-没有带着目标讨论
-
-会议上定计划，而不是带着答案开会
-
-会议上讨论yes or no
-
-
-
-曾经还抱有希望
-
-
-
-外企是否是成长的更快
+- [ ] 
+- [ ] 主题更新维护
 
 
 
@@ -137,46 +116,12 @@ https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
 
 
 
-
-
-
-从个人问题角度出发
 
 
 
 没有时间阅读，很难深度思考
 
 
-
-从业务角度出发。
-
-
-
-
-
-未深度思考的方案就拉会论证X
-
-
-
-
-
-
-
-Hi, Karen.
-
-It's my honor to get this chance to join Intel. But I have a presumptuous request, one that  cloud you help me try to apply for a little more stocks. Life is struggle. Anyway, whatever the result is I will very appreciate it for what you did for me. 
-
-Looking  forward to your replay. Please call me back at any time.
-
-
-
-
-
-
-
-
-
-Im very glad that our company  can give me this opportunity. I am very satisfied with this position and look forward to joining our big family. In terms of salary, if possible, Could you please give me more stock? I will appreciate it  very much. Anyway, I am  looking forward to  your reply. Please call me back at any time. 
 
 
 

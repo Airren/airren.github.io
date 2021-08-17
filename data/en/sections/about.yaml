@@ -8,19 +8,24 @@ section:
   template: sections/about.html
 
 # your designation
-designation: Software Engineer
+designation: Cloud Native Software Engineer
 # your company information
 company:
-  name: ByteDance Co.
-  url: "https://bytedance.com"
+  name: Intel Co.
+  url: "https://intel.com"
 
 # your resume. this file path should be relative to you "static" directory
-resume: "files/resumexx.pdf"
+#resume: "files/resumexx.pdf"
 
 # a summary about you
-summary:
-  'I am a passionate software engineer with 1 years of working experience.
-  Sometimes, I work on some fun projects such as Arduino, etc.'
+summary: |-
+  Airren, a passionate software engineer, graduated with a master's degree in Computer Sciences from the East China
+  University of Science and Technology in Shanghai. He has worked as an infrastructure developer in ByteDance from
+  2019 to 2021, focusing on monitoring and alerting the microservice base on time series data. He has interned in
+  Intel in 2017 but is a formal staff now. He is familiar with Golang and Java. Additionally, he likes to used embedded
+  circuit boards to make funny things, such as Arduino and Raspberry Pi. What's more, he likes touristy, he has
+  self-driven through the north-west of China, via Dunhuang and Qinghai. He plans to drive through the 318 national
+  roads. If you're interested, you can join him.
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
@@ -53,24 +58,24 @@ socialLinks:
 # give the percentage between 50 to 100 with 5 intervals.
 # currently supported colors: blue, yellow, pink, green, sky, orange
 softSkills:
-#- name: Leadership
-#  percentage: 65
-#  color: blue
-#- name: Team Work
-#  percentage: 90
-#  color: yellow
-#- name: Communication
-#  percentage: 85
-#  color: pink
+- name: Leadership
+  percentage: 65
+  color: blue
+- name: Team Work
+  percentage: 90
+  color: yellow
+- name: Communication
+  percentage: 85
+  color: pink
 - name: Hard Working
   percentage: 95
   color: green
 - name: Fast Learner
   percentage: 90
   color: sky
-#- name: Problem Solving
-#  percentage: 80
-#  color: orange
+- name: Problem Solving
+  percentage: 80
+  color: orange
 # you can also provide color code instead of pre-defined color name
 # - name: Example 1
 #   percentage: 75
