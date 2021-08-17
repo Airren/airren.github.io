@@ -8,6 +8,5 @@ d debug:
 	hugo server
 p post:
 	hugo
-	git add .; git commit -m "update"; git push
-#	cd public;pwd;git add .;git commit -m "update";git push -f
+	git add .; git commit -m "update"; git push;cd public;pwd;git add .;git commit -m "update";git push -f
 

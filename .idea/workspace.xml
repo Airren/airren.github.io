@@ -34,7 +34,6 @@
       <change afterPath="$PROJECT_DIR$/themes/toha/layouts/partials/opengraph.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public" beforeDir="false" afterPath="$PROJECT_DIR$/public" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha" beforeDir="false" afterPath="$PROJECT_DIR$/themes/toha" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha/.github/release-drafter.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/toha/.github/release-drafter.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha/.github/workflows/autoprefixer.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/toha/.github/workflows/autoprefixer.yml" afterDir="false" />
@@ -250,7 +249,7 @@
       <workItem from="1627272727096" duration="195000" />
       <workItem from="1628005738740" duration="1764000" />
       <workItem from="1628506107133" duration="841000" />
-      <workItem from="1629200426863" duration="3767000" />
+      <workItem from="1629200426863" duration="3810000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
