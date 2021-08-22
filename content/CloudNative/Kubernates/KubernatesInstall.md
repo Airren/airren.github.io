@@ -2,6 +2,16 @@
 title: 「K8s」Kubernates 安装
 ---
 
+
+
+## 环境准备
+
+K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐[Canonical](https://canonical.com/)家的[Multipass](https://multipass.run/docs/installing-on-macos)了，Canonical 是谁，当然是Ubuntu的母公司了。
+
+
+
+
+
 ## 安装 kubelet kubeadm kubectl
 
 [官方文档](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
