@@ -7,7 +7,7 @@
 #  showOnNavbar: true
 #  # Can optionally hide the title in sections
 #  # hideTitle: true
-
+#
 ## filter buttons
 #buttons:
 #- name: All
@@ -38,7 +38,7 @@
 #  #url: ""
 #  summary: An Open Source Machine Learning Framework for Everyone.
 #  tags: ["professional", "machine-learning"]
-
+#
 #- name: A sample academic paper
 #  role: Team Lead
 #  timeline: "Jan 2017 - Nov 2017"

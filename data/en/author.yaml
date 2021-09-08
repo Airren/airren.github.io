@@ -1,12 +1,13 @@
 # some information about you
-name: "凌风清羽(Airren)"
+name: "Airren Ren"
 nickname: "Airren"
 # greeting message before your name. it will default to "Hi! I am" if not provided
-greeting: "每一个不曾起舞的日子，都是对生命的辜负"
+greeting: "Every Single Day Without Dancing is One Day We Betrayed of Life"
+subtitle: "每一个不曾起舞的日子，都是对生命的辜负"
 image: "images/author/airren.png"
 # give your some contact information. they will be used in the footer
 contactInfo:
-  email: "airrenzero@gmail.com"
+  email: "airrenzero#gmail.com"
   phone: "+86 1881733xxxx"
 
 # some summary about what you do
