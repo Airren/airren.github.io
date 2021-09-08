@@ -2,157 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hugo-toha/toha into main&#10;&#10;# Conflicts:&#10;#&#9;layouts/partials/navigators/navbar-2.html&#10;#&#9;layouts/partials/sections/home.html">
-      <change afterPath="$PROJECT_DIR$/.github/.kodiak.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/dependabot.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-site.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/html-proof.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/lighthouse-check.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/md-link-check.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/percy.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.percy.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/archetypes/default.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/author/jessica.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/author/john.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/sections/achievements/graduation-cap.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/sections/achievements/sport.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/sections/achievements/woman-winner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/bash/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/bash/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/bash/basic/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/bash/basic/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/advanced/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/advanced/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/advanced/files/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/advanced/files/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/flow-control/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/flow-control/indexbn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/introduction/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/introduction/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/types/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/notes/go/basic/types/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/_index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/_index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/images/forest.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/images/hero.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/introduction/hero.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/introduction/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/introduction/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/markdown-sample/hero.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/markdown-sample/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/markdown-sample/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/shortcodes/boat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/shortcodes/index.bn.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/posts/shortcodes/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/author.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/about.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/accomplishments.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/achievements.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/education.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/experiences.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/projects.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/recent-posts.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/sections/skills.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/bn/site.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/author.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/author.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/sections/about.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/sections/about.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/sections/projects.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/sections/projects.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/sections/recent-posts.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/sections/recent-posts.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/sections/skills.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/sections/skills.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/en/site.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/en/site.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/scss/sass/main.scss_b4f67ac5085b89b62b54c1923e5a9145.content" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/assets/scss/sass/main.scss_b4f67ac5085b89b62b54c1923e5a9145.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/404_huf404c6818e5475c7870a4722b4efea20_110323_1500x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/404_huf404c6818e5475c7870a4722b4efea20_110323_1500x0_resize_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_148x148_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_148x148_fit_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/c++_hue32fe91ddbd83e8e5585833667109ec5_57810_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/cloud_hu7018b904f8bff0d4527e1c31c6d17334_6540_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/competition_hua8a294215dacc1929136c4a4865382eb_191699_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/competition_hua8a294215dacc1929136c4a4865382eb_191699_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_120x120_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_120x120_fit_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_148x148_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-avatar_hu9bf48a08e17db6472c2e32b73058a6bb_47653_148x148_fit_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-background_hu3d03a01dcc18bc5be0e67db3d8d209a6_1182514_1200x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-background_hu3d03a01dcc18bc5be0e67db3d8d209a6_1182514_1500x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-background_hu3d03a01dcc18bc5be0e67db3d8d209a6_1182514_500x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-background_hu3d03a01dcc18bc5be0e67db3d8d209a6_1182514_800x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/default-hero_hu37f88119bb88d50a62cf30a7c95a3554_71072_148x0_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/favicon_hub02d7508a1c89b2b7812eab204efeb9a_4223_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/git_hu6c1226675924c2f2e3476a81b4d03976_10660_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/go_hue4d750b86639bc097ae544131de4926d_6734_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/graduation-cap_hubea4628151f3b7749cc1d791c6e4f181_394380_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/graduation-cap_hubea4628151f3b7749cc1d791c6e4f181_394380_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/hornor_hu78b9b0749516cf37ed03e994fa912c41_228511_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/hornor_hu78b9b0749516cf37ed03e994fa912c41_228511_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hu80bcb77d973d48204ea6b751ff5e4832_38360_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/inverted-logo_hub02d7508a1c89b2b7812eab204efeb9a_4223_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/jessica_hub27b17043e33bca6a82d234af88c10a1_6153_120x120_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/john_hu7f9991f5b5d471ecdfc6cff3db1a9fe6_6397_120x120_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/john_hu7f9991f5b5d471ecdfc6cff3db1a9fe6_6397_148x148_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/kubernetes_hu3b5d3c7d207e37dceeedd301e35e2e58_0_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/kubernetes_hua3e9a1b19c1572e2f049d77a47832d4b_241197_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/linux_huf8888e89df43f58ab32b560cb211e230_26357_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/main-logo_hu80bcb77d973d48204ea6b751ff5e4832_38360_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/main-logo_hu9ad2f25a877e6fef77c7a3dbef5094ad_6881_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/military_hu674416b1b45b973e5399e7dfd87fb1e6_126229_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/military_hu674416b1b45b973e5399e7dfd87fb1e6_126229_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/no-code_hu4f8e3bd6f48fe70fd2c0a87e633d1446_45899_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presentation_hueb4dd75a7cb968d7eb256f3063ddfb7a_292396_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presentation_hueb4dd75a7cb968d7eb256f3063ddfb7a_292396_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_2_hu285b0ca642e8d384c600ce86263e7181_164883_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_2_hu285b0ca642e8d384c600ce86263e7181_164883_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_hu285b0ca642e8d384c600ce86263e7181_164883_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_hu285b0ca642e8d384c600ce86263e7181_164883_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_huc750a1f772b7bb88f5249ab1b75253b6_98154_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/presenter_huc750a1f772b7bb88f5249ab1b75253b6_98154_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/prometheus_huebb51490a868f20dc51d40a74afb8c56_48384_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/sport_hue306ad4a3cfa3c79e18d9475b844b6eb_139662_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/sport_hue306ad4a3cfa3c79e18d9475b844b6eb_139662_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/teach_huaeae7ba9e10ff4003565654e4740d2c0_658281_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/teach_huaeae7ba9e10ff4003565654e4740d2c0_658281_0x300_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/tensorflow_hu610a95f6d7ddb256beadba1bd7cb282d_6965_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/toha_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_24x24_fit_box_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/woman-winner_huefebed7f97be8f23958591748aa9b6a0_85205_0x1500_resize_q75_box.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_gen/images/woman-winner_huefebed7f97be8f23958591748aa9b6a0_85205_0x300_resize_q75_box.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,11 +71,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/themes/toha/static" />
       <recent name="$PROJECT_DIR$/static/favicon" />
       <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$/content/blog" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/content/tools/software" />
@@ -322,7 +173,7 @@
       <workItem from="1629650047696" duration="592000" />
       <workItem from="1629650836850" duration="1687000" />
       <workItem from="1631024754549" duration="2358000" />
-      <workItem from="1631107029431" duration="2401000" />
+      <workItem from="1631107029431" duration="3140000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
