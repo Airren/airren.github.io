@@ -1,9 +1,9 @@
 .home {
   &__landing {
     width: 100%;
-
+    
     @include flexbox();
-    @include align-items(top);
+    @include align-items(center);
     @include justify-content(center);
 
     @media only screen and (max-width: 600px) {
@@ -11,12 +11,12 @@
     }
 
     &--img {
-      margin: 4.5rem;
+      margin: 0.5rem;
       z-index: z('landing');
     }
 
     &--txt {
-      margin: 6.5rem 0.5rem;
+      margin: 2.5rem 0.5rem;
       z-index: z('landing');
 
       .title {

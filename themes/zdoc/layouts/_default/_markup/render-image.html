@@ -1,24 +1,3 @@
 <p class="md__image">
-  {{- if .Page.Site.Params.BookPortableLinks -}}
-  {{- template "portable-image" . -}}
-  {{- else -}}
-  {{- $dir := (index (split .Destination "/") 2)}}
-  <img src="{{ $dir | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }}/>
-  {{- end -}}
-
-  {{- define "portable-image" -}}
-  {{- $isRemote := or (in .Destination "://") (strings.HasPrefix .Destination "//") }}
-  {{- if not $isRemote }}
-  {{- $path := print .Page.File.Dir .Destination }}
-  {{- if strings.HasPrefix .Destination "/" }}
-  {{- $path = print "/static" .Destination }}
-  {{- end }}
-  {{- if not (fileExists $path) }}
-  {{- warnf "Image '%s' not found in '%s'" .Destination .Page.File }}
-  {{- end }}
-  {{- end }}
-  {{- $dir := (index (split .Destination "/") 2)}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }}/>
-  {{- end -}}
-
+  <img src="{{ .Destination | relURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 </p>

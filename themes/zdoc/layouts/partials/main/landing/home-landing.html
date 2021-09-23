@@ -3,7 +3,7 @@
 <div class="divider">
   <div class="lmr">
     {{ with .backgroundImage }}
-      <div style="background-image: url('{{ .src | relURL }}'); background-position: bottom; background-repeat: no-repeat; background-size: auto; position: absolute; top: -50px; left: 0; width: 100%; height: {{ .height }}px;"></div>
+      <div style="background-image: url('{{ .src | relURL }}'); background-position: center; background-repeat: no-repeat; background-size: cover; position: absolute; top: -50px; left: 0; width: 100%; height: {{ .height }}px;"></div>
     {{ end }}
     <div class="home__landing" style="height: {{ .height }}px;">
       {{ if .image }}

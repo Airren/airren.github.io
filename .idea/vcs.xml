@@ -4,6 +4,8 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/content/6.824/lab/lab_1_mapreduce/6.824" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/public" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/hugo-theme-zzo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/themes/zdoc" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/toha" vcs="Git" />
   </component>
 </project>
