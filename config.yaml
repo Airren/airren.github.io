@@ -120,4 +120,7 @@ params:
       enable: true
 
 sectionPagesMenu: "main"
-disablePathToLower: tru
+  # Hugo 默认会把 url 中的大写字符转为小写
+disablePathToLower: true
+  # Hugo 默认会把Taxonomy（categories,tags,series）名称转为小写
+preserveTaxonomyNames: true

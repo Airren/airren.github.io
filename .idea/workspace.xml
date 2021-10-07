@@ -1,170 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hugo-toha/toha into main&#10;&#10;# Conflicts:&#10;#&#9;layouts/partials/navigators/navbar-2.html&#10;#&#9;layouts/partials/sections/home.html">
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.assets/image-20210923232711848.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.assets/image-20210923235154410.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.assets/image-20210923235515675.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.assets/image-20210923235942775.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.assets/image-20210924000939490.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/Container-Intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912135918439.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912135941525.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140037376.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140057668.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140311780.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140446446.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140517074.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140544155.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140707305.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/ipsec/image-20210912140724081.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/iptables.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/base_of_network/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/index.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/ipsec/image-20210912135918439.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/iptables/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/page/1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/raft/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/blog_Airrens-Mac_Sep-21-230039-2021_conflict_parent/redis_preview/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Automic-原子类/index_Airrens-Mac_Sep-21-230102-2021_CaseConflict_Airrens-Mac_Sep-21-230132-2021_Conflict_Airrens-Mac_Sep-21-230218-2021_Conflict_Airrens-Mac_Sep-21-230300-2021_Conflict_Airrens-Mac_Sep-21-230340-2021_Conflict_Airrens-Mac_Sep-21-230417-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/CAS/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230052-2021_Conflict_Airrens-Mac_Sep-21-230102-2021_Conflict_Airrens-Mac_Sep-21-230110-2021_Conflict_Airrens-Mac_Sep-21-230120-2021_Conflict_Airrens-Mac_Sep-21-230127-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/IO文件读写/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230052-2021_Conflict_Airrens-Mac_Sep-21-230058-2021_Conflict_Airrens-Mac_Sep-21-230102-2021_Conflict_Airrens-Mac_Sep-21-230113-2021_Conflict_Airrens-Mac_Sep-21-230120-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java-异常/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230058-2021_Conflict_Airrens-Mac_Sep-21-230108-2021_Conflict_Airrens-Mac_Sep-21-230115-2021_Conflict_Airrens-Mac_Sep-21-230129-2021_Conflict_Airrens-Mac_Sep-21-230143-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java8新特性/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230059-2021_Conflict_Airrens-Mac_Sep-21-230116-2021_Conflict_Airrens-Mac_Sep-21-230139-2021_Conflict_Airrens-Mac_Sep-21-230210-2021_Conflict_Airrens-Mac_Sep-21-230235-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/JavaIO/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230058-2021_Conflict_Airrens-Mac_Sep-21-230109-2021_Conflict_Airrens-Mac_Sep-21-230122-2021_Conflict_Airrens-Mac_Sep-21-230136-2021_Conflict_Airrens-Mac_Sep-21-230150-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java虚拟机/index_Airrens-Mac_Sep-21-230048-2021_CaseConflict_Airrens-Mac_Sep-21-230059-2021_Conflict_Airrens-Mac_Sep-21-230110-2021_Conflict_Airrens-Mac_Sep-21-230123-2021_Conflict_Airrens-Mac_Sep-21-230146-2021_Conflict_Airrens-Mac_Sep-21-230206-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/JavaNote/Java集合类/index_Airrens-Mac_Sep-21-230052-2021_CaseConflict_Airrens-Mac_Sep-21-230113-2021_Conflict_Airrens-Mac_Sep-21-230142-2021_Conflict_Airrens-Mac_Sep-21-230213-2021_Conflict_Airrens-Mac_Sep-21-230241-2021_Conflict_Airrens-Mac_Sep-21-230312-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/0_Category/index_Airrens-Mac_Sep-21-231711-2021_CaseConflict_Airrens-Mac_Sep-21-231756-2021_Conflict_Airrens-Mac_Sep-21-231843-2021_Conflict_Airrens-Mac_Sep-21-231936-2021_Conflict_Airrens-Mac_Sep-21-232019-2021_Conflict_Airrens-Mac_Sep-21-232103-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/10th_Google在线笔试题解/index_Airrens-Mac_Sep-21-231628-2021_CaseConflict_Airrens-Mac_Sep-21-231703-2021_Conflict_Airrens-Mac_Sep-21-231738-2021_Conflict_Airrens-Mac_Sep-21-231815-2021_Conflict_Airrens-Mac_Sep-21-231852-2021_Conflict_Airrens-Mac_Sep-21-231929-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/2nd_React介绍/index_Airrens-Mac_Sep-21-231919-2021_CaseConflict_Airrens-Mac_Sep-21-232029-2021_Conflict_Airrens-Mac_Sep-21-232128-2021_Conflict_Airrens-Mac_Sep-21-232220-2021_Conflict_Airrens-Mac_Sep-21-232314-2021_Conflict_Airrens-Mac_Sep-21-232409-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/0_Category/index_Airrens-Mac_Sep-21-232007-2021_CaseConflict_Airrens-Mac_Sep-21-232139-2021_Conflict_Airrens-Mac_Sep-21-232248-2021_Conflict_Airrens-Mac_Sep-21-232356-2021_Conflict_Airrens-Mac_Sep-21-232506-2021_Conflict_Airrens-Mac_Sep-21-232603-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/10th_Java常用类库与技巧/index_Airrens-Mac_Sep-21-232051-2021_CaseConflict_Airrens-Mac_Sep-21-232302-2021_Conflict_Airrens-Mac_Sep-21-232452-2021_Conflict_Airrens-Mac_Sep-21-232649-2021_Conflict_Airrens-Mac_Sep-21-232808-2021_Conflict_Airrens-Mac_Sep-21-232916-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/11th_Java框架Spring/index_Airrens-Mac_Sep-21-232040-2021_CaseConflict_Airrens-Mac_Sep-21-232207-2021_Conflict_Airrens-Mac_Sep-21-232342-2021_Conflict_Airrens-Mac_Sep-21-232520-2021_Conflict_Airrens-Mac_Sep-21-232634-2021_Conflict_Airrens-Mac_Sep-21-232737-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/4th_Redis/index_Airrens-Mac_Sep-21-232235-2021_CaseConflict_Airrens-Mac_Sep-21-232534-2021_Conflict_Airrens-Mac_Sep-21-232723-2021_Conflict_Airrens-Mac_Sep-21-232859-2021_Conflict_Airrens-Mac_Sep-21-233024-2021_Conflict_Airrens-Mac_Sep-21-233137-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/5th_Linux/index_Airrens-Mac_Sep-21-232620-2021_CaseConflict_Airrens-Mac_Sep-21-233007-2021_Conflict_Airrens-Mac_Sep-21-233253-2021_Conflict_Airrens-Mac_Sep-21-233450-2021_Conflict_Airrens-Mac_Sep-21-233633-2021_Conflict_Airrens-Mac_Sep-21-233758-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/6th_JVM/index_Airrens-Mac_Sep-21-232436-2021_CaseConflict_Airrens-Mac_Sep-21-232754-2021_Conflict_Airrens-Mac_Sep-21-232950-2021_Conflict_Airrens-Mac_Sep-21-233102-2021_Conflict_Airrens-Mac_Sep-21-233236-2021_Conflict_Airrens-Mac_Sep-21-233351-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/7th_GC相关/index_Airrens-Mac_Sep-21-232549-2021_CaseConflict_Airrens-Mac_Sep-21-232842-2021_Conflict_Airrens-Mac_Sep-21-233045-2021_Conflict_Airrens-Mac_Sep-21-233253-2021_Conflict_Airrens-Mac_Sep-21-233409-2021_Conflict_Airrens-Mac_Sep-21-233528-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/9th_Java多线程与并发原理/index_Airrens-Mac_Sep-21-232706-2021_CaseConflict_Airrens-Mac_Sep-21-233154-2021_Conflict_Airrens-Mac_Sep-21-233430-2021_Conflict_Airrens-Mac_Sep-21-233653-2021_Conflict_Airrens-Mac_Sep-21-233840-2021_Conflict_Airrens-Mac_Sep-21-234010-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/javabasic/README/index_Airrens-Mac_Sep-21-234358-2021_CaseConflict_Airrens-Mac_Sep-21-234532-2021_Conflict_Airrens-Mac_Sep-21-234707-2021_Conflict_Airrens-Mac_Sep-21-234842-2021_Conflict_Airrens-Mac_Sep-21-235024-2021_Conflict_Airrens-Mac_Sep-21-235207-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tech/DataStruct/LeetCode/index_Airrens-Mac_Sep-21-230040-2021_CaseConflict_Airrens-Mac_Sep-21-230045-2021_Conflict_Airrens-Mac_Sep-21-230049-2021_Conflict_Airrens-Mac_Sep-21-230058-2021_Conflict_Airrens-Mac_Sep-21-230102-2021_Conflict_Airrens-Mac_Sep-21-230106-2021_Conflict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-36x36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-48x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/android-icon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-114x114.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-120x120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-180x180.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-57x57.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-60x60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-76x76.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/apple-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/favicon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/ms-icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/ms-icon-150x150.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/ms-icon-310x310.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/favicon/ms-icon-70x70.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/exampleSite/static/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/zdoc/static/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作_Airrens-Mac_Sep-24-002655-2021_CaseConflict/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/component/TimeSeries/Grafana_Airrens-Mac_Sep-24-002649-2021_CaseConflict/install_grafana/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph_Airrens-Mac_Sep-24-002649-2021_CaseConflict/telegraph/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/daily/TaskList_Airrens-Mac_Sep-24-002649-2021_CaseConflict/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16_Airrens-Mac_Sep-24-002649-2021_CaseConflict.4及其快速上手/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/tools/software/Alfred_Airrens-Mac_Sep-24-002649-2021_CaseConflict/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/CloudNative/Docker/Docker基本使用.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/CloudNative/Docker/dock_tips.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/CloudNative/Docker/dock_tips.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/bash/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/bash/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/bash/basic/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/bash/basic/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/advanced/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/advanced/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/advanced/files/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/advanced/files/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/flow-control/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/flow-control/indexbn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/introduction/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/introduction/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/types/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/notes/go/basic/types/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/_index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/images/forest.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/images/hero.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/category/sub-category/rich-content/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/introduction/hero.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/introduction/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/introduction/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/markdown-sample/hero.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/markdown-sample/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/markdown-sample/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/shortcodes/boat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/shortcodes/index.bn.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/posts/shortcodes/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/author.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/about.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/accomplishments.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/achievements.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/education.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/experiences.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/projects.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/recent-posts.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/sections/skills.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bn/site.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public" beforeDir="false" afterPath="$PROJECT_DIR$/public" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/base_of_network/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/ipsec/image-20210912135918439.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/iptables/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/page/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/raft/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/blog/redis_preview/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/Automic-原子类/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/CAS/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/IO文件读写/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/Java-异常/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/Java8新特性/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/JavaIO/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/Java虚拟机/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/JavaNote/Java集合类/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/0_Category/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_Google讲Java/10th_Google在线笔试题解/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_antd教程/2nd_React介绍/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/0_Category/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/10th_Java常用类库与技巧/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/11th_Java框架Spring/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/4th_Redis/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/5th_Linux/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/6th_JVM/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/7th_GC相关/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/9th_Java多线程与并发原理/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/imooc_剑指offer/javabasic/README/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tech/DataStruct/LeetCode/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/zdoc/assets/sass/pages/_home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/themes/zdoc/assets/sass/pages/_home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/zdoc/layouts/_default/_markup/render-image.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/zdoc/layouts/_default/_markup/render-image.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/zdoc/layouts/partials/head/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/zdoc/layouts/partials/head/meta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/zdoc/layouts/partials/main/landing/home-landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/zdoc/layouts/partials/main/landing/home-landing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Grafana/install_grafana/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph/telegraph/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/interview/daily/TaskList/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16.4及其快速上手/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tools/software/Alfred/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -338,7 +189,7 @@
       <workItem from="1631420235094" duration="2014000" />
       <workItem from="1631428864049" duration="212000" />
       <workItem from="1632030203439" duration="96000" />
-      <workItem from="1632234794596" duration="2133000" />
+      <workItem from="1632234794596" duration="2989000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
@@ -375,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628353775124</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'main' of https://github.com/hugo-toha/toha into main&#10;&#10;# Conflicts:&#10;#&#9;layouts/partials/navigators/navbar-2.html&#10;#&#9;layouts/partials/sections/home.html">
+      <created>1632413833333</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1632413833333</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
