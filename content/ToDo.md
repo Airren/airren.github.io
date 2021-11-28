@@ -121,7 +121,7 @@ https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
 
 没有时间阅读，很难深度思考
 
-
+块存储
 
 
 

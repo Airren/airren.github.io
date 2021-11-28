@@ -1,6 +1,4 @@
----
-title: 极客时间GO学习笔记
----
+
 
 
 
@@ -966,3 +964,377 @@ Context
 sync.Once() 原理
 
 仅需任意任务完成
+
+
+
+
+
+
+
+所有任务完成
+
+
+
+对象池（数据库连接，网络连接）
+
+使用buffered channel实现对象池
+
+归还对象-> chan-> 获取对象
+
+
+
+sync pool 对象缓存
+
+sync.Pool 对象缓存？？ sync cache
+
+![img](https://gyazo.com/f8aeaf38cd3069044685d33868e6a12d.png)
+https://gyazo.com/f8aeaf38cd3069044685d33868e6a12d
+
+
+
+![img](https://gyazo.com/c32c6b3b02cbafab85d59d26375f0e71.png)
+https://gyazo.com/c32c6b3b02cbafab85d59d26375f0e71
+
+
+
+![img](https://gyazo.com/af2fbba4e5b940ad64a41a570639ca98.png)
+https://gyazo.com/af2fbba4e5b940ad64a41a570639ca98
+
+
+
+sync.Pool 对象的生命周期
+
+- GC会清除sync.Pool 缓存的对象
+- 对象缓存的有效期为下次GC之前
+
+只要没有put操作在私有对象池里面是没有的
+
+
+
+sync.Pool 总结
+
+- 锁带来的开销大，还是创建对象带来的开销大？
+- ![img](https://gyazo.com/efb267b39289b30347c7478581d26890.png)
+  https://gyazo.com/efb267b39289b30347c7478581d26890
+
+
+
+
+
+
+
+康威定律 DDD
+
+请求进来，向下扇出，并且call很多下游API
+
+
+
+
+
+单元测试
+
+```go
+func Square(n int)int{
+    return n*n
+}
+
+func TestSquate(t *testing.T){
+    inputs:=[...]int{1,2,3}
+    expected:=[...]int{1,4,9}
+    for i:=0;i<len(inputs);i++{
+        ret := Square(inputs[i])
+        if ret != expected[i]{
+            t.Error("input is %d, the expected is %d, the actual %d",
+                   input[i],expected[i],ret)
+        }
+    }
+}
+```
+
+
+
+内置单元测试框架：
+
+- Fail，Error :该测试失败，该测试继续，其他测试继续执行
+- FailNow, Fatal: 该测试失败，该测试终止，其他测试继续执行
+
+
+
+代码覆盖率 
+
+go test -v -cover
+
+断言 github.com/stretchr/testify
+
+Benchmark
+
+![img](https://gyazo.com/aca94861bc4d40551e52e55d093947fa.png)
+https://gyazo.com/aca94861bc4d40551e52e55d093947fa
+
+![img](https://gyazo.com/b77c73ac12c5926f0a98c49eddd70e7f.png)
+https://gyazo.com/b77c73ac12c5926f0a98c49eddd70e7f
+
+```go
+go test -bench=.
+
+```
+
+![img](https://gyazo.com/f5f279536e4e069ed150839d395ee628.png)
+https://gyazo.com/f5f279536e4e069ed150839d395ee628
+
+
+
+BDD
+
+Behavior Driven Development
+
+![img](https://gyazo.com/5d5ffb45da7404bb33ba185700767109.png)
+https://gyazo.com/5d5ffb45da7404bb33ba185700767109
+
+![img](https://gyazo.com/df785c94e5e02756c3dbe12c7fe71707.png)
+https://gyazo.com/df785c94e5e02756c3dbe12c7fe71707
+
+![img](https://gyazo.com/9a616c400ae7216c310fd4b19a11fae4.png)
+https://gyazo.com/9a616c400ae7216c310fd4b19a11fae4
+
+![img](https://gyazo.com/be028ad50b5833a27bb799a5683b7bd1.png)
+https://gyazo.com/be028ad50b5833a27bb799a5683b7bd1
+
+
+
+
+
+反射编程
+
+reflect.TypeOf vs reflect.ValueOf
+
+- reflect.TypeOf 返回值类型 reflect.Type
+
+- reflect.ValueOf 返回值 reflect.Value
+
+- 可以从reflect.Value 获得类型
+
+- 可以通过kind判断类型
+
+  ![img](https://gyazo.com/b93fce6a84469927612985a4cfac0e10.png)
+  https://gyazo.com/b93fce6a84469927612985a4cfac0e10
+
+![img](https://gyazo.com/c427b98e181d3df67aab98d0f33f08c9.png)
+https://gyazo.com/c427b98e181d3df67aab98d0f33f08c9
+
+```go
+
+type Employee struct{
+	EmployeeId string
+	Name string `format:"normal"`
+	Age int
+}
+func(e *Employee)UpdateAge(newVal int){
+	e.Age = newVal
+}
+
+type Customer struct{
+	CookieId string
+	Name string
+	Age int
+}
+
+func TestInvokeByName(t *testing.T){
+	e :=&Employee{"1","Mike",30}
+	// 直接获取成员
+	t.Logf("Name: value(%[1]v),Type(%[1]T)",reflect.ValueOf(*e).FieldByName("Name"))
+	// 成员可能不存在
+	if nameField,ok := reflect.TypeOf(*e).FieldByName("Name");!ok{
+		t.Error("Failed to get 'Name' field.")
+	}else{
+		t.Log("Tag: format",nameField.Tag.Get("format"))
+	}
+	reflect.ValueOf(e).MethodByName("UpdateAge").Call([]reflect.Value{reflect.ValueOf(1)})
+	t.Log("Updated Age:"e)
+}
+```
+
+![img](https://gyazo.com/b266dc5d61461672dfe210005190ae8b.png)
+https://gyazo.com/b266dc5d61461672dfe210005190ae8b
+
+
+
+万能程序
+
+DeepEqual
+
+比较切片和Map
+
+```go
+func TestDeepEqual(t *testing.T){
+    a:= map[int]string{1:"one",2:"two",3:"three"}
+    b:= map[int]string{1:"one",2:"two",3:"three"}
+    t.Log(reflect.DeepEqual(a,b))
+    
+    s1 := []int{1,2,3}
+     s2 := []int{1,2,3}
+     s2 := []int{3,2,1}
+       t.Log(reflect.DeepEqual(s1,s2))
+       t.Log(reflect.DeepEqual(s1,s3))
+    
+    c1 := Custumer{"1","Mike",40}
+     c2 := Custumer{"1","Mike",40}
+    t.Log(reflect.DeepEqual(c1,c2))
+    
+    
+}
+```
+
+![img](https://gyazo.com/a10a1bcb995573dd695ab27d362ceca1.png)
+https://gyazo.com/a10a1bcb995573dd695ab27d362ceca1
+
+![img](https://gyazo.com/fc411a9bea3bba9c78f13bb9f47f57a8.png)
+https://gyazo.com/fc411a9bea3bba9c78f13bb9f47f57a8
+
+![img](https://gyazo.com/ebd871ec44f80daf8b4d50d59fba0a9e.png)
+https://gyazo.com/ebd871ec44f80daf8b4d50d59fba0a9e
+
+![img](https://gyazo.com/5a7666fe357f7a9576db005cd53eb745.png)
+https://gyazo.com/5a7666fe357f7a9576db005cd53eb745
+
+![img](https://gyazo.com/a5b94370bac23e75094e495405c111f1.png)
+https://gyazo.com/a5b94370bac23e75094e495405c111f1
+
+关于反射你应该知道的
+
+- 提高了程序的灵活性，降低了程序的可读性，降低了程序的性能
+
+
+
+不安全编程
+
+![img](https://gyazo.com/917b71d73089020c708b31836cce58b2.png)
+https://gyazo.com/917b71d73089020c708b31836cce58b2
+
+![img](https://gyazo.com/f500624a5a03fa01e39bf2cf6f9f3e28.png)
+https://gyazo.com/f500624a5a03fa01e39bf2cf6f9f3e28
+
+![img](https://gyazo.com/e63eb8f56624a55d773ca820c119b65d.png)
+https://gyazo.com/e63eb8f56624a55d773ca820c119b65d
+
+![img](https://gyazo.com/2e992064b118159d0a58a656d017d380.png)
+https://gyazo.com/2e992064b118159d0a58a656d017d380
+
+![img](https://gyazo.com/9c90262305e5b81aa0005ff9bf16ca15.png)
+https://gyazo.com/9c90262305e5b81aa0005ff9bf16ca15
+
+![img](https://gyazo.com/a3ca87532dab82e02ec360a144ad18b6.png)
+https://gyazo.com/a3ca87532dab82e02ec360a144ad18b6
+
+
+
+架构模式
+
+![img](https://gyazo.com/3d2dd605b897f106549c2939da35182e.png)
+https://gyazo.com/3d2dd605b897f106549c2939da35182e
+
+Pipe-Filter 架构
+
+![img](https://gyazo.com/ea75711a765ce8554e2854afb974658e.png)
+https://gyazo.com/ea75711a765ce8554e2854afb974658e
+
+- 非常适合数据处理以及数据分析系统
+
+- Filter封装数据处理的功能
+
+- 松耦合： Filter只跟数据(格式)耦合
+
+- Pipe用于连接Filter传递数据，或者在异步处理过程中缓冲数据流，
+
+  进程内同步调用时，pipe演变为数据在方法调用间传递
+
+![img](https://gyazo.com/dfe390ab438b9758de391accd05fb082.png)
+https://gyazo.com/dfe390ab438b9758de391accd05fb082
+
+![img](https://gyazo.com/eb5079cf5f82c333c83af1b90b69078a.png)
+https://gyazo.com/eb5079cf5f82c333c83af1b90b69078a
+
+
+
+![img](https://gyazo.com/674b755eeb2b3bd401d4e1afb79abb3e.png)
+https://gyazo.com/674b755eeb2b3bd401d4e1afb79abb3e
+
+
+
+
+
+
+
+内置Json解析
+
+![img](https://gyazo.com/62caf1d3ac52c3641583b05c91e651b3.png)
+https://gyazo.com/62caf1d3ac52c3641583b05c91e651b3
+
+
+
+easyJson 
+
+尽量少的使用反射
+
+![img](https://gyazo.com/9d35fb4b70f7b028d9650d5481b0d297.png)
+https://gyazo.com/9d35fb4b70f7b028d9650d5481b0d297
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Go 程序设计语言
+
+面向模式的软件架构
+
+计算机程序的构造和解释
