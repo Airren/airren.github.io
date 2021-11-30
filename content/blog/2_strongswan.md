@@ -1,3 +1,7 @@
+---
+title: strongswan
+---
+
 
 
 When reading/adjusting any StrongSwan configurations, remember these important words:
@@ -56,7 +60,7 @@ pki --issue --in sunKey.pem --type priv \
 
 
 
-### Strongswan 配置
+### Host-to-Host 配置
 
 **Configuration on host *moon*:**
 
@@ -120,7 +124,7 @@ pki --issue --in sunKey.pem --type priv \
 
 
 
-上述配置是 是用key做认证，下面举个使用pre-share key的例子
+上述配置是 是用key做认证，下面举个使用pre-shared key的例子
 
 ```sh
   # configuration on moon
@@ -182,5 +186,86 @@ pki --issue --in sunKey.pem --type priv \
 
 
 
+配置完成后，可以使用`swanclt --load-all` 使配置生效。
 
 
+
+如果给initiator 分配一个[Virtual IP](https://wiki.strongswan.org/projects/strongswan/wiki/VirtualIp).
+
+Initiator 获得虚拟IP后会再 IP table 220 中增加对应IP的路由方式。
+
+
+
+## Build Strongswan  with pcks11
+
+```sh
+# install essential dependency
+sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev
+#  config
+ ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
+```
+
+
+
+
+
+### Build virt_cacard
+
+[virt_card](https://github. com/Jakuje/virt_cacard) using libcacard, vitualsmartcard's vpcd and [softhsm2](https://fossies.org/linux/softhsm/README.md) to provide PCSC accessible virtual smart card.
+
+```sh
+# install essential dependency, libcacard & softhsm2
+sudo apt install libcacard-dev libglib2.0-dev softhsm2 gnutls-bin libnss3-tools -y
+```
+
+Build & Install [vsmartcard](https://frankmorgner.github.io/vsmartcard/virtualsmartcard/README.html)
+
+```sh
+sudo apt-get install -y help2man libpcsclite-dev
+git clone https://github.com/frankmorgner/vsmartcard.git
+cd vsmartcard/virtualsmartcard
+autoreconf --verbose --install
+./configure --sysconfdir=/etc
+make
+make install
+```
+
+Build & Install virt_card
+
+```sh
+git clone https://github.com/Jakuje/virt_cacard.git
+./autogen.sh
+./configure
+make
+```
+
+configure softhsm with default certificates and start virt_cacard
+
+```sh
+./setup-softhsm2.sh
+./virt_cacard
+```
+
+After that you should be able to access virtual smart card through OpenSC:
+
+```sh
+pkcs11-tool -L
+```
+
+
+
+
+
+
+
+
+
+
+
+> ToDo
+>
+> pkcs11
+>
+> pkcs 7
+>
+> 
