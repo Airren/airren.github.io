@@ -56,6 +56,12 @@ pki --issue --in sunKey.pem --type priv \
 --cacert strongswanCert.pem --cakey strongswanKey.pem \
 --dn "C=CH, O=strongSwan,CN=sun.strongswan.org" --san sun.strongswan.org \
 --outform pem> sunKey.pem
+
+
+pki --issue --in node-1Key.pem --type priv \
+--cacert caCert.pem --cakey caKey.pem \
+--dn "C=CH, O=strongSwan,CN=node-1" \
+--outform pem> node-1Cert.pem
 ```
 
 
@@ -256,16 +262,48 @@ pkcs11-tool -L
 
 
 
+```sh
+pkcs15-tool --list-pins --list-keys --list-certificates
+```
+
+**0**
 
 
 
 
 
 
-> ToDo
->
-> pkcs11
->
-> pkcs 7
->
-> 
+
+
+
+
+
+
+
+```sh
+# Generate Key pair
+openssl req -out pkcs11-new.csr -newkey rsa:3702 -nodes -keyout pcks11-new.key -subj "/CN=pkcs11-new"
+# Generate Certificate
+openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in pkcs11-new.csr -out pkcs11-new.crt
+# Transform CA type to DER
+ openssl rsa -in ./pkcs11-new.key -outform DER -out clientkey.der
+ openssl x509 -in ./pkcs11-new.crt -outform DER -out clientcrt.der
+ 
+ 
+ # Creating a token
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "ctk" --slot 0x2 --so-pin 1234 --init-pin --pin 1234
+ 
+ 
+  pkcs11-tool --module /usr/local/lib/libp11sgx.so --list-slot
+```
+
+
+
+
+
+
+
+
+
+
+

@@ -178,3 +178,7 @@ PKCS#11主要是应用于智能卡和HSM。大多数商业证书颁发机构软�
 
 
 
+**mount /dev/sda1 /mnt/boot/efi**
+
+
+
