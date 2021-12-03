@@ -207,8 +207,10 @@ Initiator 获得虚拟IP后会再 IP table 220 中增加对应IP的路由方式�
 ```sh
 # install essential dependency
 sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev
+./autogen.sh
 #  config
- ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
+# ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
+./configure --prefix=/usr --sysconfdir=/etc --enable-pkcs11
 ```
 
 
@@ -233,7 +235,7 @@ cd vsmartcard/virtualsmartcard
 autoreconf --verbose --install
 ./configure --sysconfdir=/etc
 make
-make install
+smake install
 ```
 
 Build & Install virt_card
@@ -282,7 +284,7 @@ pkcs15-tool --list-pins --list-keys --list-certificates
 
 ```sh
 # Generate Key pair
-openssl req -out pkcs11-new.csr -newkey rsa:3702 -nodes -keyout pcks11-new.key -subj "/CN=pkcs11-new"
+openssl req -out pkcs11-new.csr -newkey rsa:2048 -nodes -keyout pkcs11-new.key -subj "/CN=pkcs11-new" -passout pass:123456
 # Generate Certificate
 openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in pkcs11-new.csr -out pkcs11-new.crt
 # Transform CA type to DER
@@ -302,6 +304,105 @@ openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in pk
 
 
 
+
+### Common Tools of PKCS#11
+
+```sh
+# list slot
+pkcs11-tool --module /usr/local/lib/libp11sgx.so -L
+# list object of slot
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x7316c269 -O
+
+```
+
+
+
+### Creating a token
+
+```sh
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "ctk" --slot 0 --so-pin 1234 --init-pin --pin 1234
+```
+
+### Creating an RSA keypair
+
+```sh
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign
+```
+
+### Listing the objects
+
+```sh
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --list-objects -login --pin 1234 --login-type user
+```
+
+
+
+```shell
+# login
+pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 -
+ #listobject
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 -O
+# delete private key
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --delete-object --type privkey -d 0001
+ # delete public key
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --delete-object --type pubkey -d 0001
+ 
+ # add private key
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --write-object clientkey.der --type privkey --id 1001
+ # add cert
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --write-object clientcrt.der --type cert --id 1001
+ 
+ # create key paair
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign  --slot 0x7316c269
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> Istio 使用同一个证书
 
 
 
