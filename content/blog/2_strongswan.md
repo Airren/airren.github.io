@@ -206,11 +206,14 @@ Initiator 获得虚拟IP后会再 IP table 220 中增加对应IP的路由方式�
 
 ```sh
 # install essential dependency
-sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev
+sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev -y
 ./autogen.sh
 #  config
 # ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
 ./configure --prefix=/usr --sysconfdir=/etc --enable-pkcs11
+make
+sudo make install
+systemctl start strongswan-starter.service
 ```
 
 
@@ -235,7 +238,7 @@ cd vsmartcard/virtualsmartcard
 autoreconf --verbose --install
 ./configure --sysconfdir=/etc
 make
-smake install
+sudo make install
 ```
 
 Build & Install virt_card
@@ -339,21 +342,114 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so --list-objects -login --pin 123
 
 ```shell
 # login
-pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 -
+pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 -
  #listobject
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 -O
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 -O
 # delete private key
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --delete-object --type privkey -d 0001
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 --delete-object --type privkey -d 0001
  # delete public key
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --delete-object --type pubkey -d 0001
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 --delete-object --type pubkey -d 0001
  
  # add private key
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --write-object clientkey.der --type privkey --id 1001
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 --write-object clientkey.der --type privkey --id 1001
  # add cert
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x7316c269 --write-object clientcrt.der --type cert --id 1001
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0xc8cbdbc --write-object clientcrt.der --type cert --id 0001
  
  # create key paair
- pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign  --slot 0x7316c269
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign  --slot 0x18c37829
+```
+
+
+
+### The Different Argument for Strongsan to CTK
+
+
+
+
+
+
+
+
+
+## Build SGX
+
+### Build  & Install SDK
+
+```sh
+# Ubuntu 20.04
+sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python-is-python3 libssl-dev git cmake perl 
+sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip -y
+
+sudo apt-get install build-essential python -y
+
+   $ git clone https://github.com/intel/linux-sgx.git
+   $ cd linux-sgx && make preparation
+   $ sudo cp external/toolset/{current_distr}/{as,ld,ld.gold,objdump} /usr/local/bin
+  $ which as ld ld.gold objdump
+
+make sdk
+make sdk_install_pkg
+# linux/installer/bin/sgx_linux_x64_sdk_${version}.bin  location /opt/intel
+
+export SDK_INSTALL_PATH_PREFIX=/opt/intel
+./sgx_linux_x64_sdk_${version}.bin --prefix $SDK_INSTALL_PATH_PREFIX
+ source ${sgx-sdk-install-path}/environment
+ # source /opt/intel/sgxsdk/environment
+```
+
+
+
+verify SGX SDK
+
+```sh
+$ cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
+  $ make SGX_MODE=SIM
+  $ cd bin
+  $ ./app
+```
+
+
+
+### Build & Install PSW
+
+```sh
+make psw
+make deb_psw_pkg
+make deb_local_repo
+# linux/installer/deb/sgx_debian_local_repo
+# deb [trusted=yes arch=amd64] file: /home/airren/SGX/linux-sgx/linux/installer/deb/local_repo_tool/../sgx_debian_local_repo focal main
+sudo apt update
+sudo apt-get install libsgx-launch libsgx-urts -y
+```
+
+ 
+
+### Build & Install  Intel-sgx-ssl
+
+```sh
+make all test
+sudo make install
+```
+
+
+
+### Build & Install CTK
+
+```sh
+sudo apt-get install dkms  autoconf libcppunit-dev autotools-dev libc6-dev libtool build-essential -y
+#libprotobuf10
+
+make
+sudo make install
+```
+
+
+
+### Create HSM & Key Pair
+
+```sh
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "sgx-pkcs11" --slot 1 --so-pin 1234 --init-pin --pin 1234
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x18c37829 --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign
 ```
 
 
@@ -368,27 +464,76 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
 
 
 
+```sh
+#需要下载的 组件
+
+crypto-api-toolkit  intel-sgx-ssl  linux-sgx  linux-sgx-driver  OpenSC  pkcs11  SDEWAN-SetUp  SGX.code-workspace  sgx-pkcs11  sgx-software-enable  strongswan  virt_cacard  vsmartcard
+```
 
 
 
+```sh
+#swctlconf
+connections {
+         pkcs11-demo{   # connection name
+            # remote_addrs = 10.95.62.25
+            pools = client_pool
+
+            local {
+                auth = pubkey
+                cert-1{
+handle=0001
+slot=0
+module=opensc_1
+}
+                #id = "pkcs11.strongswan.org"
+            }
+            remote {
+                auth = pubkey
+                id = "sun.strongswan.org"
+            }
+            children {
+                pkcs11-demo {
+                    start_action = trap
+                }
+            }
+        }}
+
+   pools{
+        client_pool{
+                addrs=192.168.0.1
+        }
+}
+
+secrets{
+ token_1{
+handle=0001
+slot=0
+module=opensc_1
+pin=12345678
+}
+ token_2{
+handle=1001
+slot=2
+module=sgx
+pin=1234
+}
+
+}
 
 
 
+#strongswan.d/charon/pkcs11.conf
+modules {
+         sgx{
+            path = /usr/local/lib/libp11sgx.so
+        }
+        # opensc_1{
+        #    path = /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+        #}
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
