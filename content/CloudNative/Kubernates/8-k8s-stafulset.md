@@ -1,5 +1,5 @@
 ---
-title： K8s StafulSet
+title: K8s StafulSet
 
 ---
 

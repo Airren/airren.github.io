@@ -1,5 +1,5 @@
 ---
-title： K8s ConfigMap
+title: K8s ConfigMap
 ---
 
 

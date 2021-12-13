@@ -1,5 +1,5 @@
 ---
-title： K8s Deployments
+title: K8s Deployments
 
 ---
 

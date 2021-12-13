@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作_Airrens-Mac_Sep-24-002655-2021_CaseConflict/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component/TimeSeries/Grafana_Airrens-Mac_Sep-24-002649-2021_CaseConflict/install_grafana/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph_Airrens-Mac_Sep-24-002649-2021_CaseConflict/telegraph/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/daily/TaskList_Airrens-Mac_Sep-24-002649-2021_CaseConflict/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16_Airrens-Mac_Sep-24-002649-2021_CaseConflict.4及其快速上手/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/tools/software/Alfred_Airrens-Mac_Sep-24-002649-2021_CaseConflict/index.html" afterDir="false" />
+    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hugo-toha/toha into main&#10;&#10;# Conflicts:&#10;#&#9;layouts/partials/navigators/navbar-2.html&#10;#&#9;layouts/partials/sections/home.html">
+      <change afterPath="$PROJECT_DIR$/.hugo_build.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/go_note/1_SettingUpGoEnv.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/DataBase/Redis/Redis基本操作/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/Grafana/install_grafana/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/component/TimeSeries/TeleGraph/telegraph/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/daily/TaskList/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interview/imooc/Imooc_react16.4及其快速上手/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tools/software/Alfred/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/CloudNative/Kubernates/5-k8s-deployment.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/5-k8s-deployment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/CloudNative/Kubernates/8-k8s-stafulset.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/8-k8s-stafulset.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/CloudNative/Kubernates/9-k8s-configmap.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/CloudNative/Kubernates/9-k8s-configmap.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public" beforeDir="false" afterPath="$PROJECT_DIR$/public" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +71,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -190,6 +183,19 @@
       <workItem from="1631428864049" duration="212000" />
       <workItem from="1632030203439" duration="96000" />
       <workItem from="1632234794596" duration="2989000" />
+      <workItem from="1633878525593" duration="127000" />
+      <workItem from="1633878671939" duration="291000" />
+      <workItem from="1634218960299" duration="321000" />
+      <workItem from="1634228135722" duration="157000" />
+      <workItem from="1638114317120" duration="116000" />
+      <workItem from="1638114447650" duration="1263000" />
+      <workItem from="1638452912266" duration="920000" />
+      <workItem from="1638541641784" duration="746000" />
+      <workItem from="1638625148336" duration="600000" />
+      <workItem from="1638678844503" duration="121000" />
+      <workItem from="1638710473093" duration="260000" />
+      <workItem from="1638711274602" duration="525000" />
+      <workItem from="1639403664652" duration="424000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
