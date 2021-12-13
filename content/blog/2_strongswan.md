@@ -71,9 +71,9 @@ pki --issue --in node-1Key.pem --type priv \
 **Configuration on host *moon*:**
 
 ```sh
-/etc/swanctl/x509ca/strongswanCert.pem
-/etc/swanctl/x509/moonCert.pem
-/etc/swanctl/private/moonKey.pem
+sudo cp strongswanCert.pem /etc/swanctl/x509ca/strongswanCert.pem
+sudo cp moonCert.pem /etc/swanctl/x509/moonCert.pem
+sudo cp moonKey.pem /etc/swanctl/private/moonKey.pem
 
 /etc/swanctl/swanctl.conf:
 
@@ -210,10 +210,11 @@ sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev -y
 ./autogen.sh
 #  config
 # ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
-./configure --prefix=/usr --sysconfdir=/etc --enable-pkcs11
+./configure --prefix=/usr --sysconfdir=/etc --enable-pkcs11 CFLAGS="-DDEBUG_LEVEL=1"
 make
 sudo make install
-systemctl start strongswan-starter.service
+sudo systemctl daemon-reload
+sudo systemctl restart strongswan-starter.service
 ```
 
 
@@ -254,7 +255,7 @@ configure softhsm with default certificates and start virt_cacard
 
 ```sh
 ./setup-softhsm2.sh
-./virt_cacard
+export SOFTHSM2_CONF=/home/airren/SGX/virt_cacard/softhsm2.conf &&./virt_cacard
 ```
 
 After that you should be able to access virtual smart card through OpenSC:
@@ -271,35 +272,27 @@ pkcs11-tool -L
 pkcs15-tool --list-pins --list-keys --list-certificates
 ```
 
-**0**
-
-
-
-
-
-
-
-
-
 
 
 
 
 ```sh
 # Generate Key pair
-openssl req -out pkcs11-new.csr -newkey rsa:2048 -nodes -keyout pkcs11-new.key -subj "/CN=pkcs11-new" -passout pass:123456
+openssl req -out pkcs11-new.csr -newkey rsa:2048 -nodes -keyout pkcs11-new.key -subj "/CN=pkcs11-new" 
 # Generate Certificate
 openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in pkcs11-new.csr -out pkcs11-new.crt
 # Transform CA type to DER
- openssl rsa -in ./pkcs11-new.key -outform DER -out clientkey.der
- openssl x509 -in ./pkcs11-new.crt -outform DER -out clientcrt.der
+ openssl rsa -in ./pkcs11-new.key -outform DER -out pkcs11-new.key.der
+ openssl x509 -in ./pkcs11-new.crt -outform DER -out pkcs11-new.crt.der
  
  
  # Creating a token
- pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "ctk" --slot 0x2 --so-pin 1234 --init-pin --pin 1234
+#  pkcs11-tool  --init-token --label "pkcs11-new"  --slot 0--so-pin 12345678 --init-pin --pin 12345678
  
- 
-  pkcs11-tool --module /usr/local/lib/libp11sgx.so --list-slot
+  # add private key
+ pkcs11-tool  -login --pin 12345678 --login-type user --slot 0 --write-object pkcs11-new.key.der --type privkey --id 0001
+ # add cert
+ pkcs11-tool  -login --pin 12345678 --login-type user --slot 0 --write-object pkcs11-new.crt.der --type cert --id 0001
 ```
 
 
@@ -448,8 +441,50 @@ sudo make install
 ### Create HSM & Key Pair
 
 ```sh
-pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "sgx-pkcs11" --slot 1 --so-pin 1234 --init-pin --pin 1234
-pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x18c37829 --login --pin 1234 --id 0001 --token "ctk" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "sgx-pkcs11" --slot 0 --so-pin 12345678 --init-pin --pin 12345678
+pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id 0001 --token "sgx-pkcs11" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign
+
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -L 
+
+
+# p11req -i my-ec-key -d '/CN=my.site.org/O=My organization/C=BE' -e 'DNS:another-url-for-my.site.org'
+
+# Create csr
+ p11req -l $pkcs_sgx -i cert-key -d '/CN=sgx-node'  -s 0x1cb6645d -p 12345678 > new.csr
+ 
+openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in new.csr -out client.crt
+ openssl x509 -in client.crt -outform DER -out clientcrt.der
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 12345678 --login-type user --slot 0x1cb6645d --write-object clientcrt.der --type cert --id 0001
+ 
+ # check
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x1cb6645d --login --pin 12345678  -O
+```
+
+
+
+
+
+```sh
+connections {
+        pkcs11-sgx {
+            remote_addrs = 10.239.154.53
+            vips=0.0.0.0
+            
+            local {
+                auth=pubkey
+                certs = moonCert.pem
+            }
+            remote {
+                auth = pubkey
+                id = "CN=sgx-node"
+            }
+            children {
+                net-net {
+                    start_action = trap
+                }
+            }
+        }
+}
 ```
 
 
