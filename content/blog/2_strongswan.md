@@ -6,11 +6,9 @@ title: strongswan
 
 When reading/adjusting any StrongSwan configurations, remember these important words:
 
-**`left is local to the machine it's stated on; right is remote in the same manner`**
+`left is local to the machine it's stated on; right is remote in the same manner`
 
 So, on the server side, left is local to the server and on the client side, left is local to that client.
-
-
 
 
 
@@ -202,7 +200,9 @@ Initiator 获得虚拟IP后会再 IP table 220 中增加对应IP的路由方式�
 
 
 
-## Build Strongswan  with pcks11
+## SmartCard demo with OpenSC
+
+### Build Strongswan  with pcks11
 
 ```sh
 # install essential dependency
@@ -216,8 +216,6 @@ sudo make install
 sudo systemctl daemon-reload
 sudo systemctl restart strongswan-starter.service
 ```
-
-
 
 
 
@@ -266,15 +264,9 @@ pkcs11-tool -L
 
 
 
-
-
 ```sh
 pkcs15-tool --list-pins --list-keys --list-certificates
 ```
-
-
-
-
 
 ```sh
 # Generate Key pair
@@ -294,10 +286,6 @@ openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in pk
  # add cert
  pkcs11-tool  -login --pin 12345678 --login-type user --slot 0 --write-object pkcs11-new.crt.der --type cert --id 0001
 ```
-
-
-
-
 
 
 
@@ -344,7 +332,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
  pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 --delete-object --type pubkey -d 0001
  
  # add private key
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0x18c37829 --write-object clientkey.der --type privkey --id 1001
+ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 12345678 --login-type user --slot 0x18c37829 --write-object clientkey.der --type privkey --id 0001
  # add cert
  pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type user --slot 0xc8cbdbc --write-object clientcrt.der --type cert --id 0001
  
@@ -354,7 +342,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
 
 
 
-### The Different Argument for Strongsan to CTK
+### 
 
 
 
@@ -364,7 +352,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
 
 
 
-## Build SGX
+## Smart Demo with Intel SGX CTK
 
 ### Build  & Install SDK
 
@@ -375,10 +363,10 @@ sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotob
 
 sudo apt-get install build-essential python -y
 
-   $ git clone https://github.com/intel/linux-sgx.git
-   $ cd linux-sgx && make preparation
-   $ sudo cp external/toolset/{current_distr}/{as,ld,ld.gold,objdump} /usr/local/bin
-  $ which as ld ld.gold objdump
+git clone https://github.com/intel/linux-sgx.git
+cd linux-sgx && make preparation
+sudo cp external/toolset/{current_distr}/{as,ld,ld.gold,objdump} /usr/local/bin
+which as ld ld.gold objdump
 
 make sdk
 make sdk_install_pkg
@@ -390,9 +378,7 @@ export SDK_INSTALL_PATH_PREFIX=/opt/intel
  # source /opt/intel/sgxsdk/environment
 ```
 
-
-
-verify SGX SDK
+**verify SGX SDK**
 
 ```sh
 $ cd ${sgx-sdk-install-path}/SampleCode/LocalAttestation
@@ -438,64 +424,46 @@ sudo make install
 
 
 
-### Create HSM & Key Pair
+### Build & Install pkcs11 Tool
 
 ```sh
- pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "sgx-pkcs11" --slot 0 --so-pin 12345678 --init-pin --pin 12345678
-pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id 0001 --token "sgx-pkcs11" --keypairgen --key-type rsa:3072 --label "cert-key" --usage-sign
+git clone https://github.com/Mastercard/pkcs11-tools.git
+./configure
+sudo make install
+```
 
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -L 
+use `p11req`  generate csr
+
+```sh
+p11req -i my-ec-key -d '/CN=my.site.org/O=My organization/C=BE' -e 'DNS:another-url-for-my.site.org' -v
+```
 
 
-# p11req -i my-ec-key -d '/CN=my.site.org/O=My organization/C=BE' -e 'DNS:another-url-for-my.site.org'
 
-# Create csr
- p11req -l $pkcs_sgx -i cert-key -d '/CN=sgx-node'  -s 0x1cb6645d -p 12345678 > new.csr
+### Initialize HSM & Generate Cert
+
+```shell
+# Init Token
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "sgx-pkcs11" --slot 0 --so-pin 12345678 --init-pin --pin 12345678
+#Create Key Pair
+pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id 0001 --token "sgx-pkcs11" --keypairgen --key-type rsa:2048 --label "cert-key" --usage-sign
+
+# Check slot info
+pkcs11-tool --module /usr/local/lib/libp11sgx.so -L 
+
+# Create csr, cert-key is the private lable
+p11req -l --module /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-node'  -s 0x5e6dceb4 -p 12345678 > new.csr
  
+# Issuer the cert from root CA 
 openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in new.csr -out client.crt
- openssl x509 -in client.crt -outform DER -out clientcrt.der
- pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 12345678 --login-type user --slot 0x1cb6645d --write-object clientcrt.der --type cert --id 0001
+# Transfer to DER form
+openssl x509 -in client.crt -outform DER -out clientcrt.der
+# Add cert to HSM
+pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 12345678 --login-type user --slot 0x5e6dceb4 --write-object clientcrt.der --type cert --id 0001
  
- # check
- pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x1cb6645d --login --pin 12345678  -O
+# Check private Key and Cert status
+pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 12345678  -O  --slot 0x5e6dceb4 
 ```
-
-
-
-
-
-```sh
-connections {
-        pkcs11-sgx {
-            remote_addrs = 10.239.154.53
-            vips=0.0.0.0
-            
-            local {
-                auth=pubkey
-                certs = moonCert.pem
-            }
-            remote {
-                auth = pubkey
-                id = "CN=sgx-node"
-            }
-            children {
-                net-net {
-                    start_action = trap
-                }
-            }
-        }
-}
-```
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -507,66 +475,62 @@ crypto-api-toolkit  intel-sgx-ssl  linux-sgx  linux-sgx-driver  OpenSC  pkcs11  
 
 
 
+### Configure PCKS#11 Plugin of Strongswan
+
 ```sh
-#swctlconf
-connections {
-         pkcs11-demo{   # connection name
-            # remote_addrs = 10.95.62.25
-            pools = client_pool
-
-            local {
-                auth = pubkey
-                cert-1{
-handle=0001
-slot=0
-module=opensc_1
-}
-                #id = "pkcs11.strongswan.org"
-            }
-            remote {
-                auth = pubkey
-                id = "sun.strongswan.org"
-            }
-            children {
-                pkcs11-demo {
-                    start_action = trap
-                }
-            }
-        }}
-
-   pools{
-        client_pool{
-                addrs=192.168.0.1
+#strongswan.d/charon/pkcs11.conf
+modules {
+         ctk{
+            path = /usr/local/lib/libp11sgx.so
         }
+ }
+```
+
+
+
+### Configure IPsec Tunnel 
+
+```sh
+# /etc/swanctl/swanctl.conf
+connections {
+    pkcs11-demo{   # connection name
+       # remote_addrs = 10.95.62.25
+       pools = client_pool
+
+       local {
+           auth = pubkey
+           cert1{
+               handle=0001
+               slot=0x91d9088
+               module=ctk
+           }
+       }
+       remote {
+           auth = pubkey
+           id = "C=CH, O=strongSwan, CN=moon.strongswan.org"
+       }
+       children {
+           pkcs11-demo {
+               start_action = trap
+           }
+       }
+    }
+}
+
+pools{
+    client_pool{
+        addrs=192.168.0.1
+    }
 }
 
 secrets{
- token_1{
-handle=0001
-slot=0
-module=opensc_1
-pin=12345678
+    token_2{
+        handle=0001
+        slot=0x91d9088
+        module=ctk
+        pin=12345678
+    }
 }
- token_2{
-handle=1001
-slot=2
-module=sgx
-pin=1234
-}
-
-}
-
-
-
-#strongswan.d/charon/pkcs11.conf
-modules {
-         sgx{
-            path = /usr/local/lib/libp11sgx.so
-        }
-        # opensc_1{
-        #    path = /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
-        #}
- }
 
 ```
 
@@ -581,8 +545,6 @@ modules {
 
 
 
-
-> Istio 使用同一个证书
 
 
 
