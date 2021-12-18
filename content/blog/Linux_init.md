@@ -75,3 +75,6 @@ EOF
 
 
 
+Install font
+
+`hack`

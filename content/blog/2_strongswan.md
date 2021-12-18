@@ -483,6 +483,9 @@ modules {
          ctk{
             path = /usr/local/lib/libp11sgx.so
         }
+         opensc{
+            path = /usr/local/lib/libp11sgx.so
+        }
  }
 ```
 
@@ -531,10 +534,19 @@ secrets{
         pin=12345678
     }
 }
-
 ```
 
 
+
+
+
+
+
+> Kubecon 会议 10 contrbute
+>
+> Proposal
+>
+> pending list
 
 
 

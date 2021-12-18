@@ -10,3 +10,7 @@ Kubernetes 1.16 正式GA了CRD。
 
 在Kubernetes中我们使用了Deployment/DamenSet/tatefulSet来管理应用workdload，使用Service/Ingress来管理应用的
 
+
+
+https://zhuanlan.zhihu.com/p/34445114
+
