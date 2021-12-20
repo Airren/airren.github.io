@@ -4,9 +4,13 @@ title: 怎么成为K8s的Contributor
 
 
 
-K8s contributor guide.
+Important Doc
 
-https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md
+1. [Contributor Cheat Sheet](https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md)
+
+
+
+
 
 
 

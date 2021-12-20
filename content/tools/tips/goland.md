@@ -10,7 +10,7 @@ title: 「JetBrains」 GoLand技巧
 
 ![](./goland/image-20210226143349557.png)
 
-## 通过SFTP通过本地与远端代码
+## 通过SFTP同步本地与远端代码
 
 Preference>Build,Execution,Deployment>SFTP
 

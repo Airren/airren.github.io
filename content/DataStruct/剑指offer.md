@@ -8,6 +8,8 @@ title: 「剑指offer」 Go语言版本
 >
 > 写代码之前首先想好有哪些测试用例，要提高代码的测试覆盖率。
 
+
+
 ## 3. 数组中重复的数字
 
 > 找出数组中重复的数字。
@@ -147,7 +149,7 @@ func replaceSpace(s string) string {
 		v := s[i]
 		if v == ' ' {
 			newStr.WriteString("%20")
-			continue
+			continue                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 		}
 		newStr.WriteByte(v)
 	}
@@ -195,7 +197,7 @@ func reversePrint(head *ListNode) []int {
 
 
 
-## 07. 重建二叉树
+## 7. 重建二叉树
 
 >输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
 >
@@ -225,6 +227,8 @@ func reversePrint(head *ListNode) []int {
 >限制：
 >
 >0 <= 节点个数 <= 5000
+
+
 
 
 
@@ -275,6 +279,130 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 
 
 
+
+## 9. 用两个栈实现队列
+
+
+
+>用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
+>
+> 
+>
+>示例 1：
+>
+>输入：
+>
+>```
+>["CQueue","appendTail","deleteHead","deleteHead"]
+>[[],[3],[],[]]
+>输出：[null,null,3,-1]
+>```
+>
+>示例 2：
+>
+>输入：
+>
+>```
+>["CQueue","deleteHead","appendTail","appendTail","deleteHead","deleteHead"]
+>[[],[],[5],[2],[],[]]
+>输出：[null,-1,null,null,5,2]
+>```
+>
+>提示：
+>
+>```
+>1 <= values <= 10000
+>最多会对 appendTail、deleteHead 进行 10000 次调用
+>```
+
+
+
+使用 List的Double List作为Stack
+
+```go
+type CQueue struct{
+    stack1, stack2 *list.List
+}
+
+func Constructor() CQueue{
+    return CQueue{
+        list.New(),
+        list.New(),
+    }
+}
+
+func (q *CQueue) AppendTail(value int){
+    q.stack1.PushBack(value)
+}
+
+func (q *CQueue) DeleteHead() int{
+    if q.stack2.Len() == 0{
+        for this.stack1.Len() > 0{
+            this.stack2.PushBack(this.stack1.Remove(this.stack1.Back()))
+        }
+    }
+}
+```
+
+
+
+自定义Stack
+
+```go
+type CQueue struct{
+    stack1, stack2 Stack
+}
+
+func Constructor() CQueue{
+    return CQueue{
+        Stack{},
+        Stack{},
+    }
+}
+
+func (q *CQueue) AppendTail(value int){
+    q.stack1.Push(value)
+}
+
+func (q *CQueue) DeleteHead() int{
+    if q.stack2.Len== 0{
+        for q.stack1.Len > 0 {
+            q.stack2.Push(q.stack1.Pop())
+        }
+    }
+    if q.stack2.Len != 0{
+        return q.stack2.Pop()
+    }
+    return -1
+}
+
+
+type Stack struct {
+    Values []int
+    Len int
+}
+
+func(s *Stack) Push(value int){
+    if len(s.Values) < (s.Len+1){
+        s.Values = append(s.Values,0)
+    }
+    s.Values[s.Len] =  value
+    s.Len++   
+}
+
+func(s *Stack) Pop()int{
+    e := s.Values[s.Len-1]
+    s.Len--
+    return e
+} 
+
+```
+
+
+
+## 
+
+## 53. 在排序数组中查找数字
 
 
 
