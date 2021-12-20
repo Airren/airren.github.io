@@ -53,7 +53,7 @@ pki --gen --outform pem > sunKey.pem
 pki --issue --in sunKey.pem --type priv \
 --cacert strongswanCert.pem --cakey strongswanKey.pem \
 --dn "C=CH, O=strongSwan,CN=sun.strongswan.org" --san sun.strongswan.org \
---outform pem> sunKey.pem
+--outform pem  > sunCert.pem
 
 
 pki --issue --in node-1Key.pem --type priv \
