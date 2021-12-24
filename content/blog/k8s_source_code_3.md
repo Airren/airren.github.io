@@ -41,7 +41,7 @@ ReplicaSet
 
 Last but not least, there is a third repository called API Machinery, which is used as `k8s.io/apimachinery` in Go.
 
-Nevertheless, you'll meet a lot of API Machinery packages in Kubernetes-native Go code. An important one is `k8s.io/apimachinery/pkg/api/meta/v1`. It contains many of the generic API types such as `ObjectMeta`, `TypeMeta`, `GetOptions`, and `ListOptions`.t
+Nevertheless, you'll meet a lot of API Machinery packages in Kubernetes-native Go code. An important one is `k8s.io/apimachinery/pkg/api/meta/v1`. It contains many of the generic API types such as `ObjectMeta`, `TypeMeta`, `GetOptions`, and `ListOptions`.
 
 
 
@@ -57,11 +57,79 @@ Events
 
 ```
 
-
-
 ### Create and Using a client
 
+when running a binary inside of a pod in a cluster, the `kubelet` will automatically mount a service account into the container at `/var/run/secrets/kuberntes.io/serviceaccount`. It replaces the `kubeconfig` file just mentioned and can easily be turned into a `rest.Config` via the  `rest.InClusterConfig()` method.
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"flag"
+	"fmt"
+	"os"
+	// "path/filepath"
+
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/kubernetes"
+	// "k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
+)
+
+func main() {
+	kubeconfig := flag.String("kubeconfig", "./config", "kubeconfig file")
+	flag.Parse()
+
+	//************ Running a Binary Inside of a Pod in Cluster *****************
+	// config, err := rest.InClusterConfig()
+	// if err != nil {
+	// 	// fallback to kubeconfig
+	// 	kubeconfig2 := filepath.Join("~", ".kube", "config")
+	// 	if envvar := os.Getenv("KUBECONFIG"); len(envvar) > 0 {
+	// 		kubeconfig2 = envvar
+	// 	}
+	// }
+
+	// Import clientcmd from client-go in order to parse the kubernetes config.
+	// The client configuration with server name, credentials.
+	// Retrun a rest.Config
+	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+	if err != nil {
+		fmt.Printf("The kuber config can not be loaded: %v\n", err)
+		os.Exit(1)
+	}
+
+	// You can enable protobuf for native kubernetes resource cliensts by modifying
+	config.AcceptContentTypes =
+		"application/vnd.kubernetes.protobuf,application/json"
+
+	config.ContentType = "application/vnd.kubernetes.protobuf"
+
+	// Clinetset contains multiple clients for all native kubernetes resources.
+	// Create actual kubernetes client set.
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		fmt.Printf("create clientset failed: %v", err)
+		os.Exit(1)
+	}
+
+	// The Get call send and HTTP GET request to
+	//  /api/v1/namespace/calico-apiserver/pods/calico-apiserver-xxx
+	pod, err := clientset.CoreV1().Pods("calico-apiserver").Get(context.TODO(),
+		"calico-apiserver-5b68b6b54-ngfdw", metav1.GetOptions{})
+
+	if err != nil {
+		os.Exit(1)
+	}
+
+	strByte, _ := json.Marshal(pod)
+	fmt.Println(string(strByte))
+
+}
+
+```
 
 
 
@@ -69,6 +137,403 @@ Events
 
 > group ?
 >
-> 
+
+
+
+### Versioning and Compatibility
+
+We have seen in the previous section that pods are in `v1` of `core group`. The core group actually exists in only one version today. There are other groups, though-- for example, the `apps group`s, which exists in `v1`, `v1beta2,` and `v1beta1`. 
+
+​						
+
+Clients are hardcode to a version, and the application developer has to select the right API group version in order to speak to the cluster at hand.
+
+
+
+ A second aspect of compatibility is the meta API features of the API server that client-go is speaking to.
+
+There are options structs for CURD verbs, like `CreateOptions`,`GetOptions`,`UpdateOptions`, and `DeleteOptions`. Another important one is `ObjectMeta`, which part of every kind. All of these are frequently extended with new features; we usually call them `API machinery features`.
+
+
+
+```go
+// k8s.io/apimachinery/pkg/apis/meta/v1/types.go
+// Delete options may be provided when deleting an API object
+type DeleteOptions struct{
+	TypeMeta
+	GracePeriodSeconds *int64
+	Preconditions *Preconditions
+	OrphanDependents *bool
+    PropagationPolicy *DeletePropagation
+    
+    // When present, indicates that modifications should not be
+	// persisted. An invalid or unrecognized dryRun directive will
+	// result in an error response and no further processing of the
+	// request. Valid values are:
+	// - All: all dry run stages will be processed
+	// +optional
+    DryRun []string
+    // Was added in Kubernetes in 1.12.
+}
+```
+
+
+
+### API versions and Compatibility Guarantees
+
+Kubernetes versions all API Groups. A common Kubernetes-style versioning scheme is used,  which consists of alpha, beta, and GA(general availability) versions.
+
+- **alpha versions**
+
+  v1alpha1, v1alpha2, v2alpha1
+
+- **beta versions**
+
+  v1beta1, v1beta2, v2beta1
+
+- **v1, v2**
+
+  GA
+
+In connections to API group versions, there are two important points to keep in mind.
+
+- API groups versions apply to API resources as a whole,  like the format of pods or service.
+- Furthermore, API groups versions play a role in accessing the API.
+
+
+
+
+
+## Kubernetes Objects in Go	
+
+From the type system point of view, Kubenetes objects fulfill a Go interface called runtime.Object form the package `k8s.io/apimachinery/pkg/runtime`.
+
+```go
+// Object interface must be support by all API types registered with Scheme.
+// Since Objects in a scheme are expected to be serialized to the wire, the interface an Object
+// must provide to the Scheme allows serializers to set the kind, version, and group the object
+// is represented as. An Object may choose to return a no-op ObjectKindAccessor in case where 
+// it is not expected to be serialized.
+type Object interface{
+	GetObjectKind() schema.ObjectKind
+	DeepCopyObject() Object
+}
+```
+
+Here, `scheme.ObjectKind` is a another simple interface from `k8s.io/apimachinery/pkg/runtime/schema`.
+
+```go
+// All objects that are serialized form a Scheme encode their type information.
+// This interface is used by serialization to set type information from the Scheme onto the 
+// serialized version of an Object. For objects that cannot be serialized or have unique 
+// requirements, this interface may be no-op.
+type ObjectKind interface{
+    SetGroupVersionKind(kind GroupVersionKind)
+    GroupVersionKind() GroupVersionKind 
+}
+```
+
+
+
+In other words, a Kubernetes Object in Go is a data structure that can:
+
+- Return and set the `GroupVersionKind`
+- Be deep-copied
+
+> A deep copy is a clone of the data structure such that it does not share any memory the the original object. It is used wherever code has to mutate an object without modifying the original.
+
+
+
+
+
+### TypeMeta
+
+Kubernetes objects form `k8s.io/api` implement the type getter and setter of `scheme.ObjectKind` by embedding the `metav1.TypeMeta` struct form the package `k8s.io/apimachinery/apis/meta/v1`.
+
+```go
+// TypeMeta describes an individual object in an API response or request
+// with strings representing the type of the object and its API schema version.
+// Structures that are versioned or persisted should inline TypeMeta.
+//
+// +k8s:deepcopy-gen=false
+type TypeMeta struct {
+	// Kind is a string value representing the REST resource this object represents.
+	// Servers may infer this from the endpoint the client submits requests to.
+	// Cannot be updated.
+	// In CamelCase.
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	// +optional
+	Kind string `json:"kind,omitempty" protobuf:"bytes,1,opt,name=kind"`
+
+	// APIVersion defines the versioned schema of this representation of an object.
+	// Servers should convert recognized schemas to the latest internal value, and
+	// may reject unrecognized values.
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	// +optional
+	APIVersion string `json:"apiVersion,omitempty" protobuf:"bytes,2,opt,name=apiVersion"`
+}
+```
+
+
+
+with this, a pod declaration in Go looks like this form package `k8s.io/api/core/v1/types.go`.
+
+```go
+// Pod is a collection of containers that can run on a host. This resource is created
+// by clients and scheduled onto hosts.
+type Pod struct {
+	metav1.TypeMeta `json:",inline"`
+	// Standard object's metadata.
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	// +optional
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+
+	// Specification of the desired behavior of the pod.
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// +optional
+	Spec PodSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+
+	// Most recently observed status of the pod.
+	// This data may not be up to date.
+	// Populated by the system.
+	// Read-only.
+	// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// +optional
+	Status PodStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+}
+```
+
+As you can see, TypeMeta is embedded. Moreover, the pod type has JSON tags that also declare TypeMeta as being inlined.
+
+
+
+This match the YAML representation of a Pod.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+	namespace: default
+	name: example
+spec:
+	containers:
+	- name: hello
+	  images: debian:latest
+	  command:
+	  - /bin/sh
+	  args:
+	  - -c
+	  - echo "hello world"; sleep 10000
+```
+
+The version is stored in TypeMeta.APIVersion, the kind in TypeMeta.Kind.
+
+> **The Core Group is different for historic reasons**
+>
+> Pods and many other types that were added to Kubernetes very early on are part of the `core group`-- often also called the `legacy group` -- which is represented by the empty string. Hence, `apiVersion` is just set to "`v1`".
+>
+> Eventually API groups were added to Kubernetes, and the group name separated by slash, was prepended to *apiVersion*. In the case of apps, the version would be `apps/v1`. Hence, the *apiVersion* field is actually misnamed; it stores the API `group name` and the `version string`. This is for historic reasons because apiVersion was defined when only the `core group`--and none of these other API groups--existed.
+
+### ObjectMeta
+
+most top-level objects have a field of type metav1.ObjectMeta, again from the package `k8s.io/apimachinery/pkgs/meta/v1`.
+
+```go
+// ObjectMeta id metadata that all persisted resources must have, which includes all objects user must create.
+type ObjectMeta struct{
+    // Name must be unique within a namespace.
+    Name string
+    GenerateName string
+    // Namespace defines the space within which each name must be unique.
+    Namespace string
+    SelfLink string
+    UID types.UID
+    // An opaque value that represents the internel version of this object that can be used by
+    // clients to determine when objects have changes. corresponds to a key in etcd.
+    ResourceVersion string
+    Generation int64
+    CreateTimestamp Time
+    DeleteTimestamp *Time
+    DeleteGracePeriodSeconds *int64
+    // Map of string keys and values that can be used to organize and categorize objects.
+    Labels map[string]string
+    // Annotations is an unstructrued key value map stored with a resource that may be set 
+    // by externel tools to store and retrieve arbitrary metadata.
+    Annotations map[string]string
+    OwnerReferences []OwnerReference
+    // Finalizers must be empty before the object is deleted from the registry.
+    Finalizers []string
+    // The name of cluster which the object belongs to.
+    ClusterName string
+    ManagedFields []ManagedFieldsEntry
+}
+```
+
+### spec and status
+
+Finally, nearly every top-level object has a `spec` and a `status` section. This conventions comes from the `declarative nature` of the Kubernetes API: `spec` is the user desire, and `status` it the outcome of that desire, usually filled by a controller in the system.
+
+There are only a few exception to the spec and status convention in the system-for example, `endpoints` in the core groups, or RBAC objects like `ClusterRole`.
+
+## Client Set
+
+A client set gives access to clients for multiple API groups and resources. In the case of `kubernetes.NewForConfig(config)` from `k8s.io/client-go/kubernetes`, we get access to all API groups and resources defined in `k8s.io/api`. This is, with a few exception--such as `APIService` and `CustomerResourcesDefinition`-- the whole set of resources served by the Kubernetes API server.
+
+
+
+The client set main interface in `k8s.io/client-go/kubernetes/clientset.go` for Kubernetes-native resources like this:
+
+```go
+type Interface interface{
+    Discover() discover.DiscoverInterface
+    AppsV1() appsv1.AppsV1Interface
+    AppsV1beta1() appsv1beta1.AppsV1beta1Interface
+    AppsV1beta2() appsv1beta2.AppsV1beta2Interface
+    AuthenticationV1() authenticationv1.AuthenticationV1Interface
+    AuthenticationV1beta1() authenticationv1beta1.AuthenticationV1betaInterface
+    AuthorizationV1() authorizationv1.AuthorizationV1Interface
+    AuthorizationV1beta1() authorizationv1beta1.AuthorizationV1beta1Interface
+    ...
+}
+```
+
+
+
+ Behind each GroupVersion method, we find the resource of the API group.
+
+```go
+type AppsV1beta1Interface interface {
+    RESTClinet() rest.Interface
+    ControllerRevisionGetter
+    DeploymentsGetter
+    StatefulSetsGetter
+}
+```
+
+
+
+With RESTClinet being a generic REST client, and one interface per resource, as in:
+
+```go
+// DeploymentsGetter has a method to return a DeploymentInterface.
+// A group's client should implement this interface.
+type DeploymentsGetter interface{
+    Deployments(name string) DeploymentInterface
+}
+
+// DeploymentInterface has methods to  work with Deployment resources.
+type DeploymentInterface interface {
+	Create(ctx context.Context, deployment *v1beta1.Deployment, opts v1.CreateOptions) (*v1beta1.Deployment, error)
+	Update(ctx context.Context, deployment *v1beta1.Deployment, opts v1.UpdateOptions) (*v1beta1.Deployment, error)
+	UpdateStatus(ctx context.Context, deployment *v1beta1.Deployment, opts v1.UpdateOptions) (*v1beta1.Deployment, error)
+	Delete(ctx context.Context, name string, opts v1.DeleteOptions) error
+	DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error
+	Get(ctx context.Context, name string, opts v1.GetOptions) (*v1beta1.Deployment, error)
+	List(ctx context.Context, opts v1.ListOptions) (*v1beta1.DeploymentList, error)
+	Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error)
+	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *v1beta1.Deployment, err error)
+	Apply(ctx context.Context, deployment *appsv1beta1.DeploymentApplyConfiguration, opts v1.ApplyOptions) (result *v1beta1.Deployment, err error)
+	ApplyStatus(ctx context.Context, deployment *appsv1beta1.DeploymentApplyConfiguration, opts v1.ApplyOptions) (result *v1beta1.Deployment, err error)
+	DeploymentExpansion
+}
+```
+
+
+
+Depending on the scope of the resource--that is , whether it is cluster or namespace scoped-- the accessor(here DeploymentsGetter) may or may not have a namespace argument.
+
+
+
+### Status Subresources: UpdateStatus
+
+Deployments have a so-called `status subresource`. This means that `UpdateStatus` uses an additional HTTP endpoint suffixed with `/status`. While updates on the `/api/apps/v1beta1/namespace/ns/deployments/name` endpoints can change only the spce of the deployment, the endpoint /`api/apps/v1beta1/namespace/ns/deployments/name/status` can change only the status of the object.
+
+
+
+By default the `client-gen` generates the `UpdateStatus()` method.
+
+
+
+### Listings and Deletions
+
+`DeleteCollections` allows us to delete multiple objects of namespace at once. The `ListOptions` parameters allows us to define which objects should be deleted using a `filed` or `label selector`:
+
+```go
+// k8s.io/apimachinery/pkg/apis/meta/v1/types.go
+// ListOptions is the query options to a standard REST list call.
+type ListOptions struct{
+    TypeMeta
+    // A selector to restrict the list of returned objects by their labels.
+    LabelSelector string
+    // A selector to restrict the list of returned objects by their fields.
+    FieldSelector string
+    Watch bool
+    AllowWatchBookmarks bool
+    ResourceVersion string
+    ResourceVersionMatch ResourceVersionMatch
+    TimeSecond *int64
+    Limit int64
+    Continue string 
+}
+```
+
+
+
+### Watches
+
+`Watch` gives an event  interface for all changes(adds, removes, and updates) to objects.  The returned `watch.Interface` form `k8s.io/apimachinery/pkg/watch/watch.go`.
+
+```go
+// Interface can be implemented by anything that knows how to watch and report changes.
+type Interface interface{
+    // Stop watching. Will close the channel returned by ResoultChan(). Release any resources
+    // used by watch.
+    Stop()
+    // Returns a chan which will receive all the events. If an errors occurs or Stop()
+    // is canceled, the implementation will close this channel and release any resources
+    // used by watch.
+    ResultChan() <-chan Event
+}
+```
+
+
+
+The result channel of watch interface returns three kinds of events.
+
+```go
+// EventType defines the possible types of events
+type EventTypes string
+const (
+	Added     EventType = "ADDED"
+    Modified  EventType = "MODIFIED"
+    Deleted   EventType = "DELETED"
+    Bookmark  EventType = "BOOKMARK"
+    Error     EventType = "ERROR"
+)
+
+// Event represents a single event to watched resource.
+Type Event struct{
+    Type EventType
+    
+    Object runtime.Object
+}
+```
+
+While it is tempting to use this interface directly, in practice it is actually discouraged in favor of informers. 
+
+Informers are a combination of this event interface and in-memory cache with indexed lookup. This is by far the most common use case for watches. Under the hood informers first call `List` on the client to get the set of all objects(as a baseline for the cache) and then `Watch` to update the cache.
+
+### Client Expansion
+
+`DeploymentExpansion` is actually an empty interface. It is used to add custom client behavior, but it's hardly used in Kubernetes nowdays. Instead,  the client generator allows up to add custom methods in a declarative way.
+
+
+
+Note again that all of those methods in `DeploymentInterface` neither expect valid information in the `TypeMeta` fields `Kind` and `APIVersion`, nor set those fields on Get() and List().  These fields are filled with `real values only on the wire`.
+
+
+
+### Client Options
+
 
 

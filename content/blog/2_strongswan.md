@@ -56,10 +56,10 @@ pki --issue --in sunKey.pem --type priv \
 --outform pem  > sunCert.pem
 
 
-pki --issue --in node-1Key.pem --type priv \
+pki --issue --in root-nodeKey --type priv \
 --cacert caCert.pem --cakey caKey.pem \
---dn "C=CH, O=strongSwan,CN=node-1" \
---outform pem> node-1Cert.pem
+--dn "C=CH, O=strongSwan,CN=node-3" \
+--outform pem> node-3Cert.pem
 ```
 
 
