@@ -203,3 +203,4 @@ git
 > 3. git rebase
 > 4. git init & git init -bare、
 > 5. 解决冲突
+> 6. git commit --amend

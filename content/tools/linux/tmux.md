@@ -45,6 +45,27 @@ tmux split-window -h # 水平分隔
 
 前缀键 【Ctrl】+【b】。先按下前缀键后，在使用功能键。
 
+
+
+## copy-mode use vi shortcuts
+
+```sh
+cat <<EOF | tee -a ~/.tmux.conf
+setw -g mode-keys vi
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+
+
+run '~/.tmux/plugins/tpm/tpm'
+E
+```
+
+
+
+
+
 ## 参考文档
 
 http://www.ruanyifeng.com/blog/2019/10/tmux.html
