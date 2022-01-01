@@ -46,11 +46,27 @@ pygmentsUseClasses = true
     codeFences = true
     guessSyntax = true
     hl_Lines = ""
-    lineNoStart = 1
+    lineNoStart = 1   # display line number
     lineNos = true
     lineNumbersInTable = false
     noClasses = true
     style = "github"
     tabWidth = 4
+```
+
+
+
+行号已经可以显示了，但是复制的时候会与行号一起复制，修改自定义css
+
+```css
+.highlight .ln {
+    width: 20px;
+    display: block;
+    float: left;
+    text-align: right;
+    user-select: none;   # 表示复制是不能被选中的
+    padding-right: 8px;
+    color: #ccc;
+}
 ```
 
