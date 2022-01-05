@@ -395,6 +395,122 @@ int main(int argc,char* argv[]){
 
 
 
+## K8s SGX Device Plugin
+
+
+
+This video demonstrates the Intel(R) Software Guard Extensions ECDSA Quote Generation in Kuberntes
+
+The key building blocks are:
+
+- Intel(R) Software Guard Extensions (SGX) Flexible Launch Control capable system(registered)
+- Intel(R) SGX driver(RFC v41) for the host kernel
+- Intel(R) SGX PCKID Certificate Caching Service configured
+
+Let's get started!
+
+
+
+
+
+1. Check the Kubernetes Cluster is in good shape
+
+   ```sh
+   kubectl get nodes
+   # Check all pods status
+   # certmanager x 3
+   # coredns x 2
+   # weave
+   kubectl get pods -A
+   # create the demo namespace
+   kubectl create ns sgx-ecdsa-quote
+   
+   # Pull: devel images and tag them as 0.23.0
+   sudo ctr -n k8s.io i pull docker.io/intel/intel-sgx-plugin:devel
+   sudo ctl -n k8s.io i pull docker.io/intel/intel-sgx-initcontainer:devel
+   ```
+
+2. Deploy node-feature-discovery for Kubernetes
+
+   It's used to label SGX capable nodes and register SGX EPC as an extened resource
+
+   ```sh
+   kubectl apply -k https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/sgx_nfd?ref=v0.23.0
+   
+   # Check its pod is running
+   kubectl wait --for=condition=Ready pod/nfd-worker-vcm4z -n node-feature-discovery
+   ```
+
+3. Deploy Intel Device Plugin Operator
+
+   ```sh
+   kubectl apply -k https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/operator/default?ref=v0.23.0
+   
+   # Create SgxDevicePlugin custom resource managed by the Operator
+   kubectl apply -f https://raw.githubusercontent.com/intel/intel-device-plugins-for-kubernetes/master/deployments/operator/samples/deviceplugin_v1_sgxdeviceplugin.yaml -n sgx-ecdsa-quote
+   
+   # Check the SGX Device Plugin is running   !!!failed
+   kubectl get pods -n sgx-ecdsa-quote
+   ```
+
+4. Verify node resource
+
+   ```sh
+   kubectl get nodes -o json |jq .items[].status.allocatable|grep -i sgx
+   # "sgx.intel.com/enclave":"110"
+   # "sgx.intel.com/epc":"4261412864"
+   # "sgx.intel.com/provision":"110"
+   
+   kubectl get nodes -o json|jq .items[].metadata.labels |grep SGX
+   # "feature.node.kubernetes.io/cpu-cpuid.SGX":"true"
+   # "feature.node.kubernetes.io/cpu-cpuid.SGXLC":"true"
+   
+   ```
+
+   
+
+   Both node labels and resources for SGX are in place
+
+5. Run Intel(R) SGX DCAP ECDSA Quote Generation(out-of-proc)
+
+   ```sh
+   #  Make the pre-built images available (from docker save)
+   sudo ctr -n k8s.io i import sgx-aesmd.tar
+   sudo ctr -n k8s.io i import sgx-demo.tar
+   # Deploy Intel(R) AESMD
+   kubectl apply -k https://github.com/intel/intel-deivce-plugins-for-kubernetes/deployments/sgx_aesmd?ref=v0.23.0 -n sgx-ecdsa-quote
+   # Deploy Intel(R) SGX DCAP ECDSA Quote Genetation
+   kubectl apply -k https://github.com/intel/intel-deivce-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote?ref=v0.23.0 -n sgx-ecdsa-quote
+   
+   kubectl logs ecdsa-quote-intelsgx-demo-job-npwvf -n sgx-ecdsa quote
+   
+   
+   # Intel(R) SGX DCAP QuoteGenerationSample successfully requested a quote from Intel(R) AESMD
+   
+   # Delete the deployment
+   
+   ```
+
+6. Run Intel(R) SGX DCAP ECDSA Quote Generation(in-proc)
+
+   ```sh
+   # Deploy Intel(R) SGX DACP ECDSA Quote Generation
+   kubectl apply -khttps://github.com/intel/intel-device-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote?ref=v0.23.0 -n sgx-ecdsa-quote
+   
+   kubectl logs inproc-ecdsa-quote-intelsgx-demo-job
+   
+   # Intel(R) SGX DCAP QuoteGenerationsSmaple successfully generated a quote using DCAP Quote Provider Library.
+   ```
+
+   
+
+7. This  video demonstrated the Intel(R) Sofrware Guard Extensions in Kubernetes
+
+   The following topics were covered:
+
+   - SGX Kubernetes Device Plugin deployment with an Operator
+   - Intel(R) SGX node resource and featured label registration to Kubernetes*
+   - Intel(R) SGX DCAP ECDSA  Quote Generation
 
 
 
@@ -404,10 +520,20 @@ int main(int argc,char* argv[]){
 
 
 
+ I encountered a problem with the hardware when trying to enable the SGX device plugin demo. This feature needs the CPU support FLC, but mine doesn’t support that. If anyone has a supported NUC, can you exchange it with mine **NUC11TVHv7 32G**
 
+Check Method : https://www.intel.com/content/www/us/en/support/articles/000057420/software/intel-security-products.html
 
+> On a Linux* system, execute cpuid in a terminal
+>
+> Open a terminal and run: $ cpuid | grep -i sgx
+> Look for output: SGX_LC: **SGX launch config supported = true**
+>
+> 
 
+But The resoult in my NUC:
 
+![image-20220104145310946](3_intel_sgx/image-20220104145310946.png)
 
 
 

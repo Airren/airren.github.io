@@ -94,6 +94,8 @@ vi  /etc/docker/daemon.json
 #添加后：
 {
     "registry-mirrors": ["https://registry.docker-cn.com"],
+    "registry-mirrors": ["https://ustc-edu-cn.mirror.aliyuncs.com"],
+    
     "live-restore": true
 }
 ```
@@ -101,7 +103,7 @@ vi  /etc/docker/daemon.json
 重起docker服务
 
 ```shell
-systemctl restart docker
+systemctl daemon-reload && systemctl restart docker
 ```
 
 

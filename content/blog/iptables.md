@@ -30,3 +30,28 @@ netfilter/iptables组成的linux平台下的包过滤防火墙，是免费的，
 
 iptables是按照规则(rules)来办事的, rules 就是我们预定义的条件。规则一般定义为“如果数据包头符合这样的条件，就这样处理这个数据包”。规则存储在内核空间的信息包过滤表中。这些规则分别指定了源地址、目的地址、传输协议(如TCP、UDP、ICMP)和服务类型(如HTTP、FTP和SMTP)等。当数据包与规则匹配时，iptables就根据规则所定义的方法来处理这些数据包， 如放行(accept)、拒绝(reject)和丢弃(drop)等。配置防火墙主要工作就是添加、修改和删除这些规则。
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ewctl  
+
+hubDevice Objcet true 默认hub
