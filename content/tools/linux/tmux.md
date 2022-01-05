@@ -56,11 +56,70 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
-
-
 run '~/.tmux/plugins/tpm/tpm'
-E
+
 ```
+
+
+
+
+
+## 插件管理
+
+### Tmux Plugin Manager
+
+Tmux需要安装插件可以通过Tmux Plugin Manager 这个插件进行安装， 这个插件相当于一个插件管理系统。
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
+# vi .tmux.conf
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+
+# 重新加载配置文件
+ # type this in terminal if tmux is already running
+ tmux source ~/.tmux.conf
+```
+
+
+
+然后就可以在Tmux中使用prefix+I(大写I)安装配置文件`.tmux.conf`中定义的插件了。
+
+
+
+### Tmux Resurrect
+
+当我们重启系统后Tmux的session会被清除，导致每次重启之后都要重建一堆session并且重建Pane。
+
+`Tmux Resurrect`插件可以解决这个问题，保存和恢复Tmux Session
+
+```sh
+# 1st, add config
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+# 2nd, instlal 
+prefix +I
+```
+
+
+
+重启电脑之前先执行，保存 session ： prefix + Ctrl-s
+
+重启之后，首先打开 tmux 然后  Restore Session： prefix + Ctrl-r
+
+如果有多个session可以使用prefix +s 选择 session。
+
+
+
+
+
+
 
 
 
@@ -69,3 +128,5 @@ E
 ## 参考文档
 
 http://www.ruanyifeng.com/blog/2019/10/tmux.html
+
+https://www.scutmath.com/tmux_session_save_restore.html

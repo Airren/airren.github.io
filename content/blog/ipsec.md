@@ -98,6 +98,8 @@ https://blog.51cto.com/u_13817711/2478622
 
 http://www.h3c.com/cn/d_201005/675214_97665_0.htm
 
+http://www.h3c.com/cn/d_201005/675214_97665_0.htm
+
 
 
 https://bbs.huaweicloud.com/blogs/detail/154030
