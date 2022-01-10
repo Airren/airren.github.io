@@ -395,9 +395,43 @@ int main(int argc,char* argv[]){
 
 
 
+
+
+## SGX secure Enclaves
+
+#### Software Guard Extensions: Non-hierarchical Trust Model	
+
+Secure Enclave:
+
+- Application can instantiate CPU-based trusted execution environment.
+- Shielded from all other running software: confidentiality and integrity.
+- Direct access to enclave memory is disallowed even form OS/Hypervisor since they are untrusted.
+- Reduced Trusted Computing Base
+
+Enclave Identity
+
+- Fully measured (hash) at creation time
+- Measurement establishes enclave idgentity
+- Used for attestation: allows a remote entity to establish trust on an enclave.
+
+
+
+Enclave Page Cache (EPC)
+
+- Stores running enclaves
+- Reserved by firmer at boot time
+- Treated specially by CPU
+  - Memory traffic goes through encryption engine
+  - Not accessible when  CPU not in enclave mode
+  - An enclave can only assess its own EPC pages
+- Managed by OS/VMM
+  - Allocation, mapping, eviction
+
+
+
+
+
 ## K8s SGX Device Plugin
-
-
 
 This video demonstrates the Intel(R) Software Guard Extensions ECDSA Quote Generation in Kuberntes
 
@@ -408,10 +442,6 @@ The key building blocks are:
 - Intel(R) SGX PCKID Certificate Caching Service configured
 
 Let's get started!
-
-
-
-
 
 1. Check the Kubernetes Cluster is in good shape
 
@@ -516,10 +546,6 @@ Let's get started!
 
 
 
-
-
-
-
  I encountered a problem with the hardware when trying to enable the SGX device plugin demo. This feature needs the CPU support FLC, but mine doesn’t support that. If anyone has a supported NUC, can you exchange it with mine **NUC11TVHv7 32G**
 
 Check Method : https://www.intel.com/content/www/us/en/support/articles/000057420/software/intel-security-products.html
@@ -531,9 +557,9 @@ Check Method : https://www.intel.com/content/www/us/en/support/articles/00005742
 >
 > 
 
-But The resoult in my NUC:
 
-![image-20220104145310946](3_intel_sgx/image-20220104145310946.png)
+
+
 
 
 
