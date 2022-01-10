@@ -358,7 +358,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
 
 ```sh
 # Ubuntu 20.04
-sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python-is-python3 libssl-dev git cmake perl 
+sudo apt-get install build-essential ocaml ocamlbuild automake autoconf libtool wget python-is-python3 libssl-dev git cmake perl -
 sudo apt-get install libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip -y
 
 sudo apt-get install build-essential python -y
@@ -396,7 +396,7 @@ make psw
 make deb_psw_pkg
 make deb_local_repo
 # linux/installer/deb/sgx_debian_local_repo
-# deb [trusted=yes arch=amd64] file: /home/airren/SGX/linux-sgx/linux/installer/deb/local_repo_tool/../sgx_debian_local_repo focal main
+# deb [trusted=yes arch=amd64] file: /home/ubuntu/linux-sgx/linux/installer/deb/local_repo_tool/../sgx_debian_local_repo focal main
 sudo apt update
 sudo apt-get install libsgx-launch libsgx-urts -y
 ```

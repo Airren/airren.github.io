@@ -109,3 +109,14 @@ EOF
 ## Font
 
 `hack`
+
+
+
+
+
+Set timezone
+
+```sh
+timedatectl set-timezone Asia/Shanghai 
+```
+
