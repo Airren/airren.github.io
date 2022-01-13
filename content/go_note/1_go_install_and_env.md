@@ -1,6 +1,15 @@
 ---
-title: Go语言环境变量以及基本指令
+title: 「Go」Go的安装以及介绍
+tags:
+  - Go
+date: 2020-08-20 01:40:04
 ---
+
+
+
+
+
+
 
 ## 1. Go语言介绍
 
@@ -8,24 +17,18 @@ title: Go语言环境变量以及基本指令
 
 1. 静态类型、编译型的开源语言
 
-   **静态类型**是指要明确变量的类型，或者编译器可以推导出变量的类型
+   **静态类型**是指要明确变量的类型，或者编译器可以推导出变量的类型。要么在变量类型旁边指定变量的那个类型，要么是可以推导出变量类型。
 
-   要么在变量类型傍边指定变量的那个类型，要么是可以推导出变量类型
+   **编译型**是指要编译成机器语言。
 
-   **编译型**是指要编译成机器语言
-
-   ```Go
-   package main
    
-   func main(){
-     var num1 int = 1;
-   }
-   ```
 
    ```go
    package main
    func main(){
+     // Declare the type of the variable
      var num1 int = 1;
+     // Deduce the type of the variable
      num2 :=2
    }
    ```
@@ -52,7 +55,9 @@ title: Go语言环境变量以及基本指令
 2. 目前的程序运行速度还不及c，但是目前已经赶超了C++和Java
 3. 第三方库函数暂时不像绝对主流的编程语言那样多
 
-#### 1.3 Linux 下的安装
+#### 1.3  Go开发环境
+
+##### Linux 下的安装
 
 FreeBSD Linux  Windows 32bit - 64bit
 
@@ -64,6 +69,49 @@ Linux 下的设置方法
 
 OS X->  ~/.bash_profile(单一用户) 或者 /etc/profile（所有用户）
 
+##### Mac 安装Golang
+
+所有开发默认使用Mac环境，使用brew可以安装并管理go多个版本
+
+```sh
+brew install go  # 安装go最新版本
+```
+
+![image-20201226214404342](go_install_and_env/image-20201226214404342.png)
+
+```sh
+go version # 查看go版本
+```
+
+![image-20201226214425111](go_install_and_env/image-20201226214425111.png)安装路径
+
+![image-20201226222439707](go_install_and_env/image-20201226222439707.png)
+
+
+
+Brew 可以用来管理多版本的Go，安装指定版本1.14
+
+```sh
+brew install go@1.14
+```
+
+安装路径
+
+```sh
+/usr/local/Cellar/go@1.14/1.14.9
+```
+
+切换go的版本到1.14, 这个地方具体的操作需要根据`homebrew`的具体版本进行操作
+
+```sh
+brew unlink go
+brew link --overwrite go@1.14
+```
+
+
+
+#### 1.4 关键环境变量
+
 ##### GOROOT
 
 该环境变量的值应该为**Go语言的当前安装目录**
@@ -72,16 +120,16 @@ OS X->  ~/.bash_profile(单一用户) 或者 /etc/profile（所有用户）
 
 该环境变量为**Go语言工作区的集合**
 
-> go 1.12 版本中支持 go mod 不再使用go path
+> go 1.12 版本中支持 go mod , 不再强制将项目源码放置到Src目录中。
 
 ##### GOBIN
 
 是你想存放**Go程序的可执行文件的目录**
 
 ```shell
-export GOROOT=/usr/local/go
-export GOPATH=~/golib:~/goproject
-export GOBIN=~/gobin
+export GOROOT=/usr/local/go # 一般不需要设置
+export GOPATH=~/go          # 默认为~/go
+export GOBIN=$GOPATH/bin       # 默认为~/go/bin
 ```
 
 ##### PATH:
@@ -89,7 +137,7 @@ export GOBIN=~/gobin
 为了方便使用**Go语言命令和Go程序的可执行文件**，需要追加其值，如
 
 ```sh
-export PATH=$PATH:$GOROOT/bin:$GOBIN
+export PATH=$PATH:$GOBIN
 
 source profileName # 使修改生效
 ```
@@ -101,8 +149,6 @@ source profileName # 使修改生效
 
 
 如果使用交叉编译(Cross compile)则需要设置GOOS环境变量
-
-
 
 ## 2. 基本规则
 
@@ -447,3 +493,10 @@ SET GOOS=darwin
 SET GOARCH=amd64
 go build
 ```
+
+
+
+t
+
+
+

@@ -48,6 +48,6 @@ alter user root@% identified with mysql_native_password by "123456"
 
 
 ```sql
-CREATE DATABASE IF NOT EXISTS aiops_observe DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS xiba DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 ```
 
