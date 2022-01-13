@@ -170,15 +170,6 @@ docker load --input new_file.tar
 
 
 
-## 从容器创建一个镜像
-
-````shell
-docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
-docker commit -a "bytegopher.com" -m "first commit" a404c6c174a2  mymysql:v1
-# -a 提交镜像的作者
-# -m 提交信息
-````
-
 
 
 ## docker神器

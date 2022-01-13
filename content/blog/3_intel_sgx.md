@@ -465,36 +465,24 @@ Let's get started!
    It's used to label SGX capable nodes and register SGX EPC as an extened resource
 
    ```sh
-   kubectl apply -k https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/sgx_nfd?ref=v0.23.0
+   kubectl apply -k intel-device-plugins-for-kubernetes/deployments/sgx_nfd
    
    # Check its pod is running
    kubectl wait --for=condition=Ready pod/nfd-worker-vcm4z -n node-feature-discovery
    ```
 
-3. Deploy Intel Device Plugin Operator
+3. Deploy Intel Device Plugin Operator as a DaemonSet
 
+   
+   
    ```sh
-   kubectl apply -k https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/operator/default?ref=v0.23.0
-   
-   # Create SgxDevicePlugin custom resource managed by the Operator
-   kubectl apply -f https://raw.githubusercontent.com/intel/intel-device-plugins-for-kubernetes/master/deployments/operator/samples/deviceplugin_v1_sgxdeviceplugin.yaml -n sgx-ecdsa-quote
-   
-   # Check the SGX Device Plugin is running   !!!failed
-   kubectl get pods -n sgx-ecdsa-quote
+   kubectl apply -k intel-device-plugins-for-kubernetes/deployments/sgx_plugin/overlays/epc-nfd/
    ```
-
+   
 4. Verify node resource
 
    ```sh
-   kubectl get nodes -o json |jq .items[].status.allocatable|grep -i sgx
-   # "sgx.intel.com/enclave":"110"
-   # "sgx.intel.com/epc":"4261412864"
-   # "sgx.intel.com/provision":"110"
-   
-   kubectl get nodes -o json|jq .items[].metadata.labels |grep SGX
-   # "feature.node.kubernetes.io/cpu-cpuid.SGX":"true"
-   # "feature.node.kubernetes.io/cpu-cpuid.SGXLC":"true"
-   
+   kubectl describe node <node name> | grep sgx.intel.com
    ```
 
    
@@ -508,9 +496,9 @@ Let's get started!
    sudo ctr -n k8s.io i import sgx-aesmd.tar
    sudo ctr -n k8s.io i import sgx-demo.tar
    # Deploy Intel(R) AESMD
-   kubectl apply -k https://github.com/intel/intel-deivce-plugins-for-kubernetes/deployments/sgx_aesmd?ref=v0.23.0 -n sgx-ecdsa-quote
+   kubectl apply -k intel-device-plugins-for-kubernetes/deployments/sgx_aesmd/
    # Deploy Intel(R) SGX DCAP ECDSA Quote Genetation
-   kubectl apply -k https://github.com/intel/intel-deivce-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote?ref=v0.23.0 -n sgx-ecdsa-quote
+    k apply -k intel-device-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote/
    
    kubectl logs ecdsa-quote-intelsgx-demo-job-npwvf -n sgx-ecdsa quote
    
@@ -518,6 +506,7 @@ Let's get started!
    # Intel(R) SGX DCAP QuoteGenerationSample successfully requested a quote from Intel(R) AESMD
    
    # Delete the deployment
+    k delete -k intel-device-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote/
    
    ```
 
@@ -525,7 +514,7 @@ Let's get started!
 
    ```sh
    # Deploy Intel(R) SGX DACP ECDSA Quote Generation
-   kubectl apply -khttps://github.com/intel/intel-device-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote?ref=v0.23.0 -n sgx-ecdsa-quote
+   kubectl apply -k intel-device-plugins-for-kubernetes/deployments/sgx_enclave_apps/overlays/sgx_ecdsa_aesmd_quote
    
    kubectl logs inproc-ecdsa-quote-intelsgx-demo-job
    
