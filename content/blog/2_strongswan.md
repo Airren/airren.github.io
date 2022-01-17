@@ -482,19 +482,24 @@ crypto-api-toolkit  intel-sgx-ssl  linux-sgx  linux-sgx-driver  OpenSC  pkcs11  
 
 ```sh
 #strongswan.d/charon/pkcs11.conf
-modules {
-         ctk{
-            path = /usr/local/lib/libp11sgx.so
+ modules {
+
+        ctk{
+                path=/usr/local/lib/libp11sgx.so
+                os_locking=yes
+                load_certs=yes
         }
-         opensc{
-            path = /usr/local/lib/libp11sgx.so
-        }
- }
+
+   #     opensc{
+   #            path=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+   #            load_certs=yes
+   #    }
+}
 ```
 
 
 
-### Configure IPsec Tunnel 
+### Configure IPsec Tunnel  through swanctl.conf
 
 ```sh
 # /etc/swanctl/swanctl.conf
@@ -530,6 +535,12 @@ pools{
 }
 
 secrets{
+#    token_1{
+#        handle=0001
+#        slot=0
+#        module=opensc
+#        pin=12345678
+#    }
     token_2{
         handle=0001
         slot=0x91d9088
@@ -537,27 +548,107 @@ secrets{
         pin=12345678
     }
 }
+
+
 ```
 
 
 
 
 
+### Configure IPsec Tunnel Through ipsec.conf use different secret
+
+```sh
+# /etc/ipsec.conf
+
+# ipsec.conf - strongSwan IPsec configuration file
+
+# basic configuration
+
+config setup
+        # strictcrlpolicy=yes
+        # uniqueids = no
+
+# Add connections here.
+
+# Sample VPN connections
+
+#conn sample-self-signed
+#      leftsubnet=10.1.0.0/16
+#      leftcert=selfCert.der
+#      leftsendcert=never
+#      right=192.168.0.2
+#      rightsubnet=10.2.0.0/16
+#      rightcert=peerCert.der
+#      auto=start
 
 
-> Kubecon 会议 10 contrbute
->
-> Proposal
->
-> pending list
+
+
+conn pkcs11-legacy
+  left=%any
+  right=%any
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  closeaction=restart
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=%smartcard:0001
+  leftsendcert=yes
+  rightsendcert=yes
+  rightsourceip=192.168.0.8
+  auto=start
+  leftid="CN=sgx-node"
+  rightid="C=CH, O=strongSwan,CN=sun.strongswan.org"
+  keyexchange=ikev2
+  mark=30
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
 
 
 
+conn common-con
+  left=%any
+  right=%any
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  closeaction=restart
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/root-nodeCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  rightsourceip=192.168.0.9
+  auto=start
+  leftid="CN=root-node"
+  rightid="C=CH, O=strongSwan,CN=node-3"
+  keyexchange=ikev2
+  mark=30
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
+
+```
 
 
 
+ipsec.secrets
 
+```sh
+# /etc/ipsec.secrets
+CN=root-node : RSA root-nodeKey.pem
+: PIN %smartcard:0001 "12345678"
 
+```
 
 
 

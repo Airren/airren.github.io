@@ -554,6 +554,26 @@ Check Method : https://www.intel.com/content/www/us/en/support/articles/00005742
 
 
 
+Device Plugin Pod
+
+```sh
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sgx-demo
+spec:
+  containers:
+    -
+      name: ubuntu-sgx
+      image: airren/ubuntu-sgx:v0.0.1
+      imagePullPolicy: IfNotPresent
+      workingDir: "/"
+      command: ["sleep","3600"]
+      resources:
+        limits:
+          sgx.intel.com/epc: "512Ki"
+```
+
 
 
 
@@ -610,17 +630,11 @@ protobuf
 
 
 
+800-810-1972 Toll-free
 
+400-810-1972 Local Toll (For Mobile)
 
-8 订单邮件， 快递 联邦快递， 快递
-
-付款 第三方 intel 付费
-
-其他信息
-
-05334364
-
-
+Monday to Friday 08:00 - 18:00 GMT +8
 
 
 

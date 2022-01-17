@@ -120,3 +120,13 @@ Set timezone
 timedatectl set-timezone Asia/Shanghai 
 ```
 
+
+
+### Add new User
+
+```sh
+sudo adduser hairong
+sudo usermod -aG sudo hairong
+
+```
+
