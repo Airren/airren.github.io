@@ -87,7 +87,7 @@ pki --issue --in root-nodeKey --type priv \
 
     connections {
         host-host {
-            remote_addrs = 10.32.0.13
+            remote_addrs = 10.233.76.144
 
             local {
                 auth=pubkey
@@ -109,15 +109,15 @@ pki --issue --in root-nodeKey --type priv \
 **Configuration on host *sun*:**
 
 ```sh
-/etc/swanctl/x509ca/strongswanCert.pem
-/etc/swanctl/x509/sunCert.pem
-/etc/swanctl/private/sunKey.pem
+ cp caCert.pem /etc/swanctl/x509ca/strongswanCert.pem
+cp sunCert.pem /etc/swanctl/x509/sunCert.pem
+cp sunKey.pem /etc/swanctl/private/sunKey.pem
 
 /etc/swanctl/swanctl.conf:
 
     connections {
         host-host {   # connection name
-            remote_addrs = 10.32.0.13
+            remote_addrs = 10.233.76.145
 
             local {
                 auth = pubkey
@@ -518,13 +518,13 @@ connections {
            auth = pubkey
            cert1{
                handle=0001
-               slot=0x78e62159
+               slot=0x68856fba
                module=ctk
            }
        }
        remote {
            auth = pubkey
-           id = "C=CH, O=strongSwan, CN=sun.strongswan.org"
+           id = "C=CH, O=strongSwan,CN=sun.strongswan.org"
        }
        children {
            pkcs11-demo {
@@ -549,7 +549,7 @@ secrets{
 #    }
     token_2{
         handle=0001
-        slot=0x78e62159
+        slot=0x68856fba
         module=ctk
         pin=12345678
     }
@@ -646,10 +646,13 @@ conn common-con
   
   
   # client
+cp caCert.pem /etc/ipsec.d/cacerts/
+cp sunKey.pem /etc/ipsec.d/private/
+cp sunCert.pem /etc/ipsec.d/certs/
 
 conn common-con
   left=%any
-  right=10.239.154.53
+  right=10.233.76.147
   leftsourceip=%config
   ikelifetime=3h
   lifetime=1h
@@ -660,12 +663,12 @@ conn common-con
   closeaction=restart
   leftauth=pubkey
   rightauth=pubkey
-  leftcert=/etc/ipsec.d/certs/node-3Cert.pem
+  leftcert=/etc/ipsec.d/certs/sunCert.pem
   leftsendcert=yes
   rightsendcert=yes
   auto=start
-  leftid="C=CH, O=strongSwan,CN=node-3"
-  rightid="CN=root-node"
+  leftid="C=CH, O=strongSwan,CN=sun.strongswan.org"
+  rightid="CN=sgx-node"
   keyexchange=ikev2
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
   ike=aes128-sha256-modp3072,aes256-sha256-modp3072
@@ -678,7 +681,7 @@ ipsec.secrets
 
 ```sh
 # /etc/ipsec.secrets
-CN=root-node : RSA root-nodeKey.pem
+C=CH, O=strongSwan,CN=sun.strongswan.org : RSA sunKey.pem
 : PIN %smartcard:0001 "12345678"
 
 ```
