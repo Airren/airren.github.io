@@ -22,15 +22,33 @@ API HTTP handler -> authn & authz -> Mutating adminssion -> Object schema valida
 
 
 
+K8s version v1.23.0
+
+
+
+#### apis/batch
+
+```sh
+k get --raw /apis/batch/v1 | jq -c  '.resources[]|{name,kind,shortNames,categories}'
+```
+
+![image-20220212224012052](k8s_source_code_2.assets/image-20220212224012052.png)
 
 
 
 
 
+#### api/v1
+
+![image-20220212224529473](k8s_source_code_2.assets/image-20220212224529473.png)
 
 
 
 
+
+#### apis/apps/v1
+
+![image-20220212230119903](k8s_source_code_2.assets/image-20220212230119903.png)
 
 
 

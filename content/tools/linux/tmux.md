@@ -58,6 +58,8 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 run '~/.tmux/plugins/tpm/tpm'
 
+EOF
+
 ```
 
 

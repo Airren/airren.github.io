@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/content/blog/OAuth.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/tools/hugo/hugo_basic.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/hugo/hugo_basic.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/Linux_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/Linux_init.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/Mac_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/Mac_init.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/tools/linux/tmux.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/linux/tmux.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +64,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/themes/toha/layouts/blog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -197,6 +198,7 @@
       <workItem from="1640011940848" duration="488000" />
       <workItem from="1640530528434" duration="1034000" />
       <workItem from="1641029058565" duration="920000" />
+      <workItem from="1645017260522" duration="121000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
