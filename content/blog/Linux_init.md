@@ -45,8 +45,7 @@ EOF
  
 
 ```sh
-sudo apt install zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sudo apt install -y zsh && sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # sudo chsh -s $(which zsh)
 ```
@@ -93,9 +92,8 @@ function proxy_off(){
     echo -e "Proxy environment variable removed."
 }
 
-proxy_on' | tee -a  ~/.bashrc
+proxy_on' | tee -a  ~/.zshrc
 
-EOF
 
 # Install zsh
 cat <<EOF | sudo tee /etc/apt/apt.conf.d/proxy.conf
