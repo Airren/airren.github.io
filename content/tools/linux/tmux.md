@@ -57,9 +57,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 run '~/.tmux/plugins/tpm/tpm'
-
 EOF
-
 ```
 
 

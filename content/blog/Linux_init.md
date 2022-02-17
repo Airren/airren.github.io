@@ -93,7 +93,7 @@ function proxy_off(){
     echo -e "Proxy environment variable removed."
 }
 
-proxy_on' | tee -a  ~/.bashrc
+proxy_on' | tee -a  ~/.zshrc
 
 EOF
 
