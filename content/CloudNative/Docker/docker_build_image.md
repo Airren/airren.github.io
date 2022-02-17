@@ -90,3 +90,13 @@ docker tag images:tag  new-image:new-tag
 Docker 是由一些松耦合的只读镜像层组成，Docker负责堆叠这些层，并将他们表示为单个统一的对象。
 
 docker pull images 的时候可以看到是逐层下载的。
+
+
+
+
+
+
+
+## Builder Image
+
+WORKDIR: 如果没有文件夹，会创建并进入。

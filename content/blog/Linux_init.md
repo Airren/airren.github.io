@@ -116,6 +116,8 @@ Set timezone
 
 ```sh
 timedatectl set-timezone Asia/Shanghai 
+
+sudo date -s "$(curl -H'Cache-Control:no-cache' -sI google.com | grep '^Date:' | cut -d' ' -f3-6)Z"
 ```
 
 
@@ -126,5 +128,29 @@ timedatectl set-timezone Asia/Shanghai
 sudo adduser hairong
 sudo usermod -aG sudo hairong
 
+```
+
+
+
+
+
+
+
+## Ubuntu Alisa
+
+今天在Build Docker image的时候发现`sgx-sdk-demo`的base images是`ubuntu:bionic`, 然后设置的apt source list 也是`"....intel-sgx/sgx_repo/ubuntu focal main"`。同时 docker image `ubunt:18.04` 和 `ubuntu:bionic` 的Image ID 是完全相同的，猜测 bionic 应该是 ubuntu:18.04 的别名。于是查了[Ubuntu 的release Note](https://wiki.ubuntu.com/Releases) 果真如此。
+
+
+
+
+
+update ubuntu linux kernel
+
+```sh
+apt-cache search linux-image
+sudo apt-get install linux-image-your_version_choice linux-headers-your_version_choice linux-image-extra-your_version_choice
+
+# must reboot you machine
+# https://linuxhint.com/update_ubuntu_kernel_20_04/
 ```
 

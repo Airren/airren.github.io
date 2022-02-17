@@ -12,6 +12,16 @@ So, on the server side, left is local to the server and on the client side, left
 
 
 
+证书check
+
+```sh
+openssl x509 -text -noout -in  /etc/ipsec.d/private/sunKey.pem
+```
+
+
+
+
+
 ## Ubuntu Set up IPsec Tunnel 
 
 ###  Install StrongsWan
@@ -35,15 +45,15 @@ sudo apt install strongswan strongswan-swanctl strongswan-pki strongswan-charon 
 
 ```sh
 # 创建 root 私钥
-pki --gen --outform pem > strongswanKey.pem
+pki --gen --outform pem > caKey.pem
 # 生成 root CA
-pki --self --in caKey.pem --dn "C=CH, O=strongSwan, CN=strongSwan CA" --ca --outform pem > strongswanCert.pem
+pki --self --in caKey.pem --dn "C=CH, O=strongSwan, CN=strongSwan CA" --ca --outform pem > caCert.pem
 
 # 生成 node-1 私钥
 pki --gen --outform pem > moonKey.pem
 # 使用 root ca签发 node-1 端证书
 pki --issue --in moonKey.pem --type priv \
---cacert strongswanCert.pem --cakey strongswanKey.pem \
+--cacert caCert.pem --cakey caKey.pem \
 --dn "C=CH, O=strongSwan,CN=moon.strongswan.org" --san moon.strongswan.org \
 --outform pem > moonCert.pem
 
@@ -51,7 +61,7 @@ pki --issue --in moonKey.pem --type priv \
 pki --gen --outform pem > sunKey.pem
 # 使用 root ca签发 node-1 端证书
 pki --issue --in sunKey.pem --type priv \
---cacert strongswanCert.pem --cakey strongswanKey.pem \
+--cacert caCert.pem --cakey caKey.pem \
 --dn "C=CH, O=strongSwan,CN=sun.strongswan.org" --san sun.strongswan.org \
 --outform pem  > sunCert.pem
 
@@ -69,15 +79,15 @@ pki --issue --in root-nodeKey --type priv \
 **Configuration on host *moon*:**
 
 ```sh
-sudo cp strongswanCert.pem /etc/swanctl/x509ca/strongswanCert.pem
-sudo cp moonCert.pem /etc/swanctl/x509/moonCert.pem
-sudo cp moonKey.pem /etc/swanctl/private/moonKey.pem
+ cp caCert.pem /etc/swanctl/x509ca/strongswanCert.pem
+ cp moonCert.pem /etc/swanctl/x509/moonCert.pem
+ cp moonKey.pem /etc/swanctl/private/moonKey.pem
 
 /etc/swanctl/swanctl.conf:
 
     connections {
         host-host {
-            remote_addrs = 10.95.62.114
+            remote_addrs = 10.233.76.144
 
             local {
                 auth=pubkey
@@ -99,15 +109,15 @@ sudo cp moonKey.pem /etc/swanctl/private/moonKey.pem
 **Configuration on host *sun*:**
 
 ```sh
-/etc/swanctl/x509ca/strongswanCert.pem
-/etc/swanctl/x509/sunCert.pem
-/etc/swanctl/private/sunKey.pem
+ cp caCert.pem /etc/swanctl/x509ca/strongswanCert.pem
+cp sunCert.pem /etc/swanctl/x509/sunCert.pem
+cp sunKey.pem /etc/swanctl/private/sunKey.pem
 
 /etc/swanctl/swanctl.conf:
 
     connections {
         host-host {   # connection name
-            remote_addrs = 10.95.62.25
+            remote_addrs = 10.233.76.145
 
             local {
                 auth = pubkey
@@ -207,6 +217,7 @@ Initiator 获得虚拟IP后会再 IP table 220 中增加对应IP的路由方式�
 ```sh
 # install essential dependency
 sudo apt install  build-essential libgmp-dev libunbound-dev libldns-dev -y
+git clone https://github.com/strongswan/strongswan.git
 ./autogen.sh
 #  config
 # ./configure --prefix=/usr --sysconfdir=/etc --enable-eap-mschapv2 --enable-kernel-libipsec --enable-swanctl --enable-unity --enable-unbound --enable-vici --enable-xauth-eap --enable-xauth-noauth --enable-eap-identity --enable-md4 --enable-pem --enable-openssl --enable-pubkey --enable-farp --enable-pkcs11
@@ -342,20 +353,17 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -login --pin 1234 --login-type 
 
 
 
-### 
-
-
-
-
-
-
-
- cat <<EOF | tee /etc/apt/apt.conf.d/proxy.conf
-Acquire::http::Proxy "http://child-prc.intel.com:913";
-Acquire::https::Proxy "http://child-prc.intel.com:913";
-EOF
-
 ## Smart Demo with Intel SGX CTK
+
+
+
+[Build and Install SGX SDK](./3_intel_sgx.md)
+
+
+
+
+
+
 
 ### Build  & Install SDK
 
@@ -455,7 +463,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id 00
 pkcs11-tool --module /usr/local/lib/libp11sgx.so -L 
 
 # Create csr, cert-key is the private lable
-p11req -l --module /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-node'  -s 0x5e6dceb4 -p 12345678 > new.csr
+p11req -l /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-node'  -s 0x5e6dceb4 -p 12345678 > new.csr
  
 # Issuer the cert from root CA 
 openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in new.csr -out client.crt
@@ -482,18 +490,16 @@ crypto-api-toolkit  intel-sgx-ssl  linux-sgx  linux-sgx-driver  OpenSC  pkcs11  
 
 ```sh
 #strongswan.d/charon/pkcs11.conf
- modules {
-
+pkcs11 {
+    load = yes
+    modules {
         ctk{
                 path=/usr/local/lib/libp11sgx.so
                 os_locking=yes
                 load_certs=yes
         }
+    }
 
-   #     opensc{
-   #            path=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
-   #            load_certs=yes
-   #    }
 }
 ```
 
@@ -512,13 +518,13 @@ connections {
            auth = pubkey
            cert1{
                handle=0001
-               slot=0x91d9088
+               slot=0x68856fba
                module=ctk
            }
        }
        remote {
            auth = pubkey
-           id = "C=CH, O=strongSwan, CN=moon.strongswan.org"
+           id = "C=CH, O=strongSwan,CN=sun.strongswan.org"
        }
        children {
            pkcs11-demo {
@@ -543,7 +549,7 @@ secrets{
 #    }
     token_2{
         handle=0001
-        slot=0x91d9088
+        slot=0x68856fba
         module=ctk
         pin=12345678
     }
@@ -636,7 +642,37 @@ conn common-con
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
   ike=aes128-sha256-modp3072,aes256-sha256-modp3072
   type=tunnel
+  
+  
+  
+  # client
+cp caCert.pem /etc/ipsec.d/cacerts/
+cp sunKey.pem /etc/ipsec.d/private/
+cp sunCert.pem /etc/ipsec.d/certs/
 
+conn common-con
+  left=%any
+  right=10.233.76.147
+  leftsourceip=%config
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  closeaction=restart
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/sunCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  auto=start
+  leftid="C=CH, O=strongSwan,CN=sun.strongswan.org"
+  rightid="CN=sgx-node"
+  keyexchange=ikev2
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
 ```
 
 
@@ -645,12 +681,22 @@ ipsec.secrets
 
 ```sh
 # /etc/ipsec.secrets
-CN=root-node : RSA root-nodeKey.pem
+C=CH, O=strongSwan,CN=sun.strongswan.org : RSA sunKey.pem
 : PIN %smartcard:0001 "12345678"
 
 ```
 
 
+
+
+
+```sh
+
+# 1. Add strongswan.d/chron/pkcs11.conf
+
+
+# 2. This is the firsth 
+```
 
 
 
