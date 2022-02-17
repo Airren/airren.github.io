@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/content/blog/Linux_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/Linux_init.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/Mac_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/Mac_init.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_2.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/tools/linux/tmux.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/linux/tmux.md" afterDir="false" />
+    <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_2_api_basic.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/k8s_source_code_2_api_basic.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,9 @@
         </option>
       </RecentBranches>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1mCCTFwoSj78CQLPkChFQDeCZ3w" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -199,6 +200,7 @@
       <workItem from="1640530528434" duration="1034000" />
       <workItem from="1641029058565" duration="920000" />
       <workItem from="1645017260522" duration="121000" />
+      <workItem from="1645018137479" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
@@ -268,6 +270,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

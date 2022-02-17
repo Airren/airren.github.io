@@ -1,12 +1,21 @@
 ---
-title: K8s 源码阅读
+title: Kubernetes API Basic
 ---
 
 
 
+## The API Server	
+
+The API server has the following core responsibilities:
+
+- To serve the Kubernetes API.  This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as `kubectl`.
+- To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve `kubectl exec` sessions.
 
 
 
+
+
+The HTTP Interface of the API Server
 
 
 
@@ -34,17 +43,9 @@ k get --raw /apis/batch/v1 | jq -c  '.resources[]|{name,kind,shortNames,categori
 
 ![image-20220212224012052](k8s_source_code_2.assets/image-20220212224012052.png)
 
-
-
-
-
 #### api/v1
 
 ![image-20220212224529473](k8s_source_code_2.assets/image-20220212224529473.png)
-
-
-
-
 
 #### apis/apps/v1
 
