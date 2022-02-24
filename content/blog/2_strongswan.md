@@ -87,7 +87,7 @@ pki --issue --in root-nodeKey --type priv \
 
     connections {
         host-host {
-            remote_addrs = 10.233.76.144
+            remote_addrs = 10.233.76.161
 
             local {
                 auth=pubkey
@@ -117,7 +117,7 @@ cp sunKey.pem /etc/swanctl/private/sunKey.pem
 
     connections {
         host-host {   # connection name
-            remote_addrs = 10.233.76.145
+            remote_addrs = 10.233.76.163
 
             local {
                 auth = pubkey
@@ -518,7 +518,7 @@ connections {
            auth = pubkey
            cert1{
                handle=0001
-               slot=0x68856fba
+               slot=0x208efd0c
                module=ctk
            }
        }
@@ -538,7 +538,7 @@ pools{
     client_pool{
         addrs=192.168.0.1
     }
-}
+}l
 
 secrets{
 #    token_1{
@@ -549,7 +549,7 @@ secrets{
 #    }
     token_2{
         handle=0001
-        slot=0x68856fba
+        slot=0x208efd0c
         module=ctk
         pin=12345678
     }
@@ -696,6 +696,67 @@ C=CH, O=strongSwan,CN=sun.strongswan.org : RSA sunKey.pem
 
 
 # 2. This is the firsth 
+```
+
+
+
+
+
+/usr/sbin/ipsec start --nofork
+
+
+
+
+
+##  OpenWRT with Ubuntu-SGX as a sidecar
+
+Stratege1: shared a Mount Path,  Create Ipsec with PCKS#11 by ubuntu.
+
+
+
+
+
+https_proxy=http://child-prc.intel.com:913;http_proxy=http://child-prc.intel.com:913 ./pip install -r ../../requirements.txt
+
+git clone https://github.com/strongswan/strongMan.git
+
+
+
+Stratege2: Use p11-kit to do a remote HSM Forwarding,   Create Ipsec with PCKS#11 in openwrt.
+
+
+
+## StrangManAPI
+
+
+
+```sh
+curl 'http://sdewan-sgx.sh.intel.com:31515/certificates/add' \
+  -X 'POST' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 1655' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'Origin: http://sdewan-sgx.sh.intel.com:31515' \
+  -H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryNLIZnXX6IucXXau8' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'Referer: http://sdewan-sgx.sh.intel.com:31515/certificates/add' \
+  -H 'Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh-TW;q=0.7,zh;q=0.6' \
+  -H 'Cookie: AMCVS_AD2A1C8B53308E600A490D4D%40AdobeOrg=1; at_check=true; s_cc=true; intelresearchSTG=5; aam_uuid=49058956183404717814245980060213674706; ELQSTATUS=OK; _cs_c=0; ELOQUA=GUID=DC19EC9AFC43457EA1826BEBB4BBB7DE; kndctr_AD2A1C8B53308E600A490D4D_AdobeOrg_consent=general=in; utag_main=v_id:017e8a96b666001a9147b05b38cd05078005107001274$_sn:4$_se:1$_ss:1$_st:1644388152375$wa_ecid:49081350502256117724243741728847082187$ses_id:1644386352375%3Bexp-session$_pn:1%3Bexp-session$wa_adbchk:1%3Bexp-session; kndctr_AD2A1C8B53308E600A490D4D_AdobeOrg_identity=CiY0OTA4MTM1MDUwMjI1NjExNzcyNDI0Mzc0MTcyODg0NzA4MjE4N1IPCIPI3tToLxgBKgRKUE4z8AHDh8Lo7S8=; AMCV_AD2A1C8B53308E600A490D4D%40AdobeOrg=1585540135%7CMCIDTS%7C19033%7CMCMID%7C49081350502256117724243741728847082187%7CMCAAMLH-1644991154%7C11%7CMCAAMB-1644991154%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1644393554s%7CNONE%7CvVersion%7C4.4.0; mbox=PC#16bb4f457c834f62af6d9bd0a5f5febb.38_0#1706247443|session#b274b1ad3c9c4b0eb07c0003870201f6#1644388216; _cs_id=5508117f-2589-a486-fa1a-55240eb57587.1643002642.5.1644386355.1644386355.1589385054.1677166642887; adcloud={%22_les_v%22:%22y%2Cintel.com%2C1644388157%22}; ph_mqkwGT0JNFqO-zX2t0mW6Tec9yooaVu7xCBlXtHnt5Y_posthog=%7B%22distinct_id%22%3A%2217efc29d9a38cb-0e6e8852bd03ad-133f685c-384000-17efc29d9a41172%22%2C%22%24device_id%22%3A%2217efc29d9a38cb-0e6e8852bd03ad-133f685c-384000-17efc29d9a41172%22%7D; currentmode=server; csrftoken=vAUiU7ihilLZIMWeRl1bMbG4cwVHX8LN5gAhDP6TN2jyipQtr8PM0xMIy0nFB6BC; sessionid=373uzttbwjiswel109rpxtlz7cyscpzk' \
+  --compressed \
+  --insecure
+```
+
+
+
+```sh
+
+
+
+
+
 ```
 
 
