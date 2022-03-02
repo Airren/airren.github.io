@@ -18,7 +18,7 @@ apt install vim git tmux golang
 
 ```sh
 # ~/.vimrc
-cat <<EOF| tee -a ~/.vimrc
+cat <<EOF | tee -a ~/.vimrc
 set nu
 syntax on
 inoremap jj <ESC>
@@ -133,6 +133,36 @@ sudo usermod -aG sudo hairong
 ```
 
 
+
+
+
+
+
+
+
+Wait for network
+
+```sh
+network:
+  version: 2
+  wifis:
+    wlp3s0:
+      access-points:
+        HoneyHouse_5.0G:
+          password: 1q2w3e4r%T
+      dhcp4: true
+      optional: true
+      
+
+```
+
+
+
+```sh
+sudo netplan generate
+
+sudo netplan apply
+```
 
 
 
