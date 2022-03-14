@@ -87,7 +87,7 @@ pki --issue --in root-nodeKey --type priv \
 
     connections {
         host-host {
-            remote_addrs = 10.233.76.144
+            remote_addrs = 10.233.76.161
 
             local {
                 auth=pubkey
@@ -117,7 +117,7 @@ cp sunKey.pem /etc/swanctl/private/sunKey.pem
 
     connections {
         host-host {   # connection name
-            remote_addrs = 10.233.76.145
+            remote_addrs = 10.233.76.163
 
             local {
                 auth = pubkey
@@ -518,7 +518,7 @@ connections {
            auth = pubkey
            cert1{
                handle=0001
-               slot=0x68856fba
+               slot=0x208efd0c
                module=ctk
            }
        }
@@ -538,7 +538,7 @@ pools{
     client_pool{
         addrs=192.168.0.1
     }
-}
+}l
 
 secrets{
 #    token_1{
@@ -549,7 +549,7 @@ secrets{
 #    }
     token_2{
         handle=0001
-        slot=0x68856fba
+        slot=0x208efd0c
         module=ctk
         pin=12345678
     }
@@ -697,6 +697,33 @@ C=CH, O=strongSwan,CN=sun.strongswan.org : RSA sunKey.pem
 
 # 2. This is the firsth 
 ```
+
+
+
+
+
+/usr/sbin/ipsec start --nofork
+
+
+
+
+
+##  OpenWRT with Ubuntu-SGX as a sidecar
+
+Stratege1: shared a Mount Path,  Create Ipsec with PCKS#11 by ubuntu.
+
+
+
+
+
+https_proxy=http://child-prc.intel.com:913;http_proxy=http://child-prc.intel.com:913 ./pip install -r ../../requirements.txt
+
+git clone https://github.com/strongswan/strongMan.git
+
+
+
+Stratege2: Use p11-kit to do a remote HSM Forwarding,   Create Ipsec with PCKS#11 in openwrt.
+
 
 
 

@@ -18,7 +18,7 @@ apt install vim git tmux golang
 
 ```sh
 # ~/.vimrc
-cat <<EOF| tee -a ~/.vimrc
+cat <<EOF | tee -a ~/.vimrc
 set nu
 syntax on
 inoremap jj <ESC>
@@ -45,7 +45,8 @@ EOF
  
 
 ```sh
-sudo apt install -y zsh && sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sudo apt install -y  zsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # sudo chsh -s $(which zsh)
 ```
@@ -94,6 +95,7 @@ function proxy_off(){
 
 proxy_on' | tee -a  ~/.zshrc
 
+EOF
 
 # Install zsh
 cat <<EOF | sudo tee /etc/apt/apt.conf.d/proxy.conf
@@ -131,6 +133,36 @@ sudo usermod -aG sudo hairong
 ```
 
 
+
+
+
+
+
+
+
+Wait for network
+
+```sh
+network:
+  version: 2
+  wifis:
+    wlp3s0:
+      access-points:
+        HoneyHouse_5.0G:
+          password: 1q2w3e4r%T
+      dhcp4: true
+      optional: true
+      
+
+```
+
+
+
+```sh
+sudo netplan generate
+
+sudo netplan apply
+```
 
 
 

@@ -21,7 +21,7 @@ Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被�
 
 
 
-最小攻击面的硬件辅助可信执行环境
+最小攻击面的硬件辅助可信执行环境。
 
 
 
@@ -545,6 +545,10 @@ Check Method : https://www.intel.com/content/www/us/en/support/articles/00005742
 > Look for output: SGX_LC: **SGX launch config supported = true**
 >
 > 
+
+
+
+
 
 
 

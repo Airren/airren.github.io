@@ -144,3 +144,33 @@ EOF
 ## Font
 
 `hack`
+
+
+
+
+
+## K8s for zsh
+
+```sh
+echo 'source <(kubectl completion zsh)' >>~/.zshrc
+echo 'alias k=kubectl' >>~/.zshrc
+echo 'compdef __start_kubectl k' >>~/.zshrc
+source ~/.zshrc
+```
+
+
+
+
+
+
+
+## NetWork Tools
+
+```sh
+brew install iproute2mac
+
+
+
+
+```
+
