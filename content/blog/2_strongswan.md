@@ -18,7 +18,7 @@ So, on the server side, left is local to the server and on the client side, left
 openssl x509 -text -noout -in  /etc/ipsec.d/private/sunKey.pem
 ```
 
-
+update to new 1.23 and same with dek
 
 
 
