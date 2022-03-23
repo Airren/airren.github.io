@@ -38,3 +38,9 @@ header:
     subtitleFontSize: 16
     spaceBetweenTitleSubtitle: 20
 ---
+
+
+
+```py
+sudo apt-get install pkg-config  libffi-dev
+```
