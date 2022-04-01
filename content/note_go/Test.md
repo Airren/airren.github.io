@@ -13,5 +13,8 @@ go test -v hello_test.go -test.run TestHello
 go test -bench="."
 
 
+go test -run regexp
+
+
 ```
 

@@ -26,7 +26,7 @@ clang++ -std=c++17 -W -Wall -Wfatal-errors <file_name>
 ## AutoMake
 
 ```sh
-sudo apt install autoconf autopoint pkg-config  libffi-dev libtool libtasn1-6-dev gettext libtasn1-bin
+sudo apt install  autoconf autopoint pkg-config  libffi-dev libtool libtasn1-6-dev gettext libtasn1-bin
 ```
 
 

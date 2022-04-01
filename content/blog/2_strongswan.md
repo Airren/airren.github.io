@@ -6,7 +6,7 @@ title: strongswan
 
 When reading/adjusting any StrongSwan configurations, remember these important words:
 
-`left is local to the machine it's stated on; right is remote in the same manner`
+> left is local to the machine it's stated on; right is remote in the same manner
 
 So, on the server side, left is local to the server and on the client side, left is local to that client.
 
@@ -17,8 +17,6 @@ So, on the server side, left is local to the server and on the client side, left
 ```sh
 openssl x509 -text -noout -in  /etc/ipsec.d/private/sunKey.pem
 ```
-
-update to new 1.23 and same with dek
 
 
 
@@ -232,7 +230,7 @@ sudo systemctl restart strongswan-starter.service
 
 ### Build virt_cacard
 
-[virt_card](https://github. com/Jakuje/virt_cacard) using libcacard, vitualsmartcard's vpcd and [softhsm2](https://fossies.org/linux/softhsm/README.md) to provide PCSC accessible virtual smart card.
+[virt_card](https://github.com/Jakuje/virt_cacard) using libcacard, vitualsmartcard's vpcd and [softhsm2](https://fossies.org/linux/softhsm/README.md) to provide PCSC accessible virtual smart card.
 
 ```sh
 # install essential dependency, libcacard & softhsm2
@@ -254,7 +252,9 @@ sudo make install
 Build & Install virt_card
 
 ```sh
+cd ~
 git clone https://github.com/Jakuje/virt_cacard.git
+cd virt_cacard
 ./autogen.sh
 ./configure
 make
@@ -264,7 +264,7 @@ configure softhsm with default certificates and start virt_cacard
 
 ```sh
 ./setup-softhsm2.sh
-export SOFTHSM2_CONF=/home/airren/SGX/virt_cacard/softhsm2.conf &&./virt_cacard
+export SOFTHSM2_CONF=/home/ubuntu/vivirt_cacard/softhsm2.conf &&./virt_cacard
 ```
 
 After that you should be able to access virtual smart card through OpenSC:
@@ -315,7 +315,7 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so --slot 0x7316c269 -O
 ### Creating a token
 
 ```sh
-pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "ctk" --slot 0 --so-pin 1234 --init-pin --pin 1234
+    pkcs11-tool --module /usr/local/lib/libp11sgx.so --init-token --label "ctk" --slot 0 --so-pin 1234 --init-pin --pin 1234
 ```
 
 ### Creating an RSA keypair
@@ -726,6 +726,7 @@ Stratege2: Use p11-kit to do a remote HSM Forwarding,   Create Ipsec with PCKS#1
 
 
 
+## P11-kit
 
 
 
