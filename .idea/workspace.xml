@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/content/blog/high_concurrency_lb.assets/image-20220320234812684.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/high_concurrency_lb.assets/image-20220321000202468.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/high_concurrency_lb.assets/image-20220321000400078.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/high_concurrency_lb.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/linux_socket.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/blog/openwrt_cross_compile.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/6_tcp_dump.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/_index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_c/C++.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/note_c/C++.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
