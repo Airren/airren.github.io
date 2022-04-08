@@ -501,6 +501,23 @@ pkcs11 {
     }
 
 }
+
+
+bash-5.1$ /usr/lib/libp11-kit.so.0^C
+
+
+echo 'pkcs11 {
+    load = yes
+    modules {
+        ctk{
+                path=/usr/lib/p11-kit-client.so 
+                os_locking=yes
+                load_certs=yes
+        }
+    }
+}' | sudo tee /etc/strongswan.d/charon/pkcs11.conf
+
+
 ```
 
 
@@ -518,13 +535,13 @@ connections {
            auth = pubkey
            cert1{
                handle=0001
-               slot=0x208efd0c
+               slot=0x11
                module=ctk
            }
        }
        remote {
            auth = pubkey
-           id = "C=CH, O=strongSwan,CN=sun.strongswan.org"
+           id = "CN=sun.strongswan.org"
        }
        children {
            pkcs11-demo {
@@ -538,7 +555,7 @@ pools{
     client_pool{
         addrs=192.168.0.1
     }
-}l
+}
 
 secrets{
 #    token_1{
@@ -549,12 +566,50 @@ secrets{
 #    }
     token_2{
         handle=0001
-        slot=0x208efd0c
+        slot=0x11
         module=ctk
         pin=12345678
     }
 }
 
+
+
+
+
+# /etc/swanctl/swanctl.conf
+connections {
+    pkcs11-demo{   # connection name
+       remote_addrs = 10.233.76.178
+       local {
+           auth = pubkey
+           cert1{
+               handle=0001
+               slot=0x11
+               module=ctk
+           }
+       }
+       remote {
+           auth = pubkey
+           id = "CN=sgx-1"
+       }
+       children {
+           pkcs11-demo {
+               start_action = trap
+           }
+       }
+    }
+}
+
+
+
+secrets{
+    token_1{
+        handle=0001
+        slot=0x11
+        module=ctk
+        pin=12345678
+    }
+}
 
 ```
 
@@ -568,28 +623,6 @@ secrets{
 # /etc/ipsec.conf
 
 # ipsec.conf - strongSwan IPsec configuration file
-
-# basic configuration
-
-config setup
-        # strictcrlpolicy=yes
-        # uniqueids = no
-
-# Add connections here.
-
-# Sample VPN connections
-
-#conn sample-self-signed
-#      leftsubnet=10.1.0.0/16
-#      leftcert=selfCert.der
-#      leftsendcert=never
-#      right=192.168.0.2
-#      rightsubnet=10.2.0.0/16
-#      rightcert=peerCert.der
-#      auto=start
-
-
-
 
 conn pkcs11-legacy
   left=%any
@@ -608,8 +641,8 @@ conn pkcs11-legacy
   rightsendcert=yes
   rightsourceip=192.168.0.8
   auto=start
-  leftid="CN=sgx-node"
-  rightid="C=CH, O=strongSwan,CN=sun.strongswan.org"
+  leftid="CN=sgx-1"
+  rightid="CN=sgx-2"
   keyexchange=ikev2
   mark=30
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
@@ -652,7 +685,7 @@ cp sunCert.pem /etc/ipsec.d/certs/
 
 conn common-con
   left=%any
-  right=10.233.76.147
+  right=10.233.76.178
   leftsourceip=%config
   ikelifetime=3h
   lifetime=1h
@@ -663,12 +696,12 @@ conn common-con
   closeaction=restart
   leftauth=pubkey
   rightauth=pubkey
-  leftcert=/etc/ipsec.d/certs/sunCert.pem
+  leftcert=%smartcard:0001
   leftsendcert=yes
   rightsendcert=yes
   auto=start
-  leftid="C=CH, O=strongSwan,CN=sun.strongswan.org"
-  rightid="CN=sgx-node"
+  leftid="CN=sgx-2"
+  rightid="CN=sgx-1"
   keyexchange=ikev2
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
   ike=aes128-sha256-modp3072,aes256-sha256-modp3072

@@ -195,10 +195,27 @@ p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:mod
 ```sh
 p11-kit server --provider /usr/local/lib/libp11sgx.so "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=b326ab0138ada9cb;token=sgx-1" -f
 
+
+
+
+
+p11-kit server --provider /usr/local/lib/libp11sgx.so "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=f0c2722e2714d105;token=sgx-1" -f
+
 ssh -R /run/user/1000/p11-kit/pkcs11:${P11_KIT_SERVER_ADDRESS#*=} ubuntu@sdewan
 
 pkcs11-tool --module /lib/x86_64-linux-gnu/pkcs11/p11-kit-client.so -L
-pkcs11-tool --module ./.lib/p11-kit-client.so -L
+pkcs11-tool --module ./p11-kit-client.so -L
+pkcs11-tool --module ./p11-kit-client.so --login --pin 12345678 -O --token sgx-1
+
+pkcs11-tool --module /usr/lib/p11-kit-client.so -L
+pkcs11-tool --module /usr/lib/p11-kit-client.so  --login --pin 12345678 -O --token sgx-1
+/usr/lib/libp11-kit.so.0
+
+ pkcs11-tool --module /usr/local/lib/pkcs11/p11-kit-client.so -L
+ 
+ 
+ 
+ pkcs11-tool --module ./libp11-kit.so -L
 ```
 
 
@@ -220,8 +237,10 @@ Forward the socket with ssh
 Set the Value of  to print the debug log
 
 ```sh
-export P11_KIT_STRICT=yes;
-export P11_KIT_DEBUG=all;
+export P11_KIT_STRICT=yes;export P11_KIT_DEBUG=all;
+unset P11_KIT_STRICT P11_KIT_DEBUG;
+
+sudo opkg install opensc-utils-pkcs11-tool
 ```
 
 
@@ -231,6 +250,10 @@ export P11_KIT_DEBUG=all;
 ```sh
 sudo cp ./.libs/libp11-kit.so.0 /lib//x86_64-linux-gnu/libp11-kit.so.0
 sudo cp ./.libs/libp11-kit.so.0.3.0 /lib//x86_64-linux-gnu/libp11-kit.so.0.3.0
+
+
+# for openwrt 
+opkg install opensc-utils-pkcs11-tool p11-kit
 ```
 
 
