@@ -97,7 +97,6 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so -L
 p11req -l /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-1'  -t "$token"   -p 12345678 -o new.csr
 
 # -i label/alias of the key
-
 ```
 
 
@@ -144,37 +143,6 @@ PDF: https://archive.fosdem.org/2017/schedule/event/smartcard_forwarding/attachm
 
 
 
-
-
-![img](pkcs11/f568e031f0e0ceeee2abb29fe675a11b.png)
-
-
-
-A solution for Smart Card Remoting. The tool named p11-kit, a redhat's project.
-
-If we use p11-kit as the solution of HSM forwarding, as is shown in the picture. The StrongSwan uses the p11-kit-client.so directly, this is a standard PKCS#11 interface. And the p11-kit-client will call the p11-kit socket server to interact with the CTK.
-
- The p11-kit client connects with the p11-kit server through socket with a self-designed protocol.  For StrongSwan, the p11-kit is transparent. Like direct call the CTK dynamic library.
-
-And, the ubuntu container has an HTTP server to provide RESTful API to Initialize the token, Create Keypair and generate CSR. 
-
-
-
-
-
-And, if  we use p11-kit , we need to make some changes of the p11-kit code to make it fit with CTK.
-
-- CTK does not support application provided function pointers or callbacks and mutexes.
-  - **C_Initialize**: The members *CreateMutex*, *DestroyMutex*, *LockMutex* and *UnlockMutex* in CK_C_INITIALIZE_ARGS are not supported and must be set to NULL_PTR.
-  - **C_OpenSession**: The members *pApplication* and *Notify* are not supported and must be set to NULL_PTR.
-- Change the socket module, from unix domain socket(+ ssh)  to internet dmain socket. 
-
-
-
-
-
-
-
 **Install p11-kit-module**
 
 ```sh
@@ -190,32 +158,21 @@ p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:mod
 
 
 
-**Forwarding a sgx-ctk** 
+#### **Forwarding a sgx-ctk** 
 
 ```sh
 p11-kit server --provider /usr/local/lib/libp11sgx.so "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=b326ab0138ada9cb;token=sgx-1" -f
 
-
-
-
-
-p11-kit server --provider /usr/local/lib/libp11sgx.so "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=f0c2722e2714d105;token=sgx-1" -f
-
+# use ssh to forward a unix socket
 ssh -R /run/user/1000/p11-kit/pkcs11:${P11_KIT_SERVER_ADDRESS#*=} ubuntu@sdewan
 
 pkcs11-tool --module /lib/x86_64-linux-gnu/pkcs11/p11-kit-client.so -L
-pkcs11-tool --module ./p11-kit-client.so -L
-pkcs11-tool --module ./p11-kit-client.so --login --pin 12345678 -O --token sgx-1
+
 
 pkcs11-tool --module /usr/lib/p11-kit-client.so -L
 pkcs11-tool --module /usr/lib/p11-kit-client.so  --login --pin 12345678 -O --token sgx-1
-/usr/lib/libp11-kit.so.0
 
- pkcs11-tool --module /usr/local/lib/pkcs11/p11-kit-client.so -L
- 
- 
- 
- pkcs11-tool --module ./libp11-kit.so -L
+pkcs11-tool --module /usr/local/lib/pkcs11/p11-kit-client.so -L
 ```
 
 
@@ -239,8 +196,7 @@ Set the Value of  to print the debug log
 ```sh
 export P11_KIT_STRICT=yes;export P11_KIT_DEBUG=all;
 unset P11_KIT_STRICT P11_KIT_DEBUG;
-
-sudo opkg install opensc-utils-pkcs11-tool
+# for openwrt neet to install opkg install opensc-utils-pkcs11-tool
 ```
 
 
@@ -291,8 +247,6 @@ rpc_C_FindObjectsFinal
 rpc_C_CloseSession
 rpc_C_Finalize
 ```
-
-
 
 
 
@@ -348,38 +302,77 @@ pkcs11-tool -L
 
 
 
+## PKCS11 Remote Forward
+
+![img](crypto_pkcs11/f568e031f0e0ceeee2abb29fe675a11b.png)
+
+
+
+A solution for Smart Card Remoting. The tool named p11-kit, a redhat's project.
+
+If we use p11-kit as the solution of HSM forwarding, as is shown in the picture. The StrongSwan uses the p11-kit-client.so directly, this is a standard PKCS#11 interface. And the p11-kit-client will call the p11-kit socket server to interact with the CTK.
+
+ The p11-kit client connects with the p11-kit server through socket with a self-designed protocol.  For StrongSwan, the p11-kit is transparent. Like direct call the CTK dynamic library.
+
+And, the ubuntu container has an HTTP server to provide RESTful API to Initialize the token, Create Keypair and generate CSR. 
 
 
 
 
-## Init CTK
+
+And, if  we use p11-kit , we need to make some changes of the p11-kit code to make it fit with CTK.
+
+- CTK does not support application provided function pointers or callbacks and mutexes.
+  - **C_Initialize**: The members *CreateMutex*, *DestroyMutex*, *LockMutex* and *UnlockMutex* in CK_C_INITIALIZE_ARGS are not supported and must be set to NULL_PTR.
+  - **C_OpenSession**: The members *pApplication* and *Notify* are not supported and must be set to NULL_PTR.
+- Change the socket module, from unix domain socket(+ ssh)  to internet dmain socket. 
 
 
+
+### P11-kit
+
+- Modify initialize arguments of sever-side and change the unix socket path.
+- Cross complie p11-kit-clinet.so through openwrt SDK.
+
+### CTK
+- Build and install CTK in ubuntu container.
+
+### CNF Pod
+
+- enable pkcs11 for strongswan `opkg instsall strongswan-mod-pkcs11`
+- add `p11-kit-client.so` and install libffi `opkg install libffi`
+- add default env ` P11_KIT_SERVER_ADDRESS="unix:path=/tmp/p11-kit/p11-kit-server-sgx"`
+
+
+
+### Configuration of StrognSwan
+
+#### Init Token & Create Cert
 
 ```sh
 #!/bin/bash
 
 set -ex
 
-
-MODULE=
 token="sgx-1"
-key_pair="key-pair-1"
+key_pair_id="0001"
+key_pair_label="cert-key"
+subject='/CN=sgx-2'
 
 
 # Init Token
 pkcs11-tool --module /usr/local/lib/libp11sgx.so \
---init-token --label "$token" --slot 0 --so-pin 12345678 --init-pin --pin 12345678
+--init-token --label "${token}" --slot 0 --so-pin 12345678 --init-pin --pin 12345678
 
 # Create Key Pair
-pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id 0001 --token "$token"  --keypairgen --key-type rsa:2048 --label "key-1" --usage-sign
+pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678 --id ${key_pair_id} --token "$token"  --keypairgen --key-type rsa:2048 --label ${key_pair_label} --usage-sign
 
+# SLOT_ID=$(pkcs11-tool --module /usr/local/lib/libp11sgx.so -L|grep 'Slot 0'|grep 'SGXHSM slot ID'| awk '{print $7}')
 
+# Create csr, cert-key is the private lable
+# p11req -l /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-node'  -s  $SLOT_ID  -p 12345678 > new.csr
 
-pkcs11-tool --module ./.libs/p11-kit-client.so  --login --pin 12345678 --id 0002 --token "$token"  --keypairgen --key-type rsa:2048 --label "key-2" --usage-sign
-
-# Generate CSR
-p11req -l /usr/local/lib/libp11sgx.so -i $key_pair -d '/CN=sgx-1'  -t "$token"   -p 12345678 -o new.csr
+p11req -l /usr/local/lib/libp11sgx.so -i cert-key -d '${subject}'  -t "$token"   -p 12345678 -o new.csr
 
 
 # Issuer the cert from root CA
@@ -390,10 +383,159 @@ openssl x509 -in client.crt -outform DER -out clientcrt.der
 
 # Add cert to HSM
 pkcs11-tool --module /usr/local/lib/libp11sgx.so \
--login --pin 12345678 --login-type user --token "$token"   --write-object clientcrt.der --type cert --id 0001
+-login --pin 12345678 --login-type user --token "$token"   --write-object clientcrt.der --type cert --id ${key_pair_id}
 
 # Check private Key and Cert status
 pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 12345678  -O  --token "$token"
+
+echo ">>>>>>>> slot id: $SLOT_ID"
+
+SERIAL_NUM=$(pkcs11-tool --module /usr/local/lib/libp11sgx.so -L |awk 'NR==9{print $4}')
+echo ">>>>>>>> serial num: $SERIAL_NUM"
+
+export P11_KIT_STRICT=yes;export P11_KIT_DEBUG=all;
+# unset P11_KIT_STRICT P11_KIT_DEBUG
+
+p11-kit server --provider /usr/local/lib/libp11sgx.so \
+"pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=$SERIAL_NUM;token=sgx-1" -f
+
+```
+
+
+
+#### strongswan.conf
+
+```sh
+# /etc/strongswan.d/charon/pkcs11.conf
+echo 'pkcs11 {
+    load = yes
+    modules {
+        ctk{
+                path=/usr/lib/p11-kit-client.so 
+                os_locking=yes
+                load_certs=yes
+        }
+    }
+}' | sudo tee /etc/strongswan.d/charon/pkcs11.conf
+```
+
+#### ipsec.secret & ipsec.conf
+
+This is a legacy configuration, is deprecated, but ... used in openwrt
+
+**ipsec.secret**
+
+```sh
+# /etc/ipsec.secrets
+: PIN %smartcard:0001 "12345678"
+ #                key-pair id
+```
+
+ipsec.conf
+
+```sh
+# /etc/ipsec.conf
+# server
+conn common-con  
+  left=%any
+  right=%any
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=%smartcard:0001
+  leftsendcert=yes
+  rightsendcert=yes
+  rightsourceip=192.168.0.1
+  auto=start
+  leftid="CN=node-1"
+  rightid="CN=node-2"
+  leftupdown=/etc/updown
+  keyexchange=ikev2
+  mark=30
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
+
+# client
+conn common-con
+  left=%any
+  right=10.233.76.147
+  leftsourceip=%config
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  closeaction=restart
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=%smartcard:0001
+  leftsendcert=yes
+  rightsendcert=yes
+  auto=start
+  leftid="CN=node-2"
+  rightid="CN=node-1"
+  keyexchange=ikev2
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
+
+```
+
+
+
+#### swanct.conf
+
+You can use `swanctl.conf` to replace the `ipsec.conf`
+
+```sh
+# /etc/swanctl/conf.d/con.conf
+connections {
+    pkcs11-demo{   # connection name
+       # remote_addrs = 10.233.76.179
+       pools = client_pool
+
+       local {
+           auth = pubkey
+           cert1{
+               handle=0001
+               slot=0x11
+               module=ctk
+           }
+       }
+       remote {
+           auth = pubkey
+           id = "CN=sgx-2"
+       }
+       children {
+           pkcs11-demo {
+               start_action = trap
+           }
+       }
+    }
+}
+
+pools{
+    client_pool{
+        addrs=192.168.0.1
+    }
+}
+
+secrets{
+    token_1{
+        handle=0001
+        slot=0x11
+        module=ctk
+        pin=12345678
+    }
+}
+
 
 ```
 
@@ -401,7 +543,137 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so --login --pin 12345678  -O  --t
 
 
 
-## PKCS11 API
+### ToDo
+
+- [x]  golang server to init token, only once, and create unix socket fd, set mod to 777.
+- [x] create key pair , specify a key-pair-id and label.
+- [x] generate a csr.
+- [x] add the cert to the slot with key-pair-id and label.
+- [ ] lua, add cert config to `ipsec.secret`
+- [ ] lua, add tunnel configuration
+
+
+
+### RESTful API
+
+#### HSM: Create Key-Pair and Generate CSR
+
+```sh
+ # token info, this is a default token, don't change any field
+ # key-pair label, for
+  
+ curl --location --request POST 'http://10.233.76.147:8081/pkcs11/csr' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "token": {
+        "label": "sdewan-sgx",  
+        "slot": 0,               
+        "so_pin": "12345678",
+        "pin": "12345678"
+    },
+    "cert": {
+        "key_pair": {
+            "key_type": "rsa:2048",
+            "label": "node-1", 
+            "id": "0001"
+        },
+        "subject": "/CN=node-1",
+        "pem": ""
+    }
+}'
+
+# response  string, code 200
+-----BEGIN CERTIFICATE REQUEST-----
+MIICVjCCAT4CAQAwETEPMA0GA1UEAwwGbm9kZS0xMIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEA7ct+mdZvjeVEOtMXejtcN9HHJM3xYvk6Yddbp59/W8Vz
+EUZDnfXZ32ZrarP1adLCxmcCrOb7geJYV3rfIFl/MoJFpUxR1OZWBqQGhfDpV+tW
+cJltauDzgJ9+dgO3Rz/a+mSr2HIV5nmuIcfmk69cWrFGdr09G6VX+PPBS0dSbMqB
+u3YwCDEgIfzA3tdOFrkcJ3olVUyT7hKimNGZzsYotxJtis28g0BxQG5GiAmrC6gH
+qegCZgVkFJ2950UGvXQnfylnZHHZrGB1R9fi2P3/XrRmAsCAQZa52gOLZKWQOqUL
+tAemm+IP1tvr9/AzG1jg3wCb151LUOF61q3v0E8G3QIDAQABoAAwDQYJKoZIhvcN
+AQELBQADggEBAAJqarYbiNsjpogMx27jrP00BeHvTd2+22U0wP0M9G94ZornRzSX
+xGxJMLib4QTIMQANrBrZNKWaBzdYFpCfbTXyYE509UMnEqGG/MZEB6M1bQWzWlh2
+zLOwHx32f7OH5O2fMeNDVzBZ1pRidIqWlIlZGfMfq1KwmCoKdsQuHSWjW1dtD0Ka
+tJRwnGW78vVdsetO0WgykmLO0CySS63dgnwf3Lqm0nLfzxnQ5LJ2h+UMgpEh5ygi
+x66WTcRrvmkYTLivv5mNm4XS6o2NMw95HfKKJbdj+kqHISHZWGCDqPr1+Z0jjfXW
+CZ01fouDJIXLehgw62ol7TsuKC1CvUkVUiI=
+-----END CERTIFICATE REQUEST-----
+```
+
+
+
+#### HSM: Add Cert to SGX  token
+
+```sh
+curl --location --request POST 'http://127.0.0.1:8081/pkcs11/cert' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "token": {
+        "label": "sdewan-sgx",
+        "slot": 0,
+        "so_pin": "12345678",
+        "pin": "12345678"
+    },
+    "cert": {
+        "key_pair": {
+            "key_type": "rsa:2048",
+            "label": "node-1",
+            "id": "12345678"
+        },
+        "subject": "/CN=node-1",
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICvzCCAacCAQEwDQYJKoZIhvcNAQELBQAwOjELMAkGA1UEBhMCQ0gxEzARBgNVBAoTCnN0cm9uZ1N3YW4xFjAUBgNVBAMTDXN0cm9uZ1N3YW4gQ0EwHhcNMjIwNDA5MDU0MTE2WhcNMjMwNDA5MDU0MTE2WjARMQ8wDQYDVQQDDAZub2RlLTEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDty36Z1m+N5UQ60xd6O1w30cckzfFi+Tph11unn39bxXMRRkOd9dnfZmtqs/Vp0sLGZwKs5vuB4lhXet8gWX8ygkWlTFHU5lYGpAaF8OlX61ZwmW1q4POAn352A7dHP9r6ZKvYchXmea4hx+aTr1xasUZ2vT0bpVf488FLR1JsyoG7djAIMSAh/MDe104WuRwneiVVTJPuEqKY0ZnOxii3Em2KzbyDQHFAbkaICasLqAep6AJmBWQUnb3nRQa9dCd/KWdkcdmsYHVH1+LY/f9etGYCwIBBlrnaA4tkpZA6pQu0B6ab4g/W2+v38DMbWODfAJvXnUtQ4XrWre/QTwbdAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAEFsv+GDs0cnai5vwoliCEyx4HQxdBtBjNElsnZ6NZLuGCjMYqq8whgEcc44jrY7ygunC4DPc2PTie3fAe05eGJ4uwu5meJTtaoNa5NCbo2mP/GHObesFPG/5A4fPyoNI4UrLl+NtEiY6szWe7Lg7W89JgY0ZJen2WoCA2nNubMOrJV1ydF/375P+LGNx2E48ri/Tgv1lnfyBIzc1AfK3zItwVUiCfVtKOefGPFPV8VTeFwcZBm7UdwEv3mGIfTfaxzjL8QO00e+2FLn5D/dfwVvbJrTrtTrUjHz2enNUv9YVF0d31PYaXepTFI8maUja3ntnIE8GJVvzOaw9oFCAws=\n-----END CERTIFICATE-----"
+    }
+}'
+
+# response string, code 200
+success
+```
+
+
+
+#### Lua: Add configuration to ipsec.secret
+
+```sh
+```
+
+
+
+
+
+
+
+### Squash Docker Image
+
+| Name | Size   | Target Size | Des                  |
+| ---- | ------ | ----------- | -------------------- |
+| CNF  | 33.6MB |             | p11-kit-client.so 9M |
+| HSM  | 277 MB | < 300MB     |                      |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
