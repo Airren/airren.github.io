@@ -331,11 +331,11 @@ And, if  we use p11-kit , we need to make some changes of the p11-kit code to ma
 
 ### P11-kit
 
-- Modify initialize arguments of sever-side and change the unix socket path.
-- Cross complie p11-kit-clinet.so through openwrt SDK.
+- Modify `initialize arguments` of sever-side and change the `unix socket path`.
+- `Cross complie` p11-kit-clinet.so through openwrt SDK.
 
 ### CTK
-- Build and install CTK in ubuntu container.
+- Build and install CTK in ubuntu container.  `280M`
 
 ### CNF Pod
 
@@ -550,7 +550,12 @@ secrets{
 - [x] generate a csr.
 - [x] add the cert to the slot with key-pair-id and label.
 - [ ] lua, add cert config to `ipsec.secret`
-- [ ] lua, add tunnel configuration
+- [x]  do not re-create key pair if existed with a same name.
+- [x]  define err code when add cert encounter error.
+
+
+
+
 
 
 
@@ -562,7 +567,7 @@ secrets{
  # token info, this is a default token, don't change any field
  # key-pair label, for
   
- curl --location --request POST 'http://10.233.76.147:8081/pkcs11/csr' \
+ curl --location --request POST 'http://sdewan-:8081/pkcs11/csr' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "token": {
@@ -621,13 +626,76 @@ curl --location --request POST 'http://127.0.0.1:8081/pkcs11/cert' \
             "id": "12345678"
         },
         "subject": "/CN=node-1",
-        "pem": "-----BEGIN CERTIFICATE-----\nMIICvzCCAacCAQEwDQYJKoZIhvcNAQELBQAwOjELMAkGA1UEBhMCQ0gxEzARBgNVBAoTCnN0cm9uZ1N3YW4xFjAUBgNVBAMTDXN0cm9uZ1N3YW4gQ0EwHhcNMjIwNDA5MDU0MTE2WhcNMjMwNDA5MDU0MTE2WjARMQ8wDQYDVQQDDAZub2RlLTEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDty36Z1m+N5UQ60xd6O1w30cckzfFi+Tph11unn39bxXMRRkOd9dnfZmtqs/Vp0sLGZwKs5vuB4lhXet8gWX8ygkWlTFHU5lYGpAaF8OlX61ZwmW1q4POAn352A7dHP9r6ZKvYchXmea4hx+aTr1xasUZ2vT0bpVf488FLR1JsyoG7djAIMSAh/MDe104WuRwneiVVTJPuEqKY0ZnOxii3Em2KzbyDQHFAbkaICasLqAep6AJmBWQUnb3nRQa9dCd/KWdkcdmsYHVH1+LY/f9etGYCwIBBlrnaA4tkpZA6pQu0B6ab4g/W2+v38DMbWODfAJvXnUtQ4XrWre/QTwbdAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAEFsv+GDs0cnai5vwoliCEyx4HQxdBtBjNElsnZ6NZLuGCjMYqq8whgEcc44jrY7ygunC4DPc2PTie3fAe05eGJ4uwu5meJTtaoNa5NCbo2mP/GHObesFPG/5A4fPyoNI4UrLl+NtEiY6szWe7Lg7W89JgY0ZJen2WoCA2nNubMOrJV1ydF/375P+LGNx2E48ri/Tgv1lnfyBIzc1AfK3zItwVUiCfVtKOefGPFPV8VTeFwcZBm7UdwEv3mGIfTfaxzjL8QO00e+2FLn5D/dfwVvbJrTrtTrUjHz2enNUv9YVF0d31PYaXepTFI8maUja3ntnIE8GJVvzOaw9oFCAws=\n-----END CERTIFICATE-----"
+        "pem": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM3VENDQWRXZ0F3SUJBZ0lSQUt2WkVWRkJ1Z0FsWVljbW03M3RqVGN3RFFZSktvWklodmNOQVFFTEJRQXcKRURFT01Bd0dBMVVFQXhNRmMyUjNZVzR3SGhjTk1qSXdOREU0TURJd05URXhXaGNOTWpRd05ERTNNREl3TlRFeApXakFRTVE0d0RBWURWUVFERXdWelpIZGhiakNDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DCmdnRUJBTUZ4NzNPOVd2SGdkYW5uVkJoME5XSHNpWVZWRTdiRm1EVWIyZ0p2Y282UkRxa3Z0VVg3alJHVlIwZDEKZXptdW9CUlptRHI0Nmp1TWFWUlo4S283WERBbU1MZUNMak1OcmhxT3hkbUFhSWJXSUlmM2FsQThXTjM4NDcvWAptMEgzcFRYSTZCT3FwRG1PYTRsc3c4aU8rRkpFa3VNMCtOU041UzNFaEsyQzR4dVE1cjRrZ1NZeUM3eUpraE5wClhKVkQyVTVQVmpTTlV3dCtld0FJMmVIOUY2RTd5VUgrRStyMEVDajZzWjQ0d2VvL2pOTElObGhCNUJwdmp4MGwKS2JCcWNreURsS0FOODJvNWsranR4MHZSVGg3NDZTcFRKemYwYmE4M0xvNFkwMldiVWFUVzMzOE5FdVM3bGRjZgpKRENMZnV3UnpNa1c5ajYzMmJVTFVFWnJWRGNDQXdFQUFhTkNNRUF3RGdZRFZSMFBBUUgvQkFRREFnS2tNQThHCkExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRktZZ3RiV2hncG1kRWFrQlBIVm9nek0xYnMyV01BMEcKQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUJuNjRIZ2lQVDVWWGVjU2doL1ZqZVVEY1EyRENKODdoYlNlc3RRZEtWZApoTHBIcy9zamw0MHF1NUZUV1Q5ZzIzSW1HOHBhMmlBTkdtaDZYTmNFTDF0bXdHNmFGMjloKzYzazZJUmZNQkpoCkJPVk5odnVhZDlJNWJSUGR5akJRbUZ2NUVuWXhDdzRLc1hUcW1Za2k0QndMN3hyTTk1bjNhdmhobkdTQUlqejYKMTB4a29GRTRubC9zRGpJaXVTZnJjQ3dtdDBOdFRvZVhlTnl6SzVNOTdEdTVCd0JZNTNTa1JidUY0elRlcmJnegp2UDUxeE5Qdy9XbVpURTdhZ0k2M2pSOHhYNk5TYmlES2Fxc1dNUEw4YVV4RDR4WWxMd0VGeStHU2JsSy9EelphCnI2MFUvbVZ3YUl3aHhwcHRaY2g2OFQ2TGJyQml2dk9xSFA1UXpWRnJ6Zi9TCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
     }
 }'
 
 # response string, code 200
 success
 ```
+
+
+
+
+
+test.sh
+
+```bash
+#!/bin/bash
+
+set -x
+
+sdewan_hsm_ip="10.239.241.68"
+cert_label="node-1"
+cert_subject="/CN=node-1"
+
+curl --location --request POST "http://${sdewan_hsm_ip}:8081/pkcs11/csr" \
+--header 'Content-Type: application/json' \
+--data-raw "{
+    \"token\": {
+        \"label\": \"sdewan-sgx\",
+        \"slot\": 0,
+        \"so_pin\": \"12345678\",
+        \"pin\": \"12345678\"
+    },
+    \"cert\": {
+        \"key_pair\": {
+            \"key_type\": \"rsa:2048\",
+            \"label\": \"${cert_label}\",
+            \"id\": \"0001\"
+        },
+        \"subject\": \"${cert_subject}\",
+        \"pem\": \"\"
+    }
+}" | tee  new.csr
+
+openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in new.csr -out client.crt
+
+cert="-----BEGIN CERTIFICATE-----\n$(cat client.crt|awk "NR>1{print $1}"|sed '$d'|tr -d "\n")\n-----END CERTIFICATE-----"
+
+curl --location --request POST "http://${sdewan_hsm_ip}:8081/pkcs11/cert" \
+--header 'Content-Type: application/json' \
+--data-raw "{
+    \"token\": {
+        \"label\": \"sdewan-sgx\",
+        \"slot\": 0,
+        \"so_pin\": \"12345678\",
+        \"pin\": \"12345678\"
+    },
+    \"cert\": {
+        \"key_pair\": {
+            \"key_type\": \"rsa:2048\",
+            \"label\": \"node-1\",
+            \"id\": \"12345678\"
+        },
+        \"subject\": \"/CN=node-1\",
+        \"pem\": \"${cert}\"
+    }
+}"
+
+```
+
+
 
 
 
@@ -655,6 +723,12 @@ success
 
 
 
+openWRT test
+
+```sh
+ # Cert is the cnf-default-cert
+ curl "https://10-233-103-209.sdewan-system.pod.cluster.local/cgi-bin/luci/?luci_username=root&luci_password=root1" --cacert ./cert.pem
+```
 
 
 
@@ -666,6 +740,22 @@ success
 
 
 
+
+
+
+
+
+
+
+
+### static file share
+
+```sh
+docker run -d -v /home/ubuntu/qiang/images:/web -p 8888:8080 --restart=always  --name=images-halverneus/static-file-server:latest
+
+gogs/gogs
+siomiz/chrmoe
+```
 
 
 
