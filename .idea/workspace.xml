@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/content/blog/openwrt_cross_compile.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/English.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/blog/crypto_openvpn.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/6.824/LEC_1_Introduction.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/6.824/LEC_1_Introduction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/6.824/_index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/6.824/_index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/linux_socket.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/linux_socket.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/blog/network_command.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/network_command.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/books.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/books.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/tools/tips/vscode.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/tips/vscode.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +214,9 @@
       <workItem from="1647097097648" duration="1928000" />
       <workItem from="1648005280964" duration="74000" />
       <workItem from="1648005403088" duration="652000" />
+      <workItem from="1649948467997" duration="2047000" />
+      <workItem from="1649955070304" duration="358000" />
+      <workItem from="1650901784739" duration="68000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>

@@ -20,3 +20,14 @@ Ctrl +K Ctrl +S  Keyboard Shortcuts
 | Focus on Open Editors View | Ctrl + K E |
 | Focun on Terminal View     | Ctrl  +K K |
 
+
+
+
+
+## Extensions
+
+| Usage         | Extension          |
+| ------------- | ------------------ |
+| Spell checker | Code spell checker |
+|               |                    |
+

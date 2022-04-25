@@ -6,6 +6,68 @@ title: 「6.824」 Lecture 1 Introduction
 
 ## Distributed System Engineering
 
+
+
+- parallelism
+
+- Fault tolerance
+
+- Physical
+
+- Security /isolated
+
+
+
+Challenges:
+
+- concurrency
+
+- Partial failure
+
+- Performance
+
+
+
+Lab 
+
+1. MapReduce
+2. Raft for fault tolerrance
+3. K/V server
+4. Sharding K/V servers
+
+
+
+Infrastructure
+
+- storage
+- Communication
+- Computation 
+
+Abstraction
+
+Implementation
+
+- RPC, Thread，Concurrency
+
+Performance
+
+- scalability , scabale to speed 2 x computer = 2X throughput
+
+Fault Tolerance
+
+- Availability 
+- Recoverability
+- NV (non-volatile)storage /Replication
+
+Topic - Consistency
+
+- Put (key, value)
+- Get(key) -> value
+
+
+
+## Map Reduce
+
 ##### What is distributed system?
 
 - multiple cooperating computers

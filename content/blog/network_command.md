@@ -14,7 +14,7 @@ The Netcat package is pre-installed on macOS and popular Linux distributions lik
 
 
 
-
+https://liugp.blog.csdn.net/article/details/118633171?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2
 
 
 
