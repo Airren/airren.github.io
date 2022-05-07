@@ -645,19 +645,13 @@ test.sh
 
 set -x
 
-sdewan_hsm_ip="10.239.241.68"
+sdewan_hsm_ip="127.0.0.1"
 cert_label="node-1"
 cert_subject="/CN=node-1"
 
 curl --location --request POST "http://${sdewan_hsm_ip}:8081/pkcs11/csr" \
 --header 'Content-Type: application/json' \
 --data-raw "{
-    \"token\": {
-        \"label\": \"sdewan-sgx\",
-        \"slot\": 0,
-        \"so_pin\": \"12345678\",
-        \"pin\": \"12345678\"
-    },
     \"cert\": {
         \"key_pair\": {
             \"key_type\": \"rsa:2048\",
@@ -772,6 +766,16 @@ siomiz/chrmoe
 **Reference**
 
 http://www.pkiglobe.org/pkcs11_terminology.html
+
+
+
+
+
+## NAT Traversal
+
+The NAT Traversal function penetrates firewalls or NATs. This technology is almost same to Skype's NAT Traversal, but SoftEther VPN's NAT Traversal is more optimized for the VPN-use.
+
+Legacy IPsec-based or OpenVPN-based VPN Server cannot placed on behind the NAT, because VPN Clients must reach to the VPN Server through the Internet. Some NATs can be configured to define a "DMZ" or "Port-mapping" to relay any packets toward the outside IP address of NAT to the internal VPN Server. However it has a compatible problems. Moreover it requires a special permission by the administrator of the NAT. If your network administrator of the corporate are not cooperative to you, he hesitates to set up the NAT device to open a hole from the Internet.
 
 
 

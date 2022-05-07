@@ -25,7 +25,8 @@ openssl x509 -text -noout -in  /etc/ipsec.d/private/sunKey.pem
 ###  Install StrongsWan
 
 ```sh
-sudo apt install strongswan strongswan-swanctl strongswan-pki strongswan-charon charon-cmd charon-systemd -y
+
+sudo sudo apt install strongswan strongswan-swanctl strongswan-pki strongswan-charon charon-cmd charon-systemd -y
 ```
 
 

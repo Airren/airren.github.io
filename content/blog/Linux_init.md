@@ -186,3 +186,21 @@ sudo apt-get install linux-image-your_version_choice linux-headers-your_version_
 # https://linuxhint.com/update_ubuntu_kernel_20_04/
 ```
 
+
+
+
+
+- flux add proxy!!!! 装的时候手动修改env
+
+
+
+```sh
+git config --global --add http.proxy http://child-prc.intel.com:913
+git config --global --add https.proxy http://child-prc.intel.com:913
+
+
+
+export http_proxy=http://child-prc.intel.com:913
+export https_proxy=http://child-prc.intel.com:913
+```
+
