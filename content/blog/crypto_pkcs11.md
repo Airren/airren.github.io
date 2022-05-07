@@ -745,7 +745,7 @@ openWRT test
 ### static file share
 
 ```sh
-docker run -d -v /home/ubuntu/qiang/images:/web -p 8888:8080 --restart=always  --name=images-halverneus/static-file-server:latest
+docker run -d -v /home/ubuntu/data/static:/web -p 8888:8080 --restart=always  --name=sdswe images-halverneus/static-file-server:latest
 
 gogs/gogs
 siomiz/chrmoe
@@ -781,6 +781,7 @@ Legacy IPsec-based or OpenVPN-based VPN Server cannot placed on behind the NAT, 
 
 
 
+![image-20220506232738449](crypto_pkcs11.assets/image-20220506232738449.png)
 
 
 
@@ -788,15 +789,39 @@ Legacy IPsec-based or OpenVPN-based VPN Server cannot placed on behind the NAT, 
 
 
 
+AVX512
+
+![image-20220506233034096](crypto_pkcs11.assets/image-20220506233034096.png)
 
 
 
+![image-20220506234938330](crypto_pkcs11.assets/image-20220506234938330.png)
 
 
 
+![image-20220506234952553](crypto_pkcs11.assets/image-20220506234952553.png)
+
+<img src="crypto_pkcs11.assets/image-20220506235346968.png" alt="image-20220506235346968" style="zoom:50%;" />
+
+![image-20220506235143082](crypto_pkcs11.assets/image-20220506235143082.png)
+
+![image-20220506235120673](crypto_pkcs11.assets/image-20220506235120673.png)
 
 
 
+![image-20220507001856323](crypto_pkcs11.assets/image-20220507001856323.png)
+
+do not use k0 in your code
+
+
+
+K mask is true will not change the value
+
+XMM0-XMM15  AVX 2*64
+
+YMM0-YMM15  AVX2 4*64
+
+ZMM0-ZMM32 AVX512  8*64
 
 
 
