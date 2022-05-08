@@ -6,6 +6,19 @@ title: Intel AMXAV
 
 
 
+- Introduce SIMD   单指令数据-> 
+- 
+
+
+
+VNNI/INT8
+
+
+
+
+
+
+
 AVX  Advanced Vector Extension
 
 AVX 也是SIMD指令， 单指令多数据

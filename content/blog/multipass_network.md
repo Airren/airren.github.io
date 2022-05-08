@@ -143,6 +143,17 @@ patches:
 
 
 
+### Overlay use Owctl to register
+
+```sh
+# modify config
+
+```
+
+
+
+
+
 - new nodus with sdewan -> test failed -> test host direct mode
 - **4**
 - 
