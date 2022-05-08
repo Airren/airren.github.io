@@ -6,6 +6,45 @@ title: Intel AMXAV
 
 
 
+![image-20220508223808060](intel_spx_AMX.assets/image-20220508223808060.png)
+
+![image-20220508224214399](intel_spx_AMX.assets/image-20220508224214399.png)
+
+## Intrinsics for Intel(R) Advanced Matrix Extension Instructions
+
+Intel Advanced Matrix Extension is a new 64-bit programming paradigm consisting of two components:
+
+- A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image
+- Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit)
+
+### Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions
+
+This intrinsic supports tile computational operations on bfloat16 number.
+
+#### _tile_dpbf16ps
+
+**Synopsis**
+
+```
+void _tile_dpbf16ps (__tile dst, __tile a, __tile b)
+```
+
+
+
+**Description**
+
+Compute dot-product of BF16(16-bit) floating-point pairs in tiles "a" and "b", accumulating the intermediate single-precision(32-bit) floating-point elements with elements with elements in "dst", and store the 32-bit result back to tile "dst".
+
+**Operation**
+
+![image-20220508222404922](intel_spx_AMX.assets/image-20220508222404922.png)
+
+
+
+
+
+
+
 AVX  Advanced Vector Extension
 
 AVX 也是SIMD指令， 单指令多数据
@@ -146,6 +185,6 @@ https://baijiahao.baidu.com/s?id=1672265837981500533&wfr=spider&for=pc
 
 https://baijiahao.baidu.com/s?id=1729339781120838964&wfr=spider&for=pc
 
-
+https://www.prowesscorp.com/what-is-intel-avx-512-and-why-does-it-matter/
 
 https://www.elecfans.com/d/1812270.html
