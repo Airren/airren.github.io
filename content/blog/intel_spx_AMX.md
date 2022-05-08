@@ -6,6 +6,19 @@ title: Intel AMXAV
 
 
 
+- Introduce SIMD   单指令数据-> 
+- 
+
+
+
+VNNI/INT8
+
+
+
+
+
+
+
 ![image-20220508223808060](intel_spx_AMX.assets/image-20220508223808060.png)
 
 ![image-20220508224214399](intel_spx_AMX.assets/image-20220508224214399.png)
