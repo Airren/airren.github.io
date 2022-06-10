@@ -1,4 +1,5 @@
 ---
+
 title: strongswan
 ---
 
@@ -12,21 +13,43 @@ So, on the server side, left is local to the server and on the client side, left
 
 
 
-证书check
+check the X509 cert details
 
 ```sh
 openssl x509 -text -noout -in  /etc/ipsec.d/private/sunKey.pem
 ```
 
+​	
+
+
+
 
 
 ## Ubuntu Set up IPsec Tunnel 
+
+
+
+
+
+```sh
+docker run --rm -d -i --network host --name cnf --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh --privileged cnf:pro  sleep infinity
+
+
+docker run --rm -i -d --network host --name cnf --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh  --privileged cnf:pro bash -c '/entrypoint.sh'
+```
+
+
+
+
 
 ###  Install StrongsWan
 
 ```sh
 
-sudo sudo apt install strongswan strongswan-swanctl strongswan-pki strongswan-charon charon-cmd charon-systemd -y
+sudo apt update &&  sudo apt install strongswan strongswan-swanctl strongswan-pki strongswan-charon charon-cmd charon-systemd -y
+
+
+sudo apt remove strongswan strongswan-swanctl strongswan-pki strongswan-charon charon-cmd charon-systemd -y
 ```
 
 
@@ -65,10 +88,6 @@ pki --issue --in sunKey.pem --type priv \
 --outform pem  > sunCert.pem
 
 
-pki --issue --in root-nodeKey --type priv \
---cacert caCert.pem --cakey caKey.pem \
---dn "C=CH, O=strongSwan,CN=node-3" \
---outform pem> node-3Cert.pem
 ```
 
 
@@ -78,15 +97,16 @@ pki --issue --in root-nodeKey --type priv \
 **Configuration on host *moon*:**
 
 ```sh
- cp caCert.pem /etc/swanctl/x509ca/strongswanCert.pem
- cp moonCert.pem /etc/swanctl/x509/moonCert.pem
- cp moonKey.pem /etc/swanctl/private/moonKey.pem
+ sudo cp caCert.pem /etc/swanctl/x509ca/caCert.pem
+ sudo cp moonCert.pem /etc/swanctl/x509/moonCert.pem
+ sudo cp moonKey.pem /etc/swanctl/private/moonKey.pem
 
 /etc/swanctl/swanctl.conf:
 
     connections {
         host-host {
-            remote_addrs = 10.233.76.161
+            #remote_addrs = 52.9.61.247
+            pools=client_pool
 
             local {
                 auth=pubkey
@@ -98,25 +118,31 @@ pki --issue --in root-nodeKey --type priv \
             }
             children {
                 net-net {
+                	remote_ts=192.168.0.1/32
                     start_action = trap
                 }
             }
         }
     }
+    pools{
+    client_pool{
+        addrs=192.168.0.1
+    }
+}
 ```
 
 **Configuration on host *sun*:**
 
 ```sh
- cp caCert.pem /etc/swanctl/x509ca/strongswanCert.pem
-cp sunCert.pem /etc/swanctl/x509/sunCert.pem
-cp sunKey.pem /etc/swanctl/private/sunKey.pem
+sudo cp caCert.pem /etc/swanctl/x509ca/caCert.pem
+sudo cp sunCert.pem /etc/swanctl/x509/sunCert.pem
+sudo cp sunKey.pem /etc/swanctl/private/sunKey.pem
 
 /etc/swanctl/swanctl.conf:
 
     connections {
         host-host {   # connection name
-            remote_addrs = 10.233.76.163
+            remote_addrs = 34.230.111.156
 
             local {
                 auth = pubkey
@@ -128,6 +154,7 @@ cp sunKey.pem /etc/swanctl/private/sunKey.pem
             }
             children {
                 host-host {
+                    remote_ts=10.20.0.118/32
                     start_action = trap
                 }
             }
@@ -625,7 +652,11 @@ secrets{
 
 # ipsec.conf - strongSwan IPsec configuration file
 
-conn pkcs11-legacy
+sudo cp caCert.pem /etc/ipsec.d/cacerts/
+sudo cp moonKey.pem /etc/ipsec.d/private/
+sudo cp moonCert.pem /etc/ipsec.d/certs/
+
+conn host-host
   left=%any
   right=%any
   ikelifetime=3h
@@ -637,13 +668,40 @@ conn pkcs11-legacy
   closeaction=restart
   leftauth=pubkey
   rightauth=pubkey
-  leftcert=%smartcard:0001
+  leftcert=moonCert.pem
   leftsendcert=yes
   rightsendcert=yes
   rightsourceip=192.168.0.8
   auto=start
-  leftid="CN=sgx-1"
-  rightid="CN=sgx-2"
+  leftid="C=CH, O=strongSwan, CN=moon.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  keyexchange=ikev2
+  mark=30
+  esp=aes128-sha256-modp3072,aes256-sha256-modp3072
+  ike=aes128-sha256-modp3072,aes256-sha256-modp3072
+  type=tunnel
+  
+  
+  
+conn host-host
+  left=%any
+  right=34.230.111.156  
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  closeaction=restart
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=sCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  rightsourceip=192.169.0.8
+  auto=start
+  leftid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=moon.strongswan.org"
   keyexchange=ikev2
   mark=30
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
@@ -680,9 +738,9 @@ conn common-con
   
   
   # client
-cp caCert.pem /etc/ipsec.d/cacerts/
-cp sunKey.pem /etc/ipsec.d/private/
-cp sunCert.pem /etc/ipsec.d/certs/
+sudo cp caCert.pem /etc/ipsec.d/cacerts/
+sudo cp sunKey.pem /etc/ipsec.d/private/
+sudo cp sunCert.pem /etc/ipsec.d/certs/
 
 conn common-con
   left=%any
@@ -742,25 +800,591 @@ C=CH, O=strongSwan,CN=sun.strongswan.org : RSA sunKey.pem
 
 
 
-##  OpenWRT with Ubuntu-SGX as a sidecar
+##  IPsec protocol overview
 
-Stratege1: shared a Mount Path,  Create Ipsec with PCKS#11 by ubuntu.
+IPsec is a framework, which provide security at the network layer of the OSI model by enabling a system to select required security protocols, determine the algorithms to use for security services, and implement any cryptographic keys required to provide secure communication.
+
+IPsec architecture consist of:
+
+- Basic concept:
+
+  - Security Association(SA)
+
+  - Security Association Database
+
+- Fundamental security protocols
+  - ESP/AH
+- Protocol mode
+  - transport/tunnel
+- Various cryptographic primitives with AH and ESP
+  - Encryption: DES, 3DES, AES-CBC
+  - Integrity: HMAC, MD5, SHA1, SHA2
+- Key management procedures
+  - IKEv1, IKEv2, ISAKMP
+
+![image-20220516134513652](2_strongswan/image-20220516134513652.png)
 
 
 
 
 
-https_proxy=http://child-prc.intel.com:913;http_proxy=http://child-prc.intel.com:913 ./pip install -r ../../requirements.txt
+- Security Association(SA) is a set of IPsec specifications that are negotiated between devices that are establishing an IPsec relationship.
+  - The specifications include preferences for the type of  authentication, encryption, and security protocol that should be used when establishing the IPsec connection.
+  - A single SA protects data in one direction
+  - An SA is uniquely  identified by:
+    - Security Parameter Index(SPI)
+    - IPv4 or IPv6 destination address
+    - security protocol(AH or ESP) identifier
+  - Security associations are stored in a security associations database(SADB)
+- Security Associations(SAs) require keying material for authentication and for encryption. The managing of this keying material is called key management.
+- The Internet Key Exchange(IKE) protocol is used to exchange SAs between two devices.
+  - IKE is based on Internet Security Association and Key Management Protocol( ISAKMP)
+  - Two version of IKE are defined(IKEv1 and IKEv2), but at present IKE2 is mostly used
+- IPsec session consists of the following phases:
+  - establishing IKE SA (IKE phase I)
+  - establishing IPsec SA (IKE phase II)
+  - secured communication(IPsec tunnel)
+  - re-keying procedures( IKE CHILD_SA)
+  - IP tunnel termination( IKE "delete")
 
-git clone https://github.com/strongswan/strongMan.git
+![image-20220516142355903](2_strongswan/image-20220516142355903.png)
 
 
 
-Stratege2: Use p11-kit to do a remote HSM Forwarding,   Create Ipsec with PCKS#11 in openwrt.
+- Experiment has been performed using two virtual machines
+- Strongswan has been used as IPsec implementation
+
+Red Machine: 192.168.56.100 === Blue Machine: 192.16.56.101
 
 
 
-## P11-kit
+Basic Strongswan configuration
+
+IPsec configuration files: 
+
+- /etc/ipsec.conf IPsec tunnel parameters
+- /etc/ipsec.secret cryptographic secrets
 
 
+
+```sh
+# Blue
+conn bule-to-red
+	authby=secret     # authentication method
+	auto=route
+	keyexchange=ikev2    # key exchange protocol
+	ike=ase256-sha2_256-modp1024   # IKE secrity association proposal
+	left=192.168.56.101            # IP of both ends of tunnel
+	right=192.168.56.100
+	type=transport                 # IPsec mode(tunnel or transport)
+	esp=aes256-sha2_256            # IPsec security association proposal(ESP/ AH)
+	#ah=sha1-sha256-modp1024
+	
+	
+# RED
+conn red-to-blue
+	authby=secret     
+	#ah=sha1-sha256-modp1024
+	auto=route
+	keyexchange=ikev2   
+	ike=ase256-sha2_256-modp1024   # 3des-sha2_256-modp1024
+	left=192.168.56.100           
+	right=192.168.56.101
+	type=transport                
+	esp=aes256-sha2_256  
+```
+
+
+
+
+
+> ```sh
+> sudo ipsec stroke loglevel ike 4
+> 
+> sudo tcpdump -i eth0 -w ike.pcap
+> ```
+>
+> 
+
+IKE and IPsec negotiation
+
+- IKE Phase I (IKE SA negotiation) creates a secure channel between the two IKE peers. IKE SA is negotiated during phase I and the Diffie-Hellman key agreements is always performed in this phase.
+- IKE Phase II (IPsec SA negotiation) negotiates the IPsec security associations and generates the required key material for IPsec(encryption and integrity Keys).  Peers authenticate echo other is this phase.  A new Diffie-Hellman agreement may be done in  phase2, or the keys may be derived form the phase 1.
+- Re-keying (IKE or IPsec) is invoked by send CREATE_CHILD_SA
+- IKE tunnel termination is perform by sending IKE INFORMATIONAL message with payload "delete"
+
+
+
+
+
+IKE SA proposals of RED and BLUE endpoint(the same now)
+
+```sh
+IKE algorithmn
+
+--- RED --
+IKE ENCR ALG: AES-CBC-256  # encryption algorithm
+IKE AUTH ALG: HMAC_SHA2_256_128 # Integrity algorithm
+IKE D-H GROUP: MODP 1024-bit   # Diffie-Hellman group
+PRF: NOT CONFIGURABLE            # Pseudo random function
+
+--- BLUE --
+IKE ENCR ALG: AES-CBC-256
+IKE AUTH ALG: HMAC_SHA2_256_128
+IKE D-H GROUP: MODP 1024-bit
+PRF: NOT CONFIGURABLE
+```
+
+
+
+Let's change encryption algorithm proposal of RED endpoint, is the IKE algorithm not equal. BULE endpoint doesn't accept IKE SA proposal with "3des" encryption algorithm. BULE doesn't support such algorithm and responds with NO_PROPOSAL_CHOSEN payload. Inconsistency of encryption algorithm. Now red's IKE SA proposal has been accepted by BLUE.  Authentication process has been started.
+
+Note, the IPsec SA negotiation (Phase II) and authentication has been successful. 
+
+![image-20220516153819335](2_strongswan/image-20220516153819335.png)
+
+
+
+![image-20220516153827319](2_strongswan/image-20220516153827319.png)
+
+![image-20220516154420402](2_strongswan/image-20220516154420402.png)
+
+![image-20220516154524101](2_strongswan/image-20220516154524101.png)
+
+![image-20220516154619123](2_strongswan/image-20220516154619123.png)
+
+![image-20220516154655328](2_strongswan/image-20220516154655328.png)
+
+
+
+
+
+
+
+After decryption using keys, we can see IKE_AUTH message payload. Shared key data is exchanged (PSK authentication is used.)
+
+
+
+traffic selector
+
+
+
+
+
+### IPsec ESP vs AH
+
+Authentication Header(AH) and Encapsulating Security Payload(ESP) are two protocols, which provide security for IPsec tunnel.
+
+- AH provides only **integrity authentication** service to IPsec-capable device, so they can verify that message are received intact from other device.
+- AH provides authentication by creating and add MACs to packets.
+- ESP provides not only **integrity authentication**, but  also a **privacy** for IP. ESP encrypt payload by ESP header and ESP trailer to each packet.
+
+
+
+
+
+### IPsec Tunnel vs transport mode
+
+- IPsec protocol use transport or tunnel mode.
+
+  - Transport mode can only be used between end-point of a communication
+  - Tunnel mode can be used between arbitrary peers
+
+- The difference between the two modes is protocol stack construction
+
+  - Transport mode just add a security specific header
+  - Tunnel mode encapsulates IP packets
+
+  ![image-20220516161617718](2_strongswan/image-20220516161617718.png)
+
+
+
+
+
+### IPsec with pre-shared secret
+
+Pre-Shared Key(PSK) IKEv2 authentication uses pre-shared secrets stored in host's memory. Secret's sharing is out of IPsec's scope.
+
+The shared key is exchanged during IPsec SA negotiation and used by peers to authenticate each other.
+
+The easiest, but not recommended type of authentication
+
+
+
+pre-shared secret is configured in ipsec.secrets file. 
+
+```sh
+  # authty=secret
+192.145.66.100 192.145.66.101   :PSK "123"
+```
+
+![image-20220516163315116](2_strongswan/image-20220516163315116.png)
+
+
+
+
+
+### IPsec with CA certificates (PKI)
+
+Public Key authentication is based on Public Key Infrastructure(PKI) architecture
+
+- An  individual that wishes to send encrypted data obtains a  digital certificate form a Certificate Authority(CA). CA's  certificate contains a public key
+- Both peers need to generate self-certificates, which can be self-signed, in which case they have to installed on peers, or signed by a common Certificate Authority(CA)
+- The latter simplifies deployment and configuration a lot as the gateway only needs the CA certificate.
+
+IKEv2 uses:
+
+- CERTREQ payload contains information of  supported by peer CAs
+- CERT payload contains peer's certificate signed by CA
+
+During IKE AUTH exchange peers authenticate each other. In SA_INIT response responder sends CERTREQ payload. Then initiator send its certificate in CERT with its identity(IDi). Responder uses public key from CA certificate to authenticate initiator. In the last message responder sends its certificate (CERT) with its identity(IDr). Now, responder is authenticated by initiator(if certificate is authorized by the same CA)
+
+![image-20220516165331484](2_strongswan/image-20220516165331484.png)
+
+
+
+Public Key authentication- RSA authentication with X.509 certificate
+
+![image-20220516165427150](2_strongswan/image-20220516165427150.png)
+
+CA certificate and private key need to delivered to each IPsec peer.
+
+![image-20220516170053454](2_strongswan/image-20220516170053454.png)
+
+
+
+
+
+
+
+```sh
+# Blue
+conn bule-to-red
+	# authby=secret     # authentication method
+	left=192.168.56.101            # IP of both ends of tunnel
+	right=192.168.56.100
+	ike=ase256-sha2_256-modp1024   # IKE secrity association proposal
+	esp=aes256-sha2_256            # IPsec security association proposal(ESP/ AH)
+	auto=start
+	keyexchange=ikev2    # key exchange protocol
+	type=tunnel                 # IPsec mode(tunnel or transport)
+	leftcert=client1Cert.pem
+	leftid="C=CH,O=strongSwan,CN=device1"
+    rightid="C=CH,O=strongSwan,CN=device2"
+	
+	#ah=sha1-sha256-modp1024
+	
+	
+# RED
+conn red-to-blue
+	# authby=secret     # authentication method
+	left=192.168.56.101            # IP of both ends of tunnel
+	right=192.168.56.100
+	ike=ase256-sha2_256-modp1024   # IKE secrity association proposal
+	esp=aes256-sha2_256            # IPsec security association proposal(ESP/ AH)
+	auto=start
+	keyexchange=ikev2    # key exchange protocol
+	type=tunnel                 # IPsec mode(tunnel or transport)
+	leftcert=client2Cert.pem
+	leftid="C=CH,O=strongSwan,CN=device2"
+    rightid="C=CH,O=strongSwan,CN=device"
+	
+```
+
+
+
+
+
+```sh
+# ipsec.secret RSA private key location is configured in ipsec.secrets
+: RAS client1key.pem
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Create IPsec Tunnel on AWS
+
+Running CNF through docker in host network mode
+
+```sh
+docker run --rm -i -d --network host --name cnf --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh  --privileged cnf:pro bash -c '/entrypoint.sh'
+```
+
+
+
+![image-20220519143707401](2_strongswan/image-20220519143707401.png)
+
+
+
+NAT mode
+
+```sh
+docker run --rm -i -d -p 5:q
+jjikk00:500/udp -p 4500:4500/udp --name cnf-1 --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh  --privileged cnf:pro bash -c '/entrypoint.sh'
+
+netstat -atunlp
+```
+
+
+
+rrr
+
+```sh
+# sun add DNAT
+
+sudo iptables -D PREROUTING --destination 10.20.0.118/32  -p esp  -j DNAT --to-destination 172.17.0.3 -t nat
+sudo iptables -D PREROUTING --destination 10.20.0.118/32  -p udp --dport 4500 -j DNAT --to-destination 172.17.0.3:4500 -t nat
+sudo iptables -D PREROUTING --destination 10.20.0.118/32  -p udp --dport 500 -j DNAT --to-destination 172.17.0.3:500 -t nat
+
+
+
+# moon add DNAT
+sudo iptables -D PREROUTING --destination 172.16.182.193/32  -p esp  -j DNAT --to-destination 172.17.0.2 -t nat
+sudo iptables -D PREROUTING --destination 172.16.182.193/32  -p udp --dport 4500 -j DNAT --to-destination 172.17.0.2:4500 -t nat
+sudo iptables -D PREROUTING --destination 172.16.182.193/32  -p udp --dport 500 -j DNAT --to-destination 172.17.0.2:500 -t nat
+
+192.169.0.4/32 === 172.17.0.2/32
+iptables -I POSTROUTING -d 172.17.0.2/32 -j SNAT --to-source 192.169.0.4 -t nat
+
+
+
+```
+
+
+
+
+
+```sh
+# sun add DNAT
+
+sudo iptables -I PREROUTING --destination 10.95.62.171/32  -p esp  -j DNAT --to-destination 10.233.83.75 -t nat
+sudo iptables -I PREROUTING --destination 10.95.62.171/32  -p udp --dport 4500 -j DNAT --to-destination 10.233.83.75:4500 -t nat
+sudo iptables -I PREROUTING --destination 10.95.62.171/32  -p udp --dport 500 -j DNAT --to-destination 10.233.83.75:500 -t nat
+
+
+
+# moon add DNAT
+sudo iptables -I PREROUTING --destination 10.95.62.90/32  -p esp  -j DNAT --to-destination 10.233.120.76 -t nat
+sudo iptables -I PREROUTING --destination 10.95.62.90/32  -p udp --dport 4500 -j DNAT --to-destination 10.233.120.76:4500 -t nat
+sudo iptables -I PREROUTING --destination 10.95.62.90/32  -p udp --dport 500 -j DNAT --to-destination 10.233.120.76:500 -t nat
+```
+
+
+
+
+
+
+
+
+
+### Add AppArmor security Rules	
+
+
+
+```sh
+# Add to /etc/apparmor.d/usr.lib.ipsec.charon
+# /usr/lib/ipsec/charon flags=(attach_disconnected) {
+
+  /tmp/ipsec/**                r,
+  /tmp/run/**                  rw,:qjjjkkkkk
+  /tmp/ipsec/strongswan.conf   rwk,
+  /tmp/ipsec/ipsec.secrets     rwk,
+  /tmp/run/charon.ctl          rwk,
+  /tmp/run/charon.pid          rwk,
+  /bin/busybox                 rmPUx,
+# }
+# Add to  /etc/apparmor.d/usr.lib.ipsec.stroke
+  /tmp/ipsec/strongswan.conf    r,
+  /tmp/run/charon.ctl           wr,
+```
+
+
+
+### Site-to-Site  Mode
+
+In site to site mode need to add IP rule on the host, post the traffic through the VTI interface
+
+**Add IP Rule**
+
+```sh
+# sun node
+ip route add default dev  vti_52.9.61.247 table 40
+ip rule add to  172.16.182.193 lookup  40
+
+# moon node
+ip r add default dev vti_34.230 table 50
+ip rule add to 10.20.0.118 lookup 50
+```
+
+
+
+**ipsec.conf**
+
+
+
+```sh
+# sun node
+conn hubaedge1-Connedge1_19216904
+  left=%any
+  leftsubnet=0.0.0.0/0
+  right=%any
+  rightsubnet=0.0.0.0/0
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/sunCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  auto=start
+  # leftid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=moon.strongswan.org"
+  leftupdown=/etc/updown
+  keyexchange=ikev2
+  mark=30
+  esp=aes256-sha256-modp4096,aes256-sha256-modp4096
+  ike=aes256-sha256-modp4096,aes256-sha256-modp4096
+  type=tunnel
+
+
+# moon node
+conn edge1huba-Connhuba_10107039
+  left=%any
+  leftsubnet=0.0.0.0/0
+  right= 34.230.111.156
+  rightsubnet=0.0.0.0/0
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/moonCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  auto=start
+  # leftid="C=CH, O=strongSwan, CN=moon.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  leftupdown=/etc/updown   # need to bind with a mark
+  mark=30
+  keyexchange=ikev2
+  esp=aes256-sha256-modp4096,aes256-sha256-modp4096
+  ike=aes256-sha256-modp4096,aes256-sha256-modp4096
+  type=tunnel
+
+```
+
+
+
+### Site-to-Host Mode
+
+
+
+**Add SNAT on Client**	
+
+```sh
+# moon node
+iptables -I POSTROUTING -d 10.20.0.118/32 -j SNAT --to-source 192.169.0.4 -t nat
+iptables -I POSTROUTING -d 10.233.83.75/32 -j SNAT --to-source 192.168.0.1 -t nat
+
+```
+
+
+
+
+
+**ipsec.conf**
+
+
+
+```sh
+# sun node
+conn hubaedge1-Connedge1_19216904
+  left=%any
+  right=%any
+  leftsubnet=10.20.0.118/32
+  rightsubnet=192.169.0.4/32
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/sunCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  rightsourceip=192.169.0.4
+  auto=start
+  #leftid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=moon.strongswan.org"
+  leftupdown=/etc/updown
+  keyexchange=ikev2
+  mark=30
+  esp=aes256-sha256-modp4096,aes256-sha256-modp4096
+  ike=aes256-sha256-modp4096,aes256-sha256-modp4096
+  type=tunnel
+
+# moon
+conn edge1huba-Connhuba_10107039
+  left=%any
+  leftsourceip=%config
+  right= 34.230.111.156
+  rightsubnet=10.20.0.118/32
+  ikelifetime=3h
+  lifetime=1h
+  margintime=9m
+  keyingtries=%forever
+  dpdaction=restart
+  dpddelay=30s
+  leftauth=pubkey
+  rightauth=pubkey
+  leftcert=/etc/ipsec.d/certs/moonCert.pem
+  leftsendcert=yes
+  rightsendcert=yes
+  auto=start
+  # leftid="C=CH, O=strongSwan, CN=moon.strongswan.org"
+  rightid="C=CH, O=strongSwan, CN=sun.strongswan.org"
+  leftupdown=/etc/updown_oip
+  keyexchange=ikev2
+  esp=aes256-sha256-modp4096,aes256-sha256-modp4096
+  ike=aes256-sha256-modp4096,aes256-sha256-modp4096
+  type=tunnel
+
+```
+
+
+
+### Todo
+
+1. Apparmor
+
+2. VTI bind with mark and ip xfrm check the startus
+
+   
+
+
+
+
+
+
+
+Hi, Huifeng, I think we can con
 

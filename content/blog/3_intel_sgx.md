@@ -582,6 +582,16 @@ spec:
 
 
 
+### Deploy SGX Plugin Quickly
+
+
+
+```sh
+ k apply -k deployments/nfd/overlays/sgx
+ k apply -k deployments/nfd/overlays/node-feature-rules
+ k apply -k deployments/sgx_plugin/overlays/epc-nfd
+```
+
 
 
 

@@ -2,9 +2,7 @@
 
 
 
-
-
-
+# Q1 2022
 
 ## Insight
 
@@ -22,7 +20,7 @@ One Intel: Qiang proactivity helps Smart Edge team to integrate SDEWAN with DEK,
 
 Fearless:  Qiang always keeps curiosity for the unknown region can complete the work with challenges. Qiang successfully complete the  POC strongsWAN integrated with CTK in ubuntu overcoming a lot of difficulties.
 
-## OKR.
+## OKR
 
 ### Object 1：Intergrate SGX with CNF to protect the private key.
 
@@ -50,3 +48,40 @@ Fearless:  Qiang always keeps curiosity for the unknown region can complete the 
 
 
 make gen-yaml IMG="integratedcloudnative/sdewan-controller:devtest1"
+
+
+
+## Q2 2022
+
+###  Insight
+
+### OKR
+
+**OBJ1: Enable IA optimizations and innovations in open-source Edge Orchestration projects** 
+
+KR1: Integrate and ship Nodus and SDEWAN 22.09 with SmartEdge-O release
+
+KR2: Enhance SGX  E2E flow with Cert Manager(Useing SGX as externel issuer) support SDEWAN 22.09 release.
+
+KR3: SDEWAN auto CICD process, optimize the version manager, and split the code repo
+
+
+
+**OBJ2: Build Intel leadership in open-source Edge Orchestration projects with focus on individual career growth**
+
+KR3: Deliver 1 technical submission on edge usages with SDEWAN (KubeCon China)
+
+KR4: v
+
+
+
+
+
+
+
+
+
+
+
+
+
