@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/content/English-learning/Note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/Plan.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/intel_spx_AMX.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/intel_spx_AMX.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/English.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/English.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +15,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -213,7 +214,7 @@
       <workItem from="1650901784739" duration="68000" />
       <workItem from="1650901862255" duration="365000" />
       <workItem from="1650902253693" duration="1230000" />
-      <workItem from="1651887971881" duration="1307000" />
+      <workItem from="1651887971881" duration="2704000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
@@ -299,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651888059079</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update">
+      <created>1652023386757</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652023386757</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
