@@ -58,7 +58,7 @@ curl --location --request POST "https://${cnf_ip}/cgi-bin/luci/sdewan/pkcs11/v1/
         \"subject\": \"${cert_subject}\",
         \"pem\": \"\"
     }
-}" | tee  new.csr
+}" --cert ca.pem | tee  new.csr
 
 openssl x509 -req -days 365 -CA caCert.pem -CAkey caKey.pem -set_serial 1 -in new.csr -out client.crt
 
@@ -83,6 +83,9 @@ curl --location --request POST "https://${cnf_ip}/cgi-bin/luci/sdewan/pkcs11/v1/
         \"pem\": \"${cert}\"
     }
 }"
+
+
+
 
 ```
 
