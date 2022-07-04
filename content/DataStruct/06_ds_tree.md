@@ -4,6 +4,32 @@ title: 「算法与数据结构」Tree
 
 
 
+> 单链表的查询时间复杂度是O(n)
+>
+> 跳表
+>
+> 树
+>
+> 图
+>
+> Linked List 是特殊化的Tree
+>
+> Tree 是特殊化的图
+
+
+
+
+
+斐波那契， 状态树，递归树
+
+状态树空间
+
+决策树空间
+
+![image-20220618233041387](06_ds_tree.assets/image-20220618233041387.png)
+
+
+
 ## 二叉树
 
 **满二叉树**：一个二叉树的所有非叶子节点都存在左右孩子，并且所有叶子节点都在同一层级上。
@@ -17,12 +43,41 @@ title: 「算法与数据结构」Tree
 1. 链式存储
 
    ```go
+   // golang
    type Node struct {
    	Data      int64
    	LeftNode  *Node
    	RightNode *Node
    }
    ```
+
+1. ```c++
+// C++
+   struct TreeNode{
+     int val;
+     TreeNode *left;
+     TreeNode *right;
+     TreeNode(int x): val(x), left(NULL), right(NULL){}
+   }
+   ```
+
+3. ```java
+   public class TreeNode{
+     public int val;
+     public TreeNode left,right;
+     public TreeNode(int val){
+   		this.val=val;
+       this.left=NULL;
+       this.right=NULL;
+     }
+   }
+   ```
+
+1. 
+
+1. 
+
+2. 
 
 2. 数组: 适用于表示完全二叉树，对于稀疏二叉树是非常浪费空间的。              
 
@@ -94,7 +149,7 @@ public class Solutions {
 
 
 
-## 二叉排序树
+## 二叉搜索树
 
 二叉排序树（Binary Sort Tree），又称二叉查找树（Binary Search Tree），亦称二叉搜索树。
 
@@ -108,7 +163,18 @@ public class Solutions {
 
 <img src="./ds_tree/image-20210621012722035.png" alt="image-20210621012722035" style="zoom:25%;" />
 
+
+
+
+
+
+
+> 中序遍历 ：升序排列
+>
+> 左子树始终要小于右子树
+
 #### 查找
+
 时间复杂度：O(logn)
 步骤：
 
@@ -144,11 +210,53 @@ https://blog.csdn.net/u012469528/article/details/81475824
 
 ## 二叉树的遍历
 
-### 深度优先遍历（前中后序遍历）
+### 深度优先遍历（前/中/后序遍历）
+
+```sh
+# pre-order In-order Post-order
+
+func() preOrder(root TreeNode){
+	if root != nil{
+		print(root.val)
+		preOrder(root.left)
+		preOrder(root.right)
+	}
+}
+```
+
+
 
 
 
 #### 递归遍历
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func inorderTraversal(root *TreeNode) []int {
+    
+    tmp := make([]int,0,0)
+    if root == nil{
+        return tmp
+    }
+    if root.Left != nil{
+        tmp = append(tmp,inorderTraversal(root.Left)... )
+    }
+    tmp = append(tmp, root.Val)
+     if root.Right != nil{
+        tmp = append(tmp,inorderTraversal(root.Right)... )
+    }
+    return tmp
+}
+```
+
+
 
 
 
@@ -166,7 +274,7 @@ https://blog.csdn.net/u012469528/article/details/81475824
 
 
 
-# 平衡二叉树
+## 平衡二叉树
 
 平衡树，即平衡二叉树（Balanced Binary Tree），具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。
 平衡二叉树的常用算法有红黑树、AVL、Treap、伸展树、SBT等。
@@ -182,4 +290,10 @@ https://blog.csdn.net/u012469528/article/details/81475824
 #### 红黑树
 
 #### AVL
+
+
+
+
+
+树的面试题一般都是递归，为什么
 
