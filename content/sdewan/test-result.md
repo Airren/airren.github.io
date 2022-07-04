@@ -43,3 +43,52 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DNS IP 10.248.2.5
+
+vi /etc/resolve.conf
+
+```
+sysctl net.ipv4.ip_forward
+```
+
+
+
+xxxxxxxxxx udhcpc -i net1

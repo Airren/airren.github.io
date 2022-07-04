@@ -117,5 +117,97 @@ pkcs11-tool --module /lib/x86_64-linux-gnu/pkcs11/p11-kit-client.so -L
    25  pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678  -O
    26  pkcs11-tool --module /usr/local/lib/libp11sgx.so  --login --pin 12345678  -b --type cert --label node-1 --token sdewan-sgx
 
+
+
+ certificatesigningrequests.certificates.k8s.io
 ````
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. CNF  : -  ----> Ruoyu
+
+   - base64_decode
+
+     variable name
+
+2. CNF deployment add lable:    --->  Renqiang
+
+   securityEnabled: "true"
+
+3. CRD contorller     -->>> Renqiang
+
+   certficatesigningrequest. Role
+
+   Role Binding    -> crd helm chart
+
+4. CertManager     --->>> Ruoyu
+   - deployment  -- expermient  
+
+5. SCC Mongo,  cert create/delete ---->> Ruoyu
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

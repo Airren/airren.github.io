@@ -176,7 +176,7 @@ sudo netplan apply
 
 
 
-update ubuntu linux kernel
+## update ubuntu linux kernel
 
 ```sh
 apt-cache search linux-image
@@ -184,6 +184,7 @@ sudo apt-get install linux-image-your_version_choice linux-headers-your_version_
 
 # must reboot you machine
 # https://linuxhint.com/update_ubuntu_kernel_20_04/
+# https://packages.ubuntu.com/focal-updates/kernel/
 ```
 
 
@@ -195,12 +196,12 @@ sudo apt-get install linux-image-your_version_choice linux-headers-your_version_
 
 
 ```sh
-git config --global --add http.proxy http://child-prc.intel.com:913
-git config --global --add https.proxy http://child-prc.intel.com:913
+git config --global --add http.proxy http://proxy-prc.intel.com:913
+git config --global --add https.proxy http://proxy-prc.intel.com:913
 
 
 
-export http_proxy=http://child-prc.intel.com:913
-export https_proxy=http://child-prc.intel.com:913
+export http_proxy=http://proxy-prc.intel.com:913
+export https_proxy=http://proxy-prc.intel.com:913
 ```
 

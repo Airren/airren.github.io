@@ -20,7 +20,7 @@ One Intel: Qiang proactivity helps Smart Edge team to integrate SDEWAN with DEK,
 
 Fearless:  Qiang always keeps curiosity for the unknown region can complete the work with challenges. Qiang successfully complete the  POC strongsWAN integrated with CTK in ubuntu overcoming a lot of difficulties.
 
-## OKR
+## OKR for Q2
 
 ### Object 1：Intergrate SGX with CNF to protect the private key.
 
@@ -51,11 +51,33 @@ make gen-yaml IMG="integratedcloudnative/sdewan-controller:devtest1"
 
 
 
-## Q2 2022
+# Q2 2022
 
 ###  Insight
 
-### OKR
+## Insight
+
+- For the SDEWAN project:  Test several work modes of CNF, one is multiple interfaces that can use host-device mode or nodus direct mode to share the physical interface to CNF, and another is CNF work as a service export through NodePort mode. Support SGX HSM co-work with CNF as a sidecar and test SDEWAN pull mode through the script.
+
+- Help the SmartEdge team finish the SASE EK release, by upgrading the auto-deploy script with the latest components.  And verified the possibility of using SDEWAN with Nodus in WAN  on AWS.
+
+- Release a Sapphire rapids feature AMX presentation and verify the IDF proposal's feasibility that uses the AVX or AMX to accelerate the query speed of Time-Series Data.  And bring up an IDF proposal of Cloud Native HSM.
+
+- Challenge:  While working for the SDEWAN SGX support model,  solved some tricky problems which are cross-compile the p11-kit tool for OpenWrt and changing the pkcs#11 token initialize arguments to fit CTK and squashing the HSM image with SGX to reach an ideal size.
+
+  
+
+
+
+Quality: Help the Smart Edge team release SDEWAN with the latest stable component. Ensure the stability and reliability of the auto-deploy script.
+
+Result Driven: Even encountering many tricky problems while enabling SGX for CNF, Qiang solved the problem step by step and finally accomplish the component as the previous design architecture.
+
+## OKR for Q2
+
+
+
+### OKR for Q3
 
 **OBJ1: Enable IA optimizations and innovations in open-source Edge Orchestration projects** 
 
@@ -85,3 +107,21 @@ KR4: v
 
 
 
+promiscuous
+
+
+
+
+
+
+
+> Istio demo, different with yao le
+
+
+
+
+
+
+
+1. try to write a operate demo
+2. i

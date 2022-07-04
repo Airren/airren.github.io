@@ -49,13 +49,13 @@ If they use the CTK for Intel SGX as a sidecar, and use the Unix socket to forwa
 
 What is Cloud Hardware Security Module(HSM)?
 
-A hardware security module(HSM) is a computing device that processes cryptographic operations and provides secure storage for cryptographic keys.
+A hardware security module(HSM) is a computing device that **processes cryptographic operations** and **provides secure storage for cryptographic keys.**
 
 AWS Cloud HSM is a cloud-based hardware security module (HSM) that enables you to genereate and use you own encryption keys.
 
 Cloud HSM is a compliant with FIPS 140-2 level 3 (The Federal Information Processing Stanard Publication 140-2)
 
-It autonates administrative tasks like hardware provisioning, sofeware pathcing, high-availability, and backups
+It automates administrative tasks like hardware provisioning, sofeware pathcing, high-availability, and backups
 
 
 
@@ -160,9 +160,15 @@ Key Fearures:
 
 
 
+## What is a Cloud Hardware Security Module
 
 
 
+The CloudHSM helps you meet corporate, contractual and regulatory compliance requirements for data security by using dedicated Hardware Secutiry Module(HSM) applicances withing the cloud.
+
+
+
+very critical area in the cryptography, Stand out on CV, fundamental topic to learn for cloud security role.
 
 
 
