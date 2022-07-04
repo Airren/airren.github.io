@@ -14,7 +14,7 @@ title: SDEWAN Setup
 >
 > ​	cnf: `docker pull integratedcloudnative/sdewan-cnf:0.5.3`
 >
-> 	crd-controller:  `docker pull integratedcloudnative/sdewan-controller:0.5.3`
+>    crd-controller:  `docker pull integratedcloudnative/sdewan-controller:0.5.3`
 
 
 

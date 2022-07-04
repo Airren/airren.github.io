@@ -100,3 +100,25 @@ docker pull images 的时候可以看到是逐层下载的。
 ## Builder Image
 
 WORKDIR: 如果没有文件夹，会创建并进入。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Docker Build Use Proxy
+
+```sh
+
+docker build -f Dockerfile ./ -t image-name:tag  --build-arg http_proxy=$(HTTP_PROXY) --build-arg https_proxy=$(HTTPS_PROXY)
+```
+
