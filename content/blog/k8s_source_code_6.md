@@ -158,3 +158,17 @@ func (c *Controller) syncHandler(key string) error{
 
 ## Kubebuilder
 
+
+
+
+
+```sh
+kubebuilder completion zsh
+kubebuilder init --domain bytegopher.com --license apache2 --owner "ByteGopher" --repo www.github.com/airren/cnat-kubebuilder
+
+kubebuilder create api --group cnat --version v1alpha1 --kind At
+
+kubebuilder create api --group cnat --version v1alpha1 --kind CronJobA
+
+```
+

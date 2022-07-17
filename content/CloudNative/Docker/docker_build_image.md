@@ -120,5 +120,8 @@ Docker Build Use Proxy
 ```sh
 
 docker build -f Dockerfile ./ -t image-name:tag  --build-arg http_proxy=$(HTTP_PROXY) --build-arg https_proxy=$(HTTPS_PROXY)
+
+
+--build-arg http_proxy=http://proxy-prc.intel.com:913 --build-arg https_proxy=http://proxy-prc.intel.com:913
 ```
 
