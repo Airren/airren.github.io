@@ -16,7 +16,25 @@ title: CNI Container Networking Interface
 
 
 
+
+
+
+
+
+
 ## CNI
+
+
+
+Kubernetes Networking Requirements
+
+- Each Pod get their own IP addresss
+  - Containers within a Pod share network namespace
+- All pod can communicate with all other pods without NAT(Network Address Translation)
+- All nodes can communicate with all pods without NAT
+- The IP of the Pod is same throughout the cluster
+
+
 
 
 
