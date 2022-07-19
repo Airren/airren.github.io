@@ -195,6 +195,18 @@ kubectl expose pod nginx2 --port=8080 --target-port=80
 
 
 
+Kubernetes Networking Requirements
+
+- Each Pod get their own IP addresss
+  - Containers within a Pod share network namespace
+- All pod can communicate with all other pods without NAT(Network Address Translation)
+- All nodes can communicate with all pods without NAT
+- The IP of the Pod is same throughout the cluster
+
+
+
+
+
 - `runtime` is the program responwsible for executing CNI plugins.
 - `plugin` is a program that applies a specified network configuration.
 
