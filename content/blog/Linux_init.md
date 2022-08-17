@@ -2,19 +2,13 @@
 title: Unix Init
 ---
 
-
-
 ## Tools
 
 ```sh
 apt install vim git tmux golang
 ```
 
-
-
-
-
-## Vim 
+## Vim
 
 ```sh
 # ~/.vimrc
@@ -38,11 +32,7 @@ set expandtab
 EOF
 ```
 
-
-
 ## oh my zsh
-
- 
 
 ```sh
 sudo apt install -y  zsh
@@ -50,10 +40,6 @@ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O 
 
 # sudo chsh -s $(which zsh)
 ```
-
-
-
-
 
 ## Golang
 
@@ -67,9 +53,7 @@ PATH=$PATH:$GOBIN
 '| tee -a ~/.bashrc
 ```
 
-
-
-### Proxy 
+### Proxy
 
 ```sh
 echo 'function proxy_on() {
@@ -104,15 +88,9 @@ Acquire::https::Proxy "http://child-prc.intel.com:913";
 EOF
 ```
 
-
-
 ## Font
 
 `hack`
-
-
-
-
 
 Set timezone
 
@@ -122,23 +100,14 @@ timedatectl set-timezone Asia/Shanghai
 sudo date -s "$(curl -H'Cache-Control:no-cache' -sI google.com | grep '^Date:' | cut -d' ' -f3-6)Z"
 ```
 
-
-
 ### Add new User
 
 ```sh
 sudo adduser hairong
 sudo usermod -aG sudo hairong
 
+sudo vi /etc/group
 ```
-
-
-
-
-
-
-
-
 
 Wait for network
 
@@ -152,11 +121,7 @@ network:
           password: 1q2w3e4r%T
       dhcp4: true
       optional: true
-      
-
 ```
-
-
 
 ```sh
 sudo netplan generate
@@ -164,17 +129,9 @@ sudo netplan generate
 sudo netplan apply
 ```
 
-
-
-
-
 ## Ubuntu Alisa
 
 今天在Build Docker image的时候发现`sgx-sdk-demo`的base images是`ubuntu:bionic`, 然后设置的apt source list 也是`"....intel-sgx/sgx_repo/ubuntu focal main"`。同时 docker image `ubunt:18.04` 和 `ubuntu:bionic` 的Image ID 是完全相同的，猜测 bionic 应该是 ubuntu:18.04 的别名。于是查了[Ubuntu 的release Note](https://wiki.ubuntu.com/Releases) 果真如此。
-
-
-
-
 
 ## update ubuntu linux kernel
 
@@ -187,13 +144,7 @@ sudo apt-get install linux-image-your_version_choice linux-headers-your_version_
 # https://packages.ubuntu.com/focal-updates/kernel/
 ```
 
-
-
-
-
 - flux add proxy!!!! 装的时候手动修改env
-
-
 
 ```sh
 git config --global --add http.proxy http://proxy-prc.intel.com:913
@@ -204,4 +155,3 @@ git config --global --add https.proxy http://proxy-prc.intel.com:913
 export http_proxy=http://proxy-prc.intel.com:913
 export https_proxy=http://proxy-prc.intel.com:913
 ```
-
