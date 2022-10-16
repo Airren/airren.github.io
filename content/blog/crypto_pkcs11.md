@@ -1,8 +1,6 @@
 ---
- title: PKCS11
+title: PKCS11
 ---
-
-
 
 ## PKCS#11 Terminology
 
@@ -33,8 +31,6 @@ Cryptographic devices contains private and public objects. In order to  access t
 ## HSM
 
 ![image-20220331221148222](crypto_pkcs11/image-20220331221148222.png)
-
-
 
 ## PKCS11 Tools
 
@@ -87,8 +83,6 @@ pkcs11-tool --module /usr/local/lib/libp11sgx.so \
 pkcs11-tool --module /usr/local/lib/libp11sgx.so -L 
 ```
 
-
-
 ### p11req
 
 [Mastercard/pkcs11-tools](https://github.com/Mastercard/pkcs11-tools) A set of tools to manage objects on PKCS#11 cryptographic tokens. Compatible with any PKCS#11 library, including NSS. 
@@ -98,8 +92,6 @@ p11req -l /usr/local/lib/libp11sgx.so -i cert-key -d '/CN=sgx-1'  -t "$token"   
 
 # -i label/alias of the key
 ```
-
-
 
 ### p11tool
 
@@ -115,8 +107,6 @@ Usage
 p11tool --list-tokens
 ```
 
-
-
 ```sh
 Token 1:
         URL: pkcs11:model=PKCS%2315%20emulated;manufacturer=Common%20Access%20Card;serial=000058bd002c19b5;token=CAC%20II
@@ -131,17 +121,11 @@ Token 1:
 # /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 ```
 
-
-
 ### p11-kit
-
-
 
 Github: https://github.com/p11-glue/p11-kit
 
 PDF: https://archive.fosdem.org/2017/schedule/event/smartcard_forwarding/attachments/slides/1796/export/events/attachments/smartcard_forwarding/slides/1796/pkcs11_remoting.pdf
-
-
 
 **Install p11-kit-module**
 
@@ -150,15 +134,11 @@ sudo apt install p11-kit
 sudo apt install p11-kit-modules
 ```
 
-
-
 ```sh
 p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:model=PKCS%2315%20emulated;manufacturer=Common%20Access%20Card;serial=000058bd002c19b5;token=CAC%20II"
 ```
 
-
-
-#### **Forwarding a sgx-ctk** 
+#### **Forwarding a sgx-ctk**
 
 ```sh
 p11-kit server --provider /usr/local/lib/libp11sgx.so "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=b326ab0138ada9cb;token=sgx-1" -f
@@ -175,8 +155,6 @@ pkcs11-tool --module /usr/lib/p11-kit-client.so  --login --pin 12345678 -O --tok
 pkcs11-tool --module /usr/local/lib/pkcs11/p11-kit-client.so -L
 ```
 
-
-
 #### Implementation
 
 Define protocol that serializes smart card access
@@ -186,8 +164,6 @@ Expose the protocol at a unix domain socket
 Forward the socket with ssh
 
 ![img](crypto_pkcs11/7e63c87cc5162315243f888c7220e0e7.png)
-
-
 
 #### Debug
 
@@ -199,8 +175,6 @@ unset P11_KIT_STRICT P11_KIT_DEBUG;
 # for openwrt neet to install opkg install opensc-utils-pkcs11-tool
 ```
 
-
-
 **Install**
 
 ```sh
@@ -211,8 +185,6 @@ sudo cp ./.libs/libp11-kit.so.0.3.0 /lib//x86_64-linux-gnu/libp11-kit.so.0.3.0
 # for openwrt 
 opkg install opensc-utils-pkcs11-tool p11-kit
 ```
-
-
 
 #### Client
 
@@ -247,8 +219,6 @@ rpc_C_FindObjectsFinal
 rpc_C_CloseSession
 rpc_C_Finalize
 ```
-
-
 
 p11-kit implements most of the PKCS#11 interfaces through an RPC protocol(self desigend) between client-side and server-side. If, based on the p11-kit protocol and changed the protocol to grpc, maybe need to rewrite the p11-kits rpc-message.c .
 
@@ -300,13 +270,9 @@ After that you should be able to access virtual smart card through OpenSC:
 pkcs11-tool -L
 ```
 
-
-
 ## PKCS11 Remote Forward
 
 ![img](crypto_pkcs11/f568e031f0e0ceeee2abb29fe675a11b.png)
-
-
 
 A solution for Smart Card Remoting. The tool named p11-kit, a redhat's project.
 
@@ -316,10 +282,6 @@ If we use p11-kit as the solution of HSM forwarding, as is shown in the picture.
 
 And, the ubuntu container has an HTTP server to provide RESTful API to Initialize the token, Create Keypair and generate CSR. 
 
-
-
-
-
 And, if  we use p11-kit , we need to make some changes of the p11-kit code to make it fit with CTK.
 
 - CTK does not support application provided function pointers or callbacks and mutexes.
@@ -327,14 +289,13 @@ And, if  we use p11-kit , we need to make some changes of the p11-kit code to ma
   - **C_OpenSession**: The members *pApplication* and *Notify* are not supported and must be set to NULL_PTR.
 - Change the socket module, from unix domain socket(+ ssh)  to internet dmain socket. 
 
-
-
 ### P11-kit
 
 - Modify `initialize arguments` of sever-side and change the `unix socket path`.
 - `Cross complie` p11-kit-clinet.so through openwrt SDK.
 
 ### CTK
+
 - Build and install CTK in ubuntu container.  `280M`
 
 ### CNF Pod
@@ -342,8 +303,6 @@ And, if  we use p11-kit , we need to make some changes of the p11-kit code to ma
 - enable pkcs11 for strongswan `opkg instsall strongswan-mod-pkcs11`
 - add `p11-kit-client.so` and install libffi `opkg install libffi`
 - add default env ` P11_KIT_SERVER_ADDRESS="unix:path=/tmp/p11-kit/p11-kit-server-sgx"`
-
-
 
 ### Configuration of StrognSwan
 
@@ -398,10 +357,7 @@ export P11_KIT_STRICT=yes;export P11_KIT_DEBUG=all;
 
 p11-kit server --provider /usr/local/lib/libp11sgx.so \
 "pkcs11:model=SGXHSM%20v2;manufacturer=SGXHSM%20project;serial=$SERIAL_NUM;token=sgx-1" -f
-
 ```
-
-
 
 #### strongswan.conf
 
@@ -485,10 +441,7 @@ conn common-con
   esp=aes128-sha256-modp3072,aes256-sha256-modp3072
   ike=aes128-sha256-modp3072,aes256-sha256-modp3072
   type=tunnel
-
 ```
-
-
 
 #### swanct.conf
 
@@ -535,29 +488,17 @@ secrets{
         pin=12345678
     }
 }
-
-
 ```
-
-
-
-
 
 ### ToDo
 
-- [x]  golang server to init token, only once, and create unix socket fd, set mod to 777.
+- [x] golang server to init token, only once, and create unix socket fd, set mod to 777.
 - [x] create key pair , specify a key-pair-id and label.
 - [x] generate a csr.
 - [x] add the cert to the slot with key-pair-id and label.
 - [ ] lua, add cert config to `ipsec.secret`
-- [x]  do not re-create key pair if existed with a same name.
-- [x]  define err code when add cert encounter error.
-
-
-
-
-
-
+- [x] do not re-create key pair if existed with a same name.
+- [x] define err code when add cert encounter error.
 
 ### RESTful API
 
@@ -566,7 +507,7 @@ secrets{
 ```sh
  # token info, this is a default token, don't change any field
  # key-pair label, for
-  
+
  curl --location --request POST 'http://sdewan-:8081/pkcs11/csr' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -605,8 +546,6 @@ CZ01fouDJIXLehgw62ol7TsuKC1CvUkVUiI=
 -----END CERTIFICATE REQUEST-----
 ```
 
-
-
 #### HSM: Add Cert to SGX  token
 
 ```sh
@@ -628,10 +567,6 @@ curl --location --request POST 'http://127.0.0.1:8081/pkcs11/cert' \
 # response string, code 200
 success
 ```
-
-
-
-
 
 test.sh
 
@@ -681,23 +616,13 @@ curl --location --request POST "http://${sdewan_hsm_ip}:8081/pkcs11/cert" \
         \"pem\": \"${cert}\"
     }
 }"
-
 ```
-
-
-
-
 
 #### Lua: Add configuration to ipsec.secret
 
 ```sh
+
 ```
-
-
-
-
-
-
 
 ### Squash Docker Image
 
@@ -706,36 +631,12 @@ curl --location --request POST "http://${sdewan_hsm_ip}:8081/pkcs11/cert" \
 | CNF  | 33.6MB |             | p11-kit-client.so 9M |
 | HSM  | 277 MB | < 300MB     |                      |
 
-
-
-
-
-
-
 openWRT test
 
 ```sh
  # Cert is the cnf-default-cert
  curl "https://10-233-103-209.sdewan-system.pod.cluster.local/cgi-bin/luci/?luci_username=root&luci_password=root1" --cacert ./cert.pem
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### static file share
 
@@ -746,25 +647,9 @@ gogs/gogs
 siomiz/chrmoe
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 **Reference**
 
 http://www.pkiglobe.org/pkcs11_terminology.html
-
-
-
-
 
 ## NAT Traversal
 
@@ -772,27 +657,13 @@ The NAT Traversal function penetrates firewalls or NATs. This technology is almo
 
 Legacy IPsec-based or OpenVPN-based VPN Server cannot placed on behind the NAT, because VPN Clients must reach to the VPN Server through the Internet. Some NATs can be configured to define a "DMZ" or "Port-mapping" to relay any packets toward the outside IP address of NAT to the internal VPN Server. However it has a compatible problems. Moreover it requires a special permission by the administrator of the NAT. If your network administrator of the corporate are not cooperative to you, he hesitates to set up the NAT device to open a hole from the Internet.
 
-
-
-
-
 ![image-20220506232738449](crypto_pkcs11.assets/image-20220506232738449.png)
-
-
-
-
-
-
 
 AVX512
 
 ![image-20220506233034096](crypto_pkcs11.assets/image-20220506233034096.png)
 
-
-
 ![image-20220506234938330](crypto_pkcs11.assets/image-20220506234938330.png)
-
-
 
 ![image-20220506234952553](crypto_pkcs11.assets/image-20220506234952553.png)
 
@@ -802,13 +673,9 @@ AVX512
 
 ![image-20220506235120673](crypto_pkcs11.assets/image-20220506235120673.png)
 
-
-
 ![image-20220507001856323](crypto_pkcs11.assets/image-20220507001856323.png)
 
 do not use k0 in your code
-
-
 
 K mask is true will not change the value
 
@@ -817,6 +684,3 @@ XMM0-XMM15  AVX 2*64
 YMM0-YMM15  AVX2 4*64
 
 ZMM0-ZMM32 AVX512  8*64
-
-
-

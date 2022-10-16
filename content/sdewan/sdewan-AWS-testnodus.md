@@ -42,7 +42,7 @@ ip addr add 10.20.0.232/20 dev
 eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000     link/ether 0e:4e:31:15:1a:ed brd ff:ff:ff:ff:ff:ff                                             inet 10.20.0.232/20 brd 10.20.15.255 scope global eth1                                         valid_lft forever preferred_lft forever                                                         inet6 fe80::c4e:31ff:fe15:1aed/64 scope link                                                    valid_lft forever preferred_lft forever 
 ```
 
-![image-20220601104429172](sdewan-AWS-testnodus/image-20220601104429172.png)![image-20220601105234136](sdewan-AWS-testnodus/image-20220601105234136.png)
+![image-20220601104429172](sdewan-AWS-testnodus/image-20220601104429172.png)<img src="sdewan-AWS-testnodus/image-20220601105234136.png" alt="image-20220601105234136" style="zoom:200%;" />
 
 
 

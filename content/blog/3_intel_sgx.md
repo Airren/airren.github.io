@@ -604,6 +604,18 @@ spec:
 
 
 
+server mesh controller
+
+clusternet. use the latested version image
+
+
+
+service discovery , A   Bhow to find the the server in a
+
+
+
+
+
 
 
 

@@ -2,8 +2,6 @@
 title: Linux Network Virtualization
 ```
 
-
-
 ## Network Namespace
 
 In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
@@ -17,11 +15,7 @@ In order to provide the isolation, Linux has 6 namespaces to split the different
 | Network Namespace | IP address/Port/Router/IPtables | CLONE_NEWNS   |
 | User Namespace    | User isolation                  | CLONE_NEWUSER |
 
-
-
 For the process, if they want to use the resources of the Namespace,  they should enter the namespace first. And the resources don't share between different namespaces.
-
-
 
 ### Network Namespace Overview
 
@@ -63,8 +57,6 @@ The new Network Namespace only contains a Loopback Interface, and the status of 
 
 ![image-20220531011639031](network_virtualization.assets/image-20220531011639031.png)
 
-
-
 But, if we want to contact the outside, we need to create a couple of virtual ether network cards, it's the `veth pair`. Veth pair always presents in couples. It was like a two-way pipe, the datagram went into one side, and came out from another side. 
 
 Let's create a `veth pair`, and put one side into the `netns1`.
@@ -83,22 +75,16 @@ ip netns exec netns1 ifconfig veth1 10.1.1.1/24 up
 ifconfig veth0 10.1.1.2/up
 ```
 
-
-
 Now, you can `ping 10.1.1.1` on the host.
 
 The route table and IPtables are different between different Network Namespace.
-
-
-
-
 
 When we enter the `netns1` Network Namespace, the route table and IPtables are empty. So, when you are in the `netns1` you can't connect to the Internet. There are several ways to solve that:
 
 - Create a Linux bridge on the host, and bind one side of the veth pair to the bridge
 
 - Add NAT rule on the host and enable Linux IP forward.
-
+  
   ```sh
   # enable or disable IP forwarding status
   sysctl -w net.ipv4.ip_forward=0
@@ -110,13 +96,9 @@ When we enter the `netns1` Network Namespace, the route table and IPtables are e
   0
   ```
 
-  
-
 > Note
->
+> 
 > Users can put the physical/virtual network device to any network namespace, and one device only can be put into one Network Namespace.
-
-
 
 The process can enter the Network Namespace through the Linux System Call `clone()/unshare()/setns()`. No-root process in a specific Network Namespace only can assess and config the local Network Namespace.
 
@@ -133,8 +115,6 @@ For the root user of the network namespace, they can move the network device to 
 
 > How do combine the PID Namespace and Mount Namespace to make the Network Namespace totally isolated?
 
-
-
 ### Network Namespace API
 
 The API is related with Linux System Call: `clone() unshare() setns()` and file in `/proc`. This chapter will introduce the usage of the network namespace API through several examples.
@@ -150,15 +130,11 @@ The API is related with Linux System Call: `clone() unshare() setns()` and file 
 | Network Namespace | IP address/Port/Router/IPtables | CLONE_NEWNET  |
 | User Namespace    | User isolation                  | CLONE_NEWUSER |
 
-
-
-#### Create namespace through clone()						
+#### Create namespace through clone()
 
 ```sh
 int clone(int (*child_func)(void *), void *child_stack, int flags, void *arg);
 ```
-
-
 
 `clone()` is an extension of `fork()`, we can control the function through the `flags` parameter. `clone()`has more than 20 `CLONE_*` flag to control the processes' actions.
 
@@ -175,8 +151,6 @@ Finally, you should pay attention to the authorization and safety, most of the N
 
 > Linux 的特权是将root的权限分为各个小部分，使得一个进程只需要被授予刚刚好的权限来执行特定的任务。如果这些特权足够小，且选择的恰到好处，那么即使一个进程受损（比如缓冲区溢出），它所造成的危害也会受限于它所拥有的的特权。 例如，CAP_KILL 允许向任意的进程发送信号， 而CAP_SYS_TIME允许进程设置系统的时钟。
 
-
-
 #### Keep namespace existing
 
 Every process has its own `/proc/PID/ns`, and every file in this path represents a type of namespace.
@@ -187,11 +161,7 @@ Before Linux Kernel v3.8, the file in this path is a hard link, and only has IPC
 ls -l /proc/$$/ns # $$ is the PID of bash
 ```
 
-
-
 One of the symbolic link file's usage is to show if two processes use the same namespace. If two processes are in the same namespace, the `inode` number on the symbolic link file should be the same. (You can through `stat()`to get the inode number in `st_ino` )
-
-
 
 ```c
 #define _GNU_SOURCE
@@ -269,47 +239,23 @@ int main()
     waitpid(child_pid, NULL, 0);
     return 0;
 }
-
 ```
 
-
-
-
-
-
-
 > **NC command**
->
+> 
 > use for network test
->
+> 
 > **C primitive**
-
-
-
-
 
 ## Veth Pair
 
-
-
-
-
-
-
 The **principle** of Veth Pair is that put data into one side of the veth pair, and get out from another side.
-
-
-
-
-
-
 
 ### The kernel code if veth pair
 
 ```c
+
 ```
-
-
 
 ### Relationship between container and veth pair
 
@@ -323,25 +269,13 @@ First, in the target container find that,
 cat /sys/class/net/eth0/iflink
 ```
 
-
-
 And then check all the files on the host `/sys/class/net/`,check the `ifindex `value which is the same as the `iflink`.  The interface with the same value is another side of the veth pair.
 
-
-
-
-
 **Method 2**
-
-
 
 ## Linux Bridge
 
 ### What is Linux Bridge
-
-
-
-
 
 Create and Manage the Linux Bridge
 
@@ -350,13 +284,8 @@ ip link add name br0 type bridge
 ip link set br0 up
 ```
 
-
-
 Besides the `ip` command, we can use the `brctl` tool in the `bridge-utils` package to create a bridge.
 
 ```
-brctl addr br0
+brctl addr br0 
 ```
-
-
-

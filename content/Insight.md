@@ -1,7 +1,3 @@
-
-
-
-
 # Q1 2022
 
 ## Insight
@@ -11,8 +7,6 @@
 - Verified the POC in Ubuntu that StrongsWAN integrates with CTK through PKCS#11, which put the private key in -the SGX enclave to protect it. And propose ubuntu-SGX container as a sidecar work with CNF to provide the security IPsec Tunnel connection.
 
 - Challenge: While building SGX SDK, CTK, and strongsWAN in Ubuntu encountered some barriers with C project toolchains. Finally, remove most of them. But while building OpenWRT with SGX, most of the compile seems complicated to solve, so choose another way instead of making that.
-
-
 
 One Intel:
 
@@ -29,8 +23,6 @@ Fearless:  Qiang always keeps curiosity for the unknown region can complete the 
 - Test the sync cost time between two sides of the shared Volum. One side is in OpenWRT, and another is in Ubuntu.
 - Expose RESTful API in Ubuntu-SGX to generate private keys in Enclave, and create the CSR for the private key in Enclave.
 
-
-
 ### Object 2: Refine SDEWAN auto-install script and complete the document
 
 - Optimize auto-install script, make it suitable for VM deploy and physical deploy.
@@ -45,15 +37,11 @@ Fearless:  Qiang always keeps curiosity for the unknown region can complete the 
 - Read the Spec of  Intel Feature AMX, and prepare a presention for IDF sharing in 3rd, May.
 - Try to join a K8s SIG-Netwoking, watch the latest 10 SIG-Networking meeting videos.
 
-
-
 make gen-yaml IMG="integratedcloudnative/sdewan-controller:devtest1"
-
-
 
 # Q2 2022
 
-###  Insight
+### Insight
 
 ## Insight
 
@@ -65,17 +53,11 @@ make gen-yaml IMG="integratedcloudnative/sdewan-controller:devtest1"
 
 - Challenge:  While working for the SDEWAN SGX support model,  solved some tricky problems which are cross-compile the p11-kit tool for OpenWrt and changing the pkcs#11 token initialize arguments to fit CTK and squashing the HSM image with SGX to reach an ideal size.
 
-  
-
-
-
 Quality: Help the Smart Edge team release SDEWAN with the latest stable component. Ensure the stability and reliability of the auto-deploy script.
 
 Result Driven: Even encountering many tricky problems while enabling SGX for CNF, Qiang solved the problem step by step and finally accomplish the component as the previous design architecture.
 
 ## OKR for Q2
-
-
 
 ### OKR for Q3
 
@@ -87,35 +69,68 @@ KR2: Enhance SGX  E2E flow with Cert Manager(Useing SGX as externel issuer) supp
 
 KR3: SDEWAN auto CICD process, optimize the version manager, and split the code repo
 
-
-
 **OBJ2: Build Intel leadership in open-source Edge Orchestration projects with focus on individual career growth**
 
 KR3: Deliver 1 technical submission on edge usages with SDEWAN (KubeCon China)
 
 KR4: v
 
-
-
-
-
-
-
-
-
-
-
-
-
 promiscuous
 
+### Q3 Insight
+
+
+
+**Works in Q3**
+
+- Support Smart Edge Team design and verify service function chain in the HUB. Help verify SDEWAN with nodus work on a multi-node cluster and IPsec cross NAT.
+
+- Finished SDEWAN release with SGX feature enhancement and test a new feature for SDL supported.
+
+- Nodus support. Ramp up, test and verify the patch for K8s latest version, and SFC for IPV6.
+
+**Plan for Q4**
+
+Deliver SDEWAN 22.12 releases. Features include: SGX e2e flow enhancement for SDL requirements.
+
+ Integrate SDEWAN with SmartEdge release.
+
+**Intel Values**
+
+OneIntel:  Help Smart Edge team set up new features based on SDEWAN, design and verify the proposals. Such as, service function chains, nodus work in multi node and IPsec tunnel cross NAT.
+
+Fearless: While working with nodus, facing the relatively unfamiliar fields of OVN and CNI, Qiang reads related materials, dives into this field, and gets involved with Nodus
+relevant job.
+
+**points for improvement：**
+
+Learning: Qiang should continuously learn Kubernetes related technologies and improve software design skill to deliver high quality product
+
+Innovation: Qiang should continuously learn intel platform features and innovate on how to prompt integration in edge computing domain.
+
+
+
+### Q4 OKR
+
+**OBJ1: Enable IA optimizations and innovations in open-source Edge Orchestration projects**
+
+ Deliver SDEWAN 22.12 releases. Features include: SGX e2e flow enhancement for SDL requirements.
+
+**OBJ2: Build Intel leadership in open-source Edge Orchestration projects with focus on individual career growth**
+
+Submit 1 edge orchestration related IDF submission
 
 
 
 
 
 
-> Istio demo, different with yao le
+
+
+
+做的好的，以及需要改进的，value 2-3 个
+
+wushigang leave
 
 
 
@@ -123,5 +138,10 @@ promiscuous
 
 
 
-1. try to write a operate demo
-2. i
+
+
+1. protocal CR
+
+2. Route all traffic
+
+3. 

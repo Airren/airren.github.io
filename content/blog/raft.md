@@ -9,17 +9,9 @@ tags:  [
 image:  "blog/raft/1557341311-raft-protocol.jpg"
 ---
 
-
-
 # 12
 
-
-
 ## 123
-
-
-
-
 
 https://raft.github.io/
 

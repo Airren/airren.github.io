@@ -134,28 +134,7 @@ pkcs11-tool --module /lib/x86_64-linux-gnu/pkcs11/p11-kit-client.so -L
 
 
 
-1. CNF  : -  ----> Ruoyu
 
-   - base64_decode
-
-     variable name
-
-2. CNF deployment add lable:    --->  Renqiang
-
-   securityEnabled: "true"
-
-3. CRD contorller     -->>> Renqiang
-
-   certficatesigningrequest. Role
-
-   Role Binding    -> crd helm chart
-
-4. CertManager     --->>> Ruoyu
-   - deployment  -- expermient  
-
-5. SCC Mongo,  cert create/delete ---->> Ruoyu
-
-   
 
 
 

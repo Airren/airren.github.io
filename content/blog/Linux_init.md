@@ -155,3 +155,53 @@ git config --global --add https.proxy http://proxy-prc.intel.com:913
 export http_proxy=http://proxy-prc.intel.com:913
 export https_proxy=http://proxy-prc.intel.com:913
 ```
+
+
+
+
+
+
+
+
+
+#### ssh set proxy
+
+```sh
+# Host github.com
+#       Hostname ssh.github.com
+#       # ProxyCommand nc -X connect -x child-prc.intel.com:914 %h %p
+#       # # ProxyCommand connect -H child-prc.intel.com:914 %h %p
+#       Port 443
+#       # ServerAliveInterval 20
+#       # User git
+# Host github.com
+#    IdentityFile ~/.ssh/id_rsa
+#    ProxyCommand nc -x child-prc.intel.com:1080 %h %p
+
+
+# ProxyCommand connect -S proxy-prc.intel.com:1080  %h %p
+Host node-2
+  HostName 124.223.99.93
+  Port 3302
+  User airren
+  ProxyCommand connect -S proxy-prc.intel.com:1080  %h %p
+  # ProxyJump  proxy-prc.intel.com:1080
+
+Host sdewan-sgx.sh.intel.com
+  HostName sdewan-sgx.sh.intel.com
+  User airren
+
+Host airrens-mini.sh.intel.com
+  HostName airrens-mini.sh.intel.com
+  User airren
+
+Host sdewan.sh.intel.com
+  HostName sdewan.sh.intel.com
+  User ubuntu
+
+Host 10.239.154.53
+  HostName 10.239.154.53
+  User airren
+
+```
+

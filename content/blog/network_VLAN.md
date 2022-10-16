@@ -2,8 +2,6 @@
 title: What is VLAN and Virtual Network Interface
 ---
 
-
-
 In our day-to-day life, we have seen LAN and WAN architectures mostly because we have to deal with only one IP address on one interface. We either connect our system with LAN cable or with WiFi.
 
 In this article, we will discuss the VLAN and how to create the VLAN on the Ubuntu server, but let first understand what is VLAN and why we use VLAN.
@@ -21,10 +19,6 @@ There are many advantages of using VLAN in our network architecture mentioned th
 - Make device management easier.
 - QoS or other network policies are easy to implement.
 - Also make network scalable.
-
-
-
-
 
 ## VLAN installation
 
@@ -80,8 +74,6 @@ ip link set ens3.100 down
 ip link delete ens3.100
 ```
 
-
-
 This configuration is not permanent, for permanent configuration use Netplan.
 
 ### Configure VLAN with Netplan
@@ -99,10 +91,10 @@ network:
                 macaddress: 52:54:00:68:b2:b6
             set-name: ens3
     vlans:
-    		ens3.100:
-    				id: 100
-    				link: ens3
-    				addresses: [192.169.100.1/24]
+            ens3.100:
+                    id: 100
+                    link: ens3
+                    addresses: [192.169.100.1/24]
 ```
 
 Once done, save the file and apply the changes by running the following command:
@@ -111,13 +103,9 @@ Once done, save the file and apply the changes by running the following command:
 sudo netplan apply
 ```
 
-
-
 > `ifconfig`: net-tools; configuration file's path `/etc/network/interfaces`
->
+> 
 > `ip`: iproute2
-
-
 
 ## Catch the Traffic
 
@@ -128,17 +116,7 @@ Now, we have two  machines:
 - Node-1  ens3.100 192.169.100.1
 - Node-2  ens3.100 192.169.100.2 
 
-
-
 While we ping Node-2 on Node-1 through the VLAN ip,   use `tcpdump` to catch the traffic.
-
-
-
-
-
-
-
-
 
 ## Create a Virtual Network Interface
 
@@ -154,21 +132,13 @@ sudo ip link add name <virtual_interface_name> type dummy
 
 Example of the above command and its verification is shown in the following code section.
 
-
-
 You can then play with this Interface and you can also assign IP address to this interface. This type of assignment is not persistent, which means after a reboot of you machine you won't find a network interface.
 
-
-
-## Summary	
+## Summary
 
 In this article, we learned about the VLAN and how to configure the VLAN in Ubuntu20.04. We discussed two different strategies to configure the VLAN in Ubuntu.
 
-
-
 If you face any issue don't hesitate to comment.
-
-
 
 ## Reference
 

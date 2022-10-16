@@ -42,7 +42,7 @@ title: SDEWAN Setup
     kv:
     - gitType: github
     - userName: Airren  # change to your own github username
-    - gitToken: ghp_LaAMXYmdcSWbmSOpL   # change to your own
+    - gitToken: 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   # change to your own
     - repoName: flux                 # change to your own
     - branch: main
     

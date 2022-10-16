@@ -1,9 +1,3 @@
-
-
-
-
-
-
 If someone say thanks to you, how to turn back.
 
 - Don't mention it.
@@ -11,8 +5,3 @@ If someone say thanks to you, how to turn back.
 - No warries.
 - No problem.
 - Any time.
-
-
-
-
-

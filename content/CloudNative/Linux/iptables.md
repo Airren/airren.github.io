@@ -1,10 +1,4 @@
-
-
-
-
 TCP 的有限状态机
-
-
 
 CLOSED                      CLOSED
 
@@ -16,19 +10,13 @@ SYN_SENT                   LISTENING
 
 ![image-20211102000956549](iptables/image-20211102000956549.png)
 
-
-
 netfilter: Frame
 
 iptables: 数据报文过滤
 
-
-
 防火墙： 硬件/软件
 
 规则： 匹配标准和处理办法
-
-
 
 默认规则：
 
@@ -44,10 +32,6 @@ UDP:SPORT, DPORT
 
 ICMP: icmp-type
 
-
-
-
-
 规则在内核空间
 
 内核空间的TCPIP的协议栈上，开放给用户空间中的iptables API。
@@ -55,8 +39,6 @@ ICMP: icmp-type
 内核空间的工作框架：
 
 用户空间的管理工具：   system call
-
-
 
 参考 openBSD
 
@@ -66,34 +48,25 @@ Linux 2.2： ipchain/firewall
 Linux 2.4 ： iptables/netfilter
 
 1：07
+
 ```sh
 /proc/sys/net/ipv4/ip_forward
 ```
-
-
-
-
 
 路由决策发生在数据包到达网卡， 送到TCPIP协议栈上的那一刻。
 然后先发生路由决策
 
 ![image-20211102005439661](iptables/image-20211102005439661.png)
 
-
-
 netfilter 补充在tcp ip协议上的3个hook function。
 
 多个规则，自上而下，逐个检查，
-
-
 
 不做拒绝或者放行策略
 
 4： 刚刚进入本机网卡，还没有到达路由表。（地址转换k'k）
 
 5： 即将离开本机的时候，路由决策做出之后。
-
-
 
 规则链
 
@@ -106,8 +79,6 @@ FORWARD
 OUTPUT
 
 POSTROUTING
-
-
 
 **filter**：过滤 表
 
@@ -137,13 +108,9 @@ PREROUTING/OUTPUT
 
 ![image-20211102012723133](iptables/image-20211102012723133.png)
 
-
-
 chain的优先次序
 
 4表5链k
-
-
 
 500条规则
 
@@ -165,8 +132,6 @@ chain的优先次序
 iptables [-t TABLE] COMMAND CHAIN [num] 匹配标准 -j 处理办法
 ```
 
-
-
 通用匹配
 
 ```sh
@@ -183,20 +148,13 @@ DROP
 REJECT
 
 连接状态
-
 ```
-
-
 
 扩展匹配： 依赖扩展功能/user/lib/iptables
 
 - 隐含扩展，不用特别指明由哪一个模块进行扩展，因为此时使用-p{tcp | udp |icmp}
 
 - 显示扩展，必须指明由哪一个模块进行扩展， 使用-m完成此功能，
-
-
-
-
 
 网络访问控制
 
@@ -205,7 +163,5 @@ DDOS
 netfilter，
 
 在用户层通过iptables 对netfilter进行控制管理。
-
-
 
 Redirect 是针对本机的， 本机产生的数据包转到 localhost的某个端口， 适合用redirect，会比DNAT效率高一点，而外部地址只能用DNAT了。

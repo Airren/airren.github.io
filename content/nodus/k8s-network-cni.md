@@ -266,3 +266,11 @@ https://github.com/eranyanay/cni-from-scratch
 ## Reference
 
 https://wiki.ith.intel.com/display/containers/Nodus
+
+
+
+
+
+
+
+How kubelet find which one is the primariy CNI.

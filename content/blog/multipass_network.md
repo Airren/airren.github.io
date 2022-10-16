@@ -92,6 +92,10 @@ sudo iptables -I POSTROUTING -d 10.20.0.118/32 -j SNAT --to-source 192.169.0.4 -
 
 
 
+**remove mark of the client** 
+
+
+
 ### 
 
 ```sh

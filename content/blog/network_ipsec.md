@@ -2,23 +2,15 @@
 title: IPSec
 ---
 
-
-
 IPsec is a group of networking protocols used for setting up secure encrypted connections, such VPNs, across publicly shared networks.
 
-
-
 # What is IPsec
-
-
 
 IPsec is a group of protocols that are used together to set up encrypted connections between devices. It helps keep data send over public networks secure. IPsec is often used to set up VPNs, and it works by encrypting IP packets, along with authenticating the source where the packets come from.
 
 Within the term "IPsec", "IP" stands for "Internet Protocol" and "sec" for "secure". The Internet protocol is the main routing protocol used on the Internet; it designates where data will go using IP addresses. IPsec is secure because it adds encryption and authentication to this process.
 
 > Encryption is the process of concealing information by mathematically alerting data so that it appears random. In simpler terms, encryption is the use of a "secret code" that only authorized parties can interpret.
-
-
 
 ## How does IPsec Work?
 
@@ -36,8 +28,6 @@ IPsec connections include the following steps:
 
 **Decryption**: At the other end of the communication, the packets are decrypted, and applications can now use the delivered data.
 
-
-
 ## What protocols are used in IPsec
 
 In networking,  a protocol is specified way of formatting data so that any networked computer can interpret the data. ***IPsec is not one protocol, but a suite of protocols***. The following protocol make up the IPsec suite.
@@ -50,8 +40,6 @@ In networking,  a protocol is specified way of formatting data so that any netwo
 
 Finally, while the **Internet Protocol(IP)** is  not part of the IPsec suite, IPsec runs directly on top of IP.
 
-
-
 ## What is the difference between IPsec tunnel mode and IPsec transport mode?
 
 IPsec tunnel mode is used between two ***dedicated routers***, with each router acting as one end of a virtual "tunnel" through a public network. In IPsec tunnel mode, the *original IP* header containing the final destination of the packet is encrypted, in addition to the packet payload. To tell intermediary routers where to forward the packets, IPsec adds a new IP header. At each end of the tunnel, the router decrypt the IP headers to deliver the packets to their destination.
@@ -60,19 +48,13 @@ In transport mode, the payload of each packet is encrypted, but the original IP 
 
 ![image-20220510212230730](network_ipsec/image-20220510212230730.png)
 
-
-
 ## What port does IPsec use?
 
 A network port is the virtual location where data goes in a computer.  Ports are how computers keep track of difference processes and connections; if data goes a certain port, the computer's operating system knows which process it belongs to. IPsec usually uses port 500.
 
-
-
 ## How does IPsec impact MSS and MTU?
 
 MSS and MTU are two measurements of packet size. Packets can only reach a certain size(measures in bytes) before computers,  routers and switches cannot handle them.  MSS measures the size of each packet's  payload, while MTU measures the entire packets, including headers. Packets that exceed a network's MTU may be fragmented, meaning broken up into smaller packets and then reassembled. Packets that exceed the MSS are simply dropped.
-
-
 
 IPsec protocols add several headers and trailers to packets, all of which take up several bytes. For networks that use IPsec, either the MSS and MTU have to adjusted  accordingly, or packets will be fragmented and slightly delayed. Usually, the MTU for a network is 1,500 bytes. A normal IP header is 20 bytes long, and a TCP header is also 20 bytes long, meaning each packet can contain 1,460 bytes of payload. However, IPsec add an Authentication Header, and ESP header, and associated trailers. These add 50-60 types to a packets, or more.
 
@@ -83,15 +65,9 @@ sudo iptables -t mangle -I POSTROUTING -p tcp -m tcp -j TCPMSS --tcp-flags SYN,R
 sudo iptables -t mangle -I POSTROUTING -p tcp -m tcp -j TCPMSS --tcp-flags SYN,RST SYN --set-mss 60
 ```
 
-
-
 ## Challenge
 
 To secure traffic, IPsec requires an SA to be set up between two points, creating a tunnel for the traffic to travel through. Depending on the implementation model, this can introduce some challenges. For example, in a mesh model, all nodes(or locations) are connected to each other by dedicated tunnels. However, this requires creating managing several IPsec tunnels, which is difficult to scale.
-
-
-
-
 
 # IKE
 
@@ -107,17 +83,7 @@ Before the device establish the tunnel, you need to negotiate IPsec's IKE Phase1
 
 With these five items, you ASAs can stand up an IKE Phase1 and connect you site securely across the Internet.
 
-
-
-
-
-
-
 > MD5
-
-
-
-
 
 IPsec is a protocol suit to authenticate and encrypt the packets being exchanged between two points.
 
@@ -132,9 +98,8 @@ IPsec provides:
 - Authentication: refers to verifying identity of a network entity like user/device [PSK, RSA], Make sure the user is  we expected.
 
 - Confidentiality: it is used to hide information [DES, 3DES, AES,SEAL]
+
 - Key Management: To agree on key used for authentication and other purpose [Manual or automatic]
-
-
 
 To achieve the goal of creating a secure tunnel, two peers needs to negotiate all the required parameters.                                              
 
@@ -144,13 +109,9 @@ IPsec use following protocols:
 - Encapsulation Security Protocol(ESP): It provides authentication, integrity and confidentiality
 - Internet Key Exchange(IKE): Key management protocol, used to negotiate Security Association(SA), SA are security polices for communication between peers.
 
-
-
 IKE performs it jobs using ISAKMP framework using two phases
 
 **Phase-1** is used to negotiate **ISAKMP policy** by exchange 5 parameters referred to as HAGLE. In this phase, Peers authenticate each other and calculate a shared secret key. Phase-1 gives a secure tunnel to be used in second IKE phase.
-
-
 
 After the negotiation , then **IKE Policy Set**. then get a **tunnel**.
 
@@ -161,8 +122,6 @@ Phase 1 can run in two modes
 - Main mode. identity of peers is protected using encryption
 - Aggressive mode. identity of peers is not protected.
 
-
-
 Phase-2 is used to negotiate IPsec security parameters [negotiate protocols and algorithm]
 
 - Encapsulation protocol(AH, ESP)
@@ -172,41 +131,24 @@ Phase-2 is used to negotiate IPsec security parameters [negotiate protocols and 
 
 When then have done that, **IPsec Transform Set**,  ***IPsec policy*** for  sending our data 
 
-
-
-
-
 ### Authentication Header
 
 IPsec use two main protocols - AH and/or ESP
 
 - Authentication Header(AH): It provides authentication and integrity(no confidentiality,no encryption to hide the message)
-
+  
    Authentication : both side authenticate each other
-
+  
   Integrity: The message from one side to another can not be changed. If change will be discard.
-
+  
   : can provide security against replay attack using sliding window. Replay attack allows a bad guy to resend the intercepted contents between two points.
 
 - Encapsulation Security Protocol(ESP): It provides authentication, integrity and confidentiality
-
+  
   can provide security against replay attack using sliding window.
-
-
-
-
-
-
-
-
-
-
-
-
 
 参考资料
 
 https://www.cloudflare.com/learning/network-layer/what-is-ipsec/
 
 https://www.youtube.com/watch?v=tapoOQ-MkPU&ab_channel=GDNetworkingNewbie
-

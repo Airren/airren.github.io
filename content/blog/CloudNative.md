@@ -2,12 +2,6 @@
 title: Cloud Native
 ---
 
-
-
-
-
-
-
 4C8G 70%-80% 虚拟化浪费掉了
 
 裸金属
@@ -26,8 +20,6 @@ title: Cloud Native
 
 2015.07 Google 宣布成立CNCF基金会
 
-
-
 Building sustainable ecosystems for cloud native software.
 
 ![https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/](https://s7280.pcdn.co/wp-content/uploads/2017/09/saas-vs-paas-vs-iaas.png)
@@ -39,8 +31,6 @@ PaaS Platform as a service
 SaaS Software as a service
 
 CaaS container as a service 
-
-
 
 优势 ：
 
@@ -68,17 +58,11 @@ ServiceMesh： 网格化架构
 
 RPC 远程调用/ Gateway 负载均衡-> 服务与IP映射  facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权
 
-
-
 Nginx 和API Gateway， 有交集，动态决定
 
 Nginx：反向代理、负载均衡
 
 Gateway： 鉴权，协议转换， 牵扯到业务代码的相关东西， 可以做更多的业务融合服务
-
-
-
-
 
 分布式 和集群的区别？
 
@@ -100,11 +84,7 @@ D  7
 
 异地多活：
 
-
-
 IP 漂移， keep alive
-
-
 
 云上挑战
 
@@ -128,15 +108,11 @@ IP 漂移， keep alive
 
 云安全防护
 
-
-
 技术变革：
 
 动态扩容-> 水平扩容
 
 应用上云无关语言
-
-
 
 docker  -- docker shim-> k8s
 
@@ -149,8 +125,6 @@ docker-> 容器的封装层，  containd(runc)?
 容器的所有思想都是通用的。容器，镜像。。。
 
 应用上云的新型架构： Kubernetes + serviceMesh
-
-
 
 ## 云原生的生态系统
 
@@ -165,41 +139,22 @@ CloudNative
 
 基础研究量
 
-
-
-
-
 ServiceMesh
 
 serverless： 
 
 ## 云原生的术语
 
-
-
 graceful shutdown
 
-
-
 蓝绿部署，绿色环境为实验环境
-
-
-
-
 
 cka, ckad, cks 考证
 
 pipeline
-
-
-
-
-
-
 
 [docker containerd runc 之间的关系](https://xuanwo.io/2019/08/06/oci-intro/)
 
 https://zhuanlan.zhihu.com/p/87602649
 
 https://www.huweihuang.com/kubernetes-notes/runtime/runtime.html
-
