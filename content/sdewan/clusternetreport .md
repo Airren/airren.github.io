@@ -23,7 +23,7 @@ ssh airren@node-1   # passwd:123-
 
 ## Setup mcs-api demo
 
-> The repo is downloaded at `~/clusternet`. There contains some modification, such as creating a k8s cluster with different POD CIDR,  and fixing the `Angent` helm chart problem that doesn't have access to `endpointslice`.  You can see the modification though `git status`.
+> The repo is downloaded at `~/clusternet`. There contains some modification, such as creating k8s clusters with different POD CIDR,  and fixing the `Angent` helm chart problem that doesn't have access to `endpointslice`.  You can see the modification though `git status`.
 
 
 
@@ -34,7 +34,7 @@ ssh airren@node-1   # passwd:123-
    ./local-running.sh
    
    ```
-After that, you will see 4 clusters	 contexts.
+After that, you will see 4 clusters contexts.     These clusters are 4 docker containers, you can use `docker exec -it xxx bash` come into the cluster host.
 ![image-20221017101710782](clusternet/image-20221017101710782.png)
 
 ###### 2.  Check Clusters status
@@ -75,7 +75,9 @@ After that, you will see 4 clusters	 contexts.
 
 ![image-20221017113339395](clusternet/image-20221017113339395.png)
 
-> But, while I on the Parent Cluster pod, try to call the service, it doesn't work. I still try to figure out it.
+> But, while I on the Parent Cluster pod, try to call the service, it doesn't work. I am trying to figure out this.
+>
+> I manually add routes on the parent-cluster host, which is to the child's pod CIDR via the child host.
 
 
 
