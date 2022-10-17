@@ -158,17 +158,72 @@ func (c *Controller) syncHandler(key string) error{
 
 ## Kubebuilder
 
-
-
-
-
 ```sh
-kubebuilder completion zsh
+source < $(kubebuilder completion zsh)
+# --repo git the git module name
 kubebuilder init --domain bytegopher.com --license apache2 --owner "ByteGopher" --repo www.github.com/airren/cnat-kubebuilder
 
-kubebuilder create api --group cnat --version v1alpha1 --kind At
 
 kubebuilder create api --group cnat --version v1alpha1 --kind CronJobA
 
+# if you are editing the API definitions, generate the manifest such as Custom Resources(CRs) or Custom Resource Definitions(CRDs) using
+make manifest
+
 ```
+
+
+
+###  Architecture Concept Diagram
+
+The following diagram will help you better understand the Kubernetes concepts and architecture.
+
+###### Process main.go
+
+One of these per cluster, or several if using HA.
+
+###### Manger  sigs.k8s.io/controller-runtime/pkg/manger
+
+One of these per process.
+
+Handles HA(leader election), exports metrics, handles webhook certs, caches events, holds clients, broadcasts events to Controllers, handles signals, and shutdown.
+
+###### Client...
+
+Communicates with API server, handling authentication and protocols.
+
+###### Cache...
+
+Holds recently watched or GET'ed objects. Used by Controllers, and Webhooks. Uses clients.
+
+###### Controller sigs.k8s.io/controller-runtime/pkg/controller
+
+One of these per Kind that is reconciled (i.e. one per CRD)
+
+Owns resources created by it.
+
+Uses Caches and Clients and gets events via Filters.
+
+The controller calls a Reconciler each time it gets an event.
+
+Handles back-off and queuing and re-queuing of events.
+
+###### Predicate sigs.k8s.io/controller-runtime/pkg/predicate
+
+Filters a stream of events, passing only those that require action to the reconciler.
+
+###### Reconciler sig.k8s.io/controller-runtile/pkg/reconciler
+
+User-provided logic is added to the reconciler.  Reconcile Function.
+
+###### Webhook sigs.k8s.io/controller-runtime/pkg/webhook
+
+Zero or one webhooks. One per Kind that is reconciled.
+
+![image-20221016223203318](k8s_source_code_6.assets/image-20221016223203318.png)
+
+
+
+### Scheme
+
+Every set of controllers needs a `Scheme`, which provides mappings between Kinds and their corresponding Go types.
 
