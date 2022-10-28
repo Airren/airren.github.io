@@ -126,11 +126,9 @@ ssh airren@node-1   # passwd:123-
 
 
 
-## Degug of Clusternet
+## Debug of Clusternet
 
-![image-20221014154451678](clusternet/image-20221014154451678.png)
 
-what is scheme?
 
 
 

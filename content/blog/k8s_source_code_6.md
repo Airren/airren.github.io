@@ -225,5 +225,14 @@ Zero or one webhooks. One per Kind that is reconciled.
 
 ### Scheme
 
-Every set of controllers needs a `Scheme`, which provides mappings between Kinds and their corresponding Go types.
+Every set of controllers needs a `Scheme`, which provides mappings between Kinds and their corresponding Go types. The `Scheme` is simply a way to keep track of what Go type correspond to a given GVK.
 
+
+
+
+
+
+
+### Reconcile
+
+We return an empty result and no error,  which indicates to controller-runtime that we've successfully reconciled this object and don't need to try again until there's some changes.
