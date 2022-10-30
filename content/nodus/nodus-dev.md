@@ -1,6 +1,5 @@
 ---
-Nodus Dev Note
-
+title: Nodus Dev Note
 ---
 
 ## SFC for IPV6

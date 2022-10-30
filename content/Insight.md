@@ -130,18 +130,4 @@ Submit 1 edge orchestration related IDF submission
 
 做的好的，以及需要改进的，value 2-3 个
 
-wushigang leave
-
-
-
-
-
-
-
-
-
-1. protocal CR
-
-2. Route all traffic
-
 3. 

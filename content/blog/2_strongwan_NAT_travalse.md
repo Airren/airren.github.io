@@ -1,6 +1,6 @@
 ---
-
-StrongWAN configure with CNF.
+title: StrongWAN configure with CNF.
+---
 
 1. Download the material
    

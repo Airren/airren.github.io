@@ -1,7 +1,7 @@
-If someone say thanks to you, how to turn back.
+If someone says thanks to you, how to turn back?
 
 - Don't mention it.
 - It's my pleasure.
-- No warries.
+- No worries.
 - No problem.
 - Any time.

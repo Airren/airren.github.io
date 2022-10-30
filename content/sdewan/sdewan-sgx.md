@@ -1,5 +1,5 @@
 ---
-title: SDEWAN: Leverage SGX to provide Secure Access Service Edge
+title: SDEWAN Leverage SGX to provide Secure Access Service Edge
 ---
 
 
