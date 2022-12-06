@@ -25,7 +25,7 @@ jobs:
 
     # build website
     - name: Build
-      run: pwd && ls
+      run: pwd && ls ../
 
     # push the generated content into the `main` (former `master`) branch.
     - name: Deploy
