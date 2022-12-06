@@ -36,7 +36,7 @@ Cryptographic devices contains private and public objects. In order to  access t
 
 ### OpenSC
 
-[OpenSC]([opensc : Trusty (14.04) : Ubuntu (launchpad.net)](https://launchpad.net/ubuntu/trusty/+package/opensc)) provides a set of libraries and  utilities to access smart cards. It mainly focuses on cards that support cryptographic operations. It facilitates their use in security applications such as mail encryption, authentication, and digital signature.
+[OpenSC](https://launchpad.net/ubuntu/trusty/+package/opensc) provides a set of libraries and  utilities to access smart cards. It mainly focuses on cards that support cryptographic operations. It facilitates their use in security applications such as mail encryption, authentication, and digital signature.
 
 ### [pkcs11-tool]([Ubuntu Manpage: pkcs11-tool - utility for managing and using PKCS #11 security tokens](http://manpages.ubuntu.com/manpages/trusty/man1/pkcs11-tool.1.html))
 

@@ -2,10 +2,7 @@
 title: 「Go」依赖管理 Go Modues/ GOPATH
 subtitle: '学会了go的依赖管理才能灵活使用Go'
 author: Airren
-catalog: true
-header-img: ''
 weight: 1
-p: go_basic/go_modules
 date: 2020-08-04 23:53:48
 ---
 

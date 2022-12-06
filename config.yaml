@@ -1,4 +1,5 @@
-baseURL: https://www.bytegopher.com
+# baseURL: https://www.bytegopher.com
+baseURL: http://echo-bio
 
 languageCode: en-us
 title: ByteGopher

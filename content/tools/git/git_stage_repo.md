@@ -186,7 +186,12 @@ git checkout {$branchName} # 切换分支
 
 
 
-git 
+```sh
+git config --global init.defaultBranch main
+
+```
+
+
 
 
 
@@ -204,3 +209,27 @@ git
 > 4. git init & git init -bare、
 > 5. 解决冲突
 > 6. git commit --amend
+
+
+
+> https://www.jianshu.com/p/699ed86028c2
+>
+> https://www.liaoxuefeng.com/wiki/896043488029600/900004590234208
+
+
+
+
+
+`gitignore`只能忽略未`track`的文件
+
+
+
+Git 知识积累
+
+https://zhuanlan.zhihu.com/p/147356242
+
+https://www.jianshu.com/p/e5b13480479b
+
+
+
+https://www.cnblogs.com/rainbowk/p/10932322.html

@@ -11,7 +11,7 @@ Fortunately, we use ubuntu LVM to manage the Disk.
 
 
 ```sh
-fsisk /dev/sda
+fdisk /dev/sdb
 ```
 
 ![img](linux-ubuntu-lvm/5acfeacdb00f84d4949af3198c52c2dd.png)
@@ -95,11 +95,3 @@ https://blog.yqxpro.com/2021/10/31/%E9%80%9A%E8%BF%87LVM%E7%BB%99Ubuntu%E6%B7%BB
 
 
 
-
-
-
-1. login to the relay: ssh zhangkang@sdewan.sh.intel.com
-
-2. login to the VM: ssh ubuntu@10.95.62.217
-   PS: all the password is 123123
-   Spec: 8 core 16G Disk 120G

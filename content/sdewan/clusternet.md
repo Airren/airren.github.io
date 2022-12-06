@@ -24,9 +24,41 @@ ssh airren@node-1   # passwd:123-
 
 
 
+## PreRequisites
+
+### Kind 
+
+
+
+Create cluster
+
+```sh
+# create cluster one node
+
+
+# create cluster multinode
+
+# create cluster with configuration
+
+```
+
+Delete cluster
+
+```sh
+kind delete cluster --name=<clustername>
+```
+
+
+
+
+
+
+
+
+
 ## Setup mcs-api demo 
 
-> The repo is downloaded at `~/clusternet`. There contains some modification, such as creating a k8s cluster with different POD CIDR,  and fixing the `Angent` helm chart problem that doesn't have access to `endpointslice`.  You can see the modification though `git status`.
+
 
 
 
@@ -35,6 +67,8 @@ ssh airren@node-1   # passwd:123-
    ```sh
    cd ~/clusternet/hack
    ./local-running.sh
+   
+   export KUBECONFIG=${HOME}/.kube/clusternet.config
    
    ```
     After that, you will see 4 clusters' contexts.
@@ -77,13 +111,45 @@ ssh airren@node-1   # passwd:123-
 
 ![image-20221017113339395](clusternet/image-20221017113339395.png)
 
-> But, while I on the Parent Cluster pod, try to call the service, it doesn't work. I still try to figure out it.
+
+
+The service port name shoule be same with the endpoint slice Name.
 
 
 
 
 
 
+
+## Archtecture
+
+![](https://clusternet.io/images/clusternet-arch.png)
+
+
+
+Clusternet is a lightweight addon that consists of three components, `clusternet-agent`, `clusternet-scheduler` and`clusternet-hub`.
+
+**Clusternet-agent** is responsible for:
+
+- Auto-registering current cluster to parent cluster as a child cluster.
+- Report heartbeats of current cluster, including kubernetes version, running platform, `health/readyz/livez` status,etc;
+- setting up websocket connection that provides full-duplex communication channels over a single TCP connection to parent cluster.
+
+Clusternet-scheduler is responsible for 
+
+- scheduling resources/feeds to marched child clusters based on `SchedulingStrategy`.
+
+Clusternet-hub is responsible for
+
+- approving cluster registration request and creating dedicated resources, suce as namespaces, servceaccounts and RBAC rules, for each child cluster;
+
+- Serving ad an aggregated apiserver(AA),which is used to provide shadow APIs and serve as a websocket server that maintain multiple active webscoket connections form child clusters;
+
+- providing Kubernetes-styled API to redirect/proxy/upgrade request to each child cluster.
+
+- coordinating and deploying applications to multiple clusters from a single set of APIs;
+
+  
 
 
 

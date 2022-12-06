@@ -158,13 +158,17 @@ func (c *Controller) syncHandler(key string) error{
 
 ## Kubebuilder
 
+
+
+### Create a Project
+
 ```sh
 source < $(kubebuilder completion zsh)
 # --repo git the git module name
 kubebuilder init --domain bytegopher.com --license apache2 --owner "ByteGopher" --repo www.github.com/airren/cnat-kubebuilder
 
 
-kubebuilder create api --group cnat --version v1alpha1 --kind CronJobA
+kubebuilder create api --group cnat --version v1alpha1 --kind CronJob
 
 # if you are editing the API definitions, generate the manifest such as Custom Resources(CRs) or Custom Resource Definitions(CRDs) using
 make manifest
@@ -219,7 +223,7 @@ User-provided logic is added to the reconciler.  Reconcile Function.
 
 Zero or one webhooks. One per Kind that is reconciled.
 
-![image-20221016223203318](k8s_source_code_6.assets/image-20221016223203318.png)
+![image-20221016223203318](./k8s_source_code_6.assets/image-20221016223203318.png)
 
 
 
@@ -236,3 +240,80 @@ Every set of controllers needs a `Scheme`, which provides mappings between Kinds
 ### Reconcile
 
 We return an empty result and no error,  which indicates to controller-runtime that we've successfully reconciled this object and don't need to try again until there's some changes.
+
+
+
+
+
+## kustomize
+
+
+
+
+
+## controller-gen CLI
+
+### What is controller-gen?
+
+
+
+Kubebuilder makes use of a tool called `controller-gen` for generating utility code and Kubernetes YAML. This code and config generation is controlled by the presence of special "marker comments" in Go code.
+
+controller-gen is built out of different "generators" (which specify what to generate) and "output rules"(which specify how and where to write the results). Both are configured through command line options specified in marker format.
+
+```sh
+controller-gen paths=./...  crd:trivialVersions-true rbac:roleName=controller-perms \
+	output:crd:artifacts:config=config/crd/bases
+```
+
+Generate CRDs and RBAC, and specifically stores the generated CRD yaml in `config/crd/base`.  For the RBAC, it uses the default output rules(`config/rbac`). It considers every package in the current directory tree(as per the normal rules of the go `...`wild card).
+
+
+
+### How to use controller-gen?
+
+#### Generators
+
+```go
+// +webhook on package 
+generates(partial) {Mutating,Validating}WebhookConfiguration objects.
+// +schemapatch:   on package 
+pathes existing CRDs with new schemata.
+// +rbac:roleName=<string> on package
+generates ClusterRole objects
+// +object:  on package 
+generate code containing DeepCopy, DeepCopyInto, and DeepCopyObject method implementations.
+// +crd on package
+generates CustomResourceDefination objects.
+```
+
+#### Output Rules
+
+Output rules configure how a given generator outputs its results. There is always one global "fallback" output rule(specified as `output:<rule>`), plus per-generator overrides(specified as `output:<generator>:<rule>`).
+
+
+
+Default Rules: When no fallback rules is specified manually, a set of default per-generator rules are used which result in YAML going to `config/<generator>`, and code staying where is belongs.
+
+The default rules are equivalent to `output:<generator>:artifacts:config=config/<generator>` for each generator.
+
+
+
+## Marker for Config/Code Generation	
+
+Makers are single-line commnets that start with a plus, followed by a marker name, optionally followed by some marker specific configuration.
+
+```go
+// +kubebuilder:validation:Optional
+// +kubebuilder:validation:MaxItems=2
+// +kubebuilder:printcolumn:JSONPath=".status.replicas",name=Replicas, type=string
+```
+
+
+
+
+
+### CRD Generation
+
+These markers describe how to construct a custom resource definition form a series of Go types and packages. Generation of the actual validation schema is described by the validation markers.
+

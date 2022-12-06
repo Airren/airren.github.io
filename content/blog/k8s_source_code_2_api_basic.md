@@ -4,16 +4,44 @@ title: Kubernetes API Basic
 
 
 
-## The API Server	
+
+
+## Controller and Operator
+
+In this section you'll learn about `controllers` and `operators` in Kubernetes and how they work.
 
 The API server has the following core responsibilities:
 
 - To serve the Kubernetes API.  This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as `kubectl`.
 - To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve `kubectl exec` sessions.
 
+Per the Kubernetes glossary, a controller implements a control loop, watching the shared state of the cluster throught the API Server and making changes in an attempt to move the current state toward the desired state.
+
+Befor we dive into the controller's inner working, let's define our terminology:
+
+- Controllers can act on core resources such as deployments or services, which are typically part of Kubernetes controller manager in the control plane, or can watch and manipulate user-defined custome resources.
+- Operatirs are controllers that encode some opetational knowledge, such as application lifecycle management, along with the custome resources.
 
 
 
+### The Control Loop
+
+In general, the control loop looks as follows:
+
+1. Read the state of resources, preferably event-driven.
+2. Change the state of the objects in the cluster or the cluster-external world. For example, launch a pod, create a network endpoint, or query a cloud API.
+3. Update status of the resource in step 1 via the API server in etcd.
+4. Repeat cycle; return to step 1.
+
+
+
+From an architectural point of view, a controller typically uses the following data structures.
+
+#### Informers
+
+Informers watch the desired state of the resources in a scalable and sustainable fashion. They also implement a resync mechanism that enforces periodic reconciliation, and is often used to make sure that the cluster state and the assumend state cached in memory do not drift (e.g.,  due bugs or network issues).
+
+## The API Server	
 
 ### The HTTP Interface of the API Server
 

@@ -23,6 +23,8 @@ ssh cre@cre-relay.sh.intel.com # 10.239.241.116
 user: cre passwd: 123456
 ```
 
+BIOS：123456/123123
+
 
 
 ## How to create a VM with SGX and NIC direct mode

@@ -24,6 +24,10 @@ ICN-SDWAN- California **AWS5**
 
 
 
+ iptables -I POSTROUTING -d 10.0.0.1/24 -j SNAT --to-source 10.8.0.1 -t nat
+
+
+
 
 
 AWS2 eth1 MAC Address

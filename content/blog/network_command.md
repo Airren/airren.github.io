@@ -15,3 +15,13 @@ https://liugp.blog.csdn.net/article/details/118633171?spm=1001.2101.3001.6650.1&
 ## Reference
 
 https://linuxize.com/post/netcat-nc-command-with-examples/
+
+
+
+## telnet 命令
+
+测试某个端口是否通
+
+## nc 命令
+
+`nc`的全名是netcat，其主要用途是**建立**和**监听**任意TCP和UDP连接，支持ipv4和ipv6。因此，它可以用来网络调试、端口扫描等等。

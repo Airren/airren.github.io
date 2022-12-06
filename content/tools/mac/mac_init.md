@@ -42,6 +42,12 @@ inoremap jj <ESC>
 
 
 
+git 
+
+```sh
+git config --global init.defaultBranch main
+```
+
 
 
 

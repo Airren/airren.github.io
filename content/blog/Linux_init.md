@@ -39,6 +39,7 @@ sudo apt install -y  zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 # sudo chsh -s $(which zsh)
+
 ```
 
 ## Golang
@@ -162,6 +163,12 @@ export https_proxy=http://proxy-prc.intel.com:913
 
 
 
+### kubectl autocomplete
+
+
+
+
+
 
 
 #### ssh set proxy
@@ -203,5 +210,22 @@ Host 10.239.154.53
   HostName 10.239.154.53
   User airren
 
+```
+
+
+
+
+
+
+
+## Docker utils
+
+```sh
+HOSTNAME=chrome
+VNC_SCREEN_SIZE=1920x1080
+
+ docker run -d -p 5900:5900 --name chrome \
+ -e VNC_SCREEN_SIZE=1920x1080 -e HOSTNAME=chrome\
+ siomiz/chrome 
 ```
 
