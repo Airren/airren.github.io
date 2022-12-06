@@ -2,61 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd4a5aa-545d-414b-9b17-aa06c1330582" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/content/blog/k8s_operator.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/k8s_source_code_1_contribute.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/network_VPC.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/Multi-Cluster.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/Multi-Cluster.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/Plan.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/Plan.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/ToDo.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/ToDo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/Linux_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/Linux_init.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/crypto_pkcs11.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/crypto_pkcs11.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_1.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_2_api_basic.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/k8s_source_code_2_api_basic.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/k8s_source_code_6.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/k8s_source_code_6.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/linux-ubuntu-lvm.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/linux-ubuntu-lvm.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/network_command.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/network_command.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/blog/network_openvpn.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/blog/network_openvpn.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/books.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/Redis基本操作.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/image-20200103152634625.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/image-20200103153126819.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/image-20200103153510244.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/image-20200103154122993.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/Redis/image-20200103160314342.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/mongo/mongo_index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/mysql/install_mysql.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/component/DataBase/mysql/install_mysql.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/DataBase/mysql/mysql-sync-to-es.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/deployment.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/component/deployment.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/component/jenkins.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/go.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/1_go_install_and_env.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/1st--.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/note_go/1st--.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/Go并发编程案例解析.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/Struct.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/Test.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_concurrency.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_context.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_modules.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_pprof.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_short_addr.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_slice.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/go_time.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/ioutil.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/panic_and_recover.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/数据类型.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/极客时间go学习笔记.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/极客时间go学习笔记/image-20211116132821456.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/网络通信.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/note_go/输入输出.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/sdewan/CRE-Share.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/sdewan/CRE-Share.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/sdewan/clusternet.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/sdewan/clusternet.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/sdewan/odms-install.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/sdewan/odms-install.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/sdewan/sdewan-AWS-testnodus.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/sdewan/sdewan-AWS-testnodus.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/tools/git/git_gitignore.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/tools/git/git_stage_repo.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/git/git_stage_repo.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/tools/mac/mac_init.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/tools/mac/mac_init.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-site.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-site.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha" beforeDir="false" afterPath="$PROJECT_DIR$/themes/toha" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha/layouts/blog/baseof.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/toha/layouts/blog/index.json" beforeDir="false" />
@@ -273,7 +219,7 @@
       <workItem from="1667228771957" duration="136000" />
       <workItem from="1667229264315" duration="1970000" />
       <workItem from="1669356820710" duration="1454000" />
-      <workItem from="1670341819993" duration="673000" />
+      <workItem from="1670341819993" duration="984000" />
     </task>
     <task id="LOCAL-00001" summary="feat: template define final">
       <created>1615486500985</created>
