@@ -1,0 +1,18 @@
+# some information about you
+name: "Airren Ren"
+nickname: "Airren"
+# greeting message before your name. it will default to "Hi! I am" if not provided
+greeting: "Every Single Day Without Dancing is One Day We Betrayed of Life"
+subtitle: "All is well"
+image: "images/author/airren.png"
+# give your some contact information. they will be used in the footer
+contactInfo:
+  email: "airrenzero#gmail.com"
+  phone: "+86 1881733xxxx"
+
+# some summary about what you do
+summary:
+  - 生活也是一场学习
+  - 正在学习C++
+  - 计划自驾318国道
+#  - 准备去一个说英语的国家待一段时间

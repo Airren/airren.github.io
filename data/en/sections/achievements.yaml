@@ -1,0 +1,30 @@
+# section information
+section:
+  name: My Story
+  id: achievements
+  enable: true
+  weight: 8
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your achievements achievements
+achievements:
+  - title: 校园公益
+    image: /images/sections/achievements/presenter.jpg
+    summary: 给200个小朋友上的一堂课，超级nice。
+  - title: Champion
+    image: /images/sections/achievements/hornor.jpg
+    summary: Nice Hornor.
+  - title: 路演
+    image: /images/sections/achievements/presentation.jpg
+    summary: 努力跨界，做一些不可能的事情.
+  - title: 比赛路演
+    image: /images/sections/achievements/competition.jpg
+    summary: 星创师大赛，获奖了哦.
+  - title: 部队生活
+    image: /images/sections/achievements/military.jpg
+    summary: 难忘73151.
+  - title: 幼儿园活动
+    image: /images/sections/achievements/presenter_2.jpg
+    summary:
