@@ -399,7 +399,7 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>sudo netplan apply
 </span></span></code></pre></div><h2 id="ubuntu-alisa">Ubuntu Alisa</h2>
 <p>今天在Build Docker image的时候发现<code>sgx-sdk-demo</code>的base images是<code>ubuntu:bionic</code>, 然后设置的apt source list 也是<code>&quot;....intel-sgx/sgx_repo/ubuntu focal main&quot;</code>。同时 docker image <code>ubunt:18.04</code> 和 <code>ubuntu:bionic</code> 的Image ID 是完全相同的，猜测 bionic 应该是 ubuntu:18.04 的别名。于是查了<a href="https://wiki.ubuntu.com/Releases" target="_blank">Ubuntu 的release Note</a> 果真如此。</p>
-<h2 id="update-ubuntu-linux-kernel">update ubuntu linux kernel</h2>
+<h2 id="update-the-ubuntu-linux-kernel">update the ubuntu Linux kernel</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>apt-cache search linux-image
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>sudo apt-get install linux-image-your_version_choice linux-headers-your_version_choice linux-image-extra-your_version_choice
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
@@ -620,7 +620,7 @@
       </ul>
     </li>
     <li><a href="#ubuntu-alisa">Ubuntu Alisa</a></li>
-    <li><a href="#update-ubuntu-linux-kernel">update ubuntu linux kernel</a>
+    <li><a href="#update-the-ubuntu-linux-kernel">update the ubuntu Linux kernel</a>
       <ul>
         <li><a href="#kubectl-autocomplete">kubectl autocomplete</a>
           <ul>

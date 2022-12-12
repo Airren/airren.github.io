@@ -18,7 +18,7 @@ Various extension mechanisms over the years
 OCI hooks
 custom actions executed at various container lifecycle events runc , cri-o ? Runtime wrapper using runtime classes
 Custom actions implemented by custom runtime wrapper a bit of kludge runc/crun/etc.. containers/cri-o NRI
-custom actions at pod or container creation/stop containerd NRI evolution
+custom actions at pod or container creation/stop Containerd NRI evolution
 Subject of this presentation? What is NRI
 NRI: Node resource interface, a common framework for</description>
     </item>
@@ -3448,20 +3448,21 @@ Netcat is cross-platform, and it&amp;rsquo;s available for Linux, macOS, Windows
     </item>
     
     <item>
-      <title>Mac Init</title>
+      <title>Mac Dev Environment</title>
       <link>https://airren.github.io/posts/blog/Mac_init/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://airren.github.io/posts/blog/Mac_init/</guid>
-      <description>HomeBrew 1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; 1brew install wget 2 3brew install go Software Chrome
-Typora
-Istat Menus
+      <description>HomeBrew 1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; 1brew install wget 2brew install go Oh-my-zsh 1sh -c &amp;#34;$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&amp;#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
+1Caplock -&amp;gt; Command Software highly recommended
+Iterm2
 Alfred
 Dash
-Wireshark
-Sublime
-Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
-Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &amp;lt;&amp;lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &amp;lt;ESC&amp;gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&amp;#34; show existing tab with 4 spaces width 13set tabstop=4 14&amp;#34; when indenting with &amp;#39;&amp;gt;&amp;#39;, use 4 spaces width 15set shiftwidth=4 16&amp;#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &amp;#34;$(wget https://raw.</description>
+Istat Menus
+Xnip: for screenshot
+Recommend
+Wireshark Sublime Chrome Typora Others
+alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac Cli Tools 1# tmux 2brew install tmux Vim Config 1# ~/.</description>
     </item>
     
     <item>
