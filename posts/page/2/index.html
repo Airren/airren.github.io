@@ -311,6 +311,38 @@
       
         
           <div class="post-card">
+  <a href="/posts/blog/gin_overview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」Gin入门</h5>
+        <p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
+刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
+以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
+GitHub
+Official Document
+1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
+快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;&amp; cd gin_demo 4 5vi main.go main.go的内容如下
+1package main 2 3import ( 4	&#34;net/http&#34; 5	&#34;github.com/gin-gonic/gin&#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&#34;/ping&#34;, func(c *gin.Context){ 13	c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/posts/blog/gin_overview/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/component/DataBase/mongo/bson/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -608,35 +640,6 @@ HBase的优点：
         <span class="float-left">August 7, 2020</span>
         <a
         href="/posts/component/TimeSeries/hbase_introduction/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/note_go/11_go_testprofile/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「Go」pprof</h5>
-        <p class="card-text post-summary">Test Test 1go test --bench ./ 5s Code coverage 1go test -cover Profile 引发性能问题的原因，=执行时间过长、内存占用过多，以及意外堵塞。
-在测试时保存并输出相关数据，进行初次评估 在运行阶段通过web接口获得实时数据，分析一段时间内的健康状况 1go test -run NONE -bench . -memprofile mem.out -cpuprofile cpu.out net/http 服务开启debug 端口
-1go tool pprof http://10.152.50.69:9452/debug/pprof/profile\?second\=60 -alloc_space
-pprof 常用指令
-Web</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">August 6, 2020</span>
-        <a
-        href="/posts/note_go/11_go_testprofile/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

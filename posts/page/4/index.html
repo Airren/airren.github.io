@@ -311,6 +311,65 @@
       
         
           <div class="post-card">
+  <a href="/posts/cloudnative/Linux/iptables/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">TCP 的有限状态机
+CLOSED CLOSED
+SYN_SENT LISTENING
+​ SYN_RECEIVED
+ESTABLISHED ESTABLISHED
+netfilter: Frame
+iptables: 数据报文过滤
+防火墙： 硬件/软件
+规则： 匹配标准和处理办法
+默认规则：
+​ 关闭
+匹配标准：
+IP:源IP， 目标IP
+TCP: SPORT, DPORT SYN=1,FIN=0,RST=0,ACK=0
+UDP:SPORT, DPORT
+ICMP: icmp-type
+规则在内核空间
+内核空间的TCPIP的协议栈上，开放给用户空间中的iptables API。
+内核空间的工作框架：
+用户空间的管理工具： system call
+参考 openBSD
+Linux 2.0：ipfw/firewall
+Linux 2.2： ipchain/firewall Linux 2.4 ： iptables/netfilter
+1：07
+1/proc/sys/net/ipv4/ip_forward 路由决策发生在数据包到达网卡， 送到TCPIP协议栈上的那一刻。 然后先发生路由决策
+netfilter 补充在tcp ip协议上的3个hook function。
+多个规则，自上而下，逐个检查，
+不做拒绝或者放行策略
+4： 刚刚进入本机网卡，还没有到达路由表。（地址转换k&rsquo;k）
+5： 即将离开本机的时候，路由决策做出之后。
+规则链
+PREROUTING
+INPUT
+FORWARD
+OUTPUT</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/iptables/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/cloudnative/Linux/jq/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -578,31 +637,6 @@ https://mongoing.com/docs/tutorial/query-documents.html</p>
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/DataStruct/05_ds_hash_map/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/DataStruct/ds_heap/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary"></p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/DataStruct/ds_heap/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

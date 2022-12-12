@@ -311,6 +311,33 @@
       
         
           <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/KubernatesInstall/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「K8s」Kubernates 安装</h5>
+        <p class="card-text post-summary">环境准备 K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐Canonical家的Multipass了，Canonical 是谁，当然是Ubuntu的母公司了。
+安装 kubelet kubeadm kubectl 官方文档
+1sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl 2curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 3cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list 4deb https://apt.kubernetes.io/ kubernetes-xenial main 5EOF 6sudo apt-get update 7sudo apt-get install -y kubelet kubeadm kubectl 8sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新 初始化 1swapoff -a 2kubeadm init ctl 3# kubeadm config images pull --v=10 4 # 国内正常网络不能从k8s.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/KubernatesInstall/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/DataStruct/LeetCode/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -507,39 +534,6 @@ PC program counter
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/os/base_of_os/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/component/TimeSeries/prom/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「Prom」Prometheus 安装及使用简介</h5>
-        <p class="card-text post-summary">Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
-时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
-在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的
-例如：
-1http_request_total{host=192.168.2.1,status=200} Metric Name： http_request_total 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为[a-zA-Z_:][a-zA-Z0-9_:]*。冒号保留，会在定义规则的时候使用。
-Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
-Notation
-1&lt;Metric Name&gt;{&lt;Label Name&gt;=&lt;Label Value&gt;,...} 2api_http_request_total{method=&#34;POST&#34;, handler=&#34;/messages&#34;} # 同OpenTSDB 3 4node_cpu_seconds_total{cpu=&#34;2&#34;,mode=&#34;system&#34;} 195721.31 1&lt;--- metric name------&gt;&lt;-----lable set------&gt;&lt;-timestamp -&gt;&lt;-value-&gt; 2node_cpu_seconds_total{cpu=&#34;2&#34;,mode=&#34;system&#34;}@1434417560938 195721.31 3# timestamp 是毫秒级时间戳 4# value 有且只有一个 float64 __ 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以__name__=&lt;metric name&gt;形式存储的，以下两种表达方式是相同的。
-1api_http_request_total{method=&#34;POST&#34;, handler=&#34;/messages&#34;} 2{__name_=api_http_request_total, method=&#34;POST&#34;, handler=&#34;/messages&#34;} Component 所有基础组件的安装都基于Docker。</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/component/TimeSeries/prom/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

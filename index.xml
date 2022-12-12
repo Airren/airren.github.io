@@ -24,6 +24,23 @@ NRI: Node resource interface, a common framework for</description>
     </item>
     
     <item>
+      <title>「Prom」Prometheus 安装及使用简介</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/prometheus_intro/</link>
+      <pubDate>Sat, 11 Dec 2021 13:41:16 +0800</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/prometheus_intro/</guid>
+      <description>Prometheus Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
+时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
+在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Lable{Key-Value}组成的
+例如：
+1http_request_total{url=&amp;#34;/ping&amp;#34;,status=200} Metric Name： http_request_total 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为[a-zA-Z_:][a-zA-Z0-9_:]*。冒号保留，会在定义规则的时候使用。
+Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
+Notation
+Given a metric name and a set of labels, time series are frequently identified using this notion:
+1&amp;lt;Metric Name&amp;gt;{&amp;lt;Label Name&amp;gt;=&amp;lt;Label Value&amp;gt;,...} For example, a time series with the mertric name api_http_request_total and the label method=&amp;quot;POST&amp;quot; and handler=&amp;ldquo;message&amp;rdquo;` could be written like this.</description>
+    </item>
+    
+    <item>
       <title>「Raft」 The Raft Consensus Algorithm</title>
       <link>https://airren.github.io/posts/blog/raft/</link>
       <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
@@ -2366,23 +2383,6 @@ Leland Stanford Junior University 斯坦福大学
 PC program counter
 取指执行
 、</description>
-    </item>
-    
-    <item>
-      <title>「Prom」Prometheus 安装及使用简介</title>
-      <link>https://airren.github.io/posts/component/TimeSeries/prom/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/component/TimeSeries/prom/</guid>
-      <description>Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
-时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
-在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的
-例如：
-1http_request_total{host=192.168.2.1,status=200} Metric Name： http_request_total 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为[a-zA-Z_:][a-zA-Z0-9_:]*。冒号保留，会在定义规则的时候使用。
-Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
-Notation
-1&amp;lt;Metric Name&amp;gt;{&amp;lt;Label Name&amp;gt;=&amp;lt;Label Value&amp;gt;,...} 2api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} # 同OpenTSDB 3 4node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;} 195721.31 1&amp;lt;--- metric name------&amp;gt;&amp;lt;-----lable set------&amp;gt;&amp;lt;-timestamp -&amp;gt;&amp;lt;-value-&amp;gt; 2node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;}@1434417560938 195721.31 3# timestamp 是毫秒级时间戳 4# value 有且只有一个 float64 __ 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以__name__=&amp;lt;metric name&amp;gt;形式存储的，以下两种表达方式是相同的。
-1api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} 2{__name_=api_http_request_total, method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} Component 所有基础组件的安装都基于Docker。</description>
     </item>
     
     <item>

@@ -166,6 +166,15 @@
                 href="https://airren.github.io/posts/"
                 />
   </url><url>
+    <loc>https://airren.github.io/posts/component/</loc>
+    <lastmod>2021-12-11T13:41:16+08:00</lastmod>
+  </url><url>
+    <loc>https://airren.github.io/posts/component/TimeSeries/prometheus_intro/</loc>
+    <lastmod>2021-12-11T13:41:16+08:00</lastmod>
+  </url><url>
+    <loc>https://airren.github.io/posts/component/TimeSeries/</loc>
+    <lastmod>2021-12-11T13:41:16+08:00</lastmod>
+  </url><url>
     <loc>https://airren.github.io/posts/blog/raft/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -187,9 +196,6 @@
   </url><url>
     <loc>https://airren.github.io/posts/DataStruct/ds_dp/</loc>
     <lastmod>2020-09-17T00:53:15+00:00</lastmod>
-  </url><url>
-    <loc>https://airren.github.io/posts/component/</loc>
-    <lastmod>2020-09-09T01:14:54+00:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</loc>
     <lastmod>2020-09-09T01:14:54+00:00</lastmod>
@@ -249,9 +255,6 @@
     <lastmod>2020-08-17T10:42:00+00:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</loc>
-    <lastmod>2020-08-10T00:24:13+00:00</lastmod>
-  </url><url>
-    <loc>https://airren.github.io/posts/component/TimeSeries/</loc>
     <lastmod>2020-08-10T00:24:13+00:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/tags/TSDB/</loc>
@@ -604,8 +607,6 @@
     <loc>https://airren.github.io/posts/interview/cs_basic/net_io/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/os/base_of_os/</loc>
-  </url><url>
-    <loc>https://airren.github.io/posts/component/TimeSeries/prom/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/linux/regex/</loc>
   </url><url>
