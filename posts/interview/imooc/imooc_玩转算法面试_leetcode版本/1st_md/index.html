@@ -1,0 +1,65 @@
+<!doctype html><html><head><title></title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content><meta property="og:description" content="算法面试到底是什么鬼？ 1-1 算法面试不仅仅是正确的回答问题 算法面试的目的 展现思考问题的方式 算法面试过程 看做是和面试官一起探讨一个问题的解决方案。对于问题的细节和应用环境，可以和面试官沟通。 这种沟通本身很重要，它暗示着你思考问题的方式。
+我们需要对一组数据进行排序。 快速排序算法 O(nlogn)
+正确+更优 这组数据有什么样的特征？ 有没有可能包含有大量的重复元素？ 如果有这种可能的话，三路快排是更好的选择。 Java 默认是三路快排。
+这组数据有什么样的特征？ 是否大部分数据距离它的正确位置很近？是否近乎有序？ 如果是这样的话插入排序更优
+是否数据的取值范围非常有限？比如学生成绩排序。 计数排序更优
+对排序有什么额外的要求 是否需要稳定排序 归并排序更优
+数据的存储状况是怎样的 如果使用链表存储，归并排序更优
+数据的大小是否可以装在内存里， 外部排序
+什么是正确的回答一个算法问题
+正确还包含对问题的独到见解，容错性，
+1-2 算法面试只是面试的一部分 算法面试优秀不意味着技术面试优秀
+算法面试只是技术面试的一部分
+项目经历和项目中遇到的实际问题
+你遇到印象最深的bug是什么？
+面向对象
+设计模式
+网络相关：安全相关，内存相关，并发相关
+系统设计： scalability
+面试不仅仅是考察技术水平，以及对过去项目的思考
+项目经历
+通过过去了解你的思考行为方式
+遇到的最大的挑战
+犯过的错误
+遇到的失败
+最享受的工作内容
+遇到冲突的处理方式
+做的最与众不同的事儿
+准备好合适的问题问面试官
+1-3 如何准备算法面试 避免完美学习
+使用时间片学习
+远远不需要达到竞赛的水平
+不要轻视基础算法和数据结构，而只关注有意思的题目
+各种排序算法 技术数据结构和算法的实现： 如堆，二叉树，图 基础数据结构的使用： 如链表、栈、队列、哈希表、图、Tire、并查集 基础算法： 深度优先、广度优先、二分查找、递归 基本算法思想：递归、分治、回溯搜索、贪心、动态规划 选择合适的OJ online judge
+leetcode： online portal for interview"><meta property="og:type" content="article"><meta property="og:url" content="https://airren.github.io/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/1st_md/"><meta property="article:section" content="posts"><meta name=description content><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css><link rel=stylesheet href=/css/layouts/single.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
+<span class=navbar-toggler-icon></span></button>
+<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
+ByteGopher</a>
+<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
+<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts/ data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a class=active href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class=content><div class="container p-0 read-area"><div class="hero-area col-sm-12" id=hero-area style=background-image:url(/images/default-hero.jpg)></div><div class=page-content><div class="author-profile ml-auto align-self-lg-center"><img class=rounded-circle src=/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png alt="Author Image"><h5 class=author-name>Airren Ren</h5><p>Monday, January 1, 1</p></div><div class=title><h1></h1></div><div class=taxonomy-terms><ul style=padding-left:0></ul></div><div class=post-content id=post-content><h1 id=算法面试到底是什么鬼>算法面试到底是什么鬼？</h1><h2 id=1-1-算法面试不仅仅是正确的回答问题>1-1 算法面试不仅仅是正确的回答问题</h2><p>算法面试的目的 展现思考问题的方式
+算法面试过程 看做是和面试官一起探讨一个问题的解决方案。对于问题的细节和应用环境，可以和面试官沟通。
+这种沟通本身很重要，它暗示着你思考问题的方式。</p><p>我们需要对一组数据进行排序。
+快速排序算法 O(nlogn)</p><p>正确+更优
+这组数据有什么样的特征？
+有没有可能包含有大量的重复元素？
+如果有这种可能的话，三路快排是更好的选择。
+Java 默认是三路快排。</p><p>这组数据有什么样的特征？
+是否大部分数据距离它的正确位置很近？是否近乎有序？
+如果是这样的话插入排序更优</p><p>是否数据的取值范围非常有限？比如学生成绩排序。
+计数排序更优</p><p>对排序有什么额外的要求
+是否需要稳定排序
+归并排序更优</p><p>数据的存储状况是怎样的
+如果使用链表存储，归并排序更优</p><p>数据的大小是否可以装在内存里， 外部排序</p><p><p class=md__image><img src=2019-10-08-17-45-23.png alt></p></p><p>什么是正确的回答一个算法问题</p><p>正确还包含对问题的独到见解，容错性，</p><h2 id=1-2-算法面试只是面试的一部分>1-2 算法面试只是面试的一部分</h2><p>算法面试优秀不意味着技术面试优秀</p><p>算法面试只是技术面试的一部分</p><p>项目经历和项目中遇到的实际问题</p><p>你遇到印象最深的bug是什么？</p><p>面向对象</p><p>设计模式</p><p>网络相关：安全相关，内存相关，并发相关</p><p>系统设计： scalability</p><p>面试不仅仅是考察技术水平，以及对过去项目的思考</p><p>项目经历</p><p><strong>通过过去了解你的思考行为方式</strong></p><p>遇到的最大的挑战</p><p>犯过的错误</p><p>遇到的失败</p><p>最享受的工作内容</p><p>遇到冲突的处理方式</p><p>做的最与众不同的事儿</p><p><strong>准备好合适的问题问面试官</strong></p><h2 id=1-3-如何准备算法面试>1-3 如何准备算法面试</h2><p><font color=red>避免完美学习</font></p><p>使用时间片学习</p><p>远远不需要达到竞赛的水平</p><p>不要轻视基础算法和数据结构，而只关注有意思的题目</p><ul><li>各种排序算法</li><li>技术数据结构和算法的实现： 如堆，二叉树，图</li><li>基础数据结构的使用： 如链表、栈、队列、哈希表、图、Tire、并查集</li><li>基础算法： 深度优先、广度优先、二分查找、递归</li><li>基本算法思想：递归、分治、回溯搜索、贪心、动态规划</li></ul><p>选择合适的OJ online judge</p><p>leetcode： online portal for interview</p><p>hackRank: Revolutionizing Tech recruiting</p><p>acmcode</p><p>竞赛类oj</p><p>codeforces</p><p>topcoder</p><p>codechef</p><h2 id=1-4-如何回答算法面试问题>1-4 如何回答算法面试问题</h2><p>解决算法面试问题的整体思路</p><p>注意题目中的条件，</p><p>给定一个有序数组</p><p>有一些题目中的条件本质是暗示</p><ul><li>设计一个O(nlogn)的算法 分治</li><li>无需考虑额外的空间</li><li>数据规模大概是10000</li></ul><p>nlogn 百万级或者千万级别</p><p>没有思路的时候给自己几个简单的用例</p><p>暴力解法是思考的起点</p><h4 id=3longest-substring-without-repeating-characters>3：Longest Substring without Repeating characters</h4><p>在一个字符串中寻找没有重复字母的最长子串</p><p>优化算法</p><p>遍历常见的算法思路</p><p>遍历常见的数据结构</p><p>空间和时间的交换 哈希表</p><p>预处理信息 排序</p><p>在瓶颈处寻找答案：</p><p>实际编写问题</p><p>极端条件的判断</p><p>数组为空，字符串为空，</p><p>变量名</p><p>模块化和复用性</p></div><div class="row pl-3 pr-3"><div class="col-md-6 share-buttons"></div><div class="col-md-6 btn-improve-page"><a href=https://github.com/airren/airren.github.io/edit/master/content/posts/interview/imooc/imooc_%e7%8e%a9%e8%bd%ac%e7%ae%97%e6%b3%95%e9%9d%a2%e8%af%95_leetcode%e7%89%88%e6%9c%ac/1st_md.md title="Improve this page" target=_blank rel=noopener><i class="fas fa-code-branch"></i>
+Improve this page</a></div></div><hr><div class="row next-prev-navigator"></div><hr></div></div></div><a id=scroll-to-top class=btn><i class="fas fa-chevron-circle-up"></i></a></section><section class=toc-section id=toc-section><div class=toc-holder><h5 class="text-center pl-3">Table of Contents</h5><hr><div class=toc><nav id=TableOfContents><ul><li><a href=#1-1-算法面试不仅仅是正确的回答问题>1-1 算法面试不仅仅是正确的回答问题</a></li><li><a href=#1-2-算法面试只是面试的一部分>1-2 算法面试只是面试的一部分</a></li><li><a href=#1-3-如何准备算法面试>1-3 如何准备算法面试</a></li><li><a href=#1-4-如何回答算法面试问题>1-4 如何回答算法面试问题</a><ul><li><ul><li><a href=#3longest-substring-without-repeating-characters>3：Longest Substring without Repeating characters</a></li></ul></li></ul></li></ul></nav></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
+<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
+Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
+<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
+<script type=text/javascript src=/js/popper.min.js></script>
+<script type=text/javascript src=/js/bootstrap.min.js></script>
+<script type=text/javascript src=/js/navbar.js></script>
+<script type=text/javascript src=/js/plyr.js></script>
+<script type=text/javascript src=/js/main.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js></script>
+<script src=/js/single.js></script>
+<script>hljs.initHighlightingOnLoad()</script></body></html>
