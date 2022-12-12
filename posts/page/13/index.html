@@ -311,37 +311,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/cloudnative/Docker/docker_net/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「Docker」Docker 网络模式</h5>
-        <p class="card-text post-summary">docker run创建容器时候，可以用-net指定容器的网络模式
-1# host 模式 2--net=host 3# container模式 4--net=container:NameorId 5# none模式 6-net=none 7# bridge模式 8-net=bridge host 模式
-如果启动容器的时候使用 host 模式，那么这个容器将不会获得一个独立的 Network Namespace，而是和宿主机共用一个 Network Namespace。容器将不会虚拟出自己的网卡，配置自己的 IP 等，而是使用宿主机的 IP 和端口。
-例如，我们在 10.10.101.105/24 的机器上用 host 模式启动一个含有 web 应用的 Docker 容器，监听 tcp 80 端口。当我们在容器中执行任何类似 ifconfig 命令查看网络环境时，看到的都是宿主机上的信息。而外界访问容器中的应用，则直接使用 10.10.101.105:80 即可，不用任何 NAT 转换，就如直接跑在宿主机中一样。但是，容器的其他方面，如文件系统、进程列表等还是和宿主机隔离的。
-container 模式 这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。
-none模式 这个模式和前两个不同。在这种模式下，Docker 容器拥有自己的 Network Namespace，但是，并不为 Docker容器进行任何网络配置。也就是说，这个 Docker 容器没有网卡、IP、路由等信息。需要我们自己为 Docker 容器添加网卡、配置 IP 等。
-bridge模式 bridge 模式是 Docker 默认的网络设置，此模式会为每一个容器分配 Network Namespace、设置 IP 等，并将一个主机上的 Docker 容器连接到一个虚拟网桥上。当 Docker server 启动时，会在主机上创建一个名为 docker0 的虚拟网桥，此主机上启动的 Docker 容器会连接到这个虚拟网桥上。虚拟网桥的工作方式和物理交换机类似，这样主机上的所有容器就通过交换机连在了一个二层网络中。接下来就要为容器分配 IP 了，Docker 会从 RFC1918 所定义的私有 IP 网段中，选择一个和宿主机不同的IP地址和子网分配给 docker0，连接到 docker0 的容器就从这个子网中选择一个未占用的 IP 使用。如一般 Docker 会使用 172.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/cloudnative/Docker/docker_net/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/note_go/5.4ioutil/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -656,6 +625,33 @@ Go 远程Debug https://github.com/derekparker/delve</p>
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/tips/goland/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/KubernatesInstall/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「K8s」Kubernates 安装</h5>
+        <p class="card-text post-summary">环境准备 K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐Canonical家的Multipass了，Canonical 是谁，当然是Ubuntu的母公司了。
+安装 kubelet kubeadm kubectl 官方文档
+1sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl 2curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 3cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list 4deb https://apt.kubernetes.io/ kubernetes-xenial main 5EOF 6sudo apt-get update 7sudo apt-get install -y kubelet kubeadm kubectl 8sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新 初始化 1swapoff -a 2kubeadm init ctl 3# kubeadm config images pull --v=10 4 # 国内正常网络不能从k8s.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/KubernatesInstall/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

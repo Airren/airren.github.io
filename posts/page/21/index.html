@@ -311,39 +311,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/blog/Mac_init/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Mac Init</h5>
-        <p class="card-text post-summary">HomeBrew 1/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34; 1brew install wget 2 3brew install go Software Chrome
-Typora
-Istat Menus
-Alfred
-Dash
-Wireshark
-Sublime
-Modify Keys settings -&gt; Keyboard -&gt; modifyKeys
-Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &lt;&lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &lt;ESC&gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&#34; show existing tab with 4 spaces width 13set tabstop=4 14&#34; when indenting with &#39;&gt;&#39;, use 4 spaces width 15set shiftwidth=4 16&#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &#34;$(wget https://raw.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/Mac_init/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/linux/linux_make/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -647,6 +614,62 @@ Slots Slots are the logical partitions in the cryptographic device. In case of H
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/react/%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/redis_preview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Redis</h5>
+        <p class="card-text post-summary">bitmap
+背景知识 文件：
+​ 数据可以存在文件里，通过grep awk 查找文件。
+​ 如果文件变大，10M -&gt; 1T , 查找会变慢。全量扫描IO。
+数据库：（受限于IO）
+​ mysql 存储， 存储分块，可以通过索引直接获取datapage中的数据。
+索引也是数据块
+二级索引，给索引建立索引
+表很大，如果连接比较少，读 如果命中索引，查询还是毫秒级别
+如果并发很大（足够大），如果每个查询的数据都是独立的，会收到吞吐的限制。
+Redis+数据库：（内存与磁盘的折中方案）
+nosql -&gt; key vale
+短域名-&gt; 长域名，计数
+关联表的数据也放置在value中。只关注每条记录自身。
+基于内存的
+worker 单线程
+6.x IO threads
+value 是有类型的 string、list、set、hash、zset；且每种类型有自己的本地方法。
+数据向计算移动
+计算向数据移动
+连接池：
+socket list 线程池：
+可以使用一个线程去处理连接池中的连接（nio，多路复用，epoll） 内存数据库：（受限于成本）
+Hana https://bytedance.feishu.cn/docs/doccnwV2ZxHYiLagaPOQSZ3ldlr
+常识：s&lt;- ms &lt;-us &lt;-ns
+硬盘：
+带宽、吞吐：百兆，1-2G pci-e/ nvme 3G/s
+寻址时间 ms
+内存:
+寻址时间 ns redis 安装 http://db-engines.com
+http://redis.io
+编译安装</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/redis_preview/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
