@@ -1,46 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Go on ByteGopher</title>
-    <link>https://airren.github.io/tags/Go/</link>
-    <description>Recent content in Go on ByteGopher</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 20 Aug 2020 01:40:04 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Go/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>「Go」并发实现</title>
-      <link>https://airren.github.io/note_go/8_go_concurrency/</link>
-      <pubDate>Wed, 05 Aug 2020 00:14:06 +0000</pubDate>
-      
-      <guid>https://airren.github.io/note_go/8_go_concurrency/</guid>
-      <description>如何用go实现一个简单的并行任务
-Golang并发 1package main 2 3import ( 4	&amp;#34;fmt&amp;#34; 5	&amp;#34;sync&amp;#34; 6) 7 8var wg sync.WaitGroup 9 10func printer(ch chan int) { 11	for i := range ch { 12	fmt.Printf(&amp;#34;Received %d &amp;#34;, i) 13	} 14	wg.Done() // 15} 16 17// main is the entry point for the program. 18func main() { 19	c := make(chan int) 20	go printer(c) 21	wg.Add(1) 22 23	// Send 10 integers on the channel.</description>
-    </item>
-    
-    <item>
-      <title>「Go」context</title>
-      <link>https://airren.github.io/note_go/7_go_context/</link>
-      <pubDate>Tue, 11 Aug 2020 23:53:48 +0000</pubDate>
-      
-      <guid>https://airren.github.io/note_go/7_go_context/</guid>
-      <description>context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
-1type Context interface{ 2 Deadline()(deadline time.Time, ok bool) 3 Done() &amp;lt;-chan struct{} 4 Err() error 5 Value(key interface{}) interface{} 6} context.Context有四个方法：
-Deadline() 返回context.Context被取消时间，也就是完成工作的截止日期；
-Done() 返回一个channel，这个channel 会在当前工作完成或者上下文被取消后关闭，多次调用Done方法返回的是同一个channel；
-Err() 返回context.Context 结束的原因，它只会在Done返回的Channel被关闭时才会返回非空的值
-如果 context.Context 被取消，会返回Canceled错误；
-如果 context.Context 超时，会返回DeadlineExceeded错误；
-Value 从context.Context 中获取键对应的值。对同一个上下文来说，多次调用value并传入相同的key会返回相同的结果，该方法用来传递请求特定的数据。
-1func main() { 2	ctx := context.Background() // new empty context 3 4	ctx = context.WithValue(ctx, &amp;#34;org&amp;#34;, &amp;#34;ali&amp;#34;) 5	ctx, _ = context.WithCancel(ctx) 6	ctx, _ = context.WithDeadline(ctx, time.Now().Add(10*time.Second)) 7	ctx, _ = context.</description>
-    </item>
-    
-    <item>
-      <title>「Go」Go的安装以及介绍</title>
-      <link>https://airren.github.io/note_go/1_go_basic_cmd/</link>
-      <pubDate>Thu, 20 Aug 2020 01:40:04 +0000</pubDate>
-      
-      <guid>https://airren.github.io/note_go/1_go_basic_cmd/</guid>
-      <description>1. Go语言介绍 1.1 Go 语言特点 静态类型、编译型的开源语言
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on ByteGopher</title><link>https://airren.github.io/tags/Go/</link><description>Recent content in Go on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 20 Aug 2020 01:40:04 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Go/index.xml" rel="self" type="application/rss+xml"/><item><title>「Go」Go的安装以及介绍</title><link>https://airren.github.io/posts/note_go/1_go_basic_cmd/</link><pubDate>Thu, 20 Aug 2020 01:40:04 +0000</pubDate><guid>https://airren.github.io/posts/note_go/1_go_basic_cmd/</guid><description>1. Go语言介绍 1.1 Go 语言特点 静态类型、编译型的开源语言
 静态类型是指要明确变量的类型，或者编译器可以推导出变量的类型。要么在变量类型旁边指定变量的那个类型，要么是可以推导出变量类型。
 编译型是指要编译成机器语言。
 1package main 2func main(){ 3 // Declare the type of the variable 4 var num1 int = 1; 5 // Deduce the type of the variable 6 num2 :=2 7} 脚本化的语法，支持多种范式编程
@@ -51,19 +9,15 @@ Value 从context.Context 中获取键对应的值。对同一个上下文来说�
 脚本化的语法 静态类型+编译型，程序运行速度有保障 原生的支持并发编程 - 降低开发、维护成本；程序可以更好的执行 劣势
 语法糖并没有Python和Ruby那么多- 1成是开发时间，9成维护时间 目前的程序运行速度还不及c，但是目前已经赶超了C++和Java 第三方库函数暂时不像绝对主流的编程语言那样多 1.3 Go开发环境 Linux 下的安装 FreeBSD Linux Windows 32bit - 64bit
 Linux 下的设置方法
-有四个环境变量需要设置： GOROOT、GOPATH、GOBIN以及PATH</description>
-    </item>
-    
-    <item>
-      <title>「Go」时间</title>
-      <link>https://airren.github.io/note_go/5.3go_time/</link>
-      <pubDate>Thu, 06 Aug 2020 00:54:12 +0000</pubDate>
-      
-      <guid>https://airren.github.io/note_go/5.3go_time/</guid>
-      <description>UNIX 时间戳 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
+有四个环境变量需要设置： GOROOT、GOPATH、GOBIN以及PATH</description></item><item><title>「Go」context</title><link>https://airren.github.io/posts/note_go/7_go_context/</link><pubDate>Tue, 11 Aug 2020 23:53:48 +0000</pubDate><guid>https://airren.github.io/posts/note_go/7_go_context/</guid><description>context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
+1type Context interface{ 2 Deadline()(deadline time.Time, ok bool) 3 Done() &amp;lt;-chan struct{} 4 Err() error 5 Value(key interface{}) interface{} 6} context.Context有四个方法：
+Deadline() 返回context.Context被取消时间，也就是完成工作的截止日期；
+Done() 返回一个channel，这个channel 会在当前工作完成或者上下文被取消后关闭，多次调用Done方法返回的是同一个channel；
+Err() 返回context.Context 结束的原因，它只会在Done返回的Channel被关闭时才会返回非空的值
+如果 context.Context 被取消，会返回Canceled错误；
+如果 context.Context 超时，会返回DeadlineExceeded错误；
+Value 从context.Context 中获取键对应的值。对同一个上下文来说，多次调用value并传入相同的key会返回相同的结果，该方法用来传递请求特定的数据。
+1func main() { 2 ctx := context.Background() // new empty context 3 4 ctx = context.WithValue(ctx, &amp;#34;org&amp;#34;, &amp;#34;ali&amp;#34;) 5 ctx, _ = context.WithCancel(ctx) 6 ctx, _ = context.WithDeadline(ctx, time.Now().Add(10*time.Second)) 7 ctx, _ = context.</description></item><item><title>「Go」时间</title><link>https://airren.github.io/posts/note_go/5.3go_time/</link><pubDate>Thu, 06 Aug 2020 00:54:12 +0000</pubDate><guid>https://airren.github.io/posts/note_go/5.3go_time/</guid><description>UNIX 时间戳 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
 类型 位数 Timestamp Time 秒级 10 1596646807 2020-08-06 01:00:07 毫秒级 13 1596646807000 2020-08-06 01:00:07 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）
-是从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。</description>
-    </item>
-    
-  </channel>
-</rss>
+是从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。</description></item><item><title>「Go」并发实现</title><link>https://airren.github.io/posts/note_go/8_go_concurrency/</link><pubDate>Wed, 05 Aug 2020 00:14:06 +0000</pubDate><guid>https://airren.github.io/posts/note_go/8_go_concurrency/</guid><description>如何用go实现一个简单的并行任务
+Golang并发 1package main 2 3import ( 4 &amp;#34;fmt&amp;#34; 5 &amp;#34;sync&amp;#34; 6) 7 8var wg sync.WaitGroup 9 10func printer(ch chan int) { 11 for i := range ch { 12 fmt.Printf(&amp;#34;Received %d &amp;#34;, i) 13 } 14 wg.Done() // 15} 16 17// main is the entry point for the program. 18func main() { 19 c := make(chan int) 20 go printer(c) 21 wg.Add(1) 22 23 // Send 10 integers on the channel.</description></item></channel></rss>

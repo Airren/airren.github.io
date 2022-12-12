@@ -1,0 +1,115 @@
+<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
+<span class=navbar-toggler-icon></span></button>
+<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
+ByteGopher</a>
+<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
+English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
+中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
+<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/kubernetes/k8s_ops_network/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s network</h5><p class="card-text post-summary">容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
+这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
+容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
+1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
+这个时候，就会出现一个问题，在这个被隔离的容器进程中如何与其他的Network Namespace里的容器进程进行交互呢。
+一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
+在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
+为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
+接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/kubernetes/k8s_ops_network/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/1-k8s-overview/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Overview</h5><p class="card-text post-summary">Node 节点主要负责容器的管理，用于运行容器和保证容器的状态。默认情况下Master节点不承担Node节点的功能，但是可以通过特殊的配置让Master节点也可作为Node节点。
+Etcd用于存储Kubernetes的元数据，但是不要求一定要以容器的形式运行。
+1kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.0.22 --pod-network-cidr pod 的ippool, --apiserver-advertise-address 为暴露的k8sAPI调用IP.
+节点(Node)
+一个Node是一个运行K8s的主机，作为K8s worker, 通常称之为Minion。每个节点都运行如下K8s关键组件：
+kubelet：主节点代理 kube-proxy: service使用其将链接路由到Pod docker/rocket: k8s 使用容器技术创建容器 容器组(Pod)
+一个Pod对应若干容器组成的一个容器组，同一个Pod内的容器共享一个存储卷(volume)，同一个Pod中的容器共享一个网络Namespace,可以使用localhost互相通信。
+Pod是短暂的，不是持续性实体。一个Pod是一个特定的应用打包集合，包含一个或者多个容器。和运行的容器类似，一个Pod只有很短的运行周期。Pod被调度到一个Node运行，直到容器的生命周期结束或者其被删除。
+容器组生命周期(Pod Status)
+包含所有容器状态集合，包括容器组状态类型，容器组生命周期，事件，重启策略，以及replication controllers.
+标签(labels)
+标签是用来连接一组对象的，比如容器组Pod。lable可以用来组织和选择子对象。 一个Label是attach到Pod的一对键值对，用来传递用户定义的属性。
+Replication Controllers
+主要负责指定数量的Pod在同一时间一起运行。Replication controller 确保任意时间都有指定数量的Pod副本在运行。如果为某个Pod创建了Replication Controller并且指定为3副本，它会创建3个Pod,并持续监控他们。如果某个Pod不响应，那么Replication controller 会替换它，保持Pod总数为3.
+当创建Replication Controller时，需要指定两个东西。
+Pod模板： 用来创建Pod副本的模板 Label：Replication Controller 需要监控的Pod的Label 现在已经创建了Pod的一些副本，那么在这些副本上如何负载均衡呢，我们需要的是service
+Service：
+如果Pod是短暂的，那么重启时IP地址可能会变，怎么才能从前端容器正确可靠的指向后台容器呢。
+Service是定义一系列Pod以及访问这些Pod的策略的一层抽象。Service通过Label找到Pod组。因为service是抽象的，所在在图表里通常看不到他们的存在。
+现在假定有两个后台Pod,并且定义后台service名称为“backend-service”，label选择器为(tier=backend,app=myapp)。backend-service的Service会完成如下两件重要的事情：
+会为Service创建一个本地集群的DNS入口，因此前端只需要DNS查找主机名为“backend-service”就能够解析出前端应用程序可用的IP地址 现在前端已经得到了后台服务的IP地址，但是它应该访问2个后台Pod中的哪一个呢。Service在这两个后台Pod之间提供透明的负载均衡，会将请求发给其中的任意一个。通过每个Node上运行的代理 kube-proxy完成。 Kubernetes Master
+集群拥有一个K8s Master,K8s Master 提供集群的独特视角，并拥有一系列组件，如Kubernetes API server. API server 提供可以用来和集群交互的REST 端点。Master 节点包含用来创建和复制Pod的Replication Controller.
+参考资料：</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/1-k8s-overview/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/8-k8s-stafulset/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s StafulSet</h5><p class="card-text post-summary">前面介绍的几种workload都有一个共性，那就是创建出来的Pod都是一致的。所谓的一致就是说，假设我们使用的是ReplicaSet，创建了3个Pod，那么这3个Pod创了名字一定不一样之外，其他属性可能都是一样的，包括运行时的参数和模式以及数据存储。
+如果是Web Service，数据保存到后端的DB中，上述逻辑是没有问题的。
+如果使用ReplicaSet来部署一个DB的多实例， 就可肯能存在问题了。
+数据持久化，一般使用PVC，当使用PVC 和PV的时候
+​
+ReplicaSet -> Pods(3 个) -> 持久卷声明 -> 持久卷
+3个Pod的数据都写到同一个Pv中，这样肯定是不行的？？？
+StatefulSet 为了解决Pod的状态性的问题，K8s引入了StatefulSet的概念
+Pod有单独的存储和固定的网络标识 需要配备一个headless Service，用于DNS 可以通过DNS快速发现其他的Pod 可以直接通过Pod DNS通信 每个Pod都可以通过DNS访问到，这种特性在其他workload中是不能实现的。通过StatefulSet可以让Pod持有状态，即使因为故障Pod重建了，那么对应的Pod的名字和数据都会保留，和重建之前没有什么区别。
+使用StatefulSet 必须建立一个HeadlessService，然后绑定这个headlessservice到StatefulSet。
+以MongoDB为例，创建一个StatefulSet，因为还没有介绍到PVC和PV的内容，所以MongoDB将使用本地存储卷。
+创建Headless Service
+创建 StatefulSet
+通过DNS访问Pod
+在StatefulSet的Pod中可以通过DNS直接访问其他Pod。
+1mongo --host mongo-1.mongo 可以通过&lt;pod-name>.&lt;service-name>的形式访问Pod。这其实和StatefulSet的设计是有关系的，在类似的Deployment中Pod的名字是不固定的，而在StatefulSet中，Pod的名字是固定的。
+和ReplicaSet对比
+因为有状态的Pod彼此不同，通常希望操作的是其中的特定的一个，所以StatefulSet通常要求你创建一个用来记录每个Pod网络标记的HeadlessService。通过这个Service，每个Pod都拥有独立的DNS记录，而这在ReplicaSet中是不行的？（如果为ReplicaSet创建一个Headless Service会发生啥？） 因为StatefulSet缩容任何时候只会操作一个Pod实例，所以有状态应用的缩容不会很迅速。 StatefulSet在有实例不健康的情况下，是不允许缩容的。 持久存储 一个StatefulSet可以拥有一个或者多个卷声明模板，这些声明会在创建Pod前创建出来，绑定到一个Pod的实例上。 扩容StatefulSet会创建两个API对象，一个Pod和一个卷声明；但是缩容StatefulSet却会删除一个Pod对象，而会留下PVC，因为一旦删除PVC则意味着PV会被回收。 StatefulSet at-most-one
+Kubernetes 必须保证两个拥有相同标记和绑定相同持久卷声明的有状态的Pod实例不会同时运行。一个StatefulSet必须保证有状态的实例的 at-most-one 语义。也就是说StatefulSet必须保证一个Pod不再运行后，才会去创建它的替换Pod。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/8-k8s-stafulset/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_client/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读 4</h5><p class="card-text post-summary">Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
+Again, kubectl learns about short names via discovery information.
+1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4 name: ats.cnat.programming-kubernetes.info 5spec: 6 ... 7 shortNames: 8 - at Further, CRs&ndash;as any other resources&ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/kubernetes/k8s_dev_client/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_operator_kubebuilder/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读 6 Solutions for Writing Operators</h5><p class="card-text post-summary">Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&ndash;form PhasePending to PhaseRuning to PhaseDone&ndash;in controller.go.
+processNextWorkItem() processNextWorkItem() bool will read a single work item off the workquque and attempt to process it, by calling the syncHandler.
+1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/kubernetes/k8s_dev_operator_kubebuilder/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_operator_release/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读7</h5><p class="card-text post-summary">In this chapter we&rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&rsquo;t break your Kubernetes cluster, security, or performance-wise.
+Lifecycle Management and Packaging Let&rsquo;s start with the low-hanging fruit: packaging and delivering your controllers so that a user can install it in a straightforward manner.
+Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/kubernetes/k8s_dev_operator_release/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/5_kube_config/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kube Config 控制多个集群</h5><p class="card-text post-summary">https://www.cnblogs.com/zhaobowen/p/13963343.html
+https://zhuanlan.zhihu.com/p/169746514
+https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+https://juejin.cn/post/6968129599070797837
+1export KUBECONFIG git blame</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/blog/5_kube_config/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/2-k8s-pod/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubenetes Pod</h5><p class="card-text post-summary">Pod
+在Kubernetes中，一切都是资源，你可以通过create/get/describe/delete 来操作这些资源。
+在操作一种资源之前，我们需要先对这个资源进行定义，在k8s中常用的是yaml配置文件配置。
+1# 00-siample-pod.yaml 2--- 3apiVersion: v1 4kind: Pod 5metadata: 6 name: first-pod 7 labels: 8 app: nginx 9spec: 10 containers: 11 - name: 00-simple-pod-nginx 12 images: nginx:1.17.0 apiVersion：资源的版本，可以理解为你要创建的是 PodV1{}还是PodVn{}
+kind: 资源的类型
+metadata：
+​ name： 创建出来的资源的名字
+​ labels：与其他资源粒度或者操作的关联
+spec: 资源的参数
+通过kubectl apply -f创建资源
+1kubectl apply -f 00-simple-pod.yaml 如果需要更新资源，修改yaml后，重新kubectl apply -f xxx.yaml 就可以。
+获取Pod状态
+1kubectl get pod first-pod 2# get more detail 3kubectl get pod first-pod -o wide 4# get all pods of all-namespace 5kubectl get po -A 获取Pod 详情</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/2-k8s-pod/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_2_api_server/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubernetes API Basic</h5><p class="card-text post-summary">Controller and Operator In this section you&rsquo;ll learn about controllers and operators in Kubernetes and how they work.
+The API server has the following core responsibilities:
+To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/kubernetes/k8s_dev_2_api_server/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/10-k8s-crd/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubernetes CRD</h5><p class="card-text post-summary">Kubernetes 1.16 正式GA了CRD。
+CRD介绍 声明式编程 在Kubernetes中我们使用了Deployment/DamenSet/tatefulSet来管理应用workdload，使用Service/Ingress来管理应用的
+https://zhuanlan.zhihu.com/p/34445114</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/10-k8s-crd/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/4-k8s-replic/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubernetes Replication Controller</h5><p class="card-text post-summary">Replication Controller 1# replica.yaml 2--- 3apiVersion: v1 4kind: ReplicationController 5metadata: 6 name: first-replic 7spec: 8 replicas: 3 9 template: 10 metadata: 11 name: simple-pod 12 labels: 13 app: simple-pod 14 spec: 15 containers: 16 - name: timemachine 17 image: lukelau/rest-docker:0.0.1 18 args: 19 - -server.addr=0.0.0.0:8000 以上配置会保证Pod的数量稳定为3个。当我们删除一个Pod之后，Replication Controller就会创建出一个新的Pod来维持Pod的数量。
+RC之所以会发现Pod已经挂掉了，是因为探针(Container probes)的存在。在K8s中， kubelet会通过指定的探针方式去探测容器是否存活。
+三种探针方式
+三种类型的handler
+ExecAction： Executes a specified sommand inside the container. The diagnostic is considered successful if the command exits with a status code of 0.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/4-k8s-replic/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/3-k8s-service/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubernetes Service</h5><p class="card-text post-summary">Pod是最小的单元， 往往我们在运行一个应用的时候，对Pod有一些额外的要求，例如高可用或者多实例，这就意味着如果你只记住一个Pod的IP，那么很多时候时有问题的。 例如高可用，可能会因为Pod的重建而改变，这样你记住的那个IP就失效了。一个很自然的想法就是固定IP。
+为什么要使用service
+因为K8s里面的Pod是可以被调度的，并且重建的，所以没有固定的IP Pod的数量可能不只一个，当有多个Pod实例的时候负载均衡的需求。 1# service.yaml 2--- 3apiVersion: v1 4kind: Service 5metadata: 6 name: first-service 7spec: 8 type: NodePort 9 selector: 10 app: nginx 11 ports: 12 - protocol: TCP 13 port: 5580 14 targetPort: 80 15 nodePort: 32280 selector 过滤携带label app=nginx的pod
+targetPort： pod 提供服务的端口
+service代理Pod的内部端口为5580： 内部访问，固定IP：Port
+service代理Pod的外部端口为32280， 通过k8s集群的IP，可以进行 外部可访问
+1# create service 2kubectl apply -f service.yaml 3# get service status 4kubectl get service first-service 外部访问service
+上面这个配置之所以可以在外部访问，是因为制定了Service的Type为NodePort， 在K8s中如果不指定这个Type的话，service时只能在K8s集群内部访问的，集群外部是访问不了的。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/cloudnative/Kubernates/3-k8s-service/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/19/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/18/ aria-label="Page 18" class=page-link role=button>18</a></li><li class=page-item><a href=/posts/page/19/ aria-label="Page 19" class=page-link role=button>19</a></li><li class="page-item active"><a aria-current=page aria-label="Page 20" class=page-link role=button>20</a></li><li class=page-item><a href=/posts/page/21/ aria-label="Page 21" class=page-link role=button>21</a></li><li class=page-item><a href=/posts/page/22/ aria-label="Page 22" class=page-link role=button>22</a></li><li class=page-item><a href=/posts/page/21/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
+<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
+Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
+<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
+<script type=text/javascript src=/js/popper.min.js></script>
+<script type=text/javascript src=/js/bootstrap.min.js></script>
+<script type=text/javascript src=/js/navbar.js></script>
+<script type=text/javascript src=/js/plyr.js></script>
+<script type=text/javascript src=/js/main.js></script>
+<script src=/js/list.js></script></body></html>

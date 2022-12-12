@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TimeSeriesDB on ByteGopher</title><link>https://airren.github.io/posts/component/TimeSeries/</link><description>Recent content in TimeSeriesDB on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Aug 2020 00:24:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/component/TimeSeries/index.xml" rel="self" type="application/rss+xml"/><item><title>「TSDB」术语</title><link>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</link><pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</guid><description>RRD(Round Robin Database) RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
+A specialized storage system known as a Round Robin Database allows one to store large amounts of series information such as temperatures, network bandwidth, and stock prices with a constant disk footprint. It does this by taking advantage of changing needs for precision. As we will see later, the &amp;ldquo;round-robin &amp;quot; part comes from the basic data structure used to store data points: circular lists.</description></item><item><title>「HBase」 简介</title><link>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</link><pubDate>Fri, 07 Aug 2020 01:03:42 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</guid><description>HBase 简介 OpensTSDB支持多种底层存储，例如HBase、Cassandra。
+HBase是分布式列存储系统，其底层依赖HDFS分布式文件系统。HBase是参考Google BigTable模型开发的，本质上是一个典型的KV存储，适用于海量结构化数据的存储。
+HBase的优点：
+集群部署，横向扩展方便 容错性高，相同的数据会复制多份，放到不同的节点上 同等硬件，相比传统数据库支持的数量级高 吞吐能力强，写入量高 不足：
+只支持单行的事务 查询方式： 只能通过RowKey进行查询或者扫描 HBase 和HDFS的关系？ 全面事务</description></item><item><title>「Grafana」安装使用Grafana</title><link>https://airren.github.io/posts/component/TimeSeries/install_grafana/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/install_grafana/</guid><description>Grafana监控面板 安装
+1docker run -d --name=grafana -p 3000:3000 grafana/grafana</description></item><item><title>「InfluxDB」InfluxDB 安装</title><link>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</guid><description>安装InfluxDB 1docker run --name=influxdb -d -p 8086:8086 influxdb 2docker exec -it influxdb influx InfluxDB Desc 对应数据库 database 数据库 measurement 数据库中的表 point 表中的一行数据 databases
+1show databases 2use iaas_metrics 3show measurements 数据查询
+1select * from host_CpuBusy where time &amp;gt; now() -7d order by time limit 10; influx(&amp;ldquo;telegraf&amp;rdquo;, &amp;lsquo;&amp;lsquo;&amp;lsquo;SELECT sum(usage_system) FROM &amp;ldquo;cpu&amp;rdquo; group by &amp;ldquo;host&amp;rdquo; &amp;lsquo;&amp;rsquo;&amp;rsquo;, &amp;ldquo;20m&amp;rdquo;, &amp;ldquo;2m&amp;rdquo;, &amp;ldquo;1m&amp;rdquo;)****
+https://zhuanlan.zhihu.com/p/97247465
+https://zhuanlan.zhihu.com/p/85097140
+https://www.cnblogs.com/suhaha/p/11692210.html
+https://www.cnblogs.com/suhaha/p/11692210.html
+grafa 配置查询influxdb
+https://ken.io/note/grafana-quickstart-influxdb-datasource-graph
+https://www.jianshu.com/p/f0905f36e9c3</description></item><item><title>「Prom」Prometheus 安装及使用简介</title><link>https://airren.github.io/posts/component/TimeSeries/prom/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/prom/</guid><description>Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
+时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
+在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的
+例如：
+1http_request_total{host=192.168.2.1,status=200} Metric Name： http_request_total 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为[a-zA-Z_:][a-zA-Z0-9_:]*。冒号保留，会在定义规则的时候使用。
+Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
+Notation
+1&amp;lt;Metric Name&amp;gt;{&amp;lt;Label Name&amp;gt;=&amp;lt;Label Value&amp;gt;,...} 2api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} # 同OpenTSDB 3 4node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;} 195721.31 1&amp;lt;--- metric name------&amp;gt;&amp;lt;-----lable set------&amp;gt;&amp;lt;-timestamp -&amp;gt;&amp;lt;-value-&amp;gt; 2node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;}@1434417560938 195721.31 3# timestamp 是毫秒级时间戳 4# value 有且只有一个 float64 __ 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以__name__=&amp;lt;metric name&amp;gt;形式存储的，以下两种表达方式是相同的。
+1api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} 2{__name_=api_http_request_total, method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} Component 所有基础组件的安装都基于Docker。</description></item><item><title>「Telegraf」 Telegraf</title><link>https://airren.github.io/posts/component/TimeSeries/telegraph/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/telegraph/</guid><description> Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs.
+Install
+1docker run -d --name telegraf --net=container:influxdb telegraf</description></item><item><title>「TSDB」时序数据&amp;时序数据库简介</title><link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid><description>什么是时序数据？
+时序数据的应用场景和特征？
+时序数据库？
+时序数据 时序数据，就是与时间强相关度的一系列数据。关注的是某一时刻的数据值，而不是最终的数据。是一个过程而不是一个结果。时序数据描述的是一个数据（指标）在时间维度上的变化。例如： 股票K线、环境监测。
+时序数据的特征：
+数据以一定的时间间隔产生，生产速率稳定。 写入多，查询少 时序数据不允许更新 时序数据主要是按时间范围查询 时序数据库 传统的数据库并不适合存储时序数据，针对时序数据的特征，时序数据库的基本要求如下：
+支持高并发、高吞吐量的写入 支持海量数据存储 高可用（时序数据在互联网公司常用作报警数据源） 支持复杂的多维度的查询 易于横向扩展 常见的时序数据库
+时序数据基本概念 一条时序数据是由多个DataPoint构成的。每个DataPoint包含以下几个方面
+metric： 一般也叫metric name，是时序数据的指标名
+tags: 一个或者多个tag组合，用户描述metric的不同维度。每个Tag由tagk&amp;amp;tagv组成。例如：一个请求的来源 host=10.20.178.23，dc=cn。tags标明数据的维度。
+value： 表示对应的数值。例如：请求的latency 或者qps等。
+timestamp： 时序数据的具体时间，可以是秒级或者毫秒级别的Unix时间戳。
+例如： JVM_Heap_Memory_Usage_MB{host=127.0.0.1, instanceId=jvm01}
+Downsampling</description></item><item><title>Bosun</title><link>https://airren.github.io/posts/component/TimeSeries/bosun/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/bosun/</guid><description>Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs. 使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询
+时序数据的类型 counter
+guage(store)
+Bosun的数据类型 Scalar NumberSet： Group+Scalar Bosun 查询语法 简单查询 查询过去10分钟到过去1分钟之间的时序数据
+avg是时序数据库的的运算，对不同的tag set的数据求平均
+最外面的avg 是对这段时间内的时序数据做一个平均，得到一个数值
+宏替换 运算的时候会对变量进行宏替换
+OpenTSDB
+如果没有数据的时候会导致bosun查询失败，可以采取不上
+1avg(100*q(&amp;#34;avg:1m-avg-zero:store:toutiao.tce.sysprobe.aweme.recommend.predict.cpu.usage.pod{sidecar_psm=ad.qa.java_sidecar,pod_name=dp-cb2f23ec64-6987c9d65d-ds7j5}&amp;#34;,&amp;#34;1h&amp;#34;,&amp;#34;&amp;#34;)/q(&amp;#34;avg:1m-avg:store:toutiao.tce.sysprobe.aweme.recommend.predict.cpu.limit.pod{sidecar_psm=ad.qa.java_sidecar,pod_name=dp-cb2f23ec64-6987c9d65d-ds7j5}&amp;#34;,&amp;#34;1h&amp;#34;,&amp;#34;&amp;#34;)) Streak 连续非0 数据的最大长度
+https://blog.csdn.net/lslxdx/article/details/79454916
+转置
+InfluxDB 1influx(&amp;#34;iaas_metrics&amp;#34;, &amp;#39;&amp;#39;&amp;#39;SELECT sum(value) FROM &amp;#34;host_CpuSystem&amp;#34; group by &amp;#34;resource_id&amp;#34; &amp;#39;&amp;#39;&amp;#39;, &amp;#34;7d&amp;#34;, &amp;#34;2m&amp;#34;, &amp;#34;1m&amp;#34;) Bosun, Time Series, and OpenTSDB&amp;rsquo;s DataModel An introduction to the data model of Bosun&amp;rsquo;s Primary time series backend OpenTSDB.</description></item></channel></rss>

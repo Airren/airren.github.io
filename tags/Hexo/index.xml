@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hexo on ByteGopher</title>
-    <link>https://airren.github.io/tags/Hexo/</link>
-    <description>Recent content in Hexo on ByteGopher</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 07 Aug 2020 01:11:55 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Hexo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>「Hexo」 搭建部署</title>
-      <link>https://airren.github.io/tools/hexo/hexo_create/</link>
-      <pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate>
-      
-      <guid>https://airren.github.io/tools/hexo/hexo_create/</guid>
-      <description>Hexo 安装 https://hexo.io/zh-cn/docs/
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hexo on ByteGopher</title><link>https://airren.github.io/tags/Hexo/</link><description>Recent content in Hexo on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 07 Aug 2020 01:11:55 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Hexo/index.xml" rel="self" type="application/rss+xml"/><item><title>「Hexo」 搭建部署</title><link>https://airren.github.io/posts/tips/hexo_create/</link><pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate><guid>https://airren.github.io/posts/tips/hexo_create/</guid><description>Hexo 安装 https://hexo.io/zh-cn/docs/
 安装Node.js
 安装Git
 安装Hexo
@@ -24,27 +9,4 @@ Hexo 部署到Nginx &amp;amp; Github.io 开发机 在自己写Blog的Pc上安装
 1yarn add hexo-deployer-git 服务器 在即将部署的服务器上执行以下操作
 1yum install git 2 3useradd -m git # 创建一个git用户，用来运行git服务 4 # 新建git用户并非必要，但是为了安全起见，还是用git用户单独来运行git服务 5 6passwd git 设置PC到服务器的git用户免密登录
 1# 生成ssh密钥 2ssh-keygen 3# 将公钥添加到server 4ssh-copy-id git@serverIp 在服务器上初始化一个Git仓库
-1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</description>
-    </item>
-    
-    <item>
-      <title>「Hexo」Write Tips</title>
-      <link>https://airren.github.io/tools/hexo/hexo_write_tips/</link>
-      <pubDate>Wed, 29 Jul 2020 01:09:53 +0000</pubDate>
-      
-      <guid>https://airren.github.io/tools/hexo/hexo_write_tips/</guid>
-      <description>Config md conf 1title: Hello Hexo！ 2layout: post 3subtitle: &amp;#34;hello word, welcome&amp;#34; 4date: 2020-07-26 01:09:53 5author: &amp;#34;Airren&amp;#34; 6catalog: true 7header-img: &amp;#34;post-bg-js-module.jpg&amp;#34; 8tags: 9 - Life _config.yml 1# Hexo Configuration 2## Docs: https://hexo.io/docs/configuration.html 3## Source: https://github.com/hexojs/hexo/ 4 5# Site 6title: ByteGopher 7subtitle: To Be A Lean Developer! 8author: Airren 9language: en 10timezone: Asia/Shanghai 11 12# URL 13## If your site is put in a subdirectory, set url as &amp;#39;http://yoursite.com/child&amp;#39; and root as &amp;#39;/child/&amp;#39; 14url: https://www.</description>
-    </item>
-    
-    <item>
-      <title>「Hexo」Hello!</title>
-      <link>https://airren.github.io/tools/hexo/hello_hexo/</link>
-      <pubDate>Sun, 26 Jul 2020 01:09:53 +0000</pubDate>
-      
-      <guid>https://airren.github.io/tools/hexo/hello_hexo/</guid>
-      <description>开心的一天呀 😊
-h1 h2 h3 h4 h5 h6 </description>
-    </item>
-    
-  </channel>
-</rss>
+1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</description></item></channel></rss>

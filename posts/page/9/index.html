@@ -1,0 +1,116 @@
+<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
+<span class=navbar-toggler-icon></span></button>
+<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
+ByteGopher</a>
+<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
+English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
+中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
+<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/interview/JavaNote/Java-%E5%BC%82%E5%B8%B8/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary"></p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/Java-%E5%BC%82%E5%B8%B8/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/Java8%E6%96%B0%E7%89%B9%E6%80%A7/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Java8 新特性 Java8 速度更快，代码更少，强大的Stream API，便于并行 最大化减少空指针异常 optional
+Lambda表达式 Lambda 是一个匿名函数，我们可以把Lambda 表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使 Java的语言表达能力得到了提升。
+从匿名类到Lambda 的转换 1// 匿名内部类 2Runnable r1 = new Runnable(){ 3 @Override 4 public void run(){ 5 System.out.println("Hello world"); 6 } 7} 8 9//Lambda 表达式 10Runnable r1 = () -> System.out.println(); 11 12//原来使用匿名内部类作为参数传递 13TreeSet&lt;String> ts = new TreeSet&lt;>(new Comparator&lt;String>(){ 14 @Override 15 public int compare(String o1, String o2){ 16 return Integer.compare(o1.length(), o2.length()); 17 } 18}); 19 20//Lambda 表达式作为参数传递 21TreeSet&lt;String> ts2 = new TreeSet&lt;>( 22 (o1, o2) -> Integer.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/Java8%E6%96%B0%E7%89%B9%E6%80%A7/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/JavaIO/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary"></p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/JavaIO/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Java 虚拟机 虚拟机调优 Java 虚拟机调优参数 -Xms 起始内存 JVM堆内存 -Xmx 最大内存 JVM堆内存 -Xmn 新生代内存 -Xss 栈大小。 就是创建线程后，分配给每一个线程的大小 -XX:NewRatio 设置年轻代和老年代的比值。默认为2:1。如果为3，表示年轻代与老年代的比值为1:3，年轻代占整个年轻代和老年代的1/4。 -XX:SurvivorRatio年轻代中Eden区和两个Survivor区的比值。如果为3，表示Eden:Survivor = 3:2, 因为有两个Survivor区域，所以一个Survivor区占整个年轻代的1/5. -XX:MaxPermSize设置持久代的大小。 收集器的设置
+-XX:+UseSerialGC设置串行收集器 -XX:+UseParallelGC设置并行收集器 -XX:+UseParallelOld设置并行老年代收集器 -XX:+UseConcMarkSweepGC设置并发收集器 垃圾回收统计信息
+-XX:PrintGC -XX:PrintGCDetails -XX:PrintGCTimeStamps -Xloggc:filename 并行收集器设置
+-XX:ParallelGCThreads=n设置并行收集器收集时使用的CPU数。并行收集线程数。 -XX:MaxGCPauseMillis=n设置并行收集最大暂停时间 -XX:GCTimeRatio=n设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n) 并发收集器设置
+XX:+CMSIncrementalMode设置为增量模式。适用于单CPU情况。 XX:ParallelGCThreads=n设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。 -Xms1G -Xmx2G -Xmn500M -XX:MaxPermSize=64M -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=3
+-Xms1G JVM初始内存1G 这一部分是不是应该是堆内存 -Xmx2G JVM最大内存 2G -Xmn500M 新生代内存 500M -XX:MaxPermSize 持久代内存 64M -XX:SurvivorRatio=3 新生代中Eden:Servivor = 3:2 JVM 调优 -Xms2G -Xmx2G 将JVM最大内存与初始内存设置相等，避免JVM垃圾回收后重新分配内存。 -Xmn1G 年轻代内存Sun官方推荐配置为整个堆的3/8,通常设置为1/3或1/4。 -Xss256K减小每条线程栈的大小，能生成更多的线程 -XX:NewRatio=4 调整年轻代与老年代的比例 年轻代:老年代=1:4 -XX:MaxTenuringThreshold=0 设置晋升到老年代的对象的年龄。 如果设置为0，则年轻代对象不经过Survivor区，直接进入老年代。如果设置一个较大的值，则年轻代对象会在Survivor区进行多次复制。 -XX:+UseConcMarkSweepGC JVM在server模式下默认使用PararrelScavenge＋SerialOld的收集器组合进行内存回收，不支持与用户线程并发执行。可使用ParNew+CMS+SerialOld的收集器组合进行内存回收（SerialOld收集器做为CMS收集器出现ConcurrentModeFailure失败后的后备收集器使用），减少stop-the-world时间。 -XX:CMSFullGCsBeforeCompaction 使用CMS时，设置CMS收集器在进行若干次垃圾收集后再启动一次内存碎片</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/Java%E9%9B%86%E5%90%88%E7%B1%BB/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Java 集合类 线程安全与线程不安全 参考链接 https://www.cnblogs.com/williamjie/p/9099141.html
+https://www.cnblogs.com/heyonggang/p/9112731.html
+https://blog.csdn.net/andy_budd/article/details/81413464
+https://blog.csdn.net/wufaliang003/article/details/80219296
+https://blog.csdn.net/VIP_WangSai/article/details/70182933
+https://blog.csdn.net/qq_41216743/article/details/101311040
+https://blog.csdn.net/cn12306com/article/details/81318871
+相关面试题 1. 举例说明List 、Set、HashMap是线程不安全的 List ​ 我们知道ArrayList 是线程不安全的，请编写一个不安全的案例并给出解决方案？对于List我们使用的大多数场景是在单线程下，如果在高并发的情况下，便会出现一些线程不安全的问题
+1public class ContainerNotSafeDemo { 2 public static void main(String[] args) throws InterruptedException { 3 List&lt;String> list = new ArrayList&lt;>(); 4 5// 3种解决方案 6// List&lt;String> list = new Vector&lt;>(); 7// List list = Collections.synchronizedList(new ArrayList&lt;>()); 8// List list = new CopyOnWriteArrayList(); 9 10 for (int i = 0; i &lt; 30; i++) { // 30 个线程，每一个线程都有对list的写与读操作 11 new Thread(() -> { 12 list.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/Java%E9%9B%86%E5%90%88%E7%B1%BB/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">多线程 ​
+守护线程 Java的main是普通线程，并不是守护线程，
+守护线程会等待所有的线程执行结束后再结束
+线程同步 https://www.jianshu.com/p/2394317257ec
+https://www.jianshu.com/p/988bfceadb62
+https://www.jianshu.com/p/6f98f03430eb
+https://www.cnblogs.com/williamjie/p/9099141.html
+Java 主线程等待所有子线程执行完毕 Java 主线程等待所有子线程执行完毕再执行。
+用sleep() 让主线程睡眠一段时间，但是这个睡眠时间是主观设置的，是有我们自己主观设定的，所以不推荐使用。
+1public static void main(String[] args) throws InterrupteException{ 2 for(int i=0; i&lt;5;i++){ 3 new Thread( 4 new Runnable(){ 5 public void run(){ 6 try{ 7 Thread.sleep(1000); 8 }catch(InterruptException e){ 9 e.preintStrackTrace(); 10 } 11 System.out.println("子线程执行！"); 12 } 13 } 14 ).start(); 15 } 16 Thread.sleep(5000); 17 System.out.println("主线程执行！"); 18} 使用Thread的jion()等待所有的子线程执行完毕，主线程再执行，thread.jion()把指定线程加入到当前线程，可以将两个交替执行的线程合并为顺序执行的线程。比如在B中调用了线程A的jion()方法，直到线程A执行完毕后，才会继续执行线程B。
+1public static void main(String[] args) throws InterrupteException{ 2 Vector&lt;Thread> threadVector = new Vector&lt;>(); 3 for(int i=0; i&lt;5;i++){ 4 Thread childThread = new Thread( 5 new Runnable(){ 6 public void run(){ 7 try{ 8 Thread.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/%E5%A4%9A%E7%BA%BF%E7%A8%8B/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">设计模式 单例模式 一个应用程序中，某个类的实例对象只有一个，你没有办法去new，因为构造器是被private修饰的，一般通过getInstance()的方法来获取它们的实例。
+getInstance()的返回值是一个对象的引用，并不是一个新的实例。
+双重校验锁 1public class Singleton{ 2 private volatile static Singleton singleton; 3 private Singleton(){} 4 public static Singleton getSingleton(){ 5 if(singleton == null){ 6 synchronized(Singleton.class){ 7 if(singleton==null){ 8 singleton = new singleton; 9 } 10 } 11 } 12 } 13} 观察者模式 对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+https://mp.weixin.qq.com/s/sdj9DcnZZNRiWssgygiTTw
+装饰者模式 对已有的业务逻辑进一步的封装，使其增加额外的功能，如Java中的IO流就使用了装饰者模式，用户在使用的时候，可以任意组装，达到自己想要的效果。
+适配器模式 工厂模式 ##代理模式</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/JavaNote/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">字节跳动面试题总结 1. 进程创建的过程 进程的创建过程可分为以下步骤： （1）申请空白的PCB。 进程控制块 描述信息，控制信息，资源信息，CPU现场 （2）为新进程分配资源。 （3）初始化PCB。 （4）将进程插入就绪队列。
+2. linux 文件管理系统 inode(发音：eye-node)译成中文就是索引节点，它用来存放档案及目录的基本信息，包含时间、档名、使用者及群组等。
+node inode
+inode（即index node，索引节点）是类Unix OS中保存文件系统中的对象元数据的数据结构。
+https://www.jianshu.com/p/d60a2b44e78e
+3.数据库事务 数据库事务
+隔离级别
+脏读
+不可重复读
+幻读
+丢失修改</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E9%9D%A2%E8%AF%95/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">小红书面试 如何判断单链表有环
+1public boolean IsLoop(Node head){ 2 Node fast = head; 3 Node slow = head; 4 if(head = null){ 5 return false; 6 } 7 8 while(fast != null&& slow ！= null){ 9 fast = fast.next.next; 10 slow = slow.next; 11 if(fast = slow){ 12 return true; 13 } 14 } 15 16 return false; 17} 三次握手， 为什么要三次
+A -> B SYN=1, seq = x;
+A &lt;- B SYN = 1, ACK=1, seq = y, ack = x+1;</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E9%9D%A2%E8%AF%95/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/10th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">10 每日一面 java 中 throws Exception和 catch Exception的区别 AB转账问题，保持数据一致性 TreeMap如何保证有序</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/10th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/11th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">11 每日一面 Ucloud
+rpc
+sql优化，如何解决高并发
+explain 慢查询，建索引
+什么方式实现缓存，什么情况下需要用到token,token失效怎么办等
+主从复制
+数据库四种隔离级别，分别举例子，每种在上一种的基础上加了什么锁(很简单不说了)
+Tcp，坚持计时器。keepalive计时器。
+写了一个shell命令，列出重复数据。awk+unique+sort很简单也不说了。
+网络协议 计算机网络五层协议：物理层、数据链路层、网络层、传输层、应用层
+计算机网络的七层OSI协议： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层
+路由器属于网络层
+网卡与交换机数据数据链路层
+TCP和UDP TCP 是面向连接的字节流服务，对系统资源要求比较多。程序结构复杂，保证数据的正确性和顺序性。
+UDP是无连接的，面向数据报，对系统的资源要求比较少，程序结构简单，不能保证数据的正确性和顺序性
+网站安全与防护
+sql 注入
+使用例如PDO的预处理，使用或者编写类似mysql_real_escape_string的方法对sql的特殊字符进行转义
+**XSS（cross site script）**跨站脚本攻击
+将外部脚本植入到页面中
+**CSRF(cross-site request forgey)**跨站请求伪造
+伪造受信任的用户信息来请求网站
+算法相关
+冒泡排序
+选择排序
+​ 快速排序
+快速排序思想：通过一趟排序将序列分成两部分，一部分所有数据比另一部分所有数据小，然后在这两个序列的内部再分别进行快速排序操作，直到最后形成一个有序序列
+二分插入排序思想(之前的序列为有序)：插入第i个元素时，对前面的0~i-1进行折半，当前元素与中间元素比较，如果小，前半部分再次折半，如果大，后半部分进行折半，直到最后left>right,然后把目标位置到i-1的所有元素整体后移，把当前元素放进去
+基本查找算法：
+顺序查找
+二分法查找(折半查找)：将序列分为两部分，找到序列的中间值，如果查找值大于中间值，继续对右半部分进行折半，如果查找值小于中间值，对左半部分进行折半，直到找到或front>end结束，时间复杂度O(log2n)以2为底n的对数
+设计模式
+MVC是一种设计框架，而不是设计模式，框架是比模式更高的概念
+model负责数据逻辑
+controller负责用户交互
+view负责数据显示流程：
+用户对控制器的某个方法发出请求，控制器调用相应的模型返回数据，然后将数据渲染到视图中返回给用户
+单例模式i. 私有化构造方法和__clone方法ii. 提供公有的静态的方法返回实例iii. 提供私有的静态属性保存实例
+简单工厂模式(重点在创建不同对象，作用就是用来创建对象的) - 例如一个计算器的加减乘除求余取整i. 定义抽象基类让子类分别继承并实现相应方法ii. 定义Factory工厂类里面提供静态方法用于根据不同的参数实例化相应的子类对象
+策略模式(重点在于实例化不同类的解决策略不同，作用是根据不同的情况调用相应的策略或算法) - 例如qq普通用户 vip svip购买皮肤的优惠策略i. 定义抽象基类让子类分别继承并实现相应的方法ii. 根据不同的场景实例化相应的类，然后调用其中的方法获取结果
+观察者模式
+i. 需要有一个抽象的主题接口和一个抽象的观察者接口
+ii. 实现一个主题，实现多个观察者</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/11th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/1st_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">1. 每日一面 蚂蚁金服一面
+Java 容器有哪些，哪些是同步容器，哪些是并发容器 ArrayList 和LinkedList 的插入和访问的时间复杂度 java反射原理， 注解原理 新生代分为几个区？使用什么算法进行垃圾回收？为什么使用这个算法？ HashMap在什么情况下回扩容，或者有哪些操作会导致扩容？ HashMap put方法的执行过程 HashMap检测到hash冲突后，将元素插入在链表的末尾还是开头？ 1.8 还采用了红黑树，讲讲红黑树的特性，为什么人家一定要用红黑是而不是AVL，B树之类的； https 和http 的区别，有没有用过其他安全传输手段？ 线程池的工作原理，几个重要参数，然后给了具体几个参数分析线程池会怎么做，最后问阻塞队列的作用是什么？ Linux怎么查看系统负载情况？ 请详细描述SpringMVN处理请求全流程 Spring 一个Bean 的装配过程 讲一讲AutomicInteger 为什么要用CAS而不是synchronized？ 线程会单独拷贝一份数据到自己的工作空间，只有sync代码块被执行完才会将数据从工作内存刷到主内存，所以，指令重排为什么会导致多线程数据不一致的问题，应该是volatile的内存可见性是解决数据不一致问题的原因</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
+<a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/1st_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/8/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/7/ aria-label="Page 7" class=page-link role=button>7</a></li><li class=page-item><a href=/posts/page/8/ aria-label="Page 8" class=page-link role=button>8</a></li><li class="page-item active"><a aria-current=page aria-label="Page 9" class=page-link role=button>9</a></li><li class=page-item><a href=/posts/page/10/ aria-label="Page 10" class=page-link role=button>10</a></li><li class=page-item><a href=/posts/page/11/ aria-label="Page 11" class=page-link role=button>11</a></li><li class=page-item><a href=/posts/page/10/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
+<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
+Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
+<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
+<script type=text/javascript src=/js/popper.min.js></script>
+<script type=text/javascript src=/js/bootstrap.min.js></script>
+<script type=text/javascript src=/js/navbar.js></script>
+<script type=text/javascript src=/js/plyr.js></script>
+<script type=text/javascript src=/js/main.js></script>
+<script src=/js/list.js></script></body></html>

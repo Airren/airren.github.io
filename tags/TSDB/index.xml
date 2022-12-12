@@ -1,29 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>TSDB on ByteGopher</title>
-    <link>https://airren.github.io/tags/TSDB/</link>
-    <description>Recent content in TSDB on ByteGopher</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 10 Aug 2020 00:24:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/TSDB/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>「TSDB」术语</title>
-      <link>https://airren.github.io/component/TimeSeries/OpenTSDB/tsdb_argot/</link>
-      <pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate>
-      
-      <guid>https://airren.github.io/component/TimeSeries/OpenTSDB/tsdb_argot/</guid>
-      <description>RRD(Round Robin Database) RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
-A specialized storage system known as a Round Robin Database allows one to store large amounts of series information such as temperatures, network bandwidth, and stock prices with a constant disk footprint. It does this by taking advantage of changing needs for precision. As we will see later, the &amp;ldquo;round-robin &amp;quot; part comes from the basic data structure used to store data points: circular lists.</description>
-    </item>
-    
-    <item>
-      <title>「TSDB」时序数据&amp;时序数据库简介</title>
-      <link>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</guid>
-      <description>什么是时序数据？
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TSDB on ByteGopher</title><link>https://airren.github.io/tags/TSDB/</link><description>Recent content in TSDB on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 10 Aug 2020 00:24:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/TSDB/index.xml" rel="self" type="application/rss+xml"/><item><title>「TSDB」术语</title><link>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</link><pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</guid><description>RRD(Round Robin Database) RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
+A specialized storage system known as a Round Robin Database allows one to store large amounts of series information such as temperatures, network bandwidth, and stock prices with a constant disk footprint. It does this by taking advantage of changing needs for precision. As we will see later, the &amp;ldquo;round-robin &amp;quot; part comes from the basic data structure used to store data points: circular lists.</description></item><item><title>「TSDB」时序数据&amp;时序数据库简介</title><link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid><description>什么是时序数据？
 时序数据的应用场景和特征？
 时序数据库？
 时序数据 时序数据，就是与时间强相关度的一系列数据。关注的是某一时刻的数据值，而不是最终的数据。是一个过程而不是一个结果。时序数据描述的是一个数据（指标）在时间维度上的变化。例如： 股票K线、环境监测。
@@ -36,8 +12,4 @@ tags: 一个或者多个tag组合，用户描述metric的不同维度。每个Ta
 value： 表示对应的数值。例如：请求的latency 或者qps等。
 timestamp： 时序数据的具体时间，可以是秒级或者毫秒级别的Unix时间戳。
 例如： JVM_Heap_Memory_Usage_MB{host=127.0.0.1, instanceId=jvm01}
-Downsampling</description>
-    </item>
-    
-  </channel>
-</rss>
+Downsampling</description></item></channel></rss>

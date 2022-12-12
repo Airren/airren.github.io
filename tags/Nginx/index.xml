@@ -1,27 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Nginx on ByteGopher</title>
-    <link>https://airren.github.io/tags/Nginx/</link>
-    <description>Recent content in Nginx on ByteGopher</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>「Nginx」 Tips</title>
-      <link>https://airren.github.io/tech/web/RPC/http/nginx_tips/</link>
-      <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
-      
-      <guid>https://airren.github.io/tech/web/RPC/http/nginx_tips/</guid>
-      <description>搭建静态资源服务器 静态资源文件夹
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on ByteGopher</title><link>https://airren.github.io/tags/Nginx/</link><description>Recent content in Nginx on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>「Nginx」 Tips</title><link>https://airren.github.io/posts/blog/nginx_tips/</link><pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate><guid>https://airren.github.io/posts/blog/nginx_tips/</guid><description>搭建静态资源服务器 静态资源文件夹
 1/root/file Nginx 配置
 vi /etc/nginx/nginx.conf
-1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2	alias /root/file; # 静态资源的绝对路径 3	autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
+1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2 alias /root/file; # 静态资源的绝对路径 3 autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
 1gzip on; 2gzip_minPlength 1; # 小于1字节不压缩， 3gzip_comp_level 2; # 压缩级别为2 4gzip_types taxt/plain applicaton/x-javascripts txt/css application/xml image/jpeg image/gif image/png; # 压缩文件类型 重启nginx服务
 1nginx -s reload 2# or 3systemctl restart nginx.service 通过浏览器访问资源
 此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&amp;rsquo;r work。
-目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description>
-    </item>
-    
-  </channel>
-</rss>
+目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description></item></channel></rss>
