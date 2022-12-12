@@ -1,8 +1,7 @@
-SGX 
+---
+title: Intel SGX
 
-
-
-- 
+---
 
 
 

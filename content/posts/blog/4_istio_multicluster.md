@@ -38,9 +38,6 @@ https://istio.io/latest/docs/setup/install/multicluster/
 
 
 
-1. 想了解一些run time 相关的东西
-2. help shizhongjie set up sdewan
-
 
 
 Isito 是对Service进行管理

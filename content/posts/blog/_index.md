@@ -6,7 +6,3 @@ menu:
 ---
 
 
-
-```py
-sudo apt-get install pkg-config  libffi-dev
-```
