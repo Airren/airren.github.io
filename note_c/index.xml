@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Note_cs on ByteGopher</title>
+    <link>https://airren.github.io/note_c/</link>
+    <description>Recent content in Note_cs on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/note_c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://airren.github.io/note_c/c_process/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/note_c/c_process/</guid>
+      <description>fork create process
+fork 被调用一次，可以返回两次。
+在调用fork之后的代码会执行两次，一次在父进程中执行，返回的是创建成功的子进程的Id，一次是在子进程中执行，返回的是0；如果出现错误，fork返回的是负值。
+1/*linux下：*/ 2 3#include &amp;lt;stdio.h&amp;gt; 4#include &amp;lt;unistd.h&amp;gt; 5 6int main() { 7 pid_t pid; 8 pid = fork(); 9 if(pid == 0) //返回子进程 10 { 11 printf(&amp;#34;child pid: %d\n&amp;#34;, getpid()); 12 } else { 13 printf(&amp;#34;pid: %d\n&amp;#34;, pid);//父进程中返回子进程的pid 14 printf(&amp;#34;father pid: %d\n&amp;#34;, getpid()); 15 } 16} 1pid: 2876921 2father pid: 2876920 3child pid: 2876921 fork的两种用法
+父进程希望复制自己，使父子进程同时执行不同的代码段。
+比如在网络服务程序中，父进程等待客户端的服务请求。当请求到达时，父进程调用fork()使子进程处理此请求；而父进程继续等待下一个请求。
+一个进程要执行不同的程序
+这个在shell下比较常见，这种情况下， fork()之后一般立即接exec函数。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/note_c/unix_socket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/note_c/unix_socket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C Build Tool</title>
+      <link>https://airren.github.io/note_c/C&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/note_c/C&#43;&#43;/</guid>
+      <description>1# g++ Linux 2g++ -std=c++17 -W -Wall -Wfatal-errors &amp;lt;file_name&amp;gt; 3# Clang MacOS 4clang++ -std=c++17 -W -Wall -Wfatal-errors &amp;lt;file_name&amp;gt; Makefile AutoMake 1sudo apt install autoconf autopoint pkg-config libffi-dev libtool libtasn1-6-dev gettext libtasn1-bin cmake 为了跨平台实现。
+创建 CMakeLists.txt, 使用cmake ,生成 Makefile, 然后再使用make 或者 cmake --build . -j
+https://www.cnblogs.com/52php/p/5681725.html
+https://stackoverflow.com/questions/1516609/difference-between-cc-gcc-and-g
+Meson https://mesonbuild.com/</description>
+    </item>
+    
+  </channel>
+</rss>

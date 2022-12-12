@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tools</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Tools" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/tools/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/tools" data-filter="all">Tools</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/tools/software/software_production_list/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Production」提高生产力的常用软件</h5>
+        <p class="card-text post-summary">绘图工具 OmniGraffle 说明 好用的绘图工具 下载 教程 https://sspai.com/post/41950 https://www.jianshu.com/p/cca7ce55aee1 系统工具 iStat Menus 说明 优秀的系统监控工具 下载 https://www.macwk.com/soft/istat-menus 教程 https://sspai.com/post/41950 https://www.jianshu.com/p/cca7ce55aee1 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 28, 2020</span>
+        <a
+        href="/tools/software/software_production_list/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/git/git_stage_repo/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</h5>
+        <p class="card-text post-summary">Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
+Index/Stage: 暂存区， 未提交修改
+Repository： 本地仓库
+Remote： 远程仓库
+我们使用编辑器写代码的区域就是WorkSpace, 执行git add fileName之后，就将修改的文件提交到了暂存区，执行git commmit -m &quot;update fineName&quot; 之后就将修改提交到了本地版本库。最后使用 git push 将修改提交到远程仓库。
+Git 常用操作 配置用户名以及邮箱 设置
+1git config --global user.Name &#34;name&#34; 2git config --global user.email &#34;xxx@outlook.com&#34; 查看
+1git config user.name 2git config user.email 初始化Git仓库 git init 1git init fileName 2# or 不指定路径，默认为当前路径 3git init 初始化仓库后，会生成一.git的隐藏文件夹
+建立裸仓库
+1git init --bare bare_repo 对比正常git仓库normal_repo与bare_repo的目录结构发现，在normal_repo/.git 文件夹中的文件直接出现在了bare_repo 中
+切换分支。
+在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 26, 2020</span>
+        <a
+        href="/tools/git/git_stage_repo/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/software/Alfred/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Alfred」Tips</h5>
+        <p class="card-text post-summary">Alfred下载链接 Download: https://www.macwk.com/soft/alfred-4
+JetBrains工作流配置 Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 17, 2020</span>
+        <a
+        href="/tools/software/Alfred/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/linux/user/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Linux」 user</h5>
+        <p class="card-text post-summary">用户和用户组 groups 1groups &lt;user1&gt; &lt;user2&gt; &lt;user3&gt; # 查看当前用户所属的用户组 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 9, 2020</span>
+        <a
+        href="/tools/linux/user/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/hexo/hexo_create/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Hexo」 搭建部署</h5>
+        <p class="card-text post-summary">Hexo 安装 https://hexo.io/zh-cn/docs/
+安装Node.js
+安装Git
+安装Hexo
+1sudo npm install -g hexo-cli 如果在mac中安装报/usr/lib/node_modules/的操作权限问题，执行以下命令。
+1sudo chown -R `whoami` /usr/local/lib/node_modules 初始化项目
+1hexo init blog 创建完成后，当前目录下会有一个xx_blog的文件夹，具体的文件夹查询官网hexo.io
+Hexo 部署到Nginx &amp; Github.io 开发机 在自己写Blog的Pc上安装插件
+1yarn add hexo-deployer-git 服务器 在即将部署的服务器上执行以下操作
+1yum install git 2 3useradd -m git # 创建一个git用户，用来运行git服务 4 # 新建git用户并非必要，但是为了安全起见，还是用git用户单独来运行git服务 5 6passwd git 设置PC到服务器的git用户免密登录
+1# 生成ssh密钥 2ssh-keygen 3# 将公钥添加到server 4ssh-copy-id git@serverIp 在服务器上初始化一个Git仓库
+1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 7, 2020</span>
+        <a
+        href="/tools/hexo/hexo_create/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/software/Dash/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Dash」Tips</h5>
+        <p class="card-text post-summary">Dash is an API Documentation Browser and Code Snippet Manager. Dash instantly searches offline documentation sets for 200+ APIs, 100+ cheat sheets and more. You can even generate your own docsets or request docsets to be included.
+Dash V4 license</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 5, 2020</span>
+        <a
+        href="/tools/software/Dash/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/tips/vim_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Vim」 Tips</h5>
+        <p class="card-text post-summary">常用配置 vi ~/vimrc
+1set nu 2syntax on 3inoremap jj &lt;ESC&gt; # ues &lt;jj&gt; instead of &lt;ESC&gt; Vim 相关配置以及快捷键设置 .vimrc 1&#34; Vim 的默认寄存器和系统剪贴板共享 2set clipboard+=unnamed 3&#34; select模式下复制，文本选中时，按下Ctrl+C，即可复制 4if has(&#34;clipboard&#34;) 5 vnoremap &lt;C-C&gt; &#34;+y 6endif 7 8set nu 9 10syntax on 11inoremap jj &lt;ESC&gt; vim模式 normal &mdash;按v进入&mdash;&gt; visual
+normal &ndash;&gt; instert
+insert
+command
+快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/tools/tips/vim_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/linux/chmod/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">文件权限 文件权限表示 1drwxrwxrwx 3 root wheel 96 Oct 13 20:30 opt 2drwxr-xr-x 6 root wheel 192 Oct 8 18:57 private 3drwxr-xr-x@ 64 root wheel 2048 Oct 8 18:55 sbin 【文件或文件夹】【owner权限】【group权限】【others权限】【 文件数量】 【文件所有者】【文件所在组】【文件夹最后操作日期和时间】
+d 表示文件类型为 文件夹 ， - 表示文件类型为 文本文件， l 表示链接文件 r 读权限read 4, w 写权限write 2, x 操作权限execute 1 : rwx 按二进制位置 111， 所以对应 421 修改文件权限 1chmod 权限数字 文件名 2chmod -R 744 /mnt/fileA # 表示将整个/mnt/fileA目录与其中的文件和子目录的权限都设置为744 3chmod o w xxx.xxx #表示给其他人授予写xxx.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tools/linux/chmod/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/software/Wireshark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Wireshark 学习笔记 WireShark的前世今生 Gerald Combs
+Wireshark 是目前世界上应用最广泛的抓包工具
+WIreshark 可以提供分析报告
+wireshark will always be opensource
+WireShark的概述与安装 网络监听软件原理 网络监听软件是一种监视网络状态、数据流程以及网络上信息传输的管理工具。 可以将网络接口设定成监听模式(混杂模式) 可以截获网络上所传输的信息 双刃剑&ndash;安全问题 防止窃听的方法：加密 主要网络监听软件 常见的网络监听软件
+Wireshark Tcpdump Microsoft Network Monitor Kisnet Fiddler Wireshark概述 功能 支持unix、Linux、windows、mac平台 在接口实时捕捉包 能详细显示包的详细协议信息 可以打开/保存捕捉的包 可以导入导出其他捕捉程序支持的包数据格式 可以通过多种方式过滤包 多种方式查找包 通过过滤以多种色彩显示包 创建多种统计分析 不能做的事情 不是入侵检测 ARP欺骗，但是可以观察网络发生的事情 不会处理网络事务 不会进行包的修改 Wireshark下载与安装 Windows： Winpcap + Wireshark
+Linux： libpacp + Wireshark
+WireShark的基本使用 界面与基本操作 示例协议包
+捕获与保存 过滤与过滤表达式 过滤表达式 协议过滤
+tap 只显示tcp协议 IP地址过滤
+ip.src == 192.168.1.1源地址 ip.dst == 192.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tools/software/Wireshark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tools/tips/home_brew/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「HomeBrew」</h5>
+        <p class="card-text post-summary">brew 是用于操作系统层面上的软件包的安装
+gem只是管理ruby 软件</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tools/tips/home_brew/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/tools/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/tools/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/tools/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/tools/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+  </body>
+</html>

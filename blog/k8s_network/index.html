@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>K8s network</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="K8s network" />
+<meta property="og:description" content="容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
+这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
+容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
+1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
+这个时候，就会出现一个问题，在这个被隔离的容器进程中如何与其他的Network Namespace里的容器进程进行交互呢。
+一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
+在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
+为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
+接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/blog/k8s_network/" /><meta property="article:section" content="blog" />
+
+
+
+
+    
+    
+<meta name="description" content="K8s network" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/blog" data-filter="all">K8s network</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1>K8s network</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h2 id="容器网络">容器网络</h2>
+<p>每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。</p>
+<p>这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。</p>
+<p>容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># Uset -net=host to share the host network</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>docker run -d -net<span style="color:#f92672">=</span>host --name nginx-host nginx
+</span></span></code></pre></div><p>直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。</p>
+<p>这个时候，就会出现一个问题，在这个被隔离的容器进程中如何与其他的Network Namespace里的容器进程进行交互呢。</p>
+<p>一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。</p>
+<p>在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。</p>
+<p>为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"></code></pre></div><p>接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/blog/k8s_network.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#容器网络">容器网络</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>K8s Deployments</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="K8s Deployments" />
+<meta property="og:description" content="蓝绿部署 蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。
+先将新版本(绿版)的服务运行起来。 将所有的流量切到新版本的服务上 删除旧版本(蓝版)的服务 创建新版本的ReplicaSet，将Service指向新的Pods，删除旧版本的ReplicaSet
+滚动升级 蓝绿部署可以有效保证业务的正确性，但是也带来了一定的风险，例如稳定性。
+假设新部署的应用是有问题的，一旦切换之后就会导致业务的崩溃，造成损失。于是就有了稍微友好的升级方式，滚动升级。
+先关闭一个旧版本的实例 开启一个新版本的实例用于替换旧版本 替换成功时候循环1和2，直到所有的实例升级完成。 在整个过程中，如果中途发现异常可以及时停手，及时止损。而且Kubernetes也在客户端中支持了这个特性。kubectl rolling-update。
+升级前后RC的Selector都被改变了 操作都是在客户端执行的？ 金丝雀发布 金丝雀发布是滚动发布的一种特例，在滚动发布中，是不会等待的，除非中间出错了。但是有些时候，我们并不想要全都升级，可能只是处于POC的一些原因，我们只希望部分实例是新的，大部分是旧的，而这种情形，我们就称之为金丝雀发布。
+升级少部分实例 查看效果，如果好，全部升级 如果不好，则不升级 声明式升级 前面介绍的这些升级发布方式在K8s上很多时候是半手工方式执行的，而Kubernetes作为一款DevOPS友好的系统，已经内置了对于部署方式的一种资源抽象，这个资源就是：Deployment。
+Deployment &ndash;&gt; ReplicaSet &ndash;&gt; Pods
+Deployment 存在的意义为：在升级应用程序时，需要引入额外的ReplicaSet，并协调新旧两个RS，使他们再根据彼此不断修改，而不会造成干扰。Deployment将这些运维过程都代码化，内置为自己的逻辑，从而让升级变得简单。
+首先我们使用Deployment创建3个实例
+1# deploy.yaml 2--- 3apiVersion: apps/v1 4kind: Deployment 5metadata: 6 name: first-deployment 7 labels: 8 app: simple-pod-deployment 9spec: 10 replicas: 3 11 selector: 12 matchLabels: 13 app: simple-pod-deployment 14 template: 15 metadata: 16 name: simple-pod-deployment 17 labels: 18 app: simple-pod-deployment 19 spec: 20 containers: 21 - name: simple-pod-de 22 image: lukelau/rest-docker:0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/CloudNative/Kubernates/5-k8s-deployment/" /><meta property="article:section" content="CloudNative" />
+
+
+
+
+    
+    
+<meta name="description" content="K8s Deployments" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/CloudNative" data-filter="all">K8s Deployments</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1>K8s Deployments</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h2 id="蓝绿部署">蓝绿部署</h2>
+<p>蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。</p>
+<ol>
+<li>先将新版本(绿版)的服务运行起来。</li>
+<li>将所有的流量切到新版本的服务上</li>
+<li>删除旧版本(蓝版)的服务</li>
+</ol>
+<p>创建新版本的ReplicaSet，将Service指向新的Pods，删除旧版本的ReplicaSet</p>
+<h2 id="滚动升级">滚动升级</h2>
+<p>蓝绿部署可以有效保证业务的正确性，但是也带来了一定的风险，例如稳定性。</p>
+<p>假设新部署的应用是有问题的，一旦切换之后就会导致业务的崩溃，造成损失。于是就有了稍微友好的升级方式，滚动升级。</p>
+<ol>
+<li>先关闭一个旧版本的实例</li>
+<li>开启一个新版本的实例用于替换旧版本</li>
+<li>替换成功时候循环1和2，直到所有的实例升级完成。</li>
+</ol>
+<p>在整个过程中，如果中途发现异常可以及时停手，及时止损。而且Kubernetes也在客户端中支持了这个特性。kubectl rolling-update。</p>
+<ul>
+<li>升级前后RC的Selector都被改变了</li>
+<li>操作都是在客户端执行的？</li>
+</ul>
+<h2 id="金丝雀发布">金丝雀发布</h2>
+<p>金丝雀发布是滚动发布的一种特例，在滚动发布中，是不会等待的，除非中间出错了。但是有些时候，我们并不想要全都升级，可能只是处于POC的一些原因，我们只希望部分实例是新的，大部分是旧的，而这种情形，我们就称之为金丝雀发布。</p>
+<ol>
+<li>升级少部分实例</li>
+<li>查看效果，如果好，全部升级</li>
+<li>如果不好，则不升级</li>
+</ol>
+<h2 id="声明式升级">声明式升级</h2>
+<p>前面介绍的这些升级发布方式在K8s上很多时候是半手工方式执行的，而Kubernetes作为一款DevOPS友好的系统，已经内置了对于部署方式的一种资源抽象，这个资源就是：Deployment。</p>
+<p>Deployment &ndash;&gt; ReplicaSet &ndash;&gt; Pods</p>
+<p>Deployment 存在的意义为：在升级应用程序时，需要引入额外的ReplicaSet，并协调新旧两个RS，使他们再根据彼此不断修改，而不会造成干扰。Deployment将这些运维过程都代码化，内置为自己的逻辑，从而让升级变得简单。</p>
+<p>首先我们使用Deployment创建3个实例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e"># deploy.yaml</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">first-deployment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">simple-pod-deployment </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">simple-pod-deployment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">simple-pod-deployment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">simple-pod-deployment</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">simple-pod-de</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>          <span style="color:#f92672">image</span>: <span style="color:#ae81ff">lukelau/rest-docker:0.0.1 </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>          <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>            - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>          <span style="color:#f92672">args</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>            - -<span style="color:#ae81ff">server.addr=0.0.0.0:8080</span>
+</span></span></code></pre></div><p>此时创建了3个Pod，接下来我们将修改下images的版本，重新<code>apply -f</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">#  image: lukelau/rest-docker:0.0.1 </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span> <span style="color:#f92672">image</span>: <span style="color:#ae81ff">lukelau/rest-docker:0.0.2</span>
+</span></span></code></pre></div><p>通过kubectl describe deployment first-deployment 可以看到整个升级的过程。</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210929131527913.png" alt="image-20210929131527913" />
+
+
+
+</p>
+</p>
+<p>可以使用record记录执行历史</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>kubectl rollout history deployment first-deployment
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210929132406237.png" alt="image-20210929132406237" />
+
+
+
+</p>
+</p>
+<p>控制滚动升级速率</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>apiVersion: apps/v1
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>kind: Deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>metadata:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  name: first-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  labels:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    app: simple-pod-deployment 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>spec:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  replicas: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  minReadySeconds: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  strategy:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    type: RollingUpdate
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    rollingUpdate:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>      maxSurge: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>      maxUnavailable: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>  selector:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    matchLabels:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>      app: simple-pod-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>  template:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    metadata:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>      name: simple-pod-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>      labels:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        app: simple-pod-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    spec:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>      containers:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        - name: simple-pod-de
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>          image: lukelau/rest-docker:0.0.2 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>          ports:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>            - containerPort: <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>          args:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>            - -server.addr<span style="color:#f92672">=</span>0.0.0.0:8080
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># 停止升级</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>kubectl rollout pause deployment first-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"># 恢复升级</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>kubectl rollout resume deployment first-deployment
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e"># 取消升级</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>kubectl rollout undo deployment first-deployment
+</span></span></code></pre></div>
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/CloudNative/Kubernates/5-k8s-deployment.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#蓝绿部署">蓝绿部署</a></li>
+    <li><a href="#滚动升级">滚动升级</a></li>
+    <li><a href="#金丝雀发布">金丝雀发布</a></li>
+    <li><a href="#声明式升级">声明式升级</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

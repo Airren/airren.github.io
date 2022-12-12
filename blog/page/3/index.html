@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Blog" />
+<meta property="og:description" content="Blog list page" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/blog/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/blog" data-filter="all">Blog</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_4/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读 4</h5>
+        <p class="card-text post-summary">Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
+Again, kubectl learns about short names via discovery information.
+1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4	name: ats.cnat.programming-kubernetes.info 5spec: 6	... 7	shortNames: 8	- at Further, CRs&ndash;as any other resources&ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_4/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_5/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读 5 Automating Code Generation</h5>
+        <p class="card-text post-summary">Calling the Generators Usually, the code generators are called in mostly the same way in every controller project.
+Here, all means to call all four standard code generators for CRs.
+deepcopy-gen
+Generate func(t *T)DeepCopy() *T and func(t *T)DeepCopyInfo(*T) method.
+client-gen
+Creates typed client sets
+informer-gen
+Creates informers for CRs that offer an event-base interface to react to changes of CRs on the server.
+lister-gen
+Creates lister for CRs that offer a read-only caching layer for GET and LIST request.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_5/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_6/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读 6 Solutions for Writing Operators</h5>
+        <p class="card-text post-summary">Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&ndash;form PhasePending to PhaseRuning to PhaseDone&ndash;in controller.go.
+processNextWorkItem() processNextWorkItem() bool will read a single work item off the workquque and attempt to process it, by calling the syncHandler.
+1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_6/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_7/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读7</h5>
+        <p class="card-text post-summary">In this chapter we&rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&rsquo;t break your Kubernetes cluster, security, or performance-wise.
+Lifecycle Management and Packaging Let&rsquo;s start with the low-hanging fruit: packaging and delivering your controllers so that a user can install it in a straightforward manner.
+Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_7/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/5_kube_config/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Kube Config 控制多个集群</h5>
+        <p class="card-text post-summary">https://www.cnblogs.com/zhaobowen/p/13963343.html
+https://zhuanlan.zhihu.com/p/169746514
+https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+https://juejin.cn/post/6968129599070797837
+1export KUBECONFIG git blame</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/5_kube_config/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_2_api_basic/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Kubernetes API Basic</h5>
+        <p class="card-text post-summary">Controller and Operator In this section you&rsquo;ll learn about controllers and operators in Kubernetes and how they work.
+The API server has the following core responsibilities:
+To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_2_api_basic/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/network_command/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux Network Command</h5>
+        <p class="card-text post-summary">nc Netcat(or nc) is a command-line utility that reads and write data across network connections, using the TCP or UDP protocols. It is one of the most powerful tools in the network and system administrators arsenal, and it as considered as a Swiss army knife of networking tools.
+Netcat is cross-platform, and it&rsquo;s available for Linux, macOS, Windows , and BSD. You can use Netcat to debug and monitor network connections, scan for open ports, transfer data, as a proxy and more.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/network_command/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/linux_socket/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux socket</h5>
+        <p class="card-text post-summary">Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
+1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/linux_socket/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/Mac_init/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Mac Init</h5>
+        <p class="card-text post-summary">HomeBrew 1/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34; 1brew install wget 2 3brew install go Software Chrome
+Typora
+Istat Menus
+Alfred
+Dash
+Wireshark
+Sublime
+Modify Keys settings -&gt; Keyboard -&gt; modifyKeys
+Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &lt;&lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &lt;ESC&gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&#34; show existing tab with 4 spaces width 13set tabstop=4 14&#34; when indenting with &#39;&gt;&#39;, use 4 spaces width 15set shiftwidth=4 16&#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &#34;$(wget https://raw.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/Mac_init/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/linux_make/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Make</h5>
+        <p class="card-text post-summary">The marker - means ignore the err of this line command
+@ only prints the result of command.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/linux_make/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_network_multus/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">multus</h5>
+        <p class="card-text post-summary">https://github.com/k8snetworkplumbingwg/multus-cn
+Multus CNI enables attaching multiple netwrok interface to pods in Kubernets.
+Multus CNI is a container nerwork interface plugin for Kubernets that enables attaching multiple network interfaces to pods. Typicaly, in Kubernetes each pod only has one network interface (apart from a loopback) &ndash; with Multus you can create a multi-homed pod that has multiple interface. This is accomplished by Multus acting as a &ldquo;meta-plugin&rdquo;, a CNI plugin that can call multiple other CNI plugins.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_network_multus/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/OAuth/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">OAuth 2.0</h5>
+        <p class="card-text post-summary">OAuth 2.0 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/OAuth/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/blog/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/2/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/4/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/5/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+  </body>
+</html>

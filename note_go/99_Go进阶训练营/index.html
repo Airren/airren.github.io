@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>极客时间 GO实践</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="极客时间 GO实践" />
+<meta property="og:description" content="微服务概览 康威定律
+You build it. You fix it.
+按照业务组织服务。
+按照业务能力组织服务的意思是
+去中心化 数据去中心化 隔离性： 每个服务要独享自己的存储设置。 治理去中心化 账号服务 服务发现 技术去中心化 收敛语言，go, C&#43;&#43; 基础设置自动化 CICD
+Prometheus/ELK/Control Panle
+可用性&amp;兼容性设计 Design for Failure，所有的依赖都可能会炸，所有可能出现err的地方都可能出现panic。
+隔离 超时控制 负载保护 限流 降级 重试 负载均衡 微服务设计 API Gateway API版本升级，强耦合
+面向用户的业务场景的API，而不是面向资源的API&ndash; 前轻后重
+安全认证，限流
+gRPC &amp; 服务发现 第6课 评论系统架构设计 https://github.com/go-kratos
+功能模块 理解整个背后的业务逻辑，理解业务的本质，事情的初衷。搞清楚系统背后的背景，才能做出最佳的抽象和设计。
+在动手设计前反复思考，真正编码的时间只有5%？
+不要在想的不清不楚的时候动手。
+Mysql: OLTP 如果是group by等计算密集型查询的容易把数据库打垮。
+Binlog ?
+架构设计等同于数据设计，梳理清楚数据的走向和逻辑。
+尽量避免环形依赖。
+malloc 申请2G的内存，是否真正绑定了2G物理内存。
+什么是缺页中断。
+架构设计
+存储设计
+可用性设计" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/note_go/99_Go%E8%BF%9B%E9%98%B6%E8%AE%AD%E7%BB%83%E8%90%A5/" /><meta property="article:section" content="note_go" />
+
+
+
+
+    
+    
+<meta name="description" content="极客时间 GO实践" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/note_go" data-filter="all">极客时间 GO实践</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1>极客时间 GO实践</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h2 id="微服务概览">微服务概览</h2>
+<p>康威定律</p>
+<p>You build it. You fix it.</p>
+<p>按照业务组织服务。</p>
+<p>按照业务能力组织服务的意思是</p>
+<h3 id="去中心化">去中心化</h3>
+<ul>
+<li>数据去中心化
+<ul>
+<li>隔离性： 每个服务要独享自己的存储设置。</li>
+</ul>
+</li>
+<li>治理去中心化
+<ul>
+<li>账号服务 服务发现</li>
+</ul>
+</li>
+<li>技术去中心化
+<ul>
+<li>收敛语言，go, C++</li>
+</ul>
+</li>
+</ul>
+<h3 id="基础设置自动化">基础设置自动化</h3>
+<p>CICD</p>
+<p>Prometheus/ELK/Control Panle</p>
+<h3 id="可用性兼容性设计">可用性&amp;兼容性设计</h3>
+<p>Design for Failure，所有的依赖都可能会炸，所有可能出现err的地方都可能出现panic。</p>
+<ul>
+<li>隔离</li>
+<li>超时控制</li>
+<li>负载保护</li>
+<li>限流</li>
+<li>降级</li>
+<li>重试</li>
+<li>负载均衡</li>
+</ul>
+<h2 id="微服务设计">微服务设计</h2>
+<h3 id="api-gateway">API Gateway</h3>
+<p>API版本升级，强耦合</p>
+<p>面向用户的业务场景的API，而不是面向资源的API&ndash; 前轻后重</p>
+<p>安全认证，限流</p>
+<h2 id="grpc--服务发现">gRPC &amp; 服务发现</h2>
+<h2 id="第6课-评论系统架构设计">第6课 评论系统架构设计</h2>
+<p><a href="https://github.com/go-kratos" target="_blank">https://github.com/go-kratos</a></p>
+<h3 id="功能模块">功能模块</h3>
+<p>理解整个背后的业务逻辑，理解业务的本质，事情的初衷。搞清楚系统背后的背景，才能做出最佳的抽象和设计。</p>
+<p><strong>在动手设计前反复思考，真正编码的时间只有5%？</strong></p>
+<p><strong>不要在想的不清不楚的时候动手。</strong></p>
+<p>Mysql: OLTP 如果是group by等<strong>计算密集型查询的容易把数据库打垮</strong>。</p>
+<p><strong>Binlog</strong> ?</p>
+<p>架构设计等同于数据设计，梳理清楚数据的走向和逻辑。</p>
+<p>尽量避免环形依赖。</p>
+<p>malloc 申请2G的内存，是否真正绑定了2G物理内存。</p>
+<p>什么是缺页中断。</p>
+<p>架构设计</p>
+<p>存储设计</p>
+<p>可用性设计</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/note_go/99_Go%e8%bf%9b%e9%98%b6%e8%ae%ad%e7%bb%83%e8%90%a5.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#微服务概览">微服务概览</a>
+      <ul>
+        <li><a href="#去中心化">去中心化</a></li>
+        <li><a href="#基础设置自动化">基础设置自动化</a></li>
+        <li><a href="#可用性兼容性设计">可用性&amp;兼容性设计</a></li>
+      </ul>
+    </li>
+    <li><a href="#微服务设计">微服务设计</a>
+      <ul>
+        <li><a href="#api-gateway">API Gateway</a></li>
+      </ul>
+    </li>
+    <li><a href="#grpc--服务发现">gRPC &amp; 服务发现</a></li>
+    <li><a href="#第6课-评论系统架构设计">第6课 评论系统架构设计</a>
+      <ul>
+        <li><a href="#功能模块">功能模块</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

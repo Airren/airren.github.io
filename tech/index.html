@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teches</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Teches" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/tech/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/tech" data-filter="all">Teches</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/gin/gin_overview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」Gin入门</h5>
+        <p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
+刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
+以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
+GitHub
+Official Document
+1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
+快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;&amp; cd gin_demo 4 5vi main.go main.go的内容如下
+1package main 2 3import ( 4	&#34;net/http&#34; 5	&#34;github.com/gin-gonic/gin&#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&#34;/ping&#34;, func(c *gin.Context){ 13	c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/tech/web/gin/gin_overview/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/gin/gin_http/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」Gin Http 请求处理</h5>
+        <p class="card-text post-summary">https://www.yoytang.com/go-gin-doc.html#%e8%b7%af%e7%94%b1(Router)
+1. Gin的HTTP请求 1.1 Gin支持的各种HTTP请求 1func main() { 2	// Creates a gin router with default middleware: 3	// logger and recovery (crash-free) middleware 4	router := gin.Default() 5 6	router.GET(&#34;/someGet&#34;, getting) 7	router.POST(&#34;/somePost&#34;, posting) 8	router.PUT(&#34;/somePut&#34;, putting) 9	router.DELETE(&#34;/someDelete&#34;, deleting) 10	router.PATCH(&#34;/somePatch&#34;, patching) // 11	router.HEAD(&#34;/someHead&#34;, head) // 12	router.OPTIONS(&#34;/someOptions&#34;, options) 13 14	// By default it serves on :8080 unless a 15	// PORT environment variable was defined. 16	router.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 8, 2020</span>
+        <a
+        href="/tech/web/gin/gin_http/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/gin/project_category/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」 项目目录</h5>
+        <p class="card-text post-summary">Gin 项目目录 1├─ Project Name 2│ ├─ config //配置文件 3│ ├── ... 4│ ├─ controller //控制器层，验证提交的数据，将验证完成的数据提交给service 5│ ├── ... 6│ ├─ service //业务层， 只完成业务逻辑得开发，不进行数据库的操作 7│ ├── ... 8│ ├─ repository //数据库操作层 dal/ dao; 数据库操作层，写，多表插入，多表查询，不写业务代码 9│ ├── ... 10│ ├─ model //数据库ORM 11│ ├── ... 12│ ├─ entity //实体 写返回数据的结构体。写controller层方法参数验证的结构体 13│ ├── ... 14│ ├─ proto //proto文件 写 gRPC 的 *.pb.go 文件。 15│ ├── ... 16│ ├─ router //路由 17│ ├── middleware //路由中间件 （鉴权，日志，异常捕获） 18│ ├── .</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 23, 2020</span>
+        <a
+        href="/tech/web/gin/project_category/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/micro_service/stateless_service/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">【微服务】有状态服务和无状态服务</h5>
+        <p class="card-text post-summary">什么是有状态服务？
+什么是无状态服务？
+有状态服务和无状态服务分别适用的场景
+参考资料
+https://www.iteye.com/blog/kyfxbl-1831869
+https://www.cnblogs.com/xiangkejin/p/9010516.html
+https://www.zhihu.com/question/54437341</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 2, 2020</span>
+        <a
+        href="/tech/web/micro_service/stateless_service/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/RPC/http/http_request_method/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「HTTP」HTTP 9 种请求方式</h5>
+        <p class="card-text post-summary">HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
+HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
+HTTP特点：
+HTTP是无连接的： 无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。
+HTTP是无状态的： HTTP是无状态协议。无状态是指协议对于事务处理灭有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次传输的数据量增大。
+HTTP是媒体独立的： 任何数据类型都可以通过HTTP发送，客户端以及服务器要指定相同的MIME-type类型。媒体类型通常通过 HTTP 协议，由 Web 服务器告知浏览器的，更准确地说，是通过 Content-Type 来表示的。例如：Content-Type：text/HTML。通常只有广泛应用的格式才会获得一个 MIME Type，如果是某个客户端自己定义的格式，一般只能以 application/x- 开头。
+Web-Browser &lt;===&gt; HTTP Server &lt;===&gt; CGI(Common GateWay Interface) Program &lt;==&gt;Database
+客户端请求消息 请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成
+服务器响应消息 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
+不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/tech/web/RPC/http/http_request_method/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/RPC/http/https_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「HTTPS」 Tips</h5>
+        <p class="card-text post-summary">什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
+1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/tech/web/RPC/http/https_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/RPC/http/nginx_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Nginx」 Tips</h5>
+        <p class="card-text post-summary">搭建静态资源服务器 静态资源文件夹
+1/root/file Nginx 配置
+vi /etc/nginx/nginx.conf
+1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2	alias /root/file; # 静态资源的绝对路径 3	autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
+1gzip on; 2gzip_minPlength 1; # 小于1字节不压缩， 3gzip_comp_level 2; # 压缩级别为2 4gzip_types taxt/plain applicaton/x-javascripts txt/css application/xml image/jpeg image/gif image/png; # 压缩文件类型 重启nginx服务
+1nginx -s reload 2# or 3systemctl restart nginx.service 通过浏览器访问资源
+此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&rsquo;r work。
+目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/tech/web/RPC/http/nginx_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/RPC/thrift/thrift/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">https://blog.csdn.net/u011642663/article/details/56015576</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tech/web/RPC/thrift/thrift/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/RabbitMQ/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">RabbitMQ 消息中间件 技术精讲
+1. RabbitMQ 简介以及AMQP协议 RabbitMQ 是一个开源的消息代理和
+RabbitMQ底层是采用Erlang语言进行编写 开源、性能优秀， 稳定性保障 与spring AMQP完美整合，API丰富 集群模式丰富，表达式配置， HA模式， 镜像队列模型 保证数据不丢失的前提做到高可靠性，可用性 AMQP： 高级消息队列协议 RabbitMQ 的安装以及使用 erlang socat rabbitmq-server rpm -ivh XXXXX.rpm lsof -i:5672 # 查看端口 启用控制台插件 rabbit 可以选择使用内存进行存储
+RabbitMQ 核心概念 AMQP核心概念
+Server：又称作Broker， 接收客户端的连接，实现AMQP实体服务
+Connection： 连接， 应用程序与Broker的网络连接
+Channel： 网络信道，几乎所有的操作都在Channel中进行，Channel是进行消息读写的一个通道。客户端可以建立多个Channel，每个Channel代表一个会话任务。
+Message： 消息， 服务器和应用程序之间传送的数据，由Properties和Body组成。Properties可以对消息进行修饰，比如消息的优先级、延迟等高级特性；Body则就是消息体内容。
+Virtual host： 虚拟地址，用于进行逻辑隔离，是最上层的消息路由。一个Virtual Host里面可以有若干个Exchange 和Queue， 同一个Virtual Host里面不能有相同名称的Exchange或Queue。
+Exchange： 交换机，接收消息，根据路由键转发消息到绑定的队列
+Binding： Exchange 和Queue之间的虚拟连接，binding可以包含routing key
+Routing key: 一个路由规则，虚拟机可以用它来确定如何路由一个特定消息
+Queue： 也称为Massage Queue, 消息队列，保存消息并将他们转发给消费者
+RabbitMQ RabbitMQ默认端口号 4369 (epmd), 25672 (Erlang distribution) 4369 erlang 发现端口 25672 server间通信端口 5672, 5671 (AMQP 0-9-1 without and with TLS) client端通信口 15672 (if management plugin is enabled) 管理界面ui端口 61613, 61614 (if STOMP is enabled) 1883, 8883 (if MQTT is enabled) 生产端的可靠投递 保证消息从生产者到MQ之间的传输是100%可靠的，生产者发送的消息一定能进入消息队列</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/RabbitMQ/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/web_mvc_pattern/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「MVC」 Web服务的MVC设计模式</h5>
+        <p class="card-text post-summary">https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase
+https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/web_mvc_pattern/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/tech/web/gin/swagger/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Swagger」 Gin 项目使用swagger</h5>
+        <p class="card-text post-summary">安装并使用Swaggo testsetes
+1go get -u -x github.com/swaggo/swag/cmd/swag Gin中使用Swagger</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/tech/web/gin/swagger/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+  </body>
+</html>

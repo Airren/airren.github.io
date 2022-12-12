@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on ByteGopher</title>
+    <link>https://airren.github.io/tools/</link>
+    <description>Recent content in Tools on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Aug 2020 00:11:32 +0000</lastBuildDate><atom:link href="https://airren.github.io/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「Production」提高生产力的常用软件</title>
+      <link>https://airren.github.io/tools/software/software_production_list/</link>
+      <pubDate>Fri, 28 Aug 2020 00:11:32 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/software/software_production_list/</guid>
+      <description>绘图工具 OmniGraffle 说明 好用的绘图工具 下载 教程 https://sspai.com/post/41950 https://www.jianshu.com/p/cca7ce55aee1 系统工具 iStat Menus 说明 优秀的系统监控工具 下载 https://www.macwk.com/soft/istat-menus 教程 https://sspai.com/post/41950 https://www.jianshu.com/p/cca7ce55aee1 </description>
+    </item>
+    
+    <item>
+      <title>「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</title>
+      <link>https://airren.github.io/tools/git/git_stage_repo/</link>
+      <pubDate>Wed, 26 Aug 2020 01:12:13 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/git/git_stage_repo/</guid>
+      <description>Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
+Index/Stage: 暂存区， 未提交修改
+Repository： 本地仓库
+Remote： 远程仓库
+我们使用编辑器写代码的区域就是WorkSpace, 执行git add fileName之后，就将修改的文件提交到了暂存区，执行git commmit -m &amp;quot;update fineName&amp;quot; 之后就将修改提交到了本地版本库。最后使用 git push 将修改提交到远程仓库。
+Git 常用操作 配置用户名以及邮箱 设置
+1git config --global user.Name &amp;#34;name&amp;#34; 2git config --global user.email &amp;#34;xxx@outlook.com&amp;#34; 查看
+1git config user.name 2git config user.email 初始化Git仓库 git init 1git init fileName 2# or 不指定路径，默认为当前路径 3git init 初始化仓库后，会生成一.git的隐藏文件夹
+建立裸仓库
+1git init --bare bare_repo 对比正常git仓库normal_repo与bare_repo的目录结构发现，在normal_repo/.git 文件夹中的文件直接出现在了bare_repo 中
+切换分支。
+在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</description>
+    </item>
+    
+    <item>
+      <title>「Alfred」Tips</title>
+      <link>https://airren.github.io/tools/software/Alfred/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/software/Alfred/</guid>
+      <description>Alfred下载链接 Download: https://www.macwk.com/soft/alfred-4
+JetBrains工作流配置 Jetbrains workflow: https://github.com/bchatard/jetbrains-alfred-workflow</description>
+    </item>
+    
+    <item>
+      <title>「Linux」 user</title>
+      <link>https://airren.github.io/tools/linux/user/</link>
+      <pubDate>Sun, 09 Aug 2020 01:40:02 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/user/</guid>
+      <description>用户和用户组 groups 1groups &amp;lt;user1&amp;gt; &amp;lt;user2&amp;gt; &amp;lt;user3&amp;gt; # 查看当前用户所属的用户组 </description>
+    </item>
+    
+    <item>
+      <title>「Hexo」 搭建部署</title>
+      <link>https://airren.github.io/tools/hexo/hexo_create/</link>
+      <pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/hexo/hexo_create/</guid>
+      <description>Hexo 安装 https://hexo.io/zh-cn/docs/
+安装Node.js
+安装Git
+安装Hexo
+1sudo npm install -g hexo-cli 如果在mac中安装报/usr/lib/node_modules/的操作权限问题，执行以下命令。
+1sudo chown -R `whoami` /usr/local/lib/node_modules 初始化项目
+1hexo init blog 创建完成后，当前目录下会有一个xx_blog的文件夹，具体的文件夹查询官网hexo.io
+Hexo 部署到Nginx &amp;amp; Github.io 开发机 在自己写Blog的Pc上安装插件
+1yarn add hexo-deployer-git 服务器 在即将部署的服务器上执行以下操作
+1yum install git 2 3useradd -m git # 创建一个git用户，用来运行git服务 4 # 新建git用户并非必要，但是为了安全起见，还是用git用户单独来运行git服务 5 6passwd git 设置PC到服务器的git用户免密登录
+1# 生成ssh密钥 2ssh-keygen 3# 将公钥添加到server 4ssh-copy-id git@serverIp 在服务器上初始化一个Git仓库
+1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</description>
+    </item>
+    
+    <item>
+      <title>「Dash」Tips</title>
+      <link>https://airren.github.io/tools/software/Dash/</link>
+      <pubDate>Wed, 05 Aug 2020 01:35:26 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/software/Dash/</guid>
+      <description>Dash is an API Documentation Browser and Code Snippet Manager. Dash instantly searches offline documentation sets for 200+ APIs, 100+ cheat sheets and more. You can even generate your own docsets or request docsets to be included.
+Dash V4 license</description>
+    </item>
+    
+    <item>
+      <title>「Hexo」Write Tips</title>
+      <link>https://airren.github.io/tools/hexo/hexo_write_tips/</link>
+      <pubDate>Wed, 29 Jul 2020 01:09:53 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/hexo/hexo_write_tips/</guid>
+      <description>Config md conf 1title: Hello Hexo！ 2layout: post 3subtitle: &amp;#34;hello word, welcome&amp;#34; 4date: 2020-07-26 01:09:53 5author: &amp;#34;Airren&amp;#34; 6catalog: true 7header-img: &amp;#34;post-bg-js-module.jpg&amp;#34; 8tags: 9 - Life _config.yml 1# Hexo Configuration 2## Docs: https://hexo.io/docs/configuration.html 3## Source: https://github.com/hexojs/hexo/ 4 5# Site 6title: ByteGopher 7subtitle: To Be A Lean Developer! 8author: Airren 9language: en 10timezone: Asia/Shanghai 11 12# URL 13## If your site is put in a subdirectory, set url as &amp;#39;http://yoursite.com/child&amp;#39; and root as &amp;#39;/child/&amp;#39; 14url: https://www.</description>
+    </item>
+    
+    <item>
+      <title>「Hexo」Hello!</title>
+      <link>https://airren.github.io/tools/hexo/hello_hexo/</link>
+      <pubDate>Sun, 26 Jul 2020 01:09:53 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/hexo/hello_hexo/</guid>
+      <description>开心的一天呀 😊
+h1 h2 h3 h4 h5 h6 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/tools/linux/chmod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/chmod/</guid>
+      <description>文件权限 文件权限表示 1drwxrwxrwx 3 root wheel 96 Oct 13 20:30 opt 2drwxr-xr-x 6 root wheel 192 Oct 8 18:57 private 3drwxr-xr-x@ 64 root wheel 2048 Oct 8 18:55 sbin 【文件或文件夹】【owner权限】【group权限】【others权限】【 文件数量】 【文件所有者】【文件所在组】【文件夹最后操作日期和时间】
+d 表示文件类型为 文件夹 ， - 表示文件类型为 文本文件， l 表示链接文件 r 读权限read 4, w 写权限write 2, x 操作权限execute 1 : rwx 按二进制位置 111， 所以对应 421 修改文件权限 1chmod 权限数字 文件名 2chmod -R 744 /mnt/fileA # 表示将整个/mnt/fileA目录与其中的文件和子目录的权限都设置为744 3chmod o w xxx.xxx #表示给其他人授予写xxx.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/tools/software/Wireshark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/software/Wireshark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>Wireshark 学习笔记 WireShark的前世今生 Gerald Combs
+Wireshark 是目前世界上应用最广泛的抓包工具
+WIreshark 可以提供分析报告
+wireshark will always be opensource
+WireShark的概述与安装 网络监听软件原理 网络监听软件是一种监视网络状态、数据流程以及网络上信息传输的管理工具。 可以将网络接口设定成监听模式(混杂模式) 可以截获网络上所传输的信息 双刃剑&amp;ndash;安全问题 防止窃听的方法：加密 主要网络监听软件 常见的网络监听软件
+Wireshark Tcpdump Microsoft Network Monitor Kisnet Fiddler Wireshark概述 功能 支持unix、Linux、windows、mac平台 在接口实时捕捉包 能详细显示包的详细协议信息 可以打开/保存捕捉的包 可以导入导出其他捕捉程序支持的包数据格式 可以通过多种方式过滤包 多种方式查找包 通过过滤以多种色彩显示包 创建多种统计分析 不能做的事情 不是入侵检测 ARP欺骗，但是可以观察网络发生的事情 不会处理网络事务 不会进行包的修改 Wireshark下载与安装 Windows： Winpcap + Wireshark
+Linux： libpacp + Wireshark
+WireShark的基本使用 界面与基本操作 示例协议包
+捕获与保存 过滤与过滤表达式 过滤表达式 协议过滤
+tap 只显示tcp协议 IP地址过滤
+ip.src == 192.168.1.1源地址 ip.dst == 192.</description>
+    </item>
+    
+    <item>
+      <title>「Hugo」Hugo基本使用</title>
+      <link>https://airren.github.io/tools/hugo/hugo_basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/hugo/hugo_basic/</guid>
+      <description>hugo 增加 评论
+编译&amp;amp;发布
+MarkDown 语法 公式解析
+引入MathJax。MathJax 是一个Javascript库，通过官方提供的CDN集成到自己的页面非常简单，只需把一下内容添加到所有的页面，例如foot.html
+1&amp;lt;script type=&amp;#34;text/javascript&amp;#34; async 2 src=&amp;#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&amp;#34;&amp;gt; 3&amp;lt;/script&amp;gt; 配置文件 config.toml 代码高亮设置
+1pygmentsUseClasses = true 2[markup] 3 [markup.highlight] 4 codeFences = true 5 guessSyntax = true 6 hl_Lines = &amp;#34;&amp;#34; 7 lineNoStart = 1 # display line number 8 lineNos = true 9 lineNumbersInTable = false 10 noClasses = true 11 style = &amp;#34;github&amp;#34; 12 tabWidth = 4 行号已经可以显示了，但是复制的时候会与行号一起复制，修改自定义css
+1.highlight .ln { 2 width: 20px; 3 display: block; 4 float: left; 5 text-align: right; 6 user-select: none; # 表示复制是不能被选中的 7 padding-right: 8px; 8 color: #ccc; 9} </description>
+    </item>
+    
+    <item>
+      <title>「Linux」 Make</title>
+      <link>https://airren.github.io/tools/linux/make/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/make/</guid>
+      <description>1.PHONY: clean # .PHONY后面的target表示一个伪造的target，而不是真实存在的文件的target 2clean: 3	rm -rf *.out </description>
+    </item>
+    
+    <item>
+      <title>「Linux」Grep</title>
+      <link>https://airren.github.io/tools/linux/grep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/grep/</guid>
+      <description>The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern. The pattern that is searched in the file is referred to as the regular expression (grep stands for globally search for regular expression and print out).
+Syntax:
+1grep [options] pattern [files] 1Options Description 2-c : This prints only a count of the lines that match a pattern 3-h : Display the matched lines, but do not display the filenames.</description>
+    </item>
+    
+    <item>
+      <title>「Linux」Systemd</title>
+      <link>https://airren.github.io/tools/linux/systemd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/systemd/</guid>
+      <description>守护进程
+http://www.ruanyifeng.com/blog/2016/02/linux-daemon.html</description>
+    </item>
+    
+    <item>
+      <title>「Linux」xargs</title>
+      <link>https://airren.github.io/tools/linux/xorgs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/xorgs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>「Mac」Mac初始化</title>
+      <link>https://airren.github.io/tools/mac/mac_init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/mac/mac_init/</guid>
+      <description>文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &amp;lt;ESC&amp;gt; git
+1git config --global init.defaultBranch main </description>
+    </item>
+    
+    <item>
+      <title>「Regex」正则表达式</title>
+      <link>https://airren.github.io/tools/linux/regex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/regex/</guid>
+      <description>正则表达式主要用来进行字符串匹配操作
+1^[0-9]+abc$ 2# ^ 表示以xxx开头的字符串 3# [0-9] 表示匹配0-9之间的一个数字，例如 8； [0-9]+表示匹配0-9之间的多个数字，例如：867 4# abc$ 表示以abc结尾的字符串，$表示以xxx结尾 1^[a-z0-9_-]{5,16}$ 2# 只能含有小写字母，数字，下划线,减号，且长度为5-16的字符串 字符 Description . 除了\r \n以外的任何单字符 \w 匹配字母、数字、下划线，等价于[A-Za-Z0-9_] * 匹配前面的子表达式零次或者多次 </description>
+    </item>
+    
+    <item>
+      <title>「tmux」虚拟终端</title>
+      <link>https://airren.github.io/tools/linux/tmux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/linux/tmux/</guid>
+      <description>​	当使用ssh 连接一台远程计算机的时候，如果此时正在执行一个进程，突然断网了，那么这个进程也会被迫中断了。当重新ssh连接到这台远程计算机的时候，已经找不到之前正在执行的进程了。因为上一次连接的会话(Session)已经终止， 这次的重新连接又新建了一个会话。如果你遇到过这种问题你就会发现： 会话和进程是绑定的，会话终止，当前正在执行的进程也会终止。
+​	为了解决上述问题，你可以尝试使用下Tmux。
+安装及基本使用 1# 安装在需要远程连接的远程服务器上 2apt install tmux 1# 新建 2tmux new -s &amp;lt;session name&amp;gt; 3 4# 切换到某个session 5tmux attach -t &amp;lt;session name&amp;gt; 6 7# 退出某个session，依旧保留进程 8tmux detach 9 10# 分隔窗口 11tmux split-window 12tmux split-window -h # 水平分隔 13 14# 切换窗口 【Ctrl】+【b】 然后按下 【；】 快捷键 前缀键 【Ctrl】+【b】。先按下前缀键后，在使用功能键。
+copy-mode use vi shortcuts 1cat &amp;lt;&amp;lt;EOF | tee -a ~/.tmux.conf 2setw -g mode-keys vi 3set -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39; 4set -g @plugin &amp;#39;tmux-plugins/tmux-sensible&amp;#39; 5set -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39; 6 7run &amp;#39;~/.</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ设置</title>
+      <link>https://airren.github.io/tools/software/IntelliJ%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tools/software/IntelliJ%E8%AE%BE%E7%BD%AE/</guid>
+      <description>IntelliJ设置 1. 创建文件时候自动添加作者和创建时间 Preference-&amp;gt; Editor-&amp;gt;File and Code Templates-&amp;gt;Include -&amp;gt;File Header
+1/** 2 * @author Airren 3 * @date ${DATE} ${TIME} 4 * @version 1.0 5 */ </description>
+    </item>
+    
+  </channel>
+</rss>

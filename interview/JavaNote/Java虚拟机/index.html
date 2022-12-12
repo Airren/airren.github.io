@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Java 虚拟机 虚拟机调优 Java 虚拟机调优参数 -Xms 起始内存 JVM堆内存 -Xmx 最大内存 JVM堆内存 -Xmn 新生代内存 -Xss 栈大小。 就是创建线程后，分配给每一个线程的大小 -XX:NewRatio 设置年轻代和老年代的比值。默认为2:1。如果为3，表示年轻代与老年代的比值为1:3，年轻代占整个年轻代和老年代的1/4。 -XX:SurvivorRatio年轻代中Eden区和两个Survivor区的比值。如果为3，表示Eden:Survivor = 3:2, 因为有两个Survivor区域，所以一个Survivor区占整个年轻代的1/5. -XX:MaxPermSize设置持久代的大小。 收集器的设置
+-XX:&#43;UseSerialGC设置串行收集器 -XX:&#43;UseParallelGC设置并行收集器 -XX:&#43;UseParallelOld设置并行老年代收集器 -XX:&#43;UseConcMarkSweepGC设置并发收集器 垃圾回收统计信息
+-XX:PrintGC -XX:PrintGCDetails -XX:PrintGCTimeStamps -Xloggc:filename 并行收集器设置
+-XX:ParallelGCThreads=n设置并行收集器收集时使用的CPU数。并行收集线程数。 -XX:MaxGCPauseMillis=n设置并行收集最大暂停时间 -XX:GCTimeRatio=n设置垃圾回收时间占程序运行时间的百分比。公式为1/(1&#43;n) 并发收集器设置
+XX:&#43;CMSIncrementalMode设置为增量模式。适用于单CPU情况。 XX:ParallelGCThreads=n设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。 -Xms1G -Xmx2G -Xmn500M -XX:MaxPermSize=64M -XX:&#43;UseConcMarkSweepGC -XX:SurvivorRatio=3
+-Xms1G JVM初始内存1G 这一部分是不是应该是堆内存 -Xmx2G JVM最大内存 2G -Xmn500M 新生代内存 500M -XX:MaxPermSize 持久代内存 64M -XX:SurvivorRatio=3 新生代中Eden:Servivor = 3:2 JVM 调优 -Xms2G -Xmx2G 将JVM最大内存与初始内存设置相等，避免JVM垃圾回收后重新分配内存。 -Xmn1G 年轻代内存Sun官方推荐配置为整个堆的3/8,通常设置为1/3或1/4。 -Xss256K减小每条线程栈的大小，能生成更多的线程 -XX:NewRatio=4 调整年轻代与老年代的比例 年轻代:老年代=1:4 -XX:MaxTenuringThreshold=0 设置晋升到老年代的对象的年龄。 如果设置为0，则年轻代对象不经过Survivor区，直接进入老年代。如果设置一个较大的值，则年轻代对象会在Survivor区进行多次复制。 -XX:&#43;UseConcMarkSweepGC JVM在server模式下默认使用PararrelScavenge＋SerialOld的收集器组合进行内存回收，不支持与用户线程并发执行。可使用ParNew&#43;CMS&#43;SerialOld的收集器组合进行内存回收（SerialOld收集器做为CMS收集器出现ConcurrentModeFailure失败后的后备收集器使用），减少stop-the-world时间。 -XX:CMSFullGCsBeforeCompaction 使用CMS时，设置CMS收集器在进行若干次垃圾收集后再启动一次内存碎片 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/interview/JavaNote/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/" /><meta property="article:section" content="interview" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/interview" data-filter="all"></a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="java-虚拟机">Java 虚拟机</h1>
+<h1 id="虚拟机调优">虚拟机调优</h1>
+<h2 id="java-虚拟机调优参数">Java 虚拟机调优参数</h2>
+<ul>
+<li><code>-Xms</code> 起始内存 JVM堆内存</li>
+<li><code>-Xmx</code> 最大内存  JVM堆内存</li>
+<li><code>-Xmn</code> 新生代内存</li>
+<li><code>-Xss</code> 栈大小。 就是创建线程后，分配给每一个线程的大小</li>
+<li><code>-XX:NewRatio</code> 设置年轻代和老年代的比值。默认为2:1。如果为3，表示年轻代与老年代的比值为1:3，年轻代占整个年轻代和老年代的1/4。</li>
+<li><code>-XX:SurvivorRatio</code>年轻代中Eden区和两个Survivor区的比值。如果为3，表示Eden:Survivor = 3:2, 因为有两个Survivor区域，所以一个Survivor区占整个年轻代的1/5.</li>
+<li><code>-XX:MaxPermSize</code>设置持久代的大小。</li>
+</ul>
+<p>收集器的设置</p>
+<ul>
+<li><code>-XX:+UseSerialGC</code>设置串行收集器</li>
+<li><code>-XX:+UseParallelGC</code>设置并行收集器</li>
+<li><code>-XX:+UseParallelOld</code>设置并行老年代收集器</li>
+<li><code>-XX:+UseConcMarkSweepGC</code>设置并发收集器</li>
+</ul>
+<p>垃圾回收统计信息</p>
+<ul>
+<li><code>-XX:PrintGC</code></li>
+<li><code>-XX:PrintGCDetails</code></li>
+<li><code>-XX:PrintGCTimeStamps</code></li>
+<li><code>-Xloggc:filename</code></li>
+</ul>
+<p>并行收集器设置</p>
+<ul>
+<li><code>-XX:ParallelGCThreads=n</code>设置并行收集器收集时使用的CPU数。并行收集线程数。</li>
+<li><code>-XX:MaxGCPauseMillis=n</code>设置并行收集最大暂停时间</li>
+<li><code>-XX:GCTimeRatio=n</code>设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)</li>
+</ul>
+<p>并发收集器设置</p>
+<ul>
+<li><code>XX:+CMSIncrementalMode</code>设置为增量模式。适用于单CPU情况。</li>
+<li><code>XX:ParallelGCThreads=n</code>设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。</li>
+</ul>
+<p><code>-Xms1G -Xmx2G -Xmn500M -XX:MaxPermSize=64M -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=3</code></p>
+<ul>
+<li><code>-Xms1G</code> JVM初始内存1G  这一部分是不是应该是堆内存</li>
+<li><code>-Xmx2G</code> JVM最大内存 2G</li>
+<li><code>-Xmn500M</code> 新生代内存 500M</li>
+<li><code>-XX:MaxPermSize</code> 持久代内存 64M</li>
+<li><code>-XX:SurvivorRatio=3</code> 新生代中Eden:Servivor = 3:2</li>
+</ul>
+<h2 id="jvm-调优">JVM 调优</h2>
+<ul>
+<li><code>-Xms2G</code> <code>-Xmx2G</code> 将JVM最大内存与初始内存设置相等，避免JVM垃圾回收后重新分配内存。</li>
+<li><code>-Xmn1G</code> 年轻代内存Sun官方推荐配置为整个堆的3/8,通常设置为1/3或1/4。</li>
+<li><code>-Xss256K</code>减小每条线程栈的大小，能生成更多的线程</li>
+<li><code>-XX:NewRatio=4</code> 调整年轻代与老年代的比例 年轻代:老年代=1:4</li>
+<li><code>-XX:MaxTenuringThreshold=0</code> 设置晋升到老年代的对象的年龄。 如果设置为0，则年轻代对象不经过Survivor区，直接进入老年代。如果设置一个较大的值，则年轻代对象会在Survivor区进行多次复制。</li>
+<li><code>-XX:+UseConcMarkSweepGC</code> JVM在server模式下默认使用<code>PararrelScavenge</code>＋<code>SerialOld</code>的收集器组合进行内存回收，不支持与用户线程并发执行。可使用<code>ParNew</code>+<code>CMS</code>+<code>SerialOld</code>的收集器组合进行内存回收（<code>SerialOld</code>收集器做为CMS收集器出现<code>ConcurrentModeFailure</code>失败后的后备收集器使用），减少<code>stop-the-world</code>时间。</li>
+<li><code>-XX:CMSFullGCsBeforeCompaction</code> 使用CMS时，设置CMS收集器在进行若干次垃圾收集后再启动一次内存碎片</li>
+</ul>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/interview/JavaNote/Java%e8%99%9a%e6%8b%9f%e6%9c%ba.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#java-虚拟机调优参数">Java 虚拟机调优参数</a></li>
+    <li><a href="#jvm-调优">JVM 调优</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

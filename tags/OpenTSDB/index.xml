@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenTSDB on ByteGopher</title><link>https://airren.github.io/tags/OpenTSDB/</link><description>Recent content in OpenTSDB on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://airren.github.io/tags/OpenTSDB/index.xml" rel="self" type="application/rss+xml"/><item><title>「TSDB」时序数据&amp;时序数据库简介</title><link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid><description>什么是时序数据？
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenTSDB on ByteGopher</title>
+    <link>https://airren.github.io/tags/OpenTSDB/</link>
+    <description>Recent content in OpenTSDB on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/tags/OpenTSDB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「TSDB」时序数据&amp;时序数据库简介</title>
+      <link>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</guid>
+      <description>什么是时序数据？
 时序数据的应用场景和特征？
 时序数据库？
 时序数据 时序数据，就是与时间强相关度的一系列数据。关注的是某一时刻的数据值，而不是最终的数据。是一个过程而不是一个结果。时序数据描述的是一个数据（指标）在时间维度上的变化。例如： 股票K线、环境监测。
@@ -11,4 +25,8 @@ tags: 一个或者多个tag组合，用户描述metric的不同维度。每个Ta
 value： 表示对应的数值。例如：请求的latency 或者qps等。
 timestamp： 时序数据的具体时间，可以是秒级或者毫秒级别的Unix时间戳。
 例如： JVM_Heap_Memory_Usage_MB{host=127.0.0.1, instanceId=jvm01}
-Downsampling</description></item></channel></rss>
+Downsampling</description>
+    </item>
+    
+  </channel>
+</rss>

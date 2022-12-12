@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>「Prom」Prometheus 安装及使用简介</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="「Prom」Prometheus 安装及使用简介" />
+<meta property="og:description" content="Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
+时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
+在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的
+例如：
+1http_request_total{host=192.168.2.1,status=200} Metric Name： http_request_total 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为[a-zA-Z_:][a-zA-Z0-9_:]*。冒号保留，会在定义规则的时候使用。
+Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
+Notation
+1&lt;Metric Name&gt;{&lt;Label Name&gt;=&lt;Label Value&gt;,...} 2api_http_request_total{method=&#34;POST&#34;, handler=&#34;/messages&#34;} # 同OpenTSDB 3 4node_cpu_seconds_total{cpu=&#34;2&#34;,mode=&#34;system&#34;} 195721.31 1&lt;--- metric name------&gt;&lt;-----lable set------&gt;&lt;-timestamp -&gt;&lt;-value-&gt; 2node_cpu_seconds_total{cpu=&#34;2&#34;,mode=&#34;system&#34;}@1434417560938 195721.31 3# timestamp 是毫秒级时间戳 4# value 有且只有一个 float64 __ 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以__name__=&lt;metric name&gt;形式存储的，以下两种表达方式是相同的。
+1api_http_request_total{method=&#34;POST&#34;, handler=&#34;/messages&#34;} 2{__name_=api_http_request_total, method=&#34;POST&#34;, handler=&#34;/messages&#34;} Component 所有基础组件的安装都基于Docker。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/component/TimeSeries/Prometheus/prom/" /><meta property="article:section" content="component" />
+
+
+
+
+    
+    
+<meta name="description" content="「Prom」Prometheus 安装及使用简介" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/component" data-filter="all">「Prom」Prometheus 安装及使用简介</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1>「Prom」Prometheus 安装及使用简介</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h2 id="prom-intro">Prom Intro</h2>
+<p><a href="https://github.com/prometheus" target="_blank">Prometheus</a> 是<a href="https://soundcloud.com/" target="_blank">SoundCloud</a>开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。</p>
+<h4 id="时序数据模型-time-series-data-model">时序数据模型 Time Series Data Model</h4>
+<p>Metric 是一个对时序指标的统称，例如.：<code>http_requests_total</code> - the total number of HTTP requests received，就可以称为一条Metric</p>
+<p>在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的</p>
+<p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>http_request_total<span style="color:#f92672">{</span>host<span style="color:#f92672">=</span>192.168.2.1,status<span style="color:#f92672">=</span>200<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>Metric Name</strong>： <code>http_request_total</code> 在Prometheus中Metric Name只能由大小写字母、数字、下划线、冒号组成，且不能以数字开头，对应正则为<code>[a-zA-Z_:][a-zA-Z0-9_:]*</code>。冒号保留，会在定义规则的时候使用。</p>
+<p><strong>Label Name</strong>: <code>host</code> 和<code>status</code>都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为<code>[a-zA-Z_][a-zA-Z0-9_]*</code>。一般<code>_</code>开头的Labels保留位系统内部使用。</p>
+<p><strong>Notation</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;Metric Name&gt;<span style="color:#f92672">{</span>&lt;Label Name&gt;<span style="color:#f92672">=</span>&lt;Label Value&gt;,...<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>api_http_request_total<span style="color:#f92672">{</span>method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span>, handler<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/messages&#34;</span><span style="color:#f92672">}</span> <span style="color:#75715e"># 同OpenTSDB</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>node_cpu_seconds_total<span style="color:#f92672">{</span>cpu<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;system&#34;</span><span style="color:#f92672">}</span> 195721.31
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;--- metric name------&gt;&lt;-----lable set------&gt;&lt;-timestamp -&gt;&lt;-value-&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>node_cpu_seconds_total<span style="color:#f92672">{</span>cpu<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span>,mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;system&#34;</span><span style="color:#f92672">}</span>@1434417560938 195721.31
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"># timestamp 是毫秒级时间戳</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"># value 有且只有一个 float64</span>
+</span></span></code></pre></div><blockquote>
+<p><code>__</code> 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以<code>__name__=&lt;metric name&gt;</code>形式存储的，以下两种表达方式是相同的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>api_http_request_total<span style="color:#f92672">{</span>method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span>, handler<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/messages&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#f92672">{</span>__name_<span style="color:#f92672">=</span>api_http_request_total, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span>, handler<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/messages&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></blockquote>
+<h2 id="component">Component</h2>
+<blockquote>
+<p>所有基础组件的安装都基于Docker。</p>
+</blockquote>
+<h3 id="prometheus">Prometheus</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>docker pull prom/prometheus
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>docker run -d -p 9090:9090 --name prometheus prom/prometheus
+</span></span></code></pre></div><p>安装完成后可以访问<code>9090</code>端口，可以看到Prometheus管理页面。如下图为查询<code>go_routines</code>的情况。</p>
+<p>查询当前数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#960050;background-color:#1e0010">GET http://devbox:9090/api/v1/query?query=go_goroutines&amp;time=1610127237.659
+</span></span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210109012636249.png" alt="image-20210109012636249" />
+
+
+
+</p>
+</p>
+<p>查询历史数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#960050;background-color:#1e0010">GET http://devbox:9090/api/v1/query_range?query=go_goroutines&amp;start=1610126024.257&amp;end=1610126924.257&amp;step=3
+</span></span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210109013121175.png" alt="image-20210109013121175" />
+
+
+
+</p>
+</p>
+<p>配置<code>/etc/prometheus/prometheus.yaml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e"># my global config</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#f92672">global</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#75715e"># 拉取target的默认时间间隔</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  <span style="color:#f92672">scrape_interval</span>:     <span style="color:#ae81ff">15s</span> <span style="color:#75715e"># Set the scrape interval to every 15 seconds. Default is every 1 minute.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  <span style="color:#f92672">evaluation_interval</span>: <span style="color:#ae81ff">15s</span> <span style="color:#75715e"># Evaluate rules every 15 seconds. The default is every 1 minute. 执行Rule的时间间隔</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  <span style="color:#75715e"># scrape_timeout is set to the global default (10s). 拉取超时时间</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#75715e"># Alertmanager configuration</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#f92672">alerting</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  <span style="color:#f92672">alertmanagers</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  - <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    - <span style="color:#f92672">targets</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    	<span style="color:#75715e"># AlertManager ip:port  可以配置多个</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>      <span style="color:#75715e"># - alertmanager:9093  </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#75715e"># Load rules once and periodically evaluate them according to the global &#39;evaluation_interval&#39;.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#f92672">rule_files</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>  <span style="color:#75715e"># - &#34;first_rules.yml&#34;   # 规则配置文件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>  <span style="color:#75715e"># - &#34;second_rules.yml&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#75715e"># A scrape configuration containing exactly one endpoint to scrape:</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span><span style="color:#75715e"># Here it&#39;s Prometheus itself.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#f92672">scrape_configs</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>  <span style="color:#75715e"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;prometheus&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#75715e"># metrics_path defaults to &#39;/metrics&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    <span style="color:#75715e"># scheme defaults to &#39;http&#39;.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    - <span style="color:#f92672">targets</span>: [<span style="color:#e6db74">&#39;localhost:9090&#39;</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;pushgateway&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#75715e"># metrics_path defaults to &#39;/metrics&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>    <span style="color:#75715e"># scheme defaults to &#39;http&#39;.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>    - <span style="color:#f92672">targets</span>: [<span style="color:#e6db74">&#39;10.x.x.115:9091&#39;</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>  - <span style="color:#f92672">job_name</span>: <span style="color:#e6db74">&#39;alertmanager&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>    <span style="color:#75715e"># metrics_path defaults to &#39;/metrics&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>    <span style="color:#75715e"># scheme defaults to &#39;http&#39;.</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>    <span style="color:#f92672">static_configs</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>    - <span style="color:#f92672">targets</span>: [<span style="color:#e6db74">&#39;10.x.x.115:9093&#39;</span>]
+</span></span></code></pre></div><h3 id="pushgateway">PushGateway</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>docker pull prom/pushgateway
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>docker run -d --restart<span style="color:#f92672">=</span>always --name pushgateway -p 9091:9091 prom/pushgateway
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210518175951312.png" alt="image-20210518175951312" />
+
+
+
+</p>
+</p>
+<h3 id="alertmanager">AlertManager</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>docker run -d --restart<span style="color:#f92672">=</span>always --name alertmanager -p 9093:9093 prom/alertmanager
+</span></span></code></pre></div><p>配置</p>
+<p><strong>WebHook  Test</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">import</span> SimpleHTTPServer
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#f92672">import</span> SocketServer
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>PORT <span style="color:#f92672">=</span> <span style="color:#ae81ff">5001</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ServerHandler</span>(SimpleHTTPServer<span style="color:#f92672">.</span>SimpleHTTPRequestHandler):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">do_POST</span>(self):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>      content_len <span style="color:#f92672">=</span> int(self<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>getheader(<span style="color:#e6db74">&#39;content-length&#39;</span>, <span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>      post_body <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>rfile<span style="color:#f92672">.</span>read(content_len)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>      print post_body
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>      self<span style="color:#f92672">.</span>send_response(<span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>      self<span style="color:#f92672">.</span>end_headers()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>Handler <span style="color:#f92672">=</span> ServerHandler
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>httpd <span style="color:#f92672">=</span> SocketServer<span style="color:#f92672">.</span>TCPServer((<span style="color:#e6db74">&#34;&#34;</span>, PORT), Handler)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>print <span style="color:#e6db74">&#34;serving at port&#34;</span>, PORT
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>httpd<span style="color:#f92672">.</span>serve_forever()
+</span></span></code></pre></div><h2 id="prom-metric类型">Prom Metric类型</h2>
+<h3 id="counter">Counter</h3>
+<p><strong>只增不减，计数器</strong></p>
+<p>Counter类型的指标相当于一个计数器，只增不减。除非Prome重启，将重新计数。例如：<code>http_request_total</code>。</p>
+<p>例如：<code>node_cpu_seconds_total{cpu=&quot;0&quot;,mode=&quot;system&quot;}</code></p>
+<p><strong>原始指标</strong></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520011848650.png" alt="image-20210520011848650" />
+
+
+
+</p>
+</p>
+<p><strong><code>rate()</code>获取增长率</strong></p>
+<p>rate始终大于0</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520012137113.png" alt="image-20210520012137113" />
+
+
+
+</p>
+</p>
+<p><strong><code>topk()</code> 获取top k数据</strong></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520012542067.png" alt="image-20210520012542067" />
+
+
+
+</p>
+</p>
+<blockquote>
+<p>A <em>counter</em> is a cumulative metric that represents a single <a href="https://en.wikipedia.org/wiki/Monotonic_function" target="_blank">monotonically increasing counter</a> whose value can only increase or be reset to zero on restart. For example, you can use a counter to represent the number of requests served, tasks completed, or errors.</p>
+</blockquote>
+<h3 id="gauge">Gauge</h3>
+<p>Gauge 相当于一个仪表盘，可增可减，是一个瞬时值。 例如：node_memory_MemFree（主机当前空闲的内容大小）、node_memory_MemAvailable（可用内存大小）都是Gauge类型的监控指标。</p>
+<blockquote>
+<p>A <em>gauge</em> is a metric that represents a single numerical value that can arbitrarily go up and down.</p>
+<p>Gauges are typically used for measured values like temperatures or current memory usage, but also &ldquo;counts&rdquo; that can go up and down, like the number of concurrent requests.</p>
+</blockquote>
+<p>原始指标</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520013324083.png" alt="image-20210520013324083" />
+
+
+
+</p>
+</p>
+<p><strong><code>delta()</code> 在一定时间内的差异</strong></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520013449254.png" alt="image-20210520013449254" />
+
+
+
+</p>
+</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520013634932.png" alt="image-20210520013634932" />
+
+
+
+</p>
+</p>
+<p><code>deriv()</code>计算样本线性回归模型</p>
+<p><code>predict_linear(node_memory_MemFree_bytes[10h], 4*3600)</code> 预测未来4h的指标情况</p>
+<h3 id="histogram--summary">Histogram &amp; Summary</h3>
+<p>柱状图，用于观察结果采样，分组及统计。例如： 请求持续时间。是对一段时间内的数据进行采样，并能够对其指定区间以及总数进行统计。需要<strong>根据区间计算</strong>。</p>
+<p>Histogram指标直接反应了在不同区间内样本的个数，区间通过标签len进行定义。</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210523194755641.png" alt="image-20210523194755641" />
+
+
+
+</p>
+</p>
+<blockquote>
+<p><strong>长尾问题</strong></p>
+<p>如果大多数API请求都维持在100ms的响应时间范围内，而个别请求的响应时间需要5s，那么就会导致某些WEB页面的响应时间落到中位数的情况，而这种现象被称为长尾问题。</p>
+<p>为了区分是平均的慢还是长尾的慢，最简单的方式就是按照请求延迟的范围进行分组。例如，统计延迟在0~10ms之间的请求数有多少而10~20ms之间的请求数又有多少。通过这种方式可以快速分析系统慢的原因。Histogram和Summary都是为了能够解决这样问题的存在，通过Histogram和Summary类型的监控指标，我们可以快速了解监控样本的分布情况。</p>
+</blockquote>
+<h3 id="heading"></h3>
+<p>类似Histogram, 用于表示一段时间内的数据采样结果，不是临时算出来的，结果早已存储。</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210523194428037.png" alt="image-20210523194428037" />
+
+
+
+</p>
+</p>
+<p>数据存入Prome</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520011143434.png" alt="image-20210520011143434" />
+
+
+
+</p>
+</p>
+<blockquote>
+<p>存入Prom的点会自动添加Instance&amp;job 两个tag</p>
+<p>实际打点
+<p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20210520011239384.png" alt="image-20210520011239384" />
+
+
+
+</p>
+
+数据存入Prom后会自动加上 <code>instance</code> &amp; <code>job</code> 两个tag</p>
+</blockquote>
+<p><a href="https://pkg.go.dev/github.com/prometheus/client_golang/prometheus#Counter" target="_blank">Golib</a></p>
+<h2 id="promql">PromQL</h2>
+<p>PromQL是Prom的数据查询<code>DSL(Domain Specified Language)</code>语言。</p>
+<p><strong>结果类型：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Desc</th>
+<th>Demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>瞬时数据（Instant Vector）</td>
+<td>包含一组TimeSeries，每个时序只有一个点</td>
+<td><code>http_request_total</code></td>
+</tr>
+<tr>
+<td>区间数据（Range Vector）</td>
+<td>包含一组TimeSeries, 每个时序有多个点</td>
+<td><code>http_request_total[5m]</code></td>
+</tr>
+<tr>
+<td>纯量数据（Scalar）</td>
+<td>只有一个数据，没有Time Series</td>
+<td><code>count(http_request_total)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>查询方式</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>logback_events_total<span style="color:#f92672">{</span>level<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;info&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>查询支持正则匹配</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>http_request_total<span style="color:#f92672">{</span>code!<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span><span style="color:#f92672">}</span>  <span style="color:#75715e"># code != 200</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>http_request_total<span style="color:#f92672">{</span>code<span style="color:#f92672">=</span>~<span style="color:#e6db74">&#34;2..&#34;</span><span style="color:#f92672">}</span>  <span style="color:#75715e"># code = 2xx</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>http_request_total<span style="color:#f92672">{</span>code!~<span style="color:#e6db74">&#34;2..&#34;</span><span style="color:#f92672">}</span>  <span style="color:#75715e"># code != 2xx</span>
+</span></span></code></pre></div><p>其他查询</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># 取整</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>floor<span style="color:#f92672">(</span>avg<span style="color:#f92672">(</span>http_request_total<span style="color:#f92672">{</span>code<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span><span style="color:#f92672">}))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>ceil<span style="color:#f92672">(</span>avg<span style="color:#f92672">(</span>http_request_total<span style="color:#f92672">{</span>code<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;200&#34;</span><span style="color:#f92672">}))</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"># 查看每秒数据</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>rate<span style="color:#f92672">(</span>http_request_total<span style="color:#f92672">[</span>5m<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#75715e">#模糊查询： level=&#34;inxx</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>logback_events_total<span style="color:#f92672">{</span>level<span style="color:#f92672">=</span>~<span style="color:#e6db74">&#34;in..&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>logback_events_total<span style="color:#f92672">{</span>level<span style="color:#f92672">=</span>~<span style="color:#e6db74">&#34;in.*&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>聚合查询：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e"># count</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>count<span style="color:#f92672">(</span>logback_event_total<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"># sum</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>sum<span style="color:#f92672">(</span>logback_event_total<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e"># avg</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>avg<span style="color:#f92672">(</span>logback_event_total<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"># topk</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>topk<span style="color:#f92672">(</span>2, logback_events_total<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"># irate  如查询过去5分钟的平均值 </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>irate<span style="color:#f92672">(</span> logback_events_total<span style="color:#f92672">[</span>5m<span style="color:#f92672">])</span>
+</span></span></code></pre></div><h2 id="heading-1"></h2>
+<h2 id="参考文档">参考文档</h2>
+<p><a href="https://www.jianshu.com/p/93c840025f01" target="_blank">https://www.jianshu.com/p/93c840025f01</a></p>
+<p><a href="https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/promql/prometheus-promql-operators-v2" target="_blank">https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/promql/prometheus-promql-operators-v2</a></p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/component/TimeSeries/Prometheus/prom.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+    
+    
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+    <div class="col-md-6 previous-article">
+      <a href="/component/TimeSeries/" title="TSDB" class="btn btn-outline-info">
+        <div><i class="fas fa-chevron-circle-left"></i> Prev</div>
+        <div class="next-prev-text">TSDB</div>
+      </a>
+    </div>
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prom-intro">Prom Intro</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#时序数据模型-time-series-data-model">时序数据模型 Time Series Data Model</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#component">Component</a>
+      <ul>
+        <li><a href="#prometheus">Prometheus</a></li>
+        <li><a href="#pushgateway">PushGateway</a></li>
+        <li><a href="#alertmanager">AlertManager</a></li>
+      </ul>
+    </li>
+    <li><a href="#prom-metric类型">Prom Metric类型</a>
+      <ul>
+        <li><a href="#counter">Counter</a></li>
+        <li><a href="#gauge">Gauge</a></li>
+        <li><a href="#histogram--summary">Histogram &amp; Summary</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+    <li><a href="#promql">PromQL</a></li>
+    <li><a href="#heading-1"></a></li>
+    <li><a href="#参考文档">参考文档</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

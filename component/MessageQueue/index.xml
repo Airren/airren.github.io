@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MessageQueue on ByteGopher</title>
+    <link>https://airren.github.io/component/MessageQueue/</link>
+    <description>Recent content in MessageQueue on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 11:02:05 +0800</lastBuildDate><atom:link href="https://airren.github.io/component/MessageQueue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「Kafka」Kafka安装</title>
+      <link>https://airren.github.io/component/MessageQueue/kafka_install/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/component/MessageQueue/kafka_install/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
