@@ -134,7 +134,7 @@ sudo netplan apply
 
 今天在Build Docker image的时候发现`sgx-sdk-demo`的base images是`ubuntu:bionic`, 然后设置的apt source list 也是`"....intel-sgx/sgx_repo/ubuntu focal main"`。同时 docker image `ubunt:18.04` 和 `ubuntu:bionic` 的Image ID 是完全相同的，猜测 bionic 应该是 ubuntu:18.04 的别名。于是查了[Ubuntu 的release Note](https://wiki.ubuntu.com/Releases) 果真如此。
 
-## update ubuntu linux kernel
+## update the ubuntu Linux kernel
 
 ```sh
 apt-cache search linux-image

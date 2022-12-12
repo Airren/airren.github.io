@@ -1,5 +1,6 @@
 ---
-title: Mac Init
+title: Mac Dev Environment
+date: 2021-2-12T13:41:16+08:00
 ---
 
 
@@ -12,44 +13,65 @@ title: Mac Init
 
 ```sh
 brew install wget 
-
 brew install go
+```
+
+## Oh-my-zsh
+
+```sh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+# sudo chsh -s $(which zsh)
+```
+
+## Modify Keys
+
+settings -> Keyboard -> modifyKeys 
+
+```sh
+Caplock -> Command
 ```
 
 
 
 ## Software
 
-- Chrome
-- Typora
-- Istat Menus
-- Alfred
+**highly recommended**
+
+- Iterm2
+
+- Alfred 
 - Dash
+- Istat Menus
+- Xnip: for screenshot
 
-
+**Recommend**
 
 - Wireshark
 - Sublime
+- Chrome
+- Typora
 
 
 
-## Modify Keys
+**Others**
 
-settings -> Keyboard -> modifyKeys 
+- alt tab
+- Irvue: for desktop picture
+- Magnet: for window split
+- Cleanmymac
 
 
 
-## Tools
+## Cli Tools
 
 ```sh
-apt install vim git tmux golang
+# tmux
+brew install tmux
+
 ```
 
-
-
-
-
-## Vim 
+## Vim  Config
 
 ```sh
 # ~/.vimrc
@@ -75,25 +97,10 @@ EOF
 
 
 
-## oh my zsh
-
- 
-
-```sh
-sudo apt install zsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
-# sudo chsh -s $(which zsh)
-```
-
-
-
-
-
 ## Golang
 
 ```sh
-sudo apt install golang
+brew install golang
 
 echo '
 GOPATH=~/go
@@ -104,50 +111,11 @@ PATH=$PATH:$GOBIN
 
 
 
-### Proxy 
-
-```sh
-echo 'function proxy_on() {
-    export no_proxy="localhost,127.0.0.1/8,arch,.localdomain.com,10.239.154.51/16"
-
-    local proxy="http://child-prc.intel.com:913"
-    export http_proxy="$proxy" \
-           https_proxy=$proxy \
-           all_proxy=$proxy \
-           ftp_proxy=$proxy \
-           rsync_proxy=$proxy \
-           HTTP_PROXY=$proxy \
-           HTTPS_PROXY=$proxy \
-           FTP_PROXY=$proxy \
-           RSYNC_PROXY=$proxy
-}
-
-function proxy_off(){
-    unset http_proxy https_proxy all_proxy ftp_proxy rsync_proxy \
-          HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY no_proxy
-    echo -e "Proxy environment variable removed."
-}
-
-proxy_on' | tee -a  ~/.bashrc
-
-EOF
-
-# Install zsh
-cat <<EOF | sudo tee /etc/apt/apt.conf.d/proxy.conf
-Acquire::http::Proxy "http://child-prc.intel.com:913";
-Acquire::https::Proxy "http://child-prc.intel.com:913";
-EOF
-```
-
-
-
 ## Font
 
-`hack`
+`hack`: A typeface designed for source code
 
-
-
-
+https://github.com/source-foundry/Hack
 
 ## K8s for zsh
 
@@ -158,19 +126,10 @@ echo 'compdef __start_kubectl k' >>~/.zshrc
 source ~/.zshrc
 ```
 
-
-
-
-
-
-
-## NetWork Tools
+## Network Tools
 
 ```sh
+# for ip command
 brew install iproute2mac
-
-
-
-
 ```
 

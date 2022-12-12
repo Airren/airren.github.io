@@ -26,7 +26,7 @@ Runtime wrapper using runtime classes
 NRI
 
 - custom actions at pod or container creation/stop
-- containerd
+- Containerd
 
 NRI evolution
 

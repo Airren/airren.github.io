@@ -22,7 +22,3 @@ date: 2018-12-29T11:02:05+06:00
 ### 世间美好  与你我环环相扣
 
 ![image-20200827013534941](./married/image-20200827013534941.png)
-
-
-https://themify.me/themify-icons
-https://themes.gohugo.io/dot-hugo-documentation-theme/

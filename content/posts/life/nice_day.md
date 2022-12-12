@@ -2,11 +2,6 @@
 title: '「坚持」 做好每一件事'
 subtitle: ''
 author: Airren
-catalog: true
-header-img: 'image_dusk.jpg'
-tags:
-  - null
-p: life/nice_day
 date: 2020-08-09 02:05:38
 ---
 
