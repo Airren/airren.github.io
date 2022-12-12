@@ -90,9 +90,9 @@ params:
         theme: light
         map: pathname
         reaction: 1
-        # metadata: 0
-        # inputPosition: bottom
-        # crossOrigin: anonymous
+        metadata: 0
+        inputPosition: bottom
+        crossOrigin: anonymous
 
 
   # specify whether you want to show Table of Contents in reading page
