@@ -8,10 +8,10 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 21 Aug 2020 01:37:37 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Http/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>「HTTP」HTTP 9 种请求方式</title>
-      <link>https://airren.github.io/posts/blog/http_request_method/</link>
+      <link>https://airren.github.io/posts/blog/http_introducton/</link>
       <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/http_request_method/</guid>
+      <guid>https://airren.github.io/posts/blog/http_introducton/</guid>
       <description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
 HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
 HTTP特点：

@@ -320,59 +320,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/tips/goland/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「JetBrains」 GoLand技巧</h5>
-        <p class="card-text post-summary">自动补齐json Format 通过SFTP同步本地与远端代码 Preference&gt;Build,Execution,Deployment&gt;SFTP
-Go 远程Debug https://github.com/derekparker/delve</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/tips/goland/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/cloudnative/Kubernates/KubernatesInstall/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「K8s」Kubernates 安装</h5>
-        <p class="card-text post-summary">环境准备 K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐Canonical家的Multipass了，Canonical 是谁，当然是Ubuntu的母公司了。
-安装 kubelet kubeadm kubectl 官方文档
-1sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl 2curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 3cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list 4deb https://apt.kubernetes.io/ kubernetes-xenial main 5EOF 6sudo apt-get update 7sudo apt-get install -y kubelet kubeadm kubectl 8sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新 初始化 1swapoff -a 2kubeadm init ctl 3# kubeadm config images pull --v=10 4 # 国内正常网络不能从k8s.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/cloudnative/Kubernates/KubernatesInstall/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/DataStruct/LeetCode/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -654,6 +601,61 @@ Notation
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/tips/ssh_stuck/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/TimeSeries/telegraph/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Telegraf」 Telegraf</h5>
+        <p class="card-text post-summary"> Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs.
+Install
+1docker run -d --name telegraf --net=container:influxdb telegraf </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/component/TimeSeries/telegraph/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/tmux/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「tmux」虚拟终端</h5>
+        <p class="card-text post-summary">​	当使用ssh 连接一台远程计算机的时候，如果此时正在执行一个进程，突然断网了，那么这个进程也会被迫中断了。当重新ssh连接到这台远程计算机的时候，已经找不到之前正在执行的进程了。因为上一次连接的会话(Session)已经终止， 这次的重新连接又新建了一个会话。如果你遇到过这种问题你就会发现： 会话和进程是绑定的，会话终止，当前正在执行的进程也会终止。
+​	为了解决上述问题，你可以尝试使用下Tmux。
+安装及基本使用 1# 安装在需要远程连接的远程服务器上 2apt install tmux 1# 新建 2tmux new -s &lt;session name&gt; 3 4# 切换到某个session 5tmux attach -t &lt;session name&gt; 6 7# 退出某个session，依旧保留进程 8tmux detach 9 10# 分隔窗口 11tmux split-window 12tmux split-window -h # 水平分隔 13 14# 切换窗口 【Ctrl】+【b】 然后按下 【；】 快捷键 前缀键 【Ctrl】+【b】。先按下前缀键后，在使用功能键。
+copy-mode use vi shortcuts 1cat &lt;&lt;EOF | tee -a ~/.tmux.conf 2setw -g mode-keys vi 3set -g @plugin &#39;tmux-plugins/tpm&#39; 4set -g @plugin &#39;tmux-plugins/tmux-sensible&#39; 5set -g @plugin &#39;tmux-plugins/tmux-resurrect&#39; 6 7run &#39;~/.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/tmux/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

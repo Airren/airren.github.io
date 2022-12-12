@@ -320,39 +320,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/kubernetes/k8s_ops_network/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">K8s network</h5>
-        <p class="card-text post-summary">容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
-这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
-容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
-1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
-这个时候，就会出现一个问题，在这个被隔离的容器进程中如何与其他的Network Namespace里的容器进程进行交互呢。
-一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
-在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
-为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
-接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/kubernetes/k8s_ops_network/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/cloudnative/Kubernates/1-k8s-overview/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -524,35 +491,6 @@ Packaging: The Challenge While Kubernetes defines resources with manifest, typic
       
         
           <div class="post-card">
-  <a href="/posts/blog/5_kube_config/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Kube Config 控制多个集群</h5>
-        <p class="card-text post-summary">https://www.cnblogs.com/zhaobowen/p/13963343.html
-https://zhuanlan.zhihu.com/p/169746514
-https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
-https://juejin.cn/post/6968129599070797837
-1export KUBECONFIG git blame</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/5_kube_config/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/cloudnative/Kubernates/2-k8s-pod/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -693,6 +631,58 @@ service代理Pod的外部端口为32280， 通过k8s集群的IP，可以进行 �
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/cloudnative/Kubernates/3-k8s-service/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_command/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux Network Command</h5>
+        <p class="card-text post-summary">nc Netcat(or nc) is a command-line utility that reads and write data across network connections, using the TCP or UDP protocols. It is one of the most powerful tools in the network and system administrators arsenal, and it as considered as a Swiss army knife of networking tools.
+Netcat is cross-platform, and it&rsquo;s available for Linux, macOS, Windows , and BSD. You can use Netcat to debug and monitor network connections, scan for open ports, transfer data, as a proxy and more.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_command/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/linux_socket/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux socket</h5>
+        <p class="card-text post-summary">Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
+1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/linux_socket/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

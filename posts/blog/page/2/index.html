@@ -296,59 +296,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/blog/docker_dockerfile/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Dockerfile</h5>
-        <p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
-1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
-组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
-1FROM ubuntu:trusty 2ENTRYPOINT [&#34;/bin/ping&#34;,&#34;-c&#34;,&#34;3&#34;] 3CMD [&#34;localhost&#34;] docker 会把CMD的命令拼接到Entrypoint之后</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/docker_dockerfile/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/project_go/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">How to Create a go project for Cloud Native</h5>
-        <p class="card-text post-summary">Dockerfile Use Makefile to compiling and buid docker images </p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/project_go/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -376,6 +323,49 @@ A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-
       
         
           <div class="post-card">
+  <a href="/posts/blog/3_intel_sgx/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Intel SGX</h5>
+        <p class="card-text post-summary">概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
+https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
+Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
+机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
+intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
+常用应用有密钥，专有算法，生物识别数据和CSR生成等。
+程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
+上图中的流程
+Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
+认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
+Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
+应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
+Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
+Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
+Set up SGX develop environment Install SGX driver
+Install SGX SDK
+Install SGX PSW
+直接按照官方文档依次安装上述3个组件
+Sample Enclave Demo 1############# SGX SDK Setting 2# 编译平台和模式配置 3 4############## APP Setting 5# 主要是指定 6# App_Cpp_Files 需要编译的cpp文件 7# App_Include_Paths 包含目录 8# App_Cpp_Objects 输出 9 10############### Enclave setting 11# Enclave_Cpp_Files 12# Enclave_Include_Paths 13# Enclave_Cpp_Objects 14 15# eld 编译配置 16################ App Object 17################ Enclave Object Enclave 相关开发流程 使用edl文件定义不可信app和enclave之间的接口 实现app和enclave函数 编译 app 和enclave。编译中 Edger8r生成可信和不可信的代理/桥函数，Enclave签名工具生成enclave的metadata和签名 在模拟和硬件模式下运行和调试app，详细看debug enclave的内容 准备发布app 和enclave 编写Enclave函数 在app角度，使用不可信代理函数调用enclave函数(ECALL)跟调用其他函数没有区别。Enclave函数只是有些显示的c/c++函数。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/3_intel_sgx/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/blog/4_istio_multicluster/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -391,35 +381,6 @@ Multicluster .global Stub Domain Deprecation As part of this release, Istio has 
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/4_istio_multicluster/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/5_kube_config/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Kube Config 控制多个集群</h5>
-        <p class="card-text post-summary">https://www.cnblogs.com/zhaobowen/p/13963343.html
-https://zhuanlan.zhihu.com/p/169746514
-https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
-https://juejin.cn/post/6968129599070797837
-1export KUBECONFIG git blame</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/5_kube_config/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -483,31 +444,6 @@ Submariner Submariner allows pods to directly communicate between Kubernetes clu
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/multi-cluster/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/OAuth/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">OAuth 2.0</h5>
-        <p class="card-text post-summary">OAuth 2.0 </p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/OAuth/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -646,6 +582,95 @@ Ubuntu Set up IPsec Tunnel 1docker run --rm -d -i --network host --name cnf --us
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/2_strongswan/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/2_strongwan_NAT_travalse/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">StrongWAN configure with CNF.</h5>
+        <p class="card-text post-summary">Download the material
+1wget -r -N -nd http://sdewan.sh.intel.com:8888/ipsec-demo/ modify the node selector in cnf-1.yaml and cnf-2.yaml respectively. Create 2 pod on different node with host network.
+1 nodeSelector: 2 # change to the specific node 3 kubernetes.io/hostname: node Copy cert to the CNF Pod.
+Find the container id for cnf-1 and cnf-2.
+1# For cnf-1, copy sunCert to it 2docker cp ./cert/caCert.pem $(kubectl describe po cnf-1|grep docker:|awk -F / &#39;{print $3}&#39;):/etc/ipsec.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/2_strongwan_NAT_travalse/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/Linux_init/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Unix Init</h5>
+        <p class="card-text post-summary">Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &lt;&lt;EOF | tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &lt;ESC&gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&#34; show existing tab with 4 spaces width 13set tabstop=4 14&#34; when indenting with &#39;&gt;&#39;, use 4 spaces width 15set shiftwidth=4 16&#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install -y zsh 2sh -c &#34;$(wget https://raw.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/Linux_init/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/Book_WillPower/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">自控力</h5>
+        <p class="card-text post-summary">自控力
+The WillPower Instinct
+“意志力学科”这门课汇集了心理学、经济学、神经学、医学领域关于自控的最新洞见，告诉人们如何改变旧习惯，培养健康的新习惯、克服拖延、抓住重点、管理压力。阐述了为何人们会在诱惑前屈服，以及怎样才能抵挡住诱惑。此外，它还提出了理解自控局限的重要性，以及培养意志力的最佳决策。
+对于意志力科学的理解有助于培养自控力，让人们更有精力追逐最重要的东西。自控的策略有助于人们抵制各种各样的诱惑。
+为了成功做到自控，你必须知道自己为何失败 提高自控力的最有效途径在于，弄清自己如何失控、为何失控。意识到自己有多容易失控，并非意味着你是一个失败者。恰恰相反，这将有助于你避开意志力失效的陷阱。研究表明，自诩为意志坚定的人反而最容易在诱惑面前失控。因为他们无法预测自己在何时何地、会由于何种原因失控。他们在面对挫折时更容易吃惊，在陷入困境时更容易放弃。
+自知之明是自控的基础。认识到自己意志力存在问题，则是自控的关键。
+当我们屈从于诱惑或者拖着不该做的事时，是什么拖了我们的后腿？是哪些致命的错误？更重要的是，我们如何寻找机会，避免来犯同样的错误。我们怎样从失败中汲取经验，为成功铺平道路？
+这些行为虽不完美，却是人之常态。每个人都在以某种方式抵制诱惑、癖好、干扰和拖延。这不是个体的弱点或个人的不足，而是普遍的经验，是人所共有的状态。
+理论固然好，但是数据更重要。
+沉迷于电视剧不能自拔
+总是幻想或者希望自己和主角处于同样的状态，同样可以随心所欲的处理各种困境。更不想进一步打破自己的幻想，不想回归现实。可事实却是，越沉浸于其中，却又距离故事中的主角远了一步。这个世界上有太多看不完的故事，不是每个故事都需要去读，选择重要的，选择真正有意义，有营养的文化饕餮。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/Book_WillPower/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

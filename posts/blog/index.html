@@ -328,6 +328,39 @@ Official Document
       
         
           <div class="post-card">
+  <a href="/posts/blog/cloudnative_nri/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Cpu 调度管理的现状与限制</h5>
+        <p class="card-text post-summary">History and Background
+Various extension mechanisms over the years
+OCI hooks
+custom actions executed at various container lifecycle events runc , cri-o ? Runtime wrapper using runtime classes
+Custom actions implemented by custom runtime wrapper a bit of kludge runc/crun/etc.. containers/cri-o NRI
+custom actions at pod or container creation/stop containerd NRI evolution
+Subject of this presentation? What is NRI
+NRI: Node resource interface, a common framework for
+Plugging extensionsinto OCI-compatible runtimes</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">December 12, 2022</span>
+        <a
+        href="/posts/blog/cloudnative_nri/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/blog/raft/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -356,7 +389,7 @@ https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p>
       
         
           <div class="post-card">
-  <a href="/posts/blog/http_request_method/" class="post-card-link">
+  <a href="/posts/blog/http_introducton/" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
@@ -377,7 +410,7 @@ Web-Browser &lt;===&gt; HTTP Server &lt;===&gt; CGI(Common GateWay Interface) Pr
       <div class="card-footer">
         <span class="float-left">August 21, 2020</span>
         <a
-        href="/posts/blog/http_request_method/"
+        href="/posts/blog/http_introducton/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -466,119 +499,6 @@ command
         <span class="float-left">July 31, 2020</span>
         <a
         href="/posts/blog/vim_tips/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/1_cryptography/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
-HTTPS 非对称加密+对称加密
-mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
-加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
-公钥加密，私钥解密
-数字签名 Bob 给Alice发送的文件需要携带数字签名。
-Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
-Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
-数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
-比特币其实就是数字签名
-X.509 数字证书 证书版本信息
-证书的序列号，每个证书都有一个唯一的证书序列号
-证书所使用的签名算法；
-证书的发行机构名称，命名规则一般采用X.500格式；
-证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
-证书所有人的名称，命名规则一般采用X.500格式；
-证书所有人的公开密钥；
-证书发行者对证书的签名；
-Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/1_cryptography/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/3_intel_sgx/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">SGX
-概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
-https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
-Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
-机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
-intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
-常用应用有密钥，专有算法，生物识别数据和CSR生成等。
-程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
-上图中的流程
-Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
-认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
-Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
-应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
-Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
-Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
-Set up SGX develop environment Install SGX driver
-Install SGX SDK
-Install SGX PSW
-直接按照官方文档依次安装上述3个组件</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/3_intel_sgx/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/crypto_openvpn/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
-https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/crypto_openvpn/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -687,6 +607,78 @@ RPC 远程调用/ Gateway 负载均衡-&gt; 服务与IP映射 facade pattern ：
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/openwrt_cross_compile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/1_cryptography/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Cryptography</h5>
+        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
+HTTPS 非对称加密+对称加密
+mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
+加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
+公钥加密，私钥解密
+数字签名 Bob 给Alice发送的文件需要携带数字签名。
+Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
+Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
+数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
+比特币其实就是数字签名
+X.509 数字证书 证书版本信息
+证书的序列号，每个证书都有一个唯一的证书序列号
+证书所使用的签名算法；
+证书的发行机构名称，命名规则一般采用X.500格式；
+证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
+证书所有人的名称，命名规则一般采用X.500格式；
+证书所有人的公开密钥；
+证书发行者对证书的签名；
+Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
+1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/1_cryptography/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/docker_dockerfile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Dockerfile</h5>
+        <p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
+1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
+组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
+1FROM ubuntu:trusty 2ENTRYPOINT [&#34;/bin/ping&#34;,&#34;-c&#34;,&#34;3&#34;] 3CMD [&#34;localhost&#34;] docker 会把CMD的命令拼接到Entrypoint之后</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/docker_dockerfile/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

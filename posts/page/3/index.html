@@ -320,6 +320,33 @@
       
         
           <div class="post-card">
+  <a href="/posts/note_go/5.3go_time/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」时间</h5>
+        <p class="card-text post-summary">UNIX 时间戳 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
+类型 位数 Timestamp Time 秒级 10 1596646807 2020-08-06 01:00:07 毫秒级 13 1596646807000 2020-08-06 01:00:07 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）
+是从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 6, 2020</span>
+        <a
+        href="/posts/note_go/5.3go_time/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/blog/https_tips/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -492,119 +519,6 @@ https://www.cnblogs.com/frank2015/p/9554180.html</p>
       
         
           <div class="post-card">
-  <a href="/posts/blog/1_cryptography/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
-HTTPS 非对称加密+对称加密
-mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
-加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
-公钥加密，私钥解密
-数字签名 Bob 给Alice发送的文件需要携带数字签名。
-Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
-Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
-数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
-比特币其实就是数字签名
-X.509 数字证书 证书版本信息
-证书的序列号，每个证书都有一个唯一的证书序列号
-证书所使用的签名算法；
-证书的发行机构名称，命名规则一般采用X.500格式；
-证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
-证书所有人的名称，命名规则一般采用X.500格式；
-证书所有人的公开密钥；
-证书发行者对证书的签名；
-Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/1_cryptography/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/3_intel_sgx/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">SGX
-概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
-https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
-Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
-机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
-intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
-常用应用有密钥，专有算法，生物识别数据和CSR生成等。
-程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
-上图中的流程
-Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
-认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
-Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
-应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
-Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
-Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
-Set up SGX develop environment Install SGX driver
-Install SGX SDK
-Install SGX PSW
-直接按照官方文档依次安装上述3个组件</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/3_intel_sgx/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/crypto_openvpn/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
-https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/crypto_openvpn/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/blog/multipass_network/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -729,6 +643,90 @@ mark route base VPN</p>
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/cloudnative/Kubernates/k8s-Istio-Envoy/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/curl/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/curl/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/iptables/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">TCP 的有限状态机
+CLOSED CLOSED
+SYN_SENT LISTENING
+​ SYN_RECEIVED
+ESTABLISHED ESTABLISHED
+netfilter: Frame
+iptables: 数据报文过滤
+防火墙： 硬件/软件
+规则： 匹配标准和处理办法
+默认规则：
+​ 关闭
+匹配标准：
+IP:源IP， 目标IP
+TCP: SPORT, DPORT SYN=1,FIN=0,RST=0,ACK=0
+UDP:SPORT, DPORT
+ICMP: icmp-type
+规则在内核空间
+内核空间的TCPIP的协议栈上，开放给用户空间中的iptables API。
+内核空间的工作框架：
+用户空间的管理工具： system call
+参考 openBSD
+Linux 2.0：ipfw/firewall
+Linux 2.2： ipchain/firewall Linux 2.4 ： iptables/netfilter
+1：07
+1/proc/sys/net/ipv4/ip_forward 路由决策发生在数据包到达网卡， 送到TCPIP协议栈上的那一刻。 然后先发生路由决策
+netfilter 补充在tcp ip协议上的3个hook function。
+多个规则，自上而下，逐个检查，
+不做拒绝或者放行策略
+4： 刚刚进入本机网卡，还没有到达路由表。（地址转换k&rsquo;k）
+5： 即将离开本机的时候，路由决策做出之后。
+规则链
+PREROUTING
+INPUT
+FORWARD
+OUTPUT</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/iptables/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

@@ -320,33 +320,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/note_go/0_go_compile/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Go compile</h5>
-        <p class="card-text post-summary">n
-https://zhuanlan.zhihu.com/p/343562661
-https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/note_go/0_go_compile/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/note_go/1_SettingUpGoEnv/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -382,31 +355,6 @@ Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管�
       
         
           <div class="post-card">
-  <a href="/posts/blog/project_go/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">How to Create a go project for Cloud Native</h5>
-        <p class="card-text post-summary">Dockerfile Use Makefile to compiling and buid docker images </p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/project_go/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -422,6 +370,49 @@ A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/intel_spx_AMX/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/3_intel_sgx/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Intel SGX</h5>
+        <p class="card-text post-summary">概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
+https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
+Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
+机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
+intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
+常用应用有密钥，专有算法，生物识别数据和CSR生成等。
+程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
+上图中的流程
+Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
+认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
+Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
+应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
+Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
+Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
+Set up SGX develop environment Install SGX driver
+Install SGX SDK
+Install SGX PSW
+直接按照官方文档依次安装上述3个组件
+Sample Enclave Demo 1############# SGX SDK Setting 2# 编译平台和模式配置 3 4############## APP Setting 5# 主要是指定 6# App_Cpp_Files 需要编译的cpp文件 7# App_Include_Paths 包含目录 8# App_Cpp_Objects 输出 9 10############### Enclave setting 11# Enclave_Cpp_Files 12# Enclave_Include_Paths 13# Enclave_Cpp_Objects 14 15# eld 编译配置 16################ App Object 17################ Enclave Object Enclave 相关开发流程 使用edl文件定义不可信app和enclave之间的接口 实现app和enclave函数 编译 app 和enclave。编译中 Edger8r生成可信和不可信的代理/桥函数，Enclave签名工具生成enclave的metadata和签名 在模拟和硬件模式下运行和调试app，详细看debug enclave的内容 准备发布app 和enclave 编写Enclave函数 在app角度，使用不可信代理函数调用enclave函数(ECALL)跟调用其他函数没有区别。Enclave函数只是有些显示的c/c++函数。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/3_intel_sgx/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -675,6 +666,39 @@ CronJob 定时任务， CronJob就是在Job的基础上加上了周期定义的A
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/cloudnative/Kubernates/6-k8s-job/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_ops_network/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s network</h5>
+        <p class="card-text post-summary">容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
+这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
+容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
+1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
+这个时候，就会出现一个问题，在这个被隔离的容器进程中如何与其他的Network Namespace里的容器进程进行交互呢。
+一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
+在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
+为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
+接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_ops_network/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

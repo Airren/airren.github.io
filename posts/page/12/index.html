@@ -320,78 +320,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/note_go/99_jike_go_note/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">软件开发的新挑战
-多核硬件架构
-超大规模分布式计算集群
-web模式下导致的前所未有的规模和更新速度
-区块链开发语言，
-Kubernetes
-Docker
-只有25个关键字
-有垃圾回收机制，但是仍然可以直接使用指针访问内存
-CSP并发机制
-关键字
-c 37
-c++ 11 84
-go 25
-go 垃圾回收，使用指针直接内存访问.
-复合和继承
-docker kubernetes
-go 默认使用静态连接，编译完成是一个独立的二进制
-1package main // package name 2 3import &#34;fmt&#34; // dependence 4 5// functionality 6func main() { 7	fmt.Print(&#34;hello world \n&#34;) 8} 应用程序入口，
-必须是main包 package main 必须是main方法 func main() 文件名不一定是main.go package 的名字不需要与目录保持一致
-退出返回值
-与其他主要编程语言的差异
-Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;os&#34; 6) 7 8func main() { 9	fmt.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/note_go/99_jike_go_note/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/note_go/base/string_operate/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">1package dal 2 3import &#34;testing&#34; 4 5func Empty() { 6	str := &#34;12312&#34; 7	if str == &#34;&#34; { 8 9	} 10} 11func Lenzero() { 12	str := &#34;&#34; 13	if len(str) == 0 { 14 15	} 16} 17func BenchmarkEmpty(b *testing.B) { 18	for n := 0; n &lt; b.N; n++ { 19	Empty() 20	} 21} 22 23func BenchmarkLenzero(b *testing.B) { 24	for n := 0; n &lt; b.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/note_go/base/string_operate/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/Plan/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -714,6 +642,66 @@ PDD
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/interview/daily/TaskList/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/dock_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Docker」 Docker 常用命令</h5>
+        <p class="card-text post-summary">centos 安装docker 把yum包更新到最新
+1yum update 安装需要的软件包
+1yum install -y yum-utils device-mapper-persistent-data lvm2 设置yum源
+1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 查看所有仓库中所有docker版本，并选择特定版本安装
+1yum list docker-ce --showduplicates | sort -r 2 3[root@MiWiFi-R3-srv ~]# yum list docker-ce --showduplicates | sort -r 4 * updates: mirrors.aliyun.com 5Loading mirror speeds from cached hostfile 6Loaded plugins: fastestmirror 7Installed Packages 8 * extras: mirrors.aliyun.com 9docker-ce.x86_64 3:18.09.0-3.el7 docker-ce-stable 10docker-ce.x86_64 18.06.1.ce-3.el7 docker-ce-stable 11docker-ce.x86_64 18.06.1.ce-3.el7 @docker-ce-stable 12docker-ce.x86_64 18.06.0.ce-3.el7 docker-ce-stable 13docker-ce.x86_64 18.03.1.ce-1.el7.centos docker-ce-stable 14docker-ce.x86_64 18.03.0.ce-1.el7.centos docker-ce-stable 15.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/dock_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/docker_net/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Docker」Docker 网络模式</h5>
+        <p class="card-text post-summary">docker run创建容器时候，可以用-net指定容器的网络模式
+1# host 模式 2--net=host 3# container模式 4--net=container:NameorId 5# none模式 6-net=none 7# bridge模式 8-net=bridge host 模式
+如果启动容器的时候使用 host 模式，那么这个容器将不会获得一个独立的 Network Namespace，而是和宿主机共用一个 Network Namespace。容器将不会虚拟出自己的网卡，配置自己的 IP 等，而是使用宿主机的 IP 和端口。
+例如，我们在 10.10.101.105/24 的机器上用 host 模式启动一个含有 web 应用的 Docker 容器，监听 tcp 80 端口。当我们在容器中执行任何类似 ifconfig 命令查看网络环境时，看到的都是宿主机上的信息。而外界访问容器中的应用，则直接使用 10.10.101.105:80 即可，不用任何 NAT 转换，就如直接跑在宿主机中一样。但是，容器的其他方面，如文件系统、进程列表等还是和宿主机隔离的。
+container 模式 这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。
+none模式 这个模式和前两个不同。在这种模式下，Docker 容器拥有自己的 Network Namespace，但是，并不为 Docker容器进行任何网络配置。也就是说，这个 Docker 容器没有网卡、IP、路由等信息。需要我们自己为 Docker 容器添加网卡、配置 IP 等。
+bridge模式 bridge 模式是 Docker 默认的网络设置，此模式会为每一个容器分配 Network Namespace、设置 IP 等，并将一个主机上的 Docker 容器连接到一个虚拟网桥上。当 Docker server 启动时，会在主机上创建一个名为 docker0 的虚拟网桥，此主机上启动的 Docker 容器会连接到这个虚拟网桥上。虚拟网桥的工作方式和物理交换机类似，这样主机上的所有容器就通过交换机连在了一个二层网络中。接下来就要为容器分配 IP 了，Docker 会从 RFC1918 所定义的私有 IP 网段中，选择一个和宿主机不同的IP地址和子网分配给 docker0，连接到 docker0 的容器就从这个子网中选择一个未占用的 IP 使用。如一般 Docker 会使用 172.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/docker_net/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

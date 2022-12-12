@@ -6,7 +6,24 @@
     <description>Recent content on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Mon, 12 Dec 2022 13:41:16 +0800</lastBuildDate><atom:link href="https://airren.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>K8s Cpu 调度管理的现状与限制</title>
+      <link>https://airren.github.io/posts/blog/cloudnative_nri/</link>
+      <pubDate>Mon, 12 Dec 2022 13:41:16 +0800</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/cloudnative_nri/</guid>
+      <description>History and Background
+Various extension mechanisms over the years
+OCI hooks
+custom actions executed at various container lifecycle events runc , cri-o ? Runtime wrapper using runtime classes
+Custom actions implemented by custom runtime wrapper a bit of kludge runc/crun/etc.. containers/cri-o NRI
+custom actions at pod or container creation/stop containerd NRI evolution
+Subject of this presentation? What is NRI
+NRI: Node resource interface, a common framework for
+Plugging extensionsinto OCI-compatible runtimes</description>
+    </item>
+    
+    <item>
       <title>「Raft」 The Raft Consensus Algorithm</title>
       <link>https://airren.github.io/posts/blog/raft/</link>
       <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
@@ -81,10 +98,10 @@ Git 常用操作 配置用户名以及邮箱 设置
     
     <item>
       <title>「HTTP」HTTP 9 种请求方式</title>
-      <link>https://airren.github.io/posts/blog/http_request_method/</link>
+      <link>https://airren.github.io/posts/blog/http_introducton/</link>
       <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/http_request_method/</guid>
+      <guid>https://airren.github.io/posts/blog/http_introducton/</guid>
       <description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
 HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
 HTTP特点：
@@ -411,71 +428,6 @@ command
 CAP永远不可能同时满足，最多只能同时满足两个，提高其中任意两者的同时，必然要牺牲第三者。 所以，好的系统是根据具体应用，来决定如何在三者之间进行取舍。
 ####Consistency 一致性—— 读操作是否总能读到前一个写操作的结果，即是说在分布式环境中，多点读出的数据内容是否相容。 ####Partition Tolerance* 分区容错性——数据的分区特性，对系统性能的影响程度 ####Availiability 可用性——访问数据的性能
 https://www.cnblogs.com/frank2015/p/9554180.html</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://airren.github.io/posts/blog/1_cryptography/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/1_cryptography/</guid>
-      <description>对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
-HTTPS 非对称加密+对称加密
-mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
-加密通信 Alice [Decode message by Alice&amp;rsquo;s private key] &amp;lt;&amp;mdash;- send message &amp;mdash; [message encrypted with Alice&amp;rsquo;s public key] Bob
-公钥加密，私钥解密
-数字签名 Bob 给Alice发送的文件需要携带数字签名。
-Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
-Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
-数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
-比特币其实就是数字签名
-X.509 数字证书 证书版本信息
-证书的序列号，每个证书都有一个唯一的证书序列号
-证书所使用的签名算法；
-证书的发行机构名称，命名规则一般采用X.500格式；
-证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
-证书所有人的名称，命名规则一般采用X.500格式；
-证书所有人的公开密钥；
-证书发行者对证书的签名；
-Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &amp;#39;/O=example Inc.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://airren.github.io/posts/blog/3_intel_sgx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/3_intel_sgx/</guid>
-      <description>SGX
-概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
-https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
-Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
-机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
-intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
-常用应用有密钥，专有算法，生物识别数据和CSR生成等。
-程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
-上图中的流程
-Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
-认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
-Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
-应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
-Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
-Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
-Set up SGX develop environment Install SGX driver
-Install SGX SDK
-Install SGX PSW
-直接按照官方文档依次安装上述3个组件</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://airren.github.io/posts/blog/crypto_openvpn/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/crypto_openvpn/</guid>
-      <description>Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
-https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</description>
     </item>
     
     <item>
@@ -2979,6 +2931,34 @@ How CNI plugin works? A CNI binary Handle connectivity - configures the network 
     </item>
     
     <item>
+      <title>Cryptography</title>
+      <link>https://airren.github.io/posts/blog/1_cryptography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/1_cryptography/</guid>
+      <description>对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
+HTTPS 非对称加密+对称加密
+mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
+加密通信 Alice [Decode message by Alice&amp;rsquo;s private key] &amp;lt;&amp;mdash;- send message &amp;mdash; [message encrypted with Alice&amp;rsquo;s public key] Bob
+公钥加密，私钥解密
+数字签名 Bob 给Alice发送的文件需要携带数字签名。
+Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
+Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
+数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
+比特币其实就是数字签名
+X.509 数字证书 证书版本信息
+证书的序列号，每个证书都有一个唯一的证书序列号
+证书所使用的签名算法；
+证书的发行机构名称，命名规则一般采用X.500格式；
+证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
+证书所有人的名称，命名规则一般采用X.500格式；
+证书所有人的公开密钥；
+证书发行者对证书的签名；
+Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
+1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &amp;#39;/O=example Inc.</description>
+    </item>
+    
+    <item>
       <title>Deploy essential components by Docker</title>
       <link>https://airren.github.io/posts/component/deployment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -3125,15 +3105,6 @@ Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管�
     </item>
     
     <item>
-      <title>How to Create a go project for Cloud Native</title>
-      <link>https://airren.github.io/posts/blog/project_go/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/project_go/</guid>
-      <description>Dockerfile Use Makefile to compiling and buid docker images </description>
-    </item>
-    
-    <item>
       <title>Intel AMXAV</title>
       <link>https://airren.github.io/posts/blog/intel_spx_AMX/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -3142,6 +3113,33 @@ Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管�
       <description>Introduce SIMD 单指令数据-&amp;gt; VNNI/INT8
 Intrinsics for Intel(R) Advanced Matrix Extension Instructions Intel Advanced Matrix Extension is a new 64-bit programming paradigm consisting of two components:
 A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</description>
+    </item>
+    
+    <item>
+      <title>Intel SGX</title>
+      <link>https://airren.github.io/posts/blog/3_intel_sgx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/3_intel_sgx/</guid>
+      <description>概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
+https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
+Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
+机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
+intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
+常用应用有密钥，专有算法，生物识别数据和CSR生成等。
+程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
+上图中的流程
+Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
+认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
+Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
+应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
+Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
+Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
+Set up SGX develop environment Install SGX driver
+Install SGX SDK
+Install SGX PSW
+直接按照官方文档依次安装上述3个组件
+Sample Enclave Demo 1############# SGX SDK Setting 2# 编译平台和模式配置 3 4############## APP Setting 5# 主要是指定 6# App_Cpp_Files 需要编译的cpp文件 7# App_Include_Paths 包含目录 8# App_Cpp_Objects 输出 9 10############### Enclave setting 11# Enclave_Cpp_Files 12# Enclave_Include_Paths 13# Enclave_Cpp_Objects 14 15# eld 编译配置 16################ App Object 17################ Enclave Object Enclave 相关开发流程 使用edl文件定义不可信app和enclave之间的接口 实现app和enclave函数 编译 app 和enclave。编译中 Edger8r生成可信和不可信的代理/桥函数，Enclave签名工具生成enclave的metadata和签名 在模拟和硬件模式下运行和调试app，详细看debug enclave的内容 准备发布app 和enclave 编写Enclave函数 在app角度，使用不可信代理函数调用enclave函数(ECALL)跟调用其他函数没有区别。Enclave函数只是有些显示的c/c++函数。</description>
     </item>
     
     <item>
@@ -3378,19 +3376,6 @@ Packaging: The Challenge While Kubernetes defines resources with manifest, typic
     </item>
     
     <item>
-      <title>Kube Config 控制多个集群</title>
-      <link>https://airren.github.io/posts/blog/5_kube_config/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/5_kube_config/</guid>
-      <description>https://www.cnblogs.com/zhaobowen/p/13963343.html
-https://zhuanlan.zhihu.com/p/169746514
-https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
-https://juejin.cn/post/6968129599070797837
-1export KUBECONFIG git blame</description>
-    </item>
-    
-    <item>
       <title>Kubenetes Pod</title>
       <link>https://airren.github.io/posts/cloudnative/Kubernates/2-k8s-pod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -3544,15 +3529,6 @@ mount a local file to the VM
 1vagrant_version=2.2.19 enable ipv4_forward in calico configuration
 update ovn deploy yaml: update image tag, update ovn_subnet
 1 OVN_SUBNET: &amp;#34;10.154.141.0/18&amp;#34; 2OVN_GATEWAYIP: &amp;#34;10.154.141.1/18&amp;#34; 3 4 5 privileged: true 6 mountPropagation: Bidirectional 1apiVersion: k8s.plugin.opnfv.org/v1alpha1 2kind: NetworkChaining 3metadata: 4 name: example-networkchaining 5spec: 6 # Add fields here 7 chainType: &amp;#34;Routing&amp;#34; 8 routingSpec: 9 namespace: &amp;#34;default&amp;#34; 10 networkChain: &amp;#34;net=virtual-net1,app=slb,net=dync-net1,app=ngfw,net=dync-net2,app=sdewan,net=virtual-net2&amp;#34; 11 left: 12 - networkName: &amp;#34;left-pnetwork&amp;#34; 13 gatewayIp: &amp;#34;172.</description>
-    </item>
-    
-    <item>
-      <title>OAuth 2.0</title>
-      <link>https://airren.github.io/posts/blog/OAuth/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/OAuth/</guid>
-      <description>OAuth 2.0 </description>
     </item>
     
     <item>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Intel SGX</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -37,9 +37,8 @@
 
   <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
 
-<meta property="og:title" content="" />
-<meta property="og:description" content="SGX
-概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
+<meta property="og:title" content="Intel SGX" />
+<meta property="og:description" content="概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
 https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
 Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
 机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
@@ -56,7 +55,8 @@ Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安�
 Set up SGX develop environment Install SGX driver
 Install SGX SDK
 Install SGX PSW
-直接按照官方文档依次安装上述3个组件" />
+直接按照官方文档依次安装上述3个组件
+Sample Enclave Demo 1############# SGX SDK Setting 2# 编译平台和模式配置 3 4############## APP Setting 5# 主要是指定 6# App_Cpp_Files 需要编译的cpp文件 7# App_Include_Paths 包含目录 8# App_Cpp_Objects 输出 9 10############### Enclave setting 11# Enclave_Cpp_Files 12# Enclave_Include_Paths 13# Enclave_Cpp_Objects 14 15# eld 编译配置 16################ App Object 17################ Enclave Object Enclave 相关开发流程 使用edl文件定义不可信app和enclave之间的接口 实现app和enclave函数 编译 app 和enclave。编译中 Edger8r生成可信和不可信的代理/桥函数，Enclave签名工具生成enclave的metadata和签名 在模拟和硬件模式下运行和调试app，详细看debug enclave的内容 准备发布app 和enclave 编写Enclave函数 在app角度，使用不可信代理函数调用enclave函数(ECALL)跟调用其他函数没有区别。Enclave函数只是有些显示的c/c&#43;&#43;函数。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://airren.github.io/posts/blog/3_intel_sgx/" /><meta property="article:section" content="posts" />
 
@@ -65,7 +65,7 @@ Install SGX PSW
 
     
     
-<meta name="description" content="" />
+<meta name="description" content="Intel SGX" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -324,7 +324,7 @@ Install SGX PSW
         </div>
 
         <div class="title">
-          <h1></h1>
+          <h1>Intel SGX</h1>
         </div>
         
         <div class="taxonomy-terms">
@@ -334,11 +334,7 @@ Install SGX PSW
         </div>
         
         <div class="post-content" id="post-content">
-          <p>SGX</p>
-<ul>
-<li></li>
-</ul>
-<h2 id="概述">概述</h2>
+          <h2 id="概述">概述</h2>
 <p><a href="https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html" target="_blank">https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html</a></p>
 <p><a href="https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html" target="_blank">https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html</a></p>
 <p>Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。</p>

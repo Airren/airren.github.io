@@ -320,61 +320,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/interview/daily/2021-03-xxxx/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">2021-03-xx</h5>
-        <p class="card-text post-summary">Golang</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/interview/daily/2021-03-xxxx/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/interview/daily/2021-04-20/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">2021-04-20</h5>
-        <p class="card-text post-summary">Flush
-清空缓冲区
-首先，咱们设想要给鱼缸换水，所以需要一个水泵，水泵是连接鱼缸和下水道的，咱们的任务就是将鱼缸里面水全抽干，这时，我们就可以把水管当做缓冲区。如果咱们一见鱼缸里面水抽干了就立马关了水泵，这时会发现水管里还有来不及通过水泵流向下水道的残留水，我们可以把抽水当做读数据，排水当做写数据，水管当做缓冲区，这样就容易明白了。
-那么这样一来我们如果中途调用close()方法，输出区也还是有数据的，就像水缸里有水，只是在缓冲区遗留了一部分，这时如果我们先调用flush()方法，就会强制把数据输出，缓存区就清空了，最后再关闭读写流调用close()就完成了。
-缓冲区可以简单地理解为一段内存区域。可以简单地把缓冲区理解为一段特殊的内存。某些情况下，如果一个程序频繁地操作一个资源（如文件或数据库），则性能会很低，此时为了提升性能，就可以将一部分数据暂时读入到内存的一块区域之中，以后直接从此区域中读取数据即可，因为读取内存速度会比较快，这样可以提升程序的性能。
-https://blog.csdn.net/qq_38129062/article/details/87115620</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/interview/daily/2021-04-20/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/interview/daily/2021-03-21/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -695,6 +640,67 @@ RPC 远程调用/ Gateway 负载均衡-&gt; 服务与IP映射 facade pattern ：
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/sdewan/SGX-HSM/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/clusternet/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">clusternet</h5>
+        <p class="card-text post-summary">Cluster Net Test Environment Access method 1# this machine is out of intel, please use the socks proxy: 2# proxy-prc.intel.com:1080 3# use this private key to access this the relay machine: 4# first login to 5ssh -p 3302 airren@124.223.99.93 # passwd: 123- 6# next login to 7ssh airren@node-1 # passwd:123- PreRequisites Kind Create cluster
+1# create cluster one node 2 3 4# create cluster multinode 5 6# create cluster with configuration Delete cluster</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/clusternet/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/k8s-network-cni/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">CNI Container Networking Interface</h5>
+        <p class="card-text post-summary">Docker CNM What is CNI?
+How CNI plugin works?
+What a CNI plugin is made of?
+How a CNI plugin is being used in K8s?
+How a CNI plugin is executed?
+Anatomy of Pod networking
+What is CNI CNI stands for Container Networking Interface
+An interface between container runtime and the network implementation
+Configure the network interfaces and routes
+Concern itself only with the netwrok connectivity.
+How CNI plugin works? A CNI binary Handle connectivity - configures the network interface of the Pod /opt/cni/bin A daemon Handle reachability - manager routings across the cluster What a CNI plugin is made of ?</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/k8s-network-cni/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
