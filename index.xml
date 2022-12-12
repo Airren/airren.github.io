@@ -12,15 +12,15 @@
       <pubDate>Mon, 12 Dec 2022 13:41:16 +0800</pubDate>
       
       <guid>https://airren.github.io/posts/blog/cloudnative_nri/</guid>
-      <description>History and Background
+      <description>NRI 目前看来主要是对CPU 实现更加细粒度的控制。
+History and Background
 Various extension mechanisms over the years
 OCI hooks
 custom actions executed at various container lifecycle events runc , cri-o ? Runtime wrapper using runtime classes
 Custom actions implemented by custom runtime wrapper a bit of kludge runc/crun/etc.. containers/cri-o NRI
 custom actions at pod or container creation/stop containerd NRI evolution
 Subject of this presentation? What is NRI
-NRI: Node resource interface, a common framework for
-Plugging extensionsinto OCI-compatible runtimes</description>
+NRI: Node resource interface, a common framework for</description>
     </item>
     
     <item>

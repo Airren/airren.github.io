@@ -253,15 +253,6 @@
   
   
     
-    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
-  
-
-  
-  
-  
-  
-  
-    
     <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
   
 
@@ -317,38 +308,6 @@
     <div class="container-fluid post-card-holder" id="post-card-holder">
       
       
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/gin_overview/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">「Gin」Gin入门</h5>
-        <p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
-刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
-以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
-GitHub
-Official Document
-1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
-快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;&amp; cd gin_demo 4 5vi main.go main.go的内容如下
-1package main 2 3import ( 4	&#34;net/http&#34; 5	&#34;github.com/gin-gonic/gin&#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&#34;/ping&#34;, func(c *gin.Context){ 13	c.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">August 21, 2020</span>
-        <a
-        href="/posts/blog/gin_overview/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
       
         
           <div class="post-card">
@@ -451,15 +410,15 @@ Value 从context.Context 中获取键对应的值。对同一个上下文来说�
       </div>
       <div class="card-body">
         <h5 class="card-title">K8s Cpu 调度管理的现状与限制</h5>
-        <p class="card-text post-summary">History and Background
+        <p class="card-text post-summary">NRI 目前看来主要是对CPU 实现更加细粒度的控制。
+History and Background
 Various extension mechanisms over the years
 OCI hooks
 custom actions executed at various container lifecycle events runc , cri-o ? Runtime wrapper using runtime classes
 Custom actions implemented by custom runtime wrapper a bit of kludge runc/crun/etc.. containers/cri-o NRI
 custom actions at pod or container creation/stop containerd NRI evolution
 Subject of this presentation? What is NRI
-NRI: Node resource interface, a common framework for
-Plugging extensionsinto OCI-compatible runtimes</p>
+NRI: Node resource interface, a common framework for</p>
       </div>
       <div class="card-footer">
         <span class="float-left">December 12, 2022</span>
@@ -668,6 +627,38 @@ Web-Browser &lt;===&gt; HTTP Server &lt;===&gt; CGI(Common GateWay Interface) Pr
         <span class="float-left">August 21, 2020</span>
         <a
         href="/posts/blog/http_introducton/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/gin_overview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」Gin入门</h5>
+        <p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
+刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
+以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
+GitHub
+Official Document
+1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
+快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;&amp; cd gin_demo 4 5vi main.go main.go的内容如下
+1package main 2 3import ( 4	&#34;net/http&#34; 5	&#34;github.com/gin-gonic/gin&#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&#34;/ping&#34;, func(c *gin.Context){ 13	c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/posts/blog/gin_overview/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

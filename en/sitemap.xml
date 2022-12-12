@@ -2,9 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://airren.github.io/posts/blog/gin_overview/</loc>
-    <lastmod>2020-08-21T00:43:48+00:00</lastmod>
-  </url><url>
     <loc>https://airren.github.io/posts/note_go/1_go_modules/</loc>
     <lastmod>2020-08-04T23:53:48+00:00</lastmod>
   </url><url>
@@ -220,6 +217,9 @@
   </url><url>
     <loc>https://airren.github.io/tags/Http/</loc>
     <lastmod>2020-08-21T01:37:37+00:00</lastmod>
+  </url><url>
+    <loc>https://airren.github.io/posts/blog/gin_overview/</loc>
+    <lastmod>2020-08-21T00:43:48+00:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/posts/component/DataBase/mongo/bson/</loc>
     <lastmod>2020-08-20T10:36:54+00:00</lastmod>
@@ -544,8 +544,6 @@
     <loc>https://airren.github.io/posts/Plan/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/react/</loc>
-  </url><url>
-    <loc>https://airren.github.io/posts/sdewan/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/sdewan/CRE-Share/</loc>
   </url><url>
