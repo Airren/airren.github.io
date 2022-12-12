@@ -6,6 +6,8 @@ date: 2022-12-12T13:41:16+08:00
 
 
 
+> NRI 目前看来主要是对CPU 实现更加细粒度的控制。
+
 History and Background
 
 Various extension mechanisms over the years
@@ -93,7 +95,7 @@ Write An NRI Plugin
 
 
 
-### CPU管理的现状
+## CPU管理的现状
 
 k8s的cpu manger 完成节点测的cpu资源分配和隔离(core pinning and isolation). 处理流程
 
@@ -129,13 +131,13 @@ cpuManger当前限制：
 - 调度器不感知节点上的拓扑信息。
 - 对于线程布局（thread placement）的应用，防止物理核的共享和邻居干扰。 CPUmanger 当前不支持。
 
+## POD CPU limit
 
 
 
 
 
-
-### Node Resource Interface
+## Node Resource Interface
 
 containerd 主要工作在平台(docker or k8s)和更底层的 runtime (runc , kata)之间。containerd提供容器进程的管理， 镜像的管理，文件系统快照以及元数据和依赖管理。
 
@@ -186,3 +188,9 @@ docker -> containerd -> runc?
 
 
 https://www.modb.pro/db/462537
+
+
+
+
+
+https://zhuanlan.zhihu.com/p/490585683

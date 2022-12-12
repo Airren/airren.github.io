@@ -82,10 +82,17 @@ params:
       enable: false
     comment:
       enable: true
-      utteranc:
+      giscus:
         repo: Airren/airren.github.io
-        issueTerm: pathname
-        theme: github-light
+        repoID: R_kgDOIVgjKA
+        category: announcements 
+        categoryID: DIC_kwDOIVgjKM4CTB-z
+        theme: light
+        map: pathname
+        reaction: 1
+        # metadata: 0
+        # inputPosition: bottom
+        # crossOrigin: anonymous
 
 
   # specify whether you want to show Table of Contents in reading page

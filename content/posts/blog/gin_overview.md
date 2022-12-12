@@ -2,9 +2,6 @@
 title: 「Gin」Gin入门
 subtitle: ''
 author: Airren
-catalog: true
-header-img: 'gin_crystal_clear.jpg'
-weight: 1
 date: 2020-08-21 00:43:48
 ---
 
