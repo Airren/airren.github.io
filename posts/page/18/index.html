@@ -311,6 +311,32 @@
       
         
           <div class="post-card">
+  <a href="/posts/blog/openwrt_cross_compile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">cross complile</h5>
+        <p class="card-text post-summary">openWRT Cross compile 1export STAGING_DIR=/home/airren/openwrt/staging_dir/toolchain-x86_64_gcc-8.4.0_musl 2 3 4export TOOLCHAIN_DIR=$STAGING_DIR 5export TOOLCHAIN_PATH=$TOOLCHAIN_DIR/bin 6export CXX=$TOOLCHAIN_PATH/g++-uc 7export AR=$TOOLCHAIN_PATH/x86_64-openwrt-linux-musl-ar 8export CXXFLAGS=&#34;-O2&#34; 9 10 11export CROSSCOMPILE_PATH=$TOOLCHAIN_DIR/usr 12# export CFLAGS=&#34;-I$CROSSCOMPILE_PATH/jhhhhinclude&#34; 13 14 15export LDCFLAGS=&#34;-L$TOOLCHAIN_DIR/usr/lib -lz&#34; 16export LD_LIBRARY_PATH=$TOOLCHAIN_DIR/usr/lib 17export PATH=$TOOLCHAIN_PATH:$PATH 1./autogen.sh --build=x86_64-pc-linux-gnu --host=i486-openwrt-linux 2./autogen.sh --build=x86_64-pc-linux-gnu --host=x86_64-openwrt-linux 3 4make CC=i486-openwrt-linux-gcc LD=i486-openwrt-linux-ld 5make CC=x86_64-openwrt-linux-gcc LD=x86_64-openwrt-linux-ld build openwrt in a docker
+1apt update 2apt install -y git wget build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev 3 4apt update 5apt install build-essential ccache ecj fastjar file g++ gawk \ 6gettext git java-propose-classpath libelf-dev libncurses5-dev \ 7libncursesw5-dev libssl-dev python python2.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/openwrt_cross_compile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/blog/1_cryptography/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -630,41 +656,6 @@ https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/note_go/0_go_compile/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/note_go/1_SettingUpGoEnv/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Go 设置Golang开发环境</h5>
-        <p class="card-text post-summary">安装Go 开始写Golang之前，你首先需要下载并且安装Golang开发工具。可以在Golang的官方网站下载最新的安装包。根据你的开发平台选择下载对应的版本。对于Mac用户(或者Windows用户)来说.pkg(或msi)安装包会自动把Golang安装到合适的位置，并将命令加入到环境变量，并且自动移除老版本。如果使用Mac更加推荐直接使用brew install go， 使用brew 可以方便的管理Go多个版本。
-对于Linux或者FreeBSD用户可以直接下载对应的.tar.gz, 并解压到文件名为go的目录中。把这个文件Copy到/usr/local/下。然后把/usr/local/go/bin添加到$PATH中。
-1tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz 2# change .profile to .bashrc or.zsh depend on you evnironment 3echo &#34;export PATH=$PATH:/usr/local/go/bin&#34; &gt;&gt;$HOME/.profile Go 程序编译完成后是一个独立的二进制文件，不需要依赖任何运行软件(例如，Python需要Python解释器，Java需要JVM)。仅在需要编译Go代码的环境上安装Go即可。
-安装完成后，打开Terminal(Window 打开CMD)，验证Go是否安装成功。
-1go version 在所有的配置都正确的情况下，可以看到输出的版本信息
-1# mac intel cpu 64bit 2go version go1.17.3 darwin/amd64 从上述信息中可以看出，Go的版本是1.17.3,使用的开发机器是 Mac(Darwin 是MacOS的Kernel Name, amd64 是指64-bit的x86 CPU架构)。
-如果你没有得到正确的版本信息，很有可能是你没有把go加入到环境变量，或者有其他的程序名称也为go。对于Mac或者Unix-like用户，可以使用which go查看当前环境下的go的是否正确关联到/usr/local/go/bin。如果路径正确，也有可能是下载错了安装包，检查下安装包的位数是否与当前操作系统匹配，有可能在64-bit的系统上下载了32-bit的安装包。另外，也有可能是芯片架构选错了。
-Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管理依赖上经历了几次变化。在Go 1.11所有的代码必须保存在GOPATH之下，之后的版本用户可以在任意目录下存储自己的代码。但是Go依然希望有一个独立的工作空间可以存储通过go install安装额第三方包。默认的工作空间是$HOME/go, 下载的第三方包默认存储在$HOME/go/src,编译的二进制文件存储在$HOME/go/bin。你可以直接使用这个默认的工作空间，或者通过设置$GOPAHT指定一个工作空间。
-无论你是否使用默认的wokespace，建议你把$GOPATH/bin加入到$PATH中。 通过指定$GOPATH可以清楚地描述当前环境的Go工作空间，把$GOPATH/bin加入到可执行路径中可以直接使用go install 安装的第三方包。
-如果是Unix-like的开发环境可以把下面几行加入到$HOME/.profile中。
-1# if use ubuntu you should add to .</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/note_go/1_SettingUpGoEnv/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

@@ -194,6 +194,9 @@
                 href="https://airren.github.io/tags/"
                 />
   </url><url>
+    <loc>https://airren.github.io/posts/blog/Mac_init/</loc>
+    <lastmod>2021-02-12T13:41:16+08:00</lastmod>
+  </url><url>
     <loc>https://airren.github.io/posts/DataStruct/ds_dp/</loc>
     <lastmod>2020-09-17T00:53:15+00:00</lastmod>
   </url><url>
@@ -770,8 +773,6 @@
     <loc>https://airren.github.io/posts/linux/network_command/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/linux/linux_socket/</loc>
-  </url><url>
-    <loc>https://airren.github.io/posts/blog/Mac_init/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/linux/linux_make/</loc>
   </url><url>

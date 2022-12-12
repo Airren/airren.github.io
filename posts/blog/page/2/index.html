@@ -287,6 +287,34 @@
       
         
           <div class="post-card">
+  <a href="/posts/blog/docker_dockerfile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Dockerfile</h5>
+        <p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
+1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
+组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
+1FROM ubuntu:trusty 2ENTRYPOINT [&#34;/bin/ping&#34;,&#34;-c&#34;,&#34;3&#34;] 3CMD [&#34;localhost&#34;] docker 会把CMD的命令拼接到Entrypoint之后</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/docker_dockerfile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -372,43 +400,6 @@ Multicluster .global Stub Domain Deprecation As part of this release, Istio has 
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/blog/4_istio_multicluster/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/Mac_init/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Mac Dev Environment</h5>
-        <p class="card-text post-summary">HomeBrew https://brew.sh/
-1/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34; Use homebrew install package
-1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
-1sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&gt; Keyboard -&gt; modifyKeys
-1Caplock -&gt; Command Software highly recommended
-Iterm2: Mac terminal replacement
-Alfred
-Dash
-Istat Menus
-Xnip: for screenshot
-Recommend
-Wireshark Sublime Chrome Typora Others
-alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac Cli Tools 1# tmux 2brew install tmux Vim Config 1# ~/.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/Mac_init/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

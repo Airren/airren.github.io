@@ -53,6 +53,27 @@ https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</de
     </item>
     
     <item>
+      <title>Mac Dev Environment</title>
+      <link>https://airren.github.io/posts/blog/Mac_init/</link>
+      <pubDate>Fri, 12 Feb 2021 13:41:16 +0800</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/Mac_init/</guid>
+      <description>HomeBrew https://brew.sh/
+1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Use homebrew install package
+1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
+1sh -c &amp;#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
+1Caplock -&amp;gt; Command Software highly recommended
+Iterm2: Mac terminal replacement
+Alfred
+Dash
+Istat Menus
+Xnip: for screenshot
+Recommend
+Wireshark Sublime Chrome Typora Others
+alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac Cli Tools 1# tmux 2brew install tmux Vim Config 1# ~/.</description>
+    </item>
+    
+    <item>
       <title>数据结构与算法动态规划</title>
       <link>https://airren.github.io/posts/DataStruct/ds_dp/</link>
       <pubDate>Thu, 17 Sep 2020 00:53:15 +0000</pubDate>
@@ -2449,7 +2470,7 @@ Ctrl +K Ctrl +S Keyboard Shortcuts
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://airren.github.io/posts/life/xiaokr/</guid>
-      <description>PCB设计 </description>
+      <description>https://mp.weixin.qq.com/s/PiVNwsf4adOKBwe92zDE4g</description>
     </item>
     
     <item>
@@ -3445,27 +3466,6 @@ Netcat is cross-platform, and it&amp;rsquo;s available for Linux, macOS, Windows
       <guid>https://airren.github.io/posts/linux/linux_socket/</guid>
       <description>Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
 1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</description>
-    </item>
-    
-    <item>
-      <title>Mac Dev Environment</title>
-      <link>https://airren.github.io/posts/blog/Mac_init/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/blog/Mac_init/</guid>
-      <description>HomeBrew https://brew.sh/
-1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Use homebrew install package
-1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
-1sh -c &amp;#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
-1Caplock -&amp;gt; Command Software highly recommended
-Iterm2: Mac terminal replacement
-Alfred
-Dash
-Istat Menus
-Xnip: for screenshot
-Recommend
-Wireshark Sublime Chrome Typora Others
-alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac Cli Tools 1# tmux 2brew install tmux Vim Config 1# ~/.</description>
     </item>
     
     <item>
