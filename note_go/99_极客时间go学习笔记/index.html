@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="软件开发的新挑战
+多核硬件架构
+超大规模分布式计算集群
+web模式下导致的前所未有的规模和更新速度
+区块链开发语言，
+Kubernetes
+Docker
+只有25个关键字
+有垃圾回收机制，但是仍然可以直接使用指针访问内存
+CSP并发机制
+关键字
+c 37
+c&#43;&#43; 11 84
+go 25
+go 垃圾回收，使用指针直接内存访问.
+复合和继承
+docker kubernetes
+go 默认使用静态连接，编译完成是一个独立的二进制
+1package main // package name 2 3import &#34;fmt&#34; // dependence 4 5// functionality 6func main() { 7	fmt.Print(&#34;hello world \n&#34;) 8} 应用程序入口，
+必须是main包 package main 必须是main方法 func main() 文件名不一定是main.go package 的名字不需要与目录保持一致
+退出返回值
+与其他主要编程语言的差异
+Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;os&#34; 6) 7 8func main() { 9	fmt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/note_go/99_%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="article:section" content="note_go" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/note_go" data-filter="all"></a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p>软件开发的新挑战</p>
+<ul>
+<li>
+<p>多核硬件架构</p>
+</li>
+<li>
+<p>超大规模分布式计算集群</p>
+</li>
+<li>
+<p>web模式下导致的前所未有的规模和更新速度</p>
+</li>
+</ul>
+<p>区块链开发语言，</p>
+<p>Kubernetes</p>
+<p>Docker</p>
+<p>只有25个关键字</p>
+<p>有垃圾回收机制，但是仍然可以直接使用指针访问内存</p>
+<p>CSP并发机制</p>
+<p>关键字</p>
+<p>c 37</p>
+<p>c++ 11 84</p>
+<p>go 25</p>
+<p>go 垃圾回收，使用指针直接内存访问.</p>
+<p>复合和继承</p>
+<p>docker kubernetes</p>
+<p>go 默认使用静态连接，编译完成是一个独立的二进制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span> <span style="color:#75715e">// package name
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span> <span style="color:#75715e">// dependence
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e">// functionality
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#e6db74">&#34;hello world \n&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>}
+</span></span></code></pre></div><p>应用程序入口，</p>
+<ol>
+<li>必须是main包 package main</li>
+<li>必须是main方法 func main()</li>
+<li>文件名不一定是main.go</li>
+</ol>
+<p>package 的名字不需要与目录保持一致</p>
+<p>退出返回值</p>
+<p>与其他主要编程语言的差异</p>
+<ul>
+<li>Go main函数不支持任何返回值</li>
+<li>通过os.Exit 来返回状态</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Print</span>(<span style="color:#e6db74">&#34;hello world \n&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>	<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>}
+</span></span></code></pre></div><p>获取命令行参数</p>
+<ul>
+<li>
+<p>main函数不支持传入参数</p>
+<p>func main(<del>arg []string</del>)</p>
+</li>
+<li>
+<p>在程序中直接通过os.Args 获取命令行参数</p>
+<p>获取的第一个参数是文件执行的相对路径，也就是文件名</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>) &gt; <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>,<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Args</span>[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>	<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}
+</span></span></code></pre></div><p>The master has failed more time than the beginner has tried.</p>
+<p>编写测试程序</p>
+<p>源码文件以_test 结尾，xxx_test.go</p>
+<p>测试方法名以 Test 开头, func TestXXX( t *testing.T){&hellip;}</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>package test
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>import <span style="color:#e6db74">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>func TestFirstTry<span style="color:#f92672">(</span>t *testing.T <span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	t.Log<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hello test&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>变量赋值</p>
+<ul>
+<li>赋值可以自动类型推断</li>
+<li>在一个赋值语句中，可以对多个变量同时赋值</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">b</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">var</span> (
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">c</span> <span style="color:#66d9ef">int</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#75715e">// go 类型推断
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">d</span>  = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    <span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>)
+</span></span></code></pre></div><p>常量定义，快速的连续值的设置</p>
+<p>数据类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>bool
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>string
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>int int8 int16 int32 int64
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>uint unit8 uint16 uint32 uint64
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>byte <span style="color:#75715e"># alias for uint8</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>rune <span style="color:#75715e"># alias for int32,represents a Unicode code point</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>float32 float64
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>complex64 complex128
+</span></span></code></pre></div><p>类型转化</p>
+<ul>
+<li>不允许隐式类型转换</li>
+<li>别名和原有类型也不能进行隐式类型转换</li>
+</ul>
+<p>类型的预定义值</p>
+<p>math.MaxInt64</p>
+<p>math.MaxFloat64</p>
+<p>math.MaxUint32</p>
+<p>指针类型</p>
+<ul>
+<li>不支持指针运算</li>
+<li>string 是值类型，其默认初始化值为空字符串，而不是nil</li>
+</ul>
+<p>算术运算符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>+ - * / % 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>++ 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>--
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"># 没有前置的 ++ -- // ++a</span>
+</span></span></code></pre></div><p>比较运算符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>!<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>&gt; &lt; 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>&gt;<span style="color:#f92672">=</span> &lt;<span style="color:#f92672">=</span>
+</span></span></code></pre></div><p>用 == 比较数组</p>
+<ul>
+<li>相同维数，且含有相同个数元素的数组才可以比较</li>
+<li>每个元素都相同时才相等（顺序）</li>
+</ul>
+<p>长度不同的数组比较会有一个编译错误</p>
+<p>逻辑运算符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f92672">&amp;&amp;</span>  <span style="color:#f92672">||</span> !
+</span></span></code></pre></div><p>位运算符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&amp; ! ^ 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;&lt; &gt;&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>&amp;^  按位置0
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ae81ff">1</span> &amp;^ <span style="color:#ae81ff">0</span> -- <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># 右边的操作书为0，左边不变</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#ae81ff">1</span> &amp;^ <span style="color:#ae81ff">1</span> -- <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># 右边的操作数为1，左边则为0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#ae81ff">0</span> &amp;^ <span style="color:#ae81ff">1</span> -- <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#ae81ff">0</span> &amp;^ <span style="color:#ae81ff">0</span> -- <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>循环</p>
+<p>仅支持循环关键字 for</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">j</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">7</span>;<span style="color:#a6e22e">j</span>&lt;<span style="color:#a6e22e">n</span> ;<span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">n</span>&lt; <span style="color:#ae81ff">5</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#a6e22e">n</span><span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#66d9ef">for</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>}
+</span></span></code></pre></div><p>条件</p>
+<ul>
+<li>
+<p>condition 表达式结果必须为bool值</p>
+</li>
+<li>
+<p>支持变量赋值</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">declaration</span>; <span style="color:#a6e22e">condition</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}
+</span></span></code></pre></div></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">condition</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>}<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">condition</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>}<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">condition</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>}<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>}
+</span></span></code></pre></div><p>switch 条件</p>
+<ul>
+<li>条件不限制为常量或者整数</li>
+<li>单个case中可以出现多个结果选项，使用逗号分隔</li>
+<li>不需要用break用来推出当前case</li>
+<li>可以不设置switch之后的条件表达式，在这种情况下，switch结构与多个if&hellip;else 的逻辑作用相同。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">GOOS</span>; <span style="color:#a6e22e">os</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;darwin&#34;</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Mac OS&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#75715e">// break
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;linux&#34;</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Linux&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#66d9ef">default</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#75715e">// freebsd, openbsd, plan9, windows..
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%s&#34;</span>,<span style="color:#a6e22e">os</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#66d9ef">switch</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;0-3&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">6</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;4-6&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">7</span><span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">NUM</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">9</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;7-9&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>}
+</span></span></code></pre></div><p>连续存储空间</p>
+<p>数组:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">a</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span> <span style="color:#75715e">// 声明并初始化为默认零值
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">0</span>] = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">b</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">3</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}  <span style="color:#75715e">// 声明并初始化
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> [<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">2</span>]<span style="color:#66d9ef">int</span>{{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>},{<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>}} <span style="color:#75715e">// 多维数组
+</span></span></span></code></pre></div><p>数组元素遍历</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestArrayTravel</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">arr</span> <span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">arr</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">idx</span>, <span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>}
+</span></span></code></pre></div><p>数组截取</p>
+<p>a[开始索引(包含)，结束索引(不包含)],  左闭右开区间</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">a</span><span style="color:#f92672">:=</span> [<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">2</span>] <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>] <span style="color:#75715e">// 2,3
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">1</span>:len(<span style="color:#ae81ff">1</span>)] <span style="color:#75715e">// 2,3,4,5
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>[<span style="color:#ae81ff">1</span>:] <span style="color:#75715e">// 2,3,4,5
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span>[:<span style="color:#ae81ff">3</span>]  <span style="color:#75715e">// 1,2,3
+</span></span></span></code></pre></div><p>切片Slice</p>
+<p>切片内部结构，会造成大量GC</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/b4dd7a1f65dcab076fc41d9dfac95180" target="_blank">https://gyazo.com/b4dd7a1f65dcab076fc41d9dfac95180</a></p>
+<p>prt -&gt; Array 的地址</p>
+<p>len 可以访问的元素个数，</p>
+<p>cap 内部数组的容量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s0</span> []<span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">s0</span> = append(<span style="color:#a6e22e">s0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#a6e22e">s1</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#a6e22e">s2</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#75715e">/* []type,len,cap 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#75715e">其中len个元素会被初始化为默认零值，未初始化元素不可访问
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#75715e">*/</span>
+</span></span></code></pre></div><p>切片共享存储结构</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/96049daf69a2855181cedd023fe396d8" target="_blank">https://gyazo.com/96049daf69a2855181cedd023fe396d8</a></p>
+<p>1024 以下是2的倍数，大于1024 约 1.25倍</p>
+<p>自增长的代价</p>
+<p>数组VS 切片</p>
+<ul>
+<li>
+<p>容量是否可以伸缩</p>
+</li>
+<li>
+<p>是否可以进行比较</p>
+</li>
+</ul>
+<p>slice 只能与nil 进行比较？？</p>
+<p>Map 声明</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">stirng</span>]<span style="color:#66d9ef">int</span>{<span style="color:#e6db74">&#34;one&#34;</span>:<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;two&#34;</span>:<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#34;three&#34;</span>:<span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">m1</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#a6e22e">m1</span>[<span style="color:#e6db74">&#34;one&#34;</span>] = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">m2</span> <span style="color:#f92672">:=</span> make(<span style="color:#a6e22e">ma</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#a6e22e">m2</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">10</span> )
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#75715e">// 10 initial capacity
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#75715e">// 为什么不初始化len， 会出事化为默认零值，所以不需要
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#75715e">// cap 无法计算map 容量。 len 可以计算map 数据长度
+</span></span></span></code></pre></div><p>map 不存在的时候默认会零值，可能会有歧义</p>
+<p>在访问的key不存在的时候，仍会返回零值，不能通过nil来判断元素是否存在。</p>
+<p>map 遍历， map 是否是有序的</p>
+<p>map 与工厂模式， 实现set</p>
+<p>函数是一等公民</p>
+<ul>
+<li>map的value也可能是一个方法</li>
+<li>与go 的duck type 接口方式一起，可以方便的实现单一方法对象的工厂模式</li>
+</ul>
+<p>实现Set</p>
+<p>go 内置集合中没有set实现，可以map[type]struct{}</p>
+<ol>
+<li>元素的唯一性</li>
+<li>基本操作
+<ul>
+<li>添加元素</li>
+<li>判断元素是否存在</li>
+<li>删除元素</li>
+<li>元素个数</li>
+</ul>
+</li>
+</ol>
+<p>字符串</p>
+<p>unicode，utf8</p>
+<ul>
+<li>string 是数据类型，不是引用或者指针类型</li>
+<li>string是只读的byte slice， len函数可以计算所包含的byte数</li>
+<li>string的byte数组可以存放任何数据， 不可见二进制编码</li>
+</ul>
+<p>string 是一个不可变的 byte slice</p>
+<p>unicode UTF8</p>
+<ul>
+<li>Unicode 是一种字符集(code point)</li>
+<li>UTF8 是unicode的存储实现（转换为字节序列的规则）</li>
+</ul>
+<p>字符  “中&quot;</p>
+<p>Unicode 0x4E2D</p>
+<p>UTF-8   0xE4B8AD</p>
+<p>string/[]byte  [0xE4, 0xB8, 0xAD]</p>
+<p>常用字符串函数</p>
+<p>strings</p>
+<p>strconv</p>
+<p>函数 一等公民</p>
+<ul>
+<li>可以有多个返回值</li>
+<li>所有的参数都是值传递， slice，map, channel</li>
+<li>函数可以作为变量的值</li>
+<li>函数可以作为参数的和返回值</li>
+</ul>
+<p>类似于装饰器的demo， 重用</p>
+<p>《计算机程序的构造和解释》 函数式编程</p>
+<p>可变参数, 类型一直，无需指定参数的个数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">ops</span> <span style="color:#f92672">...</span><span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">s</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>,<span style="color:#a6e22e">op</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ops</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>		<span style="color:#a6e22e">s</span> <span style="color:#f92672">+=</span><span style="color:#a6e22e">op</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">s</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}
+</span></span></code></pre></div><p>defer 函数</p>
+<p>释放锁，或者关闭资源，避免资源的浪费</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211116210514257.png" alt="image-20211116210514257" />
+
+
+
+</p>
+</p>
+<p>封装数据和行为</p>
+<p>结构体定义</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">struct</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#a6e22e">Id</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#a6e22e">Age</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Employee</span>{<span style="color:#e6db74">&#34;0&#34;</span>,<span style="color:#e6db74">&#34;Bob&#34;</span>,<span style="color:#ae81ff">20</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#a6e22e">e1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Employee</span>{<span style="color:#a6e22e">Name</span>:<span style="color:#e6db74">&#34;Mike&#34;</span>,<span style="color:#a6e22e">Age</span>:<span style="color:#ae81ff">20</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#a6e22e">e2</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">Employee</span>) <span style="color:#75715e">// 注意，这里返回的是引用/指针, 相当于 e := &amp;Employee{}
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">e2</span>.<span style="color:#a6e22e">Id</span> = <span style="color:#e6db74">&#34;2&#34;</span>   <span style="color:#75715e">// 与其他编程语言的差异，通过实例的指针访问成员不需要 -&gt;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e"></span><span style="color:#a6e22e">e2</span>.<span style="color:#a6e22e">Age</span> = <span style="color:#ae81ff">22</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#a6e22e">e2</span>.<span style="color:#a6e22e">Name</span> = <span style="color:#e6db74">&#34;Rose&#34;</span>
+</span></span></code></pre></div><p>行为方法定义</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e">// 第一中方式在实例对应的方法被调用时，实例的成员会进行值复制
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">e</span> <span style="color:#a6e22e">Employee</span>) <span style="color:#a6e22e">String</span><span style="color:#960050;background-color:#1e0010">（）</span> <span style="color:#66d9ef">string</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;ID:%s-Name:%s-Age:%s&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Id</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Name</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Age</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e">// 通常情况下为了避免内存copy我们使用第二种方式
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Employee</span>) <span style="color:#a6e22e">String</span><span style="color:#960050;background-color:#1e0010">（）</span> <span style="color:#66d9ef">string</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;ID:%s-Name:%s-Age:%s&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Id</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Name</span>,<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Age</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}
+</span></span></code></pre></div><p>Go语言的相关接口</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211116224916489.png" alt="image-20211116224916489" />
+
+
+
+</p>
+</p>
+<ul>
+<li>接口为非侵入性，实现不依赖与接口定义</li>
+<li>所有接口的定义可以包含在接口使用者包内（解决循环依赖）</li>
+</ul>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211116230445712.png" alt="image-20211116230445712" />
+
+
+
+</p>
+</p>
+<p>interface 判断是否为nil</p>
+<p>自定义类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">IntConvertionFn</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">int</span> <span style="color:#75715e">// 自定义函数类型
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">MyPoint</span> <span style="color:#66d9ef">int</span>
+</span></span></code></pre></div><p>扩展与服用</p>
+<p>复合vs继承</p>
+<p>不支持LSP 原则</p>
+<p>匿名嵌套类型</p>
+<ul>
+<li>无法重载父类的方法</li>
+</ul>
+<p>多态</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211116233152650.png" alt="image-20211116233152650" />
+
+
+
+</p>
+</p>
+<p>interface 对应的只能是一个struct的指针</p>
+<p>空interface</p>
+<ul>
+<li>
+<p>空接口可以表示任何类型</p>
+</li>
+<li>
+<p>通过断言将空接口转换为定制类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">v</span>,<span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">p</span>.(<span style="color:#66d9ef">int</span>) <span style="color:#75715e">// ok=true 时转换成功
+</span></span></span></code></pre></div></li>
+</ul>
+<p>Go 接口最佳实现</p>
+<p>single method interface</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211116234932812.png" alt="image-20211116234932812" />
+
+
+
+</p>
+</p>
+<p>错误处理
+没有异常机制，</p>
+<p>GO的错误机制</p>
+<ul>
+<li>没有异常机制</li>
+<li>error 类型实现了error 接口</li>
+<li>可以通过errors.New 来快速创建错误实例</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">type</span> <span style="color:#66d9ef">error</span> <span style="color:#66d9ef">interface</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#a6e22e">Error</span>() <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;n must be in range[0,10]&#34;</span>)
+</span></span></code></pre></div><p>有错误及早失败，避免嵌套</p>
+<p>package</p>
+<ul>
+<li>
+<p>基本复用的模块单元</p>
+<p>首字母大写表明可以被包外的代码访问</p>
+</li>
+<li>
+<p>代码的package 可以和所在的目录不一致</p>
+</li>
+<li>
+<p>同一目录里的Go代码的Package要保持一致</p>
+</li>
+</ul>
+<p>init</p>
+<ul>
+<li>在main被执行前，所有依赖的package的init方法都会被执行</li>
+<li>不通包的init函数按照包导入的依赖关系决定执行顺序</li>
+<li>每个包可以有多个init函数</li>
+<li>包的每一个源文件也可以有多个init函数，</li>
+</ul>
+<p>go get -u &lt; module name/ 源码的github 路径 &gt;</p>
+<p>go get -u 强制从网络更新远程依赖</p>
+<p>panic</p>
+<ul>
+<li>用于不可恢复的错误</li>
+<li>推出前会执行defer的内容</li>
+</ul>
+<p>os.Exit（） 退出时不会调用defer指定的函数</p>
+<p>os.Exit（） 退出时不会调用当前栈信息</p>
+<p>recover</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># java</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>try<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#f92672">}</span>catch<span style="color:#f92672">(</span>Throwable t<span style="color:#f92672">){}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"># c++</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>try<span style="color:#f92672">{}</span>catch<span style="color:#f92672">(</span>..<span style="color:#f92672">){}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> recover(); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>        <span style="color:#75715e">// 恢复错误
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}()
+</span></span></code></pre></div><p>最常见的“错误恢复”</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>(){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span><span style="color:#f92672">:=</span> recover(); <span style="color:#a6e22e">err</span><span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;recoverd panic&#34;</span>,<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    } 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>}()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e">// 当心recover成为恶魔
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#75715e">// 形成僵尸服务进程，导致health check失效
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#75715e">// &#34;Let it creash&#34; 往往是我们恢复不确定性错误的最好方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#75715e">// 让守护进程重启服务
+</span></span></span></code></pre></div><p>依赖管理</p>
+<ul>
+<li>同一环境下，不同项目使用同一包的不同版本？</li>
+<li>无法管理对包的特定版本的依赖？</li>
+</ul>
+<p>vendor路径</p>
+<p>查找依赖包路径的顺序</p>
+<ul>
+<li>在当前包的vendor目录</li>
+<li>向上级目录查找，直到找到src 下的vendor目录</li>
+<li>在GOPATH下面查找依赖包</li>
+<li>在GOROOT目录下查找</li>
+</ul>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118103743747.png" alt="image-20211118103743747" />
+
+
+
+</p>
+</p>
+<p>现在都用go mod</p>
+<p>协程机制</p>
+<p>Thread VS Goutine</p>
+<ol>
+<li>创建时默认stack的大小
+<ul>
+<li>JDK5以后JAVA Thread Stack 默认为1M</li>
+<li>Goroutine 的Stack初始化大小为2k</li>
+</ul>
+</li>
+<li>和KSE(kernel space entity)的对应关系
+<ul>
+<li>Java Thread 是1：1</li>
+<li>Goroutine 是M:N</li>
+</ul>
+</li>
+</ol>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118105257362.png" alt="image-20211118105257362" />
+
+
+
+</p>
+</p>
+<p>线程切换 context的消耗高</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118105428363.png" alt="image-20211118105428363" />
+
+
+
+</p>
+</p>
+<p>计数每个processer完成的数量</p>
+<p>如果系统进程在等待IO了，P会绑定其他的系统线程</p>
+<p>使用协程的时候注意闭包的参数传递</p>
+<p>共享内存和并发机制</p>
+<p>Lock</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Lock lock<span style="color:#f92672">=</span>...;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>lock.lock()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#75715e">// process
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e"></span>}<span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>}finally{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    lock.unlock
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">sync</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">mutex</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#a6e22e">RWLock</span>
+</span></span></code></pre></div><p>WaitGroup</p>
+<p>RWLock  读不是互斥的</p>
+<p>CSP (Communicating Sequential processes)并发控制</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118140213351.png" alt="image-20211118140213351" />
+
+
+
+</p>
+</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118140231143.png" alt="image-20211118140231143" />
+
+
+
+</p>
+</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118140331037.png" alt="image-20211118140331037" />
+
+
+
+</p>
+</p>
+<p>无buffer 的等待（双方都在）</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118140505931.png" alt="image-20211118140505931" />
+
+
+
+</p>
+</p>
+<p>多路选择和超时控制</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118144035315.png" alt="image-20211118144035315" />
+
+
+
+</p>
+</p>
+<p>如果 retCh1 和retCH2 都ready的情况下，无法保证select的顺序。</p>
+<p>如果没有default会阻塞在select session上</p>
+<p>雪崩是比quick fail还要可怕的一种错误</p>
+<p>channel 的关闭和广播</p>
+<p>channel的关闭</p>
+<ul>
+<li>
+<p>向关闭的channel发送数据，会导致panic</p>
+</li>
+<li>
+<p>接受关闭的通道的数据，接受到的是对应数据类型的零值，如果通道未关闭，且通道中没有数据，接受者会阻塞</p>
+</li>
+<li>
+<p>v,ok &lt;- ch， ok 为bool值，true表示正常接受，false表示通道关闭</p>
+</li>
+<li>
+<p>所有channel接受者都会在channel关闭时，立刻从阻塞等待中返回，且上述ok值为false。这个广播机制常被利用，进行向多个订阅者同时发送信号。如，退出信号。</p>
+</li>
+</ul>
+<p>无锁队列？？？</p>
+<p>多个receiver的情况下</p>
+<p>生产者在数据发送完成后可以关闭channel</p>
+<p>任务的取消（多消费者）</p>
+<p>Context 与任务取消</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118160603058.png" alt="image-20211118160603058" />
+
+
+
+</p>
+</p>
+<p>Context</p>
+<ul>
+<li>
+<p>根Context, 通过context.Background() 创建</p>
+</li>
+<li>
+<p>子Context: context.WithCancel(parentContext)</p>
+<p>ctx, cancel := contxt.WithCancel(contxt.Background())</p>
+</li>
+<li>
+<p>当前context取消时候，基于他的子context 都会被取消。</p>
+</li>
+<li>
+<p>接收取消通知 &lt;- ctx.Done// cancel()</p>
+</li>
+</ul>
+<p>只运行一次</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118162057549.png" alt="image-20211118162057549" />
+
+
+
+</p>
+</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="image-20211118162156928.png" alt="image-20211118162156928" />
+
+
+
+</p>
+</p>
+<p>sync.Once() 原理</p>
+<p>仅需任意任务完成</p>
+<p>所有任务完成</p>
+<p>对象池（数据库连接，网络连接）</p>
+<p>使用buffered channel实现对象池</p>
+<p>归还对象-&gt; chan-&gt; 获取对象</p>
+<p>sync pool 对象缓存</p>
+<p>sync.Pool 对象缓存？？ sync cache</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/f8aeaf38cd3069044685d33868e6a12d" target="_blank">https://gyazo.com/f8aeaf38cd3069044685d33868e6a12d</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/c32c6b3b02cbafab85d59d26375f0e71" target="_blank">https://gyazo.com/c32c6b3b02cbafab85d59d26375f0e71</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/af2fbba4e5b940ad64a41a570639ca98" target="_blank">https://gyazo.com/af2fbba4e5b940ad64a41a570639ca98</a></p>
+<p>sync.Pool 对象的生命周期</p>
+<ul>
+<li>GC会清除sync.Pool 缓存的对象</li>
+<li>对象缓存的有效期为下次GC之前</li>
+</ul>
+<p>只要没有put操作在私有对象池里面是没有的</p>
+<p>sync.Pool 总结</p>
+<ul>
+<li>锁带来的开销大，还是创建对象带来的开销大？</li>
+<li><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/efb267b39289b30347c7478581d26890" target="_blank">https://gyazo.com/efb267b39289b30347c7478581d26890</a></li>
+</ul>
+<p>康威定律 DDD</p>
+<p>请求进来，向下扇出，并且call很多下游API</p>
+<p>单元测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Square</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>)<span style="color:#66d9ef">int</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">*</span><span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSquate</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#a6e22e">inputs</span><span style="color:#f92672">:=</span>[<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#a6e22e">expected</span><span style="color:#f92672">:=</span>[<span style="color:#f92672">...</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">9</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span><span style="color:#f92672">:=</span><span style="color:#ae81ff">0</span>;<span style="color:#a6e22e">i</span>&lt;len(<span style="color:#a6e22e">inputs</span>);<span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#a6e22e">ret</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Square</span>(<span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ret</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">expected</span>[<span style="color:#a6e22e">i</span>]{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;input is %d, the expected is %d, the actual %d&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                   <span style="color:#a6e22e">input</span>[<span style="color:#a6e22e">i</span>],<span style="color:#a6e22e">expected</span>[<span style="color:#a6e22e">i</span>],<span style="color:#a6e22e">ret</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>}
+</span></span></code></pre></div><p>内置单元测试框架：</p>
+<ul>
+<li>Fail，Error :该测试失败，该测试继续，其他测试继续执行</li>
+<li>FailNow, Fatal: 该测试失败，该测试终止，其他测试继续执行</li>
+</ul>
+<p>代码覆盖率</p>
+<p>go test -v -cover</p>
+<p>断言 github.com/stretchr/testify</p>
+<p>Benchmark</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/aca94861bc4d40551e52e55d093947fa" target="_blank">https://gyazo.com/aca94861bc4d40551e52e55d093947fa</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/b77c73ac12c5926f0a98c49eddd70e7f" target="_blank">https://gyazo.com/b77c73ac12c5926f0a98c49eddd70e7f</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">go</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">bench</span>=.
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/f5f279536e4e069ed150839d395ee628" target="_blank">https://gyazo.com/f5f279536e4e069ed150839d395ee628</a></p>
+<p>BDD</p>
+<p>Behavior Driven Development</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/5d5ffb45da7404bb33ba185700767109" target="_blank">https://gyazo.com/5d5ffb45da7404bb33ba185700767109</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/df785c94e5e02756c3dbe12c7fe71707" target="_blank">https://gyazo.com/df785c94e5e02756c3dbe12c7fe71707</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/9a616c400ae7216c310fd4b19a11fae4" target="_blank">https://gyazo.com/9a616c400ae7216c310fd4b19a11fae4</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/be028ad50b5833a27bb799a5683b7bd1" target="_blank">https://gyazo.com/be028ad50b5833a27bb799a5683b7bd1</a></p>
+<p>反射编程</p>
+<p>reflect.TypeOf vs reflect.ValueOf</p>
+<ul>
+<li>
+<p>reflect.TypeOf 返回值类型 reflect.Type</p>
+</li>
+<li>
+<p>reflect.ValueOf 返回值 reflect.Value</p>
+</li>
+<li>
+<p>可以从reflect.Value 获得类型</p>
+</li>
+<li>
+<p>可以通过kind判断类型</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/b93fce6a84469927612985a4cfac0e10" target="_blank">https://gyazo.com/b93fce6a84469927612985a4cfac0e10</a></p>
+</li>
+</ul>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/c427b98e181d3df67aab98d0f33f08c9" target="_blank">https://gyazo.com/c427b98e181d3df67aab98d0f33f08c9</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Employee</span> <span style="color:#66d9ef">struct</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#a6e22e">EmployeeId</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`format:&#34;normal&#34;`</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#a6e22e">Age</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">e</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Employee</span>)<span style="color:#a6e22e">UpdateAge</span>(<span style="color:#a6e22e">newVal</span> <span style="color:#66d9ef">int</span>){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Age</span> = <span style="color:#a6e22e">newVal</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Customer</span> <span style="color:#66d9ef">struct</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>	<span style="color:#a6e22e">CookieId</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#a6e22e">Age</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestInvokeByName</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	<span style="color:#a6e22e">e</span> <span style="color:#f92672">:=&amp;</span><span style="color:#a6e22e">Employee</span>{<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;Mike&#34;</span>,<span style="color:#ae81ff">30</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	<span style="color:#75715e">// 直接获取成员
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Logf</span>(<span style="color:#e6db74">&#34;Name: value(%[1]v),Type(%[1]T)&#34;</span>,<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">ValueOf</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">e</span>).<span style="color:#a6e22e">FieldByName</span>(<span style="color:#e6db74">&#34;Name&#34;</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>	<span style="color:#75715e">// 成员可能不存在
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nameField</span>,<span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">e</span>).<span style="color:#a6e22e">FieldByName</span>(<span style="color:#e6db74">&#34;Name&#34;</span>);!<span style="color:#a6e22e">ok</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;Failed to get &#39;Name&#39; field.&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>	}<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#e6db74">&#34;Tag: format&#34;</span>,<span style="color:#a6e22e">nameField</span>.<span style="color:#a6e22e">Tag</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;format&#34;</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>	}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>	<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">ValueOf</span>(<span style="color:#a6e22e">e</span>).<span style="color:#a6e22e">MethodByName</span>(<span style="color:#e6db74">&#34;UpdateAge&#34;</span>).<span style="color:#a6e22e">Call</span>([]<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">Value</span>{<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">ValueOf</span>(<span style="color:#ae81ff">1</span>)})
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>	<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#e6db74">&#34;Updated Age:&#34;</span><span style="color:#a6e22e">e</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>}
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/b266dc5d61461672dfe210005190ae8b" target="_blank">https://gyazo.com/b266dc5d61461672dfe210005190ae8b</a></p>
+<p>万能程序</p>
+<p>DeepEqual</p>
+<p>比较切片和Map</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDeepEqual</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#a6e22e">a</span><span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>{<span style="color:#ae81ff">1</span>:<span style="color:#e6db74">&#34;one&#34;</span>,<span style="color:#ae81ff">2</span>:<span style="color:#e6db74">&#34;two&#34;</span>,<span style="color:#ae81ff">3</span>:<span style="color:#e6db74">&#34;three&#34;</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#a6e22e">b</span><span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>]<span style="color:#66d9ef">string</span>{<span style="color:#ae81ff">1</span>:<span style="color:#e6db74">&#34;one&#34;</span>,<span style="color:#ae81ff">2</span>:<span style="color:#e6db74">&#34;two&#34;</span>,<span style="color:#ae81ff">3</span>:<span style="color:#e6db74">&#34;three&#34;</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#a6e22e">s1</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>     <span style="color:#a6e22e">s2</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>     <span style="color:#a6e22e">s2</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>       <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">s1</span>,<span style="color:#a6e22e">s2</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>       <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">s1</span>,<span style="color:#a6e22e">s3</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#a6e22e">c1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Custumer</span>{<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;Mike&#34;</span>,<span style="color:#ae81ff">40</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>     <span style="color:#a6e22e">c2</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">Custumer</span>{<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;Mike&#34;</span>,<span style="color:#ae81ff">40</span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">c1</span>,<span style="color:#a6e22e">c2</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/a10a1bcb995573dd695ab27d362ceca1" target="_blank">https://gyazo.com/a10a1bcb995573dd695ab27d362ceca1</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/fc411a9bea3bba9c78f13bb9f47f57a8" target="_blank">https://gyazo.com/fc411a9bea3bba9c78f13bb9f47f57a8</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/ebd871ec44f80daf8b4d50d59fba0a9e" target="_blank">https://gyazo.com/ebd871ec44f80daf8b4d50d59fba0a9e</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/5a7666fe357f7a9576db005cd53eb745" target="_blank">https://gyazo.com/5a7666fe357f7a9576db005cd53eb745</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/a5b94370bac23e75094e495405c111f1" target="_blank">https://gyazo.com/a5b94370bac23e75094e495405c111f1</a></p>
+<p>关于反射你应该知道的</p>
+<ul>
+<li>提高了程序的灵活性，降低了程序的可读性，降低了程序的性能</li>
+</ul>
+<p>不安全编程</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/917b71d73089020c708b31836cce58b2" target="_blank">https://gyazo.com/917b71d73089020c708b31836cce58b2</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/f500624a5a03fa01e39bf2cf6f9f3e28" target="_blank">https://gyazo.com/f500624a5a03fa01e39bf2cf6f9f3e28</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/e63eb8f56624a55d773ca820c119b65d" target="_blank">https://gyazo.com/e63eb8f56624a55d773ca820c119b65d</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/2e992064b118159d0a58a656d017d380" target="_blank">https://gyazo.com/2e992064b118159d0a58a656d017d380</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/9c90262305e5b81aa0005ff9bf16ca15" target="_blank">https://gyazo.com/9c90262305e5b81aa0005ff9bf16ca15</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/a3ca87532dab82e02ec360a144ad18b6" target="_blank">https://gyazo.com/a3ca87532dab82e02ec360a144ad18b6</a></p>
+<p>架构模式</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/3d2dd605b897f106549c2939da35182e" target="_blank">https://gyazo.com/3d2dd605b897f106549c2939da35182e</a></p>
+<p>Pipe-Filter 架构</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/ea75711a765ce8554e2854afb974658e" target="_blank">https://gyazo.com/ea75711a765ce8554e2854afb974658e</a></p>
+<ul>
+<li>
+<p>非常适合数据处理以及数据分析系统</p>
+</li>
+<li>
+<p>Filter封装数据处理的功能</p>
+</li>
+<li>
+<p>松耦合： Filter只跟数据(格式)耦合</p>
+</li>
+<li>
+<p>Pipe用于连接Filter传递数据，或者在异步处理过程中缓冲数据流，</p>
+<p>进程内同步调用时，pipe演变为数据在方法调用间传递</p>
+</li>
+</ul>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/dfe390ab438b9758de391accd05fb082" target="_blank">https://gyazo.com/dfe390ab438b9758de391accd05fb082</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/eb5079cf5f82c333c83af1b90b69078a" target="_blank">https://gyazo.com/eb5079cf5f82c333c83af1b90b69078a</a></p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/674b755eeb2b3bd401d4e1afb79abb3e" target="_blank">https://gyazo.com/674b755eeb2b3bd401d4e1afb79abb3e</a></p>
+<p>内置Json解析</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/62caf1d3ac52c3641583b05c91e651b3" target="_blank">https://gyazo.com/62caf1d3ac52c3641583b05c91e651b3</a></p>
+<p>easyJson</p>
+<p>尽量少的使用反射</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="" alt="img" />
+
+
+
+</p>
+
+<a href="https://gyazo.com/9d35fb4b70f7b028d9650d5481b0d297" target="_blank">https://gyazo.com/9d35fb4b70f7b028d9650d5481b0d297</a></p>
+<p>Go 程序设计语言</p>
+<p>面向模式的软件架构</p>
+<p>计算机程序的构造和解释</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/note_go/99_%e6%9e%81%e5%ae%a2%e6%97%b6%e9%97%b4go%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents"></nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

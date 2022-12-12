@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Linux Linux 的体系结构 体系结构主要分为 用户态(用户上层活动)和内核态 内核： 本质是一段管理计算机硬件设备的程序 系统调用：内核的访问接口，是一种不能再简化的操作。 原子性的操作。 公用函数库： 系统调用的组合拳 Shell:命令解释器， 可编程 windows - cigwin
+查看系统调用 Linux - man 2 syscalls less / more / cat /tail
+切换默认shell
+查找特定的文件 find
+语法： find path [options] params 作用： 在指定目录下查找文件 1find ./ -name &#34;fileName&#34; # 精确查找 2find ~ -name &#34;target*&#34; # 模糊查找文件 3find ~ -iname &#34;target*&#34; # 忽略大小写的查找 4man find # 查看find的使用说明 检索文件内容 grep
+语法： grep [options] pattern file 全称 Global Regular Expression Print 作用： 用于查找文件里符合条件的字符串, 智慧筛选出目标字符串所在的行 1grep &#34;moo&#34; target* # 查找 target* 开头的文件中包含 &#34;moo&#34; 的行 管道操作符 | 可以将指令连接起来，前一个指令的输出作为后一个指令的输入 只处理前一个命令的正确输出， 不处理错误输出 右边命令必须接收标准输入流，否则传递过程中数据会被抛弃 sed, awk, grep, cut, head, top, less, more, wc, join, sort, split 等 1grep &#39;partial\[true\]&#39; test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/5th_Linux/" /><meta property="article:section" content="interview" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/interview" data-filter="all"></a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="linux">Linux</h1>
+<h2 id="linux-的体系结构">Linux 的体系结构</h2>
+<ul>
+<li>体系结构主要分为 用户态(用户上层活动)和内核态</li>
+<li>内核： 本质是一段管理计算机硬件设备的程序</li>
+<li>系统调用：内核的访问接口，是一种不能再简化的操作。 原子性的操作。</li>
+<li>公用函数库： 系统调用的组合拳</li>
+<li>Shell:命令解释器， 可编程</li>
+</ul>
+<p>windows - cigwin</p>
+<p>查看系统调用
+<code>Linux - man 2 syscalls </code></p>
+<p>less / more / cat /tail</p>
+<p>切换默认shell</p>
+<h2 id="查找特定的文件">查找特定的文件</h2>
+<p><code>find</code></p>
+<ul>
+<li>语法：  <code>find path [options] params</code></li>
+<li>作用： 在指定目录下查找文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-s" data-lang="s"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>find ./ <span style="color:#f92672">-</span>name <span style="color:#e6db74">&#34;fileName&#34;</span> <span style="color:#75715e"># 精确查找</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>find <span style="color:#f92672">~</span> <span style="color:#f92672">-</span>name <span style="color:#e6db74">&#34;target*&#34;</span> <span style="color:#75715e"># 模糊查找文件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>find <span style="color:#f92672">~</span> <span style="color:#f92672">-</span>iname <span style="color:#e6db74">&#34;target*&#34;</span> <span style="color:#75715e"># 忽略大小写的查找</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>man find <span style="color:#75715e"># 查看find的使用说明</span>
+</span></span></code></pre></div><h2 id="检索文件内容">检索文件内容</h2>
+<p><code>grep</code></p>
+<ul>
+<li>语法： <code>grep [options] pattern file</code></li>
+<li>全称 Global Regular Expression Print</li>
+<li>作用： 用于查找文件里符合条件的字符串, 智慧筛选出目标字符串所在的行</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-s" data-lang="s"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>grep <span style="color:#e6db74">&#34;moo&#34;</span> target<span style="color:#f92672">*</span> <span style="color:#75715e"># 查找 target* 开头的文件中包含 &#34;moo&#34; 的行</span>
+</span></span></code></pre></div><h4 id="管道操作符-">管道操作符 |</h4>
+<ul>
+<li>可以将指令连接起来，前一个指令的输出作为后一个指令的输入
+<p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="2019-10-04-23-32-08.png" alt="" />
+
+
+
+</p>
+</li>
+<li>只处理前一个命令的正确输出， 不处理错误输出</li>
+<li>右边命令必须接收标准输入流，否则传递过程中数据会被抛弃</li>
+<li>sed, awk, grep, cut, head, top, less, more, wc, join, sort, split 等</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>grep <span style="color:#e6db74">&#39;partial\[true\]&#39;</span> test.log | grep -o <span style="color:#e6db74">&#39;engine\[[0-9 a-z]*\]&#39;</span>  <span style="color:#75715e"># 符合正则表达式</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>ps -ef|grep tomcat| grep -v <span style="color:#e6db74">&#34;grep&#34;</span> <span style="color:#75715e"># 过滤掉不需要的内容</span>
+</span></span></code></pre></div><h2 id="对文件内容做统计">对文件内容做统计</h2>
+<p><code>awk</code></p>
+<ul>
+<li>语法： <code>awk [options] 'cmd' file</code></li>
+<li>一次读取一行文本， 按照输入分隔符进行切片，切成多个组成部分</li>
+<li>将切片直接保存在内建的变量中，$1, $2&hellip;.($0 表示行的全部)</li>
+<li>支持对单个切片的判断，支持循环判断，默认分隔符为空格</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>awk <span style="color:#e6db74">&#39;{print $1,$4}&#39;</span> fileName.txt  <span style="color:#75715e"># 获取文件的第1， 4 列</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>awk <span style="color:#e6db74">&#39;$1==&#34;tcp&#34; &amp;&amp; $2==1{print $0}&#39;</span> fileName.txt <span style="color:#75715e">#按条件查询获取对应的行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>awk <span style="color:#e6db74">&#39;($1==&#34;tcp&#34; &amp;&amp; $2==1) || NR==1 {print $0}&#39;</span> fileName.txt <span style="color:#75715e"># 按条件查询，同时获取第1行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>awk -F <span style="color:#e6db74">&#34;,&#34;</span> <span style="color:#e6db74">&#39;{print $2}&#39;</span> fileName.txt <span style="color:#75715e"># 分隔符号为 &#34;,&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>XXXXXX | awk <span style="color:#e6db74">&#39;{enginearr[$1]++}END{for(i in enginearr)print i &#34;\t&#34; enginearr[i]}&#39;</span> <span style="color:#75715e"># 统计 第1列 出现的次数</span>
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="2019-10-04-23-52-13.png" alt="" />
+
+
+
+</p>
+
+<p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="2019-10-04-23-59-14.png" alt="" />
+
+
+
+</p>
+</p>
+<h2 id="批量替换掉文本中的内容">批量替换掉文本中的内容</h2>
+<p><code>sed</code></p>
+<p>语法: <code>sed [option] 'sed command' fileName</code></p>
+<ul>
+<li>全名 stream editor， 流编辑器</li>
+<li>适合对文本内容进行处理</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>sed <span style="color:#e6db74">&#39;s/^Str/String/&#39;</span> fileName.txt <span style="color:#75715e"># 替换内容后输出 ^ 表示以Str 开头的</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>sed -i <span style="color:#e6db74">&#39;s/^Str/String/&#39;</span> fileName.txt <span style="color:#75715e"># 替换源文件的内容， 无输出</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>sed -i <span style="color:#e6db74">&#39;s/\.$/\;/&#39;</span> fileName.txt <span style="color:#75715e"># $ 代表以...结束</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>sed -i <span style="color:#e6db74">&#39;s/Jack/me/g&#39;</span> fileName.txt <span style="color:#75715e"># g 表示全文替换，如果没有g只会替换第一个 </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>sed -i <span style="color:#e6db74">&#39;/^ *$/d&#39;</span> fileName.txt <span style="color:#75715e"># 删除空</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>sed -i <span style="color:#e6db74">&#39;/Integer/d&#39;</span> fileName.txt <span style="color:#75715e"># 删除包含Integer 的行</span>
+</span></span></code></pre></div><h2 id="跳槽过程中容易被忽略的细节">跳槽过程中容易被忽略的细节</h2>
+<ul>
+<li>面试要偷偷摸摸进行</li>
+<li>面试时间不要一味的将就对方</li>
+<li>提离职要谨慎， 拿到offer再离职</li>
+<li>好聚好散</li>
+<li>跳槽时间衔接： 一般15号之后离职， 下个月15号前入职社保不会断</li>
+</ul>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/interview/imooc/imooc_%e5%89%91%e6%8c%87offer/5th_Linux.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-的体系结构">Linux 的体系结构</a></li>
+    <li><a href="#查找特定的文件">查找特定的文件</a></li>
+    <li><a href="#检索文件内容">检索文件内容</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#管道操作符-">管道操作符 |</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#对文件内容做统计">对文件内容做统计</a></li>
+    <li><a href="#批量替换掉文本中的内容">批量替换掉文本中的内容</a></li>
+    <li><a href="#跳槽过程中容易被忽略的细节">跳槽过程中容易被忽略的细节</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

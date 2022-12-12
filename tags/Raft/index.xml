@@ -6,18 +6,18 @@
     <description>Recent content in Raft on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Raft/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Raft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
       <title>「Raft」 The Raft Consensus Algorithm</title>
-      <link>https://airren.github.io/posts/blog/raft/</link>
+      <link>https://airren.github.io/blog/raft/</link>
       <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/raft/</guid>
+      <guid>https://airren.github.io/blog/raft/</guid>
       <description>12 123 https://raft.github.io/
 https://www.infoq.com/presentations/raft-consensus-algorithm/
 https://www.geeksforgeeks.org/raft-consensus-algorithm/
 https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</description>
     </item>
-    
     
   </channel>
 </rss>

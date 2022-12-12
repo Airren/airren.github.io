@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Blog" />
+<meta property="og:description" content="Blog list page" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/blog/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/blog" data-filter="all">Blog</a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/blog/raft/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Raft」 The Raft Consensus Algorithm</h5>
+        <p class="card-text post-summary">12 123 https://raft.github.io/
+https://www.infoq.com/presentations/raft-consensus-algorithm/
+https://www.geeksforgeeks.org/raft-consensus-algorithm/
+https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">April 1, 2021</span>
+        <a
+        href="/blog/raft/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/1_cryptography/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
+HTTPS 非对称加密+对称加密
+mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
+加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
+公钥加密，私钥解密
+数字签名 Bob 给Alice发送的文件需要携带数字签名。
+Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
+Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
+数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
+比特币其实就是数字签名
+X.509 数字证书 证书版本信息
+证书的序列号，每个证书都有一个唯一的证书序列号
+证书所使用的签名算法；
+证书的发行机构名称，命名规则一般采用X.500格式；
+证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
+证书所有人的名称，命名规则一般采用X.500格式；
+证书所有人的公开密钥；
+证书发行者对证书的签名；
+Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
+1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/1_cryptography/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/3_intel_sgx/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">SGX
+概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
+https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
+Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
+机密性和完整性， 即使在OS、BIOS、VMM或者SMM层存在特权恶意软件的情况下也可以保证安全。 低学习曲线，和父应用程序类似的OS编程模型，并且在主CPU上执行 远程认证 远程部分能够认证一个应用程序的enclave的身份，并且安全的将密钥、凭据和敏感数据提供为enclave 最小的可能攻击面， CPU边界成为攻击面外围，所有的数据、内存、外围之外的IO都是加密的。 最小攻击面的硬件辅助可信执行环境。
+intel SGX保护的应用程序 Intel SGX应用程序由两个部分组成： 不可信代码和可信Enclave. 开发者可以创建一对多的可信enclave用来支持分布式体系结构。
+常用应用有密钥，专有算法，生物识别数据和CSR生成等。
+程序运行时， Intel SGX指令在一个特定的保护内存区域中创建和执行enclave，该区域有由开发者定义的受限入口和出口函数。能够防止数据泄露。在CPU范围中的enclave和数据运行在一个clean的环境中， enclave数据写入到磁盘会被加密，并且校验其完整性。
+上图中的流程
+Application由可信和不可信部分构成 App运行和创建evclave， enclave放入到可信内存中 可信函数被调用，执行会转换到enclave中 enclave可以访问所有进程数据，外部要访问enclave数据被禁止 可信函数返回enclave数据 对enclave有未授权的访问和内存侦听是有可能的
+认证Enclave和加密数据 当前，ODM(原始设备制造上)和ISV(独立软件提供商) 通常在制造时或通过无法以机密方式证明XXX。
+Intel SGX使用enclave之间本地认证或者第三方远程认证的方式来保证应用程序没有受到破坏。
+应用程序受保护的部分会加载到一个Enclave，它的代码和数据都会收到监测。会发送一个请求到远端服务器，用来验证这个Enclave是否是可靠的Intel 处理器生成的。 如果认证了Enclave的身份，远端就会信任Enclave并安全的提供密钥，凭证和数据.
+Intel SGX 包括一个生成CPU和Enclave特定“密封密钥”的指令。密钥能够用来安全的存储和取回可鞥你需要保存在磁盘中的敏感信息。
+Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安全研究人员以及政府安全机构的支持下创建的，上百家ISV与Intel合作，使用Intel SGX来保护关键任务应用程序。
+Set up SGX develop environment Install SGX driver
+Install SGX SDK
+Install SGX PSW
+直接按照官方文档依次安装上述3个组件</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/3_intel_sgx/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/crypto_openvpn/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
+https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/crypto_openvpn/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_1_pod/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">从底层技术角度看，Pod内不同容器之间共享存储和一些namespace。
+PID namespace: Pod中不同应用程序看拿到的其他进程的ID。Sidecar 模式下只能看到一个进程？
+Network Namespace: Pod 中的多个容器具有相同的网络配置，共享一个端口范围。
+IPC Namespace： Pod中的多个容器能够使用SystemV IPC 或 POSIX消息队列进行通信。
+UTS Namespace: Pod中的多个容器共享一个主机名。
+在Kubernetes的网络模型中，每台服务器上的容器有自己独立的IP段。
+为了实现这一目标，重点解决一下两点：
+各台服务器上的容器IP段不能重叠，所以需要某种IP段分配机制，为各台机器分配独立的IP段。 从某个Pod发出的流量到达所在的机器的Host上时，机器网络层应当根据目标IP地址，将流量转发到目标机器的能力。 综上，两个能力： IP地址分配和Route.
+容器之间直接通信，不需要额外的NAT。
+Pod to Pod 所有的Pod之间要保证3层网络的联通性
+Pod to Service Servcie 总共有4种类型，其中组常用的就是Cluster IP. 这种类型的Service会分配一个仅集群内可以访问的虚拟IP。
+Kubernetes通过kube-proxy组件实现Service Cluster IP的功能。kube-proxy 是一个daemonset，通过复杂的iptables/IPVS 规则在Pod和Service之间进行各种过滤和NAT.
+Pod到集群外 从Pod内部到集群外的流量，Kubernetes会通过SNAT来处理。
+Kubernets 默认的组网方案是bridge，CNI主要是用来解决容器的跨机通信。典型的跨机通信方案有bridge和overlay。
+创建Pod时候，首先会创建一个pause容器。占用一个 linux的network namespace。Pod内的其他容器共享这个network namespace。此时，只有一个lo设备。 CNI负责初始化pause container 中的网络设备。
+kubernetes主机内组网&amp;跨节点组网 kubernetes 经典的主机内组网模型是veth pair+bridge。
+跨机通信一般是bridge + overlay。 vxlan
+downward API 通过HostAlias修改pod中的/etc/host(Pod在host network下不支持)
+Pod的隔离中 network namspce 是最先创建的，如果ns使用了host模式，则uts也会使用host模式。
+Pause扮演PID 1的角色，并在子进程成为“孤儿进程”时，通过wait() 收割这些僵尸子进程。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_1_pod/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/linux_zero_copy/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">https://www.jianshu.com/p/a6c6f47a5ef7
+https://blog.csdn.net/weixin_42096901/article/details/103017044
+https://blog.csdn.net/weixin_39406430/article/details/123715072
+http://t.zoukankan.com/yangyongjie-p-14576216.html
+https://zhuanlan.zhihu.com/p/430848775
+https://blog.csdn.net/weixin_42340926/article/details/126211173</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/linux_zero_copy/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/multipass_network/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">LXC Set proxy
+1sudo lxc config set core.proxy_https http://username:password@&lt;IP&gt;:&lt;port&gt;/ LXC
+https://www.linode.com/docs/guides/beginners-guide-to-lxd-reverse-proxy/
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-lxd-on-ubuntu-20-04
+SDEWAN - direct connect Edge-1
+1# PREROUTTING 2sudo iptables -I PREROUTING -d 10.10.70.49/32 -p tcp -m tcp --dport 6443 -j DNAT --to-destination 10.96.0.1:443 -t nat Hub
+1# PREROUTTING 2 3sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p esp -j DNAT --to-destination 10.233.108.10 -t nat 4sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p udp --dport 4500 -j DNAT --to-destination 10.233.108.10:4500 -t nat 5sudo iptables -I PREROUTING --destination 10.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/multipass_network/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/network_virtualization/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
+Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/network_virtualization/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/network_base/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「网络」网络基础</h5>
+        <p class="card-text post-summary">What is the network layer? Network-to-network connections are what make the Internet possible. The &ldquo;network layer&rdquo; is the part of the Internet communications process where these connections occur, by sending packets of data back and forth between different networks, In the 7-layer OSI model, the network layer is layer 3. The Internet Protocol(IP) is one of the main protocols used at this layer, along with several other protocols for routing, resting and encryption.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/network_base/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/linux_systemd/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">【Linux】 Systemd</h5>
+        <p class="card-text post-summary">1# 通过Pid获取对应的service 2systemd status &lt;Pid&gt; </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/linux_systemd/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/k8s_source_code_3/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Basic of client-go</h5>
+        <p class="card-text post-summary">The repositories The Ku
+The Client Library&ndash; k8s.io/client-go k8s.io/client-go is a typical web service client library that supports all API types that are officially part of Kubernetes. It can be used to execute the usual REST verbs.
+Create Get List Update Delete Patch Watch For each Kubernetes 1.x.y release, there is a client-go release with a matching tag kubernetes-1.x.y.
+Most of your code that speaks to Kubernetes APIs will use tools/clientcmd/ to set up a client from a kubeconfig file, and kubernetes/ for the actual Kubernetes API clients.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/k8s_source_code_3/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/blog/CloudNative/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Cloud Native</h5>
+        <p class="card-text post-summary">4C8G 70%-80% 虚拟化浪费掉了
+裸金属
+2001 VMware虚拟化技术
+2006 AWS推出EC2服务
+2010 Openstack社区成立。 虚拟化技术，管理操作系统
+2011.04 第一个 开源PaaS平台 CloudFoundry
+2013.03 开源Docker发布。 操作系统之上的应用容器化。
+2014.06 Google 发布Kubernetes, 应用编排
+2015.07 Google 宣布成立CNCF基金会
+Building sustainable ecosystems for cloud native software.
+IaaS Infrastructure-as-a-service 基础设施即服务
+PaaS Platform as a service
+SaaS Software as a service
+CaaS container as a service
+优势 ：
+稳定性： 几个9 SLA 0.999 年宕机时间
+弹性扩展
+安全性
+成本
+易用性
+IDC
+单体架构
+集群架构阶段（单集群，同时只有一个实例提供服务）
+分布式架构阶段（负载均衡，同时提供服务）
+微服务架构， 以业务天然分库
+ServiceMesh： 网格化架构
+RPC 远程调用/ Gateway 负载均衡-&gt; 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/blog/CloudNative/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/blog/page/5/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+  </body>
+</html>

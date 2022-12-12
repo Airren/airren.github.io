@@ -6,12 +6,13 @@
     <description>Recent content in Nginx on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Nginx/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
       <title>「Nginx」 Tips</title>
-      <link>https://airren.github.io/posts/blog/nginx_tips/</link>
+      <link>https://airren.github.io/tech/web/RPC/http/nginx_tips/</link>
       <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/nginx_tips/</guid>
+      <guid>https://airren.github.io/tech/web/RPC/http/nginx_tips/</guid>
       <description>搭建静态资源服务器 静态资源文件夹
 1/root/file Nginx 配置
 vi /etc/nginx/nginx.conf
@@ -21,7 +22,6 @@ vi /etc/nginx/nginx.conf
 此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&amp;rsquo;r work。
 目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description>
     </item>
-    
     
   </channel>
 </rss>

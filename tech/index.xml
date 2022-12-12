@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teches on ByteGopher</title>
+    <link>https://airren.github.io/tech/</link>
+    <description>Recent content in Teches on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Sep 2020 21:11:24 +0000</lastBuildDate><atom:link href="https://airren.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【微服务】有状态服务和无状态服务</title>
+      <link>https://airren.github.io/tech/web/micro_service/stateless_service/</link>
+      <pubDate>Wed, 02 Sep 2020 21:11:24 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/micro_service/stateless_service/</guid>
+      <description>什么是有状态服务？
+什么是无状态服务？
+有状态服务和无状态服务分别适用的场景
+参考资料
+https://www.iteye.com/blog/kyfxbl-1831869
+https://www.cnblogs.com/xiangkejin/p/9010516.html
+https://www.zhihu.com/question/54437341</description>
+    </item>
+    
+    <item>
+      <title>「HTTP」HTTP 9 种请求方式</title>
+      <link>https://airren.github.io/tech/web/RPC/http/http_request_method/</link>
+      <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/RPC/http/http_request_method/</guid>
+      <description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
+HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
+HTTP特点：
+HTTP是无连接的： 无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。
+HTTP是无状态的： HTTP是无状态协议。无状态是指协议对于事务处理灭有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次传输的数据量增大。
+HTTP是媒体独立的： 任何数据类型都可以通过HTTP发送，客户端以及服务器要指定相同的MIME-type类型。媒体类型通常通过 HTTP 协议，由 Web 服务器告知浏览器的，更准确地说，是通过 Content-Type 来表示的。例如：Content-Type：text/HTML。通常只有广泛应用的格式才会获得一个 MIME Type，如果是某个客户端自己定义的格式，一般只能以 application/x- 开头。
+Web-Browser &amp;lt;===&amp;gt; HTTP Server &amp;lt;===&amp;gt; CGI(Common GateWay Interface) Program &amp;lt;==&amp;gt;Database
+客户端请求消息 请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成
+服务器响应消息 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
+不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</description>
+    </item>
+    
+    <item>
+      <title>「HTTPS」 Tips</title>
+      <link>https://airren.github.io/tech/web/RPC/http/https_tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:37:24 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/RPC/http/https_tips/</guid>
+      <description>什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
+1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</description>
+    </item>
+    
+    <item>
+      <title>「Nginx」 Tips</title>
+      <link>https://airren.github.io/tech/web/RPC/http/nginx_tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/RPC/http/nginx_tips/</guid>
+      <description>搭建静态资源服务器 静态资源文件夹
+1/root/file Nginx 配置
+vi /etc/nginx/nginx.conf
+1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2	alias /root/file; # 静态资源的绝对路径 3	autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
+1gzip on; 2gzip_minPlength 1; # 小于1字节不压缩， 3gzip_comp_level 2; # 压缩级别为2 4gzip_types taxt/plain applicaton/x-javascripts txt/css application/xml image/jpeg image/gif image/png; # 压缩文件类型 重启nginx服务
+1nginx -s reload 2# or 3systemctl restart nginx.service 通过浏览器访问资源
+此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&amp;rsquo;r work。
+目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/tech/web/RPC/thrift/thrift/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/RPC/thrift/thrift/</guid>
+      <description>https://blog.csdn.net/u011642663/article/details/56015576</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/RabbitMQ/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/RabbitMQ/</guid>
+      <description>RabbitMQ 消息中间件 技术精讲
+1. RabbitMQ 简介以及AMQP协议 RabbitMQ 是一个开源的消息代理和
+RabbitMQ底层是采用Erlang语言进行编写 开源、性能优秀， 稳定性保障 与spring AMQP完美整合，API丰富 集群模式丰富，表达式配置， HA模式， 镜像队列模型 保证数据不丢失的前提做到高可靠性，可用性 AMQP： 高级消息队列协议 RabbitMQ 的安装以及使用 erlang socat rabbitmq-server rpm -ivh XXXXX.rpm lsof -i:5672 # 查看端口 启用控制台插件 rabbit 可以选择使用内存进行存储
+RabbitMQ 核心概念 AMQP核心概念
+Server：又称作Broker， 接收客户端的连接，实现AMQP实体服务
+Connection： 连接， 应用程序与Broker的网络连接
+Channel： 网络信道，几乎所有的操作都在Channel中进行，Channel是进行消息读写的一个通道。客户端可以建立多个Channel，每个Channel代表一个会话任务。
+Message： 消息， 服务器和应用程序之间传送的数据，由Properties和Body组成。Properties可以对消息进行修饰，比如消息的优先级、延迟等高级特性；Body则就是消息体内容。
+Virtual host： 虚拟地址，用于进行逻辑隔离，是最上层的消息路由。一个Virtual Host里面可以有若干个Exchange 和Queue， 同一个Virtual Host里面不能有相同名称的Exchange或Queue。
+Exchange： 交换机，接收消息，根据路由键转发消息到绑定的队列
+Binding： Exchange 和Queue之间的虚拟连接，binding可以包含routing key
+Routing key: 一个路由规则，虚拟机可以用它来确定如何路由一个特定消息
+Queue： 也称为Massage Queue, 消息队列，保存消息并将他们转发给消费者
+RabbitMQ RabbitMQ默认端口号 4369 (epmd), 25672 (Erlang distribution) 4369 erlang 发现端口 25672 server间通信端口 5672, 5671 (AMQP 0-9-1 without and with TLS) client端通信口 15672 (if management plugin is enabled) 管理界面ui端口 61613, 61614 (if STOMP is enabled) 1883, 8883 (if MQTT is enabled) 生产端的可靠投递 保证消息从生产者到MQ之间的传输是100%可靠的，生产者发送的消息一定能进入消息队列</description>
+    </item>
+    
+    <item>
+      <title>「MVC」 Web服务的MVC设计模式</title>
+      <link>https://airren.github.io/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/web_mvc_pattern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tech/web/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/web_mvc_pattern/</guid>
+      <description>https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase
+https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase</description>
+    </item>
+    
+  </channel>
+</rss>

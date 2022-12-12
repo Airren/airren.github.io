@@ -6,7 +6,8 @@
     <description>Recent content in Notes on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Jun 2010 08:06:25 +0600</lastBuildDate><atom:link href="https://airren.github.io/cn/notes/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Tue, 08 Jun 2010 08:06:25 +0600</lastBuildDate><atom:link href="https://airren.github.io/cn/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
       <title>Search Results</title>
       <link>https://airren.github.io/cn/search/</link>
       <pubDate>Tue, 08 Jun 2010 08:06:25 +0600</pubDate>
@@ -18,7 +19,6 @@ Setting a very low sitemap priority will tell search engines this is not importa
 This implementation uses Fusejs, jquery and mark.js
 Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```</description>
     </item>
-    
     
   </channel>
 </rss>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nodus on ByteGopher</title>
+    <link>https://airren.github.io/nodus/</link>
+    <description>Recent content in Nodus on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/nodus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://airren.github.io/nodus/ipv6-debug/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/ipv6-debug/</guid>
+      <description>Hi, Kural,
+About the IPV6 SFC, the following is my debug process.
+Now, the func CalculateRoutes() can genarate the create route to the pod, but can&amp;rsquo;t add to the corresponding pod.
+The calculated result for the sfc-head pod:
+But for the agent pod, while adding routes to the container through func ContainerAddRoute() failed. Because in this function, it will get the host network configuration to find the default gateway, to add an extra route to the host network through the default gateway on the host.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/nodus/k8s-install-script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/k8s-install-script/</guid>
+      <description>for containerd
+for crio
+for docker</description>
+    </item>
+    
+    <item>
+      <title>CNI Container Networking Interface</title>
+      <link>https://airren.github.io/nodus/k8s-network-cni/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/k8s-network-cni/</guid>
+      <description>Docker CNM What is CNI?
+How CNI plugin works?
+What a CNI plugin is made of?
+How a CNI plugin is being used in K8s?
+How a CNI plugin is executed?
+Anatomy of Pod networking
+What is CNI CNI stands for Container Networking Interface
+An interface between container runtime and the network implementation
+Configure the network interfaces and routes
+Concern itself only with the netwrok connectivity.
+How CNI plugin works? A CNI binary Handle connectivity - configures the network interface of the Pod /opt/cni/bin A daemon Handle reachability - manager routings across the cluster What a CNI plugin is made of ?</description>
+    </item>
+    
+    <item>
+      <title>Nodus</title>
+      <link>https://airren.github.io/nodus/nodus-architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/nodus-architecture/</guid>
+      <description>Image ovn4nfv-k8s-plugin NFN-Operator Exposes virtual, provider chaning CRDs to external world Programs OVN to create L2 switch Watches for PODs being coming up Assigns IP address ofr every network of the deployments Looks for replics and auto create routes for chaning to work Create LBs for distributing the load across CNF replicas OVN4NFV NFN-Agent Performs CNI operations Configuration VLAN and Routes in Linux Kernel(in case of ruotes, it cloud do it in both root and network namespace) Communicates with OVSDB to inform og provider interface.</description>
+    </item>
+    
+    <item>
+      <title>Nodus Dev Note</title>
+      <link>https://airren.github.io/nodus/nodus-dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/nodus-dev/</guid>
+      <description>SFC for IPV6 vagrant file updte:
+mount a local file to the VM
+1config.vm.synced_folder &amp;#34;/home/ubuntu/qiang/nodus-1.24/SDEWAN-SetUp/&amp;#34;, &amp;#34;/home/vagrant/mnt&amp;#34; vagrant version update to 2.2.19
+1vagrant_version=2.2.19 enable ipv4_forward in calico configuration
+update ovn deploy yaml: update image tag, update ovn_subnet
+1 OVN_SUBNET: &amp;#34;10.154.141.0/18&amp;#34; 2OVN_GATEWAYIP: &amp;#34;10.154.141.1/18&amp;#34; 3 4 5 privileged: true 6 mountPropagation: Bidirectional 1apiVersion: k8s.plugin.opnfv.org/v1alpha1 2kind: NetworkChaining 3metadata: 4 name: example-networkchaining 5spec: 6 # Add fields here 7 chainType: &amp;#34;Routing&amp;#34; 8 routingSpec: 9 namespace: &amp;#34;default&amp;#34; 10 networkChain: &amp;#34;net=virtual-net1,app=slb,net=dync-net1,app=ngfw,net=dync-net2,app=sdewan,net=virtual-net2&amp;#34; 11 left: 12 - networkName: &amp;#34;left-pnetwork&amp;#34; 13 gatewayIp: &amp;#34;172.</description>
+    </item>
+    
+    <item>
+      <title>OVN Open virtual Network</title>
+      <link>https://airren.github.io/nodus/ovn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/nodus/ovn/</guid>
+      <description>Open Virtual Network
+OVN(Open Virtual Network) is a series of daemons for the Open vSwitch that translate virtual network configuration into OpenFlow.
+OVN provides a higher-layer of abstraction than Open vSwitch, working with logical routers and logical switches, rather than flows.
+Why did we choose OVN for Nodus?
+One of the best programmable controller
+Hides OVS complexity
+Broader eco-system
+L2 CNI - Support for unicast, multicast, broadcast applications
+One site level IPAM - No IP address restriction with number of nodes</description>
+    </item>
+    
+  </channel>
+</rss>

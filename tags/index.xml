@@ -7,5 +7,158 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Raft</title>
+      <link>https://airren.github.io/tags/Raft/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Raft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch</title>
+      <link>https://airren.github.io/tags/ElasticSearch/</link>
+      <pubDate>Mon, 07 Sep 2020 20:23:25 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/ElasticSearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MicroService</title>
+      <link>https://airren.github.io/tags/MicroService/</link>
+      <pubDate>Wed, 02 Sep 2020 21:11:24 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/MicroService/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SoftWare</title>
+      <link>https://airren.github.io/tags/SoftWare/</link>
+      <pubDate>Fri, 28 Aug 2020 00:11:32 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/SoftWare/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Http</title>
+      <link>https://airren.github.io/tags/Http/</link>
+      <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bson</title>
+      <link>https://airren.github.io/tags/Bson/</link>
+      <pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Bson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://airren.github.io/tags/Go/</link>
+      <pubDate>Thu, 20 Aug 2020 01:40:04 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Alfred</title>
+      <link>https://airren.github.io/tags/Alfred/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Alfred/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mongo</title>
+      <link>https://airren.github.io/tags/Mongo/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Mongo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TSDB</title>
+      <link>https://airren.github.io/tags/TSDB/</link>
+      <pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/TSDB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hexo</title>
+      <link>https://airren.github.io/tags/Hexo/</link>
+      <pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hbase</title>
+      <link>https://airren.github.io/tags/Hbase/</link>
+      <pubDate>Fri, 07 Aug 2020 01:03:42 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Hbase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTPS</title>
+      <link>https://airren.github.io/tags/HTTPS/</link>
+      <pubDate>Fri, 31 Jul 2020 00:37:24 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/HTTPS/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://airren.github.io/tags/Nginx/</link>
+      <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tips</title>
+      <link>https://airren.github.io/tags/Tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Tips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://airren.github.io/tags/Vim/</link>
+      <pubDate>Fri, 31 Jul 2020 00:31:02 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/Vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenTSDB</title>
+      <link>https://airren.github.io/tags/OpenTSDB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/tags/OpenTSDB/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

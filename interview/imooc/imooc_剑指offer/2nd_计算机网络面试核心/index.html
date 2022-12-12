@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="计算机网络面试核心 7. HTTP 简介 超文本传输协议的主要特点 是应用层的请求响应的无状态协议
+支持客户/服务器模式 ： 浏览器通过url向服务端发送请求， 服务端返回响应信息 简单快速 ： 请求方法 get post delete 通讯速度快 灵活： 数据格式灵活，允许任意格式的数据类型 无连接： 每次连接只处理一个请求，收到应答之后就断开连接 ， 1.1 之后使用了长连接 下层实现对上层透明， keep alive 无状态： 对事务处理没有记忆能力，缺少状态， version 1.1 引入了 keep alive 持续连接机制 2.0 升级成本太大 HTTP 请求结构 HTTP请求报文结构
+1GET /baidu/com HTTP1.1 2 Host: www.baidu.com 3 Connection:keep-alive # close 1.1之前 4 User-Agent： Mozilla/5.0 5 Accept-Encoding 6Cookie: XXX HTTP响应结构 1HTTP 1.1 200 OK 2	Server: 3	Accept-Ranges: 4	Content-Type: 5	Content-Languge: 6	Content-Length: 7	Date: 请求/响应步骤 客户端连接到WEB服务器 发送HTTP请求 服务器接受请求并返回HTTP响应 释放TCP连接： 服务器主动关闭TCP连接，浏览器被动释放TCP连接 客户端浏览器解析HTML内容 在浏览器地址键入http 开头的url，按下回车之后经历的流程 DNS解析 ：逐层查询路由器中的DNS缓存，浏览器-系统-路由器-IPS服务器-根域名服务器缓存-顶级域名服务器缓存，返回对应IP TCP连接：IP&#43;80端口 三次握手 http协议版本 发送HTTP请求： 服务器处理并返回HTTP报文 浏览器解析渲染页面 连接结束 HTTP状态码 1XX：指示信息——表示请求已接收，继续处理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/2nd_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E6%A0%B8%E5%BF%83/" /><meta property="article:section" content="interview" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/interview" data-filter="all"></a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="计算机网络面试核心">计算机网络面试核心</h1>
+<h2 id="7-http-简介">7. HTTP 简介</h2>
+<h4 id="超文本传输协议的主要特点">超文本传输协议的主要特点</h4>
+<p>是应用层的请求响应的无状态协议</p>
+<ul>
+<li>支持客户/服务器模式 ： 浏览器通过url向服务端发送请求， 服务端返回响应信息</li>
+<li>简单快速 ： 请求方法 get post delete 通讯速度快</li>
+<li>灵活： 数据格式灵活，允许任意格式的数据类型</li>
+<li>无连接： 每次连接只处理一个请求，收到应答之后就断开连接 ， 1.1 之后使用了长连接  下层实现对上层透明， keep alive</li>
+<li>无状态： 对事务处理没有记忆能力，缺少状态， version 1.1 引入了 keep alive 持续连接机制 2.0 升级成本太大</li>
+</ul>
+<h4 id="http-请求结构">HTTP 请求结构</h4>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191024142449740" />
+
+
+
+</p>
+</p>
+<p>HTTP请求报文结构</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>GET /baidu/com HTTP1.1
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  Host: www.baidu.com
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>  Connection:keep-alive  <span style="color:#75715e"># close 1.1之前</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  User-Agent： Mozilla/5.0
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>  Accept-Encoding
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>Cookie: XXX
+</span></span></code></pre></div><h4 id="http响应结构">HTTP响应结构</h4>
+<img src="./img/image-20191024143052552.png" alt="image-20191024143052552" style="zoom:50%;" />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>HTTP 1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	Server:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	Accept-Ranges:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	Content-Type:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	Content-Languge:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	Content-Length:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>	Date:
+</span></span></code></pre></div><h4 id="请求响应步骤">请求/响应步骤</h4>
+<ul>
+<li>客户端连接到WEB服务器</li>
+<li>发送HTTP请求</li>
+<li>服务器接受请求并返回HTTP响应</li>
+<li>释放TCP连接： 服务器主动关闭TCP连接，浏览器被动释放TCP连接</li>
+<li>客户端浏览器解析HTML内容</li>
+</ul>
+<h4 id="在浏览器地址键入http-开头的url按下回车之后经历的流程">在浏览器地址键入http 开头的url，按下回车之后经历的流程</h4>
+<ul>
+<li>DNS解析 ：逐层查询路由器中的DNS缓存，浏览器-系统-路由器-IPS服务器-根域名服务器缓存-顶级域名服务器缓存，返回对应IP</li>
+<li>TCP连接：IP+80端口 三次握手 http协议版本</li>
+<li>发送HTTP请求：</li>
+<li>服务器处理并返回HTTP报文</li>
+<li>浏览器解析渲染页面</li>
+<li>连接结束</li>
+</ul>
+<h4 id="http状态码">HTTP状态码</h4>
+<p>1XX：指示信息——表示请求已接收，继续处理</p>
+<p>2XX：成功——表示请求已被成功接收、理解、接受</p>
+<p>3XX：重定向——要完成请求必须进行更进一步的操作</p>
+<p>4XX：客户端错误——请求有语法错误或请求无法实现</p>
+<p>401 （未授权） 请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。
+403 （禁止） 服务器拒绝请求。5XX：服务端错误——服务端未能实现合法的请求</p>
+<p><a href="https://www.cnblogs.com/gitnull/p/9532129.html" target="_blank">https://www.cnblogs.com/gitnull/p/9532129.html</a></p>
+<h2 id="8-http-介绍2">8. HTTP 介绍2</h2>
+<h4 id="常见状态码">常见状态码</h4>
+<ul>
+<li>200 OK： 正常返回信息</li>
+<li>400 Bad Request： 客户端请求有语法错误，不能被服务器理解</li>
+<li>401 Unauthorized： 请求未经授权，这个状态码必须和WWW-Authenticate报头域一起使用</li>
+<li>403 Forbidden： 服务器收到请求，但是拒绝提供服务</li>
+<li>404 Not Found：请求资源不存在，eg，输入了错误的url</li>
+<li>500 Internal Server Error： 服务器发生不可预期的错误</li>
+<li>503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能回复正常</li>
+</ul>
+<h4 id="get和post的区别">GET和POST的区别</h4>
+<ul>
+<li>HTTP报文层面：GET将请求信息放在URL中，POST放在报文体中， get的请求信息长度是有限制的。post是没有限制的</li>
+<li>数据库层面： GET符合幂等性和安全性，POST不符合</li>
+<li>其他层面： GET请求可以被缓存、被存储，而POST不行</li>
+</ul>
+<h4 id="cookie-和session的区别">Cookie 和Session的区别</h4>
+<h6 id="cookie-简介">Cookie 简介</h6>
+<ul>
+<li>是服务器发送给客户端的特殊信息，以文本的形式存放在客户端， 存放在Response Header中</li>
+<li>客户端再次请求的时候，会把Cookie回发</li>
+<li>服务器接收到后，会解析Cookie生成与客户端相对应的内容</li>
+</ul>
+<h6 id="cookie的设置以及发送过程">Cookie的设置以及发送过程</h6>
+<img src="./img/image-20191024152244843.png" alt="image-20191024152244843" style="zoom:50%;" />
+<h6 id="session简介">Session简介</h6>
+<ul>
+<li>服务器端的机制，在服务器上保存信息</li>
+<li>解析客户端请求，并操作session id，按需保存状态信息</li>
+</ul>
+<h6 id="session的实现方式">Session的实现方式</h6>
+<ul>
+<li>
+<p>使用Cookie来实现：  JSESSIONID</p>
+</li>
+<li>
+<p>使用url回写来实现</p>
+</li>
+</ul>
+<p>区别</p>
+<ul>
+<li>Cookie数据存放在客户的浏览器上，session数据存放在服务端</li>
+<li>Session相对于Cookie更安全</li>
+<li>若考虑减轻服务器负担，应当使用Cookie</li>
+</ul>
+<h2 id="9-http-和https-的区别">9. HTTP 和HTTPS 的区别</h2>
+<img src="./img/image-20191024131017298.png" alt="image-20191024131017298" style="zoom:33%;" />
+<h6 id="ssl-security-socket-layer-安全套接层">SSL （Security Socket Layer， 安全套接层）</h6>
+<ul>
+<li>为网络通信提供安全及数据完整性的一种安全协议</li>
+<li>是操作系统对外的API，SSL3.9后更名为TSL</li>
+<li>采用身份验证和数据加密保证网络通信的安全和数据的完整性</li>
+</ul>
+<h6 id="加密的方式">加密的方式</h6>
+<ul>
+<li>对称加密： 加密和解密使用同一个密钥</li>
+<li>非对称加密： 加密使用的密钥和解密使用的密钥是不相同的</li>
+<li>哈希算法： 将任意长度的信息转换我固定长度的值，算法不可逆 MD5</li>
+<li>数字签名： 证明某个消息或者文件是某人发出/认同的</li>
+</ul>
+<h6 id="https数据传输流程">HTTPS数据传输流程</h6>
+<ul>
+<li>
+<p>浏览器支持的加密算法信息发送给服务器</p>
+</li>
+<li>
+<p>服务器选择一套浏览器支持的加密算法，以证书的形式回发浏览器</p>
+</li>
+<li>
+<p>浏览器验证证书的合法性，并结合证书公钥加密信息发送给服务器</p>
+</li>
+<li>
+<p>服务器使用私钥解密信息，验证哈希，加密响应消息回发浏览器</p>
+</li>
+<li>
+<p>浏览器解密响应消息，并对消息进行验真，之后进行加密交互数据</p>
+</li>
+</ul>
+<h6 id="区别">区别</h6>
+<ul>
+<li>
+<p>HTTPS 需要到CA申请证书， HTTP不需要</p>
+</li>
+<li>
+<p>HTTPS密文传输，HTTP明文传输</p>
+</li>
+<li>
+<p>连接方式不同，HTTPS默认使用443端口，HTTP使用80端口</p>
+</li>
+<li>
+<p>HTTPS = HTTP+加密+认证+完整性保护，较HTTP安全</p>
+</li>
+</ul>
+<p>HTTPS真的很安全吗</p>
+<ul>
+<li>默认浏览器填充http://, 请求需要进行跳转，有被劫持的风险</li>
+<li>可以使用HSTS(HTTP Strict Transport Security)优化</li>
+</ul>
+<h2 id="10-socket相关">10. Socket相关</h2>
+<p>进程间通信 pid唯一标识本地的进程，本地唯一</p>
+<p>Socket是对TCP/IP协议的抽象，是操作系统对外开放的接口</p>
+<img src="./img/image-20191024135405676.png" alt="image-20191024135405676" style="zoom:50%;" />
+<p>Socket起源于Unix，一切皆是文件</p>
+<h4 id="socket通信流程">Socket通信流程</h4>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191024135524568" />
+
+
+
+</p>
+</p>
+<h2 id="11-网络知识总结">11. 网络知识总结</h2>
+<p>OSI七层架构 TCP/IP 协议</p>
+<ul>
+<li>
+<p>TCP</p>
+<ul>
+<li>三次握手
+<ul>
+<li>SYN Flood 攻击</li>
+<li>TCP报文头</li>
+<li>为什么要进行三次握手</li>
+</ul>
+</li>
+<li>四次挥手
+<ul>
+<li>TIME_WAIT</li>
+<li>CLOSE_WAIT</li>
+<li>为什么要进行四次挥手</li>
+</ul>
+</li>
+<li>滑动窗口</li>
+<li>TCP和UDP的区别</li>
+</ul>
+</li>
+<li>
+<p>HTTP</p>
+<ul>
+<li>请求结构</li>
+<li>响应结构</li>
+<li>请求响应步骤</li>
+<li>浏览器键入URL经历的流程</li>
+<li>状态码</li>
+<li>GET和POST的区别</li>
+<li>Cookie和Session的区别</li>
+<li>HTTP和HTTPS的区别</li>
+</ul>
+</li>
+<li>
+<p>Socket</p>
+</li>
+</ul>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/interview/imooc/imooc_%e5%89%91%e6%8c%87offer/2nd_%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e9%9d%a2%e8%af%95%e6%a0%b8%e5%bf%83.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#7-http-简介">7. HTTP 简介</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#超文本传输协议的主要特点">超文本传输协议的主要特点</a></li>
+            <li><a href="#http-请求结构">HTTP 请求结构</a></li>
+            <li><a href="#http响应结构">HTTP响应结构</a></li>
+            <li><a href="#请求响应步骤">请求/响应步骤</a></li>
+            <li><a href="#在浏览器地址键入http-开头的url按下回车之后经历的流程">在浏览器地址键入http 开头的url，按下回车之后经历的流程</a></li>
+            <li><a href="#http状态码">HTTP状态码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#8-http-介绍2">8. HTTP 介绍2</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#常见状态码">常见状态码</a></li>
+            <li><a href="#get和post的区别">GET和POST的区别</a></li>
+            <li><a href="#cookie-和session的区别">Cookie 和Session的区别</a>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#cookie-简介">Cookie 简介</a></li>
+                    <li><a href="#cookie的设置以及发送过程">Cookie的设置以及发送过程</a></li>
+                    <li><a href="#session简介">Session简介</a></li>
+                    <li><a href="#session的实现方式">Session的实现方式</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#9-http-和https-的区别">9. HTTP 和HTTPS 的区别</a>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#ssl-security-socket-layer-安全套接层">SSL （Security Socket Layer， 安全套接层）</a></li>
+                    <li><a href="#加密的方式">加密的方式</a></li>
+                    <li><a href="#https数据传输流程">HTTPS数据传输流程</a></li>
+                    <li><a href="#区别">区别</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#10-socket相关">10. Socket相关</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#socket通信流程">Socket通信流程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#11-网络知识总结">11. 网络知识总结</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

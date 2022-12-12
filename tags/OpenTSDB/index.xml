@@ -5,12 +5,13 @@
     <link>https://airren.github.io/tags/OpenTSDB/</link>
     <description>Recent content in OpenTSDB on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://airren.github.io/tags/OpenTSDB/index.xml" rel="self" type="application/rss+xml" /><item>
+    <language>en-us</language><atom:link href="https://airren.github.io/tags/OpenTSDB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
       <title>「TSDB」时序数据&amp;时序数据库简介</title>
-      <link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link>
+      <link>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid>
+      <guid>https://airren.github.io/component/TimeSeries/OpenTSDB/opentsdb_introduction/</guid>
       <description>什么是时序数据？
 时序数据的应用场景和特征？
 时序数据库？
@@ -26,7 +27,6 @@ timestamp： 时序数据的具体时间，可以是秒级或者毫秒级别的U
 例如： JVM_Heap_Memory_Usage_MB{host=127.0.0.1, instanceId=jvm01}
 Downsampling</description>
     </item>
-    
     
   </channel>
 </rss>

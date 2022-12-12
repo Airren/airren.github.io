@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>基础组件 on ByteGopher</title>
+    <link>https://airren.github.io/component/</link>
+    <description>Recent content in 基础组件 on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 11:02:05 +0800</lastBuildDate><atom:link href="https://airren.github.io/component/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy essential components by Docker</title>
+      <link>https://airren.github.io/component/deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/component/deployment/</guid>
+      <description>K8sStudy:
+Docker Node: Jenkins, Mysql, casbin_allinone, portioner,hemidall (1 node 4 core, 8G)
+ODMS with NFS. (3 node, 1 NFS node)
+K8s node for CNI study
+K8s node for others, DPDK?
+Dev node for source code and dev
+move Openwrt and VM to a same node
+Application Casdoor 1docker run -d --restart=always --name casdoor \ 2-p 8001:8000 \ 3casbin/casdoor-all-in-one Heimdall 1docker volume create heimdall 2docker run -d --restart unless-stopped --name=heimdall \ 3-e PUID=1000 -e PGID=1000 -e TZ=Europe/London \ 4-p 8086:80 -p 8463:443 \ 5-v heimdall:/config \ 6linuxserver/heimdall:latest CI&amp;amp;CD Jenkins 1docker volume create jenkins_data 2docker run -d --restart=always --name jenkins \ 3-u 0 --privileged \ 4-p 8080:8080 -p 50000:50000 \ 5-v jenkins_data:/var/jenkins_home \ 6-v /var/run/docker.</description>
+    </item>
+    
+  </channel>
+</rss>

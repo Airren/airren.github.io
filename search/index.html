@@ -11,17 +11,11 @@
 <link rel="stylesheet" href="/css/layouts/main.css"/>
 <link rel="stylesheet" href="/css/navigators/navbar.css"/>
 <link rel="stylesheet" href="/css/plyr.css"/>
-
 <link rel="stylesheet" href="/css/flag-icon.min.css"/>
 
 
-<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
-
-
-<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
-
-
-
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
 
@@ -59,11 +53,8 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
     
-
-
-
-
-</head>
+    
+  </head>
 
   <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
     <div class="container-fluid bg-dimmed wrapper">
@@ -75,46 +66,54 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
-  
-
-
-  
 
 
 
 
-  
-  
-    
-  
-  
 
 
 
-  
-  
-    
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
-  <div class="container">
-      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="/">
-      
-        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
-      ByteGopher</a>
-    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-      <ul class="navbar-nav ml-auto">
-      
-        
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                
 
   
 
@@ -122,36 +121,70 @@ Initial setup Search depends on additional output content type of JSON in config
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       
-        
-        <span class="flag-icon flag-icon-gb"></span>
-      
+      <span class="flag-icon flag-icon-gb"></span>
       English
     </a>
     <div class="dropdown-menu" aria-labelledby="languageSelector">
       
         <a class="dropdown-item nav-link languages-item" href="/cn/search">
           
-            
-            <span class="flag-icon flag-icon-cn"></span>
-          
+          <span class="flag-icon flag-icon-cn"></span>
           中文
         </a>
       
     </div>
 </li>
 
-      
-      
-      </ul>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+                <li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    
+    <span class="flag-icon flag-icon-gb"></span>
+    English
+</a>
+<div class="dropdown-menu" aria-labelledby="languageSelector">
+    
+    <a class="dropdown-item nav-link languages-item" href="/">
+        
+        <span class="flag-icon flag-icon-gb"></span>
+        English
+    </a>
+    
+    <a class="dropdown-item nav-link languages-item" href="/cn/">
+        
+        <span class="flag-icon flag-icon-cn"></span>
+        中文
+    </a>
+    
+</div>
+</li>
+
+                
+            </ul>
+        </div>
     </div>
-  </div>
-  
-  
+    
+    
     <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
-  
-  
+    
+    
     <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
-  
+    
 </nav>
 
 
@@ -171,7 +204,10 @@ Initial setup Search depends on additional output content type of JSON in config
         </form>
         <div class="sidebar-tree">
           <ul class="tree" id="tree">
-            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/posts" data-filter="all">Search Results</a>
+            </li>
             <div class="subtree">
                 
   
@@ -180,7 +216,7 @@ Initial setup Search depends on additional output content type of JSON in config
   
   
     
-    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+    <li><a class="" href="/component/TimeSeries/" title="TSDB">TSDB</a></li>
   
 
   
@@ -189,122 +225,7 @@ Initial setup Search depends on additional output content type of JSON in config
   
   
     
-    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li>
-      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
-      
-      <ul class="">
-        
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/react/" title="React">React</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
-  
-
-  
-  
-  
-  
-  
-    
-    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+    <li><a class="" href="/component/TimeSeries/Prometheus/prom/" title="「Prom」Prometheus 安装及使用简介">「Prom」Prometheus 安装及使用简介</a></li>
   
 
 
@@ -366,12 +287,6 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
-
-  
-  
-    
-  
-
   
   
     
@@ -410,7 +325,7 @@ Initial setup Search depends on additional output content type of JSON in config
   
   
 
-  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+  <footer class="container-fluid text-center align-content-center footer pb-2">
     <div class="container pt-5">
       <div class="row text-left">
         
@@ -424,7 +339,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                  <a class="smooth-scroll" href="/#about">About</a>
                 </li>
               
               
@@ -433,7 +348,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
                 </li>
               
               
@@ -442,7 +357,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
                 </li>
               
               
@@ -451,14 +366,9 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
                 </li>
               
-            
-              
-                
-              
-            
           </ul>
           
         </div>
@@ -468,15 +378,9 @@ Initial setup Search depends on additional output content type of JSON in config
           <h5>Contact me:</h5>
           <ul>
             
-              
-                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
-                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
-                </a></li>
-              
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
             
-              
-                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
-              
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
             
           </ul>
         </div>
@@ -521,7 +425,7 @@ Initial setup Search depends on additional output content type of JSON in config
     <div class="container">
       <div class="row text-left">
         <div class="col-md-4">
-          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
             <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
             Toha
           </a>
@@ -551,14 +455,11 @@ Initial setup Search depends on additional output content type of JSON in config
 <script type="text/javascript" src="/js/main.js"></script>
 
 
-
     
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
 <script src="https://airren.github.io/js/search.js"></script>
 
-
-    
-</body>
+  </body>
 </html>

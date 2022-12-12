@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Wireshark 学习笔记 WireShark的前世今生 Gerald Combs
+Wireshark 是目前世界上应用最广泛的抓包工具
+WIreshark 可以提供分析报告
+wireshark will always be opensource
+WireShark的概述与安装 网络监听软件原理 网络监听软件是一种监视网络状态、数据流程以及网络上信息传输的管理工具。 可以将网络接口设定成监听模式(混杂模式) 可以截获网络上所传输的信息 双刃剑&ndash;安全问题 防止窃听的方法：加密 主要网络监听软件 常见的网络监听软件
+Wireshark Tcpdump Microsoft Network Monitor Kisnet Fiddler Wireshark概述 功能 支持unix、Linux、windows、mac平台 在接口实时捕捉包 能详细显示包的详细协议信息 可以打开/保存捕捉的包 可以导入导出其他捕捉程序支持的包数据格式 可以通过多种方式过滤包 多种方式查找包 通过过滤以多种色彩显示包 创建多种统计分析 不能做的事情 不是入侵检测 ARP欺骗，但是可以观察网络发生的事情 不会处理网络事务 不会进行包的修改 Wireshark下载与安装 Windows： Winpcap &#43; Wireshark
+Linux： libpacp &#43; Wireshark
+WireShark的基本使用 界面与基本操作 示例协议包
+捕获与保存 过滤与过滤表达式 过滤表达式 协议过滤
+tap 只显示tcp协议 IP地址过滤
+ip.src == 192.168.1.1源地址 ip.dst == 192." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/tools/software/Wireshark-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="article:section" content="tools" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+    <div class="container">
+        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+            
+            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+            ByteGopher</a>
+        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/go_note">Go Note</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.github.com/airren">Github</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    
+    
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+    
+    
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+    
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading">
+              <a href="/go_note" data-filter="all">Posts</a>:
+              <a href="/tools" data-filter="all"></a>
+            </li>
+            <div class="subtree">
+              
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_go/" title="Go Note">Go Note</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/CloudNative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/component/" title="基础组件">基础组件</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/datastruct/" title="DataStructs">DataStructs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/english-learning/" title="English-learnings">English-learnings</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/interview/" title="Interviews">Interviews</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/life/" title="Lives">Lives</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/6.824/" title="MIT 6.824">MIT 6.824</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/note_c/" title="Note_cs">Note_cs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/notes/" title="Notes">Notes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/os/" title="Os">Os</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/" title="Posts">Posts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="Reacts">Reacts</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sdewan/" title="Sdewans">Sdewans</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tech/" title="Teches">Teches</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/tools/" title="Tools">Tools</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://airren.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="wireshark-学习笔记">Wireshark 学习笔记</h1>
+<h2 id="wireshark的前世今生">WireShark的前世今生</h2>
+<p>Gerald Combs</p>
+<p>Wireshark 是目前世界上应用最广泛的抓包工具</p>
+<p>WIreshark 可以提供分析报告</p>
+<p>wireshark will always be opensource</p>
+<h2 id="wireshark的概述与安装">WireShark的概述与安装</h2>
+<h3 id="网络监听软件原理">网络监听软件原理</h3>
+<h4 id="网络监听软件是一种监视网络状态数据流程以及网络上信息传输的管理工具">网络监听软件是一种监视网络状态、数据流程以及网络上信息传输的管理工具。</h4>
+<ul>
+<li>可以将网络接口设定成监听模式(混杂模式)</li>
+<li>可以截获网络上所传输的信息</li>
+</ul>
+<h4 id="双刃剑--安全问题">双刃剑&ndash;安全问题</h4>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191127170602832" />
+
+
+
+</p>
+</p>
+<img src="./img/image-20191127170611690.png" alt="image-20191127170611690" style="zoom:33%;" />
+<h4 id="防止窃听的方法加密">防止窃听的方法：加密</h4>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191127170724679" />
+
+
+
+</p>
+</p>
+<h3 id="主要网络监听软件">主要网络监听软件</h3>
+<p>常见的网络监听软件</p>
+<ul>
+<li>Wireshark</li>
+<li>Tcpdump</li>
+<li>Microsoft Network Monitor</li>
+<li>Kisnet</li>
+<li>Fiddler</li>
+</ul>
+<h3 id="wireshark概述">Wireshark概述</h3>
+<h4 id="功能">功能</h4>
+<ul>
+<li>支持unix、Linux、windows、mac平台</li>
+<li>在接口实时捕捉包</li>
+<li>能详细显示包的详细协议信息</li>
+<li>可以打开/保存捕捉的包</li>
+<li>可以导入导出其他捕捉程序支持的包数据格式</li>
+<li>可以通过多种方式过滤包</li>
+<li>多种方式查找包</li>
+<li>通过过滤以多种色彩显示包</li>
+<li>创建多种统计分析</li>
+</ul>
+<h4 id="不能做的事情">不能做的事情</h4>
+<ul>
+<li>不是入侵检测 ARP欺骗，但是可以观察网络发生的事情</li>
+<li>不会处理网络事务 不会进行包的修改</li>
+</ul>
+<h3 id="wireshark下载与安装">Wireshark下载与安装</h3>
+<p>Windows： Winpcap + Wireshark</p>
+<p>Linux： libpacp + Wireshark</p>
+<h2 id="wireshark的基本使用">WireShark的基本使用</h2>
+<h4 id="界面与基本操作">界面与基本操作</h4>
+<p>示例协议包</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191128121321927" />
+
+
+
+</p>
+</p>
+<h4 id="捕获与保存">捕获与保存</h4>
+<h4 id="过滤与过滤表达式">过滤与过滤表达式</h4>
+<img src="./img/image-20191128121529271.png" alt="image-20191128121529271" style="zoom: 33%;" />
+<h4 id="过滤表达式">过滤表达式</h4>
+<p>协议过滤</p>
+<ul>
+<li>tap 只显示tcp协议</li>
+</ul>
+<p>IP地址过滤</p>
+<ul>
+<li>ip.src == 192.168.1.1源地址</li>
+<li>ip.dst == 192.168.1.1 目标地址</li>
+<li>ip.addr = 192.168.1.1</li>
+</ul>
+<p>端口过滤</p>
+<ul>
+<li>tcp.port == 80 显示tcp端口为80</li>
+<li>tcp.srcport == 80 只显示tcp协议的源端口为80的</li>
+</ul>
+<p>http模式过滤</p>
+<ul>
+<li>http.request.method == &ldquo;GET&rdquo;  只显示HTTP GET 方法</li>
+</ul>
+<p>逻辑运算</p>
+<ul>
+<li>ip.src == 192.168.1.1 or ip.src == 192.168.1.2</li>
+</ul>
+<h4 id="包列表与详细信息">包列表与详细信息</h4>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191128122904377" />
+
+
+
+</p>
+</p>
+<h2 id="实验-常见协议分析">实验： 常见协议分析</h2>
+<h3 id="arp">ARP</h3>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191128123034237" />
+
+
+
+</p>
+</p>
+<p>数据链路层， 以太网层</p>
+<p>Frame：</p>
+<p>Ethernet</p>
+<h3 id="icmp的echo">ICMP的echo</h3>
+<img src="./img/image-20191128174237695.png" alt="image-20191128174237695" style="zoom: 33%;" />
+<h3 id="dns">DNS</h3>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191129134735762" />
+
+
+
+</p>
+</p>
+<h3 id="tcp三次握手">TCP三次握手</h3>
+<p>每次握手时发送的数据是TCP报文</p>
+<p>TCP段包含了源、目的地址、端口号、初始序号、滑动窗口大小、窗口扩大因子、最大报文长度等。还有一些标志位</p>
+<p>SYN - 同步序号</p>
+<p>ACK - 应答序号</p>
+<p>RST - 复位连接，消除旧有的同步序号</p>
+<p>PSH - 尽可能的将数据送往接收进程</p>
+<p>FIN - 发送方完成数据发送</p>
+<p>URG</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+
+        <img src="img" alt="image-20191129143254241" />
+
+
+
+</p>
+</p>
+<h3 id="http">HTTP</h3>
+<h3 id="telnet">Telnet</h3>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/airren/airren.github.io/edit/master/content/tools/software/Wireshark%20%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0.md" title="Improve this page" target="_blank" rel="noopener">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wireshark的前世今生">WireShark的前世今生</a></li>
+    <li><a href="#wireshark的概述与安装">WireShark的概述与安装</a>
+      <ul>
+        <li><a href="#网络监听软件原理">网络监听软件原理</a>
+          <ul>
+            <li><a href="#网络监听软件是一种监视网络状态数据流程以及网络上信息传输的管理工具">网络监听软件是一种监视网络状态、数据流程以及网络上信息传输的管理工具。</a></li>
+            <li><a href="#双刃剑--安全问题">双刃剑&ndash;安全问题</a></li>
+            <li><a href="#防止窃听的方法加密">防止窃听的方法：加密</a></li>
+          </ul>
+        </li>
+        <li><a href="#主要网络监听软件">主要网络监听软件</a></li>
+        <li><a href="#wireshark概述">Wireshark概述</a>
+          <ul>
+            <li><a href="#功能">功能</a></li>
+            <li><a href="#不能做的事情">不能做的事情</a></li>
+          </ul>
+        </li>
+        <li><a href="#wireshark下载与安装">Wireshark下载与安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#wireshark的基本使用">WireShark的基本使用</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#界面与基本操作">界面与基本操作</a></li>
+            <li><a href="#捕获与保存">捕获与保存</a></li>
+            <li><a href="#过滤与过滤表达式">过滤与过滤表达式</a></li>
+            <li><a href="#过滤表达式">过滤表达式</a></li>
+            <li><a href="#包列表与详细信息">包列表与详细信息</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#实验-常见协议分析">实验： 常见协议分析</a>
+      <ul>
+        <li><a href="#arp">ARP</a></li>
+        <li><a href="#icmp的echo">ICMP的echo</a></li>
+        <li><a href="#dns">DNS</a></li>
+        <li><a href="#tcp三次握手">TCP三次握手</a></li>
+        <li><a href="#http">HTTP</a></li>
+        <li><a href="#telnet">Telnet</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                </li>
+              
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+            
+            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

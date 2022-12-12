@@ -6,12 +6,13 @@
     <description>Recent content in Tips on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Tips/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Fri, 31 Jul 2020 00:36:14 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
       <title>「Nginx」 Tips</title>
-      <link>https://airren.github.io/posts/blog/nginx_tips/</link>
+      <link>https://airren.github.io/tech/web/RPC/http/nginx_tips/</link>
       <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/nginx_tips/</guid>
+      <guid>https://airren.github.io/tech/web/RPC/http/nginx_tips/</guid>
       <description>搭建静态资源服务器 静态资源文件夹
 1/root/file Nginx 配置
 vi /etc/nginx/nginx.conf
@@ -24,10 +25,10 @@ vi /etc/nginx/nginx.conf
     
     <item>
       <title>「Vim」 Tips</title>
-      <link>https://airren.github.io/posts/blog/vim_tips/</link>
+      <link>https://airren.github.io/tools/tips/vim_tips/</link>
       <pubDate>Fri, 31 Jul 2020 00:31:02 +0000</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/vim_tips/</guid>
+      <guid>https://airren.github.io/tools/tips/vim_tips/</guid>
       <description>常用配置 vi ~/vimrc
 1set nu 2syntax on 3inoremap jj &amp;lt;ESC&amp;gt; # ues &amp;lt;jj&amp;gt; instead of &amp;lt;ESC&amp;gt; Vim 相关配置以及快捷键设置 .vimrc 1&amp;#34; Vim 的默认寄存器和系统剪贴板共享 2set clipboard+=unnamed 3&amp;#34; select模式下复制，文本选中时，按下Ctrl+C，即可复制 4if has(&amp;#34;clipboard&amp;#34;) 5 vnoremap &amp;lt;C-C&amp;gt; &amp;#34;+y 6endif 7 8set nu 9 10syntax on 11inoremap jj &amp;lt;ESC&amp;gt; vim模式 normal &amp;mdash;按v进入&amp;mdash;&amp;gt; visual
 normal &amp;ndash;&amp;gt; instert
@@ -35,7 +36,6 @@ insert
 command
 快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</description>
     </item>
-    
     
   </channel>
 </rss>
