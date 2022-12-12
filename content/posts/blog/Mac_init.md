@@ -7,10 +7,13 @@ date: 2021-2-12T13:41:16+08:00
 
 ## HomeBrew
 
+https://brew.sh/
+
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+Use homebrew install package
 ```sh
 brew install wget 
 brew install go
@@ -18,8 +21,10 @@ brew install go
 
 ## Oh-my-zsh
 
+https://ohmyz.sh/
+
 ```sh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # sudo chsh -s $(which zsh)
 ```
@@ -38,7 +43,7 @@ Caplock -> Command
 
 **highly recommended**
 
-- Iterm2
+- Iterm2:  Mac terminal replacement
 
 - Alfred 
 - Dash
