@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ByteGopher</title><link>https://airren.github.io/posts/tips/</link><description>Recent content on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Aug 2020 01:12:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/tips/index.xml" rel="self" type="application/rss+xml"/><item><title>「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</title><link>https://airren.github.io/posts/tips/git_stage_repo/</link><pubDate>Wed, 26 Aug 2020 01:12:13 +0000</pubDate><guid>https://airren.github.io/posts/tips/git_stage_repo/</guid><description>Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/tips/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Aug 2020 01:12:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/tips/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</title>
+      <link>https://airren.github.io/posts/tips/git_stage_repo/</link>
+      <pubDate>Wed, 26 Aug 2020 01:12:13 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/git_stage_repo/</guid>
+      <description>Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
 Index/Stage: 暂存区， 未提交修改
 Repository： 本地仓库
 Remote： 远程仓库
@@ -9,7 +23,16 @@ Git 常用操作 配置用户名以及邮箱 设置
 建立裸仓库
 1git init --bare bare_repo 对比正常git仓库normal_repo与bare_repo的目录结构发现，在normal_repo/.git 文件夹中的文件直接出现在了bare_repo 中
 切换分支。
-在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</description></item><item><title>「Hexo」 搭建部署</title><link>https://airren.github.io/posts/tips/hexo_create/</link><pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate><guid>https://airren.github.io/posts/tips/hexo_create/</guid><description>Hexo 安装 https://hexo.io/zh-cn/docs/
+在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</description>
+    </item>
+    
+    <item>
+      <title>「Hexo」 搭建部署</title>
+      <link>https://airren.github.io/posts/tips/hexo_create/</link>
+      <pubDate>Fri, 07 Aug 2020 01:11:55 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/hexo_create/</guid>
+      <description>Hexo 安装 https://hexo.io/zh-cn/docs/
 安装Node.js
 安装Git
 安装Hexo
@@ -20,7 +43,16 @@ Hexo 部署到Nginx &amp;amp; Github.io 开发机 在自己写Blog的Pc上安装
 1yarn add hexo-deployer-git 服务器 在即将部署的服务器上执行以下操作
 1yum install git 2 3useradd -m git # 创建一个git用户，用来运行git服务 4 # 新建git用户并非必要，但是为了安全起见，还是用git用户单独来运行git服务 5 6passwd git 设置PC到服务器的git用户免密登录
 1# 生成ssh密钥 2ssh-keygen 3# 将公钥添加到server 4ssh-copy-id git@serverIp 在服务器上初始化一个Git仓库
-1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</description></item><item><title/><link>https://airren.github.io/posts/tips/RabbitMQ/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/RabbitMQ/</guid><description>RabbitMQ 消息中间件 技术精讲
+1mkdir -p /var/repo 2ca /var/repo 3git init --bare blog.git # --bare 初始化一个裸仓库，裸仓库没有工作区，只为共享而存在 4chown -R git:git blog.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/tips/RabbitMQ/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/RabbitMQ/</guid>
+      <description>RabbitMQ 消息中间件 技术精讲
 1. RabbitMQ 简介以及AMQP协议 RabbitMQ 是一个开源的消息代理和
 RabbitMQ底层是采用Erlang语言进行编写 开源、性能优秀， 稳定性保障 与spring AMQP完美整合，API丰富 集群模式丰富，表达式配置， HA模式， 镜像队列模型 保证数据不丢失的前提做到高可靠性，可用性 AMQP： 高级消息队列协议 RabbitMQ 的安装以及使用 erlang socat rabbitmq-server rpm -ivh XXXXX.rpm lsof -i:5672 # 查看端口 启用控制台插件 rabbit 可以选择使用内存进行存储
 RabbitMQ 核心概念 AMQP核心概念
@@ -33,18 +65,77 @@ Exchange： 交换机，接收消息，根据路由键转发消息到绑定的�
 Binding： Exchange 和Queue之间的虚拟连接，binding可以包含routing key
 Routing key: 一个路由规则，虚拟机可以用它来确定如何路由一个特定消息
 Queue： 也称为Massage Queue, 消息队列，保存消息并将他们转发给消费者
-RabbitMQ RabbitMQ默认端口号 4369 (epmd), 25672 (Erlang distribution) 4369 erlang 发现端口 25672 server间通信端口 5672, 5671 (AMQP 0-9-1 without and with TLS) client端通信口 15672 (if management plugin is enabled) 管理界面ui端口 61613, 61614 (if STOMP is enabled) 1883, 8883 (if MQTT is enabled) 生产端的可靠投递 保证消息从生产者到MQ之间的传输是100%可靠的，生产者发送的消息一定能进入消息队列</description></item><item><title>「Hugo」Hugo基本使用</title><link>https://airren.github.io/posts/tips/hugo_basic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/hugo_basic/</guid><description>hugo 增加 评论
+RabbitMQ RabbitMQ默认端口号 4369 (epmd), 25672 (Erlang distribution) 4369 erlang 发现端口 25672 server间通信端口 5672, 5671 (AMQP 0-9-1 without and with TLS) client端通信口 15672 (if management plugin is enabled) 管理界面ui端口 61613, 61614 (if STOMP is enabled) 1883, 8883 (if MQTT is enabled) 生产端的可靠投递 保证消息从生产者到MQ之间的传输是100%可靠的，生产者发送的消息一定能进入消息队列</description>
+    </item>
+    
+    <item>
+      <title>「Hugo」Hugo基本使用</title>
+      <link>https://airren.github.io/posts/tips/hugo_basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/hugo_basic/</guid>
+      <description>hugo 增加 评论
 编译&amp;amp;发布
 MarkDown 语法 公式解析
 引入MathJax。MathJax 是一个Javascript库，通过官方提供的CDN集成到自己的页面非常简单，只需把一下内容添加到所有的页面，例如foot.html
 1&amp;lt;script type=&amp;#34;text/javascript&amp;#34; async 2 src=&amp;#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&amp;#34;&amp;gt; 3&amp;lt;/script&amp;gt; 配置文件 config.toml 代码高亮设置
 1pygmentsUseClasses = true 2[markup] 3 [markup.highlight] 4 codeFences = true 5 guessSyntax = true 6 hl_Lines = &amp;#34;&amp;#34; 7 lineNoStart = 1 # display line number 8 lineNos = true 9 lineNumbersInTable = false 10 noClasses = true 11 style = &amp;#34;github&amp;#34; 12 tabWidth = 4 行号已经可以显示了，但是复制的时候会与行号一起复制，修改自定义css
-1.highlight .ln { 2 width: 20px; 3 display: block; 4 float: left; 5 text-align: right; 6 user-select: none; # 表示复制是不能被选中的 7 padding-right: 8px; 8 color: #ccc; 9}</description></item><item><title>「JetBrains」 GoLand技巧</title><link>https://airren.github.io/posts/tips/goland/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/goland/</guid><description>自动补齐json Format 通过SFTP同步本地与远端代码 Preference&amp;gt;Build,Execution,Deployment&amp;gt;SFTP
-Go 远程Debug https://github.com/derekparker/delve</description></item><item><title>「Mac」Mac初始化</title><link>https://airren.github.io/posts/tips/mac_init/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/mac_init/</guid><description>文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &amp;lt;ESC&amp;gt; git
-1git config --global init.defaultBranch main</description></item><item><title>「MVC」 Web服务的MVC设计模式</title><link>https://airren.github.io/posts/tips/web_mvc_pattern/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/web_mvc_pattern/</guid><description>https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase
-https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase</description></item><item><title>「SSH」Iterm ssh长时间卡死</title><link>https://airren.github.io/posts/tips/ssh_stuck/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/ssh_stuck/</guid><description>1sudo vi /etc/ssh/ssh_config 2 3# 增加如下两行 4ServerAliveInterval 50 #每隔50秒就向服务器发送一个请求 5ServerAliveCountMax 3 #允许超时的次数，一般都会响应 6 7vim /etc/ssh/sshd_config 8，找到ClientAliveInternal 将后面的数字0改为60 ，注意去掉前面的#，因为如果最前面是井号的话是注释掉的 Iterm ssh 导致卡死
-1vi /etc/ssh/ssh_config 2# 增加如下两行 3ServerAliveInterval 60 4ServerAliveCountMax 2</description></item><item><title>「VSCode」Vs Code 使用技巧</title><link>https://airren.github.io/posts/tips/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/tips/vscode/</guid><description>https://geek-docs.com/vscode/vscode-tutorials/vscode-workspace-switch.html
+1.highlight .ln { 2 width: 20px; 3 display: block; 4 float: left; 5 text-align: right; 6 user-select: none; # 表示复制是不能被选中的 7 padding-right: 8px; 8 color: #ccc; 9} </description>
+    </item>
+    
+    <item>
+      <title>「JetBrains」 GoLand技巧</title>
+      <link>https://airren.github.io/posts/tips/goland/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/goland/</guid>
+      <description>自动补齐json Format 通过SFTP同步本地与远端代码 Preference&amp;gt;Build,Execution,Deployment&amp;gt;SFTP
+Go 远程Debug https://github.com/derekparker/delve</description>
+    </item>
+    
+    <item>
+      <title>「Mac」Mac初始化</title>
+      <link>https://airren.github.io/posts/tips/mac_init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/mac_init/</guid>
+      <description>文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &amp;lt;ESC&amp;gt; git
+1git config --global init.defaultBranch main </description>
+    </item>
+    
+    <item>
+      <title>「MVC」 Web服务的MVC设计模式</title>
+      <link>https://airren.github.io/posts/tips/web_mvc_pattern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/web_mvc_pattern/</guid>
+      <description>https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase
+https://blog.csdn.net/u013594528/article/details/80859443?utm_medium=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_bbs_down.none-task-blog-baidujs-1.nonecase</description>
+    </item>
+    
+    <item>
+      <title>「SSH」Iterm ssh长时间卡死</title>
+      <link>https://airren.github.io/posts/tips/ssh_stuck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/ssh_stuck/</guid>
+      <description>1sudo vi /etc/ssh/ssh_config 2 3# 增加如下两行 4ServerAliveInterval 50 #每隔50秒就向服务器发送一个请求 5ServerAliveCountMax 3 #允许超时的次数，一般都会响应 6 7vim /etc/ssh/sshd_config 8，找到ClientAliveInternal 将后面的数字0改为60 ，注意去掉前面的#，因为如果最前面是井号的话是注释掉的 Iterm ssh 导致卡死
+1vi /etc/ssh/ssh_config 2# 增加如下两行 3ServerAliveInterval 60 4ServerAliveCountMax 2 </description>
+    </item>
+    
+    <item>
+      <title>「VSCode」Vs Code 使用技巧</title>
+      <link>https://airren.github.io/posts/tips/vscode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/vscode/</guid>
+      <description>https://geek-docs.com/vscode/vscode-tutorials/vscode-workspace-switch.html
 https://zhuanlan.zhihu.com/p/188499395
 Ctrl +K Ctrl +S Keyboard Shortcuts
 切换区域的快捷键 -&amp;gt; Focus on
-区域 key Focus on folders view Ctrl + K L Focus on Open Editors View Ctrl + K E Focun on Terminal View Ctrl +K K Extensions Usage Extension Spell checker Code spell checker</description></item></channel></rss>
+区域 key Focus on folders view Ctrl + K L Focus on Open Editors View Ctrl + K E Focun on Terminal View Ctrl +K K Extensions Usage Extension Spell checker Code spell checker </description>
+    </item>
+    
+    
+  </channel>
+</rss>

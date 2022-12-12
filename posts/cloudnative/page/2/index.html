@@ -1,33 +1,452 @@
-<!doctype html><html><head><title></title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/cloudnative/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a class=active href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/cloudnative/Kubernates/KubernatesInstall/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「K8s」Kubernates 安装</h5><p class="card-text post-summary">环境准备 K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐Canonical家的Multipass了，Canonical 是谁，当然是Ubuntu的母公司了。
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/cloudnative/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/KubernatesInstall/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「K8s」Kubernates 安装</h5>
+        <p class="card-text post-summary">环境准备 K8s 只能基于Linux环境部署，用Win/Mac的小伙伴们怎么在自己的PC上Setup环境呢。此时就推荐Canonical家的Multipass了，Canonical 是谁，当然是Ubuntu的母公司了。
 安装 kubelet kubeadm kubectl 官方文档
-1sudo apt-get update && sudo apt-get install -y apt-transport-https curl 2curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 3cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list 4deb https://apt.kubernetes.io/ kubernetes-xenial main 5EOF 6sudo apt-get update 7sudo apt-get install -y kubelet kubeadm kubectl 8sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新 初始化 1swapoff -a 2kubeadm init ctl 3# kubeadm config images pull --v=10 4 # 国内正常网络不能从k8s.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/KubernatesInstall/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Docker/docker_build_image/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Docker Images</h5><p class="card-text post-summary">镜像仓库 Linux 本地镜像仓库：/var/lib/docker/image
+1sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https curl 2curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - 3cat &lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list 4deb https://apt.kubernetes.io/ kubernetes-xenial main 5EOF 6sudo apt-get update 7sudo apt-get install -y kubelet kubeadm kubectl 8sudo apt-mark hold kubelet kubeadm kubectl # 设置为不再更新 初始化 1swapoff -a 2kubeadm init ctl 3# kubeadm config images pull --v=10 4 # 国内正常网络不能从k8s.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/KubernatesInstall/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/docker_build_image/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Docker Images</h5>
+        <p class="card-text post-summary">镜像仓库 Linux 本地镜像仓库：/var/lib/docker/image
 镜像应该是分层存储的。
 Docker images 是存储在镜像仓库服务Images Registry。Docker 客户端的镜像仓库服务是可配置的，默认使用的是Docker Hub。
 镜像仓库服务包含多个镜像仓库 Image Repository（同一个镜像的不同版本）。一个镜像仓库中包含多个镜像Image。
 Docker Hub 也分为Official Repository 和 Unofficial Repository。
-1docker pull &lt;repository>:&lt;tag> 2// 如果省略tag默认会pull tag 为 latest的image。但是latest并不保证这是仓库中最新的镜像。 如果希望从第三方镜像服务仓库获取镜像(not Docker Hub)，则需要在镜像仓库名称前加上第三方镜像仓库服务的DNS名称。
-1# gcr.io -> Google Container Images Registry. 2docker pull gcr.io/k8s-staging-nfd/node-feature-discovery:master Image Tag 不同的Images Tag可以绑定同一个Image ID
+1docker pull &lt;repository&gt;:&lt;tag&gt; 2// 如果省略tag默认会pull tag 为 latest的image。但是latest并不保证这是仓库中最新的镜像。 如果希望从第三方镜像服务仓库获取镜像(not Docker Hub)，则需要在镜像仓库名称前加上第三方镜像仓库服务的DNS名称。
+1# gcr.io -&gt; Google Container Images Registry. 2docker pull gcr.io/k8s-staging-nfd/node-feature-discovery:master Image Tag 不同的Images Tag可以绑定同一个Image ID
 通过--filter 来过滤docker image ls 返回的内容
-1docker image ls --filter dangling=true dangling image -> with out name & tag :.
-通常因为构建新的镜像，为该镜像打了一个已经存在的标签。Docker会remove old image上的标签，将该标签标在新Image上。Old Image 就会变成 dangling image。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Docker/docker_build_image/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Docker/docker_networking/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Docker networking</h5><p class="card-text post-summary">Docker networking is based on an open-source pluggable architecture called the Container Network Model(CNM). libnetwork is Docker&rsquo;s real-work implementation of the CNM, adn it provides all of the Docker&rsquo;s core networking capabilities. Drivers plug into libnework to provide specifice network topologies.
+1docker image ls --filter dangling=true dangling image -&gt; with out name &amp; tag :.
+通常因为构建新的镜像，为该镜像打了一个已经存在的标签。Docker会remove old image上的标签，将该标签标在新Image上。Old Image 就会变成 dangling image。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/docker_build_image/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/docker_networking/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Docker networking</h5>
+        <p class="card-text post-summary">Docker networking is based on an open-source pluggable architecture called the Container Network Model(CNM). libnetwork is Docker&rsquo;s real-work implementation of the CNM, adn it provides all of the Docker&rsquo;s core networking capabilities. Drivers plug into libnework to provide specifice network topologies.
 The theory At the highest level, Docker networking comprise three major components.
-Single-host bridge network</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Docker/docker_networking/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Linux/free/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>free命令</h5><p class="card-text post-summary">type desc total physical mem used used = total- free-buffers-cache free Free/Unused memory shared It is here only for backward comopatibility buff/cache The combined memory used by the kernel buffers and page cache ans slabs. This memory can be reclaimed at any time if needed by the applicaitons. If you want buffers and cache to displayed in two separate columns, use -w options. available An estimate of the amount of memory that is availablew for starting new applications, without swaping.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Linux/free/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Linux/git/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Git</h5><p class="card-text post-summary">1# git cache user and passwd 2git config --global credential.helper cache</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Linux/git/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/1-k8s-cloudnative/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Cloud Native</h5><p class="card-text post-summary">Kubenetes生产落地全程实践
+Single-host bridge network </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/docker_networking/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/free/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">free命令</h5>
+        <p class="card-text post-summary">type desc total physical mem used used = total- free-buffers-cache free Free/Unused memory shared It is here only for backward comopatibility buff/cache The combined memory used by the kernel buffers and page cache ans slabs. This memory can be reclaimed at any time if needed by the applicaitons. If you want buffers and cache to displayed in two separate columns, use -w options. available An estimate of the amount of memory that is availablew for starting new applications, without swaping.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/free/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/git/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Git</h5>
+        <p class="card-text post-summary">1# git cache user and passwd 2git config --global credential.helper cache </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/git/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/1-k8s-cloudnative/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Cloud Native</h5>
+        <p class="card-text post-summary">Kubenetes生产落地全程实践
 核心概念
 架构设计
 认证授权
 高可用集群搭建
-二进制& kubeadm
+二进制&amp; kubeadm
 3台master两台2 node
 calico、coredns、dashboard
 业务迁移到Kubenetes
@@ -45,31 +464,151 @@ namespace、resources、label
 第2章 kubernetes快速入门 本章中将从核心概念、架构设计、认证授权以及集群搭建方案对比几方面，带领大家快速掌握kubernetes的重要知识点，助力快速入门。
 2-1 了解kubernetes 舵手： 渔网、渔船 docker : 鲸鱼，集装箱 🐳
 Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.
-It groups containers that makeup application in to logical units for easy management and discovery.Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/1-k8s-cloudnative/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/9-k8s-configmap/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s ConfigMap</h5><p class="card-text post-summary">给Pod传递参数 通过环境变量给Pod传递参数 可以在container的描述文件中加入一个env的参数，值是一个数组，每个元素都是键值对，值是string。
-1--- 2apiVersion: v1 3kind: Pod 4metadata: 5 name: first-pod 6 labels: 7 app: nginx 8spec: 9 containers: 10 - name: 00-simple-pod-nginx 11 image: nginx:1.17.0 12 env: 13 - name: INTERVAL 14 value: 30s 通过命令行参数给Pod传递参数 加入一个args配置，命令行参数是一个字符串数组</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/9-k8s-configmap/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/7-k8s-daemonset/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s DaemonSet</h5><p class="card-text post-summary">NodeExporter 用于采集一个Host上的各种性能指标，并且暴露给Prometheus 采集。因为NodeExporter需要采集每一个Host的数据状态，所以就产生了一个需求，在每一个K8s的机器上都要运行一个Pod, 而实现这个需求的K8s资源类型就叫做DaemonSet。
+It groups containers that makeup application in to logical units for easy management and discovery.Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/1-k8s-cloudnative/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/9-k8s-configmap/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s ConfigMap</h5>
+        <p class="card-text post-summary">给Pod传递参数 通过环境变量给Pod传递参数 可以在container的描述文件中加入一个env的参数，值是一个数组，每个元素都是键值对，值是string。
+1--- 2apiVersion: v1 3kind: Pod 4metadata: 5 name: first-pod 6 labels: 7 app: nginx 8spec: 9 containers: 10 - name: 00-simple-pod-nginx 11 image: nginx:1.17.0 12 env: 13 - name: INTERVAL 14 value: 30s 通过命令行参数给Pod传递参数 加入一个args配置，命令行参数是一个字符串数组</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/9-k8s-configmap/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/7-k8s-daemonset/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s DaemonSet</h5>
+        <p class="card-text post-summary">NodeExporter 用于采集一个Host上的各种性能指标，并且暴露给Prometheus 采集。因为NodeExporter需要采集每一个Host的数据状态，所以就产生了一个需求，在每一个K8s的机器上都要运行一个Pod, 而实现这个需求的K8s资源类型就叫做DaemonSet。
 DaemonSet DaemonSet的功能就是保证每个Node都运行Pod， 但是如果某个K8s的Node下线之后，对应的Pod也下线，还是保持每个Node一个Pod。如果新增一个Node，就会在新增的Node中增加一个Pod，保证所有的Node中有且只有一个当前Pod。
-1--- 2apiVersion: apps/v1 3kind: DaemonSet 4metadata: 5 name: node-exporter 6 namespace: kube-system 7 labels: 8 k8s-app: node-exporter 9 kubernetes.io/cluster-service: "true" 10 addonmanager.kubernetes.io/mode: Reconcile 11 version: v1.2.2 12spec: 13 selector: 14 matchLabels: 15 k8s-app: node-exporter 16 version: v1.2.2 17 updateStrategy: 18 type: OnDelete 19 template: 20 metadata: 21 labels: 22 k8s-app: node-exporter 23 version: v1.2.2 24 spec: 25 priorityClassName: system-node-critical 26 containers: 27 - name: prometheus-node-exporter 28 image: "prom/node-exporter:v1.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/7-k8s-daemonset/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/5-k8s-deployment/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Deployments</h5><p class="card-text post-summary">蓝绿部署 蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。
+1--- 2apiVersion: apps/v1 3kind: DaemonSet 4metadata: 5 name: node-exporter 6 namespace: kube-system 7 labels: 8 k8s-app: node-exporter 9 kubernetes.io/cluster-service: &#34;true&#34; 10 addonmanager.kubernetes.io/mode: Reconcile 11 version: v1.2.2 12spec: 13 selector: 14 matchLabels: 15 k8s-app: node-exporter 16 version: v1.2.2 17 updateStrategy: 18 type: OnDelete 19 template: 20 metadata: 21 labels: 22 k8s-app: node-exporter 23 version: v1.2.2 24 spec: 25 priorityClassName: system-node-critical 26 containers: 27 - name: prometheus-node-exporter 28 image: &#34;prom/node-exporter:v1.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/7-k8s-daemonset/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/5-k8s-deployment/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Deployments</h5>
+        <p class="card-text post-summary">蓝绿部署 蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。
 先将新版本(绿版)的服务运行起来。 将所有的流量切到新版本的服务上 删除旧版本(蓝版)的服务 创建新版本的ReplicaSet，将Service指向新的Pods，删除旧版本的ReplicaSet
 滚动升级 蓝绿部署可以有效保证业务的正确性，但是也带来了一定的风险，例如稳定性。
 假设新部署的应用是有问题的，一旦切换之后就会导致业务的崩溃，造成损失。于是就有了稍微友好的升级方式，滚动升级。
 先关闭一个旧版本的实例 开启一个新版本的实例用于替换旧版本 替换成功时候循环1和2，直到所有的实例升级完成。 在整个过程中，如果中途发现异常可以及时停手，及时止损。而且Kubernetes也在客户端中支持了这个特性。kubectl rolling-update。
 升级前后RC的Selector都被改变了 操作都是在客户端执行的？ 金丝雀发布 金丝雀发布是滚动发布的一种特例，在滚动发布中，是不会等待的，除非中间出错了。但是有些时候，我们并不想要全都升级，可能只是处于POC的一些原因，我们只希望部分实例是新的，大部分是旧的，而这种情形，我们就称之为金丝雀发布。
 升级少部分实例 查看效果，如果好，全部升级 如果不好，则不升级 声明式升级 前面介绍的这些升级发布方式在K8s上很多时候是半手工方式执行的，而Kubernetes作为一款DevOPS友好的系统，已经内置了对于部署方式的一种资源抽象，这个资源就是：Deployment。
-Deployment &ndash;> ReplicaSet &ndash;> Pods
+Deployment &ndash;&gt; ReplicaSet &ndash;&gt; Pods
 Deployment 存在的意义为：在升级应用程序时，需要引入额外的ReplicaSet，并协调新旧两个RS，使他们再根据彼此不断修改，而不会造成干扰。Deployment将这些运维过程都代码化，内置为自己的逻辑，从而让升级变得简单。
 首先我们使用Deployment创建3个实例
-1# deploy.yaml 2--- 3apiVersion: apps/v1 4kind: Deployment 5metadata: 6 name: first-deployment 7 labels: 8 app: simple-pod-deployment 9spec: 10 replicas: 3 11 selector: 12 matchLabels: 13 app: simple-pod-deployment 14 template: 15 metadata: 16 name: simple-pod-deployment 17 labels: 18 app: simple-pod-deployment 19 spec: 20 containers: 21 - name: simple-pod-de 22 image: lukelau/rest-docker:0.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/5-k8s-deployment/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/6-k8s-job/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Job</h5><p class="card-text post-summary">Replicas 和deployment这两类资源都是用于控制workload的。这两种类型的资源一般都是持续运行的，同时还有一些辅助方式帮助workload出现异常时恢复，以及根据情况进行动态伸缩的特性。
+1# deploy.yaml 2--- 3apiVersion: apps/v1 4kind: Deployment 5metadata: 6 name: first-deployment 7 labels: 8 app: simple-pod-deployment 9spec: 10 replicas: 3 11 selector: 12 matchLabels: 13 app: simple-pod-deployment 14 template: 15 metadata: 16 name: simple-pod-deployment 17 labels: 18 app: simple-pod-deployment 19 spec: 20 containers: 21 - name: simple-pod-de 22 image: lukelau/rest-docker:0.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/5-k8s-deployment/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/6-k8s-job/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Job</h5>
+        <p class="card-text post-summary">Replicas 和deployment这两类资源都是用于控制workload的。这两种类型的资源一般都是持续运行的，同时还有一些辅助方式帮助workload出现异常时恢复，以及根据情况进行动态伸缩的特性。
 Job 根据Job的定义创建出对应的Pod，然后关注Pod的状态， 直到满足定义。例如Pod执行成功了或者执行失败了，并且达到了重试次数。
-1--- 2apiVersion: batch/v1 3kind: Job 4metadata: 5 name: pi 6spec: 7 template: 8 spec: 9 containers: 10 - name: pi 11 image: perl 12 command: ["perl", "-Mbignum=bpi","-wle", "print bpi(2000)"] 13 restartPolicy: Never 14 backoffLimit: 4 Job正常执行结束后结果如上图。这是一个只执行一次的Job。它的操作方式就是创建一个Pod，然后运行一遍，然后就退出。如果想执行多次，则只需要增加一个参数
+1--- 2apiVersion: batch/v1 3kind: Job 4metadata: 5 name: pi 6spec: 7 template: 8 spec: 9 containers: 10 - name: pi 11 image: perl 12 command: [&#34;perl&#34;, &#34;-Mbignum=bpi&#34;,&#34;-wle&#34;, &#34;print bpi(2000)&#34;] 13 restartPolicy: Never 14 backoffLimit: 4 Job正常执行结束后结果如上图。这是一个只执行一次的Job。它的操作方式就是创建一个Pod，然后运行一遍，然后就退出。如果想执行多次，则只需要增加一个参数
 1completions: 2 执行2次时创建了两个Pod，然后保证这两个Pod都执行成功。
 我们在使用Deployment等Workload的时候，一般会指定restartPolicy，默认都是RestartOnFail。在Job中不能这么指定，因为这个逻辑应该由Job来控制， 而不是让Pod来控制。
 CronJob 定时任务， CronJob就是在Job的基础上加上了周期定义的API
-1--- 2apiVersion: batch/v1 3kind: CronJob 4metadata: 5 name: batch-job-pi 6spec: 7 schedule: "0,15,30,45 * * * *" 8 jobTemplate: 9 spec: 10 template: 11 metadata: 12 labels: 13 app: pi-job 14 spec: 15 containers: 16 - name: pi 17 image: perl 18 command: ["perl", "-Mbignum=bpi","-wle", "print bpi(2000)"] 19 restartPolicy: Never</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/6-k8s-job/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/1-k8s-overview/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Overview</h5><p class="card-text post-summary">Node 节点主要负责容器的管理，用于运行容器和保证容器的状态。默认情况下Master节点不承担Node节点的功能，但是可以通过特殊的配置让Master节点也可作为Node节点。
+1--- 2apiVersion: batch/v1 3kind: CronJob 4metadata: 5 name: batch-job-pi 6spec: 7 schedule: &#34;0,15,30,45 * * * *&#34; 8 jobTemplate: 9 spec: 10 template: 11 metadata: 12 labels: 13 app: pi-job 14 spec: 15 containers: 16 - name: pi 17 image: perl 18 command: [&#34;perl&#34;, &#34;-Mbignum=bpi&#34;,&#34;-wle&#34;, &#34;print bpi(2000)&#34;] 19 restartPolicy: Never </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/6-k8s-job/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/1-k8s-overview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Overview</h5>
+        <p class="card-text post-summary">Node 节点主要负责容器的管理，用于运行容器和保证容器的状态。默认情况下Master节点不承担Node节点的功能，但是可以通过特殊的配置让Master节点也可作为Node节点。
 Etcd用于存储Kubernetes的元数据，但是不要求一定要以容器的形式运行。
 1kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.0.22 --pod-network-cidr pod 的ippool, --apiserver-advertise-address 为暴露的k8sAPI调用IP.
 节点(Node)
@@ -91,13 +630,37 @@ Service是定义一系列Pod以及访问这些Pod的策略的一层抽象。Serv
 现在假定有两个后台Pod,并且定义后台service名称为“backend-service”，label选择器为(tier=backend,app=myapp)。backend-service的Service会完成如下两件重要的事情：
 会为Service创建一个本地集群的DNS入口，因此前端只需要DNS查找主机名为“backend-service”就能够解析出前端应用程序可用的IP地址 现在前端已经得到了后台服务的IP地址，但是它应该访问2个后台Pod中的哪一个呢。Service在这两个后台Pod之间提供透明的负载均衡，会将请求发给其中的任意一个。通过每个Node上运行的代理 kube-proxy完成。 Kubernetes Master
 集群拥有一个K8s Master,K8s Master 提供集群的独特视角，并拥有一系列组件，如Kubernetes API server. API server 提供可以用来和集群交互的REST 端点。Master 节点包含用来创建和复制Pod的Replication Controller.
-参考资料：</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/1-k8s-overview/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/8-k8s-stafulset/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s StafulSet</h5><p class="card-text post-summary">前面介绍的几种workload都有一个共性，那就是创建出来的Pod都是一致的。所谓的一致就是说，假设我们使用的是ReplicaSet，创建了3个Pod，那么这3个Pod创了名字一定不一样之外，其他属性可能都是一样的，包括运行时的参数和模式以及数据存储。
+参考资料：</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/1-k8s-overview/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/8-k8s-stafulset/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s StafulSet</h5>
+        <p class="card-text post-summary">前面介绍的几种workload都有一个共性，那就是创建出来的Pod都是一致的。所谓的一致就是说，假设我们使用的是ReplicaSet，创建了3个Pod，那么这3个Pod创了名字一定不一样之外，其他属性可能都是一样的，包括运行时的参数和模式以及数据存储。
 如果是Web Service，数据保存到后端的DB中，上述逻辑是没有问题的。
 如果使用ReplicaSet来部署一个DB的多实例， 就可肯能存在问题了。
 数据持久化，一般使用PVC，当使用PVC 和PV的时候
 ​
-ReplicaSet -> Pods(3 个) -> 持久卷声明 -> 持久卷
+ReplicaSet -&gt; Pods(3 个) -&gt; 持久卷声明 -&gt; 持久卷
 3个Pod的数据都写到同一个Pv中，这样肯定是不行的？？？
 StatefulSet 为了解决Pod的状态性的问题，K8s引入了StatefulSet的概念
 Pod有单独的存储和固定的网络标识 需要配备一个headless Service，用于DNS 可以通过DNS快速发现其他的Pod 可以直接通过Pod DNS通信 每个Pod都可以通过DNS访问到，这种特性在其他workload中是不能实现的。通过StatefulSet可以让Pod持有状态，即使因为故障Pod重建了，那么对应的Pod的名字和数据都会保留，和重建之前没有什么区别。
@@ -107,17 +670,264 @@ Pod有单独的存储和固定的网络标识 需要配备一个headless Service
 创建 StatefulSet
 通过DNS访问Pod
 在StatefulSet的Pod中可以通过DNS直接访问其他Pod。
-1mongo --host mongo-1.mongo 可以通过&lt;pod-name>.&lt;service-name>的形式访问Pod。这其实和StatefulSet的设计是有关系的，在类似的Deployment中Pod的名字是不固定的，而在StatefulSet中，Pod的名字是固定的。
+1mongo --host mongo-1.mongo 可以通过&lt;pod-name&gt;.&lt;service-name&gt;的形式访问Pod。这其实和StatefulSet的设计是有关系的，在类似的Deployment中Pod的名字是不固定的，而在StatefulSet中，Pod的名字是固定的。
 和ReplicaSet对比
 因为有状态的Pod彼此不同，通常希望操作的是其中的特定的一个，所以StatefulSet通常要求你创建一个用来记录每个Pod网络标记的HeadlessService。通过这个Service，每个Pod都拥有独立的DNS记录，而这在ReplicaSet中是不行的？（如果为ReplicaSet创建一个Headless Service会发生啥？） 因为StatefulSet缩容任何时候只会操作一个Pod实例，所以有状态应用的缩容不会很迅速。 StatefulSet在有实例不健康的情况下，是不允许缩容的。 持久存储 一个StatefulSet可以拥有一个或者多个卷声明模板，这些声明会在创建Pod前创建出来，绑定到一个Pod的实例上。 扩容StatefulSet会创建两个API对象，一个Pod和一个卷声明；但是缩容StatefulSet却会删除一个Pod对象，而会留下PVC，因为一旦删除PVC则意味着PV会被回收。 StatefulSet at-most-one
-Kubernetes 必须保证两个拥有相同标记和绑定相同持久卷声明的有状态的Pod实例不会同时运行。一个StatefulSet必须保证有状态的实例的 at-most-one 语义。也就是说StatefulSet必须保证一个Pod不再运行后，才会去创建它的替换Pod。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/8-k8s-stafulset/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/cloudnative/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/cloudnative/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/cloudnative/ aria-label="Page 1" class=page-link role=button>1</a></li><li class="page-item active"><a aria-current=page aria-label="Page 2" class=page-link role=button>2</a></li><li class=page-item><a href=/posts/cloudnative/page/3/ aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/posts/cloudnative/page/3/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/cloudnative/page/3/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+Kubernetes 必须保证两个拥有相同标记和绑定相同持久卷声明的有状态的Pod实例不会同时运行。一个StatefulSet必须保证有状态的实例的 at-most-one 语义。也就是说StatefulSet必须保证一个Pod不再运行后，才会去创建它的替换Pod。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/8-k8s-stafulset/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/cloudnative/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/cloudnative/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/cloudnative/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/cloudnative/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/cloudnative/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/cloudnative/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

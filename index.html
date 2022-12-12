@@ -1,46 +1,1251 @@
-<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.108.0"><title>ByteGopher</title><meta name=description content="Portfolio and personal blog of Airren."><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Airren's Blog"><meta property="og:type" content="website"><meta property="og:description" content="Portfolio and personal blog of Airren."><meta property="og:image" content="https://airren.github.io/images/author/john.png"><meta property="og:url" content="https://www.bytegopher.com"><link rel=stylesheet href=/css/sections/home.css><link rel=stylesheet href=/css/sections/about.css><link rel=stylesheet href=/css/sections/skills.css><link rel=stylesheet href=/css/sections/experiences.css><link rel=stylesheet href=/css/sections/education.css><link rel=stylesheet href=/css/sections/projects.css><link rel=stylesheet href=/css/sections/recent-posts.css><link rel=stylesheet href=/css/sections/achievements.css><link rel=stylesheet href=/css/sections/accomplishments.css><link rel=stylesheet href=/css/sections/publications.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#top-navbar data-offset=100><nav class="navbar navbar-expand-xl top-navbar initial-navbar" id=top-navbar><div class=container><a class=navbar-brand href=/><img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png id=logo alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-dark" id=navbar-toggler type=button data-toggle=collapse data-target=#top-nav-items aria-label=menu>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse dynamic-navbar" id=top-nav-items><ul class="navbar-nav ml-auto"><li class=nav-item><a class=nav-link href=#home>Home</a></li><li class=nav-item><a class=nav-link href=#about>About</a></li><li class=nav-item><a class=nav-link href=#skills>Skills</a></li><li class=nav-item><a class=nav-link href=#recent-posts>Recent Posts</a></li><li class=nav-item><a class=nav-link href=#achievements>My Story</a></li><div class=dropdown-divider id=top-navbar-divider></div><li class=nav-item><a class=nav-link id=blog-link href=/posts/>Posts</a></li><li class=nav-item><a class=nav-link href=https://www.github.com/airren>Github</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/><span class="flag-icon flag-icon-gb"></span>
-English</a>
-<a class="dropdown-item nav-link languages-item" href=/cn/><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><div class="container-fluid home" id=home><style>#homePageBackgroundImageDivStyled{background-image:url(/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg)}@media(min-width:500px) and (max-width:800px){#homePageBackgroundImageDivStyled{background-image:url(/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg)}}@media(min-width:801px) and (max-width:1200px){#homePageBackgroundImageDivStyled{background-image:url(/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg)}}@media(min-width:1201px) and (max-width:1500px){#homePageBackgroundImageDivStyled{background-image:url(/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg)}}@media(min-width:1501px){#homePageBackgroundImageDivStyled{background-image:url(/images/site/background.jpg)}}</style><span class=on-the-fly-behavior></span><div id=homePageBackgroundImageDivStyled class="background container-fluid"></div><div class="container content text-center"><img src=/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_148x148_fit_box_3.png class="rounded-circle mx-auto d-block img-fluid" alt="Author Image"><h1 class=greeting>Every Single Day Without Dancing is One Day We Betrayed of Life Airren</h1><h2 class=greeting-subtitle>All is well</h2><div class=typing-carousel><span id=ityped class=ityped></span>
-<span class=ityped-cursor></span></div><ul id=typing-carousel-data><li>生活也是一场学习</li><li>正在学习C++</li><li>计划自驾318国道</li></ul><a href=#about class=arrow-center aria-label="Read More - Airren"><i class="arrow bounce fa fa-chevron-down"></i></a></div></div><div class="container-fluid section-holder d-flex bg-white"><div class="container anchor p-lg-5 about-section" id=about><div class="row pt-sm-2 pt-md-4 align-self-center"><div class=col-sm-6><h3 class=p-1>Airren Ren</h3><h5 class=p-1>Cloud Native Software Engineer
-at <a href=https://intel.com title="Intel Co." target=_blank rel=noopener>Intel Co.</a></h5><p class="p-1 text-justify">Airren, a passionate software engineer, graduated with a master&rsquo;s degree in Computer Sciences from the East China
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.108.0">
+    <title>ByteGopher</title>
+    
+    
+      
+      
+        
+      
+    
+    <meta name="description" content="Portfolio and personal blog of Airren." />
+    
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+
+
+
+
+
+
+
+<meta property="og:title" content="Airren&#39;s Blog"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content="Portfolio and personal blog of Airren."/>
+<meta property="og:image" content="https://airren.github.io/images/author/john.png">
+<meta property="og:url" content="https://www.bytegopher.com">
+
+    <link rel="stylesheet" href="/css/sections/home.css"/>
+    <link rel="stylesheet" href="/css/sections/about.css"/>
+    <link rel="stylesheet" href="/css/sections/skills.css"/>
+    <link rel="stylesheet" href="/css/sections/experiences.css"/>
+    <link rel="stylesheet" href="/css/sections/education.css"/>
+    <link rel="stylesheet" href="/css/sections/projects.css"/>
+    <link rel="stylesheet" href="/css/sections/recent-posts.css"/>
+    <link rel="stylesheet" href="/css/sections/achievements.css"/>
+    <link rel="stylesheet" href="/css/sections/accomplishments.css"/>
+    <link rel="stylesheet" href="/css/sections/publications.css"/>
+
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+    
+    
+
+
+
+
+</head>
+  <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar initial-navbar" id="top-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" id="logo" alt="Logo">
+      ByteGopher</a>
+    <button
+      class="navbar-toggler navbar-dark"
+      id="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#top-nav-items"
+      aria-label="menu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse dynamic-navbar" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        
+          
+          
+            
+              
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+              
+            
+            
+              
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="#skills">Skills</a>
+                </li>
+              
+            
+            
+              
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="#recent-posts">Recent Posts</a>
+                </li>
+              
+            
+            
+              
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="#achievements">My Story</a>
+                </li>
+              
+            
+          
+        
+        
+          <div class="dropdown-divider" id="top-navbar-divider"></div>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" id="blog-link" href="/posts/">Posts</a>
+          </li>
+        
+        
+        
+            
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.github.com/airren">Github</a>
+              </li>
+            
+        
+        
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+            
+            <span class="flag-icon flag-icon-gb"></span>
+        
+        English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+        
+        <a class="dropdown-item nav-link languages-item" href="/">
+            
+                
+                <span class="flag-icon flag-icon-gb"></span>
+            
+            English
+        </a>
+        
+        <a class="dropdown-item nav-link languages-item" href="/cn/">
+            
+                
+                <span class="flag-icon flag-icon-cn"></span>
+            
+            中文
+        </a>
+        
+    </div>
+    </li>
+
+        
+        
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid home" id="home">
+  <style>
+     
+    #homePageBackgroundImageDivStyled {
+      background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg');
+    }
+     
+    @media (min-width: 500px) and (max-width: 800px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 801px) and (max-width: 1200px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 1201px) and (max-width: 1500px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 1501px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background.jpg');
+        }
+    }
+    </style>
+    <span class="on-the-fly-behavior"></span>
+  <div
+    id="homePageBackgroundImageDivStyled"
+    class="background container-fluid"
+  ></div>
+  <div class="container content text-center">
+    <img src="/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_148x148_fit_box_3.png"
+      class="rounded-circle mx-auto d-block img-fluid"
+      alt="Author Image"
+    />
+    <h1 class="greeting"> Every Single Day Without Dancing is One Day We Betrayed of Life Airren</h1>
+    
+      <h2 class="greeting-subtitle">All is well</h2>
+    
+    <div class="typing-carousel">
+      <span id="ityped" class="ityped"></span>
+      <span class="ityped-cursor"></span>
+    </div>
+    <ul id="typing-carousel-data">
+      
+        
+          <li>生活也是一场学习</li>
+        
+          <li>正在学习C&#43;&#43;</li>
+        
+          <li>计划自驾318国道</li>
+        
+      
+    </ul>
+    
+      
+        
+        
+          
+        
+        <a href="#about" class="arrow-center" aria-label="Read More - Airren"><i class="arrow bounce fa fa-chevron-down"></i></a>
+      
+    
+  </div>
+</div>
+
+    
+    
+      
+    
+
+    
+      
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            
+
+  
+
+
+
+
+  
+
+
+<div class="container anchor p-lg-5 about-section" id="about">
+  <div class="row pt-sm-2 pt-md-4 align-self-center">
+    
+    
+     <div class="col-sm-6"> 
+      <h3 class="p-1">Airren Ren</h3>
+      
+      <h5 class="p-1">
+        Cloud Native Software Engineer
+        
+        at <a href="https://intel.com" title="Intel Co." target="_blank" rel="noopener">Intel Co.</a>
+        
+      </h5>
+      
+      <p class="p-1 text-justify">
+        Airren, a passionate software engineer, graduated with a master&rsquo;s degree in Computer Sciences from the East China
 University of Science and Technology in Shanghai. He has worked as an infrastructure developer in ByteDance from
 2019 to 2021, focusing on monitoring and alerting the microservice base on time series data. He has interned in
 Intel in 2017 but is a formal staff now. He is familiar with Golang and Java. Additionally, he likes to used embedded
 circuit boards to make funny things, such as Arduino and Raspberry Pi. What&rsquo;s more, he likes touristy, he has
 self-driven through the north-west of China, via Dunhuang and Qinghai. He plans to drive through the 318 national
-roads. If you&rsquo;re interested, you can join him.</p><div class="text-container ml-auto"><ul class="social-link d-flex"><li><a href=mailto:renqiqiang@outlook.com title=Email target=_blank rel=noopener><i class="fas fa-envelope"></i></a></li><li><a href=https://www.github.com/airren title=Github target=_blank rel=noopener><i class="fab fa-github"></i></a></li><li><a href=# title=LinkedIn target=_blank rel=noopener><i class="fab fa-linkedin"></i></a></li><li><a href=# title=Twitter target=_blank rel=noopener><i class="fab fa-twitter"></i></a></li><li><a href=# title=Facebook target=_blank rel=noopener><i class="fab fa-facebook"></i></a></li></ul></div></div><div class="col-sm-6 pt-5 pl-md-4 pl-sm-3 pt-sm-0"><div class=row><div class="col-6 col-lg-4 p-2"><div><a href=https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist target=_blank rel="noopener noreferrer"><img src=https://images.credly.com/size/680x680/images/f4bf92ed-8985-40b2-bc07-2f9308780854/kubernetes-security-specialist-logo-examdev.png alt="Certified Kubernetes Security Specialist"></a></div></div><div class="col-6 col-lg-4 p-2"><div><a href=https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist target=_blank rel="noopener noreferrer"><img src=https://images.credly.com/size/680x680/images/8d34d489-84bf-4861-a4a0-9e9d68318c5c/Beyond_basics_of_Istio_on_Cloud_v2.png alt="Istio and IBM Cloud Kubernetes Service"></a></div></div><div class="col-6 col-lg-4 p-2"><div><a href=https://www.credly.com/org/grupo-bancolombia/badge/artificial-intelligence-and-machine-learning target=_blank rel="noopener noreferrer"><img src=https://images.credly.com/size/680x680/images/e027514f-9d07-4b29-862f-fe21a8aaebf1/ae.png alt="Artificial Intelligence and Machine Learning"></a></div></div><div class="col-6 col-lg-4 p-2"><div class="circular-progress blue"><span class=circular-progress-left><span class="circular-progress-bar circular-progress-percentage-85"></span></span>
-<span class=circular-progress-right><span class=circular-progress-bar></span></span><div class=circular-progress-value>Leadership</div></div></div><div class="col-6 col-lg-4 p-2"><div class="circular-progress yellow"><span class=circular-progress-left><span class="circular-progress-bar circular-progress-percentage-90"></span></span>
-<span class=circular-progress-right><span class=circular-progress-bar></span></span><div class=circular-progress-value>Team Work</div></div></div><div class="col-6 col-lg-4 p-2"><div class="circular-progress orange"><span class=circular-progress-left><span class="circular-progress-bar circular-progress-percentage-85"></span></span>
-<span class=circular-progress-right><span class=circular-progress-bar></span></span><div class=circular-progress-value>Hard Working</div></div></div></div></div></div></div></div><div class="container-fluid section-holder d-flex bg-dimmed"><div class="container-fluid anchor pb-5 skills-section"><h1 class=text-center><span id=skills></span>Skills</h1><div class="container d-flex-block"><div class=row id=primary-skills><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link href=https://kubernetes.io/ title=Kubernetes target=_blank rel=noopener><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/kubernetes_hua3e9a1b19c1572e2f049d77a47832d4b_241197_24x24_fit_box_3.png alt=Kubernetes><h5 class=card-title>Kubernetes</h5></div><div class=card-body><p class=card-text>Capable of deploying, managing application on Kubernetes. Experienced in writing Kubernetes controllers for CRDs.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link href=https://golang.org/ title="Go Development" target=_blank rel=noopener><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/go_hue4d750b86639bc097ae544131de4926d_6734_24x24_fit_box_3.png alt="Go Development"><h5 class=card-title>Go Development</h5></div><div class=card-body><p class=card-text>Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link href=https://www.docker.com/ title=Docker target=_blank rel=noopener><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/docker.svg alt=Docker><h5 class=card-title>Docker</h5></div><div class=card-body><p class=card-text>Write most of the programs as dockerized container. Experienced with multi-stage, multi-arch build process.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link href=https://prometheus.io/ title=Prometheus target=_blank rel=noopener><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/prometheus_huebb51490a868f20dc51d40a74afb8c56_48384_24x24_fit_box_3.png alt=Prometheus><h5 class=card-title>Prometheus</h5></div><div class=card-body><p class=card-text>Capable of setup, configure Prometheus metrics. Experienced with PromQL, AlertManager. Also, experienced with writing metric exporters.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/linux_huf8888e89df43f58ab32b560cb211e230_26357_24x24_fit_box_3.png alt=Linux><h5 class=card-title>Linux</h5></div><div class=card-body><p class=card-text>Using as the main operating system. Capable of writing bash/shell scripts.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link href=https://git-scm.com/ title=Git target=_blank rel=noopener><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/git_hu6c1226675924c2f2e3476a81b4d03976_10660_24x24_fit_box_3.png alt=Git><h5 class=card-title>Git</h5></div><div class=card-body><p class=card-text>Experienced with git-based development. Mostly, use Github. Also, have experience in working with GitLab.</p></div></div></a></div><div class="col-xs-12 col-sm-6 col-lg-4 pt-2"><a class=skill-card-link><div class=card><div class="card-head d-flex"><img class=card-img-xs src=/images/sections/skills/c++_hue32fe91ddbd83e8e5585833667109ec5_57810_24x24_fit_box_3.png alt=C++><h5 class=card-title>C++</h5></div><div class=card-body><p class=card-text>Know basic C/C++ programming. Used for contest programming and problem solving.</p></div></div></a></div></div></div></div></div><div class="container-fluid section-holder d-flex bg-white"><div class="container-fluid anchor pb-5 recent-posts-section"><h1 class=text-center><span id=recent-posts></span>Recent Posts</h1><div class=container><div class=row id=recent-post-cards><div class="col-lg-4 col-md-6 pt-2 post-card"><a href=/posts/blog/raft/ title="「Raft」 The Raft Consensus Algorithm" class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Card image cap"></div><div class=card-body><h5 class=card-title>「Raft」 The Raft Consensus Algorithm</h5><p class="card-text post-summary">12 123 https://raft.github.io/
+roads. If you&rsquo;re interested, you can join him.
+      </p>
+      <div class="text-container ml-auto">
+        <ul class="social-link d-flex">
+          
+          <li>
+            
+              <a href="mailto:renqiqiang@outlook.com" title="Email" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://www.github.com/airren" title="Github" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="#" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="#" title="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="#" title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+            
+          </li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+    
+    <div class="col-sm-6 pt-5 pl-md-4 pl-sm-3 pt-sm-0">
+      <div class="row">
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    <div class="">
+      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" rel="noopener noreferrer">
+       <img src="https://images.credly.com/size/680x680/images/f4bf92ed-8985-40b2-bc07-2f9308780854/kubernetes-security-specialist-logo-examdev.png" alt="Certified Kubernetes Security Specialist" />
+      </a>
+    </div>
+
+</div>
+
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    <div class="">
+      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" rel="noopener noreferrer">
+       <img src="https://images.credly.com/size/680x680/images/8d34d489-84bf-4861-a4a0-9e9d68318c5c/Beyond_basics_of_Istio_on_Cloud_v2.png" alt="Istio and IBM Cloud Kubernetes Service" />
+      </a>
+    </div>
+
+</div>
+
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    <div class="">
+      <a href="https://www.credly.com/org/grupo-bancolombia/badge/artificial-intelligence-and-machine-learning" target="_blank" rel="noopener noreferrer">
+       <img src="https://images.credly.com/size/680x680/images/e027514f-9d07-4b29-862f-fe21a8aaebf1/ae.png" alt="Artificial Intelligence and Machine Learning" />
+      </a>
+    </div>
+
+</div>
+
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    
+    
+    <div class="circular-progress blue">
+    <span class="circular-progress-left">
+        <span
+        class="circular-progress-bar circular-progress-percentage-85"
+        
+        ></span>
+    </span>
+    <span class="circular-progress-right">
+        <span
+        class="circular-progress-bar"
+        
+        ></span>
+    </span>
+    <div class="circular-progress-value">Leadership</div>
+    </div>
+
+</div>
+
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    
+    
+    <div class="circular-progress yellow">
+    <span class="circular-progress-left">
+        <span
+        class="circular-progress-bar circular-progress-percentage-90"
+        
+        ></span>
+    </span>
+    <span class="circular-progress-right">
+        <span
+        class="circular-progress-bar"
+        
+        ></span>
+    </span>
+    <div class="circular-progress-value">Team Work</div>
+    </div>
+
+</div>
+
+        
+          <div class="col-6 col-lg-4 p-2">
+
+    
+    
+    
+    <div class="circular-progress orange">
+    <span class="circular-progress-left">
+        <span
+        class="circular-progress-bar circular-progress-percentage-85"
+        
+        ></span>
+    </span>
+    <span class="circular-progress-right">
+        <span
+        class="circular-progress-bar"
+        
+        ></span>
+    </span>
+    <div class="circular-progress-value">Hard Working</div>
+    </div>
+
+</div>
+
+        
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            
+
+  
+
+
+<div class="container-fluid anchor pb-5 skills-section">
+  
+    <h1 class="text-center">
+        <span id="skills"></span>Skills</h1>
+  
+  <div class="container d-flex-block">
+    <div class="row" id="primary-skills">
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="https://kubernetes.io/" title="Kubernetes" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/kubernetes_hua3e9a1b19c1572e2f049d77a47832d4b_241197_24x24_fit_box_3.png" alt="Kubernetes" />
+          <h5 class="card-title">Kubernetes</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Capable of deploying, managing application on Kubernetes. Experienced in writing Kubernetes controllers for CRDs.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="https://golang.org/" title="Go Development" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/go_hue4d750b86639bc097ae544131de4926d_6734_24x24_fit_box_3.png" alt="Go Development" />
+          <h5 class="card-title">Go Development</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="https://www.docker.com/" title="Docker" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/docker.svg" alt="Docker" />
+          <h5 class="card-title">Docker</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Write most of the programs as dockerized container. Experienced with multi-stage, multi-arch build process.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="https://prometheus.io/" title="Prometheus" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/prometheus_huebb51490a868f20dc51d40a74afb8c56_48384_24x24_fit_box_3.png" alt="Prometheus" />
+          <h5 class="card-title">Prometheus</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Capable of setup, configure Prometheus metrics. Experienced with PromQL, AlertManager. Also, experienced with writing metric exporters.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" >
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/linux_huf8888e89df43f58ab32b560cb211e230_26357_24x24_fit_box_3.png" alt="Linux" />
+          <h5 class="card-title">Linux</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Using as the main operating system. Capable of writing bash/shell scripts.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="https://git-scm.com/" title="Git" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/git_hu6c1226675924c2f2e3476a81b4d03976_10660_24x24_fit_box_3.png" alt="Git" />
+          <h5 class="card-title">Git</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Experienced with git-based development. Mostly, use Github. Also, have experience in working with GitLab.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" >
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+          
+          
+            
+          
+        
+          <img class="card-img-xs" src="/images/sections/skills/c&#43;&#43;_hue32fe91ddbd83e8e5585833667109ec5_57810_24x24_fit_box_3.png" alt="C&#43;&#43;" />
+          <h5 class="card-title">C&#43;&#43;</h5>
+        
+      </div>
+      <div class="card-body">
+        <p class="card-text">Know basic C/C++ programming. Used for contest programming and problem solving.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            
+
+  
+
+
+
+
+
+
+<div class="container-fluid anchor pb-5 recent-posts-section">
+  
+    <h1 class="text-center">
+        <span id="recent-posts"></span>Recent Posts</h1>
+  
+  <div class="container">
+    <div class="row" id="recent-post-cards">
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/blog/raft/" title="「Raft」 The Raft Consensus Algorithm" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Raft」 The Raft Consensus Algorithm</h5>
+        <p class="card-text post-summary"> 12 123 https://raft.github.io/
 https://www.infoq.com/presentations/raft-consensus-algorithm/
 https://www.geeksforgeeks.org/raft-consensus-algorithm/
-https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p></div><div class=card-footer><span class=float-left>April 1, 2021</span>
-<a href=/posts/blog/raft/ title=Read class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class="col-lg-4 col-md-6 pt-2 post-card"><a href=/posts/DataStruct/ds_dp/ title=数据结构与算法动态规划 class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Card image cap"></div><div class=card-body><h5 class=card-title>数据结构与算法动态规划</h5><p class="card-text post-summary">动态规划：
-子问题 状态定义 DP方程</p></div><div class=card-footer><span class=float-left>September 17, 2020</span>
-<a href=/posts/DataStruct/ds_dp/ title=Read class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class="col-lg-4 col-md-6 pt-2 post-card"><a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/ title=post class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Card image cap"></div><div class=card-body><h5 class=card-title>post</h5><p class="card-text post-summary">https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
-https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</p></div><div class=card-footer><span class=float-left>September 9, 2020</span>
-<a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/ title=Read class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div></div></div></div><div class="container-fluid section-holder d-flex bg-dimmed"><div class="container-fluid anchor pb-5 achievements-section"><h1 class=text-center><span id=achievements></span>My Story</h1><div class=container><div class=row id=gallery></div></div><div class=d-none id=achievements-holder><div class="achievement-entry text-center" style=background-image:url(/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg)><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>校园公益</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>校园公益</h4><p>给200个小朋友上的一堂课，超级nice。</p></div><span style=background-image:url(/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg) class=d-none id=SmallImage active=true></span>
-<span style=background-image:url(/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x1500_resize_q75_box.jpg) class=d-none id=LargeImage></span></div><div class="achievement-entry text-center" style="background-image:url('')"><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>Champion</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>Champion</h4><p>Nice Hornor.</p></div><span style="background-image:url('')" class=d-none id=SmallImage active=true></span>
-<span style="background-image:url('')" class=d-none id=LargeImage></span></div><div class="achievement-entry text-center" style="background-image:url('')"><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>路演</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>路演</h4><p>努力跨界，做一些不可能的事情.</p></div><span style="background-image:url('')" class=d-none id=SmallImage active=true></span>
-<span style="background-image:url('')" class=d-none id=LargeImage></span></div><div class="achievement-entry text-center" style="background-image:url('')"><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>比赛路演</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>比赛路演</h4><p>星创师大赛，获奖了哦.</p></div><span style="background-image:url('')" class=d-none id=SmallImage active=true></span>
-<span style="background-image:url('')" class=d-none id=LargeImage></span></div><div class="achievement-entry text-center" style="background-image:url('')"><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>部队生活</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>部队生活</h4><p>难忘73151.</p></div><span style="background-image:url('')" class=d-none id=SmallImage active=true></span>
-<span style="background-image:url('')" class=d-none id=LargeImage></span></div><div class="achievement-entry text-center" style="background-image:url('')"><i class="fas fa-search-plus" id=enlarge-icon></i><h4 class=title id=achievement-title>幼儿园活动</h4><div class="caption hidden col-lg-6 text-left" id=caption><h4>幼儿园活动</h4><p></p></div><span style="background-image:url('')" class=d-none id=SmallImage active=true></span>
-<span style="background-image:url('')" class=d-none id=LargeImage></span></div></div></div></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/itype.min.js></script>
-<script src=/js/github-button.js></script>
-<script src=/js/home.js></script>
-<script src=/js/jquery.filterizr.min.js></script></body></html>
+https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">April 1, 2021</span>
+        <a href="/posts/blog/raft/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/DataStruct/ds_dp/" title="数据结构与算法动态规划" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">数据结构与算法动态规划</h5>
+        <p class="card-text post-summary"> 动态规划：
+子问题 状态定义 DP方程 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 17, 2020</span>
+        <a href="/posts/DataStruct/ds_dp/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/" title="post" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">post</h5>
+        <p class="card-text post-summary"> https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 9, 2020</span>
+        <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+  
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            
+
+  
+
+
+<div class="container-fluid anchor pb-5 achievements-section">
+  
+    <h1 class="text-center">
+        <span id="achievements"></span>My Story</h1>
+  
+  <div class="container">
+    <div class="row" id="gallery">
+    </div>
+  </div>
+  
+  <div class="d-none" id="achievements-holder">
+    
+      
+
+
+
+
+
+  
+  
+  
+  
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">校园公益</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>校园公益</h4>
+    <p>给200个小朋友上的一堂课，超级nice。</p>
+    
+  </div>
+  <span style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x1500_resize_q75_box.jpg');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+      
+
+
+
+
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">Champion</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>Champion</h4>
+    <p>Nice Hornor.</p>
+    
+  </div>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+      
+
+
+
+
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">路演</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>路演</h4>
+    <p>努力跨界，做一些不可能的事情.</p>
+    
+  </div>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+      
+
+
+
+
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">比赛路演</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>比赛路演</h4>
+    <p>星创师大赛，获奖了哦.</p>
+    
+  </div>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+      
+
+
+
+
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">部队生活</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>部队生活</h4>
+    <p>难忘73151.</p>
+    
+  </div>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+      
+
+
+
+
+
+
+<div 
+  class="achievement-entry text-center"
+  style="background-image: url('');"
+>
+  <i class="fas fa-search-plus" id="enlarge-icon"></i>
+  <h4 class="title" id="achievement-title">幼儿园活动</h4>
+  <div class="caption hidden col-lg-6 text-left" id="caption">
+    <h4>幼儿园活动</h4>
+    <p></p>
+    
+  </div>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
+</div>
+
+    
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    <script src="/js/itype.min.js"></script>
+    <script src="/js/github-button.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/jquery.filterizr.min.js"></script>
+
+    
+</body>
+</html>

@@ -1,10 +1,309 @@
-<!doctype html><html><head><title></title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/interview/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a class=active href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/9th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">9 每一日面 字节跳动
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/interview/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/9th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">9 每一日面 字节跳动
 很荣幸字节跳动一路走到了四面，不管是运气还是实力，都好好准备接下来的面试吧，加油
 编程 判断字符串B是否是字符串A的子串 数据结构中的桶排序、平衡二叉树 .手撕代码：机器人跳跃(牛客原题） 手撕代码：逆时针打印矩阵（剑指offer改） 合并两个有序链表，空间复杂度O(1)； DP最长回文串； 给两个1T的文件在2g ram的内存中找出相同项。 给一个有向图，判断有向图中是否有环，如果有环，环的数量是多少？ 给一个大小为n的数组，寻找比k小的最大数的位置。 1.最长回文子串 地图上有若干个点，怎样得到某个点到达某个点的所有的换乘路线 ？ 是否是联通，如果不连通怎么处理 给你一个字符串，字符串当中是一段c语言的代码和注释，注释只有/** /这样的可以嵌套，不包含// 请返回去除所有注释的代码 如果代码当中的/*和/*可以不完全匹配如何告知出现错误 写了一个程序，有个小球，球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10 次落地时，共经过多少米？第 10 次反弹多高？ 写代码：火车售票系统是早7点-晚23点进行网上售票，写一个程序判断是否可以进行网上买票 讲一下二叉搜索树，写节点的删除代码 最大连续子序列和 代码：实现lru，不会哦临时想了一种lgn的实现，面试官不满意 写一个最小堆建堆，分析复杂度 多个串，将含有相同字母的串放到同一个集合，返回集合向量 讲思路 编程：36进制加法（忘记处理最高位的进位，面试官提醒了一下） 在一亿个数中找出最大的10个数，在一亿个数中找出中间的10个数 编程：将0-n的整数放到一个长度为n的数组中，找出缺失的那个数 编程：36进制加法（又来？） 题目：n条直线可以将空间划分为多少个区域 面试题 TCP 和UDP
 进程和线程
@@ -17,11 +316,35 @@ MySQL索引的数据结构
 Java的JVM的内存布局，垃圾回收的实现，回收器分几部分，都有什么作用；
 项目大体阐述下，用了哪些技术、设计模式，最大的感受是什么；十分钟实现用过的观察者模式、工厂模式；
 TCP四次挥手讲下？为什么有TIME_WAIT？ TCP比UDP多消耗哪些系统资源？
-A(FIN_WAIT_1) -> B(CLOSE_WAIT) FIN=1,seq = u
+A(FIN_WAIT_1) -&gt; B(CLOSE_WAIT) FIN=1,seq = u
 A(FIN_WAIT_2)&lt;-B ACK=1, seq=v,ack=u+1;
 A &lt;-B(LAST_ACK) FIN=1,seq = w,ack=u+1;
-A(TIME_WAIT) ACK=1 ,seq=u+1,ack=w+1;</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/9th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">#计算机操作系统
+A(TIME_WAIT) ACK=1 ,seq=u+1,ack=w+1;</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/9th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">#计算机操作系统
 基本特征 并发 并发是指宏观上在一段时间内能同时运行多个程序，而并行则指同一时刻能运行多个指令。
 并行需要硬件支持，如多流水线、多核处理器或者分布式计算系统。
 操作系统通过引入进程和线程，使得程序能够并发运行。
@@ -45,8 +368,32 @@ Task Commands 进程控制 fork(); exit(); wait(); 进程通信 pipe(); shmget()
 微内核 由于操作系统不断复杂，因此将一部分操作系统功能移出内核，从而降低内核的复杂性。移出的部分根据分层的原则划分成若干服务，相互独立。
 在微内核结构下，操作系统被划分成小的、定义良好的模块，只有微内核这一个模块运行在内核态，其余模块运行在用户态。
 因为需要频繁地在用户态和核心态之间进行切换，所以会有一定的性能损失。
-中断分类 外中断 由 CPU 执行指令以外的事件引起，如 I/O 完成中断，表示设备输入/输出处理已经完成，处理器能够发送下一个输入/输出请求。此外还有时钟中断、控制台中断等。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">线程同步 线程同步的概念 线程同步：即当有一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作，直到该线程完成操作， 其他线程才能对该内存地址进行操作，而其他线程又处于等待状态，实现线程同步的方法有很多，临界区对象就是其中一种。
+中断分类 外中断 由 CPU 执行指令以外的事件引起，如 I/O 完成中断，表示设备输入/输出处理已经完成，处理器能够发送下一个输入/输出请求。此外还有时钟中断、控制台中断等。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">线程同步 线程同步的概念 线程同步：即当有一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作，直到该线程完成操作， 其他线程才能对该内存地址进行操作，而其他线程又处于等待状态，实现线程同步的方法有很多，临界区对象就是其中一种。
 在多线程编程里面，一些敏感数据不允许被多个线程同时访问，此时就使用同步访问技术，保证数据在任何时刻，最多有一个线程访问，以保证数据的完整性。
 线程有可能和其他线程共享一些资源，比如，内存，文件，数据库等。
 当多个线程同时读写同一份共享资源的时候，可能会引起冲突。这时候，我们需要引入线程“同步”机制，即各位线程之间要有个先来后到，不能一窝蜂挤上去抢作一团。
@@ -68,9 +415,57 @@ Task Commands 进程控制 fork(); exit(); wait(); 进程通信 pipe(); shmget()
 线程同步的方法 (1)wait():使一个线程处于等待状态，并且释放所持有的对象的lock。
 (2)sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉 InterruptedException异常。
 (3)notify():唤醒一个处于等待状态的线程，注意的是在调用此方法的时候，并不能确切的 唤醒某一个等待状态的线程，而是由JVM确定唤醒哪个线程，而且不是按优先级。
-(4)notityAll ():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁， 而是让它们竞争。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary"></p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/daily/TaskList/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Daily」TaskList</h5><p class="card-text post-summary">TaskList 最短路径算法
+(4)notityAll ():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁， 而是让它们竞争。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/TaskList/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Daily」TaskList</h5>
+        <p class="card-text post-summary">TaskList 最短路径算法
 最小生成树
 深度优先遍历、广度优先遍历
 KMP算法
@@ -82,8 +477,32 @@ context 春招目标
 依图
 PDD
 字节跳动
-浦发</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/daily/TaskList/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/JavaNote/Automic-%E5%8E%9F%E5%AD%90%E7%B1%BB/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Java」</h5><p class="card-text post-summary">Automic 原子类 1 Atomic 原子类介绍 Atomic 是指一个操作是不可中断的。即使是在多个线程一起执行的时候，一个操作一旦开始，就不会被其他线程干扰。
+浦发</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/TaskList/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/JavaNote/Automic-%E5%8E%9F%E5%AD%90%E7%B1%BB/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Java」</h5>
+        <p class="card-text post-summary">Automic 原子类 1 Atomic 原子类介绍 Atomic 是指一个操作是不可中断的。即使是在多个线程一起执行的时候，一个操作一旦开始，就不会被其他线程干扰。
 所以，所谓原子类说简单点就是具有原子/原子操作特征的类。
 并发包 java.util.concurrent 的原子类都存放在java.util.concurrent.atomic下,如下图所示。
 根据操作的数据类型，可以将JUC包中的原子类分为4类
@@ -94,35 +513,432 @@ AtomicInteger：整型原子类 AtomicLong：长整型原子类 AtomicBoolean �
 AtomicIntegerArray：整型数组原子类 AtomicLongArray：长整型数组原子类 AtomicReferenceArray ：引用类型数组原子类 引用类型
 AtomicReference：引用类型原子类 AtomicReferenceFieldUpdater：原子更新引用类型里的字段 AtomicMarkableReference ：原子更新带有标记位的引用类型 对象的属性修改类型
 AtomicIntegerFieldUpdater:原子更新整型字段的更新器 AtomicLongFieldUpdater：原子更新长整型字段的更新器 AtomicStampedReference ：原子更新带有版本号的引用类型。该类将整数值与引用关联起来，可用于解决原子的更新数据和数据的版本号，可以解决使用 CAS 进行原子更新时可能出现的 ABA 问题。 AtomicMarkableReference：原子更新带有标记的引用类型。该类将 boolean 标记与引用关联起来，也可以解决使用 CAS 进行原子更新时可能出现的 ABA 问题。 CAS ABA 问题
-描述: 第一个线程取到了变量 x 的值 A，然后巴拉巴拉干别的事，总之就是只拿到了变量 x 的值 A。这段时间内第二个线程也取到了变量 x 的值 A，然后把变量 x 的值改为 B，然后巴拉巴拉干别的事，最后又把变量 x 的值变为 A （相当于还原了）。在这之后第一个线程终于进行了变量 x 的操作，但是此时变量 x 的值还是 A，所以 compareAndSet 操作是成功。 例子描述(可能不太合适，但好理解): 年初，现金为零，然后通过正常劳动赚了三百万，之后正常消费了（比如买房子）三百万。年末，虽然现金零收入（可能变成其他形式了），但是赚了钱是事实，还是得交税的！ 代码例子（以AtomicInteger为例） 1import java.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/JavaNote/Automic-%E5%8E%9F%E5%AD%90%E7%B1%BB/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/cs_basic/net_io/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「NIO」网络IO</h5><p class="card-text post-summary">NIO
+描述: 第一个线程取到了变量 x 的值 A，然后巴拉巴拉干别的事，总之就是只拿到了变量 x 的值 A。这段时间内第二个线程也取到了变量 x 的值 A，然后把变量 x 的值改为 B，然后巴拉巴拉干别的事，最后又把变量 x 的值变为 A （相当于还原了）。在这之后第一个线程终于进行了变量 x 的操作，但是此时变量 x 的值还是 A，所以 compareAndSet 操作是成功。 例子描述(可能不太合适，但好理解): 年初，现金为零，然后通过正常劳动赚了三百万，之后正常消费了（比如买房子）三百万。年末，虽然现金零收入（可能变成其他形式了），但是赚了钱是事实，还是得交税的！ 代码例子（以AtomicInteger为例） 1import java.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/JavaNote/Automic-%E5%8E%9F%E5%AD%90%E7%B1%BB/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/cs_basic/net_io/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「NIO」网络IO</h5>
+        <p class="card-text post-summary">NIO
 epoll linux
 mac
-windows</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/cs_basic/net_io/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/cs_basic/network_basic/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「计算机网络」 计算机网络串讲</h5><p class="card-text post-summary">网络硬件 双绞线 类型 五类线CAT5 超五类线CAT5e 六类线CAT6 超六类线CATT6e 七类线CAT7 频率带宽 100MHz 100MHz 200MHz 500MHz 600MHz 传输速率 100Mbps 1000Mbps 1000Mbps 1Gbps 10Gbps 最大长度 100m 100m 100m 55m 屏蔽类型 屏蔽/非屏蔽 屏蔽/非屏蔽 屏蔽/非屏蔽 屏蔽/非屏蔽 双层屏蔽 双绞线线序 直通，交叉(主要用于对等设备的通信)
-标准 1 2 3 4 5 6 7 8 EIA/TIA 568A 绿白 绿 橙白 蓝 蓝白 橙 棕白 棕 EIA/TIA 568B 橙白 橙 绿白 蓝 蓝白 绿 棕白 棕</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/cs_basic/network_basic/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/daily/2021-03-12/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>2021-03-12</h5><p class="card-text post-summary">Golang
-以下代码的输出内容 1package main 2import ( 3 "fmt" 4) 5 6func main() { 7 deferCall() 8} 9func deferCall() { 10 defer func() { fmt.Println(">>> before") }() 11 defer func() { fmt.Println(">>> in process") }() 12 defer func() { fmt.Println(">>> done") }() 13 panic("&lt;&lt;&lt; panic here") 14} 输出结果如下
-1>>> done 2>>> in process 3>>> before 4panic: &lt;&lt;&lt; panic here defer执行的顺序是后进先出, 压栈。当出现panic的时候，会按照defer的后进先出的顺序执行，最后才会执行panic。
+windows</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/cs_basic/net_io/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/cs_basic/network_basic/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「计算机网络」 计算机网络串讲</h5>
+        <p class="card-text post-summary">网络硬件 双绞线 类型 五类线CAT5 超五类线CAT5e 六类线CAT6 超六类线CATT6e 七类线CAT7 频率带宽 100MHz 100MHz 200MHz 500MHz 600MHz 传输速率 100Mbps 1000Mbps 1000Mbps 1Gbps 10Gbps 最大长度 100m 100m 100m 55m 屏蔽类型 屏蔽/非屏蔽 屏蔽/非屏蔽 屏蔽/非屏蔽 屏蔽/非屏蔽 双层屏蔽 双绞线线序 直通，交叉(主要用于对等设备的通信)
+标准 1 2 3 4 5 6 7 8 EIA/TIA 568A 绿白 绿 橙白 蓝 蓝白 橙 棕白 棕 EIA/TIA 568B 橙白 橙 绿白 蓝 蓝白 绿 棕白 棕 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/cs_basic/network_basic/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/2021-03-12/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">2021-03-12</h5>
+        <p class="card-text post-summary">Golang
+以下代码的输出内容 1package main 2import ( 3	&#34;fmt&#34; 4) 5 6func main() { 7	deferCall() 8} 9func deferCall() { 10	defer func() { fmt.Println(&#34;&gt;&gt;&gt; before&#34;) }() 11	defer func() { fmt.Println(&#34;&gt;&gt;&gt; in process&#34;) }() 12	defer func() { fmt.Println(&#34;&gt;&gt;&gt; done&#34;) }() 13	panic(&#34;&lt;&lt;&lt; panic here&#34;) 14} 输出结果如下
+1&gt;&gt;&gt; done 2&gt;&gt;&gt; in process 3&gt;&gt;&gt; before 4panic: &lt;&lt;&lt; panic here defer执行的顺序是后进先出, 压栈。当出现panic的时候，会按照defer的后进先出的顺序执行，最后才会执行panic。
 defer是一个压栈过程。
-这段代码的输出，以及原因 1package main 2 3import "fmt" 4 5func main() { 6 slice := []int{0, 1, 2, 3} 7 m := make(map[int]*int) 8 9 for key, val := range slice { 10 m[key] = &val 11 } 12 13 for k, v := range m { 14 fmt.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/daily/2021-03-12/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/daily/2021-03-13/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>2021-03-13</h5><p class="card-text post-summary">Golang
+这段代码的输出，以及原因 1package main 2 3import &#34;fmt&#34; 4 5func main() { 6	slice := []int{0, 1, 2, 3} 7	m := make(map[int]*int) 8 9	for key, val := range slice { 10	m[key] = &amp;val 11	} 12 13	for k, v := range m { 14	fmt.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/2021-03-12/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/2021-03-13/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">2021-03-13</h5>
+        <p class="card-text post-summary">Golang
 下面两段代码输出什么 1// 1. 2 func main() { 3 s := make([]int, 5) 4 s = append(s, 1, 2, 3) 5 fmt.Println(s) 6 } 7 8// 2. 9 func main() { 10 s := make([]int,0) 11 s = append(s,1,2,3,4) 12 fmt.Println(s) 13} 输出结果如下
 1[0 0 0 0 0 1 2 3] 2[1 2 3 4] 使用make 新建 slice 会根据初始化的容量补0
-这段代码的问题 1 func funcMui(x,y int)(sum int,error){ 2 return x+y,nil 3 } 有多个返回值的时候，返回值的名字要么全部省略，要么全部写上</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/daily/2021-03-13/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/daily/2021-03-14/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>2021-03-14</h5><p class="card-text post-summary">Golang
+这段代码的问题 1 func funcMui(x,y int)(sum int,error){ 2 return x+y,nil 3 } 有多个返回值的时候，返回值的名字要么全部省略，要么全部写上</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/2021-03-13/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/2021-03-14/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">2021-03-14</h5>
+        <p class="card-text post-summary">Golang
 使用channel实现简单并发，注意执行顺序
-1package main 2 3import ( 4 "fmt" 5 "sync" 6 "time" 7) 8 9var wg sync.WaitGroup 10 11func printer(ch chan int) { 12 for i := range ch { 13 fmt.Printf("Received %d \n", i) 14 &lt;-time.After(time.Second / 5) 15 fmt.Printf("Job %v done \n", i) 16 } 17 println("All Jobs done") 18 wg.Done() 19 println("Finished") 20} 21 22// main is the entry point for the program. 23func main() { 24 c := make(chan int) 25 go printer(c) 26 wg.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/daily/2021-03-14/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/interview/daily/2021-03-15/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>2021-03-15</h5><p class="card-text post-summary">Golang
+1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;sync&#34; 6	&#34;time&#34; 7) 8 9var wg sync.WaitGroup 10 11func printer(ch chan int) { 12	for i := range ch { 13	fmt.Printf(&#34;Received %d \n&#34;, i) 14	&lt;-time.After(time.Second / 5) 15	fmt.Printf(&#34;Job %v done \n&#34;, i) 16	} 17	println(&#34;All Jobs done&#34;) 18	wg.Done() 19	println(&#34;Finished&#34;) 20} 21 22// main is the entry point for the program. 23func main() { 24	c := make(chan int) 25	go printer(c) 26	wg.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/2021-03-14/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/2021-03-15/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">2021-03-15</h5>
+        <p class="card-text post-summary">Golang
 获取变量的数据类型
-1package main 2 3import ( 4 "fmt" 5 "reflect" 6) 7 8func main() { 9 10 // string type : string 11 var1 := "hello world" 12 13 // integer : int 14 var2 := 10 15 16 // float : float64 17 var3 := 1.55 18 19 // boolean : bool 20 var4 := true 21 22 // shorthand string array declaration : []string 23 var5 := []string{"foo", "bar", "baz"} 24 25 // map is reference datatype : map[string]string 26 var6 := map[int]string{100: "Ana", 101: "Lisa", 102: "Rob"} 27 28 // complex64 and complex128 29 // is basic datatype : complex128 30 var7 := complex(9, 15) 31 32 // using %T format specifier to 33 // determine the datatype of the variables 34 35 fmt.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/interview/daily/2021-03-15/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/interview/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/interview/page/5/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/interview/page/3/ aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/posts/interview/page/4/ aria-label="Page 4" class=page-link role=button>4</a></li><li class=page-item><a href=/posts/interview/page/5/ aria-label="Page 5" class=page-link role=button>5</a></li><li class="page-item active"><a aria-current=page aria-label="Page 6" class=page-link role=button>6</a></li><li class=page-item><a href=/posts/interview/page/7/ aria-label="Page 7" class=page-link role=button>7</a></li><li class=page-item><a href=/posts/interview/page/7/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/interview/page/7/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;reflect&#34; 6) 7 8func main() { 9 10	// string type : string 11	var1 := &#34;hello world&#34; 12 13	// integer : int 14	var2 := 10 15 16	// float : float64 17	var3 := 1.55 18 19	// boolean : bool 20	var4 := true 21 22	// shorthand string array declaration : []string 23	var5 := []string{&#34;foo&#34;, &#34;bar&#34;, &#34;baz&#34;} 24 25	// map is reference datatype : map[string]string 26	var6 := map[int]string{100: &#34;Ana&#34;, 101: &#34;Lisa&#34;, 102: &#34;Rob&#34;} 27 28	// complex64 and complex128 29	// is basic datatype : complex128 30	var7 := complex(9, 15) 31 32	// using %T format specifier to 33	// determine the datatype of the variables 34 35	fmt.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/2021-03-15/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/interview/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/5/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 6" class="page-link" role="button">6</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/7/" aria-label="Page 7" class="page-link" role="button">7</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/7/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/7/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

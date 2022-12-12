@@ -1,4 +1,44 @@
-<!doctype html><html><head><title>Cloud Native</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Cloud Native"><meta property="og:description" content="4C8G 70%-80% 虚拟化浪费掉了
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cloud Native</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Cloud Native" />
+<meta property="og:description" content="4C8G 70%-80% 虚拟化浪费掉了
 裸金属
 2001 VMware虚拟化技术
 2006 AWS推出EC2服务
@@ -24,22 +64,721 @@ IDC
 分布式架构阶段（负载均衡，同时提供服务）
 微服务架构， 以业务天然分库
 ServiceMesh： 网格化架构
-RPC 远程调用/ Gateway 负载均衡-> 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权"><meta property="og:type" content="article"><meta property="og:url" content="https://airren.github.io/posts/blog/CloudNative/"><meta property="article:section" content="posts"><meta name=description content="Cloud Native"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css><link rel=stylesheet href=/css/layouts/single.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts/ data-filter=all>Posts</a></li><div class=subtree><li><a class=active href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class=content><div class="container p-0 read-area"><div class="hero-area col-sm-12" id=hero-area style=background-image:url(/images/default-hero.jpg)></div><div class=page-content><div class="author-profile ml-auto align-self-lg-center"><img class=rounded-circle src=/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png alt="Author Image"><h5 class=author-name>Airren Ren</h5><p>Monday, January 1, 1</p></div><div class=title><h1>Cloud Native</h1></div><div class=taxonomy-terms><ul style=padding-left:0></ul></div><div class=post-content id=post-content><p>4C8G 70%-80% 虚拟化浪费掉了</p><p>裸金属</p><p>2001 VMware虚拟化技术</p><p>2006 AWS推出EC2服务</p><p>2010 Openstack社区成立。 虚拟化技术，管理操作系统</p><p>2011.04 第一个 开源PaaS平台 CloudFoundry</p><p>2013.03 开源Docker发布。 操作系统之上的应用容器化。</p><p>2014.06 Google 发布Kubernetes, 应用编排</p><p>2015.07 Google 宣布成立CNCF基金会</p><p>Building sustainable ecosystems for cloud native software.</p><p><p class=md__image><img src alt=https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/></p></p><p>IaaS Infrastructure-as-a-service 基础设施即服务</p><p>PaaS Platform as a service</p><p>SaaS Software as a service</p><p>CaaS container as a service</p><p>优势 ：</p><p>稳定性： 几个9 SLA 0.999 年宕机时间</p><p>弹性扩展</p><p>安全性</p><p>成本</p><p>易用性</p><p>IDC</p><p>单体架构</p><p>集群架构阶段（单集群，同时只有一个实例提供服务）</p><p>分布式架构阶段（负载均衡，同时提供服务）</p><p>微服务架构， 以业务天然分库</p><p>ServiceMesh： 网格化架构</p><p>RPC 远程调用/ Gateway 负载均衡-> 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权</p><p>Nginx 和API Gateway， 有交集，动态决定</p><p>Nginx：反向代理、负载均衡</p><p>Gateway： 鉴权，协议转换， 牵扯到业务代码的相关东西， 可以做更多的业务融合服务</p><p>分布式 和集群的区别？</p><p>分布式：把一个大型应用拆分出很多功能模块，各个功能部署再不同服务器上，所有的这些服务器联合起来提供完成服务。</p><p>集群： 很多一模一样的服务</p><p>软件 部署机器</p><p>A 5 -> 集群</p><p>B 4</p><p>C 8</p><p>D 7</p><p>很多机器都可以叫做集群；不同服务部署到不同服务器，才能称为分布式；</p><p>异地多活：</p><p>IP 漂移， keep alive</p><p>云上挑战</p><p>云机器的资源编排</p><p>云存储方案： 文件存储</p><p>云负载均衡方案</p><p>云缓存方案：CDN，数据库，中间件</p><p>云持久化： Mysql</p><p>云运维</p><p>云监控：</p><p>云容器技术：</p><p>云DevOps</p><p>云安全防护</p><p>技术变革：</p><p>动态扩容-> 水平扩容</p><p>应用上云无关语言</p><p>docker &ndash; docker shim-> k8s</p><p>因为 docker 没有实现CRI（Container Runtime Interface）， 之前是通过docker shim 调用，实现CRI interface，还是干掉 docker。</p><p>2021年底的最后一次更新会替换掉</p><p>docker-> 容器的封装层， containd(runc)?</p><p>容器的所有思想都是通用的。容器，镜像。。。</p><p>应用上云的新型架构： Kubernetes + serviceMesh</p><h2 id=云原生的生态系统>云原生的生态系统</h2><p>CloudNative</p><ul><li>Microservice</li><li>Containers</li><li>Continuous Delivery</li><li>DevOps</li></ul><p>常见技术:</p><p>基础研究量</p><p>ServiceMesh</p><p>serverless：</p><h2 id=云原生的术语>云原生的术语</h2><p>graceful shutdown</p><p>蓝绿部署，绿色环境为实验环境</p><p>cka, ckad, cks 考证</p><p>pipeline</p><p><a href=https://xuanwo.io/2019/08/06/oci-intro/ target=_blank>docker containerd runc 之间的关系</a></p><p><a href=https://zhuanlan.zhihu.com/p/87602649 target=_blank>https://zhuanlan.zhihu.com/p/87602649</a></p><p><a href=https://www.huweihuang.com/kubernetes-notes/runtime/runtime.html target=_blank>https://www.huweihuang.com/kubernetes-notes/runtime/runtime.html</a></p></div><div class="row pl-3 pr-3"><div class="col-md-6 share-buttons"></div><div class="col-md-6 btn-improve-page"><a href=https://github.com/airren/airren.github.io/edit/master/content/posts/blog/CloudNative.md title="Improve this page" target=_blank rel=noopener><i class="fas fa-code-branch"></i>
-Improve this page</a></div></div><hr><div class="row next-prev-navigator"></div><hr></div></div></div><a id=scroll-to-top class=btn><i class="fas fa-chevron-circle-up"></i></a></section><section class=toc-section id=toc-section><div class=toc-holder><h5 class="text-center pl-3">Table of Contents</h5><hr><div class=toc><nav id=TableOfContents><ul><li><a href=#云原生的生态系统>云原生的生态系统</a></li><li><a href=#云原生的术语>云原生的术语</a></li></ul></nav></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js></script>
-<script src=/js/single.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+RPC 远程调用/ Gateway 负载均衡-&gt; 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/blog/CloudNative/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="Cloud Native" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1>Cloud Native</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p>4C8G 70%-80% 虚拟化浪费掉了</p>
+<p>裸金属</p>
+<p>2001 VMware虚拟化技术</p>
+<p>2006 AWS推出EC2服务</p>
+<p>2010 Openstack社区成立。 虚拟化技术，管理操作系统</p>
+<p>2011.04 第一个 开源PaaS平台 CloudFoundry</p>
+<p>2013.03 开源Docker发布。 操作系统之上的应用容器化。</p>
+<p>2014.06 Google 发布Kubernetes,  应用编排</p>
+<p>2015.07 Google 宣布成立CNCF基金会</p>
+<p>Building sustainable ecosystems for cloud native software.</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+<img src="" alt="https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/" />
+
+
+
+</p>
+</p>
+<p>IaaS Infrastructure-as-a-service 基础设施即服务</p>
+<p>PaaS Platform as a service</p>
+<p>SaaS Software as a service</p>
+<p>CaaS container as a service</p>
+<p>优势 ：</p>
+<p>稳定性： 几个9 SLA   0.999  年宕机时间</p>
+<p>弹性扩展</p>
+<p>安全性</p>
+<p>成本</p>
+<p>易用性</p>
+<p>IDC</p>
+<p>单体架构</p>
+<p>集群架构阶段（单集群，同时只有一个实例提供服务）</p>
+<p>分布式架构阶段（负载均衡，同时提供服务）</p>
+<p>微服务架构， 以业务天然分库</p>
+<p>ServiceMesh： 网格化架构</p>
+<p>RPC 远程调用/ Gateway 负载均衡-&gt; 服务与IP映射  facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权</p>
+<p>Nginx 和API Gateway， 有交集，动态决定</p>
+<p>Nginx：反向代理、负载均衡</p>
+<p>Gateway： 鉴权，协议转换， 牵扯到业务代码的相关东西， 可以做更多的业务融合服务</p>
+<p>分布式 和集群的区别？</p>
+<p>分布式：把一个大型应用拆分出很多功能模块，各个功能部署再不同服务器上，所有的这些服务器联合起来提供完成服务。</p>
+<p>集群： 很多一模一样的服务</p>
+<p>软件  部署机器</p>
+<p>A    5     -&gt; 集群</p>
+<p>B 4</p>
+<p>C 8</p>
+<p>D  7</p>
+<p>很多机器都可以叫做集群；不同服务部署到不同服务器，才能称为分布式；</p>
+<p>异地多活：</p>
+<p>IP 漂移， keep alive</p>
+<p>云上挑战</p>
+<p>云机器的资源编排</p>
+<p>云存储方案： 文件存储</p>
+<p>云负载均衡方案</p>
+<p>云缓存方案：CDN，数据库，中间件</p>
+<p>云持久化： Mysql</p>
+<p>云运维</p>
+<p>云监控：</p>
+<p>云容器技术：</p>
+<p>云DevOps</p>
+<p>云安全防护</p>
+<p>技术变革：</p>
+<p>动态扩容-&gt; 水平扩容</p>
+<p>应用上云无关语言</p>
+<p>docker  &ndash; docker shim-&gt; k8s</p>
+<p>因为 docker 没有实现CRI（Container Runtime Interface）， 之前是通过docker shim 调用，实现CRI interface，还是干掉 docker。</p>
+<p>2021年底的最后一次更新会替换掉</p>
+<p>docker-&gt; 容器的封装层，  containd(runc)?</p>
+<p>容器的所有思想都是通用的。容器，镜像。。。</p>
+<p>应用上云的新型架构： Kubernetes + serviceMesh</p>
+<h2 id="云原生的生态系统">云原生的生态系统</h2>
+<p>CloudNative</p>
+<ul>
+<li>Microservice</li>
+<li>Containers</li>
+<li>Continuous Delivery</li>
+<li>DevOps</li>
+</ul>
+<p>常见技术:</p>
+<p>基础研究量</p>
+<p>ServiceMesh</p>
+<p>serverless：</p>
+<h2 id="云原生的术语">云原生的术语</h2>
+<p>graceful shutdown</p>
+<p>蓝绿部署，绿色环境为实验环境</p>
+<p>cka, ckad, cks 考证</p>
+<p>pipeline</p>
+<p><a href="https://xuanwo.io/2019/08/06/oci-intro/" target="_blank">docker containerd runc 之间的关系</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/87602649" target="_blank">https://zhuanlan.zhihu.com/p/87602649</a></p>
+<p><a href="https://www.huweihuang.com/kubernetes-notes/runtime/runtime.html" target="_blank">https://www.huweihuang.com/kubernetes-notes/runtime/runtime.html</a></p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/blog/CloudNative.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#云原生的生态系统">云原生的生态系统</a></li>
+    <li><a href="#云原生的术语">云原生的术语</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

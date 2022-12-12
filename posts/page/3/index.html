@@ -1,40 +1,505 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/blog/https_tips/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「HTTPS」 Tips</h5><p class="card-text post-summary">什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
-1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</p></div><div class=card-footer><span class=float-left>July 31, 2020</span>
-<a href=/posts/blog/https_tips/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/nginx_tips/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Nginx」 Tips</h5><p class="card-text post-summary">搭建静态资源服务器 静态资源文件夹
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/https_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「HTTPS」 Tips</h5>
+        <p class="card-text post-summary">什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
+1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/posts/blog/https_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/nginx_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Nginx」 Tips</h5>
+        <p class="card-text post-summary">搭建静态资源服务器 静态资源文件夹
 1/root/file Nginx 配置
 vi /etc/nginx/nginx.conf
-1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2 alias /root/file; # 静态资源的绝对路径 3 autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
+1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2	alias /root/file; # 静态资源的绝对路径 3	autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
 1gzip on; 2gzip_minPlength 1; # 小于1字节不压缩， 3gzip_comp_level 2; # 压缩级别为2 4gzip_types taxt/plain applicaton/x-javascripts txt/css application/xml image/jpeg image/gif image/png; # 压缩文件类型 重启nginx服务
 1nginx -s reload 2# or 3systemctl restart nginx.service 通过浏览器访问资源
 此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&rsquo;r work。
-目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</p></div><div class=card-footer><span class=float-left>July 31, 2020</span>
-<a href=/posts/blog/nginx_tips/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/vim_tips/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Vim」 Tips</h5><p class="card-text post-summary">常用配置 vi ~/vimrc
-1set nu 2syntax on 3inoremap jj &lt;ESC> # ues &lt;jj> instead of &lt;ESC> Vim 相关配置以及快捷键设置 .vimrc 1" Vim 的默认寄存器和系统剪贴板共享 2set clipboard+=unnamed 3" select模式下复制，文本选中时，按下Ctrl+C，即可复制 4if has("clipboard") 5 vnoremap &lt;C-C> "+y 6endif 7 8set nu 9 10syntax on 11inoremap jj &lt;ESC> vim模式 normal &mdash;按v进入&mdash;> visual
-normal &ndash;> instert
+目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/posts/blog/nginx_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/vim_tips/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Vim」 Tips</h5>
+        <p class="card-text post-summary">常用配置 vi ~/vimrc
+1set nu 2syntax on 3inoremap jj &lt;ESC&gt; # ues &lt;jj&gt; instead of &lt;ESC&gt; Vim 相关配置以及快捷键设置 .vimrc 1&#34; Vim 的默认寄存器和系统剪贴板共享 2set clipboard+=unnamed 3&#34; select模式下复制，文本选中时，按下Ctrl+C，即可复制 4if has(&#34;clipboard&#34;) 5 vnoremap &lt;C-C&gt; &#34;+y 6endif 7 8set nu 9 10syntax on 11inoremap jj &lt;ESC&gt; vim模式 normal &mdash;按v进入&mdash;&gt; visual
+normal &ndash;&gt; instert
 insert
 command
-快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</p></div><div class=card-footer><span class=float-left>July 31, 2020</span>
-<a href=/posts/blog/vim_tips/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/life/graduated-travel/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「毕业旅行」青甘自驾</h5><p class="card-text post-summary">2020.06.21 上海 - 兰州 早上上海出发，下午16点到达兰州，然后到神州租车取上我们的战车——7座的科帕奇。虽然是七座，但是最后一排的空间小的可怜🤕。其实本来是想租一个霸道/路虎之类的，奈何第一次使用一嗨租车不让租高端车型。或许因为我们出游的时间是是个淡季，又或许是因为疫情的影响，这几天租车特别便宜。科帕奇只有360左右每天（含全险），现在看了一眼都600+每天了。同期的霸道只要600左右每天，现在1000+（没租上霸道感觉错过了一个亿）。
+快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 31, 2020</span>
+        <a
+        href="/posts/blog/vim_tips/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/life/graduated-travel/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「毕业旅行」青甘自驾</h5>
+        <p class="card-text post-summary">2020.06.21 上海 - 兰州 早上上海出发，下午16点到达兰州，然后到神州租车取上我们的战车——7座的科帕奇。虽然是七座，但是最后一排的空间小的可怜🤕。其实本来是想租一个霸道/路虎之类的，奈何第一次使用一嗨租车不让租高端车型。或许因为我们出游的时间是是个淡季，又或许是因为疫情的影响，这几天租车特别便宜。科帕奇只有360左右每天（含全险），现在看了一眼都600+每天了。同期的霸道只要600左右每天，现在1000+（没租上霸道感觉错过了一个亿）。
 开上战车，寻了个离机场最近的美食街吃个拉面，必须是地道的牛肉拉面，便奔向曹家堡机场去与小伙伴回合。200+ 公里伴随着晴雨莫测的天气开了大约两个半小时。
 夜宿西宁，吃肉去~
 2020.06.22 西宁-青海湖 青海湖，最大的盐水湖。门票太贵了，没有进景区，好像景区内也没啥可看的(滑稽)。在附近转了转，风景也不错，湖边的游客也很多，还和白牦牛拍了合照。
 有点阴天，云特别的低，但不像南方的阴雨天那样沉闷。空气中夹杂着山顶融化的雪水的气息。草地上点缀着些许的小黄花。
 2020.06.25 门源-达坂山 既当金山之后第二段难开的山路，九曲十八弯。
-达坂山观景台，收费5元/车。可以听停车休息一会。山顶的风甚是凛冽。</p></div><div class=card-footer><span class=float-left>July 28, 2020</span>
-<a href=/posts/life/graduated-travel/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/life/married/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Love」我们结婚了</h5><p class="card-text post-summary">遇见你是最美好的开始 未来的我们会过的更好 世间美好 与你我环环相扣 https://themify.me/themify-icons https://themes.gohugo.io/dot-hugo-documentation-theme/</p></div><div class=card-footer><span class=float-left>December 29, 2018</span>
-<a href=/posts/life/married/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">CAP定律 CAP 按照美国著名科学家 Eric Brewer 在 2000 年提出的理论，当技术架构从集中式架构向分布式架构演进，会遇到 “CAP 定律”的瓶颈。 CAP 说明一个数据处理系统不能同时满足一致性，可用性和分区容错性这三个需求。
+达坂山观景台，收费5元/车。可以听停车休息一会。山顶的风甚是凛冽。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">July 28, 2020</span>
+        <a
+        href="/posts/life/graduated-travel/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/life/married/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Love」我们结婚了</h5>
+        <p class="card-text post-summary">遇见你是最美好的开始 未来的我们会过的更好 世间美好 与你我环环相扣 https://themify.me/themify-icons https://themes.gohugo.io/dot-hugo-documentation-theme/</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">December 29, 2018</span>
+        <a
+        href="/posts/life/married/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">CAP定律 CAP 按照美国著名科学家 Eric Brewer 在 2000 年提出的理论，当技术架构从集中式架构向分布式架构演进，会遇到 “CAP 定律”的瓶颈。 CAP 说明一个数据处理系统不能同时满足一致性，可用性和分区容错性这三个需求。
 CAP永远不可能同时满足，最多只能同时满足两个，提高其中任意两者的同时，必然要牺牲第三者。 所以，好的系统是根据具体应用，来决定如何在三者之间进行取舍。
 ####Consistency 一致性—— 读操作是否总能读到前一个写操作的结果，即是说在分布式环境中，多点读出的数据内容是否相容。 ####Partition Tolerance* 分区容错性——数据的分区特性，对系统性能的影响程度 ####Availiability 可用性——访问数据的性能
-https://www.cnblogs.com/frank2015/p/9554180.html</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/1_cryptography/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
+https://www.cnblogs.com/frank2015/p/9554180.html</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/1_cryptography/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
 HTTPS 非对称加密+对称加密
 mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
 加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
@@ -53,8 +518,32 @@ X.509 数字证书 证书版本信息
 证书所有人的公开密钥；
 证书发行者对证书的签名；
 Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=example Inc.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/1_cryptography/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/3_intel_sgx/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">SGX
+1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/1_cryptography/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/3_intel_sgx/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">SGX
 概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
 https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
 Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
@@ -72,17 +561,89 @@ Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安�
 Set up SGX develop environment Install SGX driver
 Install SGX SDK
 Install SGX PSW
-直接按照官方文档依次安装上述3个组件</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/3_intel_sgx/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/crypto_openvpn/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
-https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/crypto_openvpn/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/multipass_network/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">LXC Set proxy
-1sudo lxc config set core.proxy_https http://username:password@&lt;IP>:&lt;port>/ LXC
+直接按照官方文档依次安装上述3个组件</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/3_intel_sgx/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/crypto_openvpn/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
+https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/crypto_openvpn/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/multipass_network/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">LXC Set proxy
+1sudo lxc config set core.proxy_https http://username:password@&lt;IP&gt;:&lt;port&gt;/ LXC
 https://www.linode.com/docs/guides/beginners-guide-to-lxd-reverse-proxy/
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-lxd-on-ubuntu-20-04
 SDEWAN - direct connect Edge-1
 1# PREROUTTING 2sudo iptables -I PREROUTING -d 10.10.70.49/32 -p tcp -m tcp --dport 6443 -j DNAT --to-destination 10.96.0.1:443 -t nat Hub
-1# PREROUTTING 2 3sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p esp -j DNAT --to-destination 10.233.108.10 -t nat 4sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p udp --dport 4500 -j DNAT --to-destination 10.233.108.10:4500 -t nat 5sudo iptables -I PREROUTING --destination 10.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/multipass_network/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Istio/1-Istio/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Service Mesh 浅析
+1# PREROUTTING 2 3sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p esp -j DNAT --to-destination 10.233.108.10 -t nat 4sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p udp --dport 4500 -j DNAT --to-destination 10.233.108.10:4500 -t nat 5sudo iptables -I PREROUTING --destination 10.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/multipass_network/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Istio/1-Istio/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Service Mesh 浅析
 Istio的自我救赎
 https://github.com/cloudnativebooks/cloud-native-istio/tree/master/chapter-files/security
 云原生架构的三驾马车
@@ -93,12 +654,12 @@ Servcie Mesh 超时重试
 ServiceMesh 的相关概念
 Service Mesh的起源
 微服务架构的特性
-围绕业务构建团队 康威定律-> 团队结构决定了产品结构
+围绕业务构建团队 康威定律-&gt; 团队结构决定了产品结构
 去中心化的数据管理
 团队层面： 内聚，独立业务开发，没有依赖
 产品层面： 服务彼此独立，独立部署，没有依赖
 访问量决定部署实例的数量
-银弹理论-> 人月神话 没有任何一种技术可以完美的解决软件开发中的问题。
+银弹理论-&gt; 人月神话 没有任何一种技术可以完美的解决软件开发中的问题。
 空间换时间 or 时间换空间
 微服务架构带来的缺点
 服务间网络通信问题
@@ -116,17 +677,41 @@ Patten： Service Mesh
 阶段三：代理模式， 功能简陋Nginx
 阶段四： Sidecar 模式 2013-2105
 阶段五： Service Mesh 2016-2017
-​ Service MeshV2 2018</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Istio/1-Istio/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/k8s-Istio-Envoy/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">What is Service Mesh(服务网格) https://jimmysong.io/blog/why-do-you-need-istio-when-you-already-have-kubernetes/
+​ Service MeshV2 2018</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Istio/1-Istio/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/k8s-Istio-Envoy/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">What is Service Mesh(服务网格) https://jimmysong.io/blog/why-do-you-need-istio-when-you-already-have-kubernetes/
 UPF
 2 次链接
 1 控制面 ip register step 1-4
-hub 公有网络直连接， 给edge pod分配全局IP，cluster api server CRD controller 监视CRs &ndash;> kube cofig
+hub 公有网络直连接， 给edge pod分配全局IP，cluster api server CRD controller 监视CRs &ndash;&gt; kube cofig
 2 数据面
 hub-device connection
 hub 桥接
-IPSec configuration -> 2 次分发
-SNAT-> DNAT IP 地址可能重合
+IPSec configuration -&gt; 2 次分发
+SNAT-&gt; DNAT IP 地址可能重合
 测试环境部署 4 cluster
 物理机 4 nuc
 10.239.241.255 &ndash; hub
@@ -138,14 +723,267 @@ spce:
 pubkry
 conn_type
 proposal 加解密
-mark route base VPN</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/k8s-Istio-Envoy/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/2/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/ aria-label="Page 1" class=page-link role=button>1</a></li><li class=page-item><a href=/posts/page/2/ aria-label="Page 2" class=page-link role=button>2</a></li><li class="page-item active"><a aria-current=page aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/posts/page/4/ aria-label="Page 4" class=page-link role=button>4</a></li><li class=page-item><a href=/posts/page/5/ aria-label="Page 5" class=page-link role=button>5</a></li><li class=page-item><a href=/posts/page/4/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+mark route base VPN</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/k8s-Istio-Envoy/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/2/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/4/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

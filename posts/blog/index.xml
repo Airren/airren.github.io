@@ -1,7 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ByteGopher</title><link>https://airren.github.io/posts/blog/</link><description>Recent content on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>「Raft」 The Raft Consensus Algorithm</title><link>https://airren.github.io/posts/blog/raft/</link><pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/raft/</guid><description>12 123 https://raft.github.io/
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/blog/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「Raft」 The Raft Consensus Algorithm</title>
+      <link>https://airren.github.io/posts/blog/raft/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/raft/</guid>
+      <description>12 123 https://raft.github.io/
 https://www.infoq.com/presentations/raft-consensus-algorithm/
 https://www.geeksforgeeks.org/raft-consensus-algorithm/
-https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</description></item><item><title>「HTTP」HTTP 9 种请求方式</title><link>https://airren.github.io/posts/blog/http_request_method/</link><pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate><guid>https://airren.github.io/posts/blog/http_request_method/</guid><description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
+https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</description>
+    </item>
+    
+    <item>
+      <title>「HTTP」HTTP 9 种请求方式</title>
+      <link>https://airren.github.io/posts/blog/http_request_method/</link>
+      <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/http_request_method/</guid>
+      <description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
 HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
 HTTP特点：
 HTTP是无连接的： 无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。
@@ -10,27 +33,72 @@ HTTP是媒体独立的： 任何数据类型都可以通过HTTP发送，客户�
 Web-Browser &amp;lt;===&amp;gt; HTTP Server &amp;lt;===&amp;gt; CGI(Common GateWay Interface) Program &amp;lt;==&amp;gt;Database
 客户端请求消息 请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成
 服务器响应消息 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
-不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</description></item><item><title>「Gin」Gin入门</title><link>https://airren.github.io/posts/blog/gin_overview/</link><pubDate>Fri, 21 Aug 2020 00:43:48 +0000</pubDate><guid>https://airren.github.io/posts/blog/gin_overview/</guid><description>学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
+不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</description>
+    </item>
+    
+    <item>
+      <title>「Gin」Gin入门</title>
+      <link>https://airren.github.io/posts/blog/gin_overview/</link>
+      <pubDate>Fri, 21 Aug 2020 00:43:48 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/gin_overview/</guid>
+      <description>学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
 刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
 以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
 GitHub
 Official Document
 1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
 快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;amp;&amp;amp; cd gin_demo 4 5vi main.go main.go的内容如下
-1package main 2 3import ( 4 &amp;#34;net/http&amp;#34; 5 &amp;#34;github.com/gin-gonic/gin&amp;#34; 6 7) 8 9func main(){ 10 r := gin.Default() 11 12 r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context){ 13 c.</description></item><item><title>「HTTPS」 Tips</title><link>https://airren.github.io/posts/blog/https_tips/</link><pubDate>Fri, 31 Jul 2020 00:37:24 +0000</pubDate><guid>https://airren.github.io/posts/blog/https_tips/</guid><description>什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
-1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</description></item><item><title>「Nginx」 Tips</title><link>https://airren.github.io/posts/blog/nginx_tips/</link><pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate><guid>https://airren.github.io/posts/blog/nginx_tips/</guid><description>搭建静态资源服务器 静态资源文件夹
+1package main 2 3import ( 4	&amp;#34;net/http&amp;#34; 5	&amp;#34;github.com/gin-gonic/gin&amp;#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&amp;#34;/ping&amp;#34;, func(c *gin.Context){ 13	c.</description>
+    </item>
+    
+    <item>
+      <title>「HTTPS」 Tips</title>
+      <link>https://airren.github.io/posts/blog/https_tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:37:24 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/https_tips/</guid>
+      <description>什么是HTTPS 申请免费SSL 七牛云免费SSL申请 Nginx 部署设置https vi /etc/nginx/nginx.conf
+1 server { 2 listen 443 ssl http2 default_server; 3 listen [::]:443 ssl http2 default_server; 4 server_name www.bytegopher.com; # bind the domain name 5 root /var/www/hexo; 6 index index.html index.htm; 7 8 ssl_certificate /etc/nginx/bytegopher.com/bytegopher.com.crt; # absolute path of certificate 9 ssl_certificate_key /etc/nginx/bytegopher.com/bytegopher.com.key; # absolute path of certificate 10 ssl_session_timeout 5m; 11 ssl_protocols TLSv1.1 TLSv1.2; 12 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4:!DH:!DHE; 13 ssl_prefer_server_ciphers on; 14 15 # Load configuration files for the default server block.</description>
+    </item>
+    
+    <item>
+      <title>「Nginx」 Tips</title>
+      <link>https://airren.github.io/posts/blog/nginx_tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:36:14 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/nginx_tips/</guid>
+      <description>搭建静态资源服务器 静态资源文件夹
 1/root/file Nginx 配置
 vi /etc/nginx/nginx.conf
-1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2 alias /root/file; # 静态资源的绝对路径 3 autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
+1location /file { # 这个file 跟资源路径的名字没有半毛钱关系，可以不同 2	alias /root/file; # 静态资源的绝对路径 3	autoindex on; # 自动创建目录 4} 为了提高文件的传输效率，降低带宽浪费，可以开启gzip压缩
 1gzip on; 2gzip_minPlength 1; # 小于1字节不压缩， 3gzip_comp_level 2; # 压缩级别为2 4gzip_types taxt/plain applicaton/x-javascripts txt/css application/xml image/jpeg image/gif image/png; # 压缩文件类型 重启nginx服务
 1nginx -s reload 2# or 3systemctl restart nginx.service 通过浏览器访问资源
 此时还有很多小伙伴大概率会遇到403 Forbidden， 试过将资源文件夹设置为777 -R 权限或者chown -R nginx:nginx file。But, still doesn&amp;rsquo;r work。
-目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description></item><item><title>「Vim」 Tips</title><link>https://airren.github.io/posts/blog/vim_tips/</link><pubDate>Fri, 31 Jul 2020 00:31:02 +0000</pubDate><guid>https://airren.github.io/posts/blog/vim_tips/</guid><description>常用配置 vi ~/vimrc
+目前的解决方法是将/etc/nginx/nginx.conf 中的user 设置为root 。</description>
+    </item>
+    
+    <item>
+      <title>「Vim」 Tips</title>
+      <link>https://airren.github.io/posts/blog/vim_tips/</link>
+      <pubDate>Fri, 31 Jul 2020 00:31:02 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/vim_tips/</guid>
+      <description>常用配置 vi ~/vimrc
 1set nu 2syntax on 3inoremap jj &amp;lt;ESC&amp;gt; # ues &amp;lt;jj&amp;gt; instead of &amp;lt;ESC&amp;gt; Vim 相关配置以及快捷键设置 .vimrc 1&amp;#34; Vim 的默认寄存器和系统剪贴板共享 2set clipboard+=unnamed 3&amp;#34; select模式下复制，文本选中时，按下Ctrl+C，即可复制 4if has(&amp;#34;clipboard&amp;#34;) 5 vnoremap &amp;lt;C-C&amp;gt; &amp;#34;+y 6endif 7 8set nu 9 10syntax on 11inoremap jj &amp;lt;ESC&amp;gt; vim模式 normal &amp;mdash;按v进入&amp;mdash;&amp;gt; visual
 normal &amp;ndash;&amp;gt; instert
 insert
 command
-快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</description></item><item><title/><link>https://airren.github.io/posts/blog/1_cryptography/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/1_cryptography/</guid><description>对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
+快捷键 (normal) 移动 命令 功能 shift + 6 切换行首 shift + 4 切换到行尾 gg 跳转到首行行首 shift+g 跳转到末行行首 w 下一个单词 b 上一个单词 e 移动到词尾 删除 命令 功能 x 向后删除一个字符 X 向前删除一个字符 nx 连续向后删除n个字符 dd 删除当前行 ndd 删除光标所在的连续向下n行 d1G 删除光标所在到第一行所有的数据 dG 删除光标所在到最后一行的所有数据 dw 删除光标之后的单词剩余部分。 d$ 删除光标之后的该行剩余部分。 删除包含特定字符的行</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/blog/1_cryptography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/1_cryptography/</guid>
+      <description>对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
 HTTPS 非对称加密+对称加密
 mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
 加密通信 Alice [Decode message by Alice&amp;rsquo;s private key] &amp;lt;&amp;mdash;- send message &amp;mdash; [message encrypted with Alice&amp;rsquo;s public key] Bob
@@ -49,7 +117,16 @@ X.509 数字证书 证书版本信息
 证书所有人的公开密钥；
 证书发行者对证书的签名；
 Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &amp;#39;/O=example Inc.</description></item><item><title/><link>https://airren.github.io/posts/blog/3_intel_sgx/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/3_intel_sgx/</guid><description>SGX
+1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &amp;#39;/O=example Inc.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/blog/3_intel_sgx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/3_intel_sgx/</guid>
+      <description>SGX
 概述 https://www.intel.com/content/www/us/en/developer/tools/software-guard-extensions/overview.html
 https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html
 Intel Software Guard Extensions(Intel SGX) 保护选定的代码和数据不被泄露的和修改。开发者可以把应用程序划分到CPU强化的enclave中或者内存中可执行的保护区域，即使在受攻击的平台中也可以提高安全性。使用这种新的应用层可信执行环境，开发者能够启用身份和记录隐私，安全浏览和数据保护(DRM)或者任何需要安全存储机密或者保护数据的高保障安全应用场景中。
@@ -67,14 +144,41 @@ Intel SGX 实现新的安全模型 Intel SGX 是在很多公司、大学的安�
 Set up SGX develop environment Install SGX driver
 Install SGX SDK
 Install SGX PSW
-直接按照官方文档依次安装上述3个组件</description></item><item><title/><link>https://airren.github.io/posts/blog/crypto_openvpn/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/crypto_openvpn/</guid><description>Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
-https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</description></item><item><title/><link>https://airren.github.io/posts/blog/multipass_network/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/multipass_network/</guid><description>LXC Set proxy
+直接按照官方文档依次安装上述3个组件</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/blog/crypto_openvpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/crypto_openvpn/</guid>
+      <description>Reference https://www.cyberciti.biz/faq/ubuntu-20-04-lts-set-up-openvpn-server-in-5-minutes/
+https://github.com/Nyr/openvpn-install/blob/master/openvpn-install.sh</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/blog/multipass_network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/multipass_network/</guid>
+      <description>LXC Set proxy
 1sudo lxc config set core.proxy_https http://username:password@&amp;lt;IP&amp;gt;:&amp;lt;port&amp;gt;/ LXC
 https://www.linode.com/docs/guides/beginners-guide-to-lxd-reverse-proxy/
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-lxd-on-ubuntu-20-04
 SDEWAN - direct connect Edge-1
 1# PREROUTTING 2sudo iptables -I PREROUTING -d 10.10.70.49/32 -p tcp -m tcp --dport 6443 -j DNAT --to-destination 10.96.0.1:443 -t nat Hub
-1# PREROUTTING 2 3sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p esp -j DNAT --to-destination 10.233.108.10 -t nat 4sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p udp --dport 4500 -j DNAT --to-destination 10.233.108.10:4500 -t nat 5sudo iptables -I PREROUTING --destination 10.</description></item><item><title>Cloud Native</title><link>https://airren.github.io/posts/blog/CloudNative/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/CloudNative/</guid><description>4C8G 70%-80% 虚拟化浪费掉了
+1# PREROUTTING 2 3sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p esp -j DNAT --to-destination 10.233.108.10 -t nat 4sudo iptables -I PREROUTING --destination 10.95.62.68/32 -p udp --dport 4500 -j DNAT --to-destination 10.233.108.10:4500 -t nat 5sudo iptables -I PREROUTING --destination 10.</description>
+    </item>
+    
+    <item>
+      <title>Cloud Native</title>
+      <link>https://airren.github.io/posts/blog/CloudNative/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/CloudNative/</guid>
+      <description>4C8G 70%-80% 虚拟化浪费掉了
 裸金属
 2001 VMware虚拟化技术
 2006 AWS推出EC2服务
@@ -100,19 +204,82 @@ IDC
 分布式架构阶段（负载均衡，同时提供服务）
 微服务架构， 以业务天然分库
 ServiceMesh： 网格化架构
-RPC 远程调用/ Gateway 负载均衡-&amp;gt; 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权</description></item><item><title>cross complile</title><link>https://airren.github.io/posts/blog/openwrt_cross_compile/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/openwrt_cross_compile/</guid><description>openWRT Cross compile 1export STAGING_DIR=/home/airren/openwrt/staging_dir/toolchain-x86_64_gcc-8.4.0_musl 2 3 4export TOOLCHAIN_DIR=$STAGING_DIR 5export TOOLCHAIN_PATH=$TOOLCHAIN_DIR/bin 6export CXX=$TOOLCHAIN_PATH/g++-uc 7export AR=$TOOLCHAIN_PATH/x86_64-openwrt-linux-musl-ar 8export CXXFLAGS=&amp;#34;-O2&amp;#34; 9 10 11export CROSSCOMPILE_PATH=$TOOLCHAIN_DIR/usr 12# export CFLAGS=&amp;#34;-I$CROSSCOMPILE_PATH/jhhhhinclude&amp;#34; 13 14 15export LDCFLAGS=&amp;#34;-L$TOOLCHAIN_DIR/usr/lib -lz&amp;#34; 16export LD_LIBRARY_PATH=$TOOLCHAIN_DIR/usr/lib 17export PATH=$TOOLCHAIN_PATH:$PATH 1./autogen.sh --build=x86_64-pc-linux-gnu --host=i486-openwrt-linux 2./autogen.sh --build=x86_64-pc-linux-gnu --host=x86_64-openwrt-linux 3 4make CC=i486-openwrt-linux-gcc LD=i486-openwrt-linux-ld 5make CC=x86_64-openwrt-linux-gcc LD=x86_64-openwrt-linux-ld build openwrt in a docker
-1apt update 2apt install -y git wget build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev 3 4apt update 5apt install build-essential ccache ecj fastjar file g++ gawk \ 6gettext git java-propose-classpath libelf-dev libncurses5-dev \ 7libncursesw5-dev libssl-dev python python2.</description></item><item><title>Dockerfile</title><link>https://airren.github.io/posts/blog/docker_dockerfile/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/docker_dockerfile/</guid><description>Dockerfile 中的entrypoint 和CMD的区别
+RPC 远程调用/ Gateway 负载均衡-&amp;gt; 服务与IP映射 facade pattern ： 真正想做一件事，对外暴露统一访问接口：负载均衡、协议抓换、用户鉴权</description>
+    </item>
+    
+    <item>
+      <title>cross complile</title>
+      <link>https://airren.github.io/posts/blog/openwrt_cross_compile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/openwrt_cross_compile/</guid>
+      <description>openWRT Cross compile 1export STAGING_DIR=/home/airren/openwrt/staging_dir/toolchain-x86_64_gcc-8.4.0_musl 2 3 4export TOOLCHAIN_DIR=$STAGING_DIR 5export TOOLCHAIN_PATH=$TOOLCHAIN_DIR/bin 6export CXX=$TOOLCHAIN_PATH/g++-uc 7export AR=$TOOLCHAIN_PATH/x86_64-openwrt-linux-musl-ar 8export CXXFLAGS=&amp;#34;-O2&amp;#34; 9 10 11export CROSSCOMPILE_PATH=$TOOLCHAIN_DIR/usr 12# export CFLAGS=&amp;#34;-I$CROSSCOMPILE_PATH/jhhhhinclude&amp;#34; 13 14 15export LDCFLAGS=&amp;#34;-L$TOOLCHAIN_DIR/usr/lib -lz&amp;#34; 16export LD_LIBRARY_PATH=$TOOLCHAIN_DIR/usr/lib 17export PATH=$TOOLCHAIN_PATH:$PATH 1./autogen.sh --build=x86_64-pc-linux-gnu --host=i486-openwrt-linux 2./autogen.sh --build=x86_64-pc-linux-gnu --host=x86_64-openwrt-linux 3 4make CC=i486-openwrt-linux-gcc LD=i486-openwrt-linux-ld 5make CC=x86_64-openwrt-linux-gcc LD=x86_64-openwrt-linux-ld build openwrt in a docker
+1apt update 2apt install -y git wget build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev 3 4apt update 5apt install build-essential ccache ecj fastjar file g++ gawk \ 6gettext git java-propose-classpath libelf-dev libncurses5-dev \ 7libncursesw5-dev libssl-dev python python2.</description>
+    </item>
+    
+    <item>
+      <title>Dockerfile</title>
+      <link>https://airren.github.io/posts/blog/docker_dockerfile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/docker_dockerfile/</guid>
+      <description>Dockerfile 中的entrypoint 和CMD的区别
 1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&amp;#34;executable&amp;#34;,&amp;#34;param1&amp;#34;,&amp;#34;param2&amp;#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
 组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
-1FROM ubuntu:trusty 2ENTRYPOINT [&amp;#34;/bin/ping&amp;#34;,&amp;#34;-c&amp;#34;,&amp;#34;3&amp;#34;] 3CMD [&amp;#34;localhost&amp;#34;] docker 会把CMD的命令拼接到Entrypoint之后</description></item><item><title>How to Create a go project for Cloud Native</title><link>https://airren.github.io/posts/blog/project_go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/project_go/</guid><description>Dockerfile Use Makefile to compiling and buid docker images</description></item><item><title>Intel AMXAV</title><link>https://airren.github.io/posts/blog/intel_spx_AMX/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/intel_spx_AMX/</guid><description>Introduce SIMD 单指令数据-&amp;gt; VNNI/INT8
+1FROM ubuntu:trusty 2ENTRYPOINT [&amp;#34;/bin/ping&amp;#34;,&amp;#34;-c&amp;#34;,&amp;#34;3&amp;#34;] 3CMD [&amp;#34;localhost&amp;#34;] docker 会把CMD的命令拼接到Entrypoint之后</description>
+    </item>
+    
+    <item>
+      <title>How to Create a go project for Cloud Native</title>
+      <link>https://airren.github.io/posts/blog/project_go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/project_go/</guid>
+      <description>Dockerfile Use Makefile to compiling and buid docker images </description>
+    </item>
+    
+    <item>
+      <title>Intel AMXAV</title>
+      <link>https://airren.github.io/posts/blog/intel_spx_AMX/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/intel_spx_AMX/</guid>
+      <description>Introduce SIMD 单指令数据-&amp;gt; VNNI/INT8
 Intrinsics for Intel(R) Advanced Matrix Extension Instructions Intel Advanced Matrix Extension is a new 64-bit programming paradigm consisting of two components:
-A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</description></item><item><title>Istio MultiCluster</title><link>https://airren.github.io/posts/blog/4_istio_multicluster/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/4_istio_multicluster/</guid><description>Multicluster Replicated Control Plane is an uses case to enable communication between two service in difference service mesh without using Ingress and can enable mutual TLS between the service.
+A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</description>
+    </item>
+    
+    <item>
+      <title>Istio MultiCluster</title>
+      <link>https://airren.github.io/posts/blog/4_istio_multicluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/4_istio_multicluster/</guid>
+      <description>Multicluster Replicated Control Plane is an uses case to enable communication between two service in difference service mesh without using Ingress and can enable mutual TLS between the service.
 Istio 1.8 Upgrade Notes
-Multicluster .global Stub Domain Deprecation As part of this release, Istio has switched to a new configuration for multi-primary (formerly “replicated control planes”). The new configuration is simpler, has fewer limitations, and has been thoroughly tested in a variety of environments.</description></item><item><title>Kube Config 控制多个集群</title><link>https://airren.github.io/posts/blog/5_kube_config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/5_kube_config/</guid><description>https://www.cnblogs.com/zhaobowen/p/13963343.html
+Multicluster .global Stub Domain Deprecation As part of this release, Istio has switched to a new configuration for multi-primary (formerly “replicated control planes”). The new configuration is simpler, has fewer limitations, and has been thoroughly tested in a variety of environments.</description>
+    </item>
+    
+    <item>
+      <title>Kube Config 控制多个集群</title>
+      <link>https://airren.github.io/posts/blog/5_kube_config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/5_kube_config/</guid>
+      <description>https://www.cnblogs.com/zhaobowen/p/13963343.html
 https://zhuanlan.zhihu.com/p/169746514
 https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 https://juejin.cn/post/6968129599070797837
-1export KUBECONFIG git blame</description></item><item><title>Mac Init</title><link>https://airren.github.io/posts/blog/Mac_init/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/Mac_init/</guid><description>HomeBrew 1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; 1brew install wget 2 3brew install go Software Chrome
+1export KUBECONFIG git blame</description>
+    </item>
+    
+    <item>
+      <title>Mac Init</title>
+      <link>https://airren.github.io/posts/blog/Mac_init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/Mac_init/</guid>
+      <description>HomeBrew 1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; 1brew install wget 2 3brew install go Software Chrome
 Typora
 Istat Menus
 Alfred
@@ -120,14 +287,59 @@ Dash
 Wireshark
 Sublime
 Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
-Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &amp;lt;&amp;lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &amp;lt;ESC&amp;gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&amp;#34; show existing tab with 4 spaces width 13set tabstop=4 14&amp;#34; when indenting with &amp;#39;&amp;gt;&amp;#39;, use 4 spaces width 15set shiftwidth=4 16&amp;#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &amp;#34;$(wget https://raw.</description></item><item><title>Multi-Cluster Kubernetes</title><link>https://airren.github.io/posts/blog/multi-cluster/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/multi-cluster/</guid><description>What is Multi-Clusters Multi-cluster Kubernetes is a kubernetes deployments method that consists of to or more clusters. This deployment method is highly flexible. You can have clusters on the same physical host or different hosts in the same data center. You can also create a multi-cloud environment with clusters living in different clouds and even in different countries.
+Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &amp;lt;&amp;lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &amp;lt;ESC&amp;gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&amp;#34; show existing tab with 4 spaces width 13set tabstop=4 14&amp;#34; when indenting with &amp;#39;&amp;gt;&amp;#39;, use 4 spaces width 15set shiftwidth=4 16&amp;#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &amp;#34;$(wget https://raw.</description>
+    </item>
+    
+    <item>
+      <title>Multi-Cluster Kubernetes</title>
+      <link>https://airren.github.io/posts/blog/multi-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/multi-cluster/</guid>
+      <description>What is Multi-Clusters Multi-cluster Kubernetes is a kubernetes deployments method that consists of to or more clusters. This deployment method is highly flexible. You can have clusters on the same physical host or different hosts in the same data center. You can also create a multi-cloud environment with clusters living in different clouds and even in different countries.
 cluster network connections: https://submariner.io/getting-started/
 https://isovalent.com/data/multi-cluster-ebook.pdf
 Multi clusters server deployment: https://github.com/karmada-io/karmada
 https://github.com/clusternet/clusternet
-Submariner Submariner allows pods to directly communicate between Kubernetes clusters</description></item><item><title>OAuth 2.0</title><link>https://airren.github.io/posts/blog/OAuth/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/OAuth/</guid><description>OAuth 2.0</description></item><item><title>OS memory</title><link>https://airren.github.io/posts/blog/os_memory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/os_memory/</guid><description>What is the maximum size of the stack?
-It depends on your operating system. On Windows, the typical maximum size for a stack is 1MB, whereas it is 8MB on a typical modern Linux, although those values are adjustable in various ways. If the sum of your stack variables (including low-level overhead such as return addresses, stack-based arguments, return value placeholders, and alignment bytes) in the entire call stack exceeds that limit, you get a stack overflow, which typically takes down your program without any chance at recovery.</description></item><item><title>PKCS11</title><link>https://airren.github.io/posts/blog/crypto_pkcs11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/crypto_pkcs11/</guid><description>PKCS#11 Terminology Cryptoki Cryptoki(Cryptographic Token Interfaces) is a library(dll or so file) that is provided by the cryptographic device vendors. It contains an implementation of the PLCS#11 C header files. Every cryptographic device vendor provides its own PKCS#11 complaint library. Applications has to load this library in order to access the cryptographic device.
-Slots Slots are the logical partitions in the cryptographic device. In case of HSMs, there could be hundreds or more slots are available while in the case of smart cards, there could be only on slot available.</description></item><item><title>Redis</title><link>https://airren.github.io/posts/blog/redis_preview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/redis_preview/</guid><description>bitmap
+Submariner Submariner allows pods to directly communicate between Kubernetes clusters</description>
+    </item>
+    
+    <item>
+      <title>OAuth 2.0</title>
+      <link>https://airren.github.io/posts/blog/OAuth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/OAuth/</guid>
+      <description>OAuth 2.0 </description>
+    </item>
+    
+    <item>
+      <title>OS memory</title>
+      <link>https://airren.github.io/posts/blog/os_memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/os_memory/</guid>
+      <description>What is the maximum size of the stack?
+It depends on your operating system. On Windows, the typical maximum size for a stack is 1MB, whereas it is 8MB on a typical modern Linux, although those values are adjustable in various ways. If the sum of your stack variables (including low-level overhead such as return addresses, stack-based arguments, return value placeholders, and alignment bytes) in the entire call stack exceeds that limit, you get a stack overflow, which typically takes down your program without any chance at recovery.</description>
+    </item>
+    
+    <item>
+      <title>PKCS11</title>
+      <link>https://airren.github.io/posts/blog/crypto_pkcs11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/crypto_pkcs11/</guid>
+      <description>PKCS#11 Terminology Cryptoki Cryptoki(Cryptographic Token Interfaces) is a library(dll or so file) that is provided by the cryptographic device vendors. It contains an implementation of the PLCS#11 C header files. Every cryptographic device vendor provides its own PKCS#11 complaint library. Applications has to load this library in order to access the cryptographic device.
+Slots Slots are the logical partitions in the cryptographic device. In case of HSMs, there could be hundreds or more slots are available while in the case of smart cards, there could be only on slot available.</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://airren.github.io/posts/blog/redis_preview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/redis_preview/</guid>
+      <description>bitmap
 背景知识 文件：
 ​ 数据可以存在文件里，通过grep awk 查找文件。
 ​ 如果文件变大，10M -&amp;gt; 1T , 查找会变慢。全量扫描IO。
@@ -158,16 +370,52 @@ Hana https://bytedance.feishu.cn/docs/doccnwV2ZxHYiLagaPOQSZ3ldlr
 内存:
 寻址时间 ns redis 安装 http://db-engines.com
 http://redis.io
-编译安装</description></item><item><title>strongswan</title><link>https://airren.github.io/posts/blog/2_strongswan/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/2_strongswan/</guid><description>When reading/adjusting any StrongSwan configurations, remember these important words:
+编译安装</description>
+    </item>
+    
+    <item>
+      <title>strongswan</title>
+      <link>https://airren.github.io/posts/blog/2_strongswan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/2_strongswan/</guid>
+      <description>When reading/adjusting any StrongSwan configurations, remember these important words:
 left is local to the machine it&amp;rsquo;s stated on; right is remote in the same manner
 So, on the server side, left is local to the server and on the client side, left is local to that client.
 check the X509 cert details
 1openssl x509 -text -noout -in /etc/ipsec.d/private/sunKey.pem ​
-Ubuntu Set up IPsec Tunnel 1docker run --rm -d -i --network host --name cnf --user root -v /home/ubuntu/entrypoint.</description></item><item><title>StrongWAN configure with CNF.</title><link>https://airren.github.io/posts/blog/2_strongwan_NAT_travalse/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/2_strongwan_NAT_travalse/</guid><description>Download the material
+Ubuntu Set up IPsec Tunnel 1docker run --rm -d -i --network host --name cnf --user root -v /home/ubuntu/entrypoint.</description>
+    </item>
+    
+    <item>
+      <title>StrongWAN configure with CNF.</title>
+      <link>https://airren.github.io/posts/blog/2_strongwan_NAT_travalse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/2_strongwan_NAT_travalse/</guid>
+      <description>Download the material
 1wget -r -N -nd http://sdewan.sh.intel.com:8888/ipsec-demo/ modify the node selector in cnf-1.yaml and cnf-2.yaml respectively. Create 2 pod on different node with host network.
 1 nodeSelector: 2 # change to the specific node 3 kubernetes.io/hostname: node Copy cert to the CNF Pod.
 Find the container id for cnf-1 and cnf-2.
-1# For cnf-1, copy sunCert to it 2docker cp ./cert/caCert.pem $(kubectl describe po cnf-1|grep docker:|awk -F / &amp;#39;{print $3}&amp;#39;):/etc/ipsec.</description></item><item><title>Unix Init</title><link>https://airren.github.io/posts/blog/Linux_init/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/Linux_init/</guid><description>Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &amp;lt;&amp;lt;EOF | tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &amp;lt;ESC&amp;gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&amp;#34; show existing tab with 4 spaces width 13set tabstop=4 14&amp;#34; when indenting with &amp;#39;&amp;gt;&amp;#39;, use 4 spaces width 15set shiftwidth=4 16&amp;#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install -y zsh 2sh -c &amp;#34;$(wget https://raw.</description></item><item><title>自控力</title><link>https://airren.github.io/posts/blog/Book_WillPower/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/Book_WillPower/</guid><description>自控力
+1# For cnf-1, copy sunCert to it 2docker cp ./cert/caCert.pem $(kubectl describe po cnf-1|grep docker:|awk -F / &amp;#39;{print $3}&amp;#39;):/etc/ipsec.</description>
+    </item>
+    
+    <item>
+      <title>Unix Init</title>
+      <link>https://airren.github.io/posts/blog/Linux_init/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/Linux_init/</guid>
+      <description>Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &amp;lt;&amp;lt;EOF | tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &amp;lt;ESC&amp;gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&amp;#34; show existing tab with 4 spaces width 13set tabstop=4 14&amp;#34; when indenting with &amp;#39;&amp;gt;&amp;#39;, use 4 spaces width 15set shiftwidth=4 16&amp;#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install -y zsh 2sh -c &amp;#34;$(wget https://raw.</description>
+    </item>
+    
+    <item>
+      <title>自控力</title>
+      <link>https://airren.github.io/posts/blog/Book_WillPower/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/Book_WillPower/</guid>
+      <description>自控力
 The WillPower Instinct
 “意志力学科”这门课汇集了心理学、经济学、神经学、医学领域关于自控的最新洞见，告诉人们如何改变旧习惯，培养健康的新习惯、克服拖延、抓住重点、管理压力。阐述了为何人们会在诱惑前屈服，以及怎样才能抵挡住诱惑。此外，它还提出了理解自控局限的重要性，以及培养意志力的最佳决策。
 对于意志力科学的理解有助于培养自控力，让人们更有精力追逐最重要的东西。自控的策略有助于人们抵制各种各样的诱惑。
@@ -177,9 +425,23 @@ The WillPower Instinct
 这些行为虽不完美，却是人之常态。每个人都在以某种方式抵制诱惑、癖好、干扰和拖延。这不是个体的弱点或个人的不足，而是普遍的经验，是人所共有的状态。
 理论固然好，但是数据更重要。
 沉迷于电视剧不能自拔
-总是幻想或者希望自己和主角处于同样的状态，同样可以随心所欲的处理各种困境。更不想进一步打破自己的幻想，不想回归现实。可事实却是，越沉浸于其中，却又距离故事中的主角远了一步。这个世界上有太多看不完的故事，不是每个故事都需要去读，选择重要的，选择真正有意义，有营养的文化饕餮。</description></item><item><title>高并发负载均衡</title><link>https://airren.github.io/posts/blog/high_concurrency_lb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/blog/high_concurrency_lb/</guid><description>高并发，负载均衡，高可用
+总是幻想或者希望自己和主角处于同样的状态，同样可以随心所欲的处理各种困境。更不想进一步打破自己的幻想，不想回归现实。可事实却是，越沉浸于其中，却又距离故事中的主角远了一步。这个世界上有太多看不完的故事，不是每个故事都需要去读，选择重要的，选择真正有意义，有营养的文化饕餮。</description>
+    </item>
+    
+    <item>
+      <title>高并发负载均衡</title>
+      <link>https://airren.github.io/posts/blog/high_concurrency_lb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/high_concurrency_lb/</guid>
+      <description>高并发，负载均衡，高可用
 不要因为技术而技术, 软件工程学需要分层解耦
 应用层 1# $$ current process pid 2cd /proc/$$/fd 0 stdin
 1 stdout
 2 stderr
-1# 8 is the name of the file descriptor, &amp;lt;&amp;gt; in and out direction 2exec 8&amp;lt;&amp;gt; /dev/tcp/www.baidu.com/80 3# exec 8&amp;lt;&amp;amp; - 4# &amp;amp; represent the argument is a fd 5echo -e &amp;#34;GET / HTTP/1.0\n&amp;#34; &amp;gt;&amp;amp; 8 传输层</description></item></channel></rss>
+1# 8 is the name of the file descriptor, &amp;lt;&amp;gt; in and out direction 2exec 8&amp;lt;&amp;gt; /dev/tcp/www.baidu.com/80 3# exec 8&amp;lt;&amp;amp; - 4# &amp;amp; represent the argument is a fd 5echo -e &amp;#34;GET / HTTP/1.0\n&amp;#34; &amp;gt;&amp;amp; 8 传输层 </description>
+    </item>
+    
+    
+  </channel>
+</rss>

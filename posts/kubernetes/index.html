@@ -1,10 +1,309 @@
-<!doctype html><html><head><title>Kubernetes</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Kubernetes"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/kubernetes/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a class=active href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/kubernetes/k8s_ops_pod/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">从底层技术角度看，Pod内不同容器之间共享存储和一些namespace。
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kubernetes</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Kubernetes" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/kubernetes/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_ops_pod/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">从底层技术角度看，Pod内不同容器之间共享存储和一些namespace。
 PID namespace: Pod中不同应用程序看拿到的其他进程的ID。Sidecar 模式下只能看到一个进程？
 Network Namespace: Pod 中的多个容器具有相同的网络配置，共享一个端口范围。
 IPC Namespace： Pod中的多个容器能够使用SystemV IPC 或 POSIX消息队列进行通信。
@@ -19,19 +318,91 @@ Kubernetes通过kube-proxy组件实现Service Cluster IP的功能。kube-proxy �
 Pod到集群外 从Pod内部到集群外的流量，Kubernetes会通过SNAT来处理。
 Kubernets 默认的组网方案是bridge，CNI主要是用来解决容器的跨机通信。典型的跨机通信方案有bridge和overlay。
 创建Pod时候，首先会创建一个pause容器。占用一个 linux的network namespace。Pod内的其他容器共享这个network namespace。此时，只有一个lo设备。 CNI负责初始化pause container 中的网络设备。
-kubernetes主机内组网&跨节点组网 kubernetes 经典的主机内组网模型是veth pair+bridge。
+kubernetes主机内组网&amp;跨节点组网 kubernetes 经典的主机内组网模型是veth pair+bridge。
 跨机通信一般是bridge + overlay。 vxlan
 downward API 通过HostAlias修改pod中的/etc/host(Pod在host network下不支持)
 Pod的隔离中 network namspce 是最先创建的，如果ns使用了host模式，则uts也会使用host模式。
-Pause扮演PID 1的角色，并在子进程成为“孤儿进程”时，通过wait() 收割这些僵尸子进程。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_ops_pod/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_3_clinet_go/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>client-go</h5><p class="card-text post-summary">Client-go The Client Library&ndash; k8s.io/client-go The kubernetes programming interface in Go mainly consists of the k8s.io/client-go library (for brevity we will just call it client-go going foward).
+Pause扮演PID 1的角色，并在子进程成为“孤儿进程”时，通过wait() 收割这些僵尸子进程。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_ops_pod/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_3_clinet_go/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">client-go</h5>
+        <p class="card-text post-summary">Client-go The Client Library&ndash; k8s.io/client-go The kubernetes programming interface in Go mainly consists of the k8s.io/client-go library (for brevity we will just call it client-go going foward).
 k8s.io/client-go is a typical web service client library that supports all API types that are officially part of Kubernetes. It can be used to execute the usual REST verbs.
-Create Get List Update Delete Patch Watch For each Kubernetes 1.x.y release, there is a client-go release with a matching tag kubernetes-1.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_3_clinet_go/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_ops_device_plugin/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Device Plugin</h5><p class="card-text post-summary">GitHub: Intel Device plugins for Kubernetes
+Create Get List Update Delete Patch Watch For each Kubernetes 1.x.y release, there is a client-go release with a matching tag kubernetes-1.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_3_clinet_go/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_ops_device_plugin/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Device Plugin</h5>
+        <p class="card-text post-summary">GitHub: Intel Device plugins for Kubernetes
 Device Plugins Device Plugins
 Use the Kubernetes device plugin framework to implement plugins for GPUs, NICs, FPGAs, InfiniBand, and similar resources that require vendor-specific setup.
-Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_ops_device_plugin/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_ops_network/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s network</h5><p class="card-text post-summary">容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
+Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_ops_device_plugin/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_ops_network/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s network</h5>
+        <p class="card-text post-summary">容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
 这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
 容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
 1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
@@ -39,22 +410,166 @@ Instead of customizing the code for Kubernetes itself, vendors can implements a 
 一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
 在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
 为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
-接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_ops_network/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_client/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读 4</h5><p class="card-text post-summary">Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
+接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_ops_network/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_client/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读 4</h5>
+        <p class="card-text post-summary">Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
 Again, kubectl learns about short names via discovery information.
-1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4 name: ats.cnat.programming-kubernetes.info 5spec: 6 ... 7 shortNames: 8 - at Further, CRs&ndash;as any other resources&ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_client/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_operator_kubebuilder/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读 6 Solutions for Writing Operators</h5><p class="card-text post-summary">Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&ndash;form PhasePending to PhaseRuning to PhaseDone&ndash;in controller.go.
+1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4	name: ats.cnat.programming-kubernetes.info 5spec: 6	... 7	shortNames: 8	- at Further, CRs&ndash;as any other resources&ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_client/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_operator_kubebuilder/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读 6 Solutions for Writing Operators</h5>
+        <p class="card-text post-summary">Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&ndash;form PhasePending to PhaseRuning to PhaseDone&ndash;in controller.go.
 processNextWorkItem() processNextWorkItem() bool will read a single work item off the workquque and attempt to process it, by calling the syncHandler.
-1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_operator_kubebuilder/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_operator_release/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s 源码阅读7</h5><p class="card-text post-summary">In this chapter we&rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&rsquo;t break your Kubernetes cluster, security, or performance-wise.
+1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_operator_kubebuilder/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_operator_release/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s 源码阅读7</h5>
+        <p class="card-text post-summary">In this chapter we&rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&rsquo;t break your Kubernetes cluster, security, or performance-wise.
 Lifecycle Management and Packaging Let&rsquo;s start with the low-hanging fruit: packaging and delivering your controllers so that a user can install it in a straightforward manner.
-Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_operator_release/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_2_api_server/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Kubernetes API Basic</h5><p class="card-text post-summary">Controller and Operator In this section you&rsquo;ll learn about controllers and operators in Kubernetes and how they work.
+Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_operator_release/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_2_api_server/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Kubernetes API Basic</h5>
+        <p class="card-text post-summary">Controller and Operator In this section you&rsquo;ll learn about controllers and operators in Kubernetes and how they work.
 The API server has the following core responsibilities:
-To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_2_api_server/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_1_env/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>User Kuberbuilder to create a CRD operator</h5><p class="card-text post-summary">Develop Environment Kind kind is a tool for running local Kubernetes clusters using Docker container &ldquo;nodes&rdquo;. kind was primarily designed for testing Kubernetes itself but may be used for local development or CI.
-1kind load docker-image --name &lt;kind-cluster-name> --nodes &lt;node-name> &lt;image-name>:latest Certmangaer 1helm repo add jetstack https://charts.jetstack.io 2helm repo update 3helm install \ 4 cert-manager jetstack/cert-manager \ 5 --namespace cert-manager \ 6 --create-namespace \ 7 --version v1.10.1 \ 8 --set installCRDs=true Question</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_1_env/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_dev_0_contributer/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>怎么成为K8s的Contributor</h5><p class="card-text post-summary">Important Doc
+To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_2_api_server/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_1_env/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">User Kuberbuilder to create a CRD operator</h5>
+        <p class="card-text post-summary">Develop Environment Kind kind is a tool for running local Kubernetes clusters using Docker container &ldquo;nodes&rdquo;. kind was primarily designed for testing Kubernetes itself but may be used for local development or CI.
+1kind load docker-image --name &lt;kind-cluster-name&gt; --nodes &lt;node-name&gt; &lt;image-name&gt;:latest Certmangaer 1helm repo add jetstack https://charts.jetstack.io 2helm repo update 3helm install \ 4 cert-manager jetstack/cert-manager \ 5 --namespace cert-manager \ 6 --create-namespace \ 7 --version v1.10.1 \ 8 --set installCRDs=true Question</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_1_env/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_dev_0_contributer/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">怎么成为K8s的Contributor</h5>
+        <p class="card-text post-summary">Important Doc
 Contributor Cheat Sheet 加入SIG SIG(Special Interest Groups) 是Kubernetes社区中关注特定模块的永久组织。
 作为刚参与社区的开发者，可以从sig/app, sig/node, sig/scheduling 这几个SIG开始。
 KEP KEP(Kubernetes Enhancement Proposal)。对于功能和API的修改都需要先在kubernetes/enhancements仓库对应SIG的目录下提交Proposal才能实施。所有的Proposal都必须经过讨论，通过社区SIG Leader的批准。
@@ -78,14 +593,238 @@ Go 语言的开发规范、分布式社区的治理方式
 代码需要每天都看，留出专门的时间来查看Kubernetes的源码，对它的核心组件的实现看看，构建一下, 测试一下，修一下Bug，typo等。
 一般半年之后，你就可以熟悉基础项目，并且开始贡献代码。
 当你已经和团队协作的很熟悉，就会自然承接一些子任务，然后团队就会赋予你写的权限，这样就可以顺理成章的成为Kubernetes的committer。这个时候你就是这个子项目的maintainer了
-TODO 加入 Kubenetes Slack Channle 加入邮件列表 加入SIG 参加社区会议 提issue 如何提交PR</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_dev_0_contributer/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+TODO 加入 Kubenetes Slack Channle 加入邮件列表 加入SIG 参加社区会议 提issue 如何提交PR</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_dev_0_contributer/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

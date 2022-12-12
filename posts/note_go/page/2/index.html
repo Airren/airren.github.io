@@ -1,10 +1,309 @@
-<!doctype html><html><head><title></title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/note_go/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a class=active href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/note_go/99_jike_go_note/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">软件开发的新挑战
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/note_go/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/99_jike_go_note/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">软件开发的新挑战
 多核硬件架构
 超大规模分布式计算集群
 web模式下导致的前所未有的规模和更新速度
@@ -22,59 +321,299 @@ go 垃圾回收，使用指针直接内存访问.
 复合和继承
 docker kubernetes
 go 默认使用静态连接，编译完成是一个独立的二进制
-1package main // package name 2 3import "fmt" // dependence 4 5// functionality 6func main() { 7 fmt.Print("hello world \n") 8} 应用程序入口，
+1package main // package name 2 3import &#34;fmt&#34; // dependence 4 5// functionality 6func main() { 7	fmt.Print(&#34;hello world \n&#34;) 8} 应用程序入口，
 必须是main包 package main 必须是main方法 func main() 文件名不一定是main.go package 的名字不需要与目录保持一致
 退出返回值
 与其他主要编程语言的差异
-Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4 "fmt" 5 "os" 6) 7 8func main() { 9 fmt.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/99_jike_go_note/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/base/string_operate/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">1package dal 2 3import "testing" 4 5func Empty() { 6 str := "12312" 7 if str == "" { 8 9 } 10} 11func Lenzero() { 12 str := "" 13 if len(str) == 0 { 14 15 } 16} 17func BenchmarkEmpty(b *testing.B) { 18 for n := 0; n &lt; b.N; n++ { 19 Empty() 20 } 21} 22 23func BenchmarkLenzero(b *testing.B) { 24 for n := 0; n &lt; b.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/base/string_operate/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/5.4ioutil/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」ioutil</h5><p class="card-text post-summary">复用http.request.body
-https://studygolang.com/articles/15641?fr=sideba</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/5.4ioutil/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/performance_analysis/pprof/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」pprof 性能分析</h5><p class="card-text post-summary">pprof
+Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;os&#34; 6) 7 8func main() { 9	fmt.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/99_jike_go_note/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/base/string_operate/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">1package dal 2 3import &#34;testing&#34; 4 5func Empty() { 6	str := &#34;12312&#34; 7	if str == &#34;&#34; { 8 9	} 10} 11func Lenzero() { 12	str := &#34;&#34; 13	if len(str) == 0 { 14 15	} 16} 17func BenchmarkEmpty(b *testing.B) { 18	for n := 0; n &lt; b.N; n++ { 19	Empty() 20	} 21} 22 23func BenchmarkLenzero(b *testing.B) { 24	for n := 0; n &lt; b.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/base/string_operate/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/5.4ioutil/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」ioutil</h5>
+        <p class="card-text post-summary">复用http.request.body
+https://studygolang.com/articles/15641?fr=sideba</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/5.4ioutil/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/performance_analysis/pprof/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」pprof 性能分析</h5>
+        <p class="card-text post-summary">pprof
 可以用于分析程序的性能，并找到瓶颈点。
-程序中的 runtime/pprof 性能剖析工具 go tool pprof</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/performance_analysis/pprof/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/5.5Struct/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」Struct</h5><p class="card-text post-summary">匿名struct比较
-1func main() { 2 sn1 := struct { 3 age int 4 name string 5 }{age: 11, name: "qq"} 6 7 sn2 := struct { 8 age int 9 name string 10 }{age: 11, name: "qq"} 11 12 if sn1 == sn2 { 13 fmt.Println("sn1 == sn2",sn1) 14 } 15 16 fmt.Printf("sn1 addr %p\n",&sn1) 17 fmt.Printf("sn2 addr %p\n",&sn2) 18} 1sn1 == sn2 {11 qq} 2sn1 addr 0xc0000a6020 3sn2 addr 0xc0000a6040</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/5.5Struct/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/source_code_profiling/mem_allocation/mem_allocation/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」内存分配</h5><p class="card-text post-summary">重点剖析Go运行时的内部机制，深入了解Go运行期状态，规避GC潜在的问题，节约内存，提升运行性能
+程序中的 runtime/pprof 性能剖析工具 go tool pprof </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/performance_analysis/pprof/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/5.5Struct/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」Struct</h5>
+        <p class="card-text post-summary">匿名struct比较
+1func main() { 2	sn1 := struct { 3	age int 4	name string 5	}{age: 11, name: &#34;qq&#34;} 6 7	sn2 := struct { 8	age int 9	name string 10	}{age: 11, name: &#34;qq&#34;} 11 12	if sn1 == sn2 { 13	fmt.Println(&#34;sn1 == sn2&#34;,sn1) 14	} 15 16	fmt.Printf(&#34;sn1 addr %p\n&#34;,&amp;sn1) 17	fmt.Printf(&#34;sn2 addr %p\n&#34;,&amp;sn2) 18} 1sn1 == sn2 {11 qq} 2sn1 addr 0xc0000a6020 3sn2 addr 0xc0000a6040 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/5.5Struct/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/source_code_profiling/mem_allocation/mem_allocation/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」内存分配</h5>
+        <p class="card-text post-summary">重点剖析Go运行时的内部机制，深入了解Go运行期状态，规避GC潜在的问题，节约内存，提升运行性能
 环境 Mac环境
 (不建议使用，会有很多困扰，直接用Linux)
 Debian环境 编译好的可执行文件真正的执行入口并不在main.go的mian()函数中。编译器总会插入一段引导代码，完成命令行参数、运行时初始化等工作才会进入用户逻辑。
-编译&GDB调试 main.go
-1package main 2 3func main() { 4 println("hello world") 5} -gcflags &ldquo;-N -l&rdquo; 关闭编译器代码优化和函数内联，避免断点和单步执行无法准确对应源码行，避免小函数和局部变量被优化掉
-1go build -gcflags "-N -l" 2# go build -gcflags "-N -l" -o test main.go 通过info files可以找到程序真正的入口地址0x105a8c0 ,利用断点命令可以找到目标源文件信息。
+编译&amp;GDB调试 main.go
+1package main 2 3func main() { 4	println(&#34;hello world&#34;) 5} -gcflags &ldquo;-N -l&rdquo; 关闭编译器代码优化和函数内联，避免断点和单步执行无法准确对应源码行，避免小函数和局部变量被优化掉
+1go build -gcflags &#34;-N -l&#34; 2# go build -gcflags &#34;-N -l&#34; -o test main.go 通过info files可以找到程序真正的入口地址0x105a8c0 ,利用断点命令可以找到目标源文件信息。
 Mac 下breakpoint 并未显示对应的文件信息，以下所有的操作均在Debian中查看。
 不同的操作系统就使用不同的汇编文件
 下面这这个汇编文件完成了初始化和运行时的启动动作。
 调用初始化函数 创建main goroutine用于执行runtime.main 让当前线程开始执行main goroutine 至此，汇编语言针对特定平台的引导过程全部完成，后续的内容基本上都是由Go代码实现的。
 go的汇编
 Go ASM 和标准的汇编语法（ NASM 或 YASM ）不太一样，首先你会发现它是架构独立的，没有所谓的 32 或 64 位寄存器，如下图所示：
-Tips:Mac 配置gdb环境 GDB Installation on Mac OS X</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/source_code_profiling/mem_allocation/mem_allocation/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/compile_optimize/escape_analysis/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」逃逸分析</h5><p class="card-text post-summary">堆内存与栈内存
+Tips:Mac 配置gdb环境 GDB Installation on Mac OS X</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/source_code_profiling/mem_allocation/mem_allocation/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/compile_optimize/escape_analysis/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」逃逸分析</h5>
+        <p class="card-text post-summary">堆内存与栈内存
 Go程序会在两个地方为变量分配内存，一个是全局的堆空间用来动态分配内存，另一个是每个goroutine的栈空间。与Java、Python等语言类似，Go语言实现垃圾回收机制，所以Go语言的内存管理是自动的，通常开发者不用关心内存分配到栈上还是堆上。但是从性能的角度出发，在栈上和堆上分配内存，性能差异是非常大的。
 在函数中申请一个对象，，如果分配在栈中，函数执行结束时自动回收；如果分配在堆中，则在函数结束后某个时间点进行垃圾回收。
 在栈上分配和回收内存的开销很低，只需要2个cpu指令: PUSH和POP。一个是将数据push到栈空间以完成分配，pop则是释放空间。也就是说在栈上分配内存，消耗的仅是将数据copy到内存的时间。内存的I/O通常能达到30GB/s，因此在栈上分配内存的效率是非常高的。
 在堆上分配内存，一个很大的额外开销则是垃圾回收。Go语言使用的是标记清除算法，并且在此基础上使用了三色标记法和写屏障技术，提高了效率。
 参考资料：
-https://geektutu.com/post/hpg-escape-analysis.html</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/compile_optimize/escape_analysis/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/99_go_short_addr/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>【慕课网】Go开发短地址服务</h5><p class="card-text post-summary">1 短地址服务 将长地址缩短到一个很短的地址，用户访问这个短地址可以重定向到原本的长地址。
+https://geektutu.com/post/hpg-escape-analysis.html</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/compile_optimize/escape_analysis/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/99_go_short_addr/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">【慕课网】Go开发短地址服务</h5>
+        <p class="card-text post-summary">1 短地址服务 将长地址缩短到一个很短的地址，用户访问这个短地址可以重定向到原本的长地址。
 如何设计HTTP Router 和handler 如何在HTTP 处理流程中加入Middleware 如何利用Go的Interface来实现可扩展的设计 如何使用redis的自增长序列生成短地址 2 主服务模块 API接口 POST /api/shorten GET /api/info?shortlink=shortlink GET /:shortlink - return 302 code 重定向 POST /api/shorten Params
 Name Type Description url string Required. URL to shorten. e.g. https://www.example.com expiration_in_minutes int Required. Expiration of short link in minutes. e.g. value 0 represents permanent. Response
-1{ 2 "shortlink":"P" 3} GET /api/info?shortlink=shortlink Params
-Name Type Description shortlink string Required. Id of shortened. e.g. P Response</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/99_go_short_addr/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/0_go_assambely/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go Assembly</h5><p class="card-text post-summary">Golang的汇编是基于Plan9的的汇编，是一个中间汇编的方式，这样可以忽略底层CPU架构的差别。
+1{ 2 &#34;shortlink&#34;:&#34;P&#34; 3} GET /api/info?shortlink=shortlink Params
+Name Type Description shortlink string Required. Id of shortened. e.g. P Response</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/99_go_short_addr/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/0_go_assambely/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go Assembly</h5>
+        <p class="card-text post-summary">Golang的汇编是基于Plan9的的汇编，是一个中间汇编的方式，这样可以忽略底层CPU架构的差别。
 汇编主要了解各种寄存器的使用以及寻址方式。根据Golang的汇编我们可以深入理解Golang的底层实现。比如内存如何分配，栈如何扩张，接口如何转变。
 如何从go语言获取对应的汇编
-1go build -gcflags "-N -l" -ldflags=-compressdwarf=false =o main.out main.g 2go tool objdump -s "main.main" main.out > main.S 3# or 4go tool compile -S main.go 5# or 6go build -gcflags -S main.go 汇编基础语法 通用寄存器 寄存器与物理机架构有关，不同的架构有不同的物理寄存器。
+1go build -gcflags &#34;-N -l&#34; -ldflags=-compressdwarf=false =o main.out main.g 2go tool objdump -s &#34;main.main&#34; main.out &gt; main.S 3# or 4go tool compile -S main.go 5# or 6go build -gcflags -S main.go 汇编基础语法 通用寄存器 寄存器与物理机架构有关，不同的架构有不同的物理寄存器。
 在amd64架构上提供了16个通用寄存器给用户使用。
 Plan9汇编语言提供了如下映射，这样就可以在汇编语言中这几应用就可以使用物理寄存器了。
 x64架构中所有的寄存器都是64位
-amd64 Plan9 rax AX rbx BX rcx CX rdx DX rdi DI rsi SI rbp BP rsp SP r8 R8 r9 R9 r10 R10 r11 R11 r12 R12 r13 R13 r14 R14 rip PC 虚拟寄存器 伪寄存器不是真正的寄存器，而是由工具链维护的虚拟寄存器，例如帧指针。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/0_go_assambely/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/0_go_compile/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go compile</h5><p class="card-text post-summary">n
+amd64 Plan9 rax AX rbx BX rcx CX rdx DX rdi DI rsi SI rbp BP rsp SP r8 R8 r9 R9 r10 R10 r11 R11 r12 R12 r13 R13 r14 R14 rip PC 虚拟寄存器 伪寄存器不是真正的寄存器，而是由工具链维护的虚拟寄存器，例如帧指针。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/0_go_assambely/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/0_go_compile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go compile</h5>
+        <p class="card-text post-summary">n
 https://zhuanlan.zhihu.com/p/343562661
-https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/0_go_compile/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/1_SettingUpGoEnv/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go 设置Golang开发环境</h5><p class="card-text post-summary">安装Go 开始写Golang之前，你首先需要下载并且安装Golang开发工具。可以在Golang的官方网站下载最新的安装包。根据你的开发平台选择下载对应的版本。对于Mac用户(或者Windows用户)来说.pkg(或msi)安装包会自动把Golang安装到合适的位置，并将命令加入到环境变量，并且自动移除老版本。如果使用Mac更加推荐直接使用brew install go， 使用brew 可以方便的管理Go多个版本。
+https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/0_go_compile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_SettingUpGoEnv/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go 设置Golang开发环境</h5>
+        <p class="card-text post-summary">安装Go 开始写Golang之前，你首先需要下载并且安装Golang开发工具。可以在Golang的官方网站下载最新的安装包。根据你的开发平台选择下载对应的版本。对于Mac用户(或者Windows用户)来说.pkg(或msi)安装包会自动把Golang安装到合适的位置，并将命令加入到环境变量，并且自动移除老版本。如果使用Mac更加推荐直接使用brew install go， 使用brew 可以方便的管理Go多个版本。
 对于Linux或者FreeBSD用户可以直接下载对应的.tar.gz, 并解压到文件名为go的目录中。把这个文件Copy到/usr/local/下。然后把/usr/local/go/bin添加到$PATH中。
-1tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz 2# change .profile to .bashrc or.zsh depend on you evnironment 3echo "export PATH=$PATH:/usr/local/go/bin" >>$HOME/.profile Go 程序编译完成后是一个独立的二进制文件，不需要依赖任何运行软件(例如，Python需要Python解释器，Java需要JVM)。仅在需要编译Go代码的环境上安装Go即可。
+1tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz 2# change .profile to .bashrc or.zsh depend on you evnironment 3echo &#34;export PATH=$PATH:/usr/local/go/bin&#34; &gt;&gt;$HOME/.profile Go 程序编译完成后是一个独立的二进制文件，不需要依赖任何运行软件(例如，Python需要Python解释器，Java需要JVM)。仅在需要编译Go代码的环境上安装Go即可。
 安装完成后，打开Terminal(Window 打开CMD)，验证Go是否安装成功。
 1go version 在所有的配置都正确的情况下，可以看到输出的版本信息
 1# mac intel cpu 64bit 2go version go1.17.3 darwin/amd64 从上述信息中可以看出，Go的版本是1.17.3,使用的开发机器是 Mac(Darwin 是MacOS的Kernel Name, amd64 是指64-bit的x86 CPU架构)。
@@ -82,16 +621,287 @@ https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</
 Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管理依赖上经历了几次变化。在Go 1.11所有的代码必须保存在GOPATH之下，之后的版本用户可以在任意目录下存储自己的代码。但是Go依然希望有一个独立的工作空间可以存储通过go install安装额第三方包。默认的工作空间是$HOME/go, 下载的第三方包默认存储在$HOME/go/src,编译的二进制文件存储在$HOME/go/bin。你可以直接使用这个默认的工作空间，或者通过设置$GOPAHT指定一个工作空间。
 无论你是否使用默认的wokespace，建议你把$GOPATH/bin加入到$PATH中。 通过指定$GOPATH可以清楚地描述当前环境的Go工作空间，把$GOPATH/bin加入到可执行路径中可以直接使用go install 安装的第三方包。
 如果是Unix-like的开发环境可以把下面几行加入到$HOME/.profile中。
-1# if use ubuntu you should add to .</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/1_SettingUpGoEnv/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/14-golang_reflect_unsafe_cgo/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Reflect, Unsafe, and Cgo</h5><p class="card-text post-summary">Reflect
-Reflection Let Us Work with Types at Runtime But sometimes, relying on only compilation-time information is a limitation. You might need to work with variables at runtime using information that didn&rsquo;t exist when the program was written. Maybe you&rsquo;re trying to map data from a file or network request into a variable, or you want to build a single function that works with different types. In those situations, you need to use reflection.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/14-golang_reflect_unsafe_cgo/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/note_go/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/note_go/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/note_go/ aria-label="Page 1" class=page-link role=button>1</a></li><li class="page-item active"><a aria-current=page aria-label="Page 2" class=page-link role=button>2</a></li><li class=page-item><a href=/posts/note_go/page/3/ aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/posts/note_go/page/3/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/note_go/page/3/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+1# if use ubuntu you should add to .</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/1_SettingUpGoEnv/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/14-golang_reflect_unsafe_cgo/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Reflect, Unsafe, and Cgo</h5>
+        <p class="card-text post-summary">Reflect
+Reflection Let Us Work with Types at Runtime But sometimes, relying on only compilation-time information is a limitation. You might need to work with variables at runtime using information that didn&rsquo;t exist when the program was written. Maybe you&rsquo;re trying to map data from a file or network request into a variable, or you want to build a single function that works with different types. In those situations, you need to use reflection.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/14-golang_reflect_unsafe_cgo/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/note_go/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

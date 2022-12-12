@@ -1,125 +1,964 @@
-<!doctype html><html><head><title></title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content><meta property="og:description" content="1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
-Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first."><meta property="og:type" content="article"><meta property="og:url" content="https://airren.github.io/posts/linux/network_virtualization/"><meta property="article:section" content="posts"><meta name=description content><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css><link rel=stylesheet href=/css/layouts/single.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts/ data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a class=active href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class=content><div class="container p-0 read-area"><div class="hero-area col-sm-12" id=hero-area style=background-image:url(/images/default-hero.jpg)></div><div class=page-content><div class="author-profile ml-auto align-self-lg-center"><img class=rounded-circle src=/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png alt="Author Image"><h5 class=author-name>Airren Ren</h5><p>Monday, January 1, 1</p></div><div class=title><h1></h1></div><div class=taxonomy-terms><ul style=padding-left:0></ul></div><div class=post-content id=post-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>title: Linux Network Virtualization
-</span></span></code></pre></div><h2 id=network-namespace>Network Namespace</h2><p>In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:</p><table><thead><tr><th>Namespace</th><th>Description</th><th></th></tr></thead><tbody><tr><td>Mount Namespace</td><td>File system mount point</td><td>CLONE_NEWNET</td></tr><tr><td>UTS Namespace</td><td>Hostname</td><td>CLONE_NETUTS</td></tr><tr><td>IPC Namespace</td><td>POSIX process messaging queue</td><td>CLONE_NEWIPC</td></tr><tr><td>PID Namespace</td><td>Process PID number namespace</td><td>CLONE_NEWPID</td></tr><tr><td>Network Namespace</td><td>IP address/Port/Router/IPtables</td><td>CLONE_NEWNS</td></tr><tr><td>User Namespace</td><td>User isolation</td><td>CLONE_NEWUSER</td></tr></tbody></table><p>For the process, if they want to use the resources of the Namespace, they should enter the namespace first. And the resources don&rsquo;t share between different namespaces.</p><h3 id=network-namespace-overview>Network Namespace Overview</h3><p>You can use <code>ip netns</code> to manage the Network Namespace, or you can write C code to operate the Network Namespace through the system call. We can use <code>clone()</code>(a extend for <code>fork()</code>) to create a usual Namespace, and specify the parameter <code>CLONE_NEWNET</code> to create a Network Namespace.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ip netns add netns1
-</span></span></code></pre></div><p>After you created the namespace, you can use <code>ip netns show</code> or <code>ip netns list</code> to check the result. At the same time, a file named <code>netns1</code> is created at <code>/var/run/netns/netns1</code>, this is the Mount Point. On the one hand, this file is for managing the namespace, on the other hand, even if no process running in the namespace, the namespace still exists.</p><p>Once the Network Namespace is created, you can use <code>ip netns exec &lt;namespace> &lt;command></code> to enter it to do some configuration.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e># run bash in network namespace &lt;netns1&gt;</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>ip netns exec netns1 bash
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#75715e># get the network interface of the network namespace &lt;netns1&gt;</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>ip net exec netns1 ip link list
-</span></span></code></pre></div><p>After you create a Network Namespace, it contains a Loopback Interface at least.</p><p>If you want to delete the Network Namespace, try</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ip netns delete netns1
-</span></span></code></pre></div><p>Noted, actually, the above command does not totally delete the Network Namespace, this only removed the Mount Point. If there is any process still running, the Network Namespace will still exist.</p><h3 id=configuration>Configuration</h3><p>When we talk about the network communication of the processes in the Network Namespace, the Virtual/Actual Network Device is required.</p><p>The new Network Namespace only contains a Loopback Interface, and the status of this interface is <code>DOWN</code>. After setting the <code>lo</code>up, you can <code>ping 127.0.0.1</code> and get the response.</p><p><p class=md__image><img src=image-20220531011639031.png alt=image-20220531011639031></p></p><p>But, if we want to contact the outside, we need to create a couple of virtual ether network cards, it&rsquo;s the <code>veth pair</code>. Veth pair always presents in couples. It was like a two-way pipe, the datagram went into one side, and came out from another side.</p><p>Let&rsquo;s create a <code>veth pair</code>, and put one side into the <code>netns1</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e># create a veth pair veth0-veth1</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>ip link add veth0 type veth peer name veth1
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#75715e># mv veth1 to netns1 network namespace</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>ip link set veth1 netns netns1
-</span></span></code></pre></div><p>After that, we created 2 veth interface. But these are in <code>DOWN</code>status. Next, we set them up and bind an IP to the interface.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ip netns exec netns1 ifconfig veth1 10.1.1.1/24 up
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>ifconfig veth0 10.1.1.2/up
-</span></span></code></pre></div><p>Now, you can <code>ping 10.1.1.1</code> on the host.</p><p>The route table and IPtables are different between different Network Namespace.</p><p>When we enter the <code>netns1</code> Network Namespace, the route table and IPtables are empty. So, when you are in the <code>netns1</code> you can&rsquo;t connect to the Internet. There are several ways to solve that:</p><ul><li><p>Create a Linux bridge on the host, and bind one side of the veth pair to the bridge</p></li><li><p>Add NAT rule on the host and enable Linux IP forward.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e># enable or disable IP forwarding status</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>sysctl -w net.ipv4.ip_forward<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#75715e># OR</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>sysctl -w net.ipv4.ip_forward<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span><span style=color:#75715e># check the IP forwarding status</span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span>cat /proc/sys/net/ipv4/ip_forward
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span><span><span style=color:#ae81ff>0</span>
-</span></span></code></pre></div></li></ul><blockquote><p>Note</p><p>Users can put the physical/virtual network device to any network namespace, and one device only can be put into one Network Namespace.</p></blockquote><p>The process can enter the Network Namespace through the Linux System Call <code>clone()/unshare()/setns()</code>. No-root process in a specific Network Namespace only can assess and config the local Network Namespace.</p><p>The root process can create a network device in the Network Namespace. And, root process can put the local Network Namespace&rsquo;s device in another namespace.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#75715e># move interface form netns1 to PID=1 </span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>ip net exec netns1 ip link set veth1 netns <span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>The above command moves the veth1 interface from netns1 to host default Network namespace.</p><p>For the root user of the network namespace, they can move the network device to any Network Namespace, even the host network namespace. So, there will be a potential risk. If users want to avoid the risk, they need to combine the PID Namespace and Mount Namespace to make the Network Namespace totally isolated.</p><blockquote><p>How do combine the PID Namespace and Mount Namespace to make the Network Namespace totally isolated?</p></blockquote><h3 id=network-namespace-api>Network Namespace API</h3><p>The API is related with Linux System Call: <code>clone() unshare() setns()</code> and file in <code>/proc</code>. This chapter will introduce the usage of the network namespace API through several examples.</p><p><code>clone() unshare() setns()</code> use the const variable <code>CLONE_NEW*</code> to represent different namespace:</p><table><thead><tr><th>Namespace</th><th>Description</th><th></th></tr></thead><tbody><tr><td>Mount Namespace</td><td>File system mount point</td><td>CLONE_NEWNS</td></tr><tr><td>UTS Namespace</td><td>Hostname</td><td>CLONE_NEWUTS</td></tr><tr><td>IPC Namespace</td><td>POSIX process messaging queue</td><td>CLONE_NEWIPC</td></tr><tr><td>PID Namespace</td><td>Process PID number namespace</td><td>CLONE_NEWPID</td></tr><tr><td>Network Namespace</td><td>IP address/Port/Router/IPtables</td><td>CLONE_NEWNET</td></tr><tr><td>User Namespace</td><td>User isolation</td><td>CLONE_NEWUSER</td></tr></tbody></table><h4 id=create-namespace-through-clone>Create namespace through clone()</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>int clone<span style=color:#f92672>(</span>int <span style=color:#f92672>(</span>*child_func<span style=color:#f92672>)(</span>void *<span style=color:#f92672>)</span>, void *child_stack, int flags, void *arg<span style=color:#f92672>)</span>;
-</span></span></code></pre></div><p><code>clone()</code> is an extension of <code>fork()</code>, we can control the function through the <code>flags</code> parameter. <code>clone()</code>has more than 20 <code>CLONE_*</code> flag to control the processes&rsquo; actions.</p><p>If set a flag <code>CLONE_NEW</code>, the system will create a corresponding type namespace and a new process and put the process into the new Namespace. Through <code>|</code> we can specify multiple <code>CLONE_NEW</code> flags.</p><p>The parameters&rsquo; meaning, from left to right</p><ul><li>Function point <code>child_func</code>, specify a new function for the new process. When the function returned, the child process ended. This function returns an integer value to represent the exit code.</li><li>Point <code>child_stack</code> is put into the child process&rsquo;s stack, another word, put user-mode stack point to child process&rsquo;s esp register. The process that calls <code>clone()</code> needs to allocate a new stack to the child process.</li><li>Int <code>flags</code> represent the <code>CLONE_*</code> flag, which can be multiply connected with <code>|</code>.</li><li><code>args</code> is the user-defined parameter.</li></ul><p>Finally, you should pay attention to the authorization and safety, most of the Namespace creates need the system capability, which not should be total root permission, but need <code>CAP_SYS_ADMIN</code> to execute the essential System Call.</p><blockquote><p>Linux 的特权是将root的权限分为各个小部分，使得一个进程只需要被授予刚刚好的权限来执行特定的任务。如果这些特权足够小，且选择的恰到好处，那么即使一个进程受损（比如缓冲区溢出），它所造成的危害也会受限于它所拥有的的特权。 例如，CAP_KILL 允许向任意的进程发送信号， 而CAP_SYS_TIME允许进程设置系统的时钟。</p></blockquote><h4 id=keep-namespace-existing>Keep namespace existing</h4><p>Every process has its own <code>/proc/PID/ns</code>, and every file in this path represents a type of namespace.</p><p>Before Linux Kernel v3.8, the file in this path is a hard link, and only has IPC, nets, and uts. After v3.8, every file is a special symbolic link file and these files provide a way to operate the namespace related to the process.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ls -l /proc/$$/ns <span style=color:#75715e># $$ is the PID of bash</span>
-</span></span></code></pre></div><p>One of the symbolic link file&rsquo;s usage is to show if two processes use the same namespace. If two processes are in the same namespace, the <code>inode</code> number on the symbolic link file should be the same. (You can through <code>stat()</code>to get the inode number in <code>st_ino</code> )</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#75715e>#define _GNU_SOURCE
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:#75715e>#define NULL 0x0
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;sys/types.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;sys/wait.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;sys/mount.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdio.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;sched.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;signal.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;unistd.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;stdlib.h&gt;</span><span style=color:#75715e>
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span><span style=color:#75715e>#define STACK_SIZE (1024 * 1024)
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span><span style=color:#75715e>// sync primitive
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> checkpoint[<span style=color:#ae81ff>2</span>];
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>char</span> child_stack[STACK_SIZE];
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span><span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span><span style=color:#66d9ef>const</span> child_args[] <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span>    <span style=color:#e6db74>&#34;/bin/bash&#34;</span>,
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span>    NULL};
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>child_main</span>(<span style=color:#66d9ef>void</span> <span style=color:#f92672>*</span>arg)
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span>{
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span><span>    <span style=color:#66d9ef>char</span> c;
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span><span>    <span style=color:#75715e>// init sync primitive
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;&gt;&gt; wait for signal&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span><span>    <span style=color:#a6e22e>close</span>(checkpoint[<span style=color:#ae81ff>1</span>]);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;&gt;&gt; receive signal&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span><span>    <span style=color:#75715e>// setup hostname
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;- [%5d] World !</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#a6e22e>getpid</span>());
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span><span>    <span style=color:#a6e22e>sethostname</span>(<span style=color:#e6db74>&#34;In Namespace&#34;</span>, <span style=color:#ae81ff>12</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span><span>    <span style=color:#75715e>// remount &#34;/proc&#34; to get accurate &#34;top&#34; &amp;&amp; &#34;ps&#34; output
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>mount</span>(<span style=color:#e6db74>&#34;proc&#34;</span>, <span style=color:#e6db74>&#34;/proc&#34;</span>, <span style=color:#e6db74>&#34;proc&#34;</span>, <span style=color:#ae81ff>0</span>, NULL);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span><span>    <span style=color:#75715e>// wait for network setup in parent
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>read</span>(checkpoint[<span style=color:#ae81ff>0</span>], <span style=color:#f92672>&amp;</span>c, <span style=color:#ae81ff>1</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41</span><span>    <span style=color:#75715e>// setup network
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip link set lo up&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43</span><span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip link set veth1 up&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44</span><span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip addr add 192.168.0.2/24 dev veth1&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45</span><span>    <span style=color:#a6e22e>execv</span>(child_args[<span style=color:#ae81ff>0</span>], child_args);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46</span><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;Oops </span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47</span><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>;
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48</span><span>}
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50</span><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>()
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51</span><span>{
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52</span><span>    <span style=color:#75715e>// init sync primitive
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>pipe</span>(checkpoint);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55</span><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;- [%5d] Hello ?</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>, <span style=color:#a6e22e>getpid</span>());
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57</span><span>    <span style=color:#66d9ef>int</span> child_pid <span style=color:#f92672>=</span> <span style=color:#a6e22e>clone</span>(child_main, child_stack <span style=color:#f92672>+</span> STACK_SIZE,
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58</span><span>                          CLONE_NEWUTS <span style=color:#f92672>|</span> CLONE_NEWIPC <span style=color:#f92672>|</span> CLONE_NEWPID <span style=color:#f92672>|</span> CLONE_NEWNS <span style=color:#f92672>|</span> CLONE_NEWNET <span style=color:#f92672>|</span> SIGCHLD, NULL);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60</span><span>    <span style=color:#75715e>// further init; create a veth pair
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61</span><span><span style=color:#75715e></span>    <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>cmd;
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62</span><span>    <span style=color:#a6e22e>asprintf</span>(<span style=color:#f92672>&amp;</span>cmd, <span style=color:#e6db74>&#34;ip link set veth1 netns %d&#34;</span>, child_pid);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63</span><span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip link add veth0 type veth peer name veth1&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64</span><span>    <span style=color:#a6e22e>system</span>(cmd);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65</span><span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip link set veth0 up&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66</span><span>    <span style=color:#a6e22e>system</span>(<span style=color:#e6db74>&#34;ip addr add 192.168.0.1/24 dev veth0&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67</span><span>    <span style=color:#a6e22e>free</span>(cmd);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">68</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">69</span><span>    <span style=color:#75715e>// single &#34;done&#34;
-</span></span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">70</span><span><span style=color:#75715e></span>    <span style=color:#a6e22e>close</span>(checkpoint[<span style=color:#ae81ff>1</span>]);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">71</span><span>    <span style=color:#a6e22e>printf</span>(<span style=color:#e6db74>&#34;&gt;&gt;&gt; signal done&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">72</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">73</span><span>    <span style=color:#a6e22e>waitpid</span>(child_pid, NULL, <span style=color:#ae81ff>0</span>);
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">74</span><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">75</span><span>}
-</span></span></code></pre></div><blockquote><p><strong>NC command</strong></p><p>use for network test</p><p><strong>C primitive</strong></p></blockquote><h2 id=veth-pair>Veth Pair</h2><p>The <strong>principle</strong> of Veth Pair is that put data into one side of the veth pair, and get out from another side.</p><h3 id=the-kernel-code-if-veth-pair>The kernel code if veth pair</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c></code></pre></div><h3 id=relationship-between-container-and-veth-pair>Relationship between container and veth pair</h3><p>The typical model of the container network is veth pair + bridge. The interface in the container <code>eth0</code> is a peer of the host veth interface. So, how to find which is the peer interface?</p><p><strong>Method 1:</strong></p><p>First, in the target container find that,</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>cat /sys/class/net/eth0/iflink
-</span></span></code></pre></div><p>And then check all the files on the host <code>/sys/class/net/</code>,check the <code>ifindex </code>value which is the same as the <code>iflink</code>. The interface with the same value is another side of the veth pair.</p><p><strong>Method 2</strong></p><h2 id=linux-bridge>Linux Bridge</h2><h3 id=what-is-linux-bridge>What is Linux Bridge</h3><p>Create and Manage the Linux Bridge</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ip link add name br0 type bridge
-</span></span><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>ip link set br0 up
-</span></span></code></pre></div><p>Besides the <code>ip</code> command, we can use the <code>brctl</code> tool in the <code>bridge-utils</code> package to create a bridge.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>brctl addr br0 
-</span></span></code></pre></div></div><div class="row pl-3 pr-3"><div class="col-md-6 share-buttons"></div><div class="col-md-6 btn-improve-page"><a href=https://github.com/airren/airren.github.io/edit/master/content/posts/linux/network_virtualization.md title="Improve this page" target=_blank rel=noopener><i class="fas fa-code-branch"></i>
-Improve this page</a></div></div><hr><div class="row next-prev-navigator"></div><hr></div></div></div><a id=scroll-to-top class=btn><i class="fas fa-chevron-circle-up"></i></a></section><section class=toc-section id=toc-section><div class=toc-holder><h5 class="text-center pl-3">Table of Contents</h5><hr><div class=toc><nav id=TableOfContents><ul><li><a href=#network-namespace>Network Namespace</a><ul><li><a href=#network-namespace-overview>Network Namespace Overview</a></li><li><a href=#configuration>Configuration</a></li><li><a href=#network-namespace-api>Network Namespace API</a><ul><li><a href=#create-namespace-through-clone>Create namespace through clone()</a></li><li><a href=#keep-namespace-existing>Keep namespace existing</a></li></ul></li></ul></li><li><a href=#veth-pair>Veth Pair</a><ul><li><a href=#the-kernel-code-if-veth-pair>The kernel code if veth pair</a></li><li><a href=#relationship-between-container-and-veth-pair>Relationship between container and veth pair</a></li></ul></li><li><a href=#linux-bridge>Linux Bridge</a><ul><li><a href=#what-is-linux-bridge>What is Linux Bridge</a></li></ul></li></ul></nav></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js></script>
-<script src=/js/single.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
+Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/linux/network_virtualization/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>title: Linux Network Virtualization
+</span></span></code></pre></div><h2 id="network-namespace">Network Namespace</h2>
+<p>In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mount Namespace</td>
+<td>File system mount point</td>
+<td>CLONE_NEWNET</td>
+</tr>
+<tr>
+<td>UTS Namespace</td>
+<td>Hostname</td>
+<td>CLONE_NETUTS</td>
+</tr>
+<tr>
+<td>IPC Namespace</td>
+<td>POSIX process messaging queue</td>
+<td>CLONE_NEWIPC</td>
+</tr>
+<tr>
+<td>PID Namespace</td>
+<td>Process PID number namespace</td>
+<td>CLONE_NEWPID</td>
+</tr>
+<tr>
+<td>Network Namespace</td>
+<td>IP address/Port/Router/IPtables</td>
+<td>CLONE_NEWNS</td>
+</tr>
+<tr>
+<td>User Namespace</td>
+<td>User isolation</td>
+<td>CLONE_NEWUSER</td>
+</tr>
+</tbody>
+</table>
+<p>For the process, if they want to use the resources of the Namespace,  they should enter the namespace first. And the resources don&rsquo;t share between different namespaces.</p>
+<h3 id="network-namespace-overview">Network Namespace Overview</h3>
+<p>You can use <code>ip netns</code> to manage the Network Namespace, or you can write C code to operate the Network Namespace through the system call. We can use <code>clone()</code>(a extend for <code>fork()</code>) to create a usual Namespace, and specify the parameter <code>CLONE_NEWNET</code> to create a Network Namespace.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ip netns add netns1
+</span></span></code></pre></div><p>After you created the namespace, you can use <code>ip netns show</code> or <code>ip netns list</code> to check the result. At the same time, a file named <code>netns1</code> is created at <code>/var/run/netns/netns1</code>, this is the Mount Point.  On the one hand, this file is for managing the namespace, on the other hand, even if no process running in the namespace, the namespace still exists.</p>
+<p>Once the Network Namespace is created, you can use <code>ip netns exec &lt;namespace&gt; &lt;command&gt;</code> to enter it to do some configuration.</p>
+<p>For example,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># run bash in network namespace &lt;netns1&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>ip netns exec netns1 bash
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#75715e"># get the network interface of the network namespace &lt;netns1&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>ip net exec netns1 ip link list
+</span></span></code></pre></div><p>After you create a Network Namespace, it contains a Loopback Interface at least.</p>
+<p>If you want to delete the Network Namespace, try</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ip netns delete netns1
+</span></span></code></pre></div><p>Noted, actually, the above command does not totally delete the Network Namespace, this only removed the Mount Point. If there is any process still running, the Network Namespace will still exist.</p>
+<h3 id="configuration">Configuration</h3>
+<p>When we talk about the network communication of the processes in the Network Namespace, the Virtual/Actual Network Device is required.</p>
+<p>The new Network Namespace only contains a Loopback Interface, and the status of this interface is <code>DOWN</code>. After setting the <code>lo</code>up,  you can <code>ping 127.0.0.1</code> and get the response.</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+<img src="image-20220531011639031.png" alt="image-20220531011639031" />
+
+
+
+</p>
+</p>
+<p>But, if we want to contact the outside, we need to create a couple of virtual ether network cards, it&rsquo;s the <code>veth pair</code>. Veth pair always presents in couples. It was like a two-way pipe, the datagram went into one side, and came out from another side.</p>
+<p>Let&rsquo;s create a <code>veth pair</code>, and put one side into the <code>netns1</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># create a veth pair veth0-veth1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>ip link add veth0 type veth peer name veth1
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"># mv veth1 to netns1 network namespace</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>ip link set veth1 netns netns1
+</span></span></code></pre></div><p>After that, we created 2 veth interface. But these are in <code>DOWN</code>status. Next, we set them up and bind an IP to the interface.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ip netns exec netns1 ifconfig veth1 10.1.1.1/24 up
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>ifconfig veth0 10.1.1.2/up
+</span></span></code></pre></div><p>Now, you can <code>ping 10.1.1.1</code> on the host.</p>
+<p>The route table and IPtables are different between different Network Namespace.</p>
+<p>When we enter the <code>netns1</code> Network Namespace, the route table and IPtables are empty. So, when you are in the <code>netns1</code> you can&rsquo;t connect to the Internet. There are several ways to solve that:</p>
+<ul>
+<li>
+<p>Create a Linux bridge on the host, and bind one side of the veth pair to the bridge</p>
+</li>
+<li>
+<p>Add NAT rule on the host and enable Linux IP forward.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># enable or disable IP forwarding status</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>sysctl -w net.ipv4.ip_forward<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"># OR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>sysctl -w net.ipv4.ip_forward<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"># check the IP forwarding status</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>cat /proc/sys/net/ipv4/ip_forward
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+</ul>
+<blockquote>
+<p>Note</p>
+<p>Users can put the physical/virtual network device to any network namespace, and one device only can be put into one Network Namespace.</p>
+</blockquote>
+<p>The process can enter the Network Namespace through the Linux System Call <code>clone()/unshare()/setns()</code>. No-root process in a specific Network Namespace only can assess and config the local Network Namespace.</p>
+<p>The root process can create a network device in the Network Namespace. And, root process can put the local Network Namespace&rsquo;s device in another namespace.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># move interface form netns1 to PID=1 </span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>ip net exec netns1 ip link set veth1 netns <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>The above command moves the veth1 interface from netns1 to host default Network namespace.</p>
+<p>For the root user of the network namespace, they can move the network device to any Network Namespace, even the host network namespace. So, there will be a potential risk. If users want to avoid the risk, they need to combine the PID Namespace and Mount Namespace to make the Network Namespace totally isolated.</p>
+<blockquote>
+<p>How do combine the PID Namespace and Mount Namespace to make the Network Namespace totally isolated?</p>
+</blockquote>
+<h3 id="network-namespace-api">Network Namespace API</h3>
+<p>The API is related with Linux System Call: <code>clone() unshare() setns()</code> and file in <code>/proc</code>. This chapter will introduce the usage of the network namespace API through several examples.</p>
+<p><code>clone() unshare() setns()</code> use the const variable <code>CLONE_NEW*</code> to represent different namespace:</p>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Description</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mount Namespace</td>
+<td>File system mount point</td>
+<td>CLONE_NEWNS</td>
+</tr>
+<tr>
+<td>UTS Namespace</td>
+<td>Hostname</td>
+<td>CLONE_NEWUTS</td>
+</tr>
+<tr>
+<td>IPC Namespace</td>
+<td>POSIX process messaging queue</td>
+<td>CLONE_NEWIPC</td>
+</tr>
+<tr>
+<td>PID Namespace</td>
+<td>Process PID number namespace</td>
+<td>CLONE_NEWPID</td>
+</tr>
+<tr>
+<td>Network Namespace</td>
+<td>IP address/Port/Router/IPtables</td>
+<td>CLONE_NEWNET</td>
+</tr>
+<tr>
+<td>User Namespace</td>
+<td>User isolation</td>
+<td>CLONE_NEWUSER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="create-namespace-through-clone">Create namespace through clone()</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>int clone<span style="color:#f92672">(</span>int <span style="color:#f92672">(</span>*child_func<span style="color:#f92672">)(</span>void *<span style="color:#f92672">)</span>, void *child_stack, int flags, void *arg<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p><code>clone()</code> is an extension of <code>fork()</code>, we can control the function through the <code>flags</code> parameter. <code>clone()</code>has more than 20 <code>CLONE_*</code> flag to control the processes&rsquo; actions.</p>
+<p>If set a flag <code>CLONE_NEW</code>, the system will create a corresponding type namespace and a new process and put the process into the new Namespace. Through <code>|</code> we can specify multiple <code>CLONE_NEW</code> flags.</p>
+<p>The parameters&rsquo; meaning, from left to right</p>
+<ul>
+<li>Function point <code>child_func</code>,  specify a new function for the new process. When the function returned, the child process ended. This function returns an integer value to represent the exit code.</li>
+<li>Point  <code>child_stack</code>  is put into the child process&rsquo;s stack, another word,  put user-mode stack point to child process&rsquo;s esp register. The process that calls <code>clone()</code> needs to allocate a new stack to the child process.</li>
+<li>Int <code>flags</code> represent the <code>CLONE_*</code> flag, which can be multiply connected with <code>|</code>.</li>
+<li><code>args</code> is the user-defined parameter.</li>
+</ul>
+<p>Finally, you should pay attention to the authorization and safety, most of the Namespace creates need the system capability, which not should be total root permission, but need <code>CAP_SYS_ADMIN</code> to execute the essential System Call.</p>
+<blockquote>
+<p>Linux 的特权是将root的权限分为各个小部分，使得一个进程只需要被授予刚刚好的权限来执行特定的任务。如果这些特权足够小，且选择的恰到好处，那么即使一个进程受损（比如缓冲区溢出），它所造成的危害也会受限于它所拥有的的特权。 例如，CAP_KILL 允许向任意的进程发送信号， 而CAP_SYS_TIME允许进程设置系统的时钟。</p>
+</blockquote>
+<h4 id="keep-namespace-existing">Keep namespace existing</h4>
+<p>Every process has its own <code>/proc/PID/ns</code>, and every file in this path represents a type of namespace.</p>
+<p>Before Linux Kernel v3.8, the file in this path is a hard link, and only has IPC, nets, and uts. After v3.8, every file is a special symbolic link file and these files provide a way to operate the namespace related to the process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ls -l /proc/$$/ns <span style="color:#75715e"># $$ is the PID of bash</span>
+</span></span></code></pre></div><p>One of the symbolic link file&rsquo;s usage is to show if two processes use the same namespace. If two processes are in the same namespace, the <code>inode</code> number on the symbolic link file should be the same. (You can through <code>stat()</code>to get the inode number in <code>st_ino</code> )</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#define _GNU_SOURCE
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">#define NULL 0x0
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/types.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/wait.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/mount.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sched.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;signal.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#75715e">#define STACK_SIZE (1024 * 1024)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#75715e">// sync primitive
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> checkpoint[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> child_stack[STACK_SIZE];
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> child_args[] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#e6db74">&#34;/bin/bash&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    NULL};
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">child_main</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    <span style="color:#66d9ef">char</span> c;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#75715e">// init sync primitive
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;&gt;&gt; wait for signal&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    <span style="color:#a6e22e">close</span>(checkpoint[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;&gt;&gt; receive signal&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>    <span style="color:#75715e">// setup hostname
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;- [%5d] World !</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">getpid</span>());
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>    <span style="color:#a6e22e">sethostname</span>(<span style="color:#e6db74">&#34;In Namespace&#34;</span>, <span style="color:#ae81ff">12</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>    <span style="color:#75715e">// remount &#34;/proc&#34; to get accurate &#34;top&#34; &amp;&amp; &#34;ps&#34; output
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">mount</span>(<span style="color:#e6db74">&#34;proc&#34;</span>, <span style="color:#e6db74">&#34;/proc&#34;</span>, <span style="color:#e6db74">&#34;proc&#34;</span>, <span style="color:#ae81ff">0</span>, NULL);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>    <span style="color:#75715e">// wait for network setup in parent
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">read</span>(checkpoint[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">&amp;</span>c, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>    <span style="color:#75715e">// setup network
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip link set lo up&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip link set veth1 up&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip addr add 192.168.0.2/24 dev veth1&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span>    <span style="color:#a6e22e">execv</span>(child_args[<span style="color:#ae81ff">0</span>], child_args);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Oops </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50</span><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52</span><span>    <span style="color:#75715e">// init sync primitive
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">pipe</span>(checkpoint);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;- [%5d] Hello ?</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">getpid</span>());
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span>    <span style="color:#66d9ef">int</span> child_pid <span style="color:#f92672">=</span> <span style="color:#a6e22e">clone</span>(child_main, child_stack <span style="color:#f92672">+</span> STACK_SIZE,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span><span>                          CLONE_NEWUTS <span style="color:#f92672">|</span> CLONE_NEWIPC <span style="color:#f92672">|</span> CLONE_NEWPID <span style="color:#f92672">|</span> CLONE_NEWNS <span style="color:#f92672">|</span> CLONE_NEWNET <span style="color:#f92672">|</span> SIGCHLD, NULL);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span>    <span style="color:#75715e">// further init; create a veth pair
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61</span><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>cmd;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62</span><span>    <span style="color:#a6e22e">asprintf</span>(<span style="color:#f92672">&amp;</span>cmd, <span style="color:#e6db74">&#34;ip link set veth1 netns %d&#34;</span>, child_pid);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip link add veth0 type veth peer name veth1&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64</span><span>    <span style="color:#a6e22e">system</span>(cmd);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65</span><span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip link set veth0 up&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66</span><span>    <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ip addr add 192.168.0.1/24 dev veth0&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67</span><span>    <span style="color:#a6e22e">free</span>(cmd);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69</span><span>    <span style="color:#75715e">// single &#34;done&#34;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70</span><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">close</span>(checkpoint[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71</span><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt; signal done&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73</span><span>    <span style="color:#a6e22e">waitpid</span>(child_pid, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75</span><span>}
+</span></span></code></pre></div><blockquote>
+<p><strong>NC command</strong></p>
+<p>use for network test</p>
+<p><strong>C primitive</strong></p>
+</blockquote>
+<h2 id="veth-pair">Veth Pair</h2>
+<p>The <strong>principle</strong> of Veth Pair is that put data into one side of the veth pair, and get out from another side.</p>
+<h3 id="the-kernel-code-if-veth-pair">The kernel code if veth pair</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"></code></pre></div><h3 id="relationship-between-container-and-veth-pair">Relationship between container and veth pair</h3>
+<p>The typical model of the container network is veth pair + bridge. The interface in the container <code>eth0</code> is a peer of the host veth interface. So, how to find which is the peer interface?</p>
+<p><strong>Method 1:</strong></p>
+<p>First, in the target container find that,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>cat /sys/class/net/eth0/iflink
+</span></span></code></pre></div><p>And then check all the files on the host <code>/sys/class/net/</code>,check the <code>ifindex </code>value which is the same as the <code>iflink</code>.  The interface with the same value is another side of the veth pair.</p>
+<p><strong>Method 2</strong></p>
+<h2 id="linux-bridge">Linux Bridge</h2>
+<h3 id="what-is-linux-bridge">What is Linux Bridge</h3>
+<p>Create and Manage the Linux Bridge</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ip link add name br0 type bridge
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>ip link set br0 up
+</span></span></code></pre></div><p>Besides the <code>ip</code> command, we can use the <code>brctl</code> tool in the <code>bridge-utils</code> package to create a bridge.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>brctl addr br0 
+</span></span></code></pre></div>
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/linux/network_virtualization.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#network-namespace">Network Namespace</a>
+      <ul>
+        <li><a href="#network-namespace-overview">Network Namespace Overview</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#network-namespace-api">Network Namespace API</a>
+          <ul>
+            <li><a href="#create-namespace-through-clone">Create namespace through clone()</a></li>
+            <li><a href="#keep-namespace-existing">Keep namespace existing</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#veth-pair">Veth Pair</a>
+      <ul>
+        <li><a href="#the-kernel-code-if-veth-pair">The kernel code if veth pair</a></li>
+        <li><a href="#relationship-between-container-and-veth-pair">Relationship between container and veth pair</a></li>
+      </ul>
+    </li>
+    <li><a href="#linux-bridge">Linux Bridge</a>
+      <ul>
+        <li><a href="#what-is-linux-bridge">What is Linux Bridge</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

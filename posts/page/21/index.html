@@ -1,41 +1,554 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/linux/network_command/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Linux Network Command</h5><p class="card-text post-summary">nc Netcat(or nc) is a command-line utility that reads and write data across network connections, using the TCP or UDP protocols. It is one of the most powerful tools in the network and system administrators arsenal, and it as considered as a Swiss army knife of networking tools.
-Netcat is cross-platform, and it&rsquo;s available for Linux, macOS, Windows , and BSD. You can use Netcat to debug and monitor network connections, scan for open ports, transfer data, as a proxy and more.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/network_command/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/linux_socket/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Linux socket</h5><p class="card-text post-summary">Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
-1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/linux_socket/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/Mac_init/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Mac Init</h5><p class="card-text post-summary">HomeBrew 1/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 1brew install wget 2 3brew install go Software Chrome
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_command/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux Network Command</h5>
+        <p class="card-text post-summary">nc Netcat(or nc) is a command-line utility that reads and write data across network connections, using the TCP or UDP protocols. It is one of the most powerful tools in the network and system administrators arsenal, and it as considered as a Swiss army knife of networking tools.
+Netcat is cross-platform, and it&rsquo;s available for Linux, macOS, Windows , and BSD. You can use Netcat to debug and monitor network connections, scan for open ports, transfer data, as a proxy and more.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_command/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/linux_socket/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Linux socket</h5>
+        <p class="card-text post-summary">Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
+1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/linux_socket/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/Mac_init/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Mac Init</h5>
+        <p class="card-text post-summary">HomeBrew 1/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34; 1brew install wget 2 3brew install go Software Chrome
 Typora
 Istat Menus
 Alfred
 Dash
 Wireshark
 Sublime
-Modify Keys settings -> Keyboard -> modifyKeys
-Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &lt;&lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &lt;ESC> 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12" show existing tab with 4 spaces width 13set tabstop=4 14" when indenting with '>', use 4 spaces width 15set shiftwidth=4 16" On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c "$(wget https://raw.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/Mac_init/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/linux_make/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Make</h5><p class="card-text post-summary">The marker - means ignore the err of this line command
-@ only prints the result of command.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/linux_make/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/multi-cluster/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Multi-Cluster Kubernetes</h5><p class="card-text post-summary">What is Multi-Clusters Multi-cluster Kubernetes is a kubernetes deployments method that consists of to or more clusters. This deployment method is highly flexible. You can have clusters on the same physical host or different hosts in the same data center. You can also create a multi-cloud environment with clusters living in different clouds and even in different countries.
+Modify Keys settings -&gt; Keyboard -&gt; modifyKeys
+Tools 1apt install vim git tmux golang Vim 1# ~/.vimrc 2cat &lt;&lt;EOF| tee -a ~/.vimrc 3set nu 4syntax on 5inoremap jj &lt;ESC&gt; 6 7 8set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 9set termencoding=utf-8 10set encoding=utf-8 11 12&#34; show existing tab with 4 spaces width 13set tabstop=4 14&#34; when indenting with &#39;&gt;&#39;, use 4 spaces width 15set shiftwidth=4 16&#34; On pressing tab, insert 4 spaces 17set expandtab 18 19EOF oh my zsh 1sudo apt install zsh 2sh -c &#34;$(wget https://raw.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/Mac_init/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/linux_make/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Make</h5>
+        <p class="card-text post-summary">The marker - means ignore the err of this line command
+@ only prints the result of command.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/linux_make/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/multi-cluster/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Multi-Cluster Kubernetes</h5>
+        <p class="card-text post-summary">What is Multi-Clusters Multi-cluster Kubernetes is a kubernetes deployments method that consists of to or more clusters. This deployment method is highly flexible. You can have clusters on the same physical host or different hosts in the same data center. You can also create a multi-cloud environment with clusters living in different clouds and even in different countries.
 cluster network connections: https://submariner.io/getting-started/
 https://isovalent.com/data/multi-cluster-ebook.pdf
 Multi clusters server deployment: https://github.com/karmada-io/karmada
 https://github.com/clusternet/clusternet
-Submariner Submariner allows pods to directly communicate between Kubernetes clusters</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/multi-cluster/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/nodus-architecture/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Nodus</h5><p class="card-text post-summary">Image ovn4nfv-k8s-plugin NFN-Operator Exposes virtual, provider chaning CRDs to external world Programs OVN to create L2 switch Watches for PODs being coming up Assigns IP address ofr every network of the deployments Looks for replics and auto create routes for chaning to work Create LBs for distributing the load across CNF replicas OVN4NFV NFN-Agent Performs CNI operations Configuration VLAN and Routes in Linux Kernel(in case of ruotes, it cloud do it in both root and network namespace) Communicates with OVSDB to inform og provider interface.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/nodus-architecture/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/nodus-dev/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Nodus Dev Note</h5><p class="card-text post-summary">SFC for IPV6 vagrant file updte:
+Submariner Submariner allows pods to directly communicate between Kubernetes clusters</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/multi-cluster/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/nodus-architecture/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Nodus</h5>
+        <p class="card-text post-summary">Image ovn4nfv-k8s-plugin NFN-Operator Exposes virtual, provider chaning CRDs to external world Programs OVN to create L2 switch Watches for PODs being coming up Assigns IP address ofr every network of the deployments Looks for replics and auto create routes for chaning to work Create LBs for distributing the load across CNF replicas OVN4NFV NFN-Agent Performs CNI operations Configuration VLAN and Routes in Linux Kernel(in case of ruotes, it cloud do it in both root and network namespace) Communicates with OVSDB to inform og provider interface.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/nodus-architecture/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/nodus-dev/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Nodus Dev Note</h5>
+        <p class="card-text post-summary">SFC for IPV6 vagrant file updte:
 mount a local file to the VM
-1config.vm.synced_folder "/home/ubuntu/qiang/nodus-1.24/SDEWAN-SetUp/", "/home/vagrant/mnt" vagrant version update to 2.2.19
+1config.vm.synced_folder &#34;/home/ubuntu/qiang/nodus-1.24/SDEWAN-SetUp/&#34;, &#34;/home/vagrant/mnt&#34; vagrant version update to 2.2.19
 1vagrant_version=2.2.19 enable ipv4_forward in calico configuration
 update ovn deploy yaml: update image tag, update ovn_subnet
-1 OVN_SUBNET: "10.154.141.0/18" 2OVN_GATEWAYIP: "10.154.141.1/18" 3 4 5 privileged: true 6 mountPropagation: Bidirectional 1apiVersion: k8s.plugin.opnfv.org/v1alpha1 2kind: NetworkChaining 3metadata: 4 name: example-networkchaining 5spec: 6 # Add fields here 7 chainType: "Routing" 8 routingSpec: 9 namespace: "default" 10 networkChain: "net=virtual-net1,app=slb,net=dync-net1,app=ngfw,net=dync-net2,app=sdewan,net=virtual-net2" 11 left: 12 - networkName: "left-pnetwork" 13 gatewayIp: "172.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/nodus-dev/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/OAuth/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>OAuth 2.0</h5><p class="card-text post-summary">OAuth 2.0</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/OAuth/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/sdewan/odms-install/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>ODMS Install</h5><p class="card-text post-summary">Home Page: https://wiki.ith.intel.com/display/ITSODMS/Observability+Data+Management+Suite+Home
+1 OVN_SUBNET: &#34;10.154.141.0/18&#34; 2OVN_GATEWAYIP: &#34;10.154.141.1/18&#34; 3 4 5 privileged: true 6 mountPropagation: Bidirectional 1apiVersion: k8s.plugin.opnfv.org/v1alpha1 2kind: NetworkChaining 3metadata: 4 name: example-networkchaining 5spec: 6 # Add fields here 7 chainType: &#34;Routing&#34; 8 routingSpec: 9 namespace: &#34;default&#34; 10 networkChain: &#34;net=virtual-net1,app=slb,net=dync-net1,app=ngfw,net=dync-net2,app=sdewan,net=virtual-net2&#34; 11 left: 12 - networkName: &#34;left-pnetwork&#34; 13 gatewayIp: &#34;172.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/nodus-dev/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/OAuth/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">OAuth 2.0</h5>
+        <p class="card-text post-summary">OAuth 2.0 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/OAuth/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/odms-install/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">ODMS Install</h5>
+        <p class="card-text post-summary">Home Page: https://wiki.ith.intel.com/display/ITSODMS/Observability+Data+Management+Suite+Home
 [TOC]
 Operator Prometheus-operator https://prometheus-operator.dev/
 https://github.com/prometheus-operator/prometheus-operator
@@ -43,13 +556,85 @@ The prometheus operator manages the Promentheus Clust atop Kubernetes.
 Opentelemetry-operator https://github.com/open-telemetry/opentelemetry-operator
 Kubernetes reflector https://github.com/emberstack/kubernetes-reflector
 Reflector is a Kubernetes addon designed to monitor changes to resources (secrets and configmaps) and reflect changes to mirror resources in the same or other namespaces.
-OpenTelemetry Agent & Gateway Configure by CR opentelemetrycollectors.opentelemetry.io
-Agent collect Metric, Logs, and can add labels or attributes, and finally push the data to the opentelemetry gateway.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/sdewan/odms-install/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/network_openvpn/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>OpenVPN Setup</h5><p class="card-text post-summary">Configuration Server side Server.conf
-1# /etc/openvpn/server/server.conf 2local 10.0.0.230 3port 1194 4proto udp 5dev tun 6ca ca.crt 7cert server.crt 8key server.key 9dh dh.pem 10auth SHA512 11tls-crypt tc.key 12topology subnet 13client-config-dir /etc/openvpn/ccd # bind ip with client name 14route 192.166.0.0 255.255.255.0 # route add to server side 15push "route 192.167.0.0 255.255.255.0" # route add to client side 16server 10.8.0.0 255.255.255.0 17push "redirect-gateway def1 bypass-dhcp" 18ifconfig-pool-persist ipp.txt 19push "dhcp-option DNS 10.0.0.1" 20keepalive 10 120 21cipher AES-256-CBC 22user nobody 23group nogroup 24persist-key 25persist-tun 26verb 4 # log level, 1-11, bigger more details 27crl-verify crl.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/network_openvpn/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/os_memory/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>OS memory</h5><p class="card-text post-summary">What is the maximum size of the stack?
-It depends on your operating system. On Windows, the typical maximum size for a stack is 1MB, whereas it is 8MB on a typical modern Linux, although those values are adjustable in various ways. If the sum of your stack variables (including low-level overhead such as return addresses, stack-based arguments, return value placeholders, and alignment bytes) in the entire call stack exceeds that limit, you get a stack overflow, which typically takes down your program without any chance at recovery.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/os_memory/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/ovn/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>OVN Open virtual Network</h5><p class="card-text post-summary">Open Virtual Network
+OpenTelemetry Agent &amp; Gateway Configure by CR opentelemetrycollectors.opentelemetry.io
+Agent collect Metric, Logs, and can add labels or attributes, and finally push the data to the opentelemetry gateway.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/odms-install/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_openvpn/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">OpenVPN Setup</h5>
+        <p class="card-text post-summary">Configuration Server side Server.conf
+1# /etc/openvpn/server/server.conf 2local 10.0.0.230 3port 1194 4proto udp 5dev tun 6ca ca.crt 7cert server.crt 8key server.key 9dh dh.pem 10auth SHA512 11tls-crypt tc.key 12topology subnet 13client-config-dir /etc/openvpn/ccd # bind ip with client name 14route 192.166.0.0 255.255.255.0 # route add to server side 15push &#34;route 192.167.0.0 255.255.255.0&#34; # route add to client side 16server 10.8.0.0 255.255.255.0 17push &#34;redirect-gateway def1 bypass-dhcp&#34; 18ifconfig-pool-persist ipp.txt 19push &#34;dhcp-option DNS 10.0.0.1&#34; 20keepalive 10 120 21cipher AES-256-CBC 22user nobody 23group nogroup 24persist-key 25persist-tun 26verb 4 # log level, 1-11, bigger more details 27crl-verify crl.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_openvpn/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/os_memory/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">OS memory</h5>
+        <p class="card-text post-summary">What is the maximum size of the stack?
+It depends on your operating system. On Windows, the typical maximum size for a stack is 1MB, whereas it is 8MB on a typical modern Linux, although those values are adjustable in various ways. If the sum of your stack variables (including low-level overhead such as return addresses, stack-based arguments, return value placeholders, and alignment bytes) in the entire call stack exceeds that limit, you get a stack overflow, which typically takes down your program without any chance at recovery.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/os_memory/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/ovn/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">OVN Open virtual Network</h5>
+        <p class="card-text post-summary">Open Virtual Network
 OVN(Open Virtual Network) is a series of daemons for the Open vSwitch that translate virtual network configuration into OpenFlow.
 OVN provides a higher-layer of abstraction than Open vSwitch, working with logical routers and logical switches, rather than flows.
 Why did we choose OVN for Nodus?
@@ -57,14 +642,267 @@ One of the best programmable controller
 Hides OVS complexity
 Broader eco-system
 L2 CNI - Support for unicast, multicast, broadcast applications
-One site level IPAM - No IP address restriction with number of nodes</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/ovn/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/20/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/19/ aria-label="Page 19" class=page-link role=button>19</a></li><li class=page-item><a href=/posts/page/20/ aria-label="Page 20" class=page-link role=button>20</a></li><li class="page-item active"><a aria-current=page aria-label="Page 21" class=page-link role=button>21</a></li><li class=page-item><a href=/posts/page/22/ aria-label="Page 22" class=page-link role=button>22</a></li><li class=page-item><a href=/posts/page/23/ aria-label="Page 23" class=page-link role=button>23</a></li><li class=page-item><a href=/posts/page/22/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+One site level IPAM - No IP address restriction with number of nodes</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/ovn/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/20/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/19/" aria-label="Page 19" class="page-link" role="button">19</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/20/" aria-label="Page 20" class="page-link" role="button">20</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 21" class="page-link" role="button">21</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/22/" aria-label="Page 22" class="page-link" role="button">22</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/23/" aria-label="Page 23" class="page-link" role="button">23</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/22/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

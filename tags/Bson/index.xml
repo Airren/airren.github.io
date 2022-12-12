@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bson on ByteGopher</title><link>https://airren.github.io/tags/Bson/</link><description>Recent content in Bson on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 20 Aug 2020 10:36:54 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Bson/index.xml" rel="self" type="application/rss+xml"/><item><title>「Mongo」Bson vs Json</title><link>https://airren.github.io/posts/component/DataBase/mongo/bson/</link><pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate><guid>https://airren.github.io/posts/component/DataBase/mongo/bson/</guid><description>https://docs.mongodb.com/manual/reference/bson-types/
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bson on ByteGopher</title>
+    <link>https://airren.github.io/tags/Bson/</link>
+    <description>Recent content in Bson on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Aug 2020 10:36:54 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Bson/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「Mongo」Bson vs Json</title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/bson/</link>
+      <pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/bson/</guid>
+      <description>https://docs.mongodb.com/manual/reference/bson-types/
 http://bsonspec.org/
 https://www.mongodb.com/json-and-bson
 https://www.educba.com/json-vs-bson/\
-https://www.geeksforgeeks.org/difference-between-json-and-bson/</description></item></channel></rss>
+https://www.geeksforgeeks.org/difference-between-json-and-bson/</description>
+    </item>
+    
+    
+  </channel>
+</rss>

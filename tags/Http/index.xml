@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Http on ByteGopher</title><link>https://airren.github.io/tags/Http/</link><description>Recent content in Http on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 21 Aug 2020 01:37:37 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Http/index.xml" rel="self" type="application/rss+xml"/><item><title>「HTTP」HTTP 9 种请求方式</title><link>https://airren.github.io/posts/blog/http_request_method/</link><pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate><guid>https://airren.github.io/posts/blog/http_request_method/</guid><description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Http on ByteGopher</title>
+    <link>https://airren.github.io/tags/Http/</link>
+    <description>Recent content in Http on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Aug 2020 01:37:37 +0000</lastBuildDate><atom:link href="https://airren.github.io/tags/Http/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「HTTP」HTTP 9 种请求方式</title>
+      <link>https://airren.github.io/posts/blog/http_request_method/</link>
+      <pubDate>Fri, 21 Aug 2020 01:37:37 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/blog/http_request_method/</guid>
+      <description>HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
 HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
 HTTP特点：
 HTTP是无连接的： 无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。
@@ -7,4 +21,9 @@ HTTP是媒体独立的： 任何数据类型都可以通过HTTP发送，客户�
 Web-Browser &amp;lt;===&amp;gt; HTTP Server &amp;lt;===&amp;gt; CGI(Common GateWay Interface) Program &amp;lt;==&amp;gt;Database
 客户端请求消息 请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成
 服务器响应消息 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
-不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</description></item></channel></rss>
+不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</description>
+    </item>
+    
+    
+  </channel>
+</rss>

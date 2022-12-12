@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes on ByteGopher</title><link>https://airren.github.io/posts/kubernetes/</link><description>Recent content in Kubernetes on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://airren.github.io/posts/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://airren.github.io/posts/kubernetes/k8s_ops_pod/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_ops_pod/</guid><description>从底层技术角度看，Pod内不同容器之间共享存储和一些namespace。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on ByteGopher</title>
+    <link>https://airren.github.io/posts/kubernetes/</link>
+    <description>Recent content in Kubernetes on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/posts/kubernetes/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title></title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_ops_pod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_ops_pod/</guid>
+      <description>从底层技术角度看，Pod内不同容器之间共享存储和一些namespace。
 PID namespace: Pod中不同应用程序看拿到的其他进程的ID。Sidecar 模式下只能看到一个进程？
 Network Namespace: Pod 中的多个容器具有相同的网络配置，共享一个端口范围。
 IPC Namespace： Pod中的多个容器能够使用SystemV IPC 或 POSIX消息队列进行通信。
@@ -17,12 +30,39 @@ kubernetes主机内组网&amp;amp;跨节点组网 kubernetes 经典的主机内�
 跨机通信一般是bridge + overlay。 vxlan
 downward API 通过HostAlias修改pod中的/etc/host(Pod在host network下不支持)
 Pod的隔离中 network namspce 是最先创建的，如果ns使用了host模式，则uts也会使用host模式。
-Pause扮演PID 1的角色，并在子进程成为“孤儿进程”时，通过wait() 收割这些僵尸子进程。</description></item><item><title>client-go</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_3_clinet_go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_3_clinet_go/</guid><description>Client-go The Client Library&amp;ndash; k8s.io/client-go The kubernetes programming interface in Go mainly consists of the k8s.io/client-go library (for brevity we will just call it client-go going foward).
+Pause扮演PID 1的角色，并在子进程成为“孤儿进程”时，通过wait() 收割这些僵尸子进程。</description>
+    </item>
+    
+    <item>
+      <title>client-go</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_3_clinet_go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_3_clinet_go/</guid>
+      <description>Client-go The Client Library&amp;ndash; k8s.io/client-go The kubernetes programming interface in Go mainly consists of the k8s.io/client-go library (for brevity we will just call it client-go going foward).
 k8s.io/client-go is a typical web service client library that supports all API types that are officially part of Kubernetes. It can be used to execute the usual REST verbs.
-Create Get List Update Delete Patch Watch For each Kubernetes 1.x.y release, there is a client-go release with a matching tag kubernetes-1.</description></item><item><title>Device Plugin</title><link>https://airren.github.io/posts/kubernetes/k8s_ops_device_plugin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_ops_device_plugin/</guid><description>GitHub: Intel Device plugins for Kubernetes
+Create Get List Update Delete Patch Watch For each Kubernetes 1.x.y release, there is a client-go release with a matching tag kubernetes-1.</description>
+    </item>
+    
+    <item>
+      <title>Device Plugin</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_ops_device_plugin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_ops_device_plugin/</guid>
+      <description>GitHub: Intel Device plugins for Kubernetes
 Device Plugins Device Plugins
 Use the Kubernetes device plugin framework to implement plugins for GPUs, NICs, FPGAs, InfiniBand, and similar resources that require vendor-specific setup.
-Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</description></item><item><title>K8s network</title><link>https://airren.github.io/posts/kubernetes/k8s_ops_network/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_ops_network/</guid><description>容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
+Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</description>
+    </item>
+    
+    <item>
+      <title>K8s network</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_ops_network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_ops_network/</guid>
+      <description>容器网络 每一个容器都可以有一个自己独立的网络栈，这个独立的网络栈是基于Linux的Network Namespace实现的。
 这个独立的网络栈包含了： Network Interface、Loopback Device、Routing Table和IPtables规则。对于一个进程来说，这些要素就构成了它发起和响应网络请求的基本环境。
 容器可以使用自己独立的网络栈(创建属于自己的Network Namespace)，也可以直接使用Host的网络栈(不创建Network Namespace)。
 1# Uset -net=host to share the host network 2docker run -d -net=host --name nginx-host nginx 直接使用Host的网络栈可以提供良好的网络性能，但是不可避免的会引入网络资源共享的问题，比如端口冲突。大多数应用场景下，我们希望容器能够有自己独立的IP地址和端口，即有自己独立的Namespace。
@@ -30,16 +70,70 @@ Instead of customizing the code for Kubernetes itself, vendors can implements a 
 一般我们如果希望两台主机之间的通信，直接用网线把这两台主机连接起来即可；而如果是多台主机之间通信我们可以将其连接在同一台交换机上。
 在Linux系统中，能够起到虚拟交换机作用的虚拟网络设备是Bridge，是二层网络设备。主要功能是根据MAC地址来将数据包转发到网桥的不同Port上。
 为了实现上述目的，docker项目会在Host上创建一个docker0的网桥，凡是连接在docker0网桥上的容器，就相当于在同一个二层网络。
-接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</description></item><item><title>K8s 源码阅读 4</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_client/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_client/</guid><description>Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
+接下来就是如何把容器连接到docker0网桥上，这就需要veth pair的虚拟设备了。veth pair创建出来以后总是以两张虚拟网卡veth peer的形式成对出现的。并且从其中一个peer发出的数据包可以直接出现在与之对应的另一个peer上，即使veth pair的两端不在同一个Network Namespace 中。因此，veth pair常常用作连接不同Network Namespace的网线。</description>
+    </item>
+    
+    <item>
+      <title>K8s 源码阅读 4</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_client/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_client/</guid>
+      <description>Short Names and Categories Like native resources, custom resources might have long resources names. CRs can have short names as well.
 Again, kubectl learns about short names via discovery information.
-1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4 name: ats.cnat.programming-kubernetes.info 5spec: 6 ... 7 shortNames: 8 - at Further, CRs&amp;ndash;as any other resources&amp;ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</description></item><item><title>K8s 源码阅读 6 Solutions for Writing Operators</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_operator_kubebuilder/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_operator_kubebuilder/</guid><description>Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&amp;ndash;form PhasePending to PhaseRuning to PhaseDone&amp;ndash;in controller.go.
+1apiVersion: apiextensions.k8s.io/v1beta1 2kind: CustomResourcesDefinition 3metadata: 4	name: ats.cnat.programming-kubernetes.info 5spec: 6	... 7	shortNames: 8	- at Further, CRs&amp;ndash;as any other resources&amp;ndash;can be part of categories. The most common use is the all category, as in kubectl get all. Is lists all user-facing resources in a cluster, like pods and services.</description>
+    </item>
+    
+    <item>
+      <title>K8s 源码阅读 6 Solutions for Writing Operators</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_operator_kubebuilder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_operator_kubebuilder/</guid>
+      <description>Following sample-controller Bootstraping Business Logic We are now in the position to implement the business logic of the custom controller. That is, we implement the state transitions between the three phases&amp;ndash;form PhasePending to PhaseRuning to PhaseDone&amp;ndash;in controller.go.
 processNextWorkItem() processNextWorkItem() bool will read a single work item off the workquque and attempt to process it, by calling the syncHandler.
-1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</description></item><item><title>K8s 源码阅读7</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_operator_release/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_operator_release/</guid><description>In this chapter we&amp;rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&amp;rsquo;t break your Kubernetes cluster, security, or performance-wise.
+1func (c *Controller) processNextWorkItem() bool{ 2 obj, shutdowon := c.workqueue.Get() 3 4 if shutdown{ 5 return false 6 } 7 8 // We wrap this block in a func so we can defer c.</description>
+    </item>
+    
+    <item>
+      <title>K8s 源码阅读7</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_operator_release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_operator_release/</guid>
+      <description>In this chapter we&amp;rsquo;ll discuss the operational aspects of controllers and operators, showing you how to package them, walking you through best practices for running controllers in production, and making sure that your extension points don&amp;rsquo;t break your Kubernetes cluster, security, or performance-wise.
 Lifecycle Management and Packaging Let&amp;rsquo;s start with the low-hanging fruit: packaging and delivering your controllers so that a user can install it in a straightforward manner.
-Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</description></item><item><title>Kubernetes API Basic</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_2_api_server/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_2_api_server/</guid><description>Controller and Operator In this section you&amp;rsquo;ll learn about controllers and operators in Kubernetes and how they work.
+Packaging: The Challenge While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes API Basic</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_2_api_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_2_api_server/</guid>
+      <description>Controller and Operator In this section you&amp;rsquo;ll learn about controllers and operators in Kubernetes and how they work.
 The API server has the following core responsibilities:
-To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</description></item><item><title>User Kuberbuilder to create a CRD operator</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_1_env/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_1_env/</guid><description>Develop Environment Kind kind is a tool for running local Kubernetes clusters using Docker container &amp;ldquo;nodes&amp;rdquo;. kind was primarily designed for testing Kubernetes itself but may be used for local development or CI.
-1kind load docker-image --name &amp;lt;kind-cluster-name&amp;gt; --nodes &amp;lt;node-name&amp;gt; &amp;lt;image-name&amp;gt;:latest Certmangaer 1helm repo add jetstack https://charts.jetstack.io 2helm repo update 3helm install \ 4 cert-manager jetstack/cert-manager \ 5 --namespace cert-manager \ 6 --create-namespace \ 7 --version v1.10.1 \ 8 --set installCRDs=true Question</description></item><item><title>怎么成为K8s的Contributor</title><link>https://airren.github.io/posts/kubernetes/k8s_dev_0_contributer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/kubernetes/k8s_dev_0_contributer/</guid><description>Important Doc
+To serve the Kubernetes API. This API is used cluster-internally by the master components, the worker nodes, and you Kubernetes-native apps, as well as externally by clients such as kubectl. To proxy cluster components, such as the Kubernetes dashboard, or stream logs, services ports, or serve kubectl exec sessions.</description>
+    </item>
+    
+    <item>
+      <title>User Kuberbuilder to create a CRD operator</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_1_env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_1_env/</guid>
+      <description>Develop Environment Kind kind is a tool for running local Kubernetes clusters using Docker container &amp;ldquo;nodes&amp;rdquo;. kind was primarily designed for testing Kubernetes itself but may be used for local development or CI.
+1kind load docker-image --name &amp;lt;kind-cluster-name&amp;gt; --nodes &amp;lt;node-name&amp;gt; &amp;lt;image-name&amp;gt;:latest Certmangaer 1helm repo add jetstack https://charts.jetstack.io 2helm repo update 3helm install \ 4 cert-manager jetstack/cert-manager \ 5 --namespace cert-manager \ 6 --create-namespace \ 7 --version v1.10.1 \ 8 --set installCRDs=true Question</description>
+    </item>
+    
+    <item>
+      <title>怎么成为K8s的Contributor</title>
+      <link>https://airren.github.io/posts/kubernetes/k8s_dev_0_contributer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/kubernetes/k8s_dev_0_contributer/</guid>
+      <description>Important Doc
 Contributor Cheat Sheet 加入SIG SIG(Special Interest Groups) 是Kubernetes社区中关注特定模块的永久组织。
 作为刚参与社区的开发者，可以从sig/app, sig/node, sig/scheduling 这几个SIG开始。
 KEP KEP(Kubernetes Enhancement Proposal)。对于功能和API的修改都需要先在kubernetes/enhancements仓库对应SIG的目录下提交Proposal才能实施。所有的Proposal都必须经过讨论，通过社区SIG Leader的批准。
@@ -63,4 +157,9 @@ Go 语言的开发规范、分布式社区的治理方式
 代码需要每天都看，留出专门的时间来查看Kubernetes的源码，对它的核心组件的实现看看，构建一下, 测试一下，修一下Bug，typo等。
 一般半年之后，你就可以熟悉基础项目，并且开始贡献代码。
 当你已经和团队协作的很熟悉，就会自然承接一些子任务，然后团队就会赋予你写的权限，这样就可以顺理成章的成为Kubernetes的committer。这个时候你就是这个子项目的maintainer了
-TODO 加入 Kubenetes Slack Channle 加入邮件列表 加入SIG 参加社区会议 提issue 如何提交PR</description></item></channel></rss>
+TODO 加入 Kubenetes Slack Channle 加入邮件列表 加入SIG 参加社区会议 提issue 如何提交PR</description>
+    </item>
+    
+    
+  </channel>
+</rss>

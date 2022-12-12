@@ -1,14 +1,359 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/sdewan/clusternet/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>clusternet</h5><p class="card-text post-summary">Cluster Net Test Environment Access method 1# this machine is out of intel, please use the socks proxy: 2# proxy-prc.intel.com:1080 3# use this private key to access this the relay machine: 4# first login to 5ssh -p 3302 airren@124.223.99.93 # passwd: 123- 6# next login to 7ssh airren@node-1 # passwd:123- PreRequisites Kind Create cluster
-1# create cluster one node 2 3 4# create cluster multinode 5 6# create cluster with configuration Delete cluster</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/sdewan/clusternet/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/k8s-network-cni/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>CNI Container Networking Interface</h5><p class="card-text post-summary">Docker CNM What is CNI?
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/clusternet/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">clusternet</h5>
+        <p class="card-text post-summary">Cluster Net Test Environment Access method 1# this machine is out of intel, please use the socks proxy: 2# proxy-prc.intel.com:1080 3# use this private key to access this the relay machine: 4# first login to 5ssh -p 3302 airren@124.223.99.93 # passwd: 123- 6# next login to 7ssh airren@node-1 # passwd:123- PreRequisites Kind Create cluster
+1# create cluster one node 2 3 4# create cluster multinode 5 6# create cluster with configuration Delete cluster</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/clusternet/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/k8s-network-cni/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">CNI Container Networking Interface</h5>
+        <p class="card-text post-summary">Docker CNM What is CNI?
 How CNI plugin works?
 What a CNI plugin is made of?
 How a CNI plugin is being used in K8s?
@@ -18,60 +363,553 @@ What is CNI CNI stands for Container Networking Interface
 An interface between container runtime and the network implementation
 Configure the network interfaces and routes
 Concern itself only with the netwrok connectivity.
-How CNI plugin works? A CNI binary Handle connectivity - configures the network interface of the Pod /opt/cni/bin A daemon Handle reachability - manager routings across the cluster What a CNI plugin is made of ?</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/k8s-network-cni/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/openwrt_cross_compile/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>cross complile</h5><p class="card-text post-summary">openWRT Cross compile 1export STAGING_DIR=/home/airren/openwrt/staging_dir/toolchain-x86_64_gcc-8.4.0_musl 2 3 4export TOOLCHAIN_DIR=$STAGING_DIR 5export TOOLCHAIN_PATH=$TOOLCHAIN_DIR/bin 6export CXX=$TOOLCHAIN_PATH/g++-uc 7export AR=$TOOLCHAIN_PATH/x86_64-openwrt-linux-musl-ar 8export CXXFLAGS="-O2" 9 10 11export CROSSCOMPILE_PATH=$TOOLCHAIN_DIR/usr 12# export CFLAGS="-I$CROSSCOMPILE_PATH/jhhhhinclude" 13 14 15export LDCFLAGS="-L$TOOLCHAIN_DIR/usr/lib -lz" 16export LD_LIBRARY_PATH=$TOOLCHAIN_DIR/usr/lib 17export PATH=$TOOLCHAIN_PATH:$PATH 1./autogen.sh --build=x86_64-pc-linux-gnu --host=i486-openwrt-linux 2./autogen.sh --build=x86_64-pc-linux-gnu --host=x86_64-openwrt-linux 3 4make CC=i486-openwrt-linux-gcc LD=i486-openwrt-linux-ld 5make CC=x86_64-openwrt-linux-gcc LD=x86_64-openwrt-linux-ld build openwrt in a docker
-1apt update 2apt install -y git wget build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev 3 4apt update 5apt install build-essential ccache ecj fastjar file g++ gawk \ 6gettext git java-propose-classpath libelf-dev libncurses5-dev \ 7libncursesw5-dev libssl-dev python python2.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/openwrt_cross_compile/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/component/deployment/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Deploy essential components by Docker</h5><p class="card-text post-summary">K8sStudy:
+How CNI plugin works? A CNI binary Handle connectivity - configures the network interface of the Pod /opt/cni/bin A daemon Handle reachability - manager routings across the cluster What a CNI plugin is made of ?</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/k8s-network-cni/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/openwrt_cross_compile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">cross complile</h5>
+        <p class="card-text post-summary">openWRT Cross compile 1export STAGING_DIR=/home/airren/openwrt/staging_dir/toolchain-x86_64_gcc-8.4.0_musl 2 3 4export TOOLCHAIN_DIR=$STAGING_DIR 5export TOOLCHAIN_PATH=$TOOLCHAIN_DIR/bin 6export CXX=$TOOLCHAIN_PATH/g++-uc 7export AR=$TOOLCHAIN_PATH/x86_64-openwrt-linux-musl-ar 8export CXXFLAGS=&#34;-O2&#34; 9 10 11export CROSSCOMPILE_PATH=$TOOLCHAIN_DIR/usr 12# export CFLAGS=&#34;-I$CROSSCOMPILE_PATH/jhhhhinclude&#34; 13 14 15export LDCFLAGS=&#34;-L$TOOLCHAIN_DIR/usr/lib -lz&#34; 16export LD_LIBRARY_PATH=$TOOLCHAIN_DIR/usr/lib 17export PATH=$TOOLCHAIN_PATH:$PATH 1./autogen.sh --build=x86_64-pc-linux-gnu --host=i486-openwrt-linux 2./autogen.sh --build=x86_64-pc-linux-gnu --host=x86_64-openwrt-linux 3 4make CC=i486-openwrt-linux-gcc LD=i486-openwrt-linux-ld 5make CC=x86_64-openwrt-linux-gcc LD=x86_64-openwrt-linux-ld build openwrt in a docker
+1apt update 2apt install -y git wget build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev 3 4apt update 5apt install build-essential ccache ecj fastjar file g++ gawk \ 6gettext git java-propose-classpath libelf-dev libncurses5-dev \ 7libncursesw5-dev libssl-dev python python2.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/openwrt_cross_compile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/deployment/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Deploy essential components by Docker</h5>
+        <p class="card-text post-summary">K8sStudy:
 Docker Node: Jenkins, Mysql, casbin_allinone, portioner,hemidall (1 node 4 core, 8G)
 ODMS with NFS. (3 node, 1 NFS node)
 K8s node for CNI study
 K8s node for others, DPDK?
 Dev node for source code and dev
 move Openwrt and VM to a same node
-Application Casdoor 1docker run -d --restart=always --name casdoor \ 2-p 8001:8000 \ 3casbin/casdoor-all-in-one Heimdall 1docker volume create heimdall 2docker run -d --restart unless-stopped --name=heimdall \ 3-e PUID=1000 -e PGID=1000 -e TZ=Europe/London \ 4-p 8086:80 -p 8463:443 \ 5-v heimdall:/config \ 6linuxserver/heimdall:latest CI&CD Jenkins 1docker volume create jenkins_data 2docker run -d --restart=always --name jenkins \ 3-u 0 --privileged \ 4-p 8080:8080 -p 50000:50000 \ 5-v jenkins_data:/var/jenkins_home \ 6-v /var/run/docker.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/component/deployment/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/kubernetes/k8s_ops_device_plugin/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Device Plugin</h5><p class="card-text post-summary">GitHub: Intel Device plugins for Kubernetes
+Application Casdoor 1docker run -d --restart=always --name casdoor \ 2-p 8001:8000 \ 3casbin/casdoor-all-in-one Heimdall 1docker volume create heimdall 2docker run -d --restart unless-stopped --name=heimdall \ 3-e PUID=1000 -e PGID=1000 -e TZ=Europe/London \ 4-p 8086:80 -p 8463:443 \ 5-v heimdall:/config \ 6linuxserver/heimdall:latest CI&amp;CD Jenkins 1docker volume create jenkins_data 2docker run -d --restart=always --name jenkins \ 3-u 0 --privileged \ 4-p 8080:8080 -p 50000:50000 \ 5-v jenkins_data:/var/jenkins_home \ 6-v /var/run/docker.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/component/deployment/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/kubernetes/k8s_ops_device_plugin/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Device Plugin</h5>
+        <p class="card-text post-summary">GitHub: Intel Device plugins for Kubernetes
 Device Plugins Device Plugins
 Use the Kubernetes device plugin framework to implement plugins for GPUs, NICs, FPGAs, InfiniBand, and similar resources that require vendor-specific setup.
-Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/kubernetes/k8s_ops_device_plugin/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Docker/docker_build_image/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Docker Images</h5><p class="card-text post-summary">镜像仓库 Linux 本地镜像仓库：/var/lib/docker/image
+Instead of customizing the code for Kubernetes itself, vendors can implements a device plugin that you deploy either manually or as a DaemonSet. The targeted device include GPUs, high-performance NICs, FPGAs, InfiniBand adapters, and other similar computing resources that may require vendor specific initialization and setup.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/kubernetes/k8s_ops_device_plugin/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/docker_build_image/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Docker Images</h5>
+        <p class="card-text post-summary">镜像仓库 Linux 本地镜像仓库：/var/lib/docker/image
 镜像应该是分层存储的。
 Docker images 是存储在镜像仓库服务Images Registry。Docker 客户端的镜像仓库服务是可配置的，默认使用的是Docker Hub。
 镜像仓库服务包含多个镜像仓库 Image Repository（同一个镜像的不同版本）。一个镜像仓库中包含多个镜像Image。
 Docker Hub 也分为Official Repository 和 Unofficial Repository。
-1docker pull &lt;repository>:&lt;tag> 2// 如果省略tag默认会pull tag 为 latest的image。但是latest并不保证这是仓库中最新的镜像。 如果希望从第三方镜像服务仓库获取镜像(not Docker Hub)，则需要在镜像仓库名称前加上第三方镜像仓库服务的DNS名称。
-1# gcr.io -> Google Container Images Registry. 2docker pull gcr.io/k8s-staging-nfd/node-feature-discovery:master Image Tag 不同的Images Tag可以绑定同一个Image ID
+1docker pull &lt;repository&gt;:&lt;tag&gt; 2// 如果省略tag默认会pull tag 为 latest的image。但是latest并不保证这是仓库中最新的镜像。 如果希望从第三方镜像服务仓库获取镜像(not Docker Hub)，则需要在镜像仓库名称前加上第三方镜像仓库服务的DNS名称。
+1# gcr.io -&gt; Google Container Images Registry. 2docker pull gcr.io/k8s-staging-nfd/node-feature-discovery:master Image Tag 不同的Images Tag可以绑定同一个Image ID
 通过--filter 来过滤docker image ls 返回的内容
-1docker image ls --filter dangling=true dangling image -> with out name & tag :.
-通常因为构建新的镜像，为该镜像打了一个已经存在的标签。Docker会remove old image上的标签，将该标签标在新Image上。Old Image 就会变成 dangling image。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Docker/docker_build_image/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Docker/docker_networking/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Docker networking</h5><p class="card-text post-summary">Docker networking is based on an open-source pluggable architecture called the Container Network Model(CNM). libnetwork is Docker&rsquo;s real-work implementation of the CNM, adn it provides all of the Docker&rsquo;s core networking capabilities. Drivers plug into libnework to provide specifice network topologies.
+1docker image ls --filter dangling=true dangling image -&gt; with out name &amp; tag :.
+通常因为构建新的镜像，为该镜像打了一个已经存在的标签。Docker会remove old image上的标签，将该标签标在新Image上。Old Image 就会变成 dangling image。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/docker_build_image/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Docker/docker_networking/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Docker networking</h5>
+        <p class="card-text post-summary">Docker networking is based on an open-source pluggable architecture called the Container Network Model(CNM). libnetwork is Docker&rsquo;s real-work implementation of the CNM, adn it provides all of the Docker&rsquo;s core networking capabilities. Drivers plug into libnework to provide specifice network topologies.
 The theory At the highest level, Docker networking comprise three major components.
-Single-host bridge network</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Docker/docker_networking/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/docker_dockerfile/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Dockerfile</h5><p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
-1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD ["executable","param1","param2"] EntryPoint 和CMD都可以在执行的时候被覆盖。
+Single-host bridge network </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Docker/docker_networking/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/docker_dockerfile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Dockerfile</h5>
+        <p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
+1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
 组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
-1FROM ubuntu:trusty 2ENTRYPOINT ["/bin/ping","-c","3"] 3CMD ["localhost"] docker 会把CMD的命令拼接到Entrypoint之后</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/docker_dockerfile/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/linux-ubuntu-lvm/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Extend Disk Space without shutdown</h5><p class="card-text post-summary">We have a sever for code test, but with the test case growth, the Disk space is not enough for use.
+1FROM ubuntu:trusty 2ENTRYPOINT [&#34;/bin/ping&#34;,&#34;-c&#34;,&#34;3&#34;] 3CMD [&#34;localhost&#34;] docker 会把CMD的命令拼接到Entrypoint之后</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/docker_dockerfile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/linux-ubuntu-lvm/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Extend Disk Space without shutdown</h5>
+        <p class="card-text post-summary">We have a sever for code test, but with the test case growth, the Disk space is not enough for use.
 Fortunately, we use ubuntu LVM to manage the Disk.
 1fdisk /dev/sdb 1pvdisplay https://gyazo.com/40b3c078d6bb755f9cca318b3c28b2cf
 1vgextend ubuntu-vg /dev/sdc1 1vgdisplay 1lvdisplay 1lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv 2resize2fs /dev/ubuntu-vg/ubuntu-lv Multipass extend VM disk size.
-Multipass uses qemu to create the VM instance. So you can modify the qemu image manually to change the VM disk size.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/linux-ubuntu-lvm/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Linux/free/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>free命令</h5><p class="card-text post-summary">type desc total physical mem used used = total- free-buffers-cache free Free/Unused memory shared It is here only for backward comopatibility buff/cache The combined memory used by the kernel buffers and page cache ans slabs. This memory can be reclaimed at any time if needed by the applicaitons. If you want buffers and cache to displayed in two separate columns, use -w options. available An estimate of the amount of memory that is availablew for starting new applications, without swaping.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Linux/free/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Linux/git/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Git</h5><p class="card-text post-summary">1# git cache user and passwd 2git config --global credential.helper cache</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Linux/git/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/0_go_assambely/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go Assembly</h5><p class="card-text post-summary">Golang的汇编是基于Plan9的的汇编，是一个中间汇编的方式，这样可以忽略底层CPU架构的差别。
+Multipass uses qemu to create the VM instance. So you can modify the qemu image manually to change the VM disk size.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/linux-ubuntu-lvm/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/free/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">free命令</h5>
+        <p class="card-text post-summary">type desc total physical mem used used = total- free-buffers-cache free Free/Unused memory shared It is here only for backward comopatibility buff/cache The combined memory used by the kernel buffers and page cache ans slabs. This memory can be reclaimed at any time if needed by the applicaitons. If you want buffers and cache to displayed in two separate columns, use -w options. available An estimate of the amount of memory that is availablew for starting new applications, without swaping.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/free/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Linux/git/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Git</h5>
+        <p class="card-text post-summary">1# git cache user and passwd 2git config --global credential.helper cache </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Linux/git/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/0_go_assambely/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go Assembly</h5>
+        <p class="card-text post-summary">Golang的汇编是基于Plan9的的汇编，是一个中间汇编的方式，这样可以忽略底层CPU架构的差别。
 汇编主要了解各种寄存器的使用以及寻址方式。根据Golang的汇编我们可以深入理解Golang的底层实现。比如内存如何分配，栈如何扩张，接口如何转变。
 如何从go语言获取对应的汇编
-1go build -gcflags "-N -l" -ldflags=-compressdwarf=false =o main.out main.g 2go tool objdump -s "main.main" main.out > main.S 3# or 4go tool compile -S main.go 5# or 6go build -gcflags -S main.go 汇编基础语法 通用寄存器 寄存器与物理机架构有关，不同的架构有不同的物理寄存器。
+1go build -gcflags &#34;-N -l&#34; -ldflags=-compressdwarf=false =o main.out main.g 2go tool objdump -s &#34;main.main&#34; main.out &gt; main.S 3# or 4go tool compile -S main.go 5# or 6go build -gcflags -S main.go 汇编基础语法 通用寄存器 寄存器与物理机架构有关，不同的架构有不同的物理寄存器。
 在amd64架构上提供了16个通用寄存器给用户使用。
 Plan9汇编语言提供了如下映射，这样就可以在汇编语言中这几应用就可以使用物理寄存器了。
 x64架构中所有的寄存器都是64位
-amd64 Plan9 rax AX rbx BX rcx CX rdx DX rdi DI rsi SI rbp BP rsp SP r8 R8 r9 R9 r10 R10 r11 R11 r12 R12 r13 R13 r14 R14 rip PC 虚拟寄存器 伪寄存器不是真正的寄存器，而是由工具链维护的虚拟寄存器，例如帧指针。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/0_go_assambely/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/17/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/16/ aria-label="Page 16" class=page-link role=button>16</a></li><li class=page-item><a href=/posts/page/17/ aria-label="Page 17" class=page-link role=button>17</a></li><li class="page-item active"><a aria-current=page aria-label="Page 18" class=page-link role=button>18</a></li><li class=page-item><a href=/posts/page/19/ aria-label="Page 19" class=page-link role=button>19</a></li><li class=page-item><a href=/posts/page/20/ aria-label="Page 20" class=page-link role=button>20</a></li><li class=page-item><a href=/posts/page/19/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+amd64 Plan9 rax AX rbx BX rcx CX rdx DX rdi DI rsi SI rbp BP rsp SP r8 R8 r9 R9 r10 R10 r11 R11 r12 R12 r13 R13 r14 R14 rip PC 虚拟寄存器 伪寄存器不是真正的寄存器，而是由工具链维护的虚拟寄存器，例如帧指针。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/0_go_assambely/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/17/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/16/" aria-label="Page 16" class="page-link" role="button">16</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/17/" aria-label="Page 17" class="page-link" role="button">17</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 18" class="page-link" role="button">18</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/19/" aria-label="Page 19" class="page-link" role="button">19</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/20/" aria-label="Page 20" class="page-link" role="button">20</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/19/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

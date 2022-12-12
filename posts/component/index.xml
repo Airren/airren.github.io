@@ -1,23 +1,145 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ByteGopher</title><link>https://airren.github.io/posts/component/</link><description>Recent content on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 09 Sep 2020 01:14:54 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/component/index.xml" rel="self" type="application/rss+xml"/><item><title>post</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</link><pubDate>Wed, 09 Sep 2020 01:14:54 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</guid><description>https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
-https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</description></item><item><title>「ElasticSearch」 ElasticSearch 简单查询</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</link><pubDate>Mon, 07 Sep 2020 20:23:25 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</guid><description>查询语句
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/component/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Sep 2020 01:14:54 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/component/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>post</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</link>
+      <pubDate>Wed, 09 Sep 2020 01:14:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</guid>
+      <description>https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</description>
+    </item>
+    
+    <item>
+      <title>「ElasticSearch」 ElasticSearch 简单查询</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</link>
+      <pubDate>Mon, 07 Sep 2020 20:23:25 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</guid>
+      <description>查询语句
 query bool must exist &amp;ldquo;exists&amp;rdquo;: { &amp;ldquo;field&amp;rdquo;: &amp;ldquo;name&amp;rdquo; } 判断字段是否存在 must_not match &amp;ldquo;match&amp;rdquo;: { &amp;ldquo;tweet&amp;rdquo;: &amp;ldquo;elasticsearch&amp;rdquo; } 匹配字符串中是否包含 should Filter 简单查询 查询某个字段是否存在或者是否为null 1curl -H &amp;#39;Content-type: application/json&amp;#39; -XPOST &amp;#39;http://ip:9200/alert_group/_search&amp;#39; -d 1{ 2 &amp;#34;query&amp;#34;: { 3 &amp;#34;bool&amp;#34;: { 4 &amp;#34;must&amp;#34;: { // must_not 5 &amp;#34;exists&amp;#34;: { 6 &amp;#34;field&amp;#34;: &amp;#34;name&amp;#34; // 必须存在该字段，且该字段不为null 7 } 8 } 9 } 10 } 11} 空查询（empty search） {}在功能上等价于使用 match_all 查询， 正如其名字一样，匹配所有文档：
-1curl -X GET &amp;#34;localhost:9200/_search?pretty&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match_all&amp;#34;: {} 5 } 6} 7&amp;#39; Match 1GET /_search 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match&amp;#34;: { 5 &amp;#34;tweet&amp;#34;: &amp;#34;elasticsearch&amp;#34; 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</description></item><item><title>「Mongo」Bson vs Json</title><link>https://airren.github.io/posts/component/DataBase/mongo/bson/</link><pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate><guid>https://airren.github.io/posts/component/DataBase/mongo/bson/</guid><description>https://docs.mongodb.com/manual/reference/bson-types/
+1curl -X GET &amp;#34;localhost:9200/_search?pretty&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match_all&amp;#34;: {} 5 } 6} 7&amp;#39; Match 1GET /_search 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match&amp;#34;: { 5 &amp;#34;tweet&amp;#34;: &amp;#34;elasticsearch&amp;#34; 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</description>
+    </item>
+    
+    <item>
+      <title>「Mongo」Bson vs Json</title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/bson/</link>
+      <pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/bson/</guid>
+      <description>https://docs.mongodb.com/manual/reference/bson-types/
 http://bsonspec.org/
 https://www.mongodb.com/json-and-bson
 https://www.educba.com/json-vs-bson/\
-https://www.geeksforgeeks.org/difference-between-json-and-bson/</description></item><item><title>「ElasticSearch」ElasticSearch安装</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</link><pubDate>Tue, 18 Aug 2020 00:35:51 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</guid><description>1. Docker 安装ElasticSearch 1docker search elasticsearch 1docker pull elasticsearch # 默认会拉取 latest 版本 2docker pull elasticsearch:6.8.11 # https://hub.docker.com/ 版本查找 3docker images # 查看本地images 1 docker run -d --name elasticserarch_1 -p 9200:9200 -p 9300:9300 elasticsearch:6.8.11 1docker ps 1curl http://devbox:9200/ 2. docker 安装Cerebro 1docker search cerebro # test 1docker pull lmenezes/cerebro 1docker run -d -p 9002:9000 \ 2--restart=unless-stopped \ 3--name cerebro \ 4-v /etc/localtime:/etc/localtime \ 5-v cerebro:/opt/cerebro \ 6-h cerebro \ 7lmenezes/cerebro 86f036de7c87672903c88f6590d40d052e8c7b79767e410e35b1f2162c268b63f docker run 参数说明</description></item><item><title>「Kafka」Kafka安装</title><link>https://airren.github.io/posts/component/MessageQueue/kafka_install/</link><pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate><guid>https://airren.github.io/posts/component/MessageQueue/kafka_install/</guid><description/></item><item><title>「LogStash」LogStash安装</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</link><pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</guid><description/></item><item><title>「Mongo」Mongo golang sdk</title><link>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</link><pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate><guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</guid><description>mongo 基本数据类型 Type bosun.E type E struct { Key string Value interface{} } E represents a BSON element for a D. It is usually used inside a D. bosun.D type D []E D is an ordered representation of a BSON document. This type should be used when the order of the elements matters, // such as MongoDB command documents. If the order of the elements does not matter, an M should be used instead.</description></item><item><title>「TSDB」术语</title><link>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</link><pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</guid><description>RRD(Round Robin Database) RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
-A specialized storage system known as a Round Robin Database allows one to store large amounts of series information such as temperatures, network bandwidth, and stock prices with a constant disk footprint. It does this by taking advantage of changing needs for precision. As we will see later, the &amp;ldquo;round-robin &amp;quot; part comes from the basic data structure used to store data points: circular lists.</description></item><item><title>「HBase」 简介</title><link>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</link><pubDate>Fri, 07 Aug 2020 01:03:42 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</guid><description>HBase 简介 OpensTSDB支持多种底层存储，例如HBase、Cassandra。
+https://www.geeksforgeeks.org/difference-between-json-and-bson/</description>
+    </item>
+    
+    <item>
+      <title>「ElasticSearch」ElasticSearch安装</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</link>
+      <pubDate>Tue, 18 Aug 2020 00:35:51 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</guid>
+      <description>1. Docker 安装ElasticSearch 1docker search elasticsearch 1docker pull elasticsearch # 默认会拉取 latest 版本 2docker pull elasticsearch:6.8.11 # https://hub.docker.com/ 版本查找 3docker images # 查看本地images 1 docker run -d --name elasticserarch_1 -p 9200:9200 -p 9300:9300 elasticsearch:6.8.11 1docker ps 1curl http://devbox:9200/ 2. docker 安装Cerebro 1docker search cerebro # test 1docker pull lmenezes/cerebro 1docker run -d -p 9002:9000 \ 2--restart=unless-stopped \ 3--name cerebro \ 4-v /etc/localtime:/etc/localtime \ 5-v cerebro:/opt/cerebro \ 6-h cerebro \ 7lmenezes/cerebro 86f036de7c87672903c88f6590d40d052e8c7b79767e410e35b1f2162c268b63f docker run 参数说明</description>
+    </item>
+    
+    <item>
+      <title>「Kafka」Kafka安装</title>
+      <link>https://airren.github.io/posts/component/MessageQueue/kafka_install/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/MessageQueue/kafka_install/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>「LogStash」LogStash安装</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>「Mongo」Mongo golang sdk</title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</guid>
+      <description>mongo 基本数据类型 Type bosun.E type E struct { Key string Value interface{} } E represents a BSON element for a D. It is usually used inside a D. bosun.D type D []E D is an ordered representation of a BSON document. This type should be used when the order of the elements matters, // such as MongoDB command documents. If the order of the elements does not matter, an M should be used instead.</description>
+    </item>
+    
+    <item>
+      <title>「TSDB」术语</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</link>
+      <pubDate>Mon, 10 Aug 2020 00:24:13 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/tsdb_argot/</guid>
+      <description>RRD(Round Robin Database) RRD 数据库在创建的时候就已经定义好了大小，当存储空间满了之后，又从头开始覆盖旧的数据，适用于存储和时间序列相关的数据。RRD的大小可控，且不用维护。
+A specialized storage system known as a Round Robin Database allows one to store large amounts of series information such as temperatures, network bandwidth, and stock prices with a constant disk footprint. It does this by taking advantage of changing needs for precision. As we will see later, the &amp;ldquo;round-robin &amp;quot; part comes from the basic data structure used to store data points: circular lists.</description>
+    </item>
+    
+    <item>
+      <title>「HBase」 简介</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</link>
+      <pubDate>Fri, 07 Aug 2020 01:03:42 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/hbase_introduction/</guid>
+      <description>HBase 简介 OpensTSDB支持多种底层存储，例如HBase、Cassandra。
 HBase是分布式列存储系统，其底层依赖HDFS分布式文件系统。HBase是参考Google BigTable模型开发的，本质上是一个典型的KV存储，适用于海量结构化数据的存储。
 HBase的优点：
 集群部署，横向扩展方便 容错性高，相同的数据会复制多份，放到不同的节点上 同等硬件，相比传统数据库支持的数量级高 吞吐能力强，写入量高 不足：
-只支持单行的事务 查询方式： 只能通过RowKey进行查询或者扫描 HBase 和HDFS的关系？ 全面事务</description></item><item><title/><link>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</guid><description>1 docker run -d -p 27017:27017 --name mongo_4_4_2 mongo:4.4.2 mongosh 命令行client https://docs.mongodb.com/mongodb-shell/install
+只支持单行的事务 查询方式： 只能通过RowKey进行查询或者扫描 HBase 和HDFS的关系？ 全面事务 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</guid>
+      <description>1 docker run -d -p 27017:27017 --name mongo_4_4_2 mongo:4.4.2 mongosh 命令行client https://docs.mongodb.com/mongodb-shell/install
 1If you need to have node@14 first in your PATH run: 2 echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/node@14/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.zshrc 3 4For compilers to find node@14 you may need to set: 5 export LDFLAGS=&amp;#34;-L/usr/local/opt/node@14/lib&amp;#34; 6 export CPPFLAGS=&amp;#34;-I/usr/local/opt/node@14/include&amp;#34; mongo doc
-https://mongoing.com/docs/tutorial/query-documents.html</description></item><item><title>「Consul」Consul</title><link>https://airren.github.io/posts/component/MicroService/Consul/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/MicroService/Consul/</guid><description>什么是consul Consul是用来做什么的 服务如何注册到Consul，以及如何进行服务发现 Consul部署 基于docker部署
+https://mongoing.com/docs/tutorial/query-documents.html</description>
+    </item>
+    
+    <item>
+      <title>「Consul」Consul</title>
+      <link>https://airren.github.io/posts/component/MicroService/Consul/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/MicroService/Consul/</guid>
+      <description>什么是consul Consul是用来做什么的 服务如何注册到Consul，以及如何进行服务发现 Consul部署 基于docker部署
 node consul-server server consul-1 client consul-2 client 1docker run -d -p 8500:8500 -e CONSUL_BIND_INTERFACE=eth0 --name consul-server consul:1.9.4 2docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-1 consul:1.9.4 agent -dev -join=172.17.0.13 3docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-2 consul:1.9.4 agent -dev -join=172.17.0.13 4 5# docker stop consul-server consul-1 consul-2 6# docker rm consul-server consul-1 consul-2 Tips： 查看consul-server ip
 1 docker exec -t consul-server ifconfig 可以通过8500端口访问UI
 Server:
-Client:</description></item><item><title>「Grafana」安装使用Grafana</title><link>https://airren.github.io/posts/component/TimeSeries/install_grafana/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/install_grafana/</guid><description>Grafana监控面板 安装
-1docker run -d --name=grafana -p 3000:3000 grafana/grafana</description></item><item><title>「InfluxDB」InfluxDB 安装</title><link>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</guid><description>安装InfluxDB 1docker run --name=influxdb -d -p 8086:8086 influxdb 2docker exec -it influxdb influx InfluxDB Desc 对应数据库 database 数据库 measurement 数据库中的表 point 表中的一行数据 databases
+Client:</description>
+    </item>
+    
+    <item>
+      <title>「Grafana」安装使用Grafana</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/install_grafana/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/install_grafana/</guid>
+      <description>Grafana监控面板 安装
+1docker run -d --name=grafana -p 3000:3000 grafana/grafana </description>
+    </item>
+    
+    <item>
+      <title>「InfluxDB」InfluxDB 安装</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/install_influxdb/</guid>
+      <description>安装InfluxDB 1docker run --name=influxdb -d -p 8086:8086 influxdb 2docker exec -it influxdb influx InfluxDB Desc 对应数据库 database 数据库 measurement 数据库中的表 point 表中的一行数据 databases
 1show databases 2use iaas_metrics 3show measurements 数据查询
 1select * from host_CpuBusy where time &amp;gt; now() -7d order by time limit 10; influx(&amp;ldquo;telegraf&amp;rdquo;, &amp;lsquo;&amp;lsquo;&amp;lsquo;SELECT sum(usage_system) FROM &amp;ldquo;cpu&amp;rdquo; group by &amp;ldquo;host&amp;rdquo; &amp;lsquo;&amp;rsquo;&amp;rsquo;, &amp;ldquo;20m&amp;rdquo;, &amp;ldquo;2m&amp;rdquo;, &amp;ldquo;1m&amp;rdquo;)****
 https://zhuanlan.zhihu.com/p/97247465
@@ -26,7 +148,16 @@ https://www.cnblogs.com/suhaha/p/11692210.html
 https://www.cnblogs.com/suhaha/p/11692210.html
 grafa 配置查询influxdb
 https://ken.io/note/grafana-quickstart-influxdb-datasource-graph
-https://www.jianshu.com/p/f0905f36e9c3</description></item><item><title>「Prom」Prometheus 安装及使用简介</title><link>https://airren.github.io/posts/component/TimeSeries/prom/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/prom/</guid><description>Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
+https://www.jianshu.com/p/f0905f36e9c3</description>
+    </item>
+    
+    <item>
+      <title>「Prom」Prometheus 安装及使用简介</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/prom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/prom/</guid>
+      <description>Prom Intro Prometheus 是SoundCloud开源的系统监控和报警工具集。通过Prometheus可以进行时序数据的采集、监控和报警。
 时序数据模型 Time Series Data Model Metric 是一个对时序指标的统称，例如.：http_requests_total - the total number of HTTP requests received，就可以称为一条Metric
 在Prometheus 中每一个时序序列(time-series)都是由于Metric Name 和Key-Value组成的
 例如：
@@ -34,9 +165,27 @@ https://www.jianshu.com/p/f0905f36e9c3</description></item><item><title>「Prom�
 Label Name: host 和status都属于Label. 在Prometheus中Label Name只能由大小写字母、数字、下划线组成，且不能以数字开头，对应的正则为[a-zA-Z_][a-zA-Z0-9_]*。一般_开头的Labels保留位系统内部使用。
 Notation
 1&amp;lt;Metric Name&amp;gt;{&amp;lt;Label Name&amp;gt;=&amp;lt;Label Value&amp;gt;,...} 2api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} # 同OpenTSDB 3 4node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;} 195721.31 1&amp;lt;--- metric name------&amp;gt;&amp;lt;-----lable set------&amp;gt;&amp;lt;-timestamp -&amp;gt;&amp;lt;-value-&amp;gt; 2node_cpu_seconds_total{cpu=&amp;#34;2&amp;#34;,mode=&amp;#34;system&amp;#34;}@1434417560938 195721.31 3# timestamp 是毫秒级时间戳 4# value 有且只有一个 float64 __ 作为前缀标签，只能在系统内部使用。 Prome底层实现指标名称是以__name__=&amp;lt;metric name&amp;gt;形式存储的，以下两种表达方式是相同的。
-1api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} 2{__name_=api_http_request_total, method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} Component 所有基础组件的安装都基于Docker。</description></item><item><title>「Telegraf」 Telegraf</title><link>https://airren.github.io/posts/component/TimeSeries/telegraph/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/telegraph/</guid><description> Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs.
+1api_http_request_total{method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} 2{__name_=api_http_request_total, method=&amp;#34;POST&amp;#34;, handler=&amp;#34;/messages&amp;#34;} Component 所有基础组件的安装都基于Docker。</description>
+    </item>
+    
+    <item>
+      <title>「Telegraf」 Telegraf</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/telegraph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/telegraph/</guid>
+      <description> Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs.
 Install
-1docker run -d --name telegraf --net=container:influxdb telegraf</description></item><item><title>「TSDB」时序数据&amp;时序数据库简介</title><link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid><description>什么是时序数据？
+1docker run -d --name telegraf --net=container:influxdb telegraf </description>
+    </item>
+    
+    <item>
+      <title>「TSDB」时序数据&amp;时序数据库简介</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/opentsdb_introduction/</guid>
+      <description>什么是时序数据？
 时序数据的应用场景和特征？
 时序数据库？
 时序数据 时序数据，就是与时间强相关度的一系列数据。关注的是某一时刻的数据值，而不是最终的数据。是一个过程而不是一个结果。时序数据描述的是一个数据（指标）在时间维度上的变化。例如： 股票K线、环境监测。
@@ -49,7 +198,16 @@ tags: 一个或者多个tag组合，用户描述metric的不同维度。每个Ta
 value： 表示对应的数值。例如：请求的latency 或者qps等。
 timestamp： 时序数据的具体时间，可以是秒级或者毫秒级别的Unix时间戳。
 例如： JVM_Heap_Memory_Usage_MB{host=127.0.0.1, instanceId=jvm01}
-Downsampling</description></item><item><title>Bosun</title><link>https://airren.github.io/posts/component/TimeSeries/bosun/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/TimeSeries/bosun/</guid><description>Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs. 使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询
+Downsampling</description>
+    </item>
+    
+    <item>
+      <title>Bosun</title>
+      <link>https://airren.github.io/posts/component/TimeSeries/bosun/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/TimeSeries/bosun/</guid>
+      <description>Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs. 使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询
 时序数据的类型 counter
 guage(store)
 Bosun的数据类型 Scalar NumberSet： Group+Scalar Bosun 查询语法 简单查询 查询过去10分钟到过去1分钟之间的时序数据
@@ -61,14 +219,37 @@ OpenTSDB
 1avg(100*q(&amp;#34;avg:1m-avg-zero:store:toutiao.tce.sysprobe.aweme.recommend.predict.cpu.usage.pod{sidecar_psm=ad.qa.java_sidecar,pod_name=dp-cb2f23ec64-6987c9d65d-ds7j5}&amp;#34;,&amp;#34;1h&amp;#34;,&amp;#34;&amp;#34;)/q(&amp;#34;avg:1m-avg:store:toutiao.tce.sysprobe.aweme.recommend.predict.cpu.limit.pod{sidecar_psm=ad.qa.java_sidecar,pod_name=dp-cb2f23ec64-6987c9d65d-ds7j5}&amp;#34;,&amp;#34;1h&amp;#34;,&amp;#34;&amp;#34;)) Streak 连续非0 数据的最大长度
 https://blog.csdn.net/lslxdx/article/details/79454916
 转置
-InfluxDB 1influx(&amp;#34;iaas_metrics&amp;#34;, &amp;#39;&amp;#39;&amp;#39;SELECT sum(value) FROM &amp;#34;host_CpuSystem&amp;#34; group by &amp;#34;resource_id&amp;#34; &amp;#39;&amp;#39;&amp;#39;, &amp;#34;7d&amp;#34;, &amp;#34;2m&amp;#34;, &amp;#34;1m&amp;#34;) Bosun, Time Series, and OpenTSDB&amp;rsquo;s DataModel An introduction to the data model of Bosun&amp;rsquo;s Primary time series backend OpenTSDB.</description></item><item><title>Deploy essential components by Docker</title><link>https://airren.github.io/posts/component/deployment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/deployment/</guid><description>K8sStudy:
+InfluxDB 1influx(&amp;#34;iaas_metrics&amp;#34;, &amp;#39;&amp;#39;&amp;#39;SELECT sum(value) FROM &amp;#34;host_CpuSystem&amp;#34; group by &amp;#34;resource_id&amp;#34; &amp;#39;&amp;#39;&amp;#39;, &amp;#34;7d&amp;#34;, &amp;#34;2m&amp;#34;, &amp;#34;1m&amp;#34;) Bosun, Time Series, and OpenTSDB&amp;rsquo;s DataModel An introduction to the data model of Bosun&amp;rsquo;s Primary time series backend OpenTSDB.</description>
+    </item>
+    
+    <item>
+      <title>Deploy essential components by Docker</title>
+      <link>https://airren.github.io/posts/component/deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/deployment/</guid>
+      <description>K8sStudy:
 Docker Node: Jenkins, Mysql, casbin_allinone, portioner,hemidall (1 node 4 core, 8G)
 ODMS with NFS. (3 node, 1 NFS node)
 K8s node for CNI study
 K8s node for others, DPDK?
 Dev node for source code and dev
 move Openwrt and VM to a same node
-Application Casdoor 1docker run -d --restart=always --name casdoor \ 2-p 8001:8000 \ 3casbin/casdoor-all-in-one Heimdall 1docker volume create heimdall 2docker run -d --restart unless-stopped --name=heimdall \ 3-e PUID=1000 -e PGID=1000 -e TZ=Europe/London \ 4-p 8086:80 -p 8463:443 \ 5-v heimdall:/config \ 6linuxserver/heimdall:latest CI&amp;amp;CD Jenkins 1docker volume create jenkins_data 2docker run -d --restart=always --name jenkins \ 3-u 0 --privileged \ 4-p 8080:8080 -p 50000:50000 \ 5-v jenkins_data:/var/jenkins_home \ 6-v /var/run/docker.</description></item><item><title>安装配置Mysql</title><link>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</guid><description>修改表字段
+Application Casdoor 1docker run -d --restart=always --name casdoor \ 2-p 8001:8000 \ 3casbin/casdoor-all-in-one Heimdall 1docker volume create heimdall 2docker run -d --restart unless-stopped --name=heimdall \ 3-e PUID=1000 -e PGID=1000 -e TZ=Europe/London \ 4-p 8086:80 -p 8463:443 \ 5-v heimdall:/config \ 6linuxserver/heimdall:latest CI&amp;amp;CD Jenkins 1docker volume create jenkins_data 2docker run -d --restart=always --name jenkins \ 3-u 0 --privileged \ 4-p 8080:8080 -p 50000:50000 \ 5-v jenkins_data:/var/jenkins_home \ 6-v /var/run/docker.</description>
+    </item>
+    
+    <item>
+      <title>安装配置Mysql</title>
+      <link>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</guid>
+      <description>修改表字段
 1# 新增一个字段 2alert table rules add effect_time mysql sql 8.0 认证问题
 connect to 10.227.4.115:3306 err: this authentication plugin is not supported
-1alter user root@% identified with mysql_native_password by &amp;#34;123456&amp;#34; 1CREATE DATABASE IF NOT EXISTS echo_bio DEFAULT CHARSET utf8 COLLATE utf8_general_ci; 2CREATE DATABASE IF NOT EXISTS echo_bio_jira DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</description></item></channel></rss>
+1alter user root@% identified with mysql_native_password by &amp;#34;123456&amp;#34; 1CREATE DATABASE IF NOT EXISTS echo_bio DEFAULT CHARSET utf8 COLLATE utf8_general_ci; 2CREATE DATABASE IF NOT EXISTS echo_bio_jira DEFAULT CHARSET utf8 COLLATE utf8_general_ci; </description>
+    </item>
+    
+    
+  </channel>
+</rss>

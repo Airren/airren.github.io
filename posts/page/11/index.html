@@ -1,67 +1,905 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/linux/chmod/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">文件权限 文件权限表示 1drwxrwxrwx 3 root wheel 96 Oct 13 20:30 opt 2drwxr-xr-x 6 root wheel 192 Oct 8 18:57 private 3drwxr-xr-x@ 64 root wheel 2048 Oct 8 18:55 sbin 【文件或文件夹】【owner权限】【group权限】【others权限】【 文件数量】 【文件所有者】【文件所在组】【文件夹最后操作日期和时间】
-d 表示文件类型为 文件夹 ， - 表示文件类型为 文本文件， l 表示链接文件 r 读权限read 4, w 写权限write 2, x 操作权限execute 1 : rwx 按二进制位置 111， 所以对应 421 修改文件权限 1chmod 权限数字 文件名 2chmod -R 744 /mnt/fileA # 表示将整个/mnt/fileA目录与其中的文件和子目录的权限都设置为744 3chmod o w xxx.xxx #表示给其他人授予写xxx.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/chmod/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/linux_zero_copy/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">https://www.jianshu.com/p/a6c6f47a5ef7
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/chmod/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">文件权限 文件权限表示 1drwxrwxrwx 3 root wheel 96 Oct 13 20:30 opt 2drwxr-xr-x 6 root wheel 192 Oct 8 18:57 private 3drwxr-xr-x@ 64 root wheel 2048 Oct 8 18:55 sbin 【文件或文件夹】【owner权限】【group权限】【others权限】【 文件数量】 【文件所有者】【文件所在组】【文件夹最后操作日期和时间】
+d 表示文件类型为 文件夹 ， - 表示文件类型为 文本文件， l 表示链接文件 r 读权限read 4, w 写权限write 2, x 操作权限execute 1 : rwx 按二进制位置 111， 所以对应 421 修改文件权限 1chmod 权限数字 文件名 2chmod -R 744 /mnt/fileA # 表示将整个/mnt/fileA目录与其中的文件和子目录的权限都设置为744 3chmod o w xxx.xxx #表示给其他人授予写xxx.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/chmod/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/linux_zero_copy/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">https://www.jianshu.com/p/a6c6f47a5ef7
 https://blog.csdn.net/weixin_42096901/article/details/103017044
 https://blog.csdn.net/weixin_39406430/article/details/123715072
 http://t.zoukankan.com/yangyongjie-p-14576216.html
 https://zhuanlan.zhihu.com/p/430848775
-https://blog.csdn.net/weixin_42340926/article/details/126211173</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/linux_zero_copy/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/network_virtualization/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
-Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/network_virtualization/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/ipv6-debug/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Hi, Kural,
+https://blog.csdn.net/weixin_42340926/article/details/126211173</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/linux_zero_copy/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_virtualization/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
+Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_virtualization/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/ipv6-debug/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Hi, Kural,
 About the IPV6 SFC, the following is my debug process.
 Now, the func CalculateRoutes() can genarate the create route to the pod, but can&rsquo;t add to the corresponding pod.
 The calculated result for the sfc-head pod:
-But for the agent pod, while adding routes to the container through func ContainerAddRoute() failed. Because in this function, it will get the host network configuration to find the default gateway, to add an extra route to the host network through the default gateway on the host.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/ipv6-debug/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/nodus/k8s-install-script/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">for containerd
+But for the agent pod, while adding routes to the container through func ContainerAddRoute() failed. Because in this function, it will get the host network configuration to find the default gateway, to add an extra route to the host network through the default gateway on the host.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/ipv6-debug/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/nodus/k8s-install-script/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">for containerd
 for crio
-for docker</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/nodus/k8s-install-script/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_c/c_process/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">fork create process
+for docker</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/nodus/k8s-install-script/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_c/c_process/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">fork create process
 fork 被调用一次，可以返回两次。
 在调用fork之后的代码会执行两次，一次在父进程中执行，返回的是创建成功的子进程的Id，一次是在子进程中执行，返回的是0；如果出现错误，fork返回的是负值。
-1/*linux下：*/ 2 3#include &lt;stdio.h> 4#include &lt;unistd.h> 5 6int main() { 7 pid_t pid; 8 pid = fork(); 9 if(pid == 0) //返回子进程 10 { 11 printf("child pid: %d\n", getpid()); 12 } else { 13 printf("pid: %d\n", pid);//父进程中返回子进程的pid 14 printf("father pid: %d\n", getpid()); 15 } 16} 1pid: 2876921 2father pid: 2876920 3child pid: 2876921 fork的两种用法
+1/*linux下：*/ 2 3#include &lt;stdio.h&gt; 4#include &lt;unistd.h&gt; 5 6int main() { 7 pid_t pid; 8 pid = fork(); 9 if(pid == 0) //返回子进程 10 { 11 printf(&#34;child pid: %d\n&#34;, getpid()); 12 } else { 13 printf(&#34;pid: %d\n&#34;, pid);//父进程中返回子进程的pid 14 printf(&#34;father pid: %d\n&#34;, getpid()); 15 } 16} 1pid: 2876921 2father pid: 2876920 3child pid: 2876921 fork的两种用法
 父进程希望复制自己，使父子进程同时执行不同的代码段。
 比如在网络服务程序中，父进程等待客户端的服务请求。当请求到达时，父进程调用fork()使子进程处理此请求；而父进程继续等待下一个请求。
 一个进程要执行不同的程序
-这个在shell下比较常见，这种情况下， fork()之后一般立即接exec函数。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_c/c_process/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_c/unix_socket/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary"></p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_c/unix_socket/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/1st--/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary"></p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/1st--/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/2_%E7%B1%BB%E5%9E%8B/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">类型 2.1 变量 标识符与关键字 标识符 在编程语言中标识符就是程序员定义的具有特殊意义的词，比如变量名、常量名、函数名等等。 Go语言中标识符由字母数字和_(下划线）组成，并且只能以字母和_开头。 举几个例子：abc, _, _123, a123。
+这个在shell下比较常见，这种情况下， fork()之后一般立即接exec函数。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_c/c_process/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_c/unix_socket/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_c/unix_socket/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1st--/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/1st--/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/2_%E7%B1%BB%E5%9E%8B/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">类型 2.1 变量 标识符与关键字 标识符 在编程语言中标识符就是程序员定义的具有特殊意义的词，比如变量名、常量名、函数名等等。 Go语言中标识符由字母数字和_(下划线）组成，并且只能以字母和_开头。 举几个例子：abc, _, _123, a123。
 关键字 关键字是指编程语言中预先定义好的具有特殊含义的标识符。 关键字和保留字都不建议用作变量名。
 Go语言中有25个关键字：
 1 break default func interface select 2 case defer go map struct 3 chan else goto package switch 4 const fallthrough if range type 5 continue for import return var 此外，Go语言中还有37个保留字。
-1 Constants: true false iota nil 2 3 Types: int int8 int16 int32 int64 4 uint uint8 uint16 uint32 uint64 uintptr 5 float32 float64 complex128 complex64 6 bool byte rune string error 7 8 Functions: make len cap new append copy close delete 9 complex real imag 10 panic recover go 语言中的变量必须先声明再使用。</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/2_%E7%B1%BB%E5%9E%8B/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">流程控制 if&mldr;else 1package main 2 3import "fmt" 4 5func main() { 6 var number int = 5 7 if number += 4; 10 > number { 8 number :=0 9 number += 3 10 fmt.Print(number) 11 } else if 10 &lt; number { 12 number -= 2 13 fmt.Print(number) 14 } 15 fmt.Println(number) 16} 17 18// 39</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/4_%E5%87%BD%E6%95%B0/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">函数 现代计算机的进程执行模型大部分是基于“堆栈”的，编译器不需要对函数做过多的转换就能让其在栈上运行
+1 Constants: true false iota nil 2 3 Types: int int8 int16 int32 int64 4 uint uint8 uint16 uint32 uint64 uintptr 5 float32 float64 complex128 complex64 6 bool byte rune string error 7 8 Functions: make len cap new append copy close delete 9 complex real imag 10 panic recover go 语言中的变量必须先声明再使用。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/2_%E7%B1%BB%E5%9E%8B/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">流程控制 if&hellip;else 1package main 2 3import &#34;fmt&#34; 4 5func main() { 6 var number int = 5 7	if number += 4; 10 &gt; number { 8	number :=0 9	number += 3 10	fmt.Print(number) 11	} else if 10 &lt; number { 12	number -= 2 13	fmt.Print(number) 14	} 15	fmt.Println(number) 16} 17 18// 39 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/4_%E5%87%BD%E6%95%B0/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">函数 现代计算机的进程执行模型大部分是基于“堆栈”的，编译器不需要对函数做过多的转换就能让其在栈上运行
 2.1 基本概念 2.1.1 函数定义 一个函数的定义包含如下几个部分： 函数声明关键字func、函数名、参数列表、返回列表和函数体。
 首字母的大小写决定该函数在其他包的可见：大写时其他包可见，小写时只有相同的包可以访问。
 函数可以没有输入参数、也可以没有返回值（默认返回0）
 1func A(){ 2} 3 4func B() int{ 5 return 1 6} 多个相同类型的参数可以使用简写模式
 1func add(a,b int) int{ // a int, b int 简写为 a,b int 2 return a+b 3} 支持有名的返回值，参数名相当于函数体最外层的局部变量，命名返回值变量会被初始化为类型零值最后的return可以不带参数名直接返回。
-1func add(a,b int) (sum int){ // sum 相当于函数内部的局部变量，被初始化为0 2 sum = a+b 3 return // return sum 的简写模式 4 5 // sum := a+b 6 // return sum // 需要显式的调用return sum 7} 不支持默认值参数？？</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/4_%E5%87%BD%E6%95%B0/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title></h5><p class="card-text post-summary">Go并发编程案例解析 nginx
+1func add(a,b int) (sum int){ // sum 相当于函数内部的局部变量，被初始化为0 2 sum = a+b 3 return // return sum 的简写模式 4 5 // sum := a+b 6 // return sum // 需要显式的调用return sum 7} 不支持默认值参数？？</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/4_%E5%87%BD%E6%95%B0/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Go并发编程案例解析 nginx
 influxdb 时序数据库 Prometheus
 Grafana
 实例代码
 https://github.com/itsmikej/imooc_logprocess
-常见的并发模型 进程&线程 Apache C10K 服务器要同时支持10K的并发连接 异步非阻塞 （Nginx，Libevent， NodeJs）epoll 复杂度高 协程 GoLang， Erlang， Lua Golang并发实现 程序并发执行 goroutine 多个goroutine间的数据同步通信channels 多个channel选择数据读取或者写入select Goroutines Goroutines 程序并发执行
+常见的并发模型 进程&amp;线程 Apache C10K 服务器要同时支持10K的并发连接 异步非阻塞 （Nginx，Libevent， NodeJs）epoll 复杂度高 协程 GoLang， Erlang， Lua Golang并发实现 程序并发执行 goroutine 多个goroutine间的数据同步通信channels 多个channel选择数据读取或者写入select Goroutines Goroutines 程序并发执行
 1foo() // 执行函数foo, 程序等待函数foo返回 2go foo() // 执行函数foo 3bar（） // 不用等待foo返回 Channels Channels多个goroutine间的数据通信与同步
-1c := make(chan string) // 创建一个channel 2go func(){ 3 time.Sleep(1*time.Second) 4 c &lt;- "message from closure" // 发送数据到channel 中 5}() 6 7msg:=&lt;- c // 阻塞直到接收到数据 Select Select 从多个Channel 中读取或写入数据</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/10/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/9/ aria-label="Page 9" class=page-link role=button>9</a></li><li class=page-item><a href=/posts/page/10/ aria-label="Page 10" class=page-link role=button>10</a></li><li class="page-item active"><a aria-current=page aria-label="Page 11" class=page-link role=button>11</a></li><li class=page-item><a href=/posts/page/12/ aria-label="Page 12" class=page-link role=button>12</a></li><li class=page-item><a href=/posts/page/13/ aria-label="Page 13" class=page-link role=button>13</a></li><li class=page-item><a href=/posts/page/12/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+1c := make(chan string) // 创建一个channel 2go func(){ 3 time.Sleep(1*time.Second) 4 c &lt;- &#34;message from closure&#34; // 发送数据到channel 中 5}() 6 7msg:=&lt;- c // 阻塞直到接收到数据 Select Select 从多个Channel 中读取或写入数据</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/10/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/9/" aria-label="Page 9" class="page-link" role="button">9</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/10/" aria-label="Page 10" class="page-link" role="button">10</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 11" class="page-link" role="button">11</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/12/" aria-label="Page 12" class="page-link" role="button">12</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/13/" aria-label="Page 13" class="page-link" role="button">13</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/12/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

@@ -1,17 +1,362 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/note_go/0_go_compile/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go compile</h5><p class="card-text post-summary">n
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/0_go_compile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go compile</h5>
+        <p class="card-text post-summary">n
 https://zhuanlan.zhihu.com/p/343562661
-https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/0_go_compile/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/1_SettingUpGoEnv/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Go 设置Golang开发环境</h5><p class="card-text post-summary">安装Go 开始写Golang之前，你首先需要下载并且安装Golang开发工具。可以在Golang的官方网站下载最新的安装包。根据你的开发平台选择下载对应的版本。对于Mac用户(或者Windows用户)来说.pkg(或msi)安装包会自动把Golang安装到合适的位置，并将命令加入到环境变量，并且自动移除老版本。如果使用Mac更加推荐直接使用brew install go， 使用brew 可以方便的管理Go多个版本。
+https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/0_go_compile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_SettingUpGoEnv/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Go 设置Golang开发环境</h5>
+        <p class="card-text post-summary">安装Go 开始写Golang之前，你首先需要下载并且安装Golang开发工具。可以在Golang的官方网站下载最新的安装包。根据你的开发平台选择下载对应的版本。对于Mac用户(或者Windows用户)来说.pkg(或msi)安装包会自动把Golang安装到合适的位置，并将命令加入到环境变量，并且自动移除老版本。如果使用Mac更加推荐直接使用brew install go， 使用brew 可以方便的管理Go多个版本。
 对于Linux或者FreeBSD用户可以直接下载对应的.tar.gz, 并解压到文件名为go的目录中。把这个文件Copy到/usr/local/下。然后把/usr/local/go/bin添加到$PATH中。
-1tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz 2# change .profile to .bashrc or.zsh depend on you evnironment 3echo "export PATH=$PATH:/usr/local/go/bin" >>$HOME/.profile Go 程序编译完成后是一个独立的二进制文件，不需要依赖任何运行软件(例如，Python需要Python解释器，Java需要JVM)。仅在需要编译Go代码的环境上安装Go即可。
+1tar -C /usr/local -xzvf go1.17.3.linux-amd64.tar.gz 2# change .profile to .bashrc or.zsh depend on you evnironment 3echo &#34;export PATH=$PATH:/usr/local/go/bin&#34; &gt;&gt;$HOME/.profile Go 程序编译完成后是一个独立的二进制文件，不需要依赖任何运行软件(例如，Python需要Python解释器，Java需要JVM)。仅在需要编译Go代码的环境上安装Go即可。
 安装完成后，打开Terminal(Window 打开CMD)，验证Go是否安装成功。
 1go version 在所有的配置都正确的情况下，可以看到输出的版本信息
 1# mac intel cpu 64bit 2go version go1.17.3 darwin/amd64 从上述信息中可以看出，Go的版本是1.17.3,使用的开发机器是 Mac(Darwin 是MacOS的Kernel Name, amd64 是指64-bit的x86 CPU架构)。
@@ -19,14 +364,110 @@ https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-sysmon/</
 Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管理依赖上经历了几次变化。在Go 1.11所有的代码必须保存在GOPATH之下，之后的版本用户可以在任意目录下存储自己的代码。但是Go依然希望有一个独立的工作空间可以存储通过go install安装额第三方包。默认的工作空间是$HOME/go, 下载的第三方包默认存储在$HOME/go/src,编译的二进制文件存储在$HOME/go/bin。你可以直接使用这个默认的工作空间，或者通过设置$GOPAHT指定一个工作空间。
 无论你是否使用默认的wokespace，建议你把$GOPATH/bin加入到$PATH中。 通过指定$GOPATH可以清楚地描述当前环境的Go工作空间，把$GOPATH/bin加入到可执行路径中可以直接使用go install 安装的第三方包。
 如果是Unix-like的开发环境可以把下面几行加入到$HOME/.profile中。
-1# if use ubuntu you should add to .</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/note_go/1_SettingUpGoEnv/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/project_go/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>How to Create a go project for Cloud Native</h5><p class="card-text post-summary">Dockerfile Use Makefile to compiling and buid docker images</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/project_go/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/intel_spx_AMX/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Intel AMXAV</h5><p class="card-text post-summary">Introduce SIMD 单指令数据-> VNNI/INT8
+1# if use ubuntu you should add to .</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/1_SettingUpGoEnv/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/project_go/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">How to Create a go project for Cloud Native</h5>
+        <p class="card-text post-summary">Dockerfile Use Makefile to compiling and buid docker images </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/project_go/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Intel AMXAV</h5>
+        <p class="card-text post-summary">Introduce SIMD 单指令数据-&gt; VNNI/INT8
 Intrinsics for Intel(R) Advanced Matrix Extension Instructions Intel Advanced Matrix Extension is a new 64-bit programming paradigm consisting of two components:
-A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/intel_spx_AMX/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/network_ipsec/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>IPSec</h5><p class="card-text post-summary">IPsec is a group of networking protocols used for setting up secure encrypted connections, such VPNs, across publicly shared networks.
-What is IPsec IPsec is a group of protocols that are used together to set up encrypted connections between devices. It helps keep data send over public networks secure. IPsec is often used to set up VPNs, and it works by encrypting IP packets, along with authenticating the source where the packets come from.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/network_ipsec/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/linux/network_iptables/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>iptables</h5><p class="card-text post-summary">防火墙 逻辑上，防火墙可以分为主机防火墙和网络防火墙。主机防火墙针对单个主机进行防护；网络防火墙往往处于网络入口或者边缘，针对网络入口进行防护，服务于防火墙背后的本地局域网。
+A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/intel_spx_AMX/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_ipsec/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">IPSec</h5>
+        <p class="card-text post-summary">IPsec is a group of networking protocols used for setting up secure encrypted connections, such VPNs, across publicly shared networks.
+What is IPsec IPsec is a group of protocols that are used together to set up encrypted connections between devices. It helps keep data send over public networks secure. IPsec is often used to set up VPNs, and it works by encrypting IP packets, along with authenticating the source where the packets come from.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_ipsec/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/linux/network_iptables/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">iptables</h5>
+        <p class="card-text post-summary">防火墙 逻辑上，防火墙可以分为主机防火墙和网络防火墙。主机防火墙针对单个主机进行防护；网络防火墙往往处于网络入口或者边缘，针对网络入口进行防护，服务于防火墙背后的本地局域网。
 物理上，防火墙可以分为硬件防火墙和软件防火墙。硬件防火墙在硬件级别实现部分防火墙功能，另一部分基于软件实现，性能高，成本高；软件防火墙应用软件处理逻辑运行于通用计算平台之上的防火墙，性能低，成本低。
 iptables/netfilter iptables其实不是真正的防火墙，可以把它理解陈伟一个客户端代理，用户通过iptables这个代理，将用户的安全设定执行到对应的“安全框架”中，这个“安全框架”才是真正的防火墙， 这个框架的名字叫netfilter。
 netfilter才是防火墙真正的安全框架，位于内核空间。iptables其实是一个命令行工具， 位于用户空间，我们使用iptables这个工具操作真正的框架netfilter。
@@ -34,16 +475,64 @@ netfilter/iptables组成的linux平台下的包过滤防火墙，是免费的，
 网络地址转换(NAT, Network Address Translate) 数据包内容修改 数据包过滤(防火墙功能) 我们虽然可以使用service iptables start启用iptables服务，但其实准确的来说iptables并没有一个守护进程，不能算是真正意义上的服务，而算是内核提供的功能。
 iptables是按照规则(rules)来办事的, rules 就是我们预定义的条件。规则一般定义为“如果数据包头符合这样的条件，就这样处理这个数据包”。规则存储在内核空间的信息包过滤表中。这些规则分别指定了源地址、目的地址、传输协议(如TCP、UDP、ICMP)和服务类型(如HTTP、FTP和SMTP)等。当数据包与规则匹配时，iptables就根据规则所定义的方法来处理这些数据包， 如放行(accept)、拒绝(reject)和丢弃(drop)等。配置防火墙主要工作就是添加、修改和删除这些规则。
 ewctl
-hubDevice Objcet true 默认hub</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/linux/network_iptables/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/4_istio_multicluster/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>Istio MultiCluster</h5><p class="card-text post-summary">Multicluster Replicated Control Plane is an uses case to enable communication between two service in difference service mesh without using Ingress and can enable mutual TLS between the service.
+hubDevice Objcet true 默认hub</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/linux/network_iptables/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/4_istio_multicluster/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Istio MultiCluster</h5>
+        <p class="card-text post-summary">Multicluster Replicated Control Plane is an uses case to enable communication between two service in difference service mesh without using Ingress and can enable mutual TLS between the service.
 Istio 1.8 Upgrade Notes
-Multicluster .global Stub Domain Deprecation As part of this release, Istio has switched to a new configuration for multi-primary (formerly “replicated control planes”). The new configuration is simpler, has fewer limitations, and has been thoroughly tested in a variety of environments.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/blog/4_istio_multicluster/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/1-k8s-cloudnative/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Cloud Native</h5><p class="card-text post-summary">Kubenetes生产落地全程实践
+Multicluster .global Stub Domain Deprecation As part of this release, Istio has switched to a new configuration for multi-primary (formerly “replicated control planes”). The new configuration is simpler, has fewer limitations, and has been thoroughly tested in a variety of environments.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/4_istio_multicluster/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/1-k8s-cloudnative/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Cloud Native</h5>
+        <p class="card-text post-summary">Kubenetes生产落地全程实践
 核心概念
 架构设计
 认证授权
 高可用集群搭建
-二进制& kubeadm
+二进制&amp; kubeadm
 3台master两台2 node
 calico、coredns、dashboard
 业务迁移到Kubenetes
@@ -61,37 +550,386 @@ namespace、resources、label
 第2章 kubernetes快速入门 本章中将从核心概念、架构设计、认证授权以及集群搭建方案对比几方面，带领大家快速掌握kubernetes的重要知识点，助力快速入门。
 2-1 了解kubernetes 舵手： 渔网、渔船 docker : 鲸鱼，集装箱 🐳
 Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.
-It groups containers that makeup application in to logical units for easy management and discovery.Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/1-k8s-cloudnative/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/9-k8s-configmap/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s ConfigMap</h5><p class="card-text post-summary">给Pod传递参数 通过环境变量给Pod传递参数 可以在container的描述文件中加入一个env的参数，值是一个数组，每个元素都是键值对，值是string。
-1--- 2apiVersion: v1 3kind: Pod 4metadata: 5 name: first-pod 6 labels: 7 app: nginx 8spec: 9 containers: 10 - name: 00-simple-pod-nginx 11 image: nginx:1.17.0 12 env: 13 - name: INTERVAL 14 value: 30s 通过命令行参数给Pod传递参数 加入一个args配置，命令行参数是一个字符串数组</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/9-k8s-configmap/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/7-k8s-daemonset/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s DaemonSet</h5><p class="card-text post-summary">NodeExporter 用于采集一个Host上的各种性能指标，并且暴露给Prometheus 采集。因为NodeExporter需要采集每一个Host的数据状态，所以就产生了一个需求，在每一个K8s的机器上都要运行一个Pod, 而实现这个需求的K8s资源类型就叫做DaemonSet。
+It groups containers that makeup application in to logical units for easy management and discovery.Kubernetes builds upon 15 years of experience of running production workloads at Google, combined with best-of-breed ideas and practices from the community.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/1-k8s-cloudnative/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/9-k8s-configmap/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s ConfigMap</h5>
+        <p class="card-text post-summary">给Pod传递参数 通过环境变量给Pod传递参数 可以在container的描述文件中加入一个env的参数，值是一个数组，每个元素都是键值对，值是string。
+1--- 2apiVersion: v1 3kind: Pod 4metadata: 5 name: first-pod 6 labels: 7 app: nginx 8spec: 9 containers: 10 - name: 00-simple-pod-nginx 11 image: nginx:1.17.0 12 env: 13 - name: INTERVAL 14 value: 30s 通过命令行参数给Pod传递参数 加入一个args配置，命令行参数是一个字符串数组</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/9-k8s-configmap/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/7-k8s-daemonset/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s DaemonSet</h5>
+        <p class="card-text post-summary">NodeExporter 用于采集一个Host上的各种性能指标，并且暴露给Prometheus 采集。因为NodeExporter需要采集每一个Host的数据状态，所以就产生了一个需求，在每一个K8s的机器上都要运行一个Pod, 而实现这个需求的K8s资源类型就叫做DaemonSet。
 DaemonSet DaemonSet的功能就是保证每个Node都运行Pod， 但是如果某个K8s的Node下线之后，对应的Pod也下线，还是保持每个Node一个Pod。如果新增一个Node，就会在新增的Node中增加一个Pod，保证所有的Node中有且只有一个当前Pod。
-1--- 2apiVersion: apps/v1 3kind: DaemonSet 4metadata: 5 name: node-exporter 6 namespace: kube-system 7 labels: 8 k8s-app: node-exporter 9 kubernetes.io/cluster-service: "true" 10 addonmanager.kubernetes.io/mode: Reconcile 11 version: v1.2.2 12spec: 13 selector: 14 matchLabels: 15 k8s-app: node-exporter 16 version: v1.2.2 17 updateStrategy: 18 type: OnDelete 19 template: 20 metadata: 21 labels: 22 k8s-app: node-exporter 23 version: v1.2.2 24 spec: 25 priorityClassName: system-node-critical 26 containers: 27 - name: prometheus-node-exporter 28 image: "prom/node-exporter:v1.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/7-k8s-daemonset/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/5-k8s-deployment/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Deployments</h5><p class="card-text post-summary">蓝绿部署 蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。
+1--- 2apiVersion: apps/v1 3kind: DaemonSet 4metadata: 5 name: node-exporter 6 namespace: kube-system 7 labels: 8 k8s-app: node-exporter 9 kubernetes.io/cluster-service: &#34;true&#34; 10 addonmanager.kubernetes.io/mode: Reconcile 11 version: v1.2.2 12spec: 13 selector: 14 matchLabels: 15 k8s-app: node-exporter 16 version: v1.2.2 17 updateStrategy: 18 type: OnDelete 19 template: 20 metadata: 21 labels: 22 k8s-app: node-exporter 23 version: v1.2.2 24 spec: 25 priorityClassName: system-node-critical 26 containers: 27 - name: prometheus-node-exporter 28 image: &#34;prom/node-exporter:v1.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/7-k8s-daemonset/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/5-k8s-deployment/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Deployments</h5>
+        <p class="card-text post-summary">蓝绿部署 蓝绿部署是一种比较常见的部署方式，经常会用于新旧版本不兼容的情况。
 先将新版本(绿版)的服务运行起来。 将所有的流量切到新版本的服务上 删除旧版本(蓝版)的服务 创建新版本的ReplicaSet，将Service指向新的Pods，删除旧版本的ReplicaSet
 滚动升级 蓝绿部署可以有效保证业务的正确性，但是也带来了一定的风险，例如稳定性。
 假设新部署的应用是有问题的，一旦切换之后就会导致业务的崩溃，造成损失。于是就有了稍微友好的升级方式，滚动升级。
 先关闭一个旧版本的实例 开启一个新版本的实例用于替换旧版本 替换成功时候循环1和2，直到所有的实例升级完成。 在整个过程中，如果中途发现异常可以及时停手，及时止损。而且Kubernetes也在客户端中支持了这个特性。kubectl rolling-update。
 升级前后RC的Selector都被改变了 操作都是在客户端执行的？ 金丝雀发布 金丝雀发布是滚动发布的一种特例，在滚动发布中，是不会等待的，除非中间出错了。但是有些时候，我们并不想要全都升级，可能只是处于POC的一些原因，我们只希望部分实例是新的，大部分是旧的，而这种情形，我们就称之为金丝雀发布。
 升级少部分实例 查看效果，如果好，全部升级 如果不好，则不升级 声明式升级 前面介绍的这些升级发布方式在K8s上很多时候是半手工方式执行的，而Kubernetes作为一款DevOPS友好的系统，已经内置了对于部署方式的一种资源抽象，这个资源就是：Deployment。
-Deployment &ndash;> ReplicaSet &ndash;> Pods
+Deployment &ndash;&gt; ReplicaSet &ndash;&gt; Pods
 Deployment 存在的意义为：在升级应用程序时，需要引入额外的ReplicaSet，并协调新旧两个RS，使他们再根据彼此不断修改，而不会造成干扰。Deployment将这些运维过程都代码化，内置为自己的逻辑，从而让升级变得简单。
 首先我们使用Deployment创建3个实例
-1# deploy.yaml 2--- 3apiVersion: apps/v1 4kind: Deployment 5metadata: 6 name: first-deployment 7 labels: 8 app: simple-pod-deployment 9spec: 10 replicas: 3 11 selector: 12 matchLabels: 13 app: simple-pod-deployment 14 template: 15 metadata: 16 name: simple-pod-deployment 17 labels: 18 app: simple-pod-deployment 19 spec: 20 containers: 21 - name: simple-pod-de 22 image: lukelau/rest-docker:0.</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/5-k8s-deployment/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/cloudnative/Kubernates/6-k8s-job/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>K8s Job</h5><p class="card-text post-summary">Replicas 和deployment这两类资源都是用于控制workload的。这两种类型的资源一般都是持续运行的，同时还有一些辅助方式帮助workload出现异常时恢复，以及根据情况进行动态伸缩的特性。
+1# deploy.yaml 2--- 3apiVersion: apps/v1 4kind: Deployment 5metadata: 6 name: first-deployment 7 labels: 8 app: simple-pod-deployment 9spec: 10 replicas: 3 11 selector: 12 matchLabels: 13 app: simple-pod-deployment 14 template: 15 metadata: 16 name: simple-pod-deployment 17 labels: 18 app: simple-pod-deployment 19 spec: 20 containers: 21 - name: simple-pod-de 22 image: lukelau/rest-docker:0.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/5-k8s-deployment/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/cloudnative/Kubernates/6-k8s-job/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">K8s Job</h5>
+        <p class="card-text post-summary">Replicas 和deployment这两类资源都是用于控制workload的。这两种类型的资源一般都是持续运行的，同时还有一些辅助方式帮助workload出现异常时恢复，以及根据情况进行动态伸缩的特性。
 Job 根据Job的定义创建出对应的Pod，然后关注Pod的状态， 直到满足定义。例如Pod执行成功了或者执行失败了，并且达到了重试次数。
-1--- 2apiVersion: batch/v1 3kind: Job 4metadata: 5 name: pi 6spec: 7 template: 8 spec: 9 containers: 10 - name: pi 11 image: perl 12 command: ["perl", "-Mbignum=bpi","-wle", "print bpi(2000)"] 13 restartPolicy: Never 14 backoffLimit: 4 Job正常执行结束后结果如上图。这是一个只执行一次的Job。它的操作方式就是创建一个Pod，然后运行一遍，然后就退出。如果想执行多次，则只需要增加一个参数
+1--- 2apiVersion: batch/v1 3kind: Job 4metadata: 5 name: pi 6spec: 7 template: 8 spec: 9 containers: 10 - name: pi 11 image: perl 12 command: [&#34;perl&#34;, &#34;-Mbignum=bpi&#34;,&#34;-wle&#34;, &#34;print bpi(2000)&#34;] 13 restartPolicy: Never 14 backoffLimit: 4 Job正常执行结束后结果如上图。这是一个只执行一次的Job。它的操作方式就是创建一个Pod，然后运行一遍，然后就退出。如果想执行多次，则只需要增加一个参数
 1completions: 2 执行2次时创建了两个Pod，然后保证这两个Pod都执行成功。
 我们在使用Deployment等Workload的时候，一般会指定restartPolicy，默认都是RestartOnFail。在Job中不能这么指定，因为这个逻辑应该由Job来控制， 而不是让Pod来控制。
 CronJob 定时任务， CronJob就是在Job的基础上加上了周期定义的API
-1--- 2apiVersion: batch/v1 3kind: CronJob 4metadata: 5 name: batch-job-pi 6spec: 7 schedule: "0,15,30,45 * * * *" 8 jobTemplate: 9 spec: 10 template: 11 metadata: 12 labels: 13 app: pi-job 14 spec: 15 containers: 16 - name: pi 17 image: perl 18 command: ["perl", "-Mbignum=bpi","-wle", "print bpi(2000)"] 19 restartPolicy: Never</p></div><div class=card-footer><span class=float-left>January 1, 0001</span>
-<a href=/posts/cloudnative/Kubernates/6-k8s-job/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class=page-item><a href=/posts/ aria-label=First class=page-link role=button><span aria-hidden=true>&#171;&#171;</span></a></li><li class=page-item><a href=/posts/page/18/ aria-label=Previous class=page-link role=button><span aria-hidden=true>&#171;</span></a></li><li class=page-item><a href=/posts/page/17/ aria-label="Page 17" class=page-link role=button>17</a></li><li class=page-item><a href=/posts/page/18/ aria-label="Page 18" class=page-link role=button>18</a></li><li class="page-item active"><a aria-current=page aria-label="Page 19" class=page-link role=button>19</a></li><li class=page-item><a href=/posts/page/20/ aria-label="Page 20" class=page-link role=button>20</a></li><li class=page-item><a href=/posts/page/21/ aria-label="Page 21" class=page-link role=button>21</a></li><li class=page-item><a href=/posts/page/20/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+1--- 2apiVersion: batch/v1 3kind: CronJob 4metadata: 5 name: batch-job-pi 6spec: 7 schedule: &#34;0,15,30,45 * * * *&#34; 8 jobTemplate: 9 spec: 10 template: 11 metadata: 12 labels: 13 app: pi-job 14 spec: 15 containers: 16 - name: pi 17 image: perl 18 command: [&#34;perl&#34;, &#34;-Mbignum=bpi&#34;,&#34;-wle&#34;, &#34;print bpi(2000)&#34;] 19 restartPolicy: Never </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/cloudnative/Kubernates/6-k8s-job/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/18/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/17/" aria-label="Page 17" class="page-link" role="button">17</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/18/" aria-label="Page 18" class="page-link" role="button">18</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 19" class="page-link" role="button">19</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/20/" aria-label="Page 20" class="page-link" role="button">20</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/21/" aria-label="Page 21" class="page-link" role="button">21</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/20/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

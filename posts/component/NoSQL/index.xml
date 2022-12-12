@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NoSQL on ByteGopher</title><link>https://airren.github.io/posts/component/NoSQL/</link><description>Recent content in NoSQL on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 29 Dec 2018 11:02:05 +0800</lastBuildDate><atom:link href="https://airren.github.io/posts/component/NoSQL/index.xml" rel="self" type="application/rss+xml"/><item><title>post</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</link><pubDate>Wed, 09 Sep 2020 01:14:54 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</guid><description>https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
-https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</description></item><item><title>「ElasticSearch」 ElasticSearch 简单查询</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</link><pubDate>Mon, 07 Sep 2020 20:23:25 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</guid><description>查询语句
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NoSQL on ByteGopher</title>
+    <link>https://airren.github.io/posts/component/NoSQL/</link>
+    <description>Recent content in NoSQL on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 11:02:05 +0800</lastBuildDate><atom:link href="https://airren.github.io/posts/component/NoSQL/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>post</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</link>
+      <pubDate>Wed, 09 Sep 2020 01:14:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/</guid>
+      <description>https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</description>
+    </item>
+    
+    <item>
+      <title>「ElasticSearch」 ElasticSearch 简单查询</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</link>
+      <pubDate>Mon, 07 Sep 2020 20:23:25 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_query/</guid>
+      <description>查询语句
 query bool must exist &amp;ldquo;exists&amp;rdquo;: { &amp;ldquo;field&amp;rdquo;: &amp;ldquo;name&amp;rdquo; } 判断字段是否存在 must_not match &amp;ldquo;match&amp;rdquo;: { &amp;ldquo;tweet&amp;rdquo;: &amp;ldquo;elasticsearch&amp;rdquo; } 匹配字符串中是否包含 should Filter 简单查询 查询某个字段是否存在或者是否为null 1curl -H &amp;#39;Content-type: application/json&amp;#39; -XPOST &amp;#39;http://ip:9200/alert_group/_search&amp;#39; -d 1{ 2 &amp;#34;query&amp;#34;: { 3 &amp;#34;bool&amp;#34;: { 4 &amp;#34;must&amp;#34;: { // must_not 5 &amp;#34;exists&amp;#34;: { 6 &amp;#34;field&amp;#34;: &amp;#34;name&amp;#34; // 必须存在该字段，且该字段不为null 7 } 8 } 9 } 10 } 11} 空查询（empty search） {}在功能上等价于使用 match_all 查询， 正如其名字一样，匹配所有文档：
-1curl -X GET &amp;#34;localhost:9200/_search?pretty&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match_all&amp;#34;: {} 5 } 6} 7&amp;#39; Match 1GET /_search 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match&amp;#34;: { 5 &amp;#34;tweet&amp;#34;: &amp;#34;elasticsearch&amp;#34; 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</description></item><item><title>「ElasticSearch」ElasticSearch安装</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</link><pubDate>Tue, 18 Aug 2020 00:35:51 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</guid><description>1. Docker 安装ElasticSearch 1docker search elasticsearch 1docker pull elasticsearch # 默认会拉取 latest 版本 2docker pull elasticsearch:6.8.11 # https://hub.docker.com/ 版本查找 3docker images # 查看本地images 1 docker run -d --name elasticserarch_1 -p 9200:9200 -p 9300:9300 elasticsearch:6.8.11 1docker ps 1curl http://devbox:9200/ 2. docker 安装Cerebro 1docker search cerebro # test 1docker pull lmenezes/cerebro 1docker run -d -p 9002:9000 \ 2--restart=unless-stopped \ 3--name cerebro \ 4-v /etc/localtime:/etc/localtime \ 5-v cerebro:/opt/cerebro \ 6-h cerebro \ 7lmenezes/cerebro 86f036de7c87672903c88f6590d40d052e8c7b79767e410e35b1f2162c268b63f docker run 参数说明</description></item><item><title>「LogStash」LogStash安装</title><link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</link><pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate><guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</guid><description/></item></channel></rss>
+1curl -X GET &amp;#34;localhost:9200/_search?pretty&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match_all&amp;#34;: {} 5 } 6} 7&amp;#39; Match 1GET /_search 2{ 3 &amp;#34;query&amp;#34;: { 4 &amp;#34;match&amp;#34;: { 5 &amp;#34;tweet&amp;#34;: &amp;#34;elasticsearch&amp;#34; 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</description>
+    </item>
+    
+    <item>
+      <title>「ElasticSearch」ElasticSearch安装</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</link>
+      <pubDate>Tue, 18 Aug 2020 00:35:51 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/elasticsearch_install/</guid>
+      <description>1. Docker 安装ElasticSearch 1docker search elasticsearch 1docker pull elasticsearch # 默认会拉取 latest 版本 2docker pull elasticsearch:6.8.11 # https://hub.docker.com/ 版本查找 3docker images # 查看本地images 1 docker run -d --name elasticserarch_1 -p 9200:9200 -p 9300:9300 elasticsearch:6.8.11 1docker ps 1curl http://devbox:9200/ 2. docker 安装Cerebro 1docker search cerebro # test 1docker pull lmenezes/cerebro 1docker run -d -p 9002:9000 \ 2--restart=unless-stopped \ 3--name cerebro \ 4-v /etc/localtime:/etc/localtime \ 5-v cerebro:/opt/cerebro \ 6-h cerebro \ 7lmenezes/cerebro 86f036de7c87672903c88f6590d40d052e8c7b79767e410e35b1f2162c268b63f docker run 参数说明</description>
+    </item>
+    
+    <item>
+      <title>「LogStash」LogStash安装</title>
+      <link>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/NoSQL/ElasticSearch/logstash_install/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

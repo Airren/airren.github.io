@@ -1,31 +1,424 @@
-<!doctype html><html><head><title>Posts</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://airren.github.io/posts/"><link rel=stylesheet href=/css/layouts/list.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=languageSelector role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false><span class="flag-icon flag-icon-gb"></span>
-English</a><div class=dropdown-menu aria-labelledby=languageSelector><a class="dropdown-item nav-link languages-item" href=/cn/posts><span class="flag-icon flag-icon-cn"></span>
-中文</a></div></li></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class="content container-fluid" id=content><div class="container-fluid post-card-holder" id=post-card-holder><div class=post-card><a href=/posts/blog/gin_overview/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Gin」Gin入门</h5><p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/gin_overview/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Gin」Gin入门</h5>
+        <p class="card-text post-summary">学好一个框架或者一门语言，最好的方法就是要学会看官方的Document。几乎所有的博客只是把自己对官方文档的理解重新加工整理出来而已，增加了自己的主管想法。
 刚入门的时候面对英文文档可能一头雾水，但是当你坚持下来，你会发现，这些官方文档写的要比那些博客好的多，表述精确的多。
 以后我的文章会主要参考官方文档展开介绍，顺带加一点自己的理解
 GitHub
 Official Document
 1. Gin 简介 The fastest full-featured web freamwork for Go. Crystal clear.
-快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo && cd gin_demo 4 5vi main.go main.go的内容如下
-1package main 2 3import ( 4 "net/http" 5 "github.com/gin-gonic/gin" 6 7) 8 9func main(){ 10 r := gin.Default() 11 12 r.GET("/ping", func(c *gin.Context){ 13 c.</p></div><div class=card-footer><span class=float-left>August 21, 2020</span>
-<a href=/posts/blog/gin_overview/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/1_go_modules/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」依赖管理 Go Modues/ GOPATH</h5><p class="card-text post-summary">不要吝啬你的批评与感悟，敬请留言，我们一起进步。
+快 支持中间件 Crash还原 JSON验证 路由分组 错误日志收集 模板渲染 可扩展 2. 快速用Gin搭建一个Web服务 1go get -u github.com/gin-gonic/gin # install Gin 2 3mkdir gin_demo &amp;&amp; cd gin_demo 4 5vi main.go main.go的内容如下
+1package main 2 3import ( 4	&#34;net/http&#34; 5	&#34;github.com/gin-gonic/gin&#34; 6 7) 8 9func main(){ 10	r := gin.Default() 11 12	r.GET(&#34;/ping&#34;, func(c *gin.Context){ 13	c.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/posts/blog/gin_overview/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_go_modules/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」依赖管理 Go Modues/ GOPATH</h5>
+        <p class="card-text post-summary">不要吝啬你的批评与感悟，敬请留言，我们一起进步。
 如果你有过以下问题，欢迎阅读文章，提出意见与建议
-go mod 怎么使用？ GOPATH是什么？ GO111MODULE="" 这个参数决定了什么？ go get、go download 有什么区别？ import到底import的什么东西？ 依赖管理工具 用过Java 的同学都知道，对依赖的管理经历了从原始的手动引入jar包，到使用maven等自动化管理工具去引入第三方依赖的过程，从而可以使用别人已经开发好的优秀工具。如果使用过Python的同学可能会熟练的使用pip install 第三方的工具包。Java 和Python的第三方工具包都是集中式管理的，使用maven 或者是pip 都是从对应的管理中心下载更新依赖。当然还有 npm、yarn、gradle等其他语言的依赖版本工具。
+go mod 怎么使用？ GOPATH是什么？ GO111MODULE=&quot;&quot; 这个参数决定了什么？ go get、go download 有什么区别？ import到底import的什么东西？ 依赖管理工具 用过Java 的同学都知道，对依赖的管理经历了从原始的手动引入jar包，到使用maven等自动化管理工具去引入第三方依赖的过程，从而可以使用别人已经开发好的优秀工具。如果使用过Python的同学可能会熟练的使用pip install 第三方的工具包。Java 和Python的第三方工具包都是集中式管理的，使用maven 或者是pip 都是从对应的管理中心下载更新依赖。当然还有 npm、yarn、gradle等其他语言的依赖版本工具。
 在go语言中，第三方依赖的管理工具经过了一个漫长的发展过程。在GO1.11 发布之前govendor、dep等工具百花齐放。直到go mod 出现，开始一统天下。go 的依赖非常简单粗暴，只要依赖源码就可以了。例如：
-1import "github.com/jinzhu/gorm" github.com/jinzhu/gorm 就是gorm的GitHub项目路径。
+1import &#34;github.com/jinzhu/gorm&#34; github.com/jinzhu/gorm 就是gorm的GitHub项目路径。
 GOPATH时期 Go 在1.11 之前使用GOPATH模式进行依赖的管理。安装部署go环境，使用go 进行开发的时候强制被要求要设置GOPATH（当然安装过程中也会默认指定$GOPATH=~/go）。 要在GOPATH路径下新建 /src /bin /pkg文件夹。
-1➜ ~/go 2├── bin # 存储go编译生成的二进制可执行文件，一般会把该路径配置到PATH中,PATH=$PATH:$GOPATH/bin 3├── pkg # 存储预编译的目标文件，以加快后续的编译速度 4└── src # 存储Go的源代码，一般以$GOPATH/src/github.com/foo/bar的路径存放 1➜ ~ go env |grep GOPATH 2GOPATH="/Users/bytedance/go" 在这种模式下，如果使用go get 拉取外部依赖会自动下载并安装到$GOPATH/src 目录下。
+1➜ ~/go 2├── bin # 存储go编译生成的二进制可执行文件，一般会把该路径配置到PATH中,PATH=$PATH:$GOPATH/bin 3├── pkg # 存储预编译的目标文件，以加快后续的编译速度 4└── src # 存储Go的源代码，一般以$GOPATH/src/github.com/foo/bar的路径存放 1➜ ~ go env |grep GOPATH 2GOPATH=&#34;/Users/bytedance/go&#34; 在这种模式下，如果使用go get 拉取外部依赖会自动下载并安装到$GOPATH/src 目录下。
 这种模式下，go get没有版本管理的概念，无法处理依赖不同版本的问题，因为同一个依赖都存在同一个路径下面。
-在Go官方还没有推出Go Modules 的时候，go的依赖管理工具可谓是百花齐放，例如 govendor， dep，但是最终Go Modules发布，平息了诸侯割据的局面。</p></div><div class=card-footer><span class=float-left>August 4, 2020</span>
-<a href=/posts/note_go/1_go_modules/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/8_go_concurrency/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」并发实现</h5><p class="card-text post-summary">如何用go实现一个简单的并行任务
-Golang并发 1package main 2 3import ( 4 "fmt" 5 "sync" 6) 7 8var wg sync.WaitGroup 9 10func printer(ch chan int) { 11 for i := range ch { 12 fmt.Printf("Received %d ", i) 13 } 14 wg.Done() // 15} 16 17// main is the entry point for the program. 18func main() { 19 c := make(chan int) 20 go printer(c) 21 wg.Add(1) 22 23 // Send 10 integers on the channel.</p></div><div class=card-footer><span class=float-left>August 5, 2020</span>
-<a href=/posts/note_go/8_go_concurrency/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/7_go_context/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」context</h5><p class="card-text post-summary">context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
+在Go官方还没有推出Go Modules 的时候，go的依赖管理工具可谓是百花齐放，例如 govendor， dep，但是最终Go Modules发布，平息了诸侯割据的局面。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 4, 2020</span>
+        <a
+        href="/posts/note_go/1_go_modules/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/8_go_concurrency/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」并发实现</h5>
+        <p class="card-text post-summary">如何用go实现一个简单的并行任务
+Golang并发 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;sync&#34; 6) 7 8var wg sync.WaitGroup 9 10func printer(ch chan int) { 11	for i := range ch { 12	fmt.Printf(&#34;Received %d &#34;, i) 13	} 14	wg.Done() // 15} 16 17// main is the entry point for the program. 18func main() { 19	c := make(chan int) 20	go printer(c) 21	wg.Add(1) 22 23	// Send 10 integers on the channel.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 5, 2020</span>
+        <a
+        href="/posts/note_go/8_go_concurrency/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/7_go_context/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」context</h5>
+        <p class="card-text post-summary">context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
 1type Context interface{ 2 Deadline()(deadline time.Time, ok bool) 3 Done() &lt;-chan struct{} 4 Err() error 5 Value(key interface{}) interface{} 6} context.Context有四个方法：
 Deadline() 返回context.Context被取消时间，也就是完成工作的截止日期；
 Done() 返回一个channel，这个channel 会在当前工作完成或者上下文被取消后关闭，多次调用Done方法返回的是同一个channel；
@@ -33,54 +426,499 @@ Err() 返回context.Context 结束的原因，它只会在Done返回的Channel�
 如果 context.Context 被取消，会返回Canceled错误；
 如果 context.Context 超时，会返回DeadlineExceeded错误；
 Value 从context.Context 中获取键对应的值。对同一个上下文来说，多次调用value并传入相同的key会返回相同的结果，该方法用来传递请求特定的数据。
-1func main() { 2 ctx := context.Background() // new empty context 3 4 ctx = context.WithValue(ctx, "org", "ali") 5 ctx, _ = context.WithCancel(ctx) 6 ctx, _ = context.WithDeadline(ctx, time.Now().Add(10*time.Second)) 7 ctx, _ = context.</p></div><div class=card-footer><span class=float-left>August 11, 2020</span>
-<a href=/posts/note_go/7_go_context/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/raft/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Raft」 The Raft Consensus Algorithm</h5><p class="card-text post-summary">12 123 https://raft.github.io/
+1func main() { 2	ctx := context.Background() // new empty context 3 4	ctx = context.WithValue(ctx, &#34;org&#34;, &#34;ali&#34;) 5	ctx, _ = context.WithCancel(ctx) 6	ctx, _ = context.WithDeadline(ctx, time.Now().Add(10*time.Second)) 7	ctx, _ = context.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 11, 2020</span>
+        <a
+        href="/posts/note_go/7_go_context/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/raft/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Raft」 The Raft Consensus Algorithm</h5>
+        <p class="card-text post-summary">12 123 https://raft.github.io/
 https://www.infoq.com/presentations/raft-consensus-algorithm/
 https://www.geeksforgeeks.org/raft-consensus-algorithm/
-https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p></div><div class=card-footer><span class=float-left>April 1, 2021</span>
-<a href=/posts/blog/raft/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/DataStruct/ds_dp/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>数据结构与算法动态规划</h5><p class="card-text post-summary">动态规划：
-子问题 状态定义 DP方程</p></div><div class=card-footer><span class=float-left>September 17, 2020</span>
-<a href=/posts/DataStruct/ds_dp/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>post</h5><p class="card-text post-summary">https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
-https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</p></div><div class=card-footer><span class=float-left>September 9, 2020</span>
-<a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_query/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「ElasticSearch」 ElasticSearch 简单查询</h5><p class="card-text post-summary">查询语句
-query bool must exist &ldquo;exists&rdquo;: { &ldquo;field&rdquo;: &ldquo;name&rdquo; } 判断字段是否存在 must_not match &ldquo;match&rdquo;: { &ldquo;tweet&rdquo;: &ldquo;elasticsearch&rdquo; } 匹配字符串中是否包含 should Filter 简单查询 查询某个字段是否存在或者是否为null 1curl -H 'Content-type: application/json' -XPOST 'http://ip:9200/alert_group/_search' -d 1{ 2 "query": { 3 "bool": { 4 "must": { // must_not 5 "exists": { 6 "field": "name" // 必须存在该字段，且该字段不为null 7 } 8 } 9 } 10 } 11} 空查询（empty search） {}在功能上等价于使用 match_all 查询， 正如其名字一样，匹配所有文档：
-1curl -X GET "localhost:9200/_search?pretty" -H 'Content-Type: application/json' -d' 2{ 3 "query": { 4 "match_all": {} 5 } 6} 7' Match 1GET /_search 2{ 3 "query": { 4 "match": { 5 "tweet": "elasticsearch" 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</p></div><div class=card-footer><span class=float-left>September 7, 2020</span>
-<a href=/posts/component/NoSQL/ElasticSearch/elasticsearch_query/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/note_go/5.3_go_slice/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Go」slice</h5><p class="card-text post-summary">Slice的坑 1numList := make([]int, 10) 2// 产生的numList会存入10个0， 如果继续append 数据会导致numList的数据超过10 Slice 扩容
-1func TestSliceExtend(t *testing.T) { 2 capacity := 0 3 list := make([]int, 0) 4 for i := 0; i &lt; 4096; i++ { 5 list = append(list, i) 6 if capacity != cap(list) { 7 times := float64(cap(list)) / float64(capacity) 8 differ := cap(list) - capacity 9 capacity = cap(list) 10 if times == 2.0 { 11 fmt.Printf("capacity is: %d \t times: %.</p></div><div class=card-footer><span class=float-left>September 2, 2020</span>
-<a href=/posts/note_go/5.3_go_slice/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/tips/git_stage_repo/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Git」 Git 工作区&暂存区&本地仓库&远程仓库以及基本操作</h5><p class="card-text post-summary">Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
+https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">April 1, 2021</span>
+        <a
+        href="/posts/blog/raft/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/DataStruct/ds_dp/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">数据结构与算法动态规划</h5>
+        <p class="card-text post-summary">动态规划：
+子问题 状态定义 DP方程 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 17, 2020</span>
+        <a
+        href="/posts/DataStruct/ds_dp/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">post</h5>
+        <p class="card-text post-summary">https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 9, 2020</span>
+        <a
+        href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_query/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「ElasticSearch」 ElasticSearch 简单查询</h5>
+        <p class="card-text post-summary">查询语句
+query bool must exist &ldquo;exists&rdquo;: { &ldquo;field&rdquo;: &ldquo;name&rdquo; } 判断字段是否存在 must_not match &ldquo;match&rdquo;: { &ldquo;tweet&rdquo;: &ldquo;elasticsearch&rdquo; } 匹配字符串中是否包含 should Filter 简单查询 查询某个字段是否存在或者是否为null 1curl -H &#39;Content-type: application/json&#39; -XPOST &#39;http://ip:9200/alert_group/_search&#39; -d 1{ 2 &#34;query&#34;: { 3 &#34;bool&#34;: { 4 &#34;must&#34;: { // must_not 5 &#34;exists&#34;: { 6 &#34;field&#34;: &#34;name&#34; // 必须存在该字段，且该字段不为null 7 } 8 } 9 } 10 } 11} 空查询（empty search） {}在功能上等价于使用 match_all 查询， 正如其名字一样，匹配所有文档：
+1curl -X GET &#34;localhost:9200/_search?pretty&#34; -H &#39;Content-Type: application/json&#39; -d&#39; 2{ 3 &#34;query&#34;: { 4 &#34;match_all&#34;: {} 5 } 6} 7&#39; Match 1GET /_search 2{ 3 &#34;query&#34;: { 4 &#34;match&#34;: { 5 &#34;tweet&#34;: &#34;elasticsearch&#34; 6 } 7 } 8} 复合查询 组合多条件查询。elasticsearch提供bool来实现这种需求；</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 7, 2020</span>
+        <a
+        href="/posts/component/NoSQL/ElasticSearch/elasticsearch_query/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/5.3_go_slice/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」slice</h5>
+        <p class="card-text post-summary">Slice的坑 1numList := make([]int, 10) 2// 产生的numList会存入10个0， 如果继续append 数据会导致numList的数据超过10 Slice 扩容
+1func TestSliceExtend(t *testing.T) { 2	capacity := 0 3	list := make([]int, 0) 4	for i := 0; i &lt; 4096; i++ { 5	list = append(list, i) 6	if capacity != cap(list) { 7	times := float64(cap(list)) / float64(capacity) 8	differ := cap(list) - capacity 9	capacity = cap(list) 10	if times == 2.0 { 11	fmt.Printf(&#34;capacity is: %d \t times: %.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 2, 2020</span>
+        <a
+        href="/posts/note_go/5.3_go_slice/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/tips/git_stage_repo/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</h5>
+        <p class="card-text post-summary">Git 数据存储的基本概念 WorkSpace: 工作区，编辑修改文件的区域
 Index/Stage: 暂存区， 未提交修改
 Repository： 本地仓库
 Remote： 远程仓库
-我们使用编辑器写代码的区域就是WorkSpace, 执行git add fileName之后，就将修改的文件提交到了暂存区，执行git commmit -m "update fineName" 之后就将修改提交到了本地版本库。最后使用 git push 将修改提交到远程仓库。
+我们使用编辑器写代码的区域就是WorkSpace, 执行git add fileName之后，就将修改的文件提交到了暂存区，执行git commmit -m &quot;update fineName&quot; 之后就将修改提交到了本地版本库。最后使用 git push 将修改提交到远程仓库。
 Git 常用操作 配置用户名以及邮箱 设置
-1git config --global user.Name "name" 2git config --global user.email "xxx@outlook.com" 查看
+1git config --global user.Name &#34;name&#34; 2git config --global user.email &#34;xxx@outlook.com&#34; 查看
 1git config user.name 2git config user.email 初始化Git仓库 git init 1git init fileName 2# or 不指定路径，默认为当前路径 3git init 初始化仓库后，会生成一.git的隐藏文件夹
 建立裸仓库
 1git init --bare bare_repo 对比正常git仓库normal_repo与bare_repo的目录结构发现，在normal_repo/.git 文件夹中的文件直接出现在了bare_repo 中
 切换分支。
-在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</p></div><div class=card-footer><span class=float-left>August 26, 2020</span>
-<a href=/posts/tips/git_stage_repo/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/blog/http_request_method/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「HTTP」HTTP 9 种请求方式</h5><p class="card-text post-summary">HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
+在一个裸仓库中执行git命令会提示this operation must be run in a work tree。因为裸仓库是没有工作区的，只会记录git提交的历史信息，git log可以查看提交历史，但是没有办法进行版本回退或者切分分支的操作。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 26, 2020</span>
+        <a
+        href="/posts/tips/git_stage_repo/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/blog/http_request_method/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「HTTP」HTTP 9 种请求方式</h5>
+        <p class="card-text post-summary">HTTP简介 HTTP协议（HyperText Transfer Protocol， 超文本传输协议），是一个基于TCP/IP通信协议来传输数据。是用于从服务器传输超文本到本地浏览器的协议。HTTP使用同一资源标识符（Uniform Resource Identifiers, URL）来传输数据和建立连接。
 HTTP协议工作于客户端-服务端（C-S）架构上。浏览器作为HTTP客户端通过URL向服务端发送请求，并获得返回数据。
 HTTP特点：
 HTTP是无连接的： 无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。
 HTTP是无状态的： HTTP是无状态协议。无状态是指协议对于事务处理灭有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次传输的数据量增大。
 HTTP是媒体独立的： 任何数据类型都可以通过HTTP发送，客户端以及服务器要指定相同的MIME-type类型。媒体类型通常通过 HTTP 协议，由 Web 服务器告知浏览器的，更准确地说，是通过 Content-Type 来表示的。例如：Content-Type：text/HTML。通常只有广泛应用的格式才会获得一个 MIME Type，如果是某个客户端自己定义的格式，一般只能以 application/x- 开头。
-Web-Browser &lt;===> HTTP Server &lt;===> CGI(Common GateWay Interface) Program &lt;==>Database
+Web-Browser &lt;===&gt; HTTP Server &lt;===&gt; CGI(Common GateWay Interface) Program &lt;==&gt;Database
 客户端请求消息 请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成
 服务器响应消息 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
-不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</p></div><div class=card-footer><span class=float-left>August 21, 2020</span>
-<a href=/posts/blog/http_request_method/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div><div class=post-card><a href=/posts/component/DataBase/mongo/bson/ class=post-card-link><div class=card><div class=card-head><img class=card-img-top src=/images/default-hero.jpg alt="Hero Image"></div><div class=card-body><h5 class=card-title>「Mongo」Bson vs Json</h5><p class="card-text post-summary">https://docs.mongodb.com/manual/reference/bson-types/
+不带Body 的请求 1# 请求消息 2GET /health HTTP/1.1 3Host: 127.0.0.1:8080 4User-Agent: curl/7.65.3 5Accept: */* 6 7# 返回消息 8HTTP/1.1 200 OK 9Content-Type: text/plain; charset=utf-8 10Date: Sat, 22 Aug 2020 17:56:22 GMT 11Content-Length: 2 12 13ok 带Body的请求 1# 请求消息 2GET /health?</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 21, 2020</span>
+        <a
+        href="/posts/blog/http_request_method/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/DataBase/mongo/bson/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Mongo」Bson vs Json</h5>
+        <p class="card-text post-summary">https://docs.mongodb.com/manual/reference/bson-types/
 http://bsonspec.org/
 https://www.mongodb.com/json-and-bson
 https://www.educba.com/json-vs-bson/\
-https://www.geeksforgeeks.org/difference-between-json-and-bson/</p></div><div class=card-footer><span class=float-left>August 20, 2020</span>
-<a href=/posts/component/DataBase/mongo/bson/ class="float-right btn btn-outline-info btn-sm">Read</a></div></div></a></div></div><div class=paginator><ul class="pagination pagination-default"><li class="page-item disabled"><a aria-disabled=true aria-label=First class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;&#171;</span></a></li><li class="page-item disabled"><a aria-disabled=true aria-label=Previous class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;</span></a></li><li class="page-item active"><a aria-current=page aria-label="Page 1" class=page-link role=button>1</a></li><li class=page-item><a href=/posts/page/2/ aria-label="Page 2" class=page-link role=button>2</a></li><li class=page-item><a href=/posts/page/3/ aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/posts/page/4/ aria-label="Page 4" class=page-link role=button>4</a></li><li class=page-item><a href=/posts/page/5/ aria-label="Page 5" class=page-link role=button>5</a></li><li class=page-item><a href=/posts/page/2/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/posts/page/24/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=/js/list.js></script></body></html>
+https://www.geeksforgeeks.org/difference-between-json-and-bson/</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 20, 2020</span>
+        <a
+        href="/posts/component/DataBase/mongo/bson/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

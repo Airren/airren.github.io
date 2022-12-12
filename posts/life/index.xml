@@ -1,17 +1,99 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ByteGopher</title><link>https://airren.github.io/posts/life/</link><description>Recent content on ByteGopher</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 09 Aug 2020 02:05:38 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/life/index.xml" rel="self" type="application/rss+xml"/><item><title>「坚持」 做好每一件事</title><link>https://airren.github.io/posts/life/nice_day/</link><pubDate>Sun, 09 Aug 2020 02:05:38 +0000</pubDate><guid>https://airren.github.io/posts/life/nice_day/</guid><description>思想和身体至少有一个在路上
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/life/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Aug 2020 02:05:38 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/life/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「坚持」 做好每一件事</title>
+      <link>https://airren.github.io/posts/life/nice_day/</link>
+      <pubDate>Sun, 09 Aug 2020 02:05:38 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/nice_day/</guid>
+      <description>思想和身体至少有一个在路上
 不要做一个行尸走肉
 如果一件事做不到100分，那和没做有什么分别
-抬头看路，低头做事</description></item><item><title>「毕业旅行」青甘自驾</title><link>https://airren.github.io/posts/life/graduated-travel/</link><pubDate>Tue, 28 Jul 2020 01:57:20 +0000</pubDate><guid>https://airren.github.io/posts/life/graduated-travel/</guid><description>2020.06.21 上海 - 兰州 早上上海出发，下午16点到达兰州，然后到神州租车取上我们的战车——7座的科帕奇。虽然是七座，但是最后一排的空间小的可怜🤕。其实本来是想租一个霸道/路虎之类的，奈何第一次使用一嗨租车不让租高端车型。或许因为我们出游的时间是是个淡季，又或许是因为疫情的影响，这几天租车特别便宜。科帕奇只有360左右每天（含全险），现在看了一眼都600+每天了。同期的霸道只要600左右每天，现在1000+（没租上霸道感觉错过了一个亿）。
+抬头看路，低头做事</description>
+    </item>
+    
+    <item>
+      <title>「毕业旅行」青甘自驾</title>
+      <link>https://airren.github.io/posts/life/graduated-travel/</link>
+      <pubDate>Tue, 28 Jul 2020 01:57:20 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/graduated-travel/</guid>
+      <description>2020.06.21 上海 - 兰州 早上上海出发，下午16点到达兰州，然后到神州租车取上我们的战车——7座的科帕奇。虽然是七座，但是最后一排的空间小的可怜🤕。其实本来是想租一个霸道/路虎之类的，奈何第一次使用一嗨租车不让租高端车型。或许因为我们出游的时间是是个淡季，又或许是因为疫情的影响，这几天租车特别便宜。科帕奇只有360左右每天（含全险），现在看了一眼都600+每天了。同期的霸道只要600左右每天，现在1000+（没租上霸道感觉错过了一个亿）。
 开上战车，寻了个离机场最近的美食街吃个拉面，必须是地道的牛肉拉面，便奔向曹家堡机场去与小伙伴回合。200+ 公里伴随着晴雨莫测的天气开了大约两个半小时。
 夜宿西宁，吃肉去~
 2020.06.22 西宁-青海湖 青海湖，最大的盐水湖。门票太贵了，没有进景区，好像景区内也没啥可看的(滑稽)。在附近转了转，风景也不错，湖边的游客也很多，还和白牦牛拍了合照。
 有点阴天，云特别的低，但不像南方的阴雨天那样沉闷。空气中夹杂着山顶融化的雪水的气息。草地上点缀着些许的小黄花。
 2020.06.25 门源-达坂山 既当金山之后第二段难开的山路，九曲十八弯。
-达坂山观景台，收费5元/车。可以听停车休息一会。山顶的风甚是凛冽。</description></item><item><title>「Love」我们结婚了</title><link>https://airren.github.io/posts/life/married/</link><pubDate>Sat, 29 Dec 2018 11:02:05 +0600</pubDate><guid>https://airren.github.io/posts/life/married/</guid><description>遇见你是最美好的开始 未来的我们会过的更好 世间美好 与你我环环相扣 https://themify.me/themify-icons https://themes.gohugo.io/dot-hugo-documentation-theme/</description></item><item><title>「Hackintosh」冥王峡谷 完美黑苹果</title><link>https://airren.github.io/posts/life/nuc_perfect_hacintosh/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/life/nuc_perfect_hacintosh/</guid><description>冥王峡谷可以使用HacMini实现傻瓜化的完美黑苹果，目前已经完美支持Big Sur 11.1。只需额外买一个无线网卡，既可以实现WiFi、蓝牙、Airdrop和HandOff的完美使用。</description></item><item><title>「XiaoKr」小氪机器人</title><link>https://airren.github.io/posts/life/xiaokr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/life/xiaokr/</guid><description>PCB设计</description></item><item><title>「心晴」</title><link>https://airren.github.io/posts/life/do_not_mazy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/life/do_not_mazy/</guid><description>永远不要让别人影响你的心晴
+达坂山观景台，收费5元/车。可以听停车休息一会。山顶的风甚是凛冽。</description>
+    </item>
+    
+    <item>
+      <title>「Love」我们结婚了</title>
+      <link>https://airren.github.io/posts/life/married/</link>
+      <pubDate>Sat, 29 Dec 2018 11:02:05 +0600</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/married/</guid>
+      <description>遇见你是最美好的开始 未来的我们会过的更好 世间美好 与你我环环相扣 https://themify.me/themify-icons https://themes.gohugo.io/dot-hugo-documentation-theme/</description>
+    </item>
+    
+    <item>
+      <title>「Hackintosh」冥王峡谷 完美黑苹果</title>
+      <link>https://airren.github.io/posts/life/nuc_perfect_hacintosh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/nuc_perfect_hacintosh/</guid>
+      <description>冥王峡谷可以使用HacMini实现傻瓜化的完美黑苹果，目前已经完美支持Big Sur 11.1。只需额外买一个无线网卡，既可以实现WiFi、蓝牙、Airdrop和HandOff的完美使用。</description>
+    </item>
+    
+    <item>
+      <title>「XiaoKr」小氪机器人</title>
+      <link>https://airren.github.io/posts/life/xiaokr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/xiaokr/</guid>
+      <description>PCB设计 </description>
+    </item>
+    
+    <item>
+      <title>「心晴」</title>
+      <link>https://airren.github.io/posts/life/do_not_mazy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/do_not_mazy/</guid>
+      <description>永远不要让别人影响你的心晴
 学习好的地方，
 摒弃坏的地方，
 不要被同化
-To Be A Nice Person.</description></item><item><title>「装机」 ITX A4机箱设计</title><link>https://airren.github.io/posts/life/itx_%E6%9C%BA%E7%AE%B1%E8%AE%BE%E8%AE%A1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/life/itx_%E6%9C%BA%E7%AE%B1%E8%AE%BE%E8%AE%A1/</guid><description>ITX机箱 详设计一个属于自己的ITX机箱
+To Be A Nice Person.</description>
+    </item>
+    
+    <item>
+      <title>「装机」 ITX A4机箱设计</title>
+      <link>https://airren.github.io/posts/life/itx_%E6%9C%BA%E7%AE%B1%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/itx_%E6%9C%BA%E7%AE%B1%E8%AE%BE%E8%AE%A1/</guid>
+      <description>ITX机箱 详设计一个属于自己的ITX机箱
 装机清单 参考链接 ITX机箱图纸参考链接 https://sff.design/1210.html https://sff.design/15201.html ACC X11参考链接 https://item.jd.com/10024295444328.html#crumb-wrap
-gpp https://www.kyairsoft.com/4-3-desert-warrior-full-marking.html</description></item><item><title>滕王阁序</title><link>https://airren.github.io/posts/life/silence/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://airren.github.io/posts/life/silence/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F/</guid><description>唐·王勃
-​ 豫章故郡，洪都新府。星分翼轸，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射牛斗之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕yixiazhij</description></item></channel></rss>
+gpp https://www.kyairsoft.com/4-3-desert-warrior-full-marking.html</description>
+    </item>
+    
+    <item>
+      <title>滕王阁序</title>
+      <link>https://airren.github.io/posts/life/silence/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/life/silence/%E6%BB%95%E7%8E%8B%E9%98%81%E5%BA%8F/</guid>
+      <description>唐·王勃
+​	豫章故郡，洪都新府。星分翼轸，地接衡庐。襟三江而带五湖，控蛮荆而引瓯越。物华天宝，龙光射牛斗之墟；人杰地灵，徐孺下陈蕃之榻。雄州雾列，俊采星驰。台隍枕yixiazhij</description>
+    </item>
+    
+    
+  </channel>
+</rss>

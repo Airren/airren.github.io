@@ -1,20 +1,688 @@
-<!doctype html><html><head><title>SDEWAN Leverage SGX to provide Secure Access Service Edge</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="ie=edge"><link rel=stylesheet href=/css/bootstrap.min.css><link rel=stylesheet href=/css/layouts/main.css><link rel=stylesheet href=/css/navigators/navbar.css><link rel=stylesheet href=/css/plyr.css><link rel=stylesheet href=/css/flag-icon.min.css><link rel=stylesheet href=/google-fonts/Mulish/mulish.css><link rel=stylesheet href=/fontawesome/css/all.min.css><link rel=icon type=image/png href=/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png><meta property="og:title" content="SDEWAN Leverage SGX to provide Secure Access Service Edge"><meta property="og:description" content="SD-WAN handles the network connectivity issues between distributed applications in a seamless, secure, and efficient manner by replacing traditional branch routers with virtualized or appliance-based software. However, as the concept of edge prevails recently, distributed applications are usually deployed across multiple resource-constrained k8s edges. Then how to expose the services and manage the connections in a cloud-native way becomes a critical issue for users.
-The open-source project Software Define Edge WAN(SD-EWAN) under the Akraino community’s ICN blueprint is definitely a comprehensive solution."><meta property="og:type" content="article"><meta property="og:url" content="https://airren.github.io/posts/sdewan/sdewan-sgx/"><meta property="article:section" content="posts"><meta name=description content="SDEWAN Leverage SGX to provide Secure Access Service Edge"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css><link rel=stylesheet href=/css/layouts/single.css><link rel=stylesheet href=/css/navigators/sidebar.css><link rel=stylesheet href=/css/style.css></head><body data-spy=scroll data-target=#TableOfContents data-offset=80><div class="container-fluid bg-dimmed wrapper"><nav class="navbar navbar-expand-xl top-navbar final-navbar shadow"><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button onclick=toggleSidebar()>
-<span class=navbar-toggler-icon></span></button>
-<a class=navbar-brand href=/><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png alt=Logo>
-ByteGopher</a>
-<button class="navbar-toggler navbar-light" id=toc-toggler type=button onclick=toggleTOC()>
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse lang-selector" id=top-nav-items><ul class="navbar-nav ml-auto"></ul></div></div><img src=/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png class=d-none id=main-logo alt=Logo>
-<img src=/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png class=d-none id=inverted-logo alt="Inverted Logo"></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts/ data-filter=all>Posts</a></li><div class=subtree><li><a href=/posts/blog/ title=Blog>Blog</a></li><li><a href=/posts/cloudnative/ title=CloudNative>CloudNative</a></li><li><i class="fas fa-plus-circle"></i><a href=/posts/component/>Infrastructure</a><ul><li><a href=/posts/component/TimeSeries/ title=TimeSeriesDB>TimeSeriesDB</a></li></ul></li><li><a href=/posts/kubernetes/ title=Kubernetes>Kubernetes</a></li><li><a href=/posts/note_c/ title="Note C">Note C</a></li><li><a href=/posts/note_go/ title="Note Go">Note Go</a></li><li><a href=/posts/react/ title=React>React</a></li><li><a class=active href=/posts/sdewan/ title=SDEWAN>SDEWAN</a></li><li><a href=/posts/tips/ title=Tips>Tips</a></li><li><a href=/posts/nodus/ title=Nodus>Nodus</a></li><li><a href=/posts/interview/ title=Interview>Interview</a></li><li><a href=/posts/life/ title=Life>Life</a></li><li><a href=/posts/linux/ title=Linux>Linux</a></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class=content><div class="container p-0 read-area"><div class="hero-area col-sm-12" id=hero-area style=background-image:url(/images/default-hero.jpg)></div><div class=page-content><div class="author-profile ml-auto align-self-lg-center"><img class=rounded-circle src=/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png alt="Author Image"><h5 class=author-name>Airren Ren</h5><p>Monday, January 1, 1</p></div><div class=title><h1>SDEWAN Leverage SGX to provide Secure Access Service Edge</h1></div><div class=taxonomy-terms><ul style=padding-left:0></ul></div><div class=post-content id=post-content><p>SD-WAN handles the network connectivity issues between distributed applications in a seamless, secure, and efficient manner by replacing traditional branch routers with virtualized or appliance-based software. However, as the concept of edge prevails recently, distributed applications are usually deployed across multiple resource-constrained k8s edges. Then how to expose the services and manage the connections in a cloud-native way becomes a critical issue for users.</p><p>The open-source project Software Define Edge WAN(SD-EWAN) under the Akraino community’s ICN blueprint is definitely a comprehensive solution. Its CNF, which is integrated with multiple network functions based on OpenWRT, is able to serve the distributed applications with secure connections and easy management against networking and the CNF can be automatic thru the overlay controller within SD-EWAN to achieve multi-edge collaboration.</p><p>This post is not covering the archtecture of SDEWAN. If you want to lean more about SDEWAN you can find more information form <a href=https://github.com/akraino-edge-stack/icn-sdwan target=_blank>https://github.com/akraino-edge-stack/icn-sdwan</a>. Intention of this post is to cover the CNF which co-works with Intel Software Guard Extensions to create a secruity IPsec tunnel.</p><h2 id=security-connection-between-edge-cluster-through-cnf>Security Connection Between Edge Cluster Through CNF</h2><p>One of the functionality of SD-EWAN is to set up secure connection between two edge cluster. SDEWAN functionality is realized via CNF(Containerized Network Function) and deployed by K8s. SD-EWAN creates IPsec tunnles between two CNF Pod across K8s cluster. The CNF here is based on OpenWRT open source and enhancing, optimizing for Intel IA sccelerator and make it ready for cloud native Edge scenarios.</p><p>In the CNF, we use Strongswan to manage the IPsec tunnel and connect two Edges in a private network the a traffice Hub. The traffice Hub has an publice IP, and two different Edges can access the Hub through the public IP bind on the hub.</p><h2 id=traditional-configuration-of-ipsec>Traditional Configuration of IPsec</h2><p>The Traditional configuration put the private key and certificate in the Pod filesystem located at <code>/etc/ipsec.d</code>.</p><h2 id=leverage-sgx-to-create-secure-tunnle>Leverage SGX to Create Secure Tunnle</h2><h3 id=archtecture>Archtecture</h3><p>The architecture of the CNF which work with CTK is like that.</p><h3 id=enable-pkcs11-for-strongswan>Enable PKCS#11 for Strongswan</h3><h3 id=build-p11-kit-client-for-openwrt>Build p11-kit-client for OpenWRT</h3><h3 id=after-build-the-p11-kit-client-we-shoud-add>After build the p11-kit-client, we shoud add</h3><h3 id=setup-ipsec-tunnel-with-sgx>Setup IPsec Tunnel with SGX</h3></div><div class="row pl-3 pr-3"><div class="col-md-6 share-buttons"></div><div class="col-md-6 btn-improve-page"><a href=https://github.com/airren/airren.github.io/edit/master/content/posts/sdewan/sdewan-sgx.md title="Improve this page" target=_blank rel=noopener><i class="fas fa-code-branch"></i>
-Improve this page</a></div></div><hr><div class="row next-prev-navigator"></div><hr></div></div></div><a id=scroll-to-top class=btn><i class="fas fa-chevron-circle-up"></i></a></section><section class=toc-section id=toc-section><div class=toc-holder><h5 class="text-center pl-3">Table of Contents</h5><hr><div class=toc><nav id=TableOfContents><ul><li><a href=#security-connection-between-edge-cluster-through-cnf>Security Connection Between Edge Cluster Through CNF</a></li><li><a href=#traditional-configuration-of-ipsec>Traditional Configuration of IPsec</a></li><li><a href=#leverage-sgx-to-create-secure-tunnle>Leverage SGX to Create Secure Tunnle</a><ul><li><a href=#archtecture>Archtecture</a></li><li><a href=#enable-pkcs11-for-strongswan>Enable PKCS#11 for Strongswan</a></li><li><a href=#build-p11-kit-client-for-openwrt>Build p11-kit-client for OpenWRT</a></li><li><a href=#after-build-the-p11-kit-client-we-shoud-add>After build the p11-kit-client, we shoud add</a></li><li><a href=#setup-ipsec-tunnel-with-sgx>Setup IPsec Tunnel with SGX</a></li></ul></li></ul></nav></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-left"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#recent-posts>Recent Posts</a></li><li class=nav-item><a class=smooth-scroll href=https://airren.github.io/#achievements>My Story</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:airrenzero#gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span></a></li><li><span><i class="fas fa-phone-alt"></i></span> <span>+86 1881733xxxx</span></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e" method=post id=mc-embedded-subscribe-form name=mc-embedded-subscribe-form class=validate target=_blank novalidate><div class=form-group><input type=email class=form-control id=mce-EMAIL name=EMAIL aria-describedby=emailHelp placeholder="Enter email">
-<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small></div><button type=submit class="btn btn-info">Submit</button></form></div></div></div><hr><div class=container><div class="row text-left"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png alt="Toha Theme Logo">
-Toha</a></div><div class="col-md-4 text-center">© 2020-2021 Copyright.</div><div class="col-md-4 text-right"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
-<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script type=text/javascript src=/js/jquery-3.4.1.min.js></script>
-<script type=text/javascript src=/js/popper.min.js></script>
-<script type=text/javascript src=/js/bootstrap.min.js></script>
-<script type=text/javascript src=/js/navbar.js></script>
-<script type=text/javascript src=/js/plyr.js></script>
-<script type=text/javascript src=/js/main.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js></script>
-<script src=/js/single.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SDEWAN Leverage SGX to provide Secure Access Service Edge</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="SDEWAN Leverage SGX to provide Secure Access Service Edge" />
+<meta property="og:description" content="SD-WAN handles the network connectivity issues between distributed applications in a seamless, secure, and efficient manner by replacing traditional branch routers with virtualized or appliance-based software. However, as the concept of edge prevails recently, distributed applications are usually deployed across multiple resource-constrained k8s edges. Then how to expose the services and manage the connections in a cloud-native way becomes a critical issue for users.
+The open-source project Software Define Edge WAN(SD-EWAN) under the Akraino community’s ICN blueprint is definitely a comprehensive solution." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/sdewan/sdewan-sgx/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="SDEWAN Leverage SGX to provide Secure Access Service Edge" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1>SDEWAN Leverage SGX to provide Secure Access Service Edge</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p>SD-WAN handles the network connectivity issues between distributed applications in a seamless, secure, and efficient manner by replacing traditional branch routers with virtualized or appliance-based software. However, as the concept of edge prevails recently, distributed applications are usually deployed across multiple resource-constrained k8s edges. Then how to expose the services and manage the connections in a cloud-native way becomes a critical issue for users.</p>
+<p>The open-source project Software Define Edge WAN(SD-EWAN) under the Akraino community’s ICN blueprint is definitely a comprehensive solution. Its CNF, which is integrated with multiple network functions based on OpenWRT, is able to serve the distributed applications with secure connections and easy management against networking and the CNF can be automatic thru the overlay controller within SD-EWAN to achieve multi-edge collaboration.</p>
+<p>This post is not covering the archtecture of SDEWAN. If you want to lean more about SDEWAN you can find more information form <a href="https://github.com/akraino-edge-stack/icn-sdwan" target="_blank">https://github.com/akraino-edge-stack/icn-sdwan</a>. Intention of this post is to cover the CNF which co-works with Intel Software Guard Extensions to create a secruity IPsec tunnel.</p>
+<h2 id="security-connection-between-edge-cluster-through-cnf">Security Connection Between Edge Cluster Through CNF</h2>
+<p>One of the functionality of SD-EWAN is to set up secure connection between two edge cluster.  SDEWAN functionality is realized via CNF(Containerized Network Function) and deployed by K8s. SD-EWAN creates IPsec tunnles between two CNF Pod across K8s cluster. The CNF here is based on OpenWRT open source and enhancing, optimizing for Intel IA sccelerator and make it ready for cloud native Edge scenarios.</p>
+<p>In the CNF, we use Strongswan to manage the IPsec tunnel and connect two Edges in a private network the a traffice Hub. The traffice Hub has an publice IP, and two different Edges can access the Hub through the public IP bind on the hub.</p>
+<h2 id="traditional-configuration-of-ipsec">Traditional Configuration of IPsec</h2>
+<p>The Traditional configuration put the private key and certificate in the Pod filesystem located at <code>/etc/ipsec.d</code>.</p>
+<h2 id="leverage-sgx-to-create-secure-tunnle">Leverage SGX to Create Secure Tunnle</h2>
+<h3 id="archtecture">Archtecture</h3>
+<p>The architecture of the CNF which work with CTK is like that.</p>
+<h3 id="enable-pkcs11-for-strongswan">Enable PKCS#11 for Strongswan</h3>
+<h3 id="build-p11-kit-client-for-openwrt">Build p11-kit-client for OpenWRT</h3>
+<h3 id="after-build-the-p11-kit-client-we-shoud-add">After build the p11-kit-client, we shoud add</h3>
+<h3 id="setup-ipsec-tunnel-with-sgx">Setup IPsec Tunnel with SGX</h3>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/sdewan/sdewan-sgx.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#security-connection-between-edge-cluster-through-cnf">Security Connection Between Edge Cluster Through CNF</a></li>
+    <li><a href="#traditional-configuration-of-ipsec">Traditional Configuration of IPsec</a></li>
+    <li><a href="#leverage-sgx-to-create-secure-tunnle">Leverage SGX to Create Secure Tunnle</a>
+      <ul>
+        <li><a href="#archtecture">Archtecture</a></li>
+        <li><a href="#enable-pkcs11-for-strongswan">Enable PKCS#11 for Strongswan</a></li>
+        <li><a href="#build-p11-kit-client-for-openwrt">Build p11-kit-client for OpenWRT</a></li>
+        <li><a href="#after-build-the-p11-kit-client-we-shoud-add">After build the p11-kit-client, we shoud add</a></li>
+        <li><a href="#setup-ipsec-tunnel-with-sgx">Setup IPsec Tunnel with SGX</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
