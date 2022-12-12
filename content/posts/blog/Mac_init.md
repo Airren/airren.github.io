@@ -1,6 +1,6 @@
 ---
 title: Mac Dev Environment
-date: 2021-2-12T13:41:16+08:00
+date: 2021-02-12T13:41:16+08:00
 ---
 
 
