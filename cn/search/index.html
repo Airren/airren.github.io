@@ -11,11 +11,17 @@
 <link rel="stylesheet" href="/css/layouts/main.css"/>
 <link rel="stylesheet" href="/css/navigators/navbar.css"/>
 <link rel="stylesheet" href="/css/plyr.css"/>
+
 <link rel="stylesheet" href="/css/flag-icon.min.css"/>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
 
 
 
@@ -38,23 +44,27 @@ Setting a very low sitemap priority will tell search engines this is not importa
 This implementation uses Fusejs, jquery and mark.js
 Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&ldquo;HTML&rdquo;, &ldquo;JSON&rdquo;] ```" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://airren.github.io/cn/search/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://airren.github.io/cn/search/" /><meta property="article:section" content="notes" />
 <meta property="article:published_time" content="2010-06-08T08:06:25+06:00" />
 <meta property="article:modified_time" content="2010-06-08T08:06:25+06:00" />
 
 
     
     
-    <link rel="stylesheet" href="/css/layouts/list.css">
-    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+  />
+  <link rel="stylesheet" href="/css/layouts/notes.css">
+  <link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
     
-    <link rel="stylesheet" href="/css/style.css"/>
 
 
 
-    
-    
-  </head>
+
+</head>
 
   <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
     <div class="container-fluid bg-dimmed wrapper">
@@ -66,52 +76,46 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
+  
+
+
+  
 
 
 
 
+  
+  
+    
+  
+  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+    
+  
+  
 
 
 <nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
-    <div class="container">
-        <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/cn">
-            
-            <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
-            ByteGopher</a>
-        <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/cn">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
-            <ul class="navbar-nav ml-auto">
-                
-                
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
 
   
 
@@ -119,66 +123,36 @@ Initial setup Search depends on additional output content type of JSON in config
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       
-      <span class="flag-icon flag-icon-cn"></span>
+        
+        <span class="flag-icon flag-icon-cn"></span>
+      
       中文
     </a>
     <div class="dropdown-menu" aria-labelledby="languageSelector">
       
         <a class="dropdown-item nav-link languages-item" href="/search">
           
-          <span class="flag-icon flag-icon-gb"></span>
+            
+            <span class="flag-icon flag-icon-gb"></span>
+          
           English
         </a>
       
     </div>
 </li>
 
-                
-                <li class="nav-item">
-                    <a class="nav-link" id="blog-link" href="/cn/go_note">Go Note</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" id="blog-link" href="/cn/blog">Blog</a>
-                </li>
-                
-                
-                
-                
-                <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    
-    <span class="flag-icon flag-icon-cn"></span>
-    中文
-</a>
-<div class="dropdown-menu" aria-labelledby="languageSelector">
-    
-    <a class="dropdown-item nav-link languages-item" href="/">
-        
-        <span class="flag-icon flag-icon-gb"></span>
-        English
-    </a>
-    
-    <a class="dropdown-item nav-link languages-item" href="/cn/">
-        
-        <span class="flag-icon flag-icon-cn"></span>
-        中文
-    </a>
-    
-</div>
-</li>
-
-                
-            </ul>
-        </div>
+      
+      
+      </ul>
     </div>
-    
-    
+  </div>
+  
+  
     <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
-    
-    
+  
+  
     <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
-    
+  
 </nav>
 
 
@@ -198,10 +172,7 @@ Initial setup Search depends on additional output content type of JSON in config
         </form>
         <div class="sidebar-tree">
           <ul class="tree" id="tree">
-            <li id="list-heading">
-              <a href="/cn/go_note" data-filter="all">博文</a>:
-              <a href="/cn/posts" data-filter="all">Search Results</a>
-            </li>
+            <li id="list-heading"><a href="/cn/notes" data-filter="all">Notes</a></li>
             <div class="subtree">
                 
 
@@ -217,30 +188,41 @@ Initial setup Search depends on additional output content type of JSON in config
       
 <section class="content-section" id="content-section">
   <div class="content container-fluid" id="content">
-    <div class="container-fluid post-card-holder" id="post-card-holder">
-      <div id="search-results">
+    <div class="container-fluid note-card-holder" id="note-card-holder">
+      <p>This file exists solely to respond to /search URL with the related <code>search</code> layout template.</p>
+<p>No content shown here is rendered, all content is based in the template layouts/page/search.html</p>
+<p>Setting a very low sitemap priority will tell search engines this is not important content.</p>
+<p>This implementation uses Fusejs, jquery and mark.js</p>
+<h2 id="initial-setup">Initial setup</h2>
+<p>Search  depends on additional output content type of JSON in config.toml
+```
+[outputs]
+home = [&ldquo;HTML&rdquo;, &ldquo;JSON&rdquo;]
+```</p>
+<h2 id="searching-additional-fileds">Searching additional fileds</h2>
+<p>To search additional fields defined in front matter, you must add it in 2 places.</p>
+<h3 id="edit-layouts_defaultindexjson">Edit layouts/_default/index.JSON</h3>
+<p>This exposes the values in /index.json
+i.e. add <code>category</code>
+```
+&hellip;
+&ldquo;contents&rdquo;:{{ .Content | plainify | jsonify }}
+{{ if .Params.tags }},
+&ldquo;tags&rdquo;:{{ .Params.tags | jsonify }}{{end}},
+&ldquo;categories&rdquo; : {{ .Params.categories | jsonify }},
+&hellip;
+```</p>
+<h3 id="edit-fusejs-options-to-search">Edit fuse.js options to Search</h3>
+<p><code>static/js/search.js</code>
+```
+keys: [
+&ldquo;title&rdquo;,
+&ldquo;contents&rdquo;,
+&ldquo;tags&rdquo;,
+&ldquo;categories&rdquo;
+]
+```</p>
 
-        <script id="search-result-template" type="text/x-js-template">
-          <div class="post-card">
-            <a href="${link}" class="post-card-link">
-              <div class="card" style="min-height: 352px;"><a href="${link}" class="post-card-link">
-                <div class="card-head">
-                  <img class="card-img-top" src="${hero}" alt="Card Heading Image">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">${title}</h5>
-                  <p class="card-text post-summary">${summary}</p>
-                </div>
-                <div class="card-footer">
-                  <span class="float-left">${date}</span>
-                  <a href="${link}" class="float-right btn btn-outline-info btn-sm">Read</a>
-                </div>
-              </div>
-	          </a>
-          </div>
-        </script>
-
-      </div>
     </div>
   </div>
 </section>
@@ -263,6 +245,10 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
+
+  
+  
+
   
   
 
@@ -292,12 +278,12 @@ Initial setup Search depends on additional output content type of JSON in config
   
   
 
-  <footer class="container-fluid text-center align-content-center footer pb-2">
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
     <div class="container pt-5">
       <div class="row text-left">
         
         <div class="col-md-4 col-sm-12">
-          <h5>导航</h5>
+          <h5>Navigation</h5>
           
         </div>
         
@@ -306,7 +292,7 @@ Initial setup Search depends on additional output content type of JSON in config
         
           
           <div class="col-md-4 col-sm-12">
-            <p>通过电子邮件接收最新信息</p>
+            <p>Stay up to date with email notification</p>
               
               <form
                 action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
@@ -323,13 +309,13 @@ Initial setup Search depends on additional output content type of JSON in config
                     id="mce-EMAIL"
                     name="EMAIL"
                     aria-describedby="emailHelp"
-                    placeholder="填入 E-mail"
+                    placeholder="Enter email"
                   />
                   <small id="emailHelp" class="form-text text-muted"
-                    >我们绝不会与任何人共享您的电子邮件。</small
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
                   >
                 </div>
-                <button type="submit" class="btn btn-info">提交</button>
+                <button type="submit" class="btn btn-info">Submit</button>
               </form>
             
           </div>
@@ -342,12 +328,12 @@ Initial setup Search depends on additional output content type of JSON in config
     <div class="container">
       <div class="row text-left">
         <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
             <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
             Toha
           </a>
         </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
         <div class="col-md-4 text-right">
           <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
           <img
@@ -372,11 +358,18 @@ Initial setup Search depends on additional output content type of JSON in config
 <script type="text/javascript" src="/js/main.js"></script>
 
 
-    
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
-<script src="https://airren.github.io/js/search.js"></script>
 
-  </body>
+    
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script src="/js/imagesloaded.pkgd.min.js"></script>
+  <script src="/js/note.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+
+
+    
+</body>
 </html>

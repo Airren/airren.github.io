@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="图 图的表示 邻接矩阵（Adjacent Matrix） 邻接表（Adjacent Matrix） 邻接表适合表示稀疏图（Sparse Graph）
+邻接矩阵适合表示稠密图（Dense Graph）
+稀疏图 稠密图和完全图 寻路 获得两点之间的一条路径
+图的深度优先遍历-时间复杂度
+稀疏图（邻接表）：O(V&#43;E)
+稠密图（邻接矩阵）：O(v^2^)
+深度优先遍历算法-有向图
+dfs 查看是否有环- 有向图 广度优先遍历和最短路径 借助队列实现
+广度优先遍历求出了无权图的最短路径
+图的广度优先遍历-时间复杂度
+稀疏图（邻接表）：O(V&#43;E)
+稠密图（邻接矩阵）：O(v^2^)
+无权图的应用- 迷宫生成，PS抠图 flood fill 魔棒抠图 连通分量
+扫雷 走迷宫、 迷宫生成 迷宫的本质是一棵树 本质是一个生成树的过程
+不能只用一种方式遍历， 随机队列遍历
+欧拉路径 哈密尔顿路径 二分图 同学选课
+地图着色 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/interview/imooc/imooc_%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E6%8F%90%E5%8D%87%E7%AF%87/7th_%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="图">图</h1>
+<h2 id="图的表示">图的表示</h2>
+<h4 id="邻接矩阵adjacent-matrix">邻接矩阵（Adjacent Matrix）</h4>
+<img src="img/image-20191014164712503.png" alt="image-20191014164712503" style="zoom: 33%;" align="left"/>
+<h4 id="邻接表adjacent-matrix">邻接表（Adjacent Matrix）</h4>
+<img src="img/image-20191014164759194.png" alt="image-20191014164759194" style="zoom:33%;" align="left" />
+<p>邻接表适合表示稀疏图（Sparse Graph）</p>
+<p>邻接矩阵适合表示稠密图（Dense Graph）</p>
+<h4 id="稀疏图">稀疏图</h4>
+<img src="img/image-20191014165406186.png" alt="image-20191014165406186" style="zoom:33%;" />
+<h4 id="稠密图和完全图">稠密图和完全图</h4>
+<img src="img/image-20191014165515525.png" alt="image-20191014165515525" style="zoom:33%;" />
+<h2 id="寻路">寻路</h2>
+<p>获得两点之间的一条路径</p>
+<img src="img/image-20191015103539741.png" alt="image-20191015103539741" style="zoom:33%;" />
+<p>图的深度优先遍历-时间复杂度</p>
+<p>稀疏图（邻接表）：O(V+E)</p>
+<p>稠密图（邻接矩阵）：O(v^2^)</p>
+<p>深度优先遍历算法-有向图</p>
+<ul>
+<li>dfs 查看是否有环- 有向图</li>
+</ul>
+<h2 id="广度优先遍历和最短路径">广度优先遍历和最短路径</h2>
+<p>借助队列实现</p>
+<img src="img/image-20191015105139728.png" alt="image-20191015105139728" style="zoom:33%;" />
+<p>广度优先遍历求出了无权图的最短路径</p>
+<p>图的广度优先遍历-时间复杂度</p>
+<p>稀疏图（邻接表）：O(V+E)</p>
+<p>稠密图（邻接矩阵）：O(v^2^)</p>
+<h2 id="无权图的应用--迷宫生成ps抠图">无权图的应用- 迷宫生成，PS抠图</h2>
+<h4 id="flood-fill">flood fill</h4>
+<p>魔棒抠图 连通分量</p>
+<img src="img/image-20191015110344923.png" alt="image-20191015110344923" style="zoom:33%;" />
+<img src="img/image-20191015110427920.png" alt="image-20191015110427920" style="zoom:33%;" />
+<h4 id="扫雷">扫雷</h4>
+<img src="img/image-20191015110611365.png" alt="image-20191015110611365" style="zoom:33%;" />
+<h4 id="走迷宫-迷宫生成">走迷宫、 迷宫生成</h4>
+<p>迷宫的本质是一棵树 本质是一个生成树的过程</p>
+<img src="img/image-20191015110646483.png" alt="image-20191015110646483" style="zoom:33%;" />
+<p>不能只用一种方式遍历， 随机队列遍历</p>
+<img src="img/image-20191015111359237.png" alt="image-20191015111359237" style="zoom:33%;" />
+<h4 id="欧拉路径-哈密尔顿路径">欧拉路径 哈密尔顿路径</h4>
+<img src="img/image-20191015111453393.png" alt="image-20191015111453393" style="zoom:33%;" />
+<h4 id="二分图">二分图</h4>
+<img src="img/image-20191015111532614.png" alt="image-20191015111532614" style="zoom:33%;" />
+<p>同学选课</p>
+<h4 id="地图着色">地图着色</h4>
+<p></p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/interview/imooc/imooc_%e7%ae%97%e6%b3%95%e4%b8%8e%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e7%bb%bc%e5%90%88%e6%8f%90%e5%8d%87%e7%af%87/7th_%e5%9b%be%e7%9a%84%e5%9f%ba%e7%a1%80.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#图的表示">图的表示</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#邻接矩阵adjacent-matrix">邻接矩阵（Adjacent Matrix）</a></li>
+            <li><a href="#邻接表adjacent-matrix">邻接表（Adjacent Matrix）</a></li>
+            <li><a href="#稀疏图">稀疏图</a></li>
+            <li><a href="#稠密图和完全图">稠密图和完全图</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#寻路">寻路</a></li>
+    <li><a href="#广度优先遍历和最短路径">广度优先遍历和最短路径</a></li>
+    <li><a href="#无权图的应用--迷宫生成ps抠图">无权图的应用- 迷宫生成，PS抠图</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#flood-fill">flood fill</a></li>
+            <li><a href="#扫雷">扫雷</a></li>
+            <li><a href="#走迷宫-迷宫生成">走迷宫、 迷宫生成</a></li>
+            <li><a href="#欧拉路径-哈密尔顿路径">欧拉路径 哈密尔顿路径</a></li>
+            <li><a href="#二分图">二分图</a></li>
+            <li><a href="#地图着色">地图着色</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

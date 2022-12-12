@@ -16,11 +16,17 @@
 <link rel="stylesheet" href="/css/layouts/main.css"/>
 <link rel="stylesheet" href="/css/navigators/navbar.css"/>
 <link rel="stylesheet" href="/css/plyr.css"/>
+
 <link rel="stylesheet" href="/css/flag-icon.min.css"/>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
 
 
 
@@ -58,16 +64,21 @@
     <link rel="stylesheet" href="/css/sections/recent-posts.css"/>
     <link rel="stylesheet" href="/css/sections/achievements.css"/>
     <link rel="stylesheet" href="/css/sections/accomplishments.css"/>
+    <link rel="stylesheet" href="/css/sections/publications.css"/>
 
     
     <link rel="stylesheet" href="/css/style.css"/>
     
     
-    
-  </head>
+
+
+
+
+</head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
 
     
+
 
 
 
@@ -126,50 +137,54 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="top-nav-items">
+    <div class="collapse navbar-collapse dynamic-navbar" id="top-nav-items">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#home">主页</a>
+          <a class="nav-link" href="#home">Home</a>
         </li>
         
         
         
           <div class="dropdown-divider" id="top-navbar-divider"></div>
         
-        <li class="nav-item">
-          <a class="nav-link" id="blog-link" href="/cn/note_go">Doc</a>
-        </li>
         
           <li class="nav-item">
-            <a class="nav-link" id="blog-link" href="/cn/blog">Blog</a>
+            <a class="nav-link" id="blog-link" href="/cn/posts/">Posts</a>
           </li>
         
         
         
         
           <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    
-    <span class="flag-icon flag-icon-cn"></span>
-    中文
-</a>
-<div class="dropdown-menu" aria-labelledby="languageSelector">
-    
-    <a class="dropdown-item nav-link languages-item" href="/">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         
-        <span class="flag-icon flag-icon-gb"></span>
-        English
-    </a>
-    
-    <a class="dropdown-item nav-link languages-item" href="/cn/">
+            
+            <span class="flag-icon flag-icon-cn"></span>
         
-        <span class="flag-icon flag-icon-cn"></span>
         中文
     </a>
-    
-</div>
-</li>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+        
+        <a class="dropdown-item nav-link languages-item" href="/">
+            
+                
+                <span class="flag-icon flag-icon-gb"></span>
+            
+            English
+        </a>
+        
+        <a class="dropdown-item nav-link languages-item" href="/cn/">
+            
+                
+                <span class="flag-icon flag-icon-cn"></span>
+            
+            中文
+        </a>
+        
+    </div>
+    </li>
 
+        
         
       </ul>
     </div>
@@ -237,28 +252,27 @@
   <style>
      
     #homePageBackgroundImageDivStyled {
-        
-      background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg');
+      background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg');
     }
      
     @media (min-width: 500px) and (max-width: 800px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 801px) and (max-width: 1200px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 1201px) and (max-width: 1500px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 1501px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background.jpg');
         }
     }
     </style>
@@ -272,7 +286,7 @@
       class="rounded-circle mx-auto d-block img-fluid"
       alt="Author Image"
     />
-    <h1 class="greeting"> </h1>
+    <h1 class="greeting">  Jane Doe</h1>
     
     <div class="typing-carousel">
       <span id="ityped" class="ityped"></span>
@@ -303,6 +317,10 @@
 
 
 
+
+  
+  
+
   
   
 
@@ -332,12 +350,12 @@
   
   
 
-  <footer class="container-fluid text-center align-content-center footer pb-2">
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
     <div class="container pt-5">
       <div class="row text-left">
         
         <div class="col-md-4 col-sm-12">
-          <h5>导航</h5>
+          <h5>Navigation</h5>
           
         </div>
         
@@ -346,7 +364,7 @@
         
           
           <div class="col-md-4 col-sm-12">
-            <p>通过电子邮件接收最新信息</p>
+            <p>Stay up to date with email notification</p>
               
               <form
                 action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
@@ -363,13 +381,13 @@
                     id="mce-EMAIL"
                     name="EMAIL"
                     aria-describedby="emailHelp"
-                    placeholder="填入 E-mail"
+                    placeholder="Enter email"
                   />
                   <small id="emailHelp" class="form-text text-muted"
-                    >我们绝不会与任何人共享您的电子邮件。</small
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
                   >
                 </div>
-                <button type="submit" class="btn btn-info">提交</button>
+                <button type="submit" class="btn btn-info">Submit</button>
               </form>
             
           </div>
@@ -382,12 +400,12 @@
     <div class="container">
       <div class="row text-left">
         <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
             <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
             Toha
           </a>
         </div>
-        <div class="col-md-4 text-center">© 2021 Copyright.</div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
         <div class="col-md-4 text-right">
           <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
           <img
@@ -412,10 +430,13 @@
 <script type="text/javascript" src="/js/main.js"></script>
 
 
+
     
     <script src="/js/itype.min.js"></script>
     <script src="/js/github-button.js"></script>
     <script src="/js/home.js"></script>
     <script src="/js/jquery.filterizr.min.js"></script>
-  </body>
+
+    
+</body>
 </html>

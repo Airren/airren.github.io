@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DataBase on ByteGopher</title>
+    <link>https://airren.github.io/posts/component/DataBase/</link>
+    <description>Recent content in DataBase on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 11:02:05 +0800</lastBuildDate><atom:link href="https://airren.github.io/posts/component/DataBase/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「Mongo」Bson vs Json</title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/bson/</link>
+      <pubDate>Thu, 20 Aug 2020 10:36:54 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/bson/</guid>
+      <description>https://docs.mongodb.com/manual/reference/bson-types/
+http://bsonspec.org/
+https://www.mongodb.com/json-and-bson
+https://www.educba.com/json-vs-bson/\
+https://www.geeksforgeeks.org/difference-between-json-and-bson/</description>
+    </item>
+    
+    <item>
+      <title>「Mongo」Mongo golang sdk</title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</link>
+      <pubDate>Mon, 17 Aug 2020 10:42:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_go_sdk/</guid>
+      <description>mongo 基本数据类型 Type bosun.E type E struct { Key string Value interface{} } E represents a BSON element for a D. It is usually used inside a D. bosun.D type D []E D is an ordered representation of a BSON document. This type should be used when the order of the elements matters, // such as MongoDB command documents. If the order of the elements does not matter, an M should be used instead.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mongo/mongo_install/</guid>
+      <description>1 docker run -d -p 27017:27017 --name mongo_4_4_2 mongo:4.4.2 mongosh 命令行client https://docs.mongodb.com/mongodb-shell/install
+1If you need to have node@14 first in your PATH run: 2 echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/node@14/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.zshrc 3 4For compilers to find node@14 you may need to set: 5 export LDFLAGS=&amp;#34;-L/usr/local/opt/node@14/lib&amp;#34; 6 export CPPFLAGS=&amp;#34;-I/usr/local/opt/node@14/include&amp;#34; mongo doc
+https://mongoing.com/docs/tutorial/query-documents.html</description>
+    </item>
+    
+    <item>
+      <title>安装配置Mysql</title>
+      <link>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/component/DataBase/mysql/install_mysql/</guid>
+      <description>修改表字段
+1# 新增一个字段 2alert table rules add effect_time mysql sql 8.0 认证问题
+connect to 10.227.4.115:3306 err: this authentication plugin is not supported
+1alter user root@% identified with mysql_native_password by &amp;#34;123456&amp;#34; 1CREATE DATABASE IF NOT EXISTS echo_bio DEFAULT CHARSET utf8 COLLATE utf8_general_ci; 2CREATE DATABASE IF NOT EXISTS echo_bio_jira DEFAULT CHARSET utf8 COLLATE utf8_general_ci; </description>
+    </item>
+    
+    
+  </channel>
+</rss>

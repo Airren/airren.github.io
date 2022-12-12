@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/interview/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/5th_Linux/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Linux Linux 的体系结构 体系结构主要分为 用户态(用户上层活动)和内核态 内核： 本质是一段管理计算机硬件设备的程序 系统调用：内核的访问接口，是一种不能再简化的操作。 原子性的操作。 公用函数库： 系统调用的组合拳 Shell:命令解释器， 可编程 windows - cigwin
+查看系统调用 Linux - man 2 syscalls less / more / cat /tail
+切换默认shell
+查找特定的文件 find
+语法： find path [options] params 作用： 在指定目录下查找文件 1find ./ -name &#34;fileName&#34; # 精确查找 2find ~ -name &#34;target*&#34; # 模糊查找文件 3find ~ -iname &#34;target*&#34; # 忽略大小写的查找 4man find # 查看find的使用说明 检索文件内容 grep
+语法： grep [options] pattern file 全称 Global Regular Expression Print 作用： 用于查找文件里符合条件的字符串, 智慧筛选出目标字符串所在的行 1grep &#34;moo&#34; target* # 查找 target* 开头的文件中包含 &#34;moo&#34; 的行 管道操作符 | 可以将指令连接起来，前一个指令的输出作为后一个指令的输入 只处理前一个命令的正确输出， 不处理错误输出 右边命令必须接收标准输入流，否则传递过程中数据会被抛弃 sed, awk, grep, cut, head, top, less, more, wc, join, sort, split 等 1grep &#39;partial\[true\]&#39; test.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/5th_Linux/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/6th_JVM/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/6th_JVM/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/7th_GC%E7%9B%B8%E5%85%B3/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">1. 垃圾回收之标记算法 GC
+对象被判定为垃圾的标准 没有被其他对象引用 判定对象是否为垃圾的算法 引用计数法 通过判断对象的引用数量决定对象是否可以被回收 每个对象实例都有一个引用计数器，被引用则+1， 完成引用则-1 任何引用计数为0的实例 可以当做垃圾被回收 优点： 执行效率高， 程序受影响比较小 缺点： 无法检测出循环引用的情况，导致内存泄露
+可达性分析算法 通过判断对象的引用链是否可达到，来决定对象是否可以被回收
+可以作为GC Root的对象：
+虚拟机栈中引用的对象（栈帧中的本地变量表） 方法区中的常量引用的对象 方法区中类静态属性引用的对象 本地方法栈中JNI(Native 方法) 的引用对象 活跃线程的引用对象 2. 谈谈你了解的垃圾回收算法 标记-清除法 Mark and Sweep 标记： 从根集合进行扫描，对存活的对象进行标记 清除： 对堆内存从头到尾进行线性遍历，回收不可达对象内存
+Mark 阶段 -&gt; Sweep 阶段
+存在问题： 碎片化严重，大对象无法找到连续的内存，容易触发下次垃圾回收，outofmemery
+复制算法 Coping - 年轻代 适用于对象存活时间比较低的情况
+分为对象面和空闲面 对象在对象面上创建 存活对象从对象面复制到空闲面 将对象面所有对象内存清除 有点： 解决了碎片化问题， 顺序分配内存，简单高效，适用于对象存活率低的场景&ndash;年轻代
+标记整理法 - 老年代 整理： 移动所有存活的对象，且按内存地址次序依次排列，然后将末端内存地址以后的内存全部回收。
+优点： 避免了内存不连续，不用设置两块内存互换，适用于存活率高的场景
+分代收集算法 垃圾回收算法的组合拳
+按照生命周期的不同划分区域， 以采用不同的垃圾回收算法 提高了JVM的垃圾回收效率 Survivor Partitiion 年轻代 复制算法</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/7th_GC%E7%9B%B8%E5%85%B3/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/8th_java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Java 多线程与并发 1. 进程与线程的区别 关于jdk版本的选择 JDK8,JDK11:Oracle 长期支持
+Java线程知识考点 进程和线程的区别 用户态和内核态的转换
+进程和线程的由来 串行 初期的计算机只能执行串行执行任务，并且需要长时间等待用户输入
+批处理 预先将用户指令集中成清单，批量串行处理用户指令，仍然无法并发执行
+进程 进程独占内存空间，保存各自运行状态，相互间不干扰且可以互相切换，为并发处理任务提供了可能
+线程 共享进程的内存资源，相互间切换更快捷，支持更细粒度的任务控制，使进程内的子任务得以并发执行
+进程和线程的区别 进程是资源分配的最小单位，线程是CPU调度的最小单位
+所有与进程相关的资源，都被记录在PCB中
+进程是抢占处理机的调度单位；线程属于某个进程，共享其资源
+线程只由堆栈寄存器、程序计数器和TCB组成
+总结
+线程不能看做独立应用，而进程可以看做独立应用 线程有独立的地址空间， 相互不影响，线程只是进程的不同执行路径 线程没有独立的地址空间，多进程的程序比多线程程序健壮 进程的切换比线程的切换开销大 Java进程和线程的关系 - Java对操作系统提供的功能进行封装，包括进程和线程 - 运行一个程序会产生一个进程，进程包含至少一个线程 - 每个进程对应一个JVM实例，多个线程共享JVM里的堆 - Java采用单线程编程模型，程序会自动创建主线程 - 主线程可以创建子线程，原则上要后于子线程完成执行 2. Thread 中start和run方法的区别 start native 方法 openjdk.java.net
+调用start() 方法会创建一个新的子线程并启动 run()方法只是一个Thread的一个普通方法的调用 3. Thread 和Runnable 的区别 Thread 实现了Runnable接口的类，使得run支持多线程 Runnable 只有一个抽象方法run 因为单一继承的原则，推荐多使用Runnable结构 4. 如何给run()方法传参 实现方式主要有三种
+构造函数传参 成员变量传参 回调函数传参 如何实现处理线程的返回值 实现方式主要有三种
+主线程等待法（有多个变量的时候比较难处理，循环等待的时间是不精确的） 使用Thread的join()方法阻塞当前线程以等待子线程处理完毕(粒度不够细) 通过Callable接口是实现： 通过FutureTask 或者 线程池获取 5.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/8th_java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/9th_Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/9th_Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/javabasic/README/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">javabasic 课程涉及到的Java代码，持续更新中&hellip;</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E5%89%91%E6%8C%87offer/javabasic/README/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/8th_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E5%92%8C%E5%A0%86/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/8th_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E5%92%8C%E5%A0%86/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/1st_md/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">算法面试到底是什么鬼？ 1-1 算法面试不仅仅是正确的回答问题 算法面试的目的 展现思考问题的方式 算法面试过程 看做是和面试官一起探讨一个问题的解决方案。对于问题的细节和应用环境，可以和面试官沟通。 这种沟通本身很重要，它暗示着你思考问题的方式。
+我们需要对一组数据进行排序。 快速排序算法 O(nlogn)
+正确+更优 这组数据有什么样的特征？ 有没有可能包含有大量的重复元素？ 如果有这种可能的话，三路快排是更好的选择。 Java 默认是三路快排。
+这组数据有什么样的特征？ 是否大部分数据距离它的正确位置很近？是否近乎有序？ 如果是这样的话插入排序更优
+是否数据的取值范围非常有限？比如学生成绩排序。 计数排序更优
+对排序有什么额外的要求 是否需要稳定排序 归并排序更优
+数据的存储状况是怎样的 如果使用链表存储，归并排序更优
+数据的大小是否可以装在内存里， 外部排序
+什么是正确的回答一个算法问题
+正确还包含对问题的独到见解，容错性，
+1-2 算法面试只是面试的一部分 算法面试优秀不意味着技术面试优秀
+算法面试只是技术面试的一部分
+项目经历和项目中遇到的实际问题
+你遇到印象最深的bug是什么？
+面向对象
+设计模式
+网络相关：安全相关，内存相关，并发相关
+系统设计： scalability
+面试不仅仅是考察技术水平，以及对过去项目的思考
+项目经历
+通过过去了解你的思考行为方式
+遇到的最大的挑战
+犯过的错误
+遇到的失败
+最享受的工作内容
+遇到冲突的处理方式
+做的最与众不同的事儿
+准备好合适的问题问面试官
+1-3 如何准备算法面试 避免完美学习
+使用时间片学习
+远远不需要达到竞赛的水平
+不要轻视基础算法和数据结构，而只关注有意思的题目
+各种排序算法 技术数据结构和算法的实现： 如堆，二叉树，图 基础数据结构的使用： 如链表、栈、队列、哈希表、图、Tire、并查集 基础算法： 深度优先、广度优先、二分查找、递归 基本算法思想：递归、分治、回溯搜索、贪心、动态规划 选择合适的OJ online judge
+leetcode： online portal for interview</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/1st_md/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/7th_%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E9%80%92%E5%BD%92/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">二叉树和递归 二叉树天然的递归结构 满二叉树
+二叉树的前序遍历 递归实现 1void preOrder(TreeNode node){ 2 if(node==null){ 3 return; // 递归终止条件 4 } 5 System.out.print(node.val); 6 preOrder(node.left); // 递归过程 7 preOrder(node.right); 8} 二叉树的定义：空是一棵二叉树
+二叉树总是否包含某个key 1boolean contain(TreeNode node, Key key){ 2 if(node == null){ 3 return false; 4 } 5 if(key == node.key){ 6 return true; 7 } 8 if(contain(node.left,key)|| contain(node.right, key)){ 9 return true; 10 } 11 return false; 12} 1// c++ 释放二叉树的内存 2void destory(TreeNode node){ 3 if(node == null){ 4 return; 5 } 6 destory(node.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/7th_%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E9%80%92%E5%BD%92/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/9th_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">动态规划基础 什么是动态规划 斐波那契数列 Fibonacci Sequence 1//时间复杂度 应该是指数级 2int fib(){ 3 if(n==0){ 4 return 0; 5 } 6 if(n==1){ 7 return 1; 8 } 9 return fib(n-1)+fib(n-2); 10} 递归会有很多的重复计算，重复的计算量会非常大。
+所以想办法对重复的计算 只计算一次
+记忆化搜索-自上而下的解决问题 改进的Fibonacci
+1// 记忆化搜索 时间复杂度O(n) 2int memo[]; 3int fib(){ 4 if(n==0){ 5 return 0; 6 } 7 if(n==1){ 8 return 1; 9 } 10 if(memo[n]==-1){ 11 memo[n]=fib(n-1)+fib(n-2); 12 } 13 return memo[n]; 14} 动态规划-自下而上的解决问题 1// 动态规划 2int fib(int n){ 3 vector&lt;int&gt; memo(n+1, -1); 4 memo[0] = 0; 5 memo[1] = 1; 6 for(int i=2; i&lt;n;i++){ 7 memo[i] = memo[i-1]+memo[i-2]; 8 } 9 return memo[n]; 10} 动态规划：</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%8E%A9%E8%BD%AC%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95_leetcode%E7%89%88%E6%9C%AC/9th_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E6%8F%90%E5%8D%87%E7%AF%87/7th_%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">图 图的表示 邻接矩阵（Adjacent Matrix） 邻接表（Adjacent Matrix） 邻接表适合表示稀疏图（Sparse Graph）
+邻接矩阵适合表示稠密图（Dense Graph）
+稀疏图 稠密图和完全图 寻路 获得两点之间的一条路径
+图的深度优先遍历-时间复杂度
+稀疏图（邻接表）：O(V+E)
+稠密图（邻接矩阵）：O(v^2^)
+深度优先遍历算法-有向图
+dfs 查看是否有环- 有向图 广度优先遍历和最短路径 借助队列实现
+广度优先遍历求出了无权图的最短路径
+图的广度优先遍历-时间复杂度
+稀疏图（邻接表）：O(V+E)
+稠密图（邻接矩阵）：O(v^2^)
+无权图的应用- 迷宫生成，PS抠图 flood fill 魔棒抠图 连通分量
+扫雷 走迷宫、 迷宫生成 迷宫的本质是一棵树 本质是一个生成树的过程
+不能只用一种方式遍历， 随机队列遍历
+欧拉路径 哈密尔顿路径 二分图 同学选课
+地图着色 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E6%8F%90%E5%8D%87%E7%AF%87/7th_%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/imooc/imooc_%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E6%8F%90%E5%8D%87%E7%AF%87/8th_%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">最小生成树 Minimum Span Tree 有权图 Weight Graph 邻接矩阵 Adjacent Matrix 邻接表 使用Edge 表示每一条连接边
+最小生成树问题和切分定理 带权无向图、连通图
+找V-1条边
+切分定理 Cut Property 把图中的节点分成两部分，成为一个切分(Cut)
+如果一个边的两个端点，属于切分不同的两边，这个边成为横切边(Crossing Edge);
+切分定理：
+给定任意切分，横切边中权值最小的边必然属于最小生成树
+Prim算法 Lazy Prim Lazy Prim 最小堆中依然有不会是横切边的边。
+Lazy Prim 的时间复杂度为O(ElogE)
+Prim 算法优化 时间复杂度O(ElogV)
+IndexMinHeap
+Kruskal算法 使用并查集
+使用Union Find 快速判断环
+最小生成树问题 最小生成树问题思考
+Lazy Prim O(ElogE)
+Prim O(ElogV)
+Kruskal O(ElogE)
+如果横切边有相等的边
+根据具体的算法实现，每次选择一个边
+此时，图存在多个最小生成树
+Vyssotsky’s Algorithm
+将边逐渐添加到生成树中
+一旦形成环，删除环中权值最大的边</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/imooc/imooc_%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%BC%E5%90%88%E6%8F%90%E5%8D%87%E7%AF%87/8th_%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/interview/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/2/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/4/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/interview/page/7/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

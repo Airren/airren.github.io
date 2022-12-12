@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="9 每一日面 字节跳动
+很荣幸字节跳动一路走到了四面，不管是运气还是实力，都好好准备接下来的面试吧，加油
+编程 判断字符串B是否是字符串A的子串 数据结构中的桶排序、平衡二叉树 .手撕代码：机器人跳跃(牛客原题） 手撕代码：逆时针打印矩阵（剑指offer改） 合并两个有序链表，空间复杂度O(1)； DP最长回文串； 给两个1T的文件在2g ram的内存中找出相同项。 给一个有向图，判断有向图中是否有环，如果有环，环的数量是多少？ 给一个大小为n的数组，寻找比k小的最大数的位置。 1.最长回文子串 地图上有若干个点，怎样得到某个点到达某个点的所有的换乘路线 ？ 是否是联通，如果不连通怎么处理 给你一个字符串，字符串当中是一段c语言的代码和注释，注释只有/** /这样的可以嵌套，不包含// 请返回去除所有注释的代码 如果代码当中的/*和/*可以不完全匹配如何告知出现错误 写了一个程序，有个小球，球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10 次落地时，共经过多少米？第 10 次反弹多高？ 写代码：火车售票系统是早7点-晚23点进行网上售票，写一个程序判断是否可以进行网上买票 讲一下二叉搜索树，写节点的删除代码 最大连续子序列和 代码：实现lru，不会哦临时想了一种lgn的实现，面试官不满意 写一个最小堆建堆，分析复杂度 多个串，将含有相同字母的串放到同一个集合，返回集合向量 讲思路 编程：36进制加法（忘记处理最高位的进位，面试官提醒了一下） 在一亿个数中找出最大的10个数，在一亿个数中找出中间的10个数 编程：将0-n的整数放到一个长度为n的数组中，找出缺失的那个数 编程：36进制加法（又来？） 题目：n条直线可以将空间划分为多少个区域 面试题 TCP 和UDP
+进程和线程
+设计模式
+MySQL索引的数据结构
+进程间的通信方式
+设计一个存储海量评论的结构，要求大量数据的写入，可以随意翻页？
+熟悉计算机和网络原理，熟悉操作系统原理，对存储、队列、计算、集群管理中的一项或多项有深入的理解和认识；
+常用的排序算法的复杂度，写快排；
+Java的JVM的内存布局，垃圾回收的实现，回收器分几部分，都有什么作用；
+项目大体阐述下，用了哪些技术、设计模式，最大的感受是什么；十分钟实现用过的观察者模式、工厂模式；
+TCP四次挥手讲下？为什么有TIME_WAIT？ TCP比UDP多消耗哪些系统资源？
+A(FIN_WAIT_1) -&gt; B(CLOSE_WAIT) FIN=1,seq = u
+A(FIN_WAIT_2)&lt;-B ACK=1, seq=v,ack=u&#43;1;
+A &lt;-B(LAST_ACK) FIN=1,seq = w,ack=u&#43;1;
+A(TIME_WAIT) ACK=1 ,seq=u&#43;1,ack=w&#43;1;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/9th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="9-每一日面">9 每一日面</h1>
+<blockquote>
+<p>字节跳动</p>
+<p>很荣幸字节跳动一路走到了四面，不管是运气还是实力，都好好准备接下来的面试吧，加油</p>
+</blockquote>
+<h2 id="编程">编程</h2>
+<ol>
+<li>判断字符串B是否是字符串A的子串</li>
+<li>数据结构中的桶排序、平衡二叉树</li>
+<li>.手撕代码：机器人跳跃(牛客原题）</li>
+<li>手撕代码：逆时针打印矩阵（剑指offer改）</li>
+<li>合并两个有序链表，空间复杂度O(1)；</li>
+<li>DP最长回文串；</li>
+<li>给两个1T的文件在2g ram的内存中找出相同项。</li>
+<li>给一个有向图，判断有向图中是否有环，如果有环，环的数量是多少？</li>
+<li>给一个大小为n的数组，寻找比k小的最大数的位置。</li>
+<li>1.最长回文子串</li>
+<li>地图上有若干个点，怎样得到某个点到达某个点的所有的换乘路线 ？ 是否是联通，如果不连通怎么处理</li>
+<li>给你一个字符串，字符串当中是一段c语言的代码和注释，注释只有/** <em>/这样的可以嵌套，不包含//
+请返回去除所有注释的代码</em>
+如果代码当中的/*<em>和</em>/*可以不完全匹配如何告知出现错误</li>
+<li>写了一个程序，有个小球，球从 100 米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10 次落地时，共经过多少米？第 10 次反弹多高？</li>
+<li>写代码：火车售票系统是早7点-晚23点进行网上售票，写一个程序判断是否可以进行网上买票</li>
+<li>讲一下二叉搜索树，写节点的删除代码</li>
+<li>最大连续子序列和</li>
+<li>代码：实现lru，不会哦临时想了一种lgn的实现，面试官不满意</li>
+<li>写一个最小堆建堆，分析复杂度</li>
+<li>多个串，将含有相同字母的串放到同一个集合，返回集合向量 讲思路</li>
+<li>编程：36进制加法（忘记处理最高位的进位，面试官提醒了一下）</li>
+<li>在一亿个数中找出最大的10个数，在一亿个数中找出中间的10个数</li>
+<li>编程：将0-n的整数放到一个长度为n的数组中，找出缺失的那个数</li>
+<li>编程：36进制加法（又来？）</li>
+<li>题目：n条直线可以将空间划分为多少个区域</li>
+</ol>
+<h2 id="面试题">面试题</h2>
+<ol>
+<li>
+<p>TCP 和UDP</p>
+</li>
+<li>
+<p>进程和线程</p>
+</li>
+<li>
+<p>设计模式</p>
+</li>
+<li>
+<p>MySQL索引的数据结构</p>
+</li>
+<li>
+<p>进程间的通信方式</p>
+</li>
+<li>
+<p>设计一个存储海量评论的结构，要求大量数据的写入，可以随意翻页？</p>
+</li>
+<li>
+<p>熟悉计算机和网络原理，熟悉操作系统原理，对存储、队列、计算、集群管理中的一项或多项有深入的理解和认识；</p>
+</li>
+<li>
+<p>常用的排序算法的复杂度，写快排；</p>
+</li>
+<li>
+<p>Java的JVM的内存布局，垃圾回收的实现，回收器分几部分，都有什么作用；</p>
+</li>
+<li>
+<p>项目大体阐述下，用了哪些技术、设计模式，最大的感受是什么；十分钟实现用过的观察者模式、工厂模式；</p>
+</li>
+<li>
+<p>TCP四次挥手讲下？为什么有TIME_WAIT？ TCP比UDP多消耗哪些系统资源？</p>
+<p>A(FIN_WAIT_1) -&gt; B(CLOSE_WAIT)    FIN=1,seq = u</p>
+<p>A(FIN_WAIT_2)&lt;-B                              ACK=1, seq=v,ack=u+1;</p>
+<p>A &lt;-B(LAST_ACK)                                FIN=1,seq = w,ack=u+1;</p>
+<p>A(TIME_WAIT)                                     ACK=1 ,seq=u+1,ack=w+1;</p>
+<p>TIME_WAIT 阶段</p>
+<p>要确定主动断开连接的一端的ACK信息成功发送到对方</p>
+<p>如果有很多的CLOSE_WAIT 是因为什么原因</p>
+<ul>
+<li>被动要求关闭的机器收到对方关闭连接的FIN报文，在第一次ACK应答后马上进入CLOSE_WAIT状态。 这种状态其实是在等待关闭，并且通知应用程序发送剩余数据，处理现场信息，关闭相关资源。</li>
+</ul>
+</li>
+<li>
+<p>多进程上下文切换讲下？</p>
+</li>
+<li>
+<p>讲一下同步，异步，阻塞，非阻塞，多路IO复用？</p>
+</li>
+<li>
+<p>讲下epoll和select的区别？</p>
+<p>epoll跟select都能提供多路I/O复用的解决方案</p>
+</li>
+<li>
+<p>epoll的触发方式 水平触发和边沿触发说一说</p>
+</li>
+<li>
+<p>http复用连接 如何区分请求？</p>
+</li>
+<li>
+<p>tcp的重排序的细节是什么 如果传输的数据很大是如何重排序的</p>
+</li>
+<li>
+<p>.tcp是如何保证稳定传输的</p>
+</li>
+<li>
+<p>给你一个2G的电脑 10G的文本 文本有1k行的字符串，要求输出所有互为逆序的字符串的组合&ndash;哈希</p>
+</li>
+<li>
+<p><font color=red>上下文切换的全过程讲了十分钟 </font></p>
+</li>
+<li>
+<p>mysql引擎，事务，隔离级别，索引的实现，不同引擎索引的区别，剩下的数据库问题的名词没听说过，不会哦</p>
+</li>
+<li>
+<p>i++是否原子操作，锁的底层实现讲了十分钟</p>
+</li>
+<li>
+<p>ioc是怎样实现的</p>
+</li>
+<li>
+<p>aop实现日志之类的功能应该使用什么样的技术（我没太明白，理解为设计模式）</p>
+</li>
+<li>
+<p>怎么实现ThreadLocal</p>
+</li>
+<li>
+<p>CAS，是原子操作吗，问我如果比较之后相等，准备写的时候被改了怎么办（我说好像确实存在这个问题，后来查了一下底层可以保证原子性）</p>
+</li>
+<li>
+<p>逻辑地址&mdash;（分段硬件）&raquo;&gt; 线型地址 &mdash; （分页硬件)&raquo;&gt; 物理地址 的过程，虚拟内存的实现</p>
+</li>
+<li>
+<p>TIME_WAIT状态</p>
+</li>
+<li>
+<p>java中的垃圾回收策略</p>
+</li>
+<li>
+<p>怎么解决内存碎片问题</p>
+</li>
+<li>
+<p>为什么以4开头的http状态码是客户端的问题，以5开头的是服务端的问题？？？</p>
+</li>
+<li>
+<p><strong>LeetCode 76.</strong></p>
+</li>
+<li>
+<p>作者：DerekDeng
+<a href="https://www.nowcoder.com/discuss/217361" target="_blank">https://www.nowcoder.com/discuss/217361</a>来源：牛客网</p>
+<p>系统收到网络数据交付给应用程序的整个过程（从网卡说起，面试官说我对底层了解的挺深）</p>
+<p>UDP发送100个字节，对方的应用程序只recv了90个字节，剩下的10个字节怎么处理（没太明白正常情况下为什么会剩10个字节，跟面试官讨论了半天，他说这个问题太刁钻就过了）</p>
+<p>TCP的传输速率受什么影响（先扯了硬件，再扯了Nagle算法，面试官说知道这个不错，最后扯数据分片，面试官说这个没关系就过了）</p>
+<p>TCP发送消息如果对方不接收，我们这边会有什么情况发生（扯了应用层相关的，其实面试官只是为了引导我回答TCP的传输速率与接收窗口有关）</p>
+<p>TCP的拥塞控制</p>
+<p>TCP的滑动窗口</p>
+<p>TCP的超时时间计算</p>
+<p>手撕跳台阶（剑指offer原题&hellip;&hellip;）</p>
+<p>手撕N个“(”和N个“)”的排列组合（就是有重复数据的全排列，不需要括号匹配）</p>
+</li>
+</ol>
+<h2 id="提问">提问</h2>
+<ol>
+<li>
+<p>该部门的主要业务和主要技术栈</p>
+</li>
+<li>
+<p>对应届生的要求？</p>
+</li>
+<li>
+<p>参加创业类活动所获得的的奖励，和其他的一些专业的兴趣爱好是否会成为您选择人才的加分项</p>
+</li>
+</ol>
+<h2 id="hr面试">HR面试</h2>
+<p>面经汇总：https://www.nowcoder.com/discuss/240413?type=post&amp;order=time&amp;pos=&amp;page=0</p>
+<p><a href="https://www.cnblogs.com/zkfopen/p/11215315.html" target="_blank">https://www.cnblogs.com/zkfopen/p/11215315.html</a></p>
+<p><a href="https://www.nowcoder.com/discuss/153849?type=post&amp;order=time&amp;pos=&amp;page=3" target="_blank">https://www.nowcoder.com/discuss/153849?type=post&order=time&pos=&page=3</a></p>
+<p><a href="https://blog.csdn.net/ELI_CJ/article/details/51793477" target="_blank">https://blog.csdn.net/ELI_CJ/article/details/51793477</a></p>
+<p><a href="https://www.nowcoder.com/discuss/153849" target="_blank">https://www.nowcoder.com/discuss/153849</a></p>
+<p><a href="https://www.nowcoder.com/discuss/217361" target="_blank">https://www.nowcoder.com/discuss/217361</a></p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/interview/%e6%af%8f%e6%97%a5%e4%b8%80%e9%9d%a2/9th_%e6%af%8f%e6%97%a5%e4%b8%80%e9%9d%a2.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编程">编程</a></li>
+    <li><a href="#面试题">面试题</a></li>
+    <li><a href="#提问">提问</a></li>
+    <li><a href="#hr面试">HR面试</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

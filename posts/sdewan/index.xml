@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/sdewan/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/posts/sdewan/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title></title>
+      <link>https://airren.github.io/posts/sdewan/CRE-Share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/CRE-Share/</guid>
+      <description>ESXI configuration and usage ESXI admin interface : https://10.239.241.100/
+1user: root passwd: CREshare- 跳板机CRE-relay
+1ssh cre@cre-relay.sh.intel.com # 10.239.241.116 2user: cre passwd: 123456 BIOS：123456/123123
+How to create a VM with SGX and NIC direct mode 1.select a creation type 2.Select a name and guest OS 3.Select storage 4.Customize settings, CPU/Mem/Disk/SGX/PCI device, and select an OS image SGX enable Add a PCI device Select an OS Image 5.Start your machine and check the status </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-cnf-test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-cnf-test/</guid>
+      <description>openwrt login 1curl -XPOST curl --location -v --request POST &amp;#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/?luci_username=root&amp;amp;luci_password=root1&amp;#39; --cacert ./ca.pem 2 3 # Cert is the cnf-default-cert, must use the h 4curl --location -v --request POST &amp;#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/&amp;#39; \ 5--header &amp;#39;Content-Type: application/x-www-form-urlencoded&amp;#39; \ 6--data-urlencode &amp;#39;luci_username=root&amp;#39; \ 7--data-urlencode &amp;#39;luci_password=root1&amp;#39; \ 8--cacert ./ca.pem Create CSR
+1curl -XGET &amp;#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/sdewan/nat/v1/nats&amp;#39; --cacert ./ca.pem 1curl -XGET &amp;#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/sdewan/pkcs11/v1/crs&amp;#39; --cacert ./ca.pem 1#!/bin/bash 2 3set -x 4 5cnf_ip=&amp;#34;10-233-76-144.default.pod.cluster.local&amp;#34; 6cert_label=&amp;#34;node-1&amp;#34; 7cert_subject=&amp;#34;/CN=node-1&amp;#34; 8 9# you alway a same csr, even you try many times 10curl --location --request POST &amp;#34;https://${cnf_ip}/cgi-bin/luci/sdewan/pkcs11/v1/crs&amp;#34; \ 11--header &amp;#39;Content-Type: application/json&amp;#39; \ 12--data-raw &amp;#34;{ 13 \&amp;#34;cert\&amp;#34;: { 14 \&amp;#34;key_pair\&amp;#34;: { 15 \&amp;#34;key_type\&amp;#34;: \&amp;#34;rsa:2048\&amp;#34;, 16 \&amp;#34;label\&amp;#34;: \&amp;#34;${cert_label}\&amp;#34;, 17 \&amp;#34;id\&amp;#34;: \&amp;#34;0001\&amp;#34; 18 }, 19 \&amp;#34;subject\&amp;#34;: \&amp;#34;${cert_subject}\&amp;#34;, 20 \&amp;#34;pem\&amp;#34;: \&amp;#34;\&amp;#34; 21 } 22}&amp;#34; --cert ca.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-proposal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-proposal/</guid>
+      <description>Leverage TEE to enhance the integrity and security of the SASE network
+Software-Define wide area network is one of the most essential components of the SASE architecture, which is based on network technologies that create virtualized WAN connections. SD-WAN decouples the network services from the underlying networks and allows the application traffic to be carried independently of the underlying network hardware, enabling the client&amp;rsquo;s connection anywhere to the applications. How to build up a strong shield for the overlay network of SD-WAN has become a hot issue in the industry.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/sdewan/test-result/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/test-result/</guid>
+      <description>Test Result Passed Case: Cluster k8s scc crd-controller cnf cert-manager overlay v1.17.0 old version latest version 0.5.1 v1.1.0 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.1 v1.6.1 Failed Case: case1:
+Cluster k8s scc crd-controller cnf cert-manager overlay v1.23.0 new version latest version 0.5.1 v1.6.1 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.1 v1.6.1 case2:
+Cluster k8s scc crd-controller cnf cert-manager overlay v1.23.0 new version latest version 0.5.0 v1.6.1 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.0 v1.</description>
+    </item>
+    
+    <item>
+      <title>Cloud-Native HSM based on Intel Software Guard(SGX)</title>
+      <link>https://airren.github.io/posts/sdewan/SGX-HSM/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/SGX-HSM/</guid>
+      <description>Patent Cloud-Native HSM is a cloud-native Hardware Security Module(HSM) service that allows you to host encryption keys in the Intel Software Guard extension enclave and perform cryptographic operations accelerated by QAT in a cluster of HSM. You can manage the HSM resource with the Kubernetes customer resources, so you do not need to worry about scaling, managing, and clustering. You can leverage the Kubernetes&amp;rsquo; function to provide the HSM to your service.</description>
+    </item>
+    
+    <item>
+      <title>clusternet</title>
+      <link>https://airren.github.io/posts/sdewan/clusternet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/clusternet/</guid>
+      <description>Cluster Net Test Environment Access method 1# this machine is out of intel, please use the socks proxy: 2# proxy-prc.intel.com:1080 3# use this private key to access this the relay machine: 4# first login to 5ssh -p 3302 airren@124.223.99.93 # passwd: 123- 6# next login to 7ssh airren@node-1 # passwd:123- PreRequisites Kind Create cluster
+1# create cluster one node 2 3 4# create cluster multinode 5 6# create cluster with configuration Delete cluster</description>
+    </item>
+    
+    <item>
+      <title>ODMS Install</title>
+      <link>https://airren.github.io/posts/sdewan/odms-install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/odms-install/</guid>
+      <description>Home Page: https://wiki.ith.intel.com/display/ITSODMS/Observability+Data+Management+Suite+Home
+[TOC]
+Operator Prometheus-operator https://prometheus-operator.dev/
+https://github.com/prometheus-operator/prometheus-operator
+The prometheus operator manages the Promentheus Clust atop Kubernetes.
+Opentelemetry-operator https://github.com/open-telemetry/opentelemetry-operator
+Kubernetes reflector https://github.com/emberstack/kubernetes-reflector
+Reflector is a Kubernetes addon designed to monitor changes to resources (secrets and configmaps) and reflect changes to mirror resources in the same or other namespaces.
+OpenTelemetry Agent &amp;amp; Gateway Configure by CR opentelemetrycollectors.opentelemetry.io
+Agent collect Metric, Logs, and can add labels or attributes, and finally push the data to the opentelemetry gateway.</description>
+    </item>
+    
+    <item>
+      <title>SDEWAN AWS test nodus</title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-AWS-testnodus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-AWS-testnodus/</guid>
+      <description>ICN-SDWAN-Virginia AWS2
+IPv4 Prefixes Public IPv4 Private IPv4 ICN-SDWAN-Virginia-Eth1 3.211.4.230 10.20.0.232 ICN-SDWAN-Virginia-Eth0 34.230.111.156 10.20.0.23 ICN-SDWAN- California AWS5
+IPv4 Prefixes Public IPv4 Private IPv4 ICN-SDWAN-California-Eth1 54.177.9.32 172.16.182.169 ICN-SDWAN-California-Eth0 54.241.18.249 172.16.182.237 iptables -I POSTROUTING -d 172.17.0.2/32 -j SNAT &amp;ndash;to-source 192.169.0.4 -t nat
+iptables -I POSTROUTING -d 10.0.0.1/24 -j SNAT &amp;ndash;to-source 10.8.0.1 -t nat
+AWS2 eth1 MAC Address
+0e:4e:31:15:1a:ed
+0e:4e:31:15:1a:ed
+1ip addr add 10.20.0.232/20 dev 1eth1: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc mq state UP group default qlen 1000 link/ether 0e:4e:31:15:1a:ed brd ff:ff:ff:ff:ff:ff inet 10.</description>
+    </item>
+    
+    <item>
+      <title>SDEWAN Leverage SGX to provide Secure Access Service Edge</title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-sgx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-sgx/</guid>
+      <description>SD-WAN handles the network connectivity issues between distributed applications in a seamless, secure, and efficient manner by replacing traditional branch routers with virtualized or appliance-based software. However, as the concept of edge prevails recently, distributed applications are usually deployed across multiple resource-constrained k8s edges. Then how to expose the services and manage the connections in a cloud-native way becomes a critical issue for users.
+The open-source project Software Define Edge WAN(SD-EWAN) under the Akraino community’s ICN blueprint is definitely a comprehensive solution.</description>
+    </item>
+    
+    <item>
+      <title>SDEWAN Setup</title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-pull-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-pull-mode/</guid>
+      <description>SDEWAN: Setup by pull mode Version requirement:
+​	Ubuntu: 20.04
+​	scc: build from https://github.com/intel-sandbox/akraino-sdewan/tree/rc-22.06
+​	cnf: docker pull integratedcloudnative/sdewan-cnf:0.5.3
+crd-controller: docker pull integratedcloudnative/sdewan-controller:0.5.3
+0.Create an Github repo for pull mode ​	Create an Github repo for SDEWAN pull mode, for example: https://github.com/airren/flux
+​ Next, prepare an Personal access tokens for SDEAN to access the repo.
+Update your repo info and token to this file SDEWAN-SetUp/ewo-tools/cluster-sync-object.yaml.
+1# SDEWAN-SetUp/ewo-tools/cluster-sync-object.yaml 2--- 3# creating cluster-sync-obj 4version: ewo/v1 5resourceContext: 6anchor: overlays/overlay1/cluster-sync-objects 7metadata: 8name: cso2 9description: 10userData1: 11userData2: 12spec: 13kv: 14- gitType: github 15- userName: Airren # change to your own github username 16- gitToken: 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 # change to your own 17- repoName: flux # change to your own 18- branch: main Update the GITHUB_TOKEN in SDEWAN-SetUp/setup_flux.</description>
+    </item>
+    
+    <item>
+      <title>SDEWAN SGX Test Environment</title>
+      <link>https://airren.github.io/posts/sdewan/sdewan-sgx-testenv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/sdewan-sgx-testenv/</guid>
+      <description>Prepare Machine 1sudo ip route add default via 10.0.11.100 dev eno1 2 3cat &amp;lt;&amp;lt;EOF | sudo tee /etc/resolv.conf 4nameserver 127.0.0.53,10.248.2.5 5options edns0 trust-ad 6search sh.intel.com 7EOF 8 9sudo vi /etc/netplan/00-installer-config.yaml 10network: 11 ethernets: 12 eno1: 13 dhcp4: true 14 nameservers: 15 addressses: [10.248.2.5] 16 version: 2 17 18 19 20git clone -b sgx http://sdewan.sh.intel.com:10880/airren/SDEWAN-SetUp.git 21 22 23 24 25apt-cache search linux-image 26sudo apt-get install linux-image-your_version_choice linux-headers-your_version_choice linux-image-extra-your_version_choice 27 28# must reboot you machine 29sudo apt update &amp;amp;&amp;amp; sudo apt install -y linux-image-5.</description>
+    </item>
+    
+    <item>
+      <title>Service function chain</title>
+      <link>https://airren.github.io/posts/sdewan/service-function-chain/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/sdewan/service-function-chain/</guid>
+      <description>1node-1 10.151.128.13 2node-2 10.151.128.14 1# Hub 2ip rule add iif vti_192.169.0.1 lookup 51 3ip rule add iif vti_192.169.0.2 lookup 51 4ip route add default via &amp;lt;net pod&amp;gt; dev net1 table 51 5#ip route add default via 10.151.128.13 dev net1 table 51 6 7# Node-1 8ip route add 192.169.0.0/24 via 10.151.128.14 dev net1 9 10# Node-2 11ip route add 192.169.0.0/24 via 10.151.128.12 dev net1 12 13 14sysctl -w net.ipv4.ip_forward=1 15 echo 1 &amp;gt; /proc/sys/net/ipv4/ip_forward </description>
+    </item>
+    
+    
+  </channel>
+</rss>

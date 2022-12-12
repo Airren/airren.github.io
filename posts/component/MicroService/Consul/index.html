@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>「Consul」Consul</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="「Consul」Consul" />
+<meta property="og:description" content="什么是consul Consul是用来做什么的 服务如何注册到Consul，以及如何进行服务发现 Consul部署 基于docker部署
+node consul-server server consul-1 client consul-2 client 1docker run -d -p 8500:8500 -e CONSUL_BIND_INTERFACE=eth0 --name consul-server consul:1.9.4 2docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-1 consul:1.9.4 agent -dev -join=172.17.0.13 3docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-2 consul:1.9.4 agent -dev -join=172.17.0.13 4 5# docker stop consul-server consul-1 consul-2 6# docker rm consul-server consul-1 consul-2 Tips： 查看consul-server ip
+1 docker exec -t consul-server ifconfig 可以通过8500端口访问UI
+Server:
+Client:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/component/MicroService/Consul/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="「Consul」Consul" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1>「Consul」Consul</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <blockquote>
+<ol>
+<li>什么是consul</li>
+<li>Consul是用来做什么的</li>
+<li>服务如何注册到Consul，以及如何进行服务发现</li>
+</ol>
+</blockquote>
+<h2 id="consul部署">Consul部署</h2>
+<p>基于docker部署</p>
+<table>
+<thead>
+<tr>
+<th>node</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>consul-server</td>
+<td>server</td>
+</tr>
+<tr>
+<td>consul-1</td>
+<td>client</td>
+</tr>
+<tr>
+<td>consul-2</td>
+<td>client</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>docker run -d -p 8500:8500 -e CONSUL_BIND_INTERFACE<span style="color:#f92672">=</span>eth0 --name consul-server consul:1.9.4
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>docker run -d  -e CONSUL_BIND_INTERFACE<span style="color:#f92672">=</span>eth0 --name consul-1 consul:1.9.4 agent -dev -join<span style="color:#f92672">=</span>172.17.0.13
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>docker run -d  -e CONSUL_BIND_INTERFACE<span style="color:#f92672">=</span>eth0 --name consul-2 consul:1.9.4 agent -dev -join<span style="color:#f92672">=</span>172.17.0.13
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#75715e"># docker stop consul-server consul-1 consul-2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#75715e"># docker rm consul-server consul-1 consul-2</span>
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+<img src="image-20210414003558997.png" alt="image-20210414003558997" />
+
+
+
+</p>
+</p>
+<blockquote>
+<p>Tips： 查看consul-server ip</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span> docker exec -t consul-server ifconfig
+</span></span></code></pre></div><p><p class="md__image">
+
+
+
+
+
+
+
+<img src="image-20210414004730031.png" alt="image-20210414004730031" />
+
+
+
+</p>
+</p>
+</blockquote>
+<p>可以通过<code>8500</code>端口访问UI</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+<img src="image-20210414003939615.png" alt="image-20210414003939615" />
+
+
+
+</p>
+</p>
+<p>Server:</p>
+<p>Client:</p>
+<p>Client 只与Server交互。</p>
+<p>Port：</p>
+<table>
+<thead>
+<tr>
+<th>Post</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8300</td>
+<td>consul agent服务 relplaction 、rpc（client-server）</td>
+</tr>
+<tr>
+<td>8301</td>
+<td>lan gossip</td>
+</tr>
+<tr>
+<td>8302</td>
+<td>wan gossip</td>
+</tr>
+<tr>
+<td>8500</td>
+<td>http api端口</td>
+</tr>
+<tr>
+<td>8600</td>
+<td>DNS服务端口</td>
+</tr>
+</tbody>
+</table>
+<h2 id="服务注册">服务注册</h2>
+<h3 id="服务自己调用http-api注册">服务自己调用http API注册</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>curl -X PUT -d <span style="color:#e6db74">&#39;{&#34;Datacenter&#34;: &#34;sz-1&#34;, &#34;Node&#34;: &#34;mysql-1&#34;, &#34;Address&#34;: \
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#e6db74">&#34;mysql-1.node.consul&#34;,&#34;Service&#34;: {&#34;Service&#34;: &#34;mysql&#34;, &#34;tags&#34;: [&#34;master&#34;,&#34;v1&#34;], \
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#e6db74">&#34;Port&#34;: 3306}}&#39;</span> http://127.0.0.1:8500/v1/catalog/register
+</span></span></code></pre></div><h3 id="json配置文件注册">json配置文件注册</h3>
+<p>启动时候指定配置文件路径<code>-config-dir</code>  <code>/etc/consul.d/</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#f92672">&#34;service&#34;</span>:{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;alertmanager&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        <span style="color:#f92672">&#34;tags&#34;</span>:[
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>            <span style="color:#e6db74">&#34;prom&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        ],
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>        <span style="color:#f92672">&#34;port&#34;</span>:<span style="color:#ae81ff">9093</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#f92672">&#34;check&#34;</span>:{
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>            <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;ping&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            <span style="color:#f92672">&#34;args&#34;</span>:[<span style="color:#e6db74">&#34;curl -s 10.227.4.115:9093&#34;</span>],
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            <span style="color:#f92672">&#34;interval&#34;</span>:<span style="color:#e6db74">&#34;3s&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>}
+</span></span></code></pre></div><h2 id="服务发现">服务发现</h2>
+<h3 id="httpapi">HttpAPI</h3>
+<p>通过服务名字“alertmanager”获取服务的IP和Port</p>
+<p><p class="md__image">
+
+
+
+
+
+
+
+<img src="image-20210421000707337.png" alt="image-20210421000707337" />
+
+
+
+</p>
+</p>
+<h3 id="dns-8600">DNS 8600</h3>
+<p>使用dns查询，默认域名格式NAME.service.consul，NAME就是web.json里面定义的service的name。可以自己指定域和端口：-domain、-dns-port 53</p>
+<h2 id="consul">Consul</h2>
+<p>Consul的主要作用是用于服务治理。</p>
+<p>在分布式场景下，服务会部署多个实例。传统的基于API直连的调用方式，在服务挂掉或者连接信息被修改之后就会导致API调用失败。如果调用方不用去关注所调用服务的实际部署情况，只要知道所调用服务的名称。其他实际部署情况，负载均衡、健康检查由一个统一的平台去做。这个就是Consul的作用。</p>
+<p>Consul分为Server Agent和Client Agent。</p>
+<p>Server：consul的server模式，表明这个consul是个server，这种模式下，功能和CLIENT都一样，唯一不同的是，它会把所有的信息持久化的本地，这样遇到故障，信息是可以被保留的。服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其他数据中心通讯. 每个数据中心的 server 数量推荐为 3 个或是 5 个。存储服务信息</p>
+<p>Server-Leader：</p>
+<p>个SERVER下面有LEADER的字眼，表明这个SERVER是它们的老大，它和其它SERVER不一样的一点是，它需要负责同步注册的信息给其它的SERVER，同时也要负责各个节点的健康监测。</p>
+<p>Client： 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群。注册到当前节点的信息都会转发给Server, 本身不持久化信息。</p>
+<p>Consul使用gossip协议管理成员关系、广播消息到整个集群，他有两个gossip pool（LAN pool和WAN pool），LAN pool是同一个数据中心内部通信的，WAN pool是多个数据中心通信的，LAN pool有多个，WAN pool只有一个。</p>
+<h3 id="服务发现-1">服务发现</h3>
+<p>http &amp; DNS</p>
+<p>consul支持两种方式实现服务发现，一种是通过http API来查询有哪些服务，另外一种是通过consul agent 自带的DNS（8600端口），域名是以NAME.service.consul的形式给出，NAME即在定义的服务配置文件中，服务的名称。DNS方式可以通过check的方式检查服务。</p>
+<h3 id="服务配置">服务配置</h3>
+<p>consul支持两种方式实现服务注册，一种是通过consul的服务注册http API，由服务自己调用API实现注册，另一种方式是通过json个是的配置文件实现注册，将需要注册的服务以json格式的配置文件给出。consul官方建议使用第二种方式。</p>
+<h3 id="健康检查">健康检查</h3>
+<h3 id="键值存储">键值存储</h3>
+<h3 id="安全服务通信">安全服务通信</h3>
+<h3 id="多数据中心">多数据中心</h3>
+<p>类似的服务组件有Eureka，zookeeper，etcd</p>
+<p>一致性协议采用Raft算法</p>
+<blockquote>
+<p>todo</p>
+<ul>
+<li><input disabled="" type="checkbox"> Dig</li>
+</ul>
+</blockquote>
+<h4 id="参考文档">参考文档</h4>
+<p><a href="https://blog.csdn.net/a312586670/article/details/105337943/" target="_blank">https://blog.csdn.net/a312586670/article/details/105337943/</a></p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/component/MicroService/Consul.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#consul部署">Consul部署</a></li>
+    <li><a href="#服务注册">服务注册</a>
+      <ul>
+        <li><a href="#服务自己调用http-api注册">服务自己调用http API注册</a></li>
+        <li><a href="#json配置文件注册">json配置文件注册</a></li>
+      </ul>
+    </li>
+    <li><a href="#服务发现">服务发现</a>
+      <ul>
+        <li><a href="#httpapi">HttpAPI</a></li>
+        <li><a href="#dns-8600">DNS 8600</a></li>
+      </ul>
+    </li>
+    <li><a href="#consul">Consul</a>
+      <ul>
+        <li><a href="#服务发现-1">服务发现</a></li>
+        <li><a href="#服务配置">服务配置</a></li>
+        <li><a href="#健康检查">健康检查</a></li>
+        <li><a href="#键值存储">键值存储</a></li>
+        <li><a href="#安全服务通信">安全服务通信</a></li>
+        <li><a href="#多数据中心">多数据中心</a>
+          <ul>
+            <li><a href="#参考文档">参考文档</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

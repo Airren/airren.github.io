@@ -21,11 +21,17 @@
 <link rel="stylesheet" href="/css/layouts/main.css"/>
 <link rel="stylesheet" href="/css/navigators/navbar.css"/>
 <link rel="stylesheet" href="/css/plyr.css"/>
+
 <link rel="stylesheet" href="/css/flag-icon.min.css"/>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
 
 
 
@@ -63,16 +69,21 @@
     <link rel="stylesheet" href="/css/sections/recent-posts.css"/>
     <link rel="stylesheet" href="/css/sections/achievements.css"/>
     <link rel="stylesheet" href="/css/sections/accomplishments.css"/>
+    <link rel="stylesheet" href="/css/sections/publications.css"/>
 
     
     <link rel="stylesheet" href="/css/style.css"/>
     
     
-    
-  </head>
+
+
+
+
+</head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
 
     
+
 
 
 
@@ -135,7 +146,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="top-nav-items">
+    <div class="collapse navbar-collapse dynamic-navbar" id="top-nav-items">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#home">Home</a>
@@ -180,44 +191,50 @@
         
           <div class="dropdown-divider" id="top-navbar-divider"></div>
         
-        <li class="nav-item">
-          <a class="nav-link" id="blog-link" href="/note_go">Doc</a>
-        </li>
         
           <li class="nav-item">
-            <a class="nav-link" id="blog-link" href="/blog">Blog</a>
+            <a class="nav-link" id="blog-link" href="/posts/">Posts</a>
           </li>
         
         
         
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.github.com/airren">Github</a>
-          </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.github.com/airren">Github</a>
+              </li>
+            
         
         
           <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    
-    <span class="flag-icon flag-icon-gb"></span>
-    English
-</a>
-<div class="dropdown-menu" aria-labelledby="languageSelector">
-    
-    <a class="dropdown-item nav-link languages-item" href="/">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         
-        <span class="flag-icon flag-icon-gb"></span>
+            
+            <span class="flag-icon flag-icon-gb"></span>
+        
         English
     </a>
-    
-    <a class="dropdown-item nav-link languages-item" href="/cn/">
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
         
-        <span class="flag-icon flag-icon-cn"></span>
-        中文
-    </a>
-    
-</div>
-</li>
+        <a class="dropdown-item nav-link languages-item" href="/">
+            
+                
+                <span class="flag-icon flag-icon-gb"></span>
+            
+            English
+        </a>
+        
+        <a class="dropdown-item nav-link languages-item" href="/cn/">
+            
+                
+                <span class="flag-icon flag-icon-cn"></span>
+            
+            中文
+        </a>
+        
+    </div>
+    </li>
 
+        
         
       </ul>
     </div>
@@ -293,28 +310,27 @@
   <style>
      
     #homePageBackgroundImageDivStyled {
-        
-      background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg');
+      background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_500x0_resize_q75_box.jpg');
     }
      
     @media (min-width: 500px) and (max-width: 800px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_800x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 801px) and (max-width: 1200px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1200x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 1201px) and (max-width: 1500px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background_hu734aa6f98ca0577a577126c08c02e5c3_354464_1500x0_resize_q75_box.jpg');
         }
     }
     @media (min-width: 1501px) {  
-      #homePageBackgroundImageDivStyled {
-          background-image: url('https://airren.github.io/images/site/background.jpg');
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('/images/site/background.jpg');
         }
     }
     </style>
@@ -328,9 +344,9 @@
       class="rounded-circle mx-auto d-block img-fluid"
       alt="Author Image"
     />
-    <h1 class="greeting"> Every Single Day Without Dancing is One Day We Betrayed of Life</h1>
+    <h1 class="greeting"> Every Single Day Without Dancing is One Day We Betrayed of Life Airren</h1>
     
-      <h2 class="greeting-subtitle">每一个不曾起舞的日子，都是对生命的辜负</h2>
+      <h2 class="greeting-subtitle">All is well</h2>
     
     <div class="typing-carousel">
       <span id="ityped" class="ityped"></span>
@@ -353,7 +369,7 @@
         
           
         
-        <a href="#about" aria-label="Read More - Airren"><i class="arrow bounce fa fa-chevron-down"></i></a>
+        <a href="#about" class="arrow-center" aria-label="Read More - Airren"><i class="arrow bounce fa fa-chevron-down"></i></a>
       
     
   </div>
@@ -438,6 +454,7 @@ roads. If you&rsquo;re interested, you can join him.
         </ul>
       </div>
       
+      
     </div>
     
     <div class="col-sm-6 pt-5 pl-md-4 pl-sm-3 pt-sm-0">
@@ -447,7 +464,7 @@ roads. If you&rsquo;re interested, you can join him.
 
     
     <div class="">
-      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" >
+      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" rel="noopener noreferrer">
        <img src="https://images.credly.com/size/680x680/images/f4bf92ed-8985-40b2-bc07-2f9308780854/kubernetes-security-specialist-logo-examdev.png" alt="Certified Kubernetes Security Specialist" />
       </a>
     </div>
@@ -459,7 +476,7 @@ roads. If you&rsquo;re interested, you can join him.
 
     
     <div class="">
-      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" >
+      <a href="https://www.credly.com/org/the-linux-foundation/badge/exam-developer-certified-kubernetes-security-specialist" target="_blank" rel="noopener noreferrer">
        <img src="https://images.credly.com/size/680x680/images/8d34d489-84bf-4861-a4a0-9e9d68318c5c/Beyond_basics_of_Istio_on_Cloud_v2.png" alt="Istio and IBM Cloud Kubernetes Service" />
       </a>
     </div>
@@ -471,7 +488,7 @@ roads. If you&rsquo;re interested, you can join him.
 
     
     <div class="">
-      <a href="https://www.credly.com/org/grupo-bancolombia/badge/artificial-intelligence-and-machine-learning" target="_blank" >
+      <a href="https://www.credly.com/org/grupo-bancolombia/badge/artificial-intelligence-and-machine-learning" target="_blank" rel="noopener noreferrer">
        <img src="https://images.credly.com/size/680x680/images/e027514f-9d07-4b29-862f-fe21a8aaebf1/ae.png" alt="Artificial Intelligence and Machine Learning" />
       </a>
     </div>
@@ -573,9 +590,10 @@ roads. If you&rsquo;re interested, you can join him.
   
 
 
-<div class="container-fluid anchor pb-5 skills-section" id="skills">
+<div class="container-fluid anchor pb-5 skills-section">
   
-    <h1 class="text-center">Skills</h1>
+    <h1 class="text-center">
+        <span id="skills"></span>Skills</h1>
   
   <div class="container d-flex-block">
     <div class="row" id="primary-skills">
@@ -586,15 +604,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/kubernetes_hua3e9a1b19c1572e2f049d77a47832d4b_241197_24x24_fit_box_3.png" alt="Kubernetes" />
         
-        <h5 class="card-title">Kubernetes</h5>
+          <img class="card-img-xs" src="/images/sections/skills/kubernetes_hua3e9a1b19c1572e2f049d77a47832d4b_241197_24x24_fit_box_3.png" alt="Kubernetes" />
+          <h5 class="card-title">Kubernetes</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Capable of deploying, managing application on Kubernetes. Experienced in writing Kubernetes controllers for CRDs.</p>
@@ -610,15 +627,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/go_hue4d750b86639bc097ae544131de4926d_6734_24x24_fit_box_3.png" alt="Go Development" />
         
-        <h5 class="card-title">Go Development</h5>
+          <img class="card-img-xs" src="/images/sections/skills/go_hue4d750b86639bc097ae544131de4926d_6734_24x24_fit_box_3.png" alt="Go Development" />
+          <h5 class="card-title">Go Development</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program.</p>
@@ -634,13 +650,12 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
-
-          <img class="card-img-xs" src="/images/sections/skills/docker.svg" alt="Docker" />
         
-        <h5 class="card-title">Docker</h5>
+          <img class="card-img-xs" src="/images/sections/skills/docker.svg" alt="Docker" />
+          <h5 class="card-title">Docker</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Write most of the programs as dockerized container. Experienced with multi-stage, multi-arch build process.</p>
@@ -656,15 +671,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/prometheus_huebb51490a868f20dc51d40a74afb8c56_48384_24x24_fit_box_3.png" alt="Prometheus" />
         
-        <h5 class="card-title">Prometheus</h5>
+          <img class="card-img-xs" src="/images/sections/skills/prometheus_huebb51490a868f20dc51d40a74afb8c56_48384_24x24_fit_box_3.png" alt="Prometheus" />
+          <h5 class="card-title">Prometheus</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Capable of setup, configure Prometheus metrics. Experienced with PromQL, AlertManager. Also, experienced with writing metric exporters.</p>
@@ -680,15 +694,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/linux_huf8888e89df43f58ab32b560cb211e230_26357_24x24_fit_box_3.png" alt="Linux" />
         
-        <h5 class="card-title">Linux</h5>
+          <img class="card-img-xs" src="/images/sections/skills/linux_huf8888e89df43f58ab32b560cb211e230_26357_24x24_fit_box_3.png" alt="Linux" />
+          <h5 class="card-title">Linux</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Using as the main operating system. Capable of writing bash/shell scripts.</p>
@@ -704,15 +717,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/git_hu6c1226675924c2f2e3476a81b4d03976_10660_24x24_fit_box_3.png" alt="Git" />
         
-        <h5 class="card-title">Git</h5>
+          <img class="card-img-xs" src="/images/sections/skills/git_hu6c1226675924c2f2e3476a81b4d03976_10660_24x24_fit_box_3.png" alt="Git" />
+          <h5 class="card-title">Git</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Experienced with git-based development. Mostly, use Github. Also, have experience in working with GitLab.</p>
@@ -728,15 +740,14 @@ roads. If you&rsquo;re interested, you can join him.
       <div class="card-head d-flex">
         
           
-
           
           
             
           
-
-          <img class="card-img-xs" src="/images/sections/skills/c&#43;&#43;_hue32fe91ddbd83e8e5585833667109ec5_57810_24x24_fit_box_3.png" alt="C&#43;&#43;" />
         
-        <h5 class="card-title">C&#43;&#43;</h5>
+          <img class="card-img-xs" src="/images/sections/skills/c&#43;&#43;_hue32fe91ddbd83e8e5585833667109ec5_57810_24x24_fit_box_3.png" alt="C&#43;&#43;" />
+          <h5 class="card-title">C&#43;&#43;</h5>
+        
       </div>
       <div class="card-body">
         <p class="card-text">Know basic C/C++ programming. Used for contest programming and problem solving.</p>
@@ -768,15 +779,16 @@ roads. If you&rsquo;re interested, you can join him.
 
 
 
-<div class="container-fluid anchor pb-5 recent-posts-section" id="recent-posts">
+<div class="container-fluid anchor pb-5 recent-posts-section">
   
-    <h1 class="text-center">Recent Posts</h1>
+    <h1 class="text-center">
+        <span id="recent-posts"></span>Recent Posts</h1>
   
   <div class="container">
     <div class="row" id="recent-post-cards">
       
         <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/search/" title="অনুসন্ধানের ফলাফল" class="post-card-link">
+  <a href="/posts/blog/raft/" title="「Raft」 The Raft Consensus Algorithm" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/images/default-hero.jpg'
@@ -784,16 +796,15 @@ roads. If you&rsquo;re interested, you can join him.
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title">অনুসন্ধানের ফলাফল</h5>
-        <p class="card-text post-summary"> This file exists solely to respond to /search URL with the related search layout template.
-No content shown here is rendered, all content is based in the template layouts/page/search.html
-Setting a very low sitemap priority will tell search engines this is not important content.
-This implementation uses Fusejs, jquery and mark.js
-Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&ldquo;HTML&rdquo;, &ldquo;JSON&rdquo;] ```</p>
+        <h5 class="card-title">「Raft」 The Raft Consensus Algorithm</h5>
+        <p class="card-text post-summary"> 12 123 https://raft.github.io/
+https://www.infoq.com/presentations/raft-consensus-algorithm/
+https://www.geeksforgeeks.org/raft-consensus-algorithm/
+https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</p>
       </div>
       <div class="card-footer">
-        <span class="float-left">June 8, 2010</span>
-        <a href="/search/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+        <span class="float-left">April 1, 2021</span>
+        <a href="/posts/blog/raft/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
       </div>
     </div>
   </a>
@@ -801,7 +812,7 @@ Initial setup Search depends on additional output content type of JSON in config
 
       
         <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/search/" title="Search Results" class="post-card-link">
+  <a href="/posts/DataStruct/ds_dp/" title="数据结构与算法动态规划" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/images/default-hero.jpg'
@@ -809,16 +820,13 @@ Initial setup Search depends on additional output content type of JSON in config
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title">Search Results</h5>
-        <p class="card-text post-summary"> This file exists solely to respond to /search URL with the related search layout template.
-No content shown here is rendered, all content is based in the template layouts/page/search.html
-Setting a very low sitemap priority will tell search engines this is not important content.
-This implementation uses Fusejs, jquery and mark.js
-Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&ldquo;HTML&rdquo;, &ldquo;JSON&rdquo;] ```</p>
+        <h5 class="card-title">数据结构与算法动态规划</h5>
+        <p class="card-text post-summary"> 动态规划：
+子问题 状态定义 DP方程 </p>
       </div>
       <div class="card-footer">
-        <span class="float-left">June 8, 2010</span>
-        <a href="/search/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+        <span class="float-left">September 17, 2020</span>
+        <a href="/posts/DataStruct/ds_dp/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
       </div>
     </div>
   </a>
@@ -826,7 +834,7 @@ Initial setup Search depends on additional output content type of JSON in config
 
       
         <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/search/" title="Search Results" class="post-card-link">
+  <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/" title="post" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/images/default-hero.jpg'
@@ -834,16 +842,13 @@ Initial setup Search depends on additional output content type of JSON in config
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title">Search Results</h5>
-        <p class="card-text post-summary"> This file exists solely to respond to /search URL with the related search layout template.
-No content shown here is rendered, all content is based in the template layouts/page/search.html
-Setting a very low sitemap priority will tell search engines this is not important content.
-This implementation uses Fusejs, jquery and mark.js
-Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&ldquo;HTML&rdquo;, &ldquo;JSON&rdquo;] ```</p>
+        <h5 class="card-title">post</h5>
+        <p class="card-text post-summary"> https://www.cnblogs.com/-flq/p/9519276.html https://www.cnblogs.com/xuwujing/archive/2020/02/29/12385903.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/index.html https://www.jianshu.com/p/6e28c967d872</p>
       </div>
       <div class="card-footer">
-        <span class="float-left">June 8, 2010</span>
-        <a href="/search/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+        <span class="float-left">September 9, 2020</span>
+        <a href="/posts/component/NoSQL/ElasticSearch/elasticsearch_aggregation/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
       </div>
     </div>
   </a>
@@ -852,6 +857,7 @@ Initial setup Search depends on additional output content type of JSON in config
       
     </div>
   </div>
+  
 </div>
 
           </div>
@@ -868,9 +874,10 @@ Initial setup Search depends on additional output content type of JSON in config
   
 
 
-<div class="container-fluid anchor pb-5 achievements-section" id="achievements">
+<div class="container-fluid anchor pb-5 achievements-section">
   
-    <h1 class="text-center">My Story</h1>
+    <h1 class="text-center">
+        <span id="achievements"></span>My Story</h1>
   
   <div class="container">
     <div class="row" id="gallery">
@@ -885,19 +892,25 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
+  
+  
+  
+  
+
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">校园公益</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>校园公益</h4>
     <p>给200个小朋友上的一堂课，超级nice。</p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x300_resize_q75_box.jpg');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('/images/sections/achievements/presenter_hu74cbf9a3ea5807afcbd041c325258814_408428_0x1500_resize_q75_box.jpg');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -910,16 +923,17 @@ Initial setup Search depends on additional output content type of JSON in config
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">Champion</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>Champion</h4>
     <p>Nice Hornor.</p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -932,16 +946,17 @@ Initial setup Search depends on additional output content type of JSON in config
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">路演</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>路演</h4>
     <p>努力跨界，做一些不可能的事情.</p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -954,16 +969,17 @@ Initial setup Search depends on additional output content type of JSON in config
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">比赛路演</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>比赛路演</h4>
     <p>星创师大赛，获奖了哦.</p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -976,16 +992,17 @@ Initial setup Search depends on additional output content type of JSON in config
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">部队生活</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>部队生活</h4>
     <p>难忘73151.</p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -998,16 +1015,17 @@ Initial setup Search depends on additional output content type of JSON in config
 
 <div 
   class="achievement-entry text-center"
-  style="background-image: url('https://airren.github.io');"
+  style="background-image: url('');"
 >
   <i class="fas fa-search-plus" id="enlarge-icon"></i>
   <h4 class="title" id="achievement-title">幼儿园活动</h4>
   <div class="caption hidden col-lg-6 text-left" id="caption">
     <h4>幼儿园活动</h4>
     <p></p>
+    
   </div>
-  <span style="background-image: url('https://airren.github.io');" class="d-none" id="SmallImage" active="true"></span>
-<span  style="background-image: url('https://airren.github.io');" class="d-none" id="LargeImage"></span>
+  <span style="background-image: url('');" class="d-none" id="SmallImage" active="true"></span>
+<span  style="background-image: url('');" class="d-none" id="LargeImage"></span>
 </div>
 
     
@@ -1036,6 +1054,12 @@ Initial setup Search depends on additional output content type of JSON in config
 
 
 
+
+  
+  
+    
+  
+
   
   
     
@@ -1074,7 +1098,7 @@ Initial setup Search depends on additional output content type of JSON in config
   
   
 
-  <footer class="container-fluid text-center align-content-center footer pb-2">
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
     <div class="container pt-5">
       <div class="row text-left">
         
@@ -1088,7 +1112,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="/#about">About</a>
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
                 </li>
               
               
@@ -1097,7 +1121,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="/#skills">Skills</a>
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
                 </li>
               
               
@@ -1106,7 +1130,7 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
                 </li>
               
               
@@ -1115,9 +1139,14 @@ Initial setup Search depends on additional output content type of JSON in config
                   
                 
                 <li class="nav-item">
-                  <a class="smooth-scroll" href="/#achievements">My Story</a>
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
                 </li>
               
+            
+              
+                
+              
+            
           </ul>
           
         </div>
@@ -1127,9 +1156,15 @@ Initial setup Search depends on additional output content type of JSON in config
           <h5>Contact me:</h5>
           <ul>
             
-            <li><span>Email: </span> <span>airrenzero#gmail.com</span></li>
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
             
-            <li><span>Phone: </span> <span>&#43;86 1881733xxxx</span></li>
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
             
           </ul>
         </div>
@@ -1174,7 +1209,7 @@ Initial setup Search depends on additional output content type of JSON in config
     <div class="container">
       <div class="row text-left">
         <div class="col-md-4">
-          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
             <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
             Toha
           </a>
@@ -1204,10 +1239,13 @@ Initial setup Search depends on additional output content type of JSON in config
 <script type="text/javascript" src="/js/main.js"></script>
 
 
+
     
     <script src="/js/itype.min.js"></script>
     <script src="/js/github-button.js"></script>
     <script src="/js/home.js"></script>
     <script src="/js/jquery.filterizr.min.js"></script>
-  </body>
+
+    
+</body>
 </html>

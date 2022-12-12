@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ByteGopher</title>
+    <link>https://airren.github.io/posts/linux/</link>
+    <description>Recent content on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Aug 2020 01:40:02 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>「Linux」 user</title>
+      <link>https://airren.github.io/posts/linux/user/</link>
+      <pubDate>Sun, 09 Aug 2020 01:40:02 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/user/</guid>
+      <description>用户和用户组 groups 1groups &amp;lt;user1&amp;gt; &amp;lt;user2&amp;gt; &amp;lt;user3&amp;gt; # 查看当前用户所属的用户组 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/linux/chmod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/chmod/</guid>
+      <description>文件权限 文件权限表示 1drwxrwxrwx 3 root wheel 96 Oct 13 20:30 opt 2drwxr-xr-x 6 root wheel 192 Oct 8 18:57 private 3drwxr-xr-x@ 64 root wheel 2048 Oct 8 18:55 sbin 【文件或文件夹】【owner权限】【group权限】【others权限】【 文件数量】 【文件所有者】【文件所在组】【文件夹最后操作日期和时间】
+d 表示文件类型为 文件夹 ， - 表示文件类型为 文本文件， l 表示链接文件 r 读权限read 4, w 写权限write 2, x 操作权限execute 1 : rwx 按二进制位置 111， 所以对应 421 修改文件权限 1chmod 权限数字 文件名 2chmod -R 744 /mnt/fileA # 表示将整个/mnt/fileA目录与其中的文件和子目录的权限都设置为744 3chmod o w xxx.xxx #表示给其他人授予写xxx.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/linux/linux_zero_copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux_zero_copy/</guid>
+      <description>https://www.jianshu.com/p/a6c6f47a5ef7
+https://blog.csdn.net/weixin_42096901/article/details/103017044
+https://blog.csdn.net/weixin_39406430/article/details/123715072
+http://t.zoukankan.com/yangyongjie-p-14576216.html
+https://zhuanlan.zhihu.com/p/430848775
+https://blog.csdn.net/weixin_42340926/article/details/126211173</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://airren.github.io/posts/linux/network_virtualization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_virtualization/</guid>
+      <description>1title: Linux Network Virtualization Network Namespace In order to provide the isolation, Linux has 6 namespaces to split the different resources, shown as follows:
+Namespace Description Mount Namespace File system mount point CLONE_NEWNET UTS Namespace Hostname CLONE_NETUTS IPC Namespace POSIX process messaging queue CLONE_NEWIPC PID Namespace Process PID number namespace CLONE_NEWPID Network Namespace IP address/Port/Router/IPtables CLONE_NEWNS User Namespace User isolation CLONE_NEWUSER For the process, if they want to use the resources of the Namespace, they should enter the namespace first.</description>
+    </item>
+    
+    <item>
+      <title>「Linux」Systemd</title>
+      <link>https://airren.github.io/posts/linux/systemd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/systemd/</guid>
+      <description>守护进程
+http://www.ruanyifeng.com/blog/2016/02/linux-daemon.html</description>
+    </item>
+    
+    <item>
+      <title>「Linux」xargs</title>
+      <link>https://airren.github.io/posts/linux/xorgs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/xorgs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>「Regex」正则表达式</title>
+      <link>https://airren.github.io/posts/linux/regex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/regex/</guid>
+      <description>正则表达式主要用来进行字符串匹配操作
+1^[0-9]+abc$ 2# ^ 表示以xxx开头的字符串 3# [0-9] 表示匹配0-9之间的一个数字，例如 8； [0-9]+表示匹配0-9之间的多个数字，例如：867 4# abc$ 表示以abc结尾的字符串，$表示以xxx结尾 1^[a-z0-9_-]{5,16}$ 2# 只能含有小写字母，数字，下划线,减号，且长度为5-16的字符串 字符 Description . 除了\r \n以外的任何单字符 \w 匹配字母、数字、下划线，等价于[A-Za-Z0-9_] * 匹配前面的子表达式零次或者多次 </description>
+    </item>
+    
+    <item>
+      <title>「tmux」虚拟终端</title>
+      <link>https://airren.github.io/posts/linux/tmux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/tmux/</guid>
+      <description>​	当使用ssh 连接一台远程计算机的时候，如果此时正在执行一个进程，突然断网了，那么这个进程也会被迫中断了。当重新ssh连接到这台远程计算机的时候，已经找不到之前正在执行的进程了。因为上一次连接的会话(Session)已经终止， 这次的重新连接又新建了一个会话。如果你遇到过这种问题你就会发现： 会话和进程是绑定的，会话终止，当前正在执行的进程也会终止。
+​	为了解决上述问题，你可以尝试使用下Tmux。
+安装及基本使用 1# 安装在需要远程连接的远程服务器上 2apt install tmux 1# 新建 2tmux new -s &amp;lt;session name&amp;gt; 3 4# 切换到某个session 5tmux attach -t &amp;lt;session name&amp;gt; 6 7# 退出某个session，依旧保留进程 8tmux detach 9 10# 分隔窗口 11tmux split-window 12tmux split-window -h # 水平分隔 13 14# 切换窗口 【Ctrl】+【b】 然后按下 【；】 快捷键 前缀键 【Ctrl】+【b】。先按下前缀键后，在使用功能键。
+copy-mode use vi shortcuts 1cat &amp;lt;&amp;lt;EOF | tee -a ~/.tmux.conf 2setw -g mode-keys vi 3set -g @plugin &amp;#39;tmux-plugins/tpm&amp;#39; 4set -g @plugin &amp;#39;tmux-plugins/tmux-sensible&amp;#39; 5set -g @plugin &amp;#39;tmux-plugins/tmux-resurrect&amp;#39; 6 7run &amp;#39;~/.</description>
+    </item>
+    
+    <item>
+      <title>「网络」网络基础</title>
+      <link>https://airren.github.io/posts/linux/network_base/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_base/</guid>
+      <description>What is the network layer? Network-to-network connections are what make the Internet possible. The &amp;ldquo;network layer&amp;rdquo; is the part of the Internet communications process where these connections occur, by sending packets of data back and forth between different networks, In the 7-layer OSI model, the network layer is layer 3. The Internet Protocol(IP) is one of the main protocols used at this layer, along with several other protocols for routing, resting and encryption.</description>
+    </item>
+    
+    <item>
+      <title>【Linux】 Systemd</title>
+      <link>https://airren.github.io/posts/linux/linux_systemd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux_systemd/</guid>
+      <description>1# 通过Pid获取对应的service 2systemd status &amp;lt;Pid&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Extend Disk Space without shutdown</title>
+      <link>https://airren.github.io/posts/linux/linux-ubuntu-lvm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux-ubuntu-lvm/</guid>
+      <description>We have a sever for code test, but with the test case growth, the Disk space is not enough for use.
+Fortunately, we use ubuntu LVM to manage the Disk.
+1fdisk /dev/sdb 1pvdisplay https://gyazo.com/40b3c078d6bb755f9cca318b3c28b2cf
+1vgextend ubuntu-vg /dev/sdc1 1vgdisplay 1lvdisplay 1lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv 2resize2fs /dev/ubuntu-vg/ubuntu-lv Multipass extend VM disk size.
+Multipass uses qemu to create the VM instance. So you can modify the qemu image manually to change the VM disk size.</description>
+    </item>
+    
+    <item>
+      <title>IPSec</title>
+      <link>https://airren.github.io/posts/linux/network_ipsec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_ipsec/</guid>
+      <description>IPsec is a group of networking protocols used for setting up secure encrypted connections, such VPNs, across publicly shared networks.
+What is IPsec IPsec is a group of protocols that are used together to set up encrypted connections between devices. It helps keep data send over public networks secure. IPsec is often used to set up VPNs, and it works by encrypting IP packets, along with authenticating the source where the packets come from.</description>
+    </item>
+    
+    <item>
+      <title>iptables</title>
+      <link>https://airren.github.io/posts/linux/network_iptables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_iptables/</guid>
+      <description>防火墙 逻辑上，防火墙可以分为主机防火墙和网络防火墙。主机防火墙针对单个主机进行防护；网络防火墙往往处于网络入口或者边缘，针对网络入口进行防护，服务于防火墙背后的本地局域网。
+物理上，防火墙可以分为硬件防火墙和软件防火墙。硬件防火墙在硬件级别实现部分防火墙功能，另一部分基于软件实现，性能高，成本高；软件防火墙应用软件处理逻辑运行于通用计算平台之上的防火墙，性能低，成本低。
+iptables/netfilter iptables其实不是真正的防火墙，可以把它理解陈伟一个客户端代理，用户通过iptables这个代理，将用户的安全设定执行到对应的“安全框架”中，这个“安全框架”才是真正的防火墙， 这个框架的名字叫netfilter。
+netfilter才是防火墙真正的安全框架，位于内核空间。iptables其实是一个命令行工具， 位于用户空间，我们使用iptables这个工具操作真正的框架netfilter。
+netfilter/iptables组成的linux平台下的包过滤防火墙，是免费的，具有以下功能：
+网络地址转换(NAT, Network Address Translate) 数据包内容修改 数据包过滤(防火墙功能) 我们虽然可以使用service iptables start启用iptables服务，但其实准确的来说iptables并没有一个守护进程，不能算是真正意义上的服务，而算是内核提供的功能。
+iptables是按照规则(rules)来办事的, rules 就是我们预定义的条件。规则一般定义为“如果数据包头符合这样的条件，就这样处理这个数据包”。规则存储在内核空间的信息包过滤表中。这些规则分别指定了源地址、目的地址、传输协议(如TCP、UDP、ICMP)和服务类型(如HTTP、FTP和SMTP)等。当数据包与规则匹配时，iptables就根据规则所定义的方法来处理这些数据包， 如放行(accept)、拒绝(reject)和丢弃(drop)等。配置防火墙主要工作就是添加、修改和删除这些规则。
+ewctl
+hubDevice Objcet true 默认hub</description>
+    </item>
+    
+    <item>
+      <title>Linux Network Command</title>
+      <link>https://airren.github.io/posts/linux/network_command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_command/</guid>
+      <description>nc Netcat(or nc) is a command-line utility that reads and write data across network connections, using the TCP or UDP protocols. It is one of the most powerful tools in the network and system administrators arsenal, and it as considered as a Swiss army knife of networking tools.
+Netcat is cross-platform, and it&amp;rsquo;s available for Linux, macOS, Windows , and BSD. You can use Netcat to debug and monitor network connections, scan for open ports, transfer data, as a proxy and more.</description>
+    </item>
+    
+    <item>
+      <title>Linux socket</title>
+      <link>https://airren.github.io/posts/linux/linux_socket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux_socket/</guid>
+      <description>Internet domain socket Unix domain socket You can forward the unix domain socket with the -R option of the ssh command.
+1ssh -R remote_socket:local_socket https://github.com/nikhilroxtomar/Multiple-Client-Server-Program-in-C-using-fork</description>
+    </item>
+    
+    <item>
+      <title>Make</title>
+      <link>https://airren.github.io/posts/linux/linux_make/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux_make/</guid>
+      <description>The marker - means ignore the err of this line command
+@ only prints the result of command.</description>
+    </item>
+    
+    <item>
+      <title>OpenVPN Setup</title>
+      <link>https://airren.github.io/posts/linux/network_openvpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_openvpn/</guid>
+      <description>Configuration Server side Server.conf
+1# /etc/openvpn/server/server.conf 2local 10.0.0.230 3port 1194 4proto udp 5dev tun 6ca ca.crt 7cert server.crt 8key server.key 9dh dh.pem 10auth SHA512 11tls-crypt tc.key 12topology subnet 13client-config-dir /etc/openvpn/ccd # bind ip with client name 14route 192.166.0.0 255.255.255.0 # route add to server side 15push &amp;#34;route 192.167.0.0 255.255.255.0&amp;#34; # route add to client side 16server 10.8.0.0 255.255.255.0 17push &amp;#34;redirect-gateway def1 bypass-dhcp&amp;#34; 18ifconfig-pool-persist ipp.txt 19push &amp;#34;dhcp-option DNS 10.0.0.1&amp;#34; 20keepalive 10 120 21cipher AES-256-CBC 22user nobody 23group nogroup 24persist-key 25persist-tun 26verb 4 # log level, 1-11, bigger more details 27crl-verify crl.</description>
+    </item>
+    
+    <item>
+      <title>Performance profiling</title>
+      <link>https://airren.github.io/posts/linux/linux_perf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/linux_perf/</guid>
+      <description>Linux Performance Counter Hardware Event CPU
+Performance Monitor Unit
+Instruction retired Processor clock cycles Cache
+Software Event Software counter/tracepoint
+Page fault process context Tracepints is the hook in the Linux kernel. 在特定代码执行的时候会被触发。
+1ls /sys/kernel/debug/tracing/events ![image-20221201151615697](/Users/airren/Library/Application Support/typora-user-images/image-20221201151615697.png)
+If the machine not a baremetal, it can&amp;rsquo;t collect hardware event. For example in a esxi VM.
+Request
+LLC-load-misses Instructions Cycles The ODMS containes now:
+Dashboard consists of 12 panels based on following metrics:</description>
+    </item>
+    
+    <item>
+      <title>VPC</title>
+      <link>https://airren.github.io/posts/linux/network_VPC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_VPC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>What is VLAN and Virtual Network Interface</title>
+      <link>https://airren.github.io/posts/linux/network_VLAN/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_VLAN/</guid>
+      <description>In our day-to-day life, we have seen LAN and WAN architectures mostly because we have to deal with only one IP address on one interface. We either connect our system with LAN cable or with WiFi.
+In this article, we will discuss the VLAN and how to create the VLAN on the Ubuntu server, but let first understand what is VLAN and why we use VLAN.
+What is VLAN Virtual Local Area Network(VLAN) is a logical concept of breaking large broadcast domains into small domains.</description>
+    </item>
+    
+    <item>
+      <title>What is VXLAN</title>
+      <link>https://airren.github.io/posts/linux/network_VXLAN/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/linux/network_VXLAN/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

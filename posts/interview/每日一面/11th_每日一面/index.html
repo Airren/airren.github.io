@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="11 每日一面 Ucloud
+rpc
+sql优化，如何解决高并发
+explain 慢查询，建索引
+什么方式实现缓存，什么情况下需要用到token,token失效怎么办等
+主从复制
+数据库四种隔离级别，分别举例子，每种在上一种的基础上加了什么锁(很简单不说了)
+Tcp，坚持计时器。keepalive计时器。
+写了一个shell命令，列出重复数据。awk&#43;unique&#43;sort很简单也不说了。
+网络协议 计算机网络五层协议：物理层、数据链路层、网络层、传输层、应用层
+计算机网络的七层OSI协议： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层
+路由器属于网络层
+网卡与交换机数据数据链路层
+TCP和UDP TCP 是面向连接的字节流服务，对系统资源要求比较多。程序结构复杂，保证数据的正确性和顺序性。
+UDP是无连接的，面向数据报，对系统的资源要求比较少，程序结构简单，不能保证数据的正确性和顺序性
+网站安全与防护
+sql 注入
+使用例如PDO的预处理，使用或者编写类似mysql_real_escape_string的方法对sql的特殊字符进行转义
+**XSS（cross site script）**跨站脚本攻击
+将外部脚本植入到页面中
+**CSRF(cross-site request forgey)**跨站请求伪造
+伪造受信任的用户信息来请求网站
+算法相关
+冒泡排序
+选择排序
+​	快速排序
+快速排序思想：通过一趟排序将序列分成两部分，一部分所有数据比另一部分所有数据小，然后在这两个序列的内部再分别进行快速排序操作，直到最后形成一个有序序列
+二分插入排序思想(之前的序列为有序)：插入第i个元素时，对前面的0~i-1进行折半，当前元素与中间元素比较，如果小，前半部分再次折半，如果大，后半部分进行折半，直到最后left&gt;right,然后把目标位置到i-1的所有元素整体后移，把当前元素放进去
+基本查找算法：
+顺序查找
+二分法查找(折半查找)：将序列分为两部分，找到序列的中间值，如果查找值大于中间值，继续对右半部分进行折半，如果查找值小于中间值，对左半部分进行折半，直到找到或front&gt;end结束，时间复杂度O(log2n)以2为底n的对数
+设计模式
+MVC是一种设计框架，而不是设计模式，框架是比模式更高的概念
+model负责数据逻辑
+controller负责用户交互
+view负责数据显示流程：
+用户对控制器的某个方法发出请求，控制器调用相应的模型返回数据，然后将数据渲染到视图中返回给用户
+单例模式i. 私有化构造方法和__clone方法ii. 提供公有的静态的方法返回实例iii. 提供私有的静态属性保存实例
+简单工厂模式(重点在创建不同对象，作用就是用来创建对象的) - 例如一个计算器的加减乘除求余取整i. 定义抽象基类让子类分别继承并实现相应方法ii. 定义Factory工厂类里面提供静态方法用于根据不同的参数实例化相应的子类对象
+策略模式(重点在于实例化不同类的解决策略不同，作用是根据不同的情况调用相应的策略或算法) - 例如qq普通用户 vip svip购买皮肤的优惠策略i. 定义抽象基类让子类分别继承并实现相应的方法ii. 根据不同的场景实例化相应的类，然后调用其中的方法获取结果
+观察者模式
+i. 需要有一个抽象的主题接口和一个抽象的观察者接口
+ii. 实现一个主题，实现多个观察者" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://airren.github.io/posts/interview/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/11th_%E6%AF%8F%E6%97%A5%E4%B8%80%E9%9D%A2/" /><meta property="article:section" content="posts" />
+
+
+
+
+    
+    
+<meta name="description" content="" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts/" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
+          <h5 class="author-name">Airren Ren</h5>
+          <p>Monday, January 1, 1</p>
+        </div>
+
+        <div class="title">
+          <h1></h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+          <ul style="padding-left: 0;">
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h1 id="11-每日一面">11 每日一面</h1>
+<blockquote>
+<p>Ucloud</p>
+</blockquote>
+<ol>
+<li>
+<p>rpc</p>
+</li>
+<li>
+<p>sql优化，如何解决高并发</p>
+<p>explain 慢查询，建索引</p>
+</li>
+<li>
+<p>什么方式实现缓存，什么情况下需要用到token,token失效怎么办等</p>
+</li>
+<li>
+<p>主从复制</p>
+</li>
+<li>
+<p>数据库四种隔离级别，分别举例子，每种在上一种的基础上加了什么锁(很简单不说了)</p>
+</li>
+<li>
+<p>Tcp，坚持计时器。keepalive计时器。</p>
+</li>
+<li>
+<p>写了一个shell命令，列出重复数据。awk+unique+sort很简单也不说了。</p>
+</li>
+<li>
+<p>网络协议
+<p class="md__image">
+
+
+
+
+
+
+
+<img src="" alt="img" />
+
+
+
+</p>
+</p>
+</li>
+</ol>
+<p>计算机网络五层协议：物理层、数据链路层、网络层、传输层、应用层</p>
+<p>计算机网络的七层OSI协议： 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层</p>
+<p>路由器属于网络层</p>
+<p>网卡与交换机数据数据链路层</p>
+<ol start="2">
+<li>TCP和UDP</li>
+</ol>
+<p>TCP 是面向连接的字节流服务，对系统资源要求比较多。程序结构复杂，保证数据的正确性和顺序性。</p>
+<p>UDP是无连接的，面向数据报，对系统的资源要求比较少，程序结构简单，不能保证数据的正确性和顺序性</p>
+<ol start="3">
+<li>
+<p>网站安全与防护</p>
+<ul>
+<li>
+<p><strong>sql 注入</strong></p>
+<p>使用例如PDO的预处理，使用或者编写类似mysql_real_escape_string的方法对sql的特殊字符进行转义</p>
+</li>
+<li>
+<p>**XSS（cross site script）**跨站脚本攻击</p>
+<p>将外部脚本植入到页面中</p>
+</li>
+<li>
+<p>**CSRF(cross-site request forgey)**跨站请求伪造</p>
+<p>伪造受信任的用户信息来请求网站</p>
+</li>
+</ul>
+</li>
+<li>
+<p>算法相关</p>
+<p><strong>冒泡排序</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"></code></pre></div><p>选择排序</p>
+</li>
+</ol>
+<p>​				快速排序</p>
+<p><strong>快速排序思想</strong>：通过一趟排序将序列分成两部分，一部分所有数据比另一部分所有数据小，然后在这两个序列的内部再分别进行快速排序操作，直到最后形成一个有序序列</p>
+<p><strong>二分插入排序思想</strong>(之前的序列为有序)：插入第i个元素时，对前面的0~i-1进行折半，当前元素与中间元素比较，如果小，前半部分再次折半，如果大，后半部分进行折半，直到最后left&gt;right,然后把目标位置到i-1的所有元素整体后移，把当前元素放进去</p>
+<p><strong>基本查找算法</strong>：</p>
+<p><strong>顺序查找</strong></p>
+<p><strong>二分法查找</strong>(折半查找)：将序列分为两部分，找到序列的中间值，如果查找值大于中间值，继续对右半部分进行折半，如果查找值小于中间值，对左半部分进行折半，直到找到或front&gt;end结束，时间复杂度O(log2n)以2为底n的对数</p>
+<ol start="5">
+<li>
+<p>设计模式</p>
+<p>MVC是一种设计框架，而不是设计模式，框架是比模式更高的概念</p>
+<p>model负责数据逻辑</p>
+<p>controller负责用户交互</p>
+<p>view负责数据显示流程：</p>
+<p>用户对控制器的某个方法发出请求，控制器调用相应的模型返回数据，然后将数据渲染到视图中返回给用户</p>
+<ol>
+<li>
+<p><strong>单例模式</strong>i. 私有化构造方法和__clone方法ii. 提供公有的静态的方法返回实例iii. 提供私有的静态属性保存实例</p>
+</li>
+<li>
+<p><strong>简单工厂模式</strong>(重点在创建不同对象，作用就是用来创建对象的) - 例如一个计算器的加减乘除求余取整i. 定义抽象基类让子类分别继承并实现相应方法ii. 定义Factory工厂类里面提供静态方法用于根据不同的参数实例化相应的子类对象</p>
+</li>
+<li>
+<p><strong>策略模式</strong>(重点在于实例化不同类的解决策略不同，作用是根据不同的情况调用相应的策略或算法) - 例如qq普通用户 vip svip购买皮肤的优惠策略i. 定义抽象基类让子类分别继承并实现相应的方法ii. 根据不同的场景实例化相应的类，然后调用其中的方法获取结果</p>
+</li>
+<li>
+<p><strong>观察者模式</strong></p>
+</li>
+</ol>
+<p>i. 需要有一个抽象的主题接口和一个抽象的观察者接口</p>
+<p>ii. 实现一个主题，实现多个观察者</p>
+<p>iii. 实例化主题，然后调用主题的方法并将不同的观察者对象实例化传入，在主题的方法中保存传入的观察者对象到一个属性，在主题中定义另外的方法通过保存观察者对象调用观察者的方法</p>
+</li>
+<li>
+<p>大流量和高并发网站解决思路</p>
+<p>apache或者nginx进行相关配置</p>
+<p>CDN加速</p>
+<p>减少http请求，添加异步请求</p>
+<p>启用浏览器缓存 代码压缩(去除空白符) 页面静态化：</p>
+<p>信息变更不是很频繁的页面进行静态化处理，生成html文件</p>
+<p>数据缓存(数据库缓存redis,文件缓存)</p>
+<p>使用Nginx，负载均衡</p>
+<p>mysql数据库优化 字段数据类型优化 索引优化 SQL语句优化 存储引擎优化 表结构设计优化 分表分库分区 主从复制，读写分离</p>
+<p>COOKIE 和 SESSION</p>
+</li>
+<li>
+<p>Cookie和Session</p>
+<p>session与cookie都是会话技术，默认情况下session在客户端依赖于cookie</p>
+<p>cookie保存在客户端，保存的是字符串，session保存在服务端，保存的是对象</p>
+<p>cookie安全性低，可被拦截或从本地分析得到，session安全性高</p>
+<p>session保存在服务器上，会占用服务器的资源，理论上大小没有限制，和服务器内存有关</p>
+<p>单个cookie保存的数据不能超过4K,很多浏览器都限制一个站点最多20个cookie</p>
+<p>登录信息等重要信息存放为session，其他信息如需保留，可以存在cookie中</p>
+</li>
+<li>
+<p>MyISAM 和 InnoDB</p>
+<p>MyISAM 是表级锁，不支持事务和外键操作</p>
+<p>InnoDB是行级锁，支持事务处理和外键</p>
+<p>执行大量的select MyISAM更好，执行大量的insert 和update 用InnoDB更好</p>
+</li>
+<li>
+<p>GET 和POST</p>
+<table>
+<thead>
+<tr>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数在url后面，长度有限制</td>
+<td>参数在RequestBody中，长度无限制</td>
+</tr>
+<tr>
+<td>可以保存为浏览器缓存</td>
+<td>不可以保存为书签，不可以缓存</td>
+</tr>
+<tr>
+<td>保持幂等性</td>
+<td>数据会被修改</td>
+</tr>
+<tr>
+<td>HTTP动词，规约</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>一次完成的HTTP请求过程</p>
+</li>
+<li>
+<p>域名解析DNS： 浏览器解析域名（主机名）为相应的IP地址</p>
+</li>
+<li>
+<p>建立TCP连接 三次握手</p>
+</li>
+<li>
+<p>浏览器想服务器发起http请求</p>
+</li>
+<li>
+<p>服务器响应http请求，返回html数据</p>
+</li>
+<li>
+<p>浏览器解析html代码并请求html中的资源</p>
+</li>
+<li>
+<p>浏览器对页面进行渲染然后展示给用户</p>
+</li>
+<li>
+<p>关闭TCP连接</p>
+</li>
+</ol>
+<p><p class="md__image">
+
+
+
+
+
+
+
+<img src="tcphttp.png" alt="img" />
+
+
+
+</p>
+</p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/airren/airren.github.io/edit/master/content/posts/interview/%e6%af%8f%e6%97%a5%e4%b8%80%e9%9d%a2/11th_%e6%af%8f%e6%97%a5%e4%b8%80%e9%9d%a2.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents"></nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

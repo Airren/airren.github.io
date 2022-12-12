@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/note_go/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_go_modules/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」依赖管理 Go Modues/ GOPATH</h5>
+        <p class="card-text post-summary">不要吝啬你的批评与感悟，敬请留言，我们一起进步。
+如果你有过以下问题，欢迎阅读文章，提出意见与建议
+go mod 怎么使用？ GOPATH是什么？ GO111MODULE=&quot;&quot; 这个参数决定了什么？ go get、go download 有什么区别？ import到底import的什么东西？ 依赖管理工具 用过Java 的同学都知道，对依赖的管理经历了从原始的手动引入jar包，到使用maven等自动化管理工具去引入第三方依赖的过程，从而可以使用别人已经开发好的优秀工具。如果使用过Python的同学可能会熟练的使用pip install 第三方的工具包。Java 和Python的第三方工具包都是集中式管理的，使用maven 或者是pip 都是从对应的管理中心下载更新依赖。当然还有 npm、yarn、gradle等其他语言的依赖版本工具。
+在go语言中，第三方依赖的管理工具经过了一个漫长的发展过程。在GO1.11 发布之前govendor、dep等工具百花齐放。直到go mod 出现，开始一统天下。go 的依赖非常简单粗暴，只要依赖源码就可以了。例如：
+1import &#34;github.com/jinzhu/gorm&#34; github.com/jinzhu/gorm 就是gorm的GitHub项目路径。
+GOPATH时期 Go 在1.11 之前使用GOPATH模式进行依赖的管理。安装部署go环境，使用go 进行开发的时候强制被要求要设置GOPATH（当然安装过程中也会默认指定$GOPATH=~/go）。 要在GOPATH路径下新建 /src /bin /pkg文件夹。
+1➜ ~/go 2├── bin # 存储go编译生成的二进制可执行文件，一般会把该路径配置到PATH中,PATH=$PATH:$GOPATH/bin 3├── pkg # 存储预编译的目标文件，以加快后续的编译速度 4└── src # 存储Go的源代码，一般以$GOPATH/src/github.com/foo/bar的路径存放 1➜ ~ go env |grep GOPATH 2GOPATH=&#34;/Users/bytedance/go&#34; 在这种模式下，如果使用go get 拉取外部依赖会自动下载并安装到$GOPATH/src 目录下。
+这种模式下，go get没有版本管理的概念，无法处理依赖不同版本的问题，因为同一个依赖都存在同一个路径下面。
+在Go官方还没有推出Go Modules 的时候，go的依赖管理工具可谓是百花齐放，例如 govendor， dep，但是最终Go Modules发布，平息了诸侯割据的局面。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 4, 2020</span>
+        <a
+        href="/posts/note_go/1_go_modules/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/8_go_concurrency/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」并发实现</h5>
+        <p class="card-text post-summary">如何用go实现一个简单的并行任务
+Golang并发 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;sync&#34; 6) 7 8var wg sync.WaitGroup 9 10func printer(ch chan int) { 11	for i := range ch { 12	fmt.Printf(&#34;Received %d &#34;, i) 13	} 14	wg.Done() // 15} 16 17// main is the entry point for the program. 18func main() { 19	c := make(chan int) 20	go printer(c) 21	wg.Add(1) 22 23	// Send 10 integers on the channel.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 5, 2020</span>
+        <a
+        href="/posts/note_go/8_go_concurrency/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/7_go_context/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」context</h5>
+        <p class="card-text post-summary">context.Context用来设置截止日期、同步信号，传递请求相关值的结构体。上下文与Goroutine有非常密切的关系。
+1type Context interface{ 2 Deadline()(deadline time.Time, ok bool) 3 Done() &lt;-chan struct{} 4 Err() error 5 Value(key interface{}) interface{} 6} context.Context有四个方法：
+Deadline() 返回context.Context被取消时间，也就是完成工作的截止日期；
+Done() 返回一个channel，这个channel 会在当前工作完成或者上下文被取消后关闭，多次调用Done方法返回的是同一个channel；
+Err() 返回context.Context 结束的原因，它只会在Done返回的Channel被关闭时才会返回非空的值
+如果 context.Context 被取消，会返回Canceled错误；
+如果 context.Context 超时，会返回DeadlineExceeded错误；
+Value 从context.Context 中获取键对应的值。对同一个上下文来说，多次调用value并传入相同的key会返回相同的结果，该方法用来传递请求特定的数据。
+1func main() { 2	ctx := context.Background() // new empty context 3 4	ctx = context.WithValue(ctx, &#34;org&#34;, &#34;ali&#34;) 5	ctx, _ = context.WithCancel(ctx) 6	ctx, _ = context.WithDeadline(ctx, time.Now().Add(10*time.Second)) 7	ctx, _ = context.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 11, 2020</span>
+        <a
+        href="/posts/note_go/7_go_context/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/5.3_go_slice/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」slice</h5>
+        <p class="card-text post-summary">Slice的坑 1numList := make([]int, 10) 2// 产生的numList会存入10个0， 如果继续append 数据会导致numList的数据超过10 Slice 扩容
+1func TestSliceExtend(t *testing.T) { 2	capacity := 0 3	list := make([]int, 0) 4	for i := 0; i &lt; 4096; i++ { 5	list = append(list, i) 6	if capacity != cap(list) { 7	times := float64(cap(list)) / float64(capacity) 8	differ := cap(list) - capacity 9	capacity = cap(list) 10	if times == 2.0 { 11	fmt.Printf(&#34;capacity is: %d \t times: %.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">September 2, 2020</span>
+        <a
+        href="/posts/note_go/5.3_go_slice/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_go_basic_cmd/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」Go的安装以及介绍</h5>
+        <p class="card-text post-summary">1. Go语言介绍 1.1 Go 语言特点 静态类型、编译型的开源语言
+静态类型是指要明确变量的类型，或者编译器可以推导出变量的类型。要么在变量类型旁边指定变量的那个类型，要么是可以推导出变量类型。
+编译型是指要编译成机器语言。
+1package main 2func main(){ 3 // Declare the type of the variable 4 var num1 int = 1; 5 // Deduce the type of the variable 6 num2 :=2 7} 脚本化的语法，支持多种范式编程
+函数式&amp;面向对象
+原生、给力的并发编程支持
+注意： 原生支持和函数库支持的区别
+1.2 Go语言的优势和劣势 优势
+脚本化的语法 静态类型+编译型，程序运行速度有保障 原生的支持并发编程 - 降低开发、维护成本；程序可以更好的执行 劣势
+语法糖并没有Python和Ruby那么多- 1成是开发时间，9成维护时间 目前的程序运行速度还不及c，但是目前已经赶超了C++和Java 第三方库函数暂时不像绝对主流的编程语言那样多 1.3 Go开发环境 Linux 下的安装 FreeBSD Linux Windows 32bit - 64bit
+Linux 下的设置方法
+有四个环境变量需要设置： GOROOT、GOPATH、GOBIN以及PATH</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 20, 2020</span>
+        <a
+        href="/posts/note_go/1_go_basic_cmd/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/11_go_testprofile/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」pprof</h5>
+        <p class="card-text post-summary">Test Test 1go test --bench ./ 5s Code coverage 1go test -cover Profile 引发性能问题的原因，=执行时间过长、内存占用过多，以及意外堵塞。
+在测试时保存并输出相关数据，进行初次评估 在运行阶段通过web接口获得实时数据，分析一段时间内的健康状况 1go test -run NONE -bench . -memprofile mem.out -cpuprofile cpu.out net/http 服务开启debug 端口
+1go tool pprof http://10.152.50.69:9452/debug/pprof/profile\?second\=60 -alloc_space
+pprof 常用指令
+Web</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 6, 2020</span>
+        <a
+        href="/posts/note_go/11_go_testprofile/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/5.3go_time/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Go」时间</h5>
+        <p class="card-text post-summary">UNIX 时间戳 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。
+类型 位数 Timestamp Time 秒级 10 1596646807 2020-08-06 01:00:07 毫秒级 13 1596646807000 2020-08-06 01:00:07 Unix时间戳（英文为Unix epoch, Unix time, POSIX time 或 Unix timestamp）
+是从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数，不考虑闰秒。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">August 6, 2020</span>
+        <a
+        href="/posts/note_go/5.3go_time/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1st--/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/1st--/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/2_%E7%B1%BB%E5%9E%8B/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">类型 2.1 变量 标识符与关键字 标识符 在编程语言中标识符就是程序员定义的具有特殊意义的词，比如变量名、常量名、函数名等等。 Go语言中标识符由字母数字和_(下划线）组成，并且只能以字母和_开头。 举几个例子：abc, _, _123, a123。
+关键字 关键字是指编程语言中预先定义好的具有特殊含义的标识符。 关键字和保留字都不建议用作变量名。
+Go语言中有25个关键字：
+1 break default func interface select 2 case defer go map struct 3 chan else goto package switch 4 const fallthrough if range type 5 continue for import return var 此外，Go语言中还有37个保留字。
+1 Constants: true false iota nil 2 3 Types: int int8 int16 int32 int64 4 uint uint8 uint16 uint32 uint64 uintptr 5 float32 float64 complex128 complex64 6 bool byte rune string error 7 8 Functions: make len cap new append copy close delete 9 complex real imag 10 panic recover go 语言中的变量必须先声明再使用。</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/2_%E7%B1%BB%E5%9E%8B/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">流程控制 if&hellip;else 1package main 2 3import &#34;fmt&#34; 4 5func main() { 6 var number int = 5 7	if number += 4; 10 &gt; number { 8	number :=0 9	number += 3 10	fmt.Print(number) 11	} else if 10 &lt; number { 12	number -= 2 13	fmt.Print(number) 14	} 15	fmt.Println(number) 16} 17 18// 39 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/3_%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/4_%E5%87%BD%E6%95%B0/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">函数 现代计算机的进程执行模型大部分是基于“堆栈”的，编译器不需要对函数做过多的转换就能让其在栈上运行
+2.1 基本概念 2.1.1 函数定义 一个函数的定义包含如下几个部分： 函数声明关键字func、函数名、参数列表、返回列表和函数体。
+首字母的大小写决定该函数在其他包的可见：大写时其他包可见，小写时只有相同的包可以访问。
+函数可以没有输入参数、也可以没有返回值（默认返回0）
+1func A(){ 2} 3 4func B() int{ 5 return 1 6} 多个相同类型的参数可以使用简写模式
+1func add(a,b int) int{ // a int, b int 简写为 a,b int 2 return a+b 3} 支持有名的返回值，参数名相当于函数体最外层的局部变量，命名返回值变量会被初始化为类型零值最后的return可以不带参数名直接返回。
+1func add(a,b int) (sum int){ // sum 相当于函数内部的局部变量，被初始化为0 2 sum = a+b 3 return // return sum 的简写模式 4 5 // sum := a+b 6 // return sum // 需要显式的调用return sum 7} 不支持默认值参数？？</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/4_%E5%87%BD%E6%95%B0/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Go并发编程案例解析 nginx
+influxdb 时序数据库 Prometheus
+Grafana
+实例代码
+https://github.com/itsmikej/imooc_logprocess
+常见的并发模型 进程&amp;线程 Apache C10K 服务器要同时支持10K的并发连接 异步非阻塞 （Nginx，Libevent， NodeJs）epoll 复杂度高 协程 GoLang， Erlang， Lua Golang并发实现 程序并发执行 goroutine 多个goroutine间的数据同步通信channels 多个channel选择数据读取或者写入select Goroutines Goroutines 程序并发执行
+1foo() // 执行函数foo, 程序等待函数foo返回 2go foo() // 执行函数foo 3bar（） // 不用等待foo返回 Channels Channels多个goroutine间的数据通信与同步
+1c := make(chan string) // 创建一个channel 2go func(){ 3 time.Sleep(1*time.Second) 4 c &lt;- &#34;message from closure&#34; // 发送数据到channel 中 5}() 6 7msg:=&lt;- c // 阻塞直到接收到数据 Select Select 从多个Channel 中读取或写入数据</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/99_Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/note_go/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MIT 6.824 on ByteGopher</title>
+    <link>https://airren.github.io/posts/6.824/</link>
+    <description>Recent content in MIT 6.824 on ByteGopher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://airren.github.io/posts/6.824/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title></title>
+      <link>https://airren.github.io/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/6.824/CAP%E5%AE%9A%E5%BE%8B/</guid>
+      <description>CAP定律 CAP 按照美国著名科学家 Eric Brewer 在 2000 年提出的理论，当技术架构从集中式架构向分布式架构演进，会遇到 “CAP 定律”的瓶颈。 CAP 说明一个数据处理系统不能同时满足一致性，可用性和分区容错性这三个需求。
+CAP永远不可能同时满足，最多只能同时满足两个，提高其中任意两者的同时，必然要牺牲第三者。 所以，好的系统是根据具体应用，来决定如何在三者之间进行取舍。
+####Consistency 一致性—— 读操作是否总能读到前一个写操作的结果，即是说在分布式环境中，多点读出的数据内容是否相容。 ####Partition Tolerance* 分区容错性——数据的分区特性，对系统性能的影响程度 ####Availiability 可用性——访问数据的性能
+https://www.cnblogs.com/frank2015/p/9554180.html</description>
+    </item>
+    
+    <item>
+      <title>「6.824」 Lecture 1 Introduction</title>
+      <link>https://airren.github.io/posts/6.824/LEC_1_Introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/6.824/LEC_1_Introduction/</guid>
+      <description>Distributed System Engineering parallelism
+Fault tolerance
+Physical
+Security /isolated
+Challenges:
+concurrency
+Partial failure
+Performance
+Lab
+MapReduce Raft for fault tolerrance K/V server Sharding K/V servers Infrastructure
+storage Communication Computation Abstraction
+Implementation
+RPC, Thread，Concurrency Performance
+scalability , scabale to speed 2 x computer = 2X throughput Fault Tolerance
+Availability Recoverability NV (non-volatile)storage /Replication Topic - Consistency
+Put (key, value) Get(key) -&amp;gt; value Map Reduce What is distributed system? multiple cooperating computers storage for big web sites, MapReduce, peer-to-peer sharing, &amp;amp;c lots of critical infrastructure is distributed Why do people build distributed system?</description>
+    </item>
+    
+    <item>
+      <title>「6.824」 MapReduce</title>
+      <link>https://airren.github.io/posts/6.824/MapReduce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://airren.github.io/posts/6.824/MapReduce/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

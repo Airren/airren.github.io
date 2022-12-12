@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="/google-fonts/Mulish/mulish.css"/>
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airren.github.io/posts/" />
+
+
+    
+    
+    <link rel="stylesheet" href="/css/layouts/list.css">
+    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+    
+    <link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" alt="Logo">
+      ByteGopher</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+        
+
+  
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+        
+        <span class="flag-icon flag-icon-gb"></span>
+      
+      English
+    </a>
+    <div class="dropdown-menu" aria-labelledby="languageSelector">
+      
+        <a class="dropdown-item nav-link languages-item" href="/cn/posts">
+          
+            
+            <span class="flag-icon flag-icon-cn"></span>
+          
+          中文
+        </a>
+      
+    </div>
+</li>
+
+      
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hue3dcebd3233f4247380b642debb20e00_8242_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hu625a7b1b3d293b5088d5bed0b0ae5735_6060_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  
+  
+    
+  
+
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blog/" title="Blog">Blog</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cloudnative/" title="CloudNative">CloudNative</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/component/">Infrastructure</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/component/TimeSeries/" title="TimeSeriesDB">TimeSeriesDB</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/kubernetes/" title="Kubernetes">Kubernetes</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_c/" title="Note C">Note C</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/note_go/" title="Note Go">Note Go</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/sdewan/" title="SDEWAN">SDEWAN</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tips/" title="Tips">Tips</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/nodus/" title="Nodus">Nodus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/interview/" title="Interview">Interview</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/" title="Life">Life</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/" title="Linux">Linux</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content container-fluid" id="content">
+    <div class="container-fluid post-card-holder" id="post-card-holder">
+      
+      
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/99_jike_go_note/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">软件开发的新挑战
+多核硬件架构
+超大规模分布式计算集群
+web模式下导致的前所未有的规模和更新速度
+区块链开发语言，
+Kubernetes
+Docker
+只有25个关键字
+有垃圾回收机制，但是仍然可以直接使用指针访问内存
+CSP并发机制
+关键字
+c 37
+c++ 11 84
+go 25
+go 垃圾回收，使用指针直接内存访问.
+复合和继承
+docker kubernetes
+go 默认使用静态连接，编译完成是一个独立的二进制
+1package main // package name 2 3import &#34;fmt&#34; // dependence 4 5// functionality 6func main() { 7	fmt.Print(&#34;hello world \n&#34;) 8} 应用程序入口，
+必须是main包 package main 必须是main方法 func main() 文件名不一定是main.go package 的名字不需要与目录保持一致
+退出返回值
+与其他主要编程语言的差异
+Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;os&#34; 6) 7 8func main() { 9	fmt.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/99_jike_go_note/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/base/string_operate/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">1package dal 2 3import &#34;testing&#34; 4 5func Empty() { 6	str := &#34;12312&#34; 7	if str == &#34;&#34; { 8 9	} 10} 11func Lenzero() { 12	str := &#34;&#34; 13	if len(str) == 0 { 14 15	} 16} 17func BenchmarkEmpty(b *testing.B) { 18	for n := 0; n &lt; b.N; n++ { 19	Empty() 20	} 21} 22 23func BenchmarkLenzero(b *testing.B) { 24	for n := 0; n &lt; b.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/base/string_operate/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/Plan/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">零copy，
+close wait and time wait. Tcp/IP
+https
+tcp 拥塞控制，粘包
+io, select, epoll
+红黑树&amp;
+raft
+元空间中创建对象会不会用到物理内存
+无重复字符的最长子串 106 25. K 个一组翻转链表 84 206. 反转链表 83 215. 数组中的第K个最大元素 81 146. LRU缓存机制 https://www.zhihu.com/question/339135205
+Golang slice 可以动态扩容，但是如何动态缩容呢？
+Golang race
+Heap 和stack
+porm 技术栈test golang 教程
+https://www.kancloud.cn/mutouzhang/gocookbook/686698
+https://gobyexample.com/sha1-hashes
+http://c.biancheng.net/view/vip_7363.html
+prome 教程
+http://www.eryajf.net/2468.html
+https://ethancai.github.io/2016/06/23/bad-parts-about-json-serialization-in-Golang/
+123123123123
+https://www.robustperception.io/cardinality-is-key
+https://github.com/nusr/hacker-laws-zh
+编译原理
+https://segmentfault.com/a/1190000020239208
+raft
+GDPR 报警
+grafql
+https://jobs.intel.com/ShowJob/Id/2891615/Cloud-Native-Runtime-Development-Engineer
+https://jobs.intel.com/ShowJob/Id/2829606/Software-Development-Engineer
+https://jobs.intel.com/ShowJob/Id/2891612/Edge-Software-Engineer
+*https://jobs.intel.com/ShowJob/Id/2891618/Cloud-Native-Software-Engineer
+主题更新维护 没有时间阅读，很难深度思考
+块存储
+Book Read 《Kubernetes网络权威指南》</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/Plan/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/CRE-Share/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">ESXI configuration and usage ESXI admin interface : https://10.239.241.100/
+1user: root passwd: CREshare- 跳板机CRE-relay
+1ssh cre@cre-relay.sh.intel.com # 10.239.241.116 2user: cre passwd: 123456 BIOS：123456/123123
+How to create a VM with SGX and NIC direct mode 1.select a creation type 2.Select a name and guest OS 3.Select storage 4.Customize settings, CPU/Mem/Disk/SGX/PCI device, and select an OS image SGX enable Add a PCI device Select an OS Image 5.Start your machine and check the status </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/CRE-Share/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/sdewan-cnf-test/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">openwrt login 1curl -XPOST curl --location -v --request POST &#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/?luci_username=root&amp;luci_password=root1&#39; --cacert ./ca.pem 2 3 # Cert is the cnf-default-cert, must use the h 4curl --location -v --request POST &#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/&#39; \ 5--header &#39;Content-Type: application/x-www-form-urlencoded&#39; \ 6--data-urlencode &#39;luci_username=root&#39; \ 7--data-urlencode &#39;luci_password=root1&#39; \ 8--cacert ./ca.pem Create CSR
+1curl -XGET &#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/sdewan/nat/v1/nats&#39; --cacert ./ca.pem 1curl -XGET &#39;https://10-233-76-144.default.pod.cluster.local/cgi-bin/luci/sdewan/pkcs11/v1/crs&#39; --cacert ./ca.pem 1#!/bin/bash 2 3set -x 4 5cnf_ip=&#34;10-233-76-144.default.pod.cluster.local&#34; 6cert_label=&#34;node-1&#34; 7cert_subject=&#34;/CN=node-1&#34; 8 9# you alway a same csr, even you try many times 10curl --location --request POST &#34;https://${cnf_ip}/cgi-bin/luci/sdewan/pkcs11/v1/crs&#34; \ 11--header &#39;Content-Type: application/json&#39; \ 12--data-raw &#34;{ 13 \&#34;cert\&#34;: { 14 \&#34;key_pair\&#34;: { 15 \&#34;key_type\&#34;: \&#34;rsa:2048\&#34;, 16 \&#34;label\&#34;: \&#34;${cert_label}\&#34;, 17 \&#34;id\&#34;: \&#34;0001\&#34; 18 }, 19 \&#34;subject\&#34;: \&#34;${cert_subject}\&#34;, 20 \&#34;pem\&#34;: \&#34;\&#34; 21 } 22}&#34; --cert ca.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/sdewan-cnf-test/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/sdewan-proposal/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Leverage TEE to enhance the integrity and security of the SASE network
+Software-Define wide area network is one of the most essential components of the SASE architecture, which is based on network technologies that create virtualized WAN connections. SD-WAN decouples the network services from the underlying networks and allows the application traffic to be carried independently of the underlying network hardware, enabling the client&rsquo;s connection anywhere to the applications. How to build up a strong shield for the overlay network of SD-WAN has become a hot issue in the industry.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/sdewan-proposal/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/sdewan/test-result/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">Test Result Passed Case: Cluster k8s scc crd-controller cnf cert-manager overlay v1.17.0 old version latest version 0.5.1 v1.1.0 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.1 v1.6.1 Failed Case: case1:
+Cluster k8s scc crd-controller cnf cert-manager overlay v1.23.0 new version latest version 0.5.1 v1.6.1 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.1 v1.6.1 case2:
+Cluster k8s scc crd-controller cnf cert-manager overlay v1.23.0 new version latest version 0.5.0 v1.6.1 hub/edge-1/edge-2 v1.23.0 - latest version 0.5.0 v1.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/sdewan/test-result/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/tips/RabbitMQ/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text post-summary">RabbitMQ 消息中间件 技术精讲
+1. RabbitMQ 简介以及AMQP协议 RabbitMQ 是一个开源的消息代理和
+RabbitMQ底层是采用Erlang语言进行编写 开源、性能优秀， 稳定性保障 与spring AMQP完美整合，API丰富 集群模式丰富，表达式配置， HA模式， 镜像队列模型 保证数据不丢失的前提做到高可靠性，可用性 AMQP： 高级消息队列协议 RabbitMQ 的安装以及使用 erlang socat rabbitmq-server rpm -ivh XXXXX.rpm lsof -i:5672 # 查看端口 启用控制台插件 rabbit 可以选择使用内存进行存储
+RabbitMQ 核心概念 AMQP核心概念
+Server：又称作Broker， 接收客户端的连接，实现AMQP实体服务
+Connection： 连接， 应用程序与Broker的网络连接
+Channel： 网络信道，几乎所有的操作都在Channel中进行，Channel是进行消息读写的一个通道。客户端可以建立多个Channel，每个Channel代表一个会话任务。
+Message： 消息， 服务器和应用程序之间传送的数据，由Properties和Body组成。Properties可以对消息进行修饰，比如消息的优先级、延迟等高级特性；Body则就是消息体内容。
+Virtual host： 虚拟地址，用于进行逻辑隔离，是最上层的消息路由。一个Virtual Host里面可以有若干个Exchange 和Queue， 同一个Virtual Host里面不能有相同名称的Exchange或Queue。
+Exchange： 交换机，接收消息，根据路由键转发消息到绑定的队列
+Binding： Exchange 和Queue之间的虚拟连接，binding可以包含routing key
+Routing key: 一个路由规则，虚拟机可以用它来确定如何路由一个特定消息
+Queue： 也称为Massage Queue, 消息队列，保存消息并将他们转发给消费者
+RabbitMQ RabbitMQ默认端口号 4369 (epmd), 25672 (Erlang distribution) 4369 erlang 发现端口 25672 server间通信端口 5672, 5671 (AMQP 0-9-1 without and with TLS) client端通信口 15672 (if management plugin is enabled) 管理界面ui端口 61613, 61614 (if STOMP is enabled) 1883, 8883 (if MQTT is enabled) 生产端的可靠投递 保证消息从生产者到MQ之间的传输是100%可靠的，生产者发送的消息一定能进入消息队列</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/tips/RabbitMQ/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/6.824/LEC_1_Introduction/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「6.824」 Lecture 1 Introduction</h5>
+        <p class="card-text post-summary">Distributed System Engineering parallelism
+Fault tolerance
+Physical
+Security /isolated
+Challenges:
+concurrency
+Partial failure
+Performance
+Lab
+MapReduce Raft for fault tolerrance K/V server Sharding K/V servers Infrastructure
+storage Communication Computation Abstraction
+Implementation
+RPC, Thread，Concurrency Performance
+scalability , scabale to speed 2 x computer = 2X throughput Fault Tolerance
+Availability Recoverability NV (non-volatile)storage /Replication Topic - Consistency
+Put (key, value) Get(key) -&gt; value Map Reduce What is distributed system? multiple cooperating computers storage for big web sites, MapReduce, peer-to-peer sharing, &amp;c lots of critical infrastructure is distributed Why do people build distributed system?</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/6.824/LEC_1_Introduction/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/6.824/MapReduce/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「6.824」 MapReduce</h5>
+        <p class="card-text post-summary"></p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/6.824/MapReduce/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/component/MicroService/Consul/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Consul」Consul</h5>
+        <p class="card-text post-summary">什么是consul Consul是用来做什么的 服务如何注册到Consul，以及如何进行服务发现 Consul部署 基于docker部署
+node consul-server server consul-1 client consul-2 client 1docker run -d -p 8500:8500 -e CONSUL_BIND_INTERFACE=eth0 --name consul-server consul:1.9.4 2docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-1 consul:1.9.4 agent -dev -join=172.17.0.13 3docker run -d -e CONSUL_BIND_INTERFACE=eth0 --name consul-2 consul:1.9.4 agent -dev -join=172.17.0.13 4 5# docker stop consul-server consul-1 consul-2 6# docker rm consul-server consul-1 consul-2 Tips： 查看consul-server ip
+1 docker exec -t consul-server ifconfig 可以通过8500端口访问UI
+Server:
+Client:</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/component/MicroService/Consul/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/interview/daily/TaskList/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">「Daily」TaskList</h5>
+        <p class="card-text post-summary">TaskList 最短路径算法
+最小生成树
+深度优先遍历、广度优先遍历
+KMP算法
+LRU
+哈弗曼树
+go知识学习 参考这个文档，完整的学习一边go
+https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/
+context 春招目标
+依图
+PDD
+字节跳动
+浦发</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/interview/daily/TaskList/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+    </div>
+    <div class="paginator">
+      
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/11/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/10/" aria-label="Page 10" class="page-link" role="button">10</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/11/" aria-label="Page 11" class="page-link" role="button">11</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 12" class="page-link" role="button">12</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/13/" aria-label="Page 13" class="page-link" role="button">13</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/14/" aria-label="Page 14" class="page-link" role="button">14</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/13/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+
+      
+       
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#skills">Skills</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#recent-posts">Recent Posts</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://airren.github.io/#achievements">My Story</a>
+                </li>
+              
+            
+              
+                
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:airrenzero#gmail.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>airrenzero#gmail.com</span>
+                </a></li>
+              
+            
+              
+                <li><span><i class="fas fa-phone-alt"></i></span> <span>&#43;86 1881733xxxx</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+              
+              <form
+                action="https://github.us1.list-manage.com/subscribe/post?u=19de52a4603135aae97163fd8&amp;amp;id=094a24c76e"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate"
+                target="_blank"
+                novalidate >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mce-EMAIL"
+                    name="EMAIL"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <small id="emailHelp" class="form-text text-muted"
+                    >By entering your email address, you agree to receive the newsletter of this website.</small
+                  >
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2020-2021 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+    
+    <script src="/js/list.js"></script>
+
+
+    
+</body>
+</html>
