@@ -566,7 +566,7 @@ defer 函数
 
 ```
 
-![image-20211116210514257](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211116210514257.png)
+![image-20211116210514257](./jike_go_note/image-20211116210514257.png)
 
 
 
@@ -611,14 +611,14 @@ func(e *Employee) String（） string{
 
 Go语言的相关接口
 
-![image-20211116224916489](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211116224916489.png)
+![image-20211116224916489](./jike_go_note/image-20211116224916489.png)
 
 
 
 - 接口为非侵入性，实现不依赖与接口定义
 - 所有接口的定义可以包含在接口使用者包内（解决循环依赖）
 
-![image-20211116230445712](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211116230445712.png)
+![image-20211116230445712](./jike_go_note/image-20211116230445712.png)
 
 interface 判断是否为nil
 
@@ -649,7 +649,7 @@ type MyPoint int
 
 多态
 
-![image-20211116233152650](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211116233152650.png)
+![image-20211116233152650](./jike_go_note/image-20211116233152650.png)
 
 
 
@@ -675,7 +675,7 @@ Go 接口最佳实现
 
 single method interface
 
-![image-20211116234932812](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211116234932812.png)
+![image-20211116234932812](./jike_go_note/image-20211116234932812.png)
 
 
 
@@ -791,7 +791,7 @@ vendor路径
 - 在GOPATH下面查找依赖包
 - 在GOROOT目录下查找
 
-![image-20211118103743747](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118103743747.png)
+![image-20211118103743747](./jike_go_note/image-20211118103743747.png)
 
 
 
@@ -810,11 +810,11 @@ Thread VS Goutine
    - Java Thread 是1：1
    - Goroutine 是M:N
 
-![image-20211118105257362](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118105257362.png)
+![image-20211118105257362](./jike_go_note/image-20211118105257362.png)
 
 线程切换 context的消耗高
 
-![image-20211118105428363](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118105428363.png)
+![image-20211118105428363](./jike_go_note/image-20211118105428363.png)
 
 计数每个processer完成的数量
 
@@ -862,25 +862,25 @@ RWLock  读不是互斥的
 
 CSP (Communicating Sequential processes)并发控制
 
-![image-20211118140213351](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118140213351.png)
+![image-20211118140213351](./jike_go_note/image-20211118140213351.png)
 
 
 
-![image-20211118140231143](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118140231143.png)
+![image-20211118140231143](./jike_go_note/image-20211118140231143.png)
 
-![image-20211118140331037](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118140331037.png)
+![image-20211118140331037](./jike_go_note/image-20211118140331037.png)
 
 无buffer 的等待（双方都在）
 
 
 
-![image-20211118140505931](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118140505931.png)
+![image-20211118140505931](./jike_go_note/image-20211118140505931.png)
 
  
 
 多路选择和超时控制
 
-![image-20211118144035315](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118144035315.png)
+![image-20211118144035315](./jike_go_note/image-20211118144035315.png)
 
 如果 retCh1 和retCH2 都ready的情况下，无法保证select的顺序。
 
@@ -936,7 +936,7 @@ channel的关闭
 
 Context 与任务取消
 
-![image-20211118160603058](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118160603058.png)
+![image-20211118160603058](./jike_go_note/image-20211118160603058.png)
 
 
 
@@ -955,9 +955,9 @@ Context
 
 只运行一次
 
-![image-20211118162057549](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118162057549.png)
+![image-20211118162057549](./jike_go_note/image-20211118162057549.png)
 
-![image-20211118162156928](%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211118162156928.png)
+![image-20211118162156928](./jike_go_note/image-20211118162156928.png)
 
 
 

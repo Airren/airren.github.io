@@ -12,7 +12,7 @@ Now, the `func CalculateRoutes()` can genarate the create route to the pod, but 
 
 The calculated result for the sfc-head pod:
 
-![](C:\Users\qiangren\AppData\Roaming\marktext\images\2022-09-12-22-07-12-image.png)
+
 
 
 

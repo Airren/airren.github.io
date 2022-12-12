@@ -80,6 +80,12 @@ params:
     # Enable & configure "Notes" features
     notes:
       enable: false
+    comment:
+      enable: true
+      utteranc:
+        repo: Airren/airren.github.io
+        issueTerm: pathname
+        theme: github-light
 
 
   # specify whether you want to show Table of Contents in reading page

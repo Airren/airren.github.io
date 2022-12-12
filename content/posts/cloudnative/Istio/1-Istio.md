@@ -146,7 +146,7 @@ SMI(Service Mesh Interface)
 
 
 
-![image-20211104224250647](1.%20Istio/image-20211104224250647.png)
+![image-20211104224250647](./1-Istio/image-20211104224250647.png)
 
 
 
@@ -194,11 +194,11 @@ Google ： Istio, gRPC，Kubernetes
 
 
 
-![image-20211105010441022](1.%20Istio/image-20211105010441022.png)
+![image-20211105010441022](./1-Istio/image-20211105010441022.png)
 
 
 
-![image-20211105010705390](1.%20Istio/image-20211105010705390.png)
+![image-20211105010705390](./1-Istio/image-20211105010705390.png)
 
 性能问题加重
 
@@ -208,8 +208,8 @@ Google ： Istio, gRPC，Kubernetes
 
 MVP理论 《 精益创业》
 
-![image-20211105011136576](1.%20Istio/image-20211105011136576.png) 
+![image-20211105011136576](./1-Istio/image-20211105011136576.png) 
 
-![image-20211105011416155](1.%20Istio/image-20211105011416155.png)
+![image-20211105011416155](./1-Istio/image-20211105011416155.png)
 
-![image-20211105011517090](1.%20Istio/image-20211105011517090.png)
+![image-20211105011517090](./1-Istio/image-20211105011517090.png)

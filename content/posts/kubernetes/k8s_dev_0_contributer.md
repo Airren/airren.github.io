@@ -155,7 +155,7 @@ git remote set-url --push upstream no_push
 
 设置完成后可以通过`git remote -v` 检查`remote`的配置情况。
 
-![image-20211218235724740](./k8s_dev_0_contributer.assets/image-20211218235724740.png)
+
 
 ### Keeping Your Fork in sync
 
