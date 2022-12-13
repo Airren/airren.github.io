@@ -54,6 +54,26 @@
 
     
 
+    
+        
+        
+
+        
+        
+
+        
+        
+            <script
+            data-goatcounter="https://bytegopher.goatcounter.com/count"
+            async
+            src="/js/goat-counter.js"
+            ></script>
+        
+
+        
+        
+    
+
 
 
 
@@ -308,50 +328,6 @@
     <div class="container-fluid post-card-holder" id="post-card-holder">
       
       
-      
-        
-          <div class="post-card">
-  <a href="/posts/blog/1_cryptography/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Cryptography</h5>
-        <p class="card-text post-summary">对称加密 非对称加密 RSA 由于计算非常复杂，只适用于小数据加密。
-HTTPS 非对称加密+对称加密
-mTLS 数字证书 数字证书的颁发过程一般为： 用户首先产生自己的密钥对，并将公共密钥以及部分个人身份信息传送给认证中心。认证中心在核实身份后，执行一些必要的步骤，以确认请求确实是由用户发送来的。然后，认证中心将发给用户一个数字证书。该证书内包含用户的个信息和他的公钥信息。同时还附有认证中心的签名信息。
-加密通信 Alice [Decode message by Alice&rsquo;s private key] &lt;&mdash;- send message &mdash; [message encrypted with Alice&rsquo;s public key] Bob
-公钥加密，私钥解密
-数字签名 Bob 给Alice发送的文件需要携带数字签名。
-Bob使用自己的私钥 以及文件的哈希值， 通过签名算法 计算出 数字签名
-Alice 收到文件后， 通过文件哈希值，Bob的数字签名，以及Bob的公钥 进行签名验证
-数字签名主要有以下三个作用：认证，确认收到的数据的身份信息；防止抵赖，文件一旦签名后不能反悔；防止篡改，保证文件在传输过程中的完整性。
-比特币其实就是数字签名
-X.509 数字证书 证书版本信息
-证书的序列号，每个证书都有一个唯一的证书序列号
-证书所使用的签名算法；
-证书的发行机构名称，命名规则一般采用X.500格式；
-证书的有效期，现在通用的证书一般采用UTC时间格式，它的计时范围1950-2049；
-证书所有人的名称，命名规则一般采用X.500格式；
-证书所有人的公开密钥；
-证书发行者对证书的签名；
-Openssl 创建一个 root certificates 和 private key 用来为服务签署 certificates
-1openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj &#39;/O=example Inc.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/1_cryptography/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
       
         
           <div class="post-card">
@@ -675,6 +651,33 @@ Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管�
 
         
       
+        
+          <div class="post-card">
+  <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Intel AMXAV</h5>
+        <p class="card-text post-summary">Introduce SIMD 单指令数据-&gt; VNNI/INT8
+Intrinsics for Intel(R) Advanced Matrix Extension Instructions Intel Advanced Matrix Extension is a new 64-bit programming paradigm consisting of two components:
+A set of 2-dimensional registers(tiles) representing sub-arrays from a larger 2-dimensional memory image Am accelerator that is able to operate on tiles; the first implementation of this accelerator is called TMUL(tile matrix multiply unit) Intrinsic for Intel Advanced Matrix Extension AMX-BF16 Instructions This intrinsic supports tile computational operations on bfloat16 number.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/intel_spx_AMX/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
     </div>
     <div class="paginator">
       
@@ -704,7 +707,7 @@ Go 工作空间 从2009年Go开始使用，在开发者如果组织代码和管�
         <a href="/posts/page/19/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/posts/page/24/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/posts/page/23/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>

@@ -54,6 +54,26 @@
 
     
 
+    
+        
+        
+
+        
+        
+
+        
+        
+            <script
+            data-goatcounter="https://bytegopher.goatcounter.com/count"
+            async
+            src="/js/goat-counter.js"
+            ></script>
+        
+
+        
+        
+    
+
 
 
 
@@ -284,53 +304,6 @@
     <div class="container-fluid post-card-holder" id="post-card-holder">
       
       
-      
-        
-          <div class="post-card">
-  <a href="/posts/note_go/99_jike_go_note/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text post-summary">软件开发的新挑战
-多核硬件架构
-超大规模分布式计算集群
-web模式下导致的前所未有的规模和更新速度
-区块链开发语言，
-Kubernetes
-Docker
-只有25个关键字
-有垃圾回收机制，但是仍然可以直接使用指针访问内存
-CSP并发机制
-关键字
-c 37
-c++ 11 84
-go 25
-go 垃圾回收，使用指针直接内存访问.
-复合和继承
-docker kubernetes
-go 默认使用静态连接，编译完成是一个独立的二进制
-1package main // package name 2 3import &#34;fmt&#34; // dependence 4 5// functionality 6func main() { 7	fmt.Print(&#34;hello world \n&#34;) 8} 应用程序入口，
-必须是main包 package main 必须是main方法 func main() 文件名不一定是main.go package 的名字不需要与目录保持一致
-退出返回值
-与其他主要编程语言的差异
-Go main函数不支持任何返回值 通过os.Exit 来返回状态 1package main 2 3import ( 4	&#34;fmt&#34; 5	&#34;os&#34; 6) 7 8func main() { 9	fmt.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/note_go/99_jike_go_note/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
       
         
           <div class="post-card">
@@ -644,6 +617,39 @@ Reflection Let Us Work with Types at Runtime But sometimes, relying on only comp
         <span class="float-left">January 1, 0001</span>
         <a
         href="/posts/note_go/14-golang_reflect_unsafe_cgo/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
+  <a href="/posts/note_go/1_Go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%A2%B3%E7%90%86/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">基本语法梳理</h5>
+        <p class="card-text post-summary">源文件 原文件使用UTF-8编码，对Unicode支持良好。每个源文件都属于包的一部分，在文件头部用package声明所属包的名称
+1package main 2func main(){ 3 println(&#34;hello world!!&#34;) 4} 以.go作为文件扩展名，语句结束分号会被默认省略，支持C样式注释。入口函数main没有参数，且必须放在main包中
+用import导入标准库或第三方包
+1package main 2import{ 3 &#34;fmt&#34; 4} 5 6func main(){ 7 fmt.Println(&#34;hello world!&#34;) 8} 可以直接运行或者编译为可执行文件
+变量 使用var定义变量，支持类型推断。基础数据类型划分清晰明确，有助于编写跨平台应用。编译器确保变量总是被初始化为0，避免出现意外状况。
+1package main 2func main(){ 3 var x int32 4 var s=&#34;hello world!&#34; 5 // 两个数据之间默认使用空格隔开 6 println(x,s) 7} 在函数内部，还可以省略var关键字，使用更简单的定义模式。
+1package main 2 3//y := 200 // 该声明方式仅在函数内部使用，不可用来声明全局变量 4func main() { 5	x := 100 6	println(x) 7} 编译器将未使用的局部变量定义当做错误
+表达式 Go仅有三种流控制语句
+if 1package main 2 3func main() { 4	x := 100 5	if x &gt; 0 { 6	print(&#34;x&#34;) 7	} else if x &lt; 0 { 8	print(&#34;-x&#34;) 9	} else { 10	print(&#34;0&#34;) 11	} 12} switch 1package main 2 3func main() { 4	x := 0 5	switch { 6	case x &gt; 0: 7	print(&#34;x&#34;) 8	case x &lt; 0: 9	print(&#34;-x&#34;) 10	default: 11	print(&#34;0&#34;) 12	} 13} for 1func main() { 2	for i := 0; i &lt; 5; i++ { 3	println(i) 4	} 5	for i := 4; i &gt;= 0; i-- { 6	println(i) 7	} 8} 1package main 2 3func main() { 4	x := 0 5 for x &lt; 5 { // 相当于 while(x&lt;5) 6	println(x) 7	x++ 8	} 9} 1package main 2 3func main() { 4	x := 4 5	for { // 相当于while(true) 6	println(x) 7	x-- 8	if x &lt; 0 { 9	break 10	} 11	} 12} 在迭代遍历时，for&hellip;range除了元素外，还可以返回索引</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/note_go/1_Go%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%A2%B3%E7%90%86/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
