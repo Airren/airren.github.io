@@ -54,10 +54,10 @@ https://www.hashicorp.com/resources/raft-consul-consensus-protocol-explained</de
     
     <item>
       <title>Mac Dev Environment</title>
-      <link>https://airren.github.io/posts/blog/Mac_init/</link>
+      <link>https://airren.github.io/posts/tips/mac_init/</link>
       <pubDate>Fri, 12 Feb 2021 13:41:16 +0800</pubDate>
       
-      <guid>https://airren.github.io/posts/blog/Mac_init/</guid>
+      <guid>https://airren.github.io/posts/tips/mac_init/</guid>
       <description>HomeBrew https://brew.sh/
 1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Use homebrew install package
 1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
@@ -70,7 +70,7 @@ Istat Menus
 Xnip: for screenshot
 Recommend
 Wireshark Sublime Chrome Typora Others
-alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac Cli Tools 1# tmux 2brew install tmux Vim Config 1# ~/.</description>
+alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac CLI Tools 1tmux 2vim 3git 4golang Vim Config 1# ~/.</description>
     </item>
     
     <item>
@@ -2316,16 +2316,6 @@ http://www.ruanyifeng.com/blog/2016/02/linux-daemon.html</description>
       
       <guid>https://airren.github.io/posts/linux/xorgs/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>「Mac」Mac初始化</title>
-      <link>https://airren.github.io/posts/tips/mac_init/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/tips/mac_init/</guid>
-      <description>文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &amp;lt;ESC&amp;gt; git
-1git config --global init.defaultBranch main </description>
     </item>
     
     <item>

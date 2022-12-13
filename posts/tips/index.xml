@@ -6,7 +6,28 @@
     <description>Recent content on ByteGopher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2020 01:12:13 +0000</lastBuildDate><atom:link href="https://airren.github.io/posts/tips/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Fri, 12 Feb 2021 13:41:16 +0800</lastBuildDate><atom:link href="https://airren.github.io/posts/tips/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Mac Dev Environment</title>
+      <link>https://airren.github.io/posts/tips/mac_init/</link>
+      <pubDate>Fri, 12 Feb 2021 13:41:16 +0800</pubDate>
+      
+      <guid>https://airren.github.io/posts/tips/mac_init/</guid>
+      <description>HomeBrew https://brew.sh/
+1/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Use homebrew install package
+1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
+1sh -c &amp;#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&amp;gt; Keyboard -&amp;gt; modifyKeys
+1Caplock -&amp;gt; Command Software highly recommended
+Iterm2: Mac terminal replacement
+Alfred
+Dash
+Istat Menus
+Xnip: for screenshot
+Recommend
+Wireshark Sublime Chrome Typora Others
+alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac CLI Tools 1tmux 2vim 3git 4golang Vim Config 1# ~/.</description>
+    </item>
+    
+    <item>
       <title>「Git」 Git 工作区&amp;暂存区&amp;本地仓库&amp;远程仓库以及基本操作</title>
       <link>https://airren.github.io/posts/tips/git_stage_repo/</link>
       <pubDate>Wed, 26 Aug 2020 01:12:13 +0000</pubDate>
@@ -91,16 +112,6 @@ MarkDown 语法 公式解析
       <guid>https://airren.github.io/posts/tips/goland/</guid>
       <description>自动补齐json Format 通过SFTP同步本地与远端代码 Preference&amp;gt;Build,Execution,Deployment&amp;gt;SFTP
 Go 远程Debug https://github.com/derekparker/delve</description>
-    </item>
-    
-    <item>
-      <title>「Mac」Mac初始化</title>
-      <link>https://airren.github.io/posts/tips/mac_init/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://airren.github.io/posts/tips/mac_init/</guid>
-      <description>文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &amp;lt;ESC&amp;gt; git
-1git config --global init.defaultBranch main </description>
     </item>
     
     <item>

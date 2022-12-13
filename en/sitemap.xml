@@ -194,7 +194,10 @@
                 href="https://airren.github.io/tags/"
                 />
   </url><url>
-    <loc>https://airren.github.io/posts/blog/Mac_init/</loc>
+    <loc>https://airren.github.io/posts/tips/</loc>
+    <lastmod>2021-02-12T13:41:16+08:00</lastmod>
+  </url><url>
+    <loc>https://airren.github.io/posts/tips/mac_init/</loc>
     <lastmod>2021-02-12T13:41:16+08:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/posts/DataStruct/ds_dp/</loc>
@@ -214,9 +217,6 @@
   </url><url>
     <loc>https://airren.github.io/posts/note_go/5.3_go_slice/</loc>
     <lastmod>2020-09-02T11:40:22+00:00</lastmod>
-  </url><url>
-    <loc>https://airren.github.io/posts/tips/</loc>
-    <lastmod>2020-08-26T01:12:13+00:00</lastmod>
   </url><url>
     <loc>https://airren.github.io/posts/tips/git_stage_repo/</loc>
     <lastmod>2020-08-26T01:12:13+00:00</lastmod>
@@ -599,8 +599,6 @@
     <loc>https://airren.github.io/posts/linux/systemd/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/linux/xorgs/</loc>
-  </url><url>
-    <loc>https://airren.github.io/posts/tips/mac_init/</loc>
   </url><url>
     <loc>https://airren.github.io/posts/tips/web_mvc_pattern/</loc>
   </url><url>

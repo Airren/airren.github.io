@@ -287,34 +287,6 @@
       
         
           <div class="post-card">
-  <a href="/posts/blog/docker_dockerfile/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Dockerfile</h5>
-        <p class="card-text post-summary">Dockerfile 中的entrypoint 和CMD的区别
-1CMD executable param1 param2 # 不用使用这种shell表示法，1 号进程为shell 2CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] EntryPoint 和CMD都可以在执行的时候被覆盖。
-组合使用ENTRYPOINT和CMD, ENTRYPOINT指定默认的运行命令, CMD指定默认的运行参数. 例子如下:
-1FROM ubuntu:trusty 2ENTRYPOINT [&#34;/bin/ping&#34;,&#34;-c&#34;,&#34;3&#34;] 3CMD [&#34;localhost&#34;] docker 会把CMD的命令拼接到Entrypoint之后</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">January 1, 0001</span>
-        <a
-        href="/posts/blog/docker_dockerfile/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
-
-        
-      
-        
-          <div class="post-card">
   <a href="/posts/blog/intel_spx_AMX/" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -667,6 +639,36 @@ The WillPower Instinct
 
         
       
+        
+          <div class="post-card">
+  <a href="/posts/blog/high_concurrency_lb/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">高并发负载均衡</h5>
+        <p class="card-text post-summary">高并发，负载均衡，高可用
+不要因为技术而技术, 软件工程学需要分层解耦
+应用层 1# $$ current process pid 2cd /proc/$$/fd 0 stdin
+1 stdout
+2 stderr
+1# 8 is the name of the file descriptor, &lt;&gt; in and out direction 2exec 8&lt;&gt; /dev/tcp/www.baidu.com/80 3# exec 8&lt;&amp; - 4# &amp; represent the argument is a fd 5echo -e &#34;GET / HTTP/1.0\n&#34; &gt;&amp; 8 传输层 </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">January 1, 0001</span>
+        <a
+        href="/posts/blog/high_concurrency_lb/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
     </div>
     <div class="paginator">
       
@@ -683,14 +685,11 @@ The WillPower Instinct
       <li class="page-item active">
         <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
-      <li class="page-item">
-        <a href="/posts/blog/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
       </li>
-      <li class="page-item">
-        <a href="/posts/blog/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/posts/blog/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
     </div>

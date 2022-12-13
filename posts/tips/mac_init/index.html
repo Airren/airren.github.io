@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>「Mac」Mac初始化</title>
+    <title>Mac Dev Environment</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -37,18 +37,29 @@
 
   <link rel="icon" type="image/png" href="/images/site/favicon_hufa9bb061875e5783d83b75135c052e0b_6105_42x0_resize_box_3.png" />
 
-<meta property="og:title" content="「Mac」Mac初始化" />
-<meta property="og:description" content="文本工具 Typora 效率相关 Karabiner 开发相关 goland Brew go git iterm2 Alfred ohmyzsh vim docker Kitematic .virmrc 1syntax on 2set nu 3inoremap jj &lt;ESC&gt; git
-1git config --global init.defaultBranch main " />
+<meta property="og:title" content="Mac Dev Environment" />
+<meta property="og:description" content="HomeBrew https://brew.sh/
+1/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34; Use homebrew install package
+1brew install wget 2brew install go Oh-my-zsh https://ohmyz.sh/
+1sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; 2 3# sudo chsh -s $(which zsh) Modify Keys settings -&gt; Keyboard -&gt; modifyKeys
+1Caplock -&gt; Command Software highly recommended
+Iterm2: Mac terminal replacement
+Alfred
+Dash
+Istat Menus
+Xnip: for screenshot
+Recommend
+Wireshark Sublime Chrome Typora Others
+alt tab Irvue: for desktop picture Magnet: for window split Cleanmymac CLI Tools 1tmux 2vim 3git 4golang Vim Config 1# ~/." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://airren.github.io/posts/tips/mac_init/" /><meta property="article:section" content="posts" />
-
-
+<meta property="article:published_time" content="2021-02-12T13:41:16+08:00" />
+<meta property="article:modified_time" content="2021-02-12T13:41:16+08:00" />
 
 
     
     
-<meta name="description" content="「Mac」Mac初始化" />
+<meta name="description" content="Mac Dev Environment" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -294,11 +305,11 @@
         <div class="author-profile ml-auto align-self-lg-center">
           <img class="rounded-circle" src='/images/author/airren_hua190a7ea0abcfe5733aac4e715353a6c_101835_120x120_fit_box_3.png' alt="Author Image">
           <h5 class="author-name">Airren Ren</h5>
-          <p>Monday, January 1, 1</p>
+          <p>Friday, February 12, 2021</p>
         </div>
 
         <div class="title">
-          <h1>「Mac」Mac初始化</h1>
+          <h1>Mac Dev Environment</h1>
         </div>
         
         <div class="taxonomy-terms">
@@ -308,32 +319,98 @@
         </div>
         
         <div class="post-content" id="post-content">
-          <h2 id="文本工具">文本工具</h2>
+          <h2 id="homebrew">HomeBrew</h2>
+<p><a href="https://brew.sh/" target="_blank">https://brew.sh/</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>/bin/bash -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Use homebrew install package</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>brew install wget 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>brew install go
+</span></span></code></pre></div><h2 id="oh-my-zsh">Oh-my-zsh</h2>
+<p><a href="https://ohmyz.sh/" target="_blank">https://ohmyz.sh/</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#75715e"># sudo chsh -s $(which zsh)</span>
+</span></span></code></pre></div><h2 id="modify-keys">Modify Keys</h2>
+<p>settings -&gt; Keyboard -&gt; modifyKeys</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Caplock -&gt; Command
+</span></span></code></pre></div><h2 id="software">Software</h2>
+<p><strong>highly recommended</strong></p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> Typora</li>
+<li>
+<p>Iterm2:  Mac terminal replacement</p>
+</li>
+<li>
+<p>Alfred</p>
+</li>
+<li>
+<p>Dash</p>
+</li>
+<li>
+<p>Istat Menus</p>
+</li>
+<li>
+<p>Xnip: for screenshot</p>
+</li>
 </ul>
-<h2 id="效率相关">效率相关</h2>
+<p><strong>Recommend</strong></p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> Karabiner</li>
+<li>Wireshark</li>
+<li>Sublime</li>
+<li>Chrome</li>
+<li>Typora</li>
 </ul>
-<h2 id="开发相关">   开发相关</h2>
+<p><strong>Others</strong></p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> goland</li>
-<li><input checked="" disabled="" type="checkbox"> Brew</li>
-<li><input checked="" disabled="" type="checkbox"> go</li>
-<li><input checked="" disabled="" type="checkbox"> git</li>
-<li><input checked="" disabled="" type="checkbox"> iterm2</li>
-<li><input checked="" disabled="" type="checkbox"> Alfred</li>
-<li><input checked="" disabled="" type="checkbox"> ohmyzsh</li>
-<li><input checked="" disabled="" type="checkbox"> vim</li>
-<li><input checked="" disabled="" type="checkbox"> docker</li>
-<li><input checked="" disabled="" type="checkbox"> Kitematic</li>
+<li>alt tab</li>
+<li>Irvue: for desktop picture</li>
+<li>Magnet: for window split</li>
+<li>Cleanmymac</li>
 </ul>
-<h2 id="virmrc">.virmrc</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>syntax on
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>set nu
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>inoremap jj &lt;ESC&gt;
-</span></span></code></pre></div><p>git</p>
+<h2 id="cli-tools">CLI Tools</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>tmux 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>vim
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>git
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>golang
+</span></span></code></pre></div><h2 id="vim--config">Vim  Config</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e"># ~/.vimrc</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>cat <span style="color:#e6db74">&lt;&lt;EOF| tee -a ~/.vimrc
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#e6db74">set nu
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#e6db74">syntax on
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#e6db74">inoremap jj &lt;ESC&gt;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#e6db74">set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#e6db74">set termencoding=utf-8
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#e6db74">set encoding=utf-8
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#e6db74">&#34; show existing tab with 4 spaces width
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#e6db74">set tabstop=4
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#e6db74">&#34; when indenting with &#39;&gt;&#39;, use 4 spaces width
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#e6db74">set shiftwidth=4
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span><span style="color:#e6db74">&#34; On pressing tab, insert 4 spaces
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#e6db74">set expandtab
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h2 id="golang">Golang</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>brew install golang
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#e6db74">GOPATH=~/go
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#e6db74">GOBIN=$GOPATH/bin
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#e6db74">PATH=$PATH:$GOBIN
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#e6db74">&#39;</span>| tee -a ~/.zshrc
+</span></span></code></pre></div><h2 id="font">Font</h2>
+<p><code>hack</code>: A typeface designed for source code</p>
+<p><a href="https://github.com/source-foundry/Hack" target="_blank">https://github.com/source-foundry/Hack</a></p>
+<h2 id="k8s-for-zsh">K8s for zsh</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>echo <span style="color:#e6db74">&#39;source &lt;(kubectl completion zsh)&#39;</span> &gt;&gt;~/.zshrc
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>echo <span style="color:#e6db74">&#39;alias k=kubectl&#39;</span> &gt;&gt;~/.zshrc
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>echo <span style="color:#e6db74">&#39;compdef __start_kubectl k&#39;</span> &gt;&gt;~/.zshrc
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>source ~/.zshrc
+</span></span></code></pre></div><h2 id="network-tools">Network Tools</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#75715e"># for ip command</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>brew install iproute2mac
+</span></span></code></pre></div><h2 id="git-configuration">Git configuration</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>git config --global init.defaultBranch main
 </span></span></code></pre></div>
         </div>
@@ -481,10 +558,17 @@
       <div class="toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#文本工具">文本工具</a></li>
-    <li><a href="#效率相关">效率相关</a></li>
-    <li><a href="#开发相关">   开发相关</a></li>
-    <li><a href="#virmrc">.virmrc</a></li>
+    <li><a href="#homebrew">HomeBrew</a></li>
+    <li><a href="#oh-my-zsh">Oh-my-zsh</a></li>
+    <li><a href="#modify-keys">Modify Keys</a></li>
+    <li><a href="#software">Software</a></li>
+    <li><a href="#cli-tools">CLI Tools</a></li>
+    <li><a href="#vim--config">Vim  Config</a></li>
+    <li><a href="#golang">Golang</a></li>
+    <li><a href="#font">Font</a></li>
+    <li><a href="#k8s-for-zsh">K8s for zsh</a></li>
+    <li><a href="#network-tools">Network Tools</a></li>
+    <li><a href="#git-configuration">Git configuration</a></li>
   </ul>
 </nav>
       </div>
