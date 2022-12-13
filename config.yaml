@@ -94,6 +94,10 @@ params:
         metadata: 0
         inputPosition: bottom
         crossOrigin: anonymous
+    analytics:
+      enabled: true
+      goatCounter:
+        code: bytegopher
 
 
   # specify whether you want to show Table of Contents in reading page

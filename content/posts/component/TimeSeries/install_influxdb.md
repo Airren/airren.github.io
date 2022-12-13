@@ -34,7 +34,9 @@ use iaas_metrics
 show measurements
 ```
 
-<img src="install_influxdb/image-20210208173710328.png" alt="image-20210208173710328" style="zoom:33%;" />
+![](install_influxdb/image-20210208173710328.png)
+
+
 
 数据查询
 
