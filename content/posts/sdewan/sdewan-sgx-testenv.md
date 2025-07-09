@@ -41,7 +41,7 @@ apt-cache search linux-image
 sudo apt-get install linux-image-your_version_choice linux-headers-your_version_choice linux-image-extra-your_version_choice
 
 # must reboot you machine
-sudo apt update && sudo apt install -y linux-image-5.15.0-33-generic linux-headers-5.15.0-33-generic linux-modules-5.15.0-33-generic linux-modules-extra-5.15.0-33-generic
+sudo apt update && sudo apt install -y linux-image-5.19.0-50-generic linux-headers-5.19.0-50-generic linux-modules-5.19.0-50-generic linux-modules-extra-5.19.0-50-generic
 # https://packages.ubuntu.com/focal-updates/kernel/
 ```
 

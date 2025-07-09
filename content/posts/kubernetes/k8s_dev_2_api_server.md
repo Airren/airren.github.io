@@ -147,6 +147,8 @@ Resources are always part of an API group and a version, collectively referred t
 > **Status** is used to describe an outcome of an operation (e.g. success/fail).
 >
 > **Status** is a final (resulting) State.
+>
+> State 是期望的状态， status 是实际的状态
 
 Let's talk a little more about spec(desired state) versus status(observed state) in the context of the API server.
 

@@ -8,9 +8,13 @@ title: Multi-Cluster Kubernetes
 
 
 
-Multi-cluster Kubernetes is a kubernetes deployments method that consists of to or more clusters. This deployment method is highly flexible. You can have clusters on the same physical host or different hosts in the same data center. You can also create a multi-cloud environment with clusters living in different clouds and even in different countries.
+ Multi-cluster Kubernetes allows you to create a multi-cloud environment with clusters living in different clouds and even in different countries. The topic of connecting and discovering services across clusters is becoming increasingly popular. 
+
+However, network overlapping between multiple clusters and the diverse range of  CNI types often pose significant obstacles to achieving network connectivity across multiple clusters. Based on NRI  technology, we establish an independent parallel network between multiple clusters. This network is separate from the existing network and allows for unified planning of the multi-cluster network without affecting the original network. Simultaneously, we utilize WireGuard to establish an encrypted tunnel between multiple clusters and establish and Hub Mode service mesh among the clusters. 
 
 
+
+This session will present the fundamental architecture of using this solution with Kubernetes to facilitate network connections between applications residing in different clusters. Additionally, a live demo will be provided to demonstrate how it can be utilized for cross-cluster collaboration.
 
 
 
@@ -63,6 +67,11 @@ Brief introduction of Openshift?Rancher?
 
 
 
+
+Multi-cluster Kubernetes manages clusters residing in various clouds and even different countries, such as Clusternet and Karmada. The challenge of connecting and discovering services across these clusters awaits a solution.
+However, network overlapping between multiple clusters and the diverse range of  CNI types often pose significant obstacles to achieving network connectivity across multiple clusters. Based on NRI, we establish an independent parallel network between multiple clusters. This network is separate from the existing network and allows for unified planning of the multi-cluster network without affecting the original network. Simultaneously, we create tunnels(eg. Wireguard) between multiple clusters to establish and hub mode or mesh mode network among the clusters and provide service discovery capabilities and Network policy.  All these functions are agnostic to k8s.
+
+This session will present the fundamental architecture of using this solution with Kubernetes to facilitate network connections between applications residing in different clusters. Additionally, a live demo will be provided to demonstrate how it can be utilized for cross-cluster collaboration.
 
 
 

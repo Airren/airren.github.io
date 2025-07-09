@@ -38,5 +38,9 @@ alter user root@% identified with mysql_native_password by "123456"
 ```sql
 CREATE DATABASE IF NOT EXISTS echo_bio DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 CREATE DATABASE IF NOT EXISTS echo_bio_jira DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+CREATE DATABASE IF NOT EXISTS miniapp_cbc DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+
+CREATE DATABASE IF NOT EXISTS casdoor DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 ```
 

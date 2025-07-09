@@ -59,7 +59,7 @@ MSS and MTU are two measurements of packet size. Packets can only reach a certai
 IPsec protocols add several headers and trailers to packets, all of which take up several bytes. For networks that use IPsec, either the MSS and MTU have to adjusted  accordingly, or packets will be fragmented and slightly delayed. Usually, the MTU for a network is 1,500 bytes. A normal IP header is 20 bytes long, and a TCP header is also 20 bytes long, meaning each packet can contain 1,460 bytes of payload. However, IPsec add an Authentication Header, and ESP header, and associated trailers. These add 50-60 types to a packets, or more.
 
 ```sh
-sudo iptables -t mangle -I POSTROUTING -p tcp -m tcp -j TCPMSS --tcp-flags SYN,RST SYN --set-mss 1280
+sudo iptables -t mangle -I POSTROUTING -p tcp -m tcp -j TCPMSS --tcp-flags SYN,RST SYN --set-mss 1000
 
 
 sudo iptables -t mangle -I POSTROUTING -p tcp -m tcp -j TCPMSS --tcp-flags SYN,RST SYN --set-mss 60

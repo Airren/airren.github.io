@@ -31,3 +31,21 @@ Ctrl +K Ctrl +S  Keyboard Shortcuts
 | Spell checker | Code spell checker |
 |               |                    |
 
+
+
+
+
+
+
+
+
+SPDK -> nvme 是否有cache
+
+ceph 是否直接落盘
+
+leverage NRI.
+
+Demo ppt, Demo 场景
+
+周三前展示结果
+

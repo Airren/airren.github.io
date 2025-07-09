@@ -18,7 +18,7 @@ Let's start with the low-hanging fruit: packaging and delivering your controller
 
 ### Packaging: The Challenge
 
-While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcoming. Most importantly in the context of packaging containerized apps, the YAML manifests are static; that is, all values in a YAML manifest are fixed. This means that if you want to change the container images in a deployment manifest, for example, you have to create a new manifest.
+While Kubernetes defines resources with manifest, typically written in YAML, a low-level interface to declare the state of resources, these manifest files have shortcomings. Most importantly in the context of packaging containerized apps, the YAML manifests are static; that is, all values in a YAML manifest are fixed. This means that if you want to change the container images in a deployment manifest, for example, you have to create a new manifest.
 
 Let's look a concrete example, Assume you have the following Kubernetes deployment encoded in a YAML manifest called `mycontroller.yaml`, representing the custom controller you'd like user to install:
 

@@ -43,8 +43,6 @@ make gen-yaml IMG="integratedcloudnative/sdewan-controller:devtest1"
 
 ### Insight
 
-## Insight
-
 - For the SDEWAN project:  Test several work modes of CNF, one is multiple interfaces that can use host-device mode or nodus direct mode to share the physical interface to CNF, and another is CNF work as a service export through NodePort mode. Support SGX HSM co-work with CNF as a sidecar and test SDEWAN pull mode through the script.
 
 - Help the SmartEdge team finish the SASE EK release, by upgrading the auto-deploy script with the latest components.  And verified the possibility of using SDEWAN with Nodus in WAN  on AWS.
@@ -57,7 +55,7 @@ Quality: Help the Smart Edge team release SDEWAN with the latest stable componen
 
 Result Driven: Even encountering many tricky problems while enabling SGX for CNF, Qiang solved the problem step by step and finally accomplish the component as the previous design architecture.
 
-## OKR for Q2
+### OKR for Q2
 
 ### OKR for Q3
 
@@ -128,6 +126,268 @@ Submit 1 edge orchestration related IDF submission
 
 
 
-做的好的，以及需要改进的，value 2-3 个
+# 2022 Q4 
 
-3. 
+## Insight	
+
+### Results History
+
+Ramp up with the Clusternet project, and commit a patch for the  Mcs-API demo.
+
+Ramp up with ODMS, and be ready to adopt the observability technology in K8s cloud-native solutions.
+
+Investigate the CI/CD,  and set up a pipeline with Jenkins and ArgoCD.
+
+Investigate ebpf, and help the BOA project collect disk info by ebpf to metrics.
+
+**Coaching and Goal Alignment**
+
+- Support the observability work of the CESG service framework
+- Investigate NRI or Dynamic resource allocation
+
+### **Behaviors History**
+
+**Feedback and Appreciation**
+
+Fearless: Facing with the new domain ODMS observability, reads related materials, dives into this field, and use observability technology in related work.
+
+One Intel: Ramp up with ODMS project about the observability, and support of the BOA project to accomplish the observability feature.
+
+**Coaching and Growth opportunities**
+
+Quality: Qiang should continuously improve his software design skills to deliver high-quality products.
+
+Learning: Qiang should continuously learn intel platform features, and cloud-native related technologies and innovate on optimizing cloud-native solutions through intel technologies.
+
+OBJ1: Increase upstream leadership and visibility in strategic upstream projects (K8s, Containerd, CRI-O, etc.) for L5 enabling
+
+KR1: Write a blog about Cgroup, compare Cgroup v1 and v2, and introduce the usage of Cgroup in Kubernetes.
+
+
+
+OBJ2: Deliver customer-ready K8s/container runtime solutions that utilizes Intel optimization and drive end-to-end customer adoption
+
+KR1：Collect disk metrics through ebpf to achieve observability of BOA projects.
+
+KR2:  Investigate NRI/DRA  projects and look for opportunities to combine with OpenCloudOS(eg. Clusternet).
+
+
+
+
+
+
+
+
+
+## 2023 Q1 								
+
+### Results History
+
+**Feedback and Appreciation**
+
+Designed and implemented the BOA observability technology stack and supported BOA development and test data collection and visualization.
+
+Ramp up with NRI, wrote a Chinese introduction blog and post to CNCF WeChat Official Account, and verified the feasibility of integration with CNI.
+
+Investigate topology awareness based on NRI (migrate from CRI-RM), compared with Kubernetes internal resource manager policy. 
+
+**Coaching and Goal Alignment**
+
+- Contribute to BOA resource boundary solution release on observability metric integration and deployment environment maintenance.
+- Propagate NRI/DRA in the K8s project in the ClusterNet project in OpenCloudOS
+
+### **Behaviors History**
+
+**Feedback and Appreciation**
+
+Customer First: Ramp up PRC middle-stream cloud native technologies (e.g. OpencloudOS, Crane), drive NRI/DRA feature enabling to support customer requirements.
+
+One Intel:  Support BOA  resource boundary solution phase 2 release on observability metric integration and deployment environment maintenance.
+
+**Coaching and Growth opportunities**
+
+Quality: Qiang should continuously improve his software design skills to deliver high-quality products.
+
+Learning: Qiang should continuously learn intel platform features, and cloud-native related technologies and innovate on optimizing cloud-native solutions through intel technologies.
+
+
+
+
+
+## 2023 Q2 OKR
+
+- BOA e2e scenario integration: test environment build,  observability components deployment and maintenance and support  for network IO isolation.
+
+- NRI/DRA/BOA engagement in OpenCloudOS/PRC middle-stream:  Draft initial design on the cross-cluster service mesh for Clusternet based on NRI with customer.
+
+- Investigate the kernel features related to the enhancement of CloudNative in the OpencloudOS community, and explore the possibility of application in the BOA project.
+
+### Results History
+
+**Feedback and Appreciation**
+
+Support BOA e2e scenario integration:  contribute to IOI project about unix socket connection and service lifecycle mange by systemd, and conducted API server performance test.
+
+BOA project maintenance: constructed a CICD environment by Jenkins, created several pipelines for the test, and static syntax check. Upgrade the monitor dashboard to the new version metrics, and prepare a demo environment in US Lab for customers.
+
+ Implemented dedicated CNI with multi Flannel instance to create the parallel network,  use IPsec behind NAT to create cross-cluster connection, and create a Poc Env co-work with the Clusternet community. Draft initial design on the cross-cluster service mesh for Clusternet based on NRI with the customer and submit a proposal for Kubecon China.
+
+Investigate the kernel features related to the enhancement of CloudNative in the OpencloudOS community, and explore the possibility of application in the BOA project.
+
+Support storage team: ramp up with VMware Nvme of Fabrics technology, and verified the feasibility of integrating Esxi v7.03U and v8.0 with SPDK NVMe target which uses Ceph as the storage. Completed instruction document of that for IBM team.
+
+**Coaching and Goal Alignment**
+
+- Contribute to BOA resource boundary solution release on observability metric integration and deployment environment maintenance.
+- Propagate NRI in the K8s project in the ClusterNet project in OpenCloudOS
+- support the storage team to investigate the feasibility of using IPU to enhance the VMware storage.
+
+### **Behaviors History**
+
+**Feedback and Appreciation**
+
+Customer First:  Prapare demo environment for customers from Pinterest which contains IOI-related components deployment, do test to verify and accessibility management for the customer.
+One Intel: Supported storage team verified the VMware integrated with SPDK and Ceph, and prepared an instruction document for customers from IBM.
+
+**Coaching and Growth opportunities**
+
+Quality: Qiang should continuously improve his software design skills to deliver high-quality products.
+
+Learning: Qiang should continuously learn intel platform features, and cloud-native related technologies and innovate on optimizing cloud-native solutions through intel technologies.
+
+
+
+
+
+## 2023 Q3 OKR 
+
+
+
+- BOA project includes real-world load testing (stateful workloads such as Kafka), deployment environment maintenance, and metric monitoring optimization.
+
+- Conduct research on QoS for IPU storage based on SPDK, and the feasibility of fine-grained resource management for IPU storage in cloud-native scenarios.
+
+  
+
+- Implement cross-cluster Pod network unified planning leverage NRI POC, which creating a dedicated global network across multiple clusters for cross-cluster service discovery and interconnection. 
+
+  
+
+- Support storage team in validating the integration of Ceph with VMware through NVMe over TCP, as well as conducting research on VMware storage APIs to explore the feasibility of IPU acceleration.
+
+
+
+## 2023 Q3  Insight	
+
+
+
+### Results Feedback
+
+Complete testing of real workloads (eg. Kafka, Rocksdb) on BOA according to customer needs, and provide test process documentation for Pinterest.
+
+Supports BOA release 4.0 version release, including Grafana Dashboard, SDL in Jenkins, and aggregator performance test. 
+
+Investigated and dived into VAAI and VAAS, verified the NVMe over TCP Multi Path by CephGateway, and did a report about IBM's effort on SPDK for VMware. 
+
+Ramp up with IPDK, SPDK, and NVMe over TCP, and investigate the Qos of IPDK. Conduct a performance test of MEV IPU to compare NVIDIA's solution.
+
+Design the workflow about how to create a dedicated parallel network based on NRI and mcs leverage the Clusternet. and finished the POC of with the Clusternet team in Tencent Cloud.
+
+### Results Coaching
+
+Contribute to BOA resource boundary solution release on real-workload test and deployment environment maintenance.
+
+Propagate NRI in the ClusterNet project in OpenCloudOS 
+
+Support the storage team to promote the implementation of IPU in storage scenarios
+
+### Behaviors Feedback
+
+Customer First: Conducted the real-workload performance test on the BOA project according to customer needs, which provided data support for the implementation of the BOA.
+
+One Intel: Supported storage team conducted the MEV IPU storage performance test in different modes, and got a convincing result to guide the next step on IPU-related work.
+
+### Behaviors Coaching
+
+Quality: Qiang should continuously improve his software design skills to deliver high-quality products.
+
+Learning: Qiang should continuously learn intel platform features, and cloud-native related technologies and innovate on optimizing cloud-native solutions through intel technologies
+
+
+
+## 2023 Q4 OKR
+
+
+
+基于实际通过负载(eg. Kafka)完成BOA 网络管理的E2E测试.
+
+探索IPU通过CSI与K8s集成的可能性，以及可落地的方案。进一步但探索基于IPU的IO带宽细粒度控制方案。
+
+支持存储组， 对比NVIDIA的方案，进行不同场景的的性能测试，探索MEV  IPU在存储加速领域的可落地方案。
+
+Clusternet： 基于POC验证，展开各个组件的开发工作。进一步解耦Dedicated CNI对Origin Kubernetes的依赖，逐步实现Tunnel的自动化创建。
+
+
+
+- Conduct E2E testing of the BOA network isolation feature based on actual loads (eg. Kafka, iperf).
+- Explore the possibility of IPU integrating with K8s through CSI, as well as possible landing solutions.  Finish the design of fine-grained control schemes for IO bandwidth based on IPU.
+
+- Support storage groups, compare NVIDIA’s solution, conduct performance tests in different scenarios, explore the possible landing solutions of MEV IPU in the storage acceleration field.
+- OpenCloudOS:  Based on POC verification to expand the development work of each component. Gradually decouple Dedicated CNI’s dependence on Origin Kubernetes and realize automatic creation of Tunnel.
+
+
+
+## 2023 Q4  Insight	
+
+
+
+### Results Feedback
+
+Complete testing of real workloads (eg. Kafka, Rocksdb) on BOA according to customer needs, and provide test process documentation for Pinterest.
+
+Supports BOA release 4.0 version release, including Grafana Dashboard, SDL in Jenkins, and aggregator performance test. 
+
+Investigated and dived into VAAI and VAAS, verified the NVMe over TCP Multi Path by CephGateway, and did a report about IBM's effort on SPDK for VMware. 
+
+Ramp up with IPDK, SPDK, and NVMe over TCP, and investigate the Qos of IPDK. Conduct a performance test of MEV IPU to compare NVIDIA's solution.
+
+Design the workflow about how to create a dedicated parallel network based on NRI and mcs leverage the Clusternet. and finished the POC of with the Clusternet team in Tencent Cloud.
+
+### Results Coaching
+
+Contribute to BOA resource boundary solution release on real-workload test and deployment environment maintenance.
+
+Propagate NRI in the ClusterNet project in OpenCloudOS 
+
+Support the storage team to promote the implementation of IPU in storage scenarios
+
+### Behaviors Feedback
+
+Customer First: Conducted the real-workload performance test on the BOA project according to customer needs, which provided data support for the implementation of the BOA.
+
+One Intel: Supported storage team conducted the MEV IPU storage performance test in different modes, and got a convincing result to guide the next step on IPU-related work.
+
+### Behaviors Coaching
+
+Quality: Qiang should continuously improve his software design skills to deliver high-quality products.
+
+Learning: Qiang should continuously learn intel platform features, and cloud-native related technologies and innovate on optimizing cloud-native solutions through intel technologies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -147,3 +147,26 @@ brew install iproute2mac
 git config --global init.defaultBranch main
 ```
 
+
+
+##  Iterm2 theme and hightlight
+
+
+
+![image-20241129152925554](./mac_init.assets/image-20241129152925554.png)
+
+```sh
+\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b
+([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})
+(?i)error| err |panic|fatal|inactive
+(?i)warning|unknown|disabled|stoped|exited|warn|denied
+(?i)Info|activated|enabled|started|running|success
+[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+E\d{4}
+W\d{4}
+
+```
+
+
+
+https://draculatheme.com/iterm

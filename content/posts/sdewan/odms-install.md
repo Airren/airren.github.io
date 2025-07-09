@@ -6,7 +6,7 @@ title: ODMS Install
 
 Home Page: https://wiki.ith.intel.com/display/ITSODMS/Observability+Data+Management+Suite+Home
 
-[TOC]
+
 
 ## Operator
 

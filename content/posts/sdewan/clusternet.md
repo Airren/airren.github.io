@@ -214,10 +214,5 @@ https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/164
 
 
 
-```sh
-$env:HTTP_PROXY="proxy-prc.intel.com:913"
-$env:HTTPS_PROXY="proxy-prc.intel.com:913"
-```
-
 
 

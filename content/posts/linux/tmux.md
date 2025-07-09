@@ -47,6 +47,20 @@ tmux split-window -h # 水平分隔
 
 
 
+
+
+全屏当前窗口，以及退出
+
+```sh
+ctrl + b , z
+```
+
+
+
+
+
+
+
 ## copy-mode use vi shortcuts
 
 ```sh
@@ -56,8 +70,14 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
+set -g @plugin 'christoomey/vim-tmux-navigator'
+bind e setw synchronize-panes on
+bind E setw synchronize-panes off
+
 run '~/.tmux/plugins/tpm/tpm'
 EOF
+
+tmux source ~/.tmux.conf
 ```
 
 

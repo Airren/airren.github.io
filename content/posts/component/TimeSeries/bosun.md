@@ -5,6 +5,16 @@ title: Bosun
 > Telegraf is an agent for collecting metrics and writing the to InfluxDB or other outputs.
 使用bosun之前首先要了解什么是时序数据，时序数据的组成部分以及时序数据的常用查询
 
+
+
+```sh
+docker run -d --name bosun --restart=always \
+-p 4242:4242 -p 8070:8070 \
+ stackexchange/bosun:0.6.0-pre
+```
+
+
+
 ## 时序数据的类型
 
 

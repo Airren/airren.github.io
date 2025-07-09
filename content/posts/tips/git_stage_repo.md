@@ -222,6 +222,45 @@ git config --global init.defaultBranch main
 
 `gitignore`只能忽略未`track`的文件
 
+```sh
+忽略已经track的文件
+git rm -r --cached .
+git add .
+git commit -m "update .gitignore"
+```
+
+
+
+
+
+
+
+```sh
+# 特定文件
+.DS_Store
+
+# 特定后缀
+*.log
+*.exe
+*.csv
+*.txt
+*.html
+
+# 特定目录
+.idea/
+__pycache__/
+
+
+```
+
+
+
+
+
+```shell
+.netrc
+```
+
 
 
 Git 知识积累

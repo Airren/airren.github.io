@@ -20,6 +20,8 @@ fdisk /dev/sdb
 
 
 ```sh
+
+pvcreate /dev/sdb1
 pvdisplay
 ```
 
@@ -29,7 +31,7 @@ https://gyazo.com/40b3c078d6bb755f9cca318b3c28b2cf
 
 
 ```sh
-vgextend ubuntu-vg /dev/sdc1
+vgextend ubuntu-vg /dev/sdb1
 ```
 
 
@@ -47,7 +49,9 @@ lvdisplay
 ![img](linux-ubuntu-lvm/7e93c0273012ec84341f80ac86b5c434.png)
 
 ```sh
-lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+
+
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 resize2fs /dev/ubuntu-vg/ubuntu-lv
 ```
 
@@ -89,7 +93,6 @@ multipass start vm-name
 
 
 https://blog.yqxpro.com/2021/10/31/%E9%80%9A%E8%BF%87LVM%E7%BB%99Ubuntu%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98%E7%A9%BA%E9%97%B4/
-
 
 
 

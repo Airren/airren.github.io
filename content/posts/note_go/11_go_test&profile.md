@@ -47,10 +47,34 @@ go test -run NONE -bench . -memprofile mem.out -cpuprofile cpu.out net/http
 服务开启debug 端口
 
  ```sh
-go tool pprof http://10.152.50.69:9452/debug/pprof/profile\?second\=60
+go tool pprof http://10.1:9452/debug/pprof/profile\?second\=60
+
+
+ http://localhost:8080/debug/pprof/heap 
+ 
+
+
+w/heap
+ 
+ go tool pprof -http=:8087 heap.prof
+ 
+ 
+  go tool pprof -http=:6061 http://localhost:6060/debug/pprof/block
+  
+  
+  go tool pprof  -inuse_space -http=:6061 http://10.239.241.119:31141/debug/pprof/allocs
  ```
 
 -alloc_space
+
+
+
+
+
+```
+
+go tool pprof http://10.239.241.119/24:31290/debug/pprof/allocs
+```
 
 
 

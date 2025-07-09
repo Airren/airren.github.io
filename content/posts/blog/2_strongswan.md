@@ -965,8 +965,7 @@ docker run --rm -i -d --network host --name cnf --user root -v /home/ubuntu/entr
 NAT mode
 
 ```sh
-docker run --rm -i -d -p 5:q
-jjikk00:500/udp -p 4500:4500/udp --name cnf-1 --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh  --privileged cnf:pro bash -c '/entrypoint.sh'
+docker run --rm -i -d -p 500:500/udp -p 4500:4500/udp --name cnf-1 --user root -v /home/ubuntu/entrypoint.sh:/entrypoint.sh  --privileged cnf:pro bash -c '/entrypoint.sh'
 
 netstat -atunlp
 ```
@@ -989,6 +988,9 @@ sudo iptables -D PREROUTING --destination 172.16.182.193/32  -p udp --dport 500 
 
 192.169.0.4/32 === 172.17.0.2/32
 iptables -I POSTROUTING -d 172.17.0.2/32 -j SNAT --to-source 192.169.0.4 -t nat
+
+
+# 
 ```
 
 ```sh
@@ -1174,4 +1176,12 @@ conn edge1huba-Connhuba_10107039
 
 2. VTI bind with mark and ip xfrm check the startus
 
-Hi, Huifeng, I think we can con
+
+
+
+
+
+
+https://blog.csdn.net/JY5292/article/details/112629676
+
+https://developer.aliyun.com/article/1170793

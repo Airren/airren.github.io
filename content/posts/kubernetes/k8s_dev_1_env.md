@@ -20,7 +20,7 @@ kind load docker-image --name <kind-cluster-name> --nodes <node-name> <image-nam
 
 
 
-### Certmangaer
+### Certmanager
 
 ```sh
 helm repo add jetstack https://charts.jetstack.io

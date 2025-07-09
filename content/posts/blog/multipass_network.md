@@ -10,6 +10,10 @@
 
 ## LXC
 
+```sh
+sudo iptables -I PREROUTING -d 10.239.241.179/32 -p tcp -m tcp --dport 29999 -j DNAT --to-destination 10.0.0.99:19999 -t nat
+```
+
 
 
 
@@ -49,6 +53,12 @@ Edge-1
 ```sh
 # PREROUTTING
 sudo iptables -I PREROUTING -d 10.10.70.49/32 -p tcp -m tcp --dport 6443 -j DNAT --to-destination 10.96.0.1:443 -t nat
+
+
+sudo iptables -I PREROUTING -d 10.239.241.111/32 -p tcp -m tcp --dport 32000 -j DNAT --to-destination 10.0.0.131:32000 -t nat
+
+sudo iptables -I POSTROUTING -d 10.0.0.131/32 -j SNAT --to-source 10.239.241.111 -t nat
+
 ```
 
 

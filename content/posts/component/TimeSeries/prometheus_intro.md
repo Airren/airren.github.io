@@ -340,6 +340,34 @@ topk(2, logback_events_total)
 irate( logback_events_total[5m])
 ```
 
+
+
+
+
+promethesu 热加载配置
+
+```sh
+，向prometheus发送HTTP请求
+# /-/reload只接收POST请求，并且需要在启动prometheus进程时，指定 --web.enable-lifecycle
+curl -XPOST http://<Entrypoint>/-/reload
+
+从 2.0 开始，hot reload 功能是默认关闭的，如需开启，需要在启动 Prometheus 的时候，添加 --web.enable-lifecycle 参数。
+```
+
+https://songjiayang.gitbooks.io/prometheus/content/qa/hotreload.html
+
+
+
+
+
+target 配置
+
+https://imroc.cc/kubernetes/tencent/monitoring/prometheus-scrape-config.html
+
+https://yasongxu.gitbook.io/container-monitor/yi-.-kai-yuan-fang-an/di-2-zhang-prometheus/prometheus-de-pei-zhi-yu-fu-wu-fa-xian
+
+http://www.xuyasong.com/?page_id=1827
+
 ## Reference
 
 https://www.jianshu.com/p/93c840025f01
